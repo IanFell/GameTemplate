@@ -1,0 +1,53 @@
+package input.controllers;
+
+/**
+ * XBox 360 GamePad.
+ * 
+ * @author Fabulous Fellini
+ *
+ */
+public class XBox360Pad extends ControllerInput
+{
+	/**
+	 * Trigger axis.
+	 */
+	private int AXIS_LEFT_TRIGGER;
+	private int AXIS_RIGHT_TRIGGER;
+	
+	/**
+	 * Constructor.
+	 */
+	public XBox360Pad() {
+		this.BUTTON_X     = 2;
+	    this.BUTTON_Y     = 3;
+	    this.BUTTON_A     = 0;
+	    this.BUTTON_B     = 1;
+	    this.BUTTON_BACK  = 6;
+	    this.BUTTON_START = 7;
+	    this.BUTTON_LB    = 4;
+	    this.BUTTON_L3    = 8;
+	    this.BUTTON_RB    = 5;
+	    this.BUTTON_R3    = 9;
+	    
+	    this.AXIS_LEFT_X        = 1; //-1 is left | +1 is right
+	    this.AXIS_LEFT_Y        = 0; //-1 is up | +1 is down
+	    this.AXIS_LEFT_TRIGGER  = 4; //value 0 to 1f
+	    this.AXIS_RIGHT_X       = 3; //-1 is left | +1 is right
+	    this.AXIS_RIGHT_Y       = 2; //-1 is up | +1 is down
+	    this.AXIS_RIGHT_TRIGGER = 4; //value 0 to -1f
+	}
+	
+	/**
+	 * Polls controller for LB, RB, LT, RT.
+	 */
+	@Override
+	protected void pollTriggers() {
+		super.pollTriggers();
+		if(controller.getAxis(AXIS_LEFT_TRIGGER) > 0.5f) {
+			System.out.print("LEFT TRIGGER pressed \n");
+		}
+		if(controller.getAxis(AXIS_RIGHT_TRIGGER) < -0.5f) {
+			System.out.print("RIGHT TRIGGER pressed \n");
+		}
+	}
+}
