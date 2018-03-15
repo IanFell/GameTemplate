@@ -24,5 +24,4 @@ public class SoundHandler {
 			soundLoader.sound.stop();
 		}
 	}
-
 }

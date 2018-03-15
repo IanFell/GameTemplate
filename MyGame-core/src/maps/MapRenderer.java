@@ -28,8 +28,6 @@ public class MapRenderer {
 	        				myGame.tileLoader.tiles.get(i).getY(), 
 	        				myGame
 	        		);
-	        		myGame.tileLoader.tiles.get(i).rectangle.x = myGame.tileLoader.tiles.get(i).getX();
-	        		myGame.tileLoader.tiles.get(i).rectangle.y = myGame.tileLoader.tiles.get(i).getY();
 	        	}
 	        }
 		}

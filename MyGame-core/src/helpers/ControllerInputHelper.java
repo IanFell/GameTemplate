@@ -12,7 +12,7 @@ import com.badlogic.gdx.controllers.Controllers;
 public class ControllerInputHelper {
 	
 	/**
-	 * Return first found input controller name.
+	 * Returns name of first gamepad found.
 	 * 
 	 * @return String
 	 */
@@ -24,12 +24,11 @@ public class ControllerInputHelper {
 	}
 	
 	/**
-	 * Returns the first input controller found.
+	 * Returns the first gamepad found.
 	 * 
 	 * @return Controller
 	 */
 	public static Controller getFirstController() {
 		return Controllers.getControllers().first();
 	}
-
 }

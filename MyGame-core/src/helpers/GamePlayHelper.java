@@ -1,5 +1,7 @@
 package helpers;
 
+import com.badlogic.gdx.Gdx;
+
 import gameobjects.GameObject;
 import screens.Screens;
 
@@ -30,7 +32,7 @@ public class GamePlayHelper {
 	 * @return int
 	 */
 	public static float setObjectXPositionInMiddleOfScreen(GameObject gameObject) {
-		return (GameAttributeHelper.WIDTH / 2) - (gameObject.getWidth() / 2);
+		return (GameAttributeHelper.SCREEN_WIDTH / 2) - (gameObject.getWidth() / 2);
 	}
 	
 	/**
@@ -40,7 +42,6 @@ public class GamePlayHelper {
 	 * @return int
 	 */
 	public static float setObjectYPositionInMiddleOfScreen(GameObject gameObject) {
-		return (GameAttributeHelper.HEIGHT / 2) - (gameObject.getHeight() / 2);	
+		return (GameAttributeHelper.SCREEN_HEIGHT / 2) - (gameObject.getHeight() / 2);	
 	}
-
 }

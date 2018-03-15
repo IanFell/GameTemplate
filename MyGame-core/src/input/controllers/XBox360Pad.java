@@ -15,6 +15,12 @@ public class XBox360Pad extends ControllerInput
 	private int AXIS_RIGHT_TRIGGER;
 	
 	/**
+	 * Dead zone for triggers.  
+	 * Trigger is not considered pressed unless its pressed over this amount.
+	 */
+	private float triggerDeadZone = 0.5f;
+	
+	/**
 	 * Constructor.
 	 */
 	public XBox360Pad() {
@@ -43,10 +49,10 @@ public class XBox360Pad extends ControllerInput
 	@Override
 	protected void pollTriggers() {
 		super.pollTriggers();
-		if(controller.getAxis(AXIS_LEFT_TRIGGER) > 0.5f) {
+		if(controller.getAxis(AXIS_LEFT_TRIGGER) > triggerDeadZone) {
 			System.out.print("LEFT TRIGGER pressed \n");
 		}
-		if(controller.getAxis(AXIS_RIGHT_TRIGGER) < -0.5f) {
+		if(controller.getAxis(AXIS_RIGHT_TRIGGER) < -triggerDeadZone) {
 			System.out.print("RIGHT TRIGGER pressed \n");
 		}
 	}

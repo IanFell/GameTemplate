@@ -38,7 +38,7 @@ abstract public class GameObject implements GameObjectInterface {
 	/**
 	 * Image for our game object.
 	 */
-	protected Texture img;
+	protected Texture texture;
 	
 	/**
 	 * Circle for our collision detection.
@@ -56,7 +56,7 @@ abstract public class GameObject implements GameObjectInterface {
 	 * @param ImgageLoader imageLoader
 	 */
 	public void init(ImageLoader imageLoader) {
-		this.img = imageLoader.testImage;
+		this.texture = imageLoader.testImage;
 	}
 	
 	/**
@@ -65,7 +65,7 @@ abstract public class GameObject implements GameObjectInterface {
 	 * @param SpriteBatch batch
 	 */
 	public void draw(SpriteBatch batch) {
-		batch.draw(img, x, y);
+		batch.draw(texture, x, y);
 	}
 
 	/**

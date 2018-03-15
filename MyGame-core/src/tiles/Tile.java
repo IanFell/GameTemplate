@@ -19,8 +19,6 @@ import screens.Screens;
  */
 public class Tile extends GameObject implements TileInterface {
 	
-	public Rectangle rectangle;
-	
 	/**
 	 * ShapeRenderer to draw our characters's circle / hit box / display, etc.
 	 */
@@ -32,6 +30,11 @@ public class Tile extends GameObject implements TileInterface {
 	private String tileType;
 	
 	/**
+	 * Size of width and height of tiles.
+	 */
+	private int tileSize = 32;
+	
+	/**
 	 * Contstructor.
 	 * 
 	 * @param String tileType
@@ -39,18 +42,10 @@ public class Tile extends GameObject implements TileInterface {
 	public Tile(String tileType, float x, float y) {
 		this.x        = x;
 		this.y        = y;
-		this.height   = 32;
-		this.width    = 32;
+		this.height   = tileSize;
+		this.width    = tileSize;
 		this.tileType = tileType;
 		this.shapeRenderer.setColor(0, 1, 1, 1);
-		this.rectangle = new Rectangle(x, y, width, height);
-	}
-	
-	public void drawTileOverlayForDebugging() {
-		shapeRenderer.setProjectionMatrix(Screens.camera.combined);
-		shapeRenderer.begin(ShapeType.Filled);
-		shapeRenderer.rect(x, y, width, height);
-		shapeRenderer.end();
 	}
 	
 	/**
@@ -60,10 +55,10 @@ public class Tile extends GameObject implements TileInterface {
 	 */
 	public void init(ImageLoader imageLoader) {  
 		if (getTileType().equalsIgnoreCase("tileTypeOne")) {
-			img = imageLoader.fakeTile;
+			texture = imageLoader.fakeTile;
 		}
 		if (getTileType().equalsIgnoreCase("tileTypeTwo")) {
-			img = imageLoader.fakeTileAlternate;
+			texture = imageLoader.fakeTileAlternate;
 		}
 	}
 	
@@ -75,7 +70,7 @@ public class Tile extends GameObject implements TileInterface {
 	 * @param MyGame      myGame
 	 */
 	public void drawTile(SpriteBatch batch, float x, float y, MyGame myGame) {
-		batch.draw(img, x, y, width, height);
+		batch.draw(texture, x, y, width, height);
 	}
 
 	/**
@@ -97,6 +92,6 @@ public class Tile extends GameObject implements TileInterface {
 	@Override
 	public void updateGameObject() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

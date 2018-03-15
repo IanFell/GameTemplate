@@ -54,5 +54,4 @@ public class AudioHandler {
 		soundHandler.handleSound(soundLoader);
 		musicHandler.handleMusic(musicLoader);
 	}
-
 }

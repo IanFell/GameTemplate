@@ -1,15 +1,12 @@
 package screens;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mygdx.mygame.MyGame;
 
+import debugging.Debugger;
 import helpers.GameAttributeHelper;
 import maps.MapEditor;
 import maps.MapLoader;
 import maps.MapRenderer;
-import tests.CollisionTests;
 
 /**
  * Screen of the game while in play.
@@ -20,7 +17,7 @@ import tests.CollisionTests;
 public class GameScreen extends Screens {
 	
 	/**
-	 * Keep track if screen has been initialized.
+	 * Keeps track if screen has been initialized.
 	 */
 	private boolean hasBeenInitialized;
 	
@@ -40,19 +37,24 @@ public class GameScreen extends Screens {
 	private MapLoader mapLoader = new MapLoader();
 	
 	/**
+	 * Debugs if needed / uncommented.
+	 */
+	private Debugger debugger = new Debugger();
+	
+	/**
+	 * Angle for a camera to rotate for isometric view.
+	 */
+	private int rotateAngle = 45;
+	
+	/**
 	 * Constructor.
 	 * 
 	 * @param MyGame myGame
 	 */
 	public GameScreen(final MyGame myGame) {
 		super(myGame);
-		int width                     = GameAttributeHelper.WIDTH;
-		int height                    = GameAttributeHelper.HEIGHT;
-		camera                        = new OrthographicCamera(width, height);
-		viewport                      = new ExtendViewport(width, height, camera);
 		GameAttributeHelper.gameState = Screens.GAME_SCREEN;
 		hasBeenInitialized = false;
-		camera.setToOrtho(false, width, height);
 	}
 	
 	/**
@@ -85,7 +87,7 @@ public class GameScreen extends Screens {
 		updateGameScreen();
 		
 		// Perform debug testing on GameScreen so we know different scenarios work.
-		debugGameScreen();
+		//debugger.debugGameScreen(myGame);
 	}
 	
 	/**
@@ -93,6 +95,7 @@ public class GameScreen extends Screens {
 	 */
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor.map);
+		camera.rotate(rotateAngle);
 	}
 	
 	/**
@@ -112,52 +115,7 @@ public class GameScreen extends Screens {
 	 * from rendering.
 	 */
 	private void drawAdditionalObjectsOnGameScreenThatDontUseSpriteBatch() {
-		for(int i = 0; i < myGame.tileLoader.tiles.size(); i++) {
-			myGame.tileLoader.tiles.get(i).drawTileOverlayForDebugging();
-		}
 		myGame.gameObjectLoader.enemy.draw(myGame.renderer.batch);
 		myGame.gameObjectLoader.player.draw(myGame.renderer.batch);
-	}
-	
-	/**
-	 * Performs debug operations to test / debug GameScreen.
-	 */
-	private void debugGameScreen() {
-		
-		// Check collision with player and enemy.
-		CollisionTests.performPlayerAndEnemyCollisionTest(
-				myGame.gameObjectLoader.player, 
-				myGame.gameObjectLoader.enemy, 
-				myGame
-		);
-		
-		// Verify x, y position of each tile.
-		for(int i = 0; i < myGame.tileLoader.tiles.size(); i++) {
-			System.out.println(
-					"Tile #" 
-					+ i 
-					+ " X, Y position: " 
-					+ myGame.tileLoader.tiles.get(i).getX()
-					+ ", " 
-					+ myGame.tileLoader.tiles.get(i).getY()
-			);
-		}
-		
-		// Check tiles[0] x, y position to verify it scrolls correctly.
-		System.out.println(
-				"Tile #0 X, Y position: " 
-				+ myGame.tileLoader.tiles.get(0).rectangle.getX()
-				+ ", " 
-				+ myGame.tileLoader.tiles.get(0).getY()
-		);
-		System.out.println("Player X, Y position: " + myGame.gameObjectLoader.player.getX() + ", " + myGame.gameObjectLoader.player.getY());
-	
-		// Verify tile collisions with player.
-		Vector2 point = new Vector2(myGame.gameObjectLoader.player.getX(), myGame.gameObjectLoader.player.getY());	
-		for(int i = 0; i < myGame.tileLoader.tiles.size(); i++) {
-			if (myGame.tileLoader.tiles.get(i).rectangle.contains(point)) {
-				System.out.println("We have a collision");
-			}
-		}
 	}
 }

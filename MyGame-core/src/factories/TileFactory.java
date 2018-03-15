@@ -16,7 +16,7 @@ public class TileFactory {
 	 * @param String tileType
 	 * @param float  x
 	 * @param float  y
-	 * @return mixed
+	 * @return Tile
 	 */
 	public Tile getObject(String tileType, float x, float y) {
 		if (tileType == null) {

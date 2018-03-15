@@ -1,7 +1,6 @@
 package screens;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.Gdx;
 import com.mygdx.mygame.MyGame;
 
 import helpers.GameAttributeHelper;
@@ -23,11 +22,6 @@ public class SplashScreen extends Screens {
 	public SplashScreen(final MyGame myGame) {
 		super(myGame);
 		GameAttributeHelper.gameState = Screens.SPLASH_SCREEN;
-		int width   = GameAttributeHelper.WIDTH;
-		int height  = GameAttributeHelper.HEIGHT;
-		camera      = new OrthographicCamera(width, height);
-		viewport    = new ExtendViewport(width, height, camera);
-		camera.setToOrtho(false, width, height);
 	}
 	
 	/**
@@ -43,8 +37,8 @@ public class SplashScreen extends Screens {
 		ImageHelper.drawImageInMiddleOfScreen(
 				myGame.renderer.batch, 
 				myGame.imageLoader.fabulousFelliniLogo, 
-				GameAttributeHelper.WIDTH, 
-				GameAttributeHelper.HEIGHT
+				Gdx.graphics.getWidth(), 
+				Gdx.graphics.getHeight()
 		);
 		myGame.renderer.batch.end();
 	}

@@ -16,7 +16,7 @@ public class GameObjectFactory {
 	 * Creates our game objects.
 	 * 
 	 * @param string objectType
-	 * @return mixed
+	 * @return GameObject
 	 */
 	public GameObject getObject(String objectType) {
 		if (objectType == null) {

@@ -27,17 +27,17 @@ public class MyGame extends Game {
 	public Render renderer = new Render();
 	
 	/**
-	 * Factory for our game objects.
+	 * Factory for creating game objects.
 	 */
 	public GameObjectFactory gameObjectFactory = new GameObjectFactory();
 	
 	/**
-	 * Factory for our tiles.
+	 * Factory for creating tiles.
 	 */
 	public TileFactory tileFactory = new TileFactory();
 	
 	/**
-	 * Creates and initializes our game objects.
+	 * Creates and initializes game objects.
 	 */
 	public GameObjectLoader gameObjectLoader = new GameObjectLoader();
 	
@@ -49,7 +49,7 @@ public class MyGame extends Game {
 	/**
 	 * Holds game attributes such as screen size, game state, etc.
 	 */
-	public GameAttributeHelper gameAttributeHelper = new GameAttributeHelper();
+	public GameAttributeHelper gameAttributeHelper;
 	
 	/**
 	 * Handles audio.
@@ -57,7 +57,7 @@ public class MyGame extends Game {
 	private AudioHandler audioHandler = new AudioHandler();
 	
 	/**
-	 * Class to hold all of our images.
+	 * Holds all images.
 	 */
 	public ImageLoader imageLoader = new ImageLoader();
 	
@@ -74,6 +74,7 @@ public class MyGame extends Game {
 		gameObjectLoader.init(imageLoader);
 		audioHandler.init();
 		inputHandler.init();
+		gameAttributeHelper = new GameAttributeHelper();
 		this.setScreen(new SplashScreen(this));
 	}
 
@@ -91,8 +92,7 @@ public class MyGame extends Game {
 	}
 	
 	/**
-	 * Main game loop.  
-	 * Right now it is called 60 frames per second.
+	 * Main game loop.  60 FPS.
 	 */
 	private void gameLoop() {
 		audioHandler.handleAudio();

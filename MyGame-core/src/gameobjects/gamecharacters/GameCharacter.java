@@ -5,8 +5,14 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import gameobjects.GameObject;
+import screens.Screens;
 
 public class GameCharacter extends GameObject {
+	
+	/**
+	 * Size of character.
+	 */
+	protected int characterSize = 16;
 	
 	/**
 	 * Radius for our collision detection circle.
@@ -19,8 +25,6 @@ public class GameCharacter extends GameObject {
 	protected ShapeRenderer shapeRenderer = new ShapeRenderer();
 	
 	/**
-	 * Overridden draw method to draw our game character.
-	 * 
 	 * @param SpriteBatch batch
 	 */
 	@Override

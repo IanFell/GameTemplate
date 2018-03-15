@@ -18,7 +18,7 @@ public class Player extends GameCharacter {
 	public Player() {
 		this.x        = GamePlayHelper.setObjectXPositionInMiddleOfScreen(this);
 		this.y        = GamePlayHelper.setObjectYPositionInMiddleOfScreen(this);
-		this.radius   = 16;
+		this.radius   = characterSize;
 		this.circle   = new Circle(x, y, radius);
 		this.shapeRenderer.setColor(1, 1, 1, 1);
 	}

@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mygdx.mygame.MyGame;
 
+import helpers.GameAttributeHelper;
+
 /**
  * Handles different 'screens' of the game.
  * These can include splash screen, menu screen, game screen, pause screen.
@@ -15,6 +17,11 @@ import com.mygdx.mygame.MyGame;
  *
  */
 public class Screens implements Screen {
+	
+	/**
+	 * Screen does not scroll if this is set.
+	 */
+	public final static float SCREEN_SCROLL_SPEED_NONE = 0;
 	
 	/**
 	 * Scrolling speed for closest tier to screen.
@@ -51,6 +58,16 @@ public class Screens implements Screen {
 	 */
 	public Screens(final MyGame myGame) {
 		this.myGame = myGame;
+		create();
+	}
+	
+	public void create() {
+		int width  = GameAttributeHelper.SCREEN_WIDTH;
+		int height = GameAttributeHelper.SCREEN_HEIGHT;
+		camera     = new OrthographicCamera(width, height);
+		viewport   = new ExtendViewport(width, height, camera);
+		camera.setToOrtho(false, width, height);
+		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
 	}
 	
 	/**
