@@ -26,7 +26,7 @@ public class Screens implements Screen {
 	/**
 	 * Scrolling speed for closest tier to screen.
 	 */
-	public final static float SCREEN_SCROLL_SPEED_TIER_ONE = 5f;
+	public final static float SCREEN_SCROLL_SPEED_TIER_ONE = 0.3f;
 	 
 	/**
 	 * Available game states.
@@ -66,8 +66,7 @@ public class Screens implements Screen {
 		int height = GameAttributeHelper.SCREEN_HEIGHT;
 		camera     = new OrthographicCamera(width, height);
 		viewport   = new ExtendViewport(width, height, camera);
-		camera.setToOrtho(false, width, height);
-		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
+		camera.position.set(0, 0, 0);
 	}
 	
 	/**
@@ -83,10 +82,10 @@ public class Screens implements Screen {
 	 * in the coordinate system specified by the camera.
 	 */
 	protected void updateCamera() {
-		// Update camera matrices.
-		camera.update();
 		// Tell the SpriteBatch to render in the coordinate system specified by the camera.
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
+		// Update camera matrices.
+		camera.update();
 	}
 
 	@Override
@@ -109,6 +108,7 @@ public class Screens implements Screen {
 	public void resize(int width, int height) {
 		viewport.update(width, height, true);
 	    myGame.renderer.batch.setProjectionMatrix(camera.combined);
+	    camera.update();
 	}
 
 	@Override

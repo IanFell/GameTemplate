@@ -31,14 +31,14 @@ public class SplashScreen extends Screens {
 	 */
 	@Override
 	public void render(float delta) {
-		this.clearScreenAndSetScreenColor();
-		this.updateCamera();
+		clearScreenAndSetScreenColor();
+		updateCamera();
 		myGame.renderer.batch.begin();
 		ImageHelper.drawImageInMiddleOfScreen(
 				myGame.renderer.batch, 
 				myGame.imageLoader.fabulousFelliniLogo, 
-				Gdx.graphics.getWidth(), 
-				Gdx.graphics.getHeight()
+				GameAttributeHelper.SCREEN_WIDTH, 
+				GameAttributeHelper.SCREEN_HEIGHT
 		);
 		myGame.renderer.batch.end();
 	}

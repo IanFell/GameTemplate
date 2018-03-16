@@ -13,23 +13,14 @@ public class MapRenderer {
 	/**
 	 * Renders map.
 	 * 
-	 * @param MyGame myGame
-	 * @param array  map
+	 * @param MyGame    myGame
+	 * @param MapLoader mapLoader
 	 */
-	public void renderMap(MyGame myGame, int[][] map) { 
-		int row = map.length - 1;
-		int col = map[0].length;
-		for (int y = row; y > 0; y--) {
-	        for (int x = 0; x < col; x++) {
-	        	for (int i = 0; i < myGame.tileLoader.tiles.size(); i++) {
-	        		myGame.tileLoader.tiles.get(i).drawTile(
-	        				myGame.renderer.batch, 
-	        				myGame.tileLoader.tiles.get(i).getX(), 
-	        				myGame.tileLoader.tiles.get(i).getY(), 
-	        				myGame
-	        		);
-	        	}
-	        }
+	public void renderMap(MyGame myGame, MapLoader mapLoader) { 
+		for(int z = 0; z < 10; z++) {
+			for(int x = 0; x < 10; x++) {
+				mapLoader.sprites[x][z].draw(myGame.renderer.batch);
+			}
 		}
 	}
 }

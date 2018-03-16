@@ -3,13 +3,11 @@ package com.mygdx.mygame;
 import com.badlogic.gdx.Game;
 
 import factories.GameObjectFactory;
-import factories.TileFactory;
 import handlers.AudioHandler;
 import handlers.InputHandler;
 import helpers.GameAttributeHelper;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
-import loaders.TileLoader;
 import render.Render;
 import screens.SplashScreen;
 
@@ -32,19 +30,9 @@ public class MyGame extends Game {
 	public GameObjectFactory gameObjectFactory = new GameObjectFactory();
 	
 	/**
-	 * Factory for creating tiles.
-	 */
-	public TileFactory tileFactory = new TileFactory();
-	
-	/**
 	 * Creates and initializes game objects.
 	 */
 	public GameObjectLoader gameObjectLoader = new GameObjectLoader();
-	
-	/**
-	 * Creates and initializes tiles.
-	 */
-	public TileLoader tileLoader = new TileLoader();
 	
 	/**
 	 * Holds game attributes such as screen size, game state, etc.
@@ -92,7 +80,7 @@ public class MyGame extends Game {
 	}
 	
 	/**
-	 * Main game loop.  60 FPS.
+	 * Main game loop.  60 FPS by default.
 	 */
 	private void gameLoop() {
 		audioHandler.handleAudio();

@@ -1,7 +1,5 @@
 package helpers;
 
-import com.badlogic.gdx.Gdx;
-
 import gameobjects.GameObject;
 import screens.Screens;
 

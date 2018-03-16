@@ -1,5 +1,7 @@
 package maps;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.mygame.MyGame;
 
 /**
@@ -11,44 +13,47 @@ import com.mygdx.mygame.MyGame;
 public class MapLoader {
 	
 	/**
+	 * Array of tiles / sprites.
+	 */
+	public final Sprite[][] sprites = new Sprite[10][10];
+	
+	/**
+	 * Texture for tile one.
+	 */
+	private Texture textureOne;
+	
+	/**
+	 * Texture for tile two.
+	 */
+	private Texture textureTwo;
+	
+	/**
 	 * Creates and initializes tiles for map.
 	 * 
 	 * @param MyGame myGame
-	 * @param array  map
 	 */
-	public void loadMap(MyGame myGame, int[][] map) { 
-		int startX   = 0;
-		int startY   = 0;
-		int distance = 32;
-		int row      = map.length - 1;
-		int col      = map[0].length;
-		
-		// Create our tiles depending on the given map's parameters.
-		for (int y = row; y > 0; y--) {
-	        for (int x = 0; x < col; x++) {
-	            if(map[y][x] == 1) {
-	            	myGame.tileLoader.createObjects(myGame, "tileTypeOne", startX, startY);
-	            }
-	            if(map[y][x] == 2) {
-	            	myGame.tileLoader.createObjects(myGame, "tileTypeTwo", startX, startY);
-	            }
-	            startX += distance;
-	        }
-	        startY += distance;
-	        startX = 0;
-	    }
-		
-		// Print all tile's x, y positions to verify they were set at their correct coordinates on the map.
-		for(int i = 0; i < myGame.tileLoader.tiles.size(); i++) {
-			System.out.println(
-					"Tile #" 
-					+ i + " X, Y position: " 
-					+ myGame.tileLoader.tiles.get(i).getX()
-					+ ", " 
-					+ myGame.tileLoader.tiles.get(i).getY());
+	public void loadMap(MyGame myGame) { 
+		initializeTextures(myGame);
+		for(int z = 0; z < 10; z++) {
+			for(int x = 0; x < 10; x++) {
+				if (z % 2 == 0 && x % 2 == 0) {
+					sprites[x][z] = new Sprite(textureOne);
+				} else {
+					sprites[x][z] = new Sprite(textureTwo);
+				}
+				sprites[x][z].setPosition(x,z);
+				sprites[x][z].setSize(1, 1);
+			}
 		}
-		
-		// Initialize newly created tiles.
-		myGame.tileLoader.init(myGame.imageLoader);
+	}
+	
+	/**
+	 * Initializes tile textures.
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void initializeTextures(MyGame myGame) {
+		textureOne = myGame.imageLoader.fakeTile;
+		textureTwo = myGame.imageLoader.fakeTileAlternate;
 	}
 }

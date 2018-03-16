@@ -1,5 +1,11 @@
 package screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Plane;
+import com.badlogic.gdx.math.Vector3;
 import com.mygdx.mygame.MyGame;
 
 import debugging.Debugger;
@@ -15,6 +21,11 @@ import maps.MapRenderer;
  *
  */
 public class GameScreen extends Screens {
+	
+	/**
+	 * Used for isometric camera view.
+	 */
+	private final Matrix4 matrix = new Matrix4();	
 	
 	/**
 	 * Keeps track if screen has been initialized.
@@ -40,11 +51,6 @@ public class GameScreen extends Screens {
 	 * Debugs if needed / uncommented.
 	 */
 	private Debugger debugger = new Debugger();
-	
-	/**
-	 * Angle for a camera to rotate for isometric view.
-	 */
-	private int rotateAngle = 45;
 	
 	/**
 	 * Constructor.
@@ -73,39 +79,51 @@ public class GameScreen extends Screens {
 		clearScreenAndSetScreenColor();
 		updateCamera();
 		myGame.renderer.batch.begin();
-		mapRenderer.renderMap(myGame, mapEditor.map);
+		mapRenderer.renderMap(myGame, mapLoader);
 		myGame.renderer.batch.end();
 		
 		/**
 		 * Since these objects use a ShapeRenderer we must draw them after sprite batch has ended,
 		 * otherwise they will block the sprite batch from being rendered.
 		 */
-		
 		drawAdditionalObjectsOnGameScreenThatDontUseSpriteBatch();
 		
 		// Update objects associated with GameScreen.
 		updateGameScreen();
 		
 		// Perform debug testing on GameScreen so we know different scenarios work.
-		//debugger.debugGameScreen(myGame);
+		//debugger.debugGameScreen(myGame, mapLoader);
+	}
+	
+	@Override
+	protected void updateCamera() {
+		myGame.renderer.batch.setProjectionMatrix(camera.combined);
+		myGame.renderer.batch.setTransformMatrix(matrix);
+		camera.update();
 	}
 	
 	/**
 	 * Initializes the game screen.
 	 */
 	public void initializeGameScreen() {
-		mapLoader.loadMap(myGame, mapEditor.map);
-		camera.rotate(rotateAngle);
+		mapLoader.loadMap(myGame);
+		camera = new OrthographicCamera(
+				10, 
+				10 * (GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH)
+		);
+		camera.position.set(5, 5, 10);
+		camera.direction.set(-1, -1, -1);
+		camera.near = 1;
+		camera.far = 100;	
+		matrix.setToRotation(new Vector3(1, 0, 0), 90);
 	}
 	
 	/**
-	 * Update objects associated with GameScreen.
+	 * Update objects associated with GameScreen.  
+	 * For now we only need this for debugging purposes.
 	 */
 	private void updateGameScreen() {
 		myGame.gameObjectLoader.enemy.updateGameObject();
-		for(int i = 0; i < myGame.tileLoader.tiles.size(); i++) {
-			myGame.tileLoader.tiles.get(i).updateGameObject();
-		}
 	}
 	
 	/**
