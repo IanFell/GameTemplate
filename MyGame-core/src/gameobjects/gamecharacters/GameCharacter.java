@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import gameobjects.GameObject;
-import screens.Screens;
 
 public class GameCharacter extends GameObject {
 	
@@ -54,12 +53,8 @@ public class GameCharacter extends GameObject {
 		y += distance;
 	}
 	
-	/**
-	 * Updates game object information.
-	 */
 	@Override
 	public void updateGameObject() {
-		circle.x = x;
-		circle.y = y;
+	
 	}
 }

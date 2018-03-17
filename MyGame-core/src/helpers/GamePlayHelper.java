@@ -1,7 +1,6 @@
 package helpers;
 
 import gameobjects.GameObject;
-import screens.Screens;
 
 /**
  * Contains methods to help with game play, such as setting a player's
@@ -12,16 +11,6 @@ import screens.Screens;
  *
  */
 public class GamePlayHelper {
-	
-	/**
-	 * Scroll screen whichever way neccessary.
-	 * 
-	 * @param float x
-	 * @param float y
-	 */
-	public static void scrollScreen(float x, float y) {
-		Screens.camera.translate(x, y);
-	}
 	
 	/**
 	 * Sets given object to be in the middle of the screen on the x-axis.

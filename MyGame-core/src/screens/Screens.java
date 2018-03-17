@@ -58,10 +58,13 @@ public class Screens implements Screen {
 	 */
 	public Screens(final MyGame myGame) {
 		this.myGame = myGame;
-		create();
+		createCamera();
 	}
 	
-	public void create() {
+	/**
+	 * Creates camera object and sets position for basic camera.
+	 */
+	public void createCamera() {
 		int width  = GameAttributeHelper.SCREEN_WIDTH;
 		int height = GameAttributeHelper.SCREEN_HEIGHT;
 		camera     = new OrthographicCamera(width, height);
@@ -133,5 +136,15 @@ public class Screens implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	/**
+	 * Scroll screen whichever way neccessary.
+	 * 
+	 * @param float x
+	 * @param float y
+	 */
+	public static void scrollScreen(float x, float y) {
+		camera.translate(x, y);
 	}
 }

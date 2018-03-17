@@ -14,12 +14,12 @@ public class MapRenderer {
 	 * Renders map.
 	 * 
 	 * @param MyGame    myGame
-	 * @param MapLoader mapLoader
+	 * @param MapEditor mapEditor
 	 */
-	public void renderMap(MyGame myGame, MapLoader mapLoader) { 
-		for(int z = 0; z < 10; z++) {
-			for(int x = 0; x < 10; x++) {
-				mapLoader.sprites[x][z].draw(myGame.renderer.batch);
+	public void renderMap(MyGame myGame, MapEditor mapEditor) { 
+		for(int z = 0; z < mapEditor.map.length; z++) {
+			for(int x = 0; x < mapEditor.map[z].length; x++) {
+				mapEditor.sprites[x][z].draw(myGame.renderer.batch);
 			}
 		}
 	}

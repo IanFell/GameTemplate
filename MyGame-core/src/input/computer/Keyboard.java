@@ -6,7 +6,6 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.GameStateController;
 import helpers.GameAttributeHelper;
-import helpers.GamePlayHelper;
 import screens.Screens;
 
 /**
@@ -36,16 +35,16 @@ public class Keyboard extends ComputerInput {
 		case Screens.GAME_SCREEN:	
 			// Get arrow buttons for direction.
 			if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-				GamePlayHelper.scrollScreen(-Screens.SCREEN_SCROLL_SPEED_TIER_ONE, Screens.SCREEN_SCROLL_SPEED_NONE);
+				Screens.scrollScreen(-Screens.SCREEN_SCROLL_SPEED_TIER_ONE, Screens.SCREEN_SCROLL_SPEED_NONE);
 	        } 
 	        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
-	        	GamePlayHelper.scrollScreen(Screens.SCREEN_SCROLL_SPEED_TIER_ONE, Screens.SCREEN_SCROLL_SPEED_NONE);
+	        	Screens.scrollScreen(Screens.SCREEN_SCROLL_SPEED_TIER_ONE, Screens.SCREEN_SCROLL_SPEED_NONE);
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-	        	GamePlayHelper.scrollScreen(Screens.SCREEN_SCROLL_SPEED_NONE, Screens.SCREEN_SCROLL_SPEED_TIER_ONE);
+	        	Screens.scrollScreen(Screens.SCREEN_SCROLL_SPEED_NONE, Screens.SCREEN_SCROLL_SPEED_TIER_ONE);
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
-	        	GamePlayHelper.scrollScreen(Screens.SCREEN_SCROLL_SPEED_NONE, -Screens.SCREEN_SCROLL_SPEED_TIER_ONE);
+	        	Screens.scrollScreen(Screens.SCREEN_SCROLL_SPEED_NONE, -Screens.SCREEN_SCROLL_SPEED_TIER_ONE);
 	        }
 		}
 	}

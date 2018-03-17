@@ -25,5 +25,4 @@ public class GameAttributeHelper {
 	 * based on the constants located in the Screens class.
 	 */
 	public static int gameState;
-
 }

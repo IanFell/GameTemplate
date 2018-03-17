@@ -22,4 +22,10 @@ public class Enemy extends GameCharacter {
 		this.circle   = new Circle(x, y, radius);
 		this.shapeRenderer.setColor(0, 0, 1, 1);
 	}
+	
+	@Override
+	public void updateGameObject() {
+		circle.x = x;
+		circle.y = y;
+	}
 }

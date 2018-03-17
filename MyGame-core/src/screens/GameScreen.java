@@ -1,10 +1,7 @@
 package screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Plane;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.mygame.MyGame;
 
@@ -48,7 +45,7 @@ public class GameScreen extends Screens {
 	private MapLoader mapLoader = new MapLoader();
 	
 	/**
-	 * Debugs if needed / uncommented.
+	 * Debugs game screen if needed / uncommented.
 	 */
 	private Debugger debugger = new Debugger();
 	
@@ -79,7 +76,7 @@ public class GameScreen extends Screens {
 		clearScreenAndSetScreenColor();
 		updateCamera();
 		myGame.renderer.batch.begin();
-		mapRenderer.renderMap(myGame, mapLoader);
+		mapRenderer.renderMap(myGame, mapEditor);
 		myGame.renderer.batch.end();
 		
 		/**
@@ -92,9 +89,12 @@ public class GameScreen extends Screens {
 		updateGameScreen();
 		
 		// Perform debug testing on GameScreen so we know different scenarios work.
-		//debugger.debugGameScreen(myGame, mapLoader);
+		debugger.debugGameScreen(myGame, mapEditor);
 	}
 	
+	/**
+	 * Overriden in order to set the camera to isometric.  Splash screen is not isometric.
+	 */
 	@Override
 	protected void updateCamera() {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
@@ -106,7 +106,14 @@ public class GameScreen extends Screens {
 	 * Initializes the game screen.
 	 */
 	public void initializeGameScreen() {
-		mapLoader.loadMap(myGame);
+		mapLoader.loadMap(myGame, mapEditor);
+		initializeCamera();
+	}
+	
+	/**
+	 * Initializes isometric camera for game screen.
+	 */
+	private void initializeCamera() {
 		camera = new OrthographicCamera(
 				10, 
 				10 * (GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH)
@@ -114,7 +121,7 @@ public class GameScreen extends Screens {
 		camera.position.set(5, 5, 10);
 		camera.direction.set(-1, -1, -1);
 		camera.near = 1;
-		camera.far = 100;	
+		camera.far  = 100;	
 		matrix.setToRotation(new Vector3(1, 0, 0), 90);
 	}
 	
