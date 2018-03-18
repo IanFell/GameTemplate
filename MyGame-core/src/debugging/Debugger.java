@@ -1,15 +1,8 @@
 package debugging;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Intersector;
-import com.badlogic.gdx.math.Plane;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.math.collision.Ray;
 import com.mygdx.mygame.MyGame;
 
 import maps.MapEditor;
-import screens.Screens;
 import tests.CollisionTests;
 
 /**
@@ -19,13 +12,6 @@ import tests.CollisionTests;
  *
  */
 public class Debugger {
-	
-	/**
-	 * These variables are needed for the checkTileTouched() method.
-	 */
-	private final Plane xzPlane        = new Plane(new Vector3(0, 1, 0), 0);
-	private final Vector3 intersection = new Vector3();
-	private Sprite lastSelectedTile    = null;
 	
 	/**
 	 * Perform debug operations.
@@ -42,28 +28,10 @@ public class Debugger {
 				myGame
 		);
 		
-		// This method checks to see if a tile has been clicked on by mouse.
-		checkTileTouched(myGame, mapEditor);
-	}
-	
-	/**
-	 * This method checks to see if a tile has been clicked on by mouse.
-	 * 
-	 * @param MyGame    myGame
-	 * @param MapEditor mapEditor
-	 */
-	private void checkTileTouched(MyGame myGame, MapEditor mapEditor) {
-		if(Gdx.input.justTouched()) {
-			Ray pickRay = Screens.camera.getPickRay(Gdx.input.getX(), Gdx.input.getY());
-			Intersector.intersectRayPlane(pickRay, xzPlane, intersection);
-			int x = (int)intersection.x;
-			int z = (int)intersection.z;
-			if(x >= 0 && x < 10 && z >= 0 && z < 10) {
-				if(lastSelectedTile != null) lastSelectedTile.setColor(1, 1, 1, 1);
-				Sprite sprite = mapEditor.sprites[x][z];
-				sprite.setColor(1, 0, 0, 1);
-				lastSelectedTile = sprite;
-			}
-		}
+		// Check to see if a tile has been clicked on by mouse.
+		CollisionTests.checkTileTouchedWithMouse(myGame, mapEditor);
+		
+		// Check to see if a tile has been touched by player.
+		CollisionTests.checkTileTouchedByPlayer(myGame, mapEditor);
 	}
 }

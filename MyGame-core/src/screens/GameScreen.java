@@ -57,7 +57,7 @@ public class GameScreen extends Screens {
 	public GameScreen(final MyGame myGame) {
 		super(myGame);
 		GameAttributeHelper.gameState = Screens.GAME_SCREEN;
-		hasBeenInitialized = false;
+		hasBeenInitialized            = false;
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class GameScreen extends Screens {
 	protected void updateCamera() {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		myGame.renderer.batch.setTransformMatrix(matrix);
-		camera.update();
+	    camera.update();
 	}
 	
 	/**
@@ -107,13 +107,13 @@ public class GameScreen extends Screens {
 	 */
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
-		initializeCamera();
+		initializeCameraForIsometricView();
 	}
 	
 	/**
 	 * Initializes isometric camera for game screen.
 	 */
-	private void initializeCamera() {
+	private void initializeCameraForIsometricView() {
 		camera = new OrthographicCamera(
 				10, 
 				10 * (GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH)

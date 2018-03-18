@@ -144,7 +144,7 @@ abstract public class GameObject implements GameObjectInterface {
 	 * Abstract update method.  
 	 * Most gameObject children will override this.
 	 */
-	abstract public void updateGameObject();
+	public void updateGameObject() {}
 	
 	/**
 	 * Moves object to the left or right.

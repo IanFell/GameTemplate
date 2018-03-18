@@ -19,7 +19,7 @@ public class MapRenderer {
 	public void renderMap(MyGame myGame, MapEditor mapEditor) { 
 		for(int z = 0; z < mapEditor.map.length; z++) {
 			for(int x = 0; x < mapEditor.map[z].length; x++) {
-				mapEditor.sprites[x][z].draw(myGame.renderer.batch);
+				mapEditor.tiles[x][z].draw(myGame.renderer.batch);
 			}
 		}
 	}

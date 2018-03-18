@@ -12,10 +12,9 @@ public class MapEditor {
 	
 	/**
 	 * Array of tiles to be used in map.  
-	 * Every level / screen should have one of these arrays
-	 * associated with every level map.
+	 * Every level / screen should have one of these arrays associated with every level map.
 	 */
-	public final Tile[][] sprites = new Tile[19][14];
+	public final Tile[][] tiles = new Tile[19][14];
 	
 	/**
 	 * Sample map.  This map is the same size as the screen.

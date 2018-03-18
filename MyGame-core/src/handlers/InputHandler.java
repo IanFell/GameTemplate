@@ -12,6 +12,10 @@ import input.controllers.XBox360Pad;
 /**
  * Handles all input, whether that be computer or game pads.
  * 
+ * In this template, the keyboard and mouse have examples of moving the 
+ * game world objects around.  The gamepads simply print out which buttons 
+ * are pressed.
+ * 
  * @author Fabulous Fellini
  *
  */

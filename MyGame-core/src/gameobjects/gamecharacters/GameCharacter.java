@@ -54,7 +54,5 @@ public class GameCharacter extends GameObject {
 	}
 	
 	@Override
-	public void updateGameObject() {
-	
-	}
+	public void updateGameObject() {}
 }

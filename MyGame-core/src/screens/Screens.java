@@ -62,7 +62,7 @@ public class Screens implements Screen {
 	}
 	
 	/**
-	 * Creates camera object and sets position for basic camera.
+	 * Creates camera object and sets position for basic camera with a straight on view.
 	 */
 	public void createCamera() {
 		int width  = GameAttributeHelper.SCREEN_WIDTH;
