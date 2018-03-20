@@ -23,12 +23,28 @@ public class Tile extends Sprite {
 	public static Texture textureTwo;
 	
 	/**
+	 * Texture for tile three.
+	 */
+	public static Texture textureThree;
+	
+	/**
+	 * Determines if tile is solid.
+	 */
+	private boolean isSolid;
+	
+	/**
+	 * Determines if player has collided with tile.
+	 */
+	private boolean tileHasBeenHit = false;
+	
+	/**
 	 * Contstructor.
 	 * 
 	 * @param Texture texture
 	 */
-	public Tile(Texture texture) {
+	public Tile(Texture texture, boolean isSolid) {
 		super(texture);
+		this.isSolid = isSolid;
 	}
 	
 	/**
@@ -37,7 +53,8 @@ public class Tile extends Sprite {
 	 * @param MyGame myGame
 	 */
 	public static void initializeTileTextures(MyGame myGame) {
-		textureOne = myGame.imageLoader.fakeTile;
-		textureTwo = myGame.imageLoader.fakeTileAlternate;
+		textureOne   = myGame.imageLoader.fakeTileOne;
+		textureTwo   = myGame.imageLoader.fakeTileTwo;
+		textureThree = myGame.imageLoader.fakeTileThree;
 	}
 }

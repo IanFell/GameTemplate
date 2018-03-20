@@ -99,4 +99,20 @@ public class CollisionTests {
 			System.out.println("Tile has been touched by player!");
 		}
 	}
+	
+	public static boolean checkIfPlayerHasTouchedSolidTile(MyGame myGame, MapEditor mapEditor) {
+		Ray pickRay = Screens.camera.getPickRay(myGame.gameObjectLoader.player.getX(), myGame.gameObjectLoader.player.getY());
+		Intersector.intersectRayPlane(pickRay, xzPlane, intersection);
+		int x = (int)intersection.x;
+		int z = (int)intersection.z;
+		if(x >= 0 && x < mapEditor.map.length && z >= 0 && z < mapEditor.map.length) {
+			if(lastSelectedTile != null) lastSelectedTile.setColor(1, 1, 1, 1);
+			Sprite sprite = mapEditor.tiles[x][z];
+			sprite.setColor(1, 0, 0, 1);
+			lastSelectedTile = sprite;
+			Screens.camera.translate(Screens.SCREEN_SCROLL_SPEED_NONE, Screens.SCREEN_SCROLL_SPEED_NONE);
+			System.out.println("Player has collided with tile and the tile has stopped him!  Camera should stop moving!");
+		}
+		return false;
+	}
 }

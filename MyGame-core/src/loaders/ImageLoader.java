@@ -17,32 +17,34 @@ public class ImageLoader {
 	public Texture testImage;
 	
 	/**
-	 * Fabulous Fellini Logo.
+	 * Splash Screen Logo.
 	 */
-	public Texture fabulousFelliniLogo;
+	public Texture splashScreenLogo;
 	
 	/**
 	 * Fake tile images for set up..
 	 */
-	public Texture fakeTile, fakeTileAlternate;
+	public Texture fakeTileOne, fakeTileTwo, fakeTileThree;
 	
 	/**
 	 * Initialize class.
 	 */
 	public void init() {
-		fabulousFelliniLogo = new Texture(Gdx.files.internal("logo_ffg.png"));
-		testImage           = new Texture(Gdx.files.internal("badlogic.jpg"));
-		fakeTile            = new Texture(Gdx.files.internal("FakeTile.png"));
-		fakeTileAlternate   = new Texture(Gdx.files.internal("FakeTile2.png"));
+		splashScreenLogo = new Texture(Gdx.files.internal("logo_ffg.png"));
+		testImage        = new Texture(Gdx.files.internal("badlogic.jpg"));
+		fakeTileOne      = new Texture(Gdx.files.internal("FakeTile.png"));
+		fakeTileTwo      = new Texture(Gdx.files.internal("FakeTile2.png"));
+		fakeTileThree    = new Texture(Gdx.files.internal("FakeTile3.png"));
 	}
 	
 	/**
 	 * Dispose of resources.
 	 */
 	public void dispose() {
-		fabulousFelliniLogo.dispose();
+		splashScreenLogo.dispose();
 		testImage.dispose();
-		fakeTile.dispose();
-		fakeTileAlternate.dispose();
+		fakeTileOne.dispose();
+		fakeTileTwo.dispose();
+		fakeTileThree.dispose();
 	}
 }

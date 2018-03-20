@@ -1,6 +1,5 @@
 package screens;
 
-import com.badlogic.gdx.Gdx;
 import com.mygdx.mygame.MyGame;
 
 import helpers.GameAttributeHelper;
@@ -36,7 +35,7 @@ public class SplashScreen extends Screens {
 		myGame.renderer.batch.begin();
 		ImageHelper.drawImageInMiddleOfScreen(
 				myGame.renderer.batch, 
-				myGame.imageLoader.fabulousFelliniLogo, 
+				myGame.imageLoader.splashScreenLogo, 
 				GameAttributeHelper.SCREEN_WIDTH, 
 				GameAttributeHelper.SCREEN_HEIGHT
 		);
