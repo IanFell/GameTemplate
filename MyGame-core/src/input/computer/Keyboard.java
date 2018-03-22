@@ -33,18 +33,22 @@ public class Keyboard extends ComputerInput {
 			break;
 			
 		case Screens.GAME_SCREEN:	
+			
+			float cameraScrollingSpeedNone    = Screens.SCREEN_SCROLL_SPEED_NONE;
+			float cameraScrollingSpeedTierOne = Screens.SCREEN_SCROLL_SPEED_TIER_ONE;
+			
 			// Get arrow buttons for direction.
 			if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-				Screens.scrollScreen(-Screens.SCREEN_SCROLL_SPEED_TIER_ONE, Screens.SCREEN_SCROLL_SPEED_NONE);
+				Screens.scrollScreen(-cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
 	        } 
 	        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
-	        	Screens.scrollScreen(Screens.SCREEN_SCROLL_SPEED_TIER_ONE, Screens.SCREEN_SCROLL_SPEED_NONE);
+	        	Screens.scrollScreen(cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-	        	Screens.scrollScreen(Screens.SCREEN_SCROLL_SPEED_NONE, Screens.SCREEN_SCROLL_SPEED_TIER_ONE);
+	        	Screens.scrollScreen(cameraScrollingSpeedNone, cameraScrollingSpeedTierOne);
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
-	        	Screens.scrollScreen(Screens.SCREEN_SCROLL_SPEED_NONE, -Screens.SCREEN_SCROLL_SPEED_TIER_ONE);
+	        	Screens.scrollScreen(cameraScrollingSpeedNone, -cameraScrollingSpeedTierOne);
 	        }
 		}
 	}

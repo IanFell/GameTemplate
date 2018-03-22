@@ -147,4 +147,14 @@ public class Screens implements Screen {
 	public static void scrollScreen(float x, float y) {
 		camera.translate(x, y);
 	}
+
+	/**
+	 * Moves camera back 1 on the x, y axis, then stops it.
+	 * This is used when a player interacts with a solid tile.
+	 */
+	public static void stopScrolling() {
+		camera.position.x = camera.position.x - 1;
+		camera.position.y = camera.position.y - 1;
+		camera.translate(SCREEN_SCROLL_SPEED_NONE, SCREEN_SCROLL_SPEED_NONE);
+	}
 }

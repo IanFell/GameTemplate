@@ -13,6 +13,11 @@ import com.mygdx.mygame.MyGame;
 public class Tile extends Sprite {
 	
 	/**
+	 * Represents whether tile is solid / player cannot pass through it.
+	 */
+	private boolean isSolid;
+	
+	/**
 	 * Texture for tile one.
 	 */
 	public static Texture textureOne;
@@ -26,16 +31,6 @@ public class Tile extends Sprite {
 	 * Texture for tile three.
 	 */
 	public static Texture textureThree;
-	
-	/**
-	 * Determines if tile is solid.
-	 */
-	private boolean isSolid;
-	
-	/**
-	 * Determines if player has collided with tile.
-	 */
-	private boolean tileHasBeenHit = false;
 	
 	/**
 	 * Contstructor.
@@ -56,5 +51,14 @@ public class Tile extends Sprite {
 		textureOne   = myGame.imageLoader.fakeTileOne;
 		textureTwo   = myGame.imageLoader.fakeTileTwo;
 		textureThree = myGame.imageLoader.fakeTileThree;
+	}
+
+	/**
+	 * Returns whether tile is solid.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSolid() {
+		return isSolid;
 	}
 }
