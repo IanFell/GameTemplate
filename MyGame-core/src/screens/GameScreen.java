@@ -10,6 +10,7 @@ import helpers.GameAttributeHelper;
 import maps.MapEditor;
 import maps.MapLoader;
 import maps.MapRenderer;
+import particles.ParticleEmitter;
 
 /**
  * Screen of the game while in play.
@@ -48,6 +49,13 @@ public class GameScreen extends Screens {
 	 * Debugs game screen if needed / uncommented.
 	 */
 	private Debugger debugger = new Debugger();
+	
+	/**
+	 * Basic particle emitters.
+	 */
+	private ParticleEmitter particleEmitterRed     = new ParticleEmitter(0, 0, 25, 25, "Red");
+	private ParticleEmitter particleEmitterYellow  = new ParticleEmitter(0, 0, 25, 25, "Yellow");
+	private ParticleEmitter particleEmitterOrange = new ParticleEmitter(0, 0, 25, 25, "Orange");
 	
 	/**
 	 * Constructor.
@@ -131,6 +139,9 @@ public class GameScreen extends Screens {
 	 */
 	private void updateGameScreen() {
 		myGame.gameObjectLoader.enemy.updateGameObject();
+		particleEmitterRed.updateParticleEmitter(myGame);
+		particleEmitterYellow.updateParticleEmitter(myGame);
+		particleEmitterOrange.updateParticleEmitter(myGame);
 	}
 	
 	/**
@@ -142,5 +153,8 @@ public class GameScreen extends Screens {
 	private void drawAdditionalObjectsOnGameScreenThatDontUseSpriteBatch() {
 		myGame.gameObjectLoader.enemy.draw(myGame.renderer.batch);
 		myGame.gameObjectLoader.player.draw(myGame.renderer.batch);
+		particleEmitterRed.drawParticleEmitter(myGame.renderer.batch, "Red");
+		particleEmitterYellow.drawParticleEmitter(myGame.renderer.batch, "Yellow");
+		particleEmitterOrange.drawParticleEmitter(myGame.renderer.batch, "Orange");
 	}
 }
