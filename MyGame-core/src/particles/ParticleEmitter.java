@@ -5,29 +5,10 @@ import java.util.Random;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import helpers.ColorHelper;
 
-public class ParticleEmitter {
-	
-	/**
-	 * Particle emitter's x position.
-	 */
-	private float x;
-	
-	/**
-	 * Particle emitter's y position.
-	 */
-	private float y;
-	
-	/**
-	 * Particle emitter's width.
-	 */
-	private float width;
-	
-	/**
-	 * Particle emitter's height.
-	 */
-	private float height;
+public class ParticleEmitter extends GameObject {
 	
 	/**
 	 * Array of red particles.
@@ -107,58 +88,6 @@ public class ParticleEmitter {
 	}
 	
 	/**
-	 * 
-	 * @param MyGame myGame
-	 */
-	public void updateParticleEmitter(MyGame myGame) {	
-		x = 0;;
-		y = 0;
-		if (particleType.equalsIgnoreCase("Red")) {
-			for (int i = 0; i < redParticles.length; i++) {
-				redParticles[i].updateParticles(this);
-			}
-		}
-		if (particleType.equalsIgnoreCase("Yellow")) {
-			for (int i = 0; i < yellowParticles.length; i++) {
-				yellowParticles[i].updateParticles(this);
-			}
-		}
-		if (particleType.equalsIgnoreCase("Orange")) {
-			for (int i = 0; i < orangeParticles.length; i++) {
-				orangeParticles[i].updateParticles(this);
-			}
-		}
-	}
-
-	/**
-	 * 
-	 * @return float
-	 */
-	public float getX() {
-		return x;
-	}
-
-	/**
-	 * 
-	 * @return float
-	 */
-	public float getY() {
-		return y;
-	}
-
-	public float getHeight() {
-		return height;
-	}
-
-	/**
-	 * 
-	 * @return float
-	 */
-	public float getWidth() {
-		return width;
-	}
-	
-	/**
 	 * Draws fire particle effects.
 	 * 
 	 * @param SpriteBatch batch
@@ -178,6 +107,29 @@ public class ParticleEmitter {
 		if (particleType.equalsIgnoreCase("Orange")) {
 			for (int i = 0; i < orangeParticles.length; i++) {
 				orangeParticles[i].draw(batch);
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	public void updateParticleEmitter(MyGame myGame) {	
+		
+		if (particleType.equalsIgnoreCase("Red")) {
+			for (int i = 0; i < redParticles.length; i++) {
+				redParticles[i].updateParticles(this);
+			}
+		}
+		if (particleType.equalsIgnoreCase("Yellow")) {
+			for (int i = 0; i < yellowParticles.length; i++) {
+				yellowParticles[i].updateParticles(this);
+			}
+		}
+		if (particleType.equalsIgnoreCase("Orange")) {
+			for (int i = 0; i < orangeParticles.length; i++) {
+				orangeParticles[i].updateParticles(this);
 			}
 		}
 	}

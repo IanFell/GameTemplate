@@ -7,27 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-public class Particle {
-	
-	/**
-	 * Particle x position.
-	 */
-	private float x;
+import gameobjects.GameObject;
 
-	/**
-	 * Particle y position.
-	 */
-	private float y;
-	
-	/**
-	 * Particle width.
-	 */
-	private float width;
-	
-	/**
-	 * Particle height.
-	 */
-	private float height;
+public class Particle extends GameObject {
 	
 	/**
 	 * Represents how long particle will live.
@@ -97,6 +79,7 @@ public class Particle {
 	 * 
 	 * @param SpriteBatch batch
 	 */
+	@Override
 	public void draw(SpriteBatch batch) {
 		if (isAlive) {
 			shapeRenderer.begin(ShapeType.Filled);

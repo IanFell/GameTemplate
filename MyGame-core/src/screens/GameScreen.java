@@ -55,7 +55,7 @@ public class GameScreen extends Screens {
 	 */
 	private ParticleEmitter particleEmitterRed     = new ParticleEmitter(0, 0, 25, 25, "Red");
 	private ParticleEmitter particleEmitterYellow  = new ParticleEmitter(0, 0, 25, 25, "Yellow");
-	private ParticleEmitter particleEmitterOrange = new ParticleEmitter(0, 0, 25, 25, "Orange");
+	private ParticleEmitter particleEmitterOrange  = new ParticleEmitter(0, 0, 25, 25, "Orange");
 	
 	/**
 	 * Constructor.

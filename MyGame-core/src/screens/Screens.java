@@ -17,7 +17,7 @@ import helpers.GameAttributeHelper;
  *
  */
 public class Screens implements Screen {
-	
+
 	/**
 	 * Screen does not scroll if this is set.
 	 */

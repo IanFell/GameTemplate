@@ -34,7 +34,7 @@ public class GameCharacter extends GameObject {
 	}
 
 	/**
-	 * Moves object to the left or right.
+	 * Moves object along the X axis.
 	 * 
 	 * @param float distance
 	 */
@@ -44,7 +44,7 @@ public class GameCharacter extends GameObject {
 	}
 	
 	/**
-	 * Moves object up or down.
+	 * Moves object along the Y axis.
 	 * 
 	 * @param float distance
 	 */
