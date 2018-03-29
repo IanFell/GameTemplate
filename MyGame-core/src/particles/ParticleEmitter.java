@@ -116,7 +116,6 @@ public class ParticleEmitter extends GameObject {
 	 * @param MyGame myGame
 	 */
 	public void updateParticleEmitter(MyGame myGame) {	
-		
 		if (particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
 				redParticles[i].updateParticles(this);

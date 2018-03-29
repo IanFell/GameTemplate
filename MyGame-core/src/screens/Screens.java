@@ -17,7 +17,7 @@ import helpers.GameAttributeHelper;
  *
  */
 public class Screens implements Screen {
-
+	
 	/**
 	 * Screen does not scroll if this is set.
 	 */
@@ -50,7 +50,22 @@ public class Screens implements Screen {
 	 * Viewport object.
 	 */
 	protected ExtendViewport viewport;
+	 
+	/**
+	 * Saves camera X position before screen shake.
+	 */
+	public static float cameraX;
+
+	/**
+	 * Saves camera Y position before screen shake.
+	 */
+	public static float cameraY;
 	
+	/**
+	 * Performs screenshake.
+	 */
+	public static ScreenShake screenShake = new ScreenShake();
+
 	/**
 	 * Constructor.
 	 * 
@@ -89,6 +104,14 @@ public class Screens implements Screen {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		// Update camera matrices.
 		camera.update();
+	}
+	
+	/**
+	 * Saves camera coordinates before screenshake starts.
+	 */
+	public static void saveCameraCoordinatesBeforeScreenShake() {
+		cameraX = camera.position.x;
+		cameraY = camera.position.y;
 	}
 
 	@Override

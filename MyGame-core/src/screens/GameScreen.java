@@ -82,10 +82,16 @@ public class GameScreen extends Screens {
 			hasBeenInitialized = !hasBeenInitialized;
 		}
 		clearScreenAndSetScreenColor();
+		
+		// Screen only shakes when needed, but we must update it at all times just in case it needs to shake.
+		screenShake.update(delta, camera);
 		updateCamera();
 		myGame.renderer.batch.begin();
 		mapRenderer.renderMap(myGame, mapEditor);
 		myGame.renderer.batch.end();
+		
+		// If a screenshake happened, reset camera to it's original position before shake.
+		resetCameraAfterScreenShake();
 		
 		/**
 		 * Since these objects use a ShapeRenderer we must draw them after sprite batch has ended,
@@ -98,6 +104,14 @@ public class GameScreen extends Screens {
 		
 		// Perform debug testing on GameScreen so we know different scenarios work.
 		debugger.debugGameScreen(myGame, mapEditor);
+	}
+	
+	/**
+	 * Resets camera to it's original position before screenshake.
+	 */
+	public static void resetCameraAfterScreenShake() {
+		camera.position.x = cameraX;
+		camera.position.y = cameraY;
 	}
 	
 	/**

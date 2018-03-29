@@ -50,6 +50,11 @@ public class Keyboard extends ComputerInput {
 	        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
 	        	Screens.scrollScreen(cameraScrollingSpeedNone, -cameraScrollingSpeedTierOne);
 	        }
+	        
+	        // Perform screenshake.
+	        if(Gdx.input.isKeyPressed(Input.Keys.S)){ 
+				Screens.screenShake.shake(5, 5);
+			}
 		}
 	}
 }

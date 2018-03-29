@@ -18,7 +18,7 @@ import screens.SplashScreen;
  *
  */
 public class MyGame extends Game {
-	
+		
 	/**
 	 * Game renderer.
 	 */
