@@ -54,30 +54,31 @@ public class ParticleEmitter extends GameObject {
 		this.height       = height;
 		this.particleType = particleType;
 		
+		float emitterWidth  = x + width;
+		float emitterHeight = y + height;
+		float particleSize  = 1.0f;
 		if (this.particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
-				float startX    = RandomNumberGenerator.random.nextInt((int) (x + width));
-				float startY    = RandomNumberGenerator.random.nextInt((int) (y + height)); 
-				float lifeSpan  = RandomNumberGenerator.random.nextInt(150);
-				redParticles[i] = new Particle(startX, startY, 1, 1, lifeSpan, ColorHelper.RED);
+				float startX    = RandomNumberGenerator.generateRandomNumber((int) (emitterWidth));
+				float startY    = RandomNumberGenerator.generateRandomNumber((int) (emitterHeight)); 
+				float lifeSpan  = RandomNumberGenerator.generateRandomNumber(150);
+				redParticles[i] = new Particle(startX, startY, particleSize, particleSize, lifeSpan, ColorHelper.RED);
 			}
 		}
-		
 		if (this.particleType.equalsIgnoreCase("Yellow")) {
 			for (int i = 0; i < yellowParticles.length; i++) {
-				float startX       = RandomNumberGenerator.random.nextInt((int) (x + width));
-				float startY       = RandomNumberGenerator.random.nextInt((int) (y + height)); 
-				float lifeSpan     = RandomNumberGenerator.random.nextInt(100);
-				yellowParticles[i] = new Particle(startX, startY, 1, 1, lifeSpan, ColorHelper.YELLOW);
+				float startX       = RandomNumberGenerator.generateRandomNumber((int) (emitterWidth));
+				float startY       = RandomNumberGenerator.generateRandomNumber((int) (emitterHeight)); 
+				float lifeSpan     = RandomNumberGenerator.generateRandomNumber(100);
+				yellowParticles[i] = new Particle(startX, startY, particleSize, particleSize, lifeSpan, ColorHelper.YELLOW);
 			}
 		}
-		
 		if (this.particleType.equalsIgnoreCase("Orange")) {
 			for (int i = 0; i < orangeParticles.length; i++) {
-				float startX       = RandomNumberGenerator.random.nextInt((int) (x + width));
-				float startY       = RandomNumberGenerator.random.nextInt((int) (y + height)); 
-				float lifeSpan     = RandomNumberGenerator.random.nextInt(100);
-				orangeParticles[i] = new Particle(startX, startY, 1, 1, lifeSpan, ColorHelper.ORANGE);
+				float startX       = RandomNumberGenerator.generateRandomNumber((int) (emitterWidth));
+				float startY       = RandomNumberGenerator.generateRandomNumber((int) (emitterHeight)); 
+				float lifeSpan     = RandomNumberGenerator.generateRandomNumber(100);
+				orangeParticles[i] = new Particle(startX, startY, particleSize, particleSize, lifeSpan, ColorHelper.ORANGE);
 			}
 		}
 	}
@@ -100,17 +101,17 @@ public class ParticleEmitter extends GameObject {
 	private void drawFire(SpriteBatch batch, String particleType) {
 		if (particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
-				redParticles[i].drawParticle(batch);
+				redParticles[i].draw(batch);
 			}
 		}
 		if (particleType.equalsIgnoreCase("Yellow")) {
 			for (int i = 0; i < yellowParticles.length; i++) {
-				yellowParticles[i].drawParticle(batch);
+				yellowParticles[i].draw(batch);
 			}
 		}
 		if (particleType.equalsIgnoreCase("Orange")) {
 			for (int i = 0; i < orangeParticles.length; i++) {
-				orangeParticles[i].drawParticle(batch);
+				orangeParticles[i].draw(batch);
 			}
 		}
 	}

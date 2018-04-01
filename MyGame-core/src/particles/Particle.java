@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import helpers.RandomNumberGenerator;
@@ -72,32 +71,31 @@ public class Particle extends GameObject {
 		this.lifeSpan  = lifeSpan;
 		this.isAlive   = true;
 		this.color     = color;
-		this.dx        = RandomNumberGenerator.random.nextInt(3);
-		this.dy        = RandomNumberGenerator.random.nextInt(3);
+		this.dx        = RandomNumberGenerator.generateRandomNumber(3);
+		this.dy        = RandomNumberGenerator.generateRandomNumber(3);
 		this.shapeRenderer.setColor(this.color);
 	}
-	
-	@Override
-	public void draw(SpriteBatch batch) {}
 	
 	/**
 	 * 
 	 * @param SpriteBatch batch
 	 */
-	
-	public void drawParticle(SpriteBatch batch) {
+	@Override
+	public void draw(SpriteBatch batch) {
 		if (isAlive) {
 			shapeRenderer.begin(ShapeType.Filled);
 			shapeRenderer.rect(x, y, width, height);
 			shapeRenderer.end();
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param ParticleEmitter particleEmitter
 	 */
 	public void updateParticles(ParticleEmitter particleEmitter) {
+		float particleEmitterLength    = particleEmitter.getX() + particleEmitter.getWidth();
+		float particleEmitterYPosition = particleEmitter.getY();
 		if (isAlive) {
 			// If lifeSpan is not over, increase life and move particle up.
 			if (life < lifeSpan) {
@@ -105,10 +103,11 @@ public class Particle extends GameObject {
 				y += dy;
 				
 				// If particle is past the point of no return, move it to the side, depending on which side it's on.
-				int move = RandomNumberGenerator.random.nextInt(100);
+				int move = RandomNumberGenerator.generateRandomNumber(100);
 				if (move < 25) {
-					if (y > (particleEmitter.getY() + particleEmitter.getHeight()) / 2) {
-						if (x < (particleEmitter.getX() + particleEmitter.getWidth()) / 2) {
+					int middlePointOfParticleEmitter = 2;
+					if (y > (particleEmitterYPosition + particleEmitter.getHeight()) / middlePointOfParticleEmitter) {
+						if (x < (particleEmitterLength) / middlePointOfParticleEmitter) {
 							x += dx;
 						} else {
 							x -= dx;
@@ -122,9 +121,8 @@ public class Particle extends GameObject {
 		} else {
 			// If particle is dead, respawn it with new life in a random location based off particleEmitter's location.
 			isAlive    = true;
-			int startX = RandomNumberGenerator.random.nextInt((int) (particleEmitter.getX() + particleEmitter.getWidth()));
-			x          = startX;
-			y          = particleEmitter.getY();
+			x          = RandomNumberGenerator.generateRandomNumber((int) (particleEmitterLength));
+			y          = particleEmitterYPosition;
 			life       = 0;
 		}
 	}

@@ -17,6 +17,8 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	
 	/**
 	 * Direction game objects can travel in.
+	 * This is more of an illusion, as the camera is scrolling around the world.
+	 * If left arrow is pressed, we can think of this as 'direction = playerMovingLeftConstant'.
 	 */
 	public int direction;
 	

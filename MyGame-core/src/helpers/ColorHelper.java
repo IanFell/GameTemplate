@@ -14,6 +14,6 @@ public class ColorHelper {
 	 * Available colors.
 	 */
 	public static final Color RED    = new Color(255, 0, 0, 0);
-	public static final Color YELLOW = new Color(255, 0, 255, 0);
+	public static final Color YELLOW = new Color(255, 255, 0, 0);
 	public static final Color ORANGE = new Color(255, 128, 0, 0);
 }
