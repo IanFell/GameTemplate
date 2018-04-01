@@ -42,18 +42,22 @@ public class Keyboard extends ComputerInput {
 			if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
 				Screens.scrollScreen(-cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
 				myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_LEFT);
+				System.out.println("Player is moving LEFT");
 	        } 
 	        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
 	        	Screens.scrollScreen(cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
 	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_RIGHT);
+	        	System.out.println("Player is moving RIGHT");
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
 	        	Screens.scrollScreen(cameraScrollingSpeedNone, cameraScrollingSpeedTierOne);
 	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_UP);
+	        	System.out.println("Player is moving UP");
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
 	        	Screens.scrollScreen(cameraScrollingSpeedNone, -cameraScrollingSpeedTierOne);
 	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_DOWN);
+	        	System.out.println("Player is moving DOWN");
 	        }
 	        
 	        // Perform screenshake.
