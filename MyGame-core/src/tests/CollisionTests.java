@@ -90,7 +90,7 @@ public class CollisionTests {
 		Ray pickRay = Screens.camera.getPickRay(myGame.gameObjectLoader.player.getX(), myGame.gameObjectLoader.player.getY());
 		Intersector.intersectRayPlane(pickRay, xzPlane, intersection);
 		int x = (int)intersection.x;
-		int z = (int)intersection.z;
+		int z = -(int)intersection.z;
 		if(x >= 0 && x < mapEditor.map.length && z >= 0 && z < mapEditor.map.length) {
 			if(lastSelectedTile != null) lastSelectedTile.setColor(1, 1, 1, 1);
 			Sprite sprite = mapEditor.tiles[x][z];
@@ -99,26 +99,27 @@ public class CollisionTests {
 			System.out.println("Tile has been touched by player!");
 		}
 	}
-	
+
 	/**
 	 * Checks if player has collided with a solid tile.
 	 * 
 	 * @param MyGame    myGame
 	 * @param MapEditor mapEditor
+	 * @param int       direction
 	 * @return boolean
 	 */
-	public static boolean checkIfPlayerHasTouchedSolidTile(MyGame myGame, MapEditor mapEditor) {
+	public static boolean checkIfPlayerHasTouchedSolidTile(MyGame myGame, MapEditor mapEditor, int direction) {
 		Ray pickRay = Screens.camera.getPickRay(myGame.gameObjectLoader.player.getX(), myGame.gameObjectLoader.player.getY());
 		Intersector.intersectRayPlane(pickRay, xzPlane, intersection);
 		int x = (int)intersection.x;
-		int z = (int)intersection.z;
+		int z = -(int)intersection.z;
 		if(x >= 0 && x < mapEditor.map.length && z >= 0 && z < mapEditor.map.length) {
 			if (mapEditor.tiles[x][z].isSolid()) {
 				if(lastSelectedTile != null) lastSelectedTile.setColor(1, 1, 1, 1);
 				Sprite sprite = mapEditor.tiles[x][z];
 				sprite.setColor(1, 0, 0, 1);
 				lastSelectedTile = sprite;
-				Screens.stopScrolling();
+				Screens.stopScrolling(direction);
 				System.out.println("Player is touching a solid tile!  Camera should be stopped now!");
 			}
 		}

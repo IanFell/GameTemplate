@@ -35,6 +35,10 @@ public class Debugger {
 		CollisionTests.checkTileTouchedByPlayer(myGame, mapEditor);
 		
 		// Check to see if player has collided wtih a solid tile, so player stops.
-		CollisionTests.checkIfPlayerHasTouchedSolidTile(myGame, mapEditor); 
+		CollisionTests.checkIfPlayerHasTouchedSolidTile(
+				myGame, 
+				mapEditor, 
+				myGame.gameObjectLoader.player.getDirection()
+		); 
 	}
 }

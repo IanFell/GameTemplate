@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.mygdx.mygame.MyGame;
 
 import controllers.GameStateController;
+import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import screens.Screens;
 
@@ -40,15 +41,19 @@ public class Keyboard extends ComputerInput {
 			// Get arrow buttons for direction.
 			if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
 				Screens.scrollScreen(-cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
+				myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_LEFT);
 	        } 
 	        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
 	        	Screens.scrollScreen(cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
+	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_RIGHT);
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
 	        	Screens.scrollScreen(cameraScrollingSpeedNone, cameraScrollingSpeedTierOne);
+	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_UP);
 	        }
 	        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
 	        	Screens.scrollScreen(cameraScrollingSpeedNone, -cameraScrollingSpeedTierOne);
+	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_DOWN);
 	        }
 	        
 	        // Perform screenshake.

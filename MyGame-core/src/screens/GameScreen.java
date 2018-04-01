@@ -1,8 +1,10 @@
 package screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mygdx.mygame.MyGame;
 
 import debugging.Debugger;
@@ -138,13 +140,11 @@ public class GameScreen extends Screens {
 	private void initializeCameraForIsometricView() {
 		camera = new OrthographicCamera(
 				10, 
-				10 * (GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH)
+				10 * (GameAttributeHelper.SCREEN_HEIGHT / (float) GameAttributeHelper.SCREEN_WIDTH)
 		);
-		camera.position.set(5, 5, 10);
+		camera.position.set(5, 5, 15);
 		camera.direction.set(-1, -1, -1);
-		camera.near = 1;
-		camera.far  = 100;	
-		matrix.setToRotation(new Vector3(1, 0, 0), 90);
+		matrix.setToRotation(new Vector3(1, 0, 0), -90);
 	}
 	
 	/**

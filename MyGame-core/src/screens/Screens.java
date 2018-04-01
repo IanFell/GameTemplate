@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 
 /**
@@ -129,6 +130,9 @@ public class Screens implements Screen {
 	/**
 	 * This guarantees our screen objects are always rendered in
 	 * the correct location, even if the screen is resized.
+	 * 
+	 * @param int width
+	 * @param int height
 	 */
 	@Override
 	public void resize(int width, int height) {
@@ -175,7 +179,17 @@ public class Screens implements Screen {
 	 * Moves camera back 1 on the x, y axis, then stops it.
 	 * This is used when a player interacts with a solid tile.
 	 */
-	public static void stopScrolling() {
+	public static void stopScrolling(int direction) {
+		switch (direction) {
+			case Player.DIRECTION_LEFT:
+				break;
+			case Player.DIRECTION_RIGHT:
+				break;
+			case Player.DIRECTION_UP:
+				break;
+			case Player.DIRECTION_DOWN:
+				break;
+			}
 		camera.position.x = camera.position.x - 1;
 		camera.position.y = camera.position.y - 1;
 		camera.translate(SCREEN_SCROLL_SPEED_NONE, SCREEN_SCROLL_SPEED_NONE);

@@ -1,13 +1,22 @@
 package particles;
 
-import java.util.Random;
-
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import helpers.ColorHelper;
+import helpers.RandomNumberGenerator;
 
+/**
+ * Loads and draw particle effects.  
+ * For instance, this class contains three sets of Particle arrays and draws fire:
+ * 	-Particle array one   = red
+ *  -Particle array two   = yellow
+ *  -Particle array three = orange
+ *  \
+ * @author Fabulous Fellini
+ *
+ */
 public class ParticleEmitter extends GameObject {
 	
 	/**
@@ -31,11 +40,6 @@ public class ParticleEmitter extends GameObject {
 	private String particleType;
 	
 	/**
-	 * Used to place particle when it respawns.
-	 */
-	private Random random = new Random();
-	
-	/**
 	 * 
 	 * @param float  x
 	 * @param float  y
@@ -52,27 +56,27 @@ public class ParticleEmitter extends GameObject {
 		
 		if (this.particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
-				float startX    = random.nextInt((int) (x + width));
-				float startY    = random.nextInt((int) (y + height)); 
-				float lifeSpan  = random.nextInt(150);
+				float startX    = RandomNumberGenerator.random.nextInt((int) (x + width));
+				float startY    = RandomNumberGenerator.random.nextInt((int) (y + height)); 
+				float lifeSpan  = RandomNumberGenerator.random.nextInt(150);
 				redParticles[i] = new Particle(startX, startY, 1, 1, lifeSpan, ColorHelper.RED);
 			}
 		}
 		
 		if (this.particleType.equalsIgnoreCase("Yellow")) {
 			for (int i = 0; i < yellowParticles.length; i++) {
-				float startX       = random.nextInt((int) (x + width));
-				float startY       = random.nextInt((int) (y + height)); 
-				float lifeSpan     = random.nextInt(100);
+				float startX       = RandomNumberGenerator.random.nextInt((int) (x + width));
+				float startY       = RandomNumberGenerator.random.nextInt((int) (y + height)); 
+				float lifeSpan     = RandomNumberGenerator.random.nextInt(100);
 				yellowParticles[i] = new Particle(startX, startY, 1, 1, lifeSpan, ColorHelper.YELLOW);
 			}
 		}
 		
 		if (this.particleType.equalsIgnoreCase("Orange")) {
 			for (int i = 0; i < orangeParticles.length; i++) {
-				float startX       = random.nextInt((int) (x + width));
-				float startY       = random.nextInt((int) (y + height)); 
-				float lifeSpan     = random.nextInt(100);
+				float startX       = RandomNumberGenerator.random.nextInt((int) (x + width));
+				float startY       = RandomNumberGenerator.random.nextInt((int) (y + height)); 
+				float lifeSpan     = RandomNumberGenerator.random.nextInt(100);
 				orangeParticles[i] = new Particle(startX, startY, 1, 1, lifeSpan, ColorHelper.ORANGE);
 			}
 		}
@@ -96,17 +100,17 @@ public class ParticleEmitter extends GameObject {
 	private void drawFire(SpriteBatch batch, String particleType) {
 		if (particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
-				redParticles[i].draw(batch);
+				redParticles[i].drawParticle(batch);
 			}
 		}
 		if (particleType.equalsIgnoreCase("Yellow")) {
 			for (int i = 0; i < yellowParticles.length; i++) {
-				yellowParticles[i].draw(batch);
+				yellowParticles[i].drawParticle(batch);
 			}
 		}
 		if (particleType.equalsIgnoreCase("Orange")) {
 			for (int i = 0; i < orangeParticles.length; i++) {
-				orangeParticles[i].draw(batch);
+				orangeParticles[i].drawParticle(batch);
 			}
 		}
 	}

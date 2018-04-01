@@ -16,6 +16,11 @@ import loaders.ImageLoader;
 public class GameObject extends AbstractGameObject implements GameObjectInterface {
 	
 	/**
+	 * Direction game objects can travel in.
+	 */
+	public int direction;
+	
+	/**
 	 * Circle for our collision detection.
 	 */
 	protected Circle circle;
@@ -72,5 +77,21 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 */
 	public Circle getCircle() {
 		return circle;
+	}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getDirection() {
+		return direction;
+	}
+
+	/**
+	 * 
+	 * @param int direction
+	 */
+	public void setDirection(int direction) {
+		this.direction = direction;
 	}
 }
