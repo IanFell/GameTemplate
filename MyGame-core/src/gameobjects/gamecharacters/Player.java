@@ -1,5 +1,6 @@
 package gameobjects.gamecharacters;
 
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 
 import helpers.GamePlayHelper;
@@ -16,11 +17,19 @@ public class Player extends GameCharacter {
 	 * Constructor.
 	 */
 	public Player() {
-		this.x        = GamePlayHelper.setObjectXPositionInMiddleOfScreen(this);
-		this.y        = GamePlayHelper.setObjectYPositionInMiddleOfScreen(this);
-		this.radius   = characterSize;
-		this.circle   = new Circle(x, y, radius);
-		this.shapeRenderer.setColor(1, 1, 1, 1);
+		this.x      = GamePlayHelper.setObjectXPositionInMiddleOfScreen(this);
+		this.y      = GamePlayHelper.setObjectYPositionInMiddleOfScreen(this);
+		this.radius = characterSize;
+		this.circle = new Circle(x, y, radius);
+	}
+	
+	/**
+	 * @param ShapeRenderer shapeRenderer
+	 */
+	@Override
+	public void draw(ShapeRenderer shapeRenderer) {
+		shapeRenderer.setColor(1, 1, 1, 1);
+		shapeRenderer.circle(x, y, radius);
 	}
 	
 	/**

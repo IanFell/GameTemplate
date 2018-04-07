@@ -1,12 +1,14 @@
 package gameobjects;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+
 /**
  * Holds variables and methods all game objects will have.
  * 
  * @author Fabulous Fellini
  *
  */
-public abstract class AbstractGameObject {
+public abstract class AbstractGameObject extends Sprite {
 	
 	/**
 	 * Object X position.

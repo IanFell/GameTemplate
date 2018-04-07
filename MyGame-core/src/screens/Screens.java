@@ -179,10 +179,10 @@ public class Screens implements Screen {
 	 * Moves camera back 1 on the x, y axis, then stops it.
 	 * This is used when a player interacts with a solid tile.
 	 * 
-	 * @param float direction
+	 * @param int direction
 	 */
 	public static void stopScrolling(int direction) {
-		float bounceBackAmountUponPlayerTileCollision = 0.5f;
+		float bounceBackAmountUponPlayerTileCollision = 0.3f;
 		switch (direction) {
 			case Player.DIRECTION_LEFT:
 				camera.position.x += bounceBackAmountUponPlayerTileCollision;

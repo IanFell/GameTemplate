@@ -24,5 +24,4 @@ public class RandomNumberGenerator {
 	public static int generateRandomNumber(int nextInt) {
 		return random.nextInt(nextInt);
 	}
-
 }

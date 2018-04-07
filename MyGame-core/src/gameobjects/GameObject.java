@@ -1,7 +1,7 @@
 package gameobjects;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 
 import interfaces.GameObjectInterface;
@@ -49,9 +49,9 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	/**
 	 * Draw game object.
 	 * 
-	 * @param SpriteBatch batch
+	 * @param ShapeRenderer shapeRenderer
 	 */
-	public void draw(SpriteBatch batch) {}
+	public void draw(ShapeRenderer shapeRenderer) {}
 	
 	/**
 	 * Abstract update method.  

@@ -68,8 +68,8 @@ public class CollisionTests {
 		if(Gdx.input.justTouched()) {
 			Ray pickRay = Screens.camera.getPickRay(Gdx.input.getX(), Gdx.input.getY());
 			Intersector.intersectRayPlane(pickRay, xzPlane, intersection);
-			int x = (int)intersection.x;
-			int z = (int)intersection.z;
+			int x =  (int)intersection.x;
+			int z = -(int)intersection.z;
 			if(x >= 0 && x < mapEditor.map.length && z >= 0 && z < mapEditor.map.length) {
 				if(lastSelectedTile != null) lastSelectedTile.setColor(1, 1, 1, 1);
 				Sprite sprite = mapEditor.tiles[x][z];
@@ -89,9 +89,9 @@ public class CollisionTests {
 	public static void checkTileTouchedByPlayer(MyGame myGame, MapEditor mapEditor) {
 		Ray pickRay = Screens.camera.getPickRay(myGame.gameObjectLoader.player.getX(), myGame.gameObjectLoader.player.getY());
 		Intersector.intersectRayPlane(pickRay, xzPlane, intersection);
-		int x = (int)intersection.x;
+		int x =  (int)intersection.x;
 		int z = -(int)intersection.z;
-		if(x >= 0 && x < mapEditor.map.length && z >= 0 && z < mapEditor.map.length) {
+		if(x >= 0 && x < mapEditor.map.length + 5 && z >= 0 && z < mapEditor.map.length) {
 			if(lastSelectedTile != null) lastSelectedTile.setColor(1, 1, 1, 1);
 			Sprite sprite = mapEditor.tiles[x][z];
 			sprite.setColor(1, 0, 0, 1);

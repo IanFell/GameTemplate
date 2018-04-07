@@ -1,6 +1,7 @@
 package screens;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 
@@ -54,9 +55,9 @@ public class GameScreen extends Screens {
 	/**
 	 * Basic particle emitters.
 	 */
-	private ParticleEmitter particleEmitterRed     = new ParticleEmitter(0, 0, 25, 25, "Red");
-	private ParticleEmitter particleEmitterYellow  = new ParticleEmitter(0, 0, 25, 25, "Yellow");
-	private ParticleEmitter particleEmitterOrange  = new ParticleEmitter(0, 0, 25, 25, "Orange");
+	private ParticleEmitter particleEmitterRed;
+	private ParticleEmitter particleEmitterYellow;
+	private ParticleEmitter particleEmitterOrange;
 	
 	/**
 	 * Constructor.
@@ -88,17 +89,14 @@ public class GameScreen extends Screens {
 		screenShake.update(delta, camera);
 		updateCamera();
 		myGame.renderer.batch.begin();
+		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		mapRenderer.renderMap(myGame, mapEditor);
+		drawAdditionalObjectsOnGameScreenThatDontUseSpriteBatch();
 		myGame.renderer.batch.end();
+		myGame.renderer.shapeRenderer.end();
 		
 		// If a screenshake happened, reset camera to it's original position before shake.
 		resetCameraAfterScreenShake();
-		
-		/**
-		 * Since these objects use a ShapeRenderer we must draw them after sprite batch has ended,
-		 * otherwise they will block the sprite batch from being rendered.
-		 */
-		drawAdditionalObjectsOnGameScreenThatDontUseSpriteBatch();
 		
 		// Update objects associated with GameScreen.
 		updateGameScreen();
@@ -121,7 +119,9 @@ public class GameScreen extends Screens {
 	@Override
 	protected void updateCamera() {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
+		myGame.renderer.shapeRenderer.setProjectionMatrix(myGame.renderer.batch.getProjectionMatrix());
 		myGame.renderer.batch.setTransformMatrix(matrix);
+		myGame.renderer.shapeRenderer.setTransformMatrix(matrix);
 	    camera.update();
 	}
 	
@@ -130,6 +130,9 @@ public class GameScreen extends Screens {
 	 */
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
+		particleEmitterRed     = new ParticleEmitter(0, 0, 1, 1, "Red", myGame);
+		particleEmitterYellow  = new ParticleEmitter(0, 0, 1, 1, "Yellow", myGame);
+		particleEmitterOrange  = new ParticleEmitter(0, 0, 1, 1, "Orange", myGame);
 		initializeCameraForIsometricView();
 	}
 	
@@ -164,10 +167,10 @@ public class GameScreen extends Screens {
 	 * from rendering.
 	 */
 	private void drawAdditionalObjectsOnGameScreenThatDontUseSpriteBatch() {
-		myGame.gameObjectLoader.enemy.draw(myGame.renderer.batch);
-		myGame.gameObjectLoader.player.draw(myGame.renderer.batch);
-		particleEmitterRed.drawParticleEmitter(myGame.renderer.batch, "Red");
-		particleEmitterYellow.drawParticleEmitter(myGame.renderer.batch, "Yellow");
-		particleEmitterOrange.drawParticleEmitter(myGame.renderer.batch, "Orange");
+		myGame.gameObjectLoader.enemy.draw(myGame.renderer.shapeRenderer);
+		myGame.gameObjectLoader.player.draw(myGame.renderer.shapeRenderer);
+		particleEmitterRed.drawParticleEmitter(myGame.renderer.shapeRenderer, "Red");
+		particleEmitterYellow.drawParticleEmitter(myGame.renderer.shapeRenderer, "Yellow");
+		particleEmitterOrange.drawParticleEmitter(myGame.renderer.shapeRenderer, "Orange");
 	}
 }

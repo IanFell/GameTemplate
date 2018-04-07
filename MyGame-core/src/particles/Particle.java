@@ -1,9 +1,8 @@
 package particles;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import helpers.RandomNumberGenerator;
@@ -39,11 +38,6 @@ public class Particle extends GameObject {
 	private Color color;
 	
 	/**
-	 * ShapeRenderer to draw particles.
-	 */
-	private ShapeRenderer shapeRenderer = new ShapeRenderer();
-	
-	/**
 	 * Speed of side to side movement.
 	 */
 	private float dx;
@@ -56,14 +50,15 @@ public class Particle extends GameObject {
 	/**
 	 * Constructor.
 	 * 
-	 * @param float x
-	 * @param float y
-	 * @param float width
-	 * @param float height
-	 * @param float lifeSpan
-	 * @param Color color
+	 * @param float  x
+	 * @param float  y
+	 * @param float  width
+	 * @param float  height
+	 * @param float  lifeSpan
+	 * @param Color  color
+	 * @param MyGame myGame
 	 */
-	public Particle(float x, float y, float width, float height, float lifeSpan, Color color) {
+	public Particle(float x, float y, float width, float height, float lifeSpan, Color color, MyGame myGame) {
 		this.x         = x;
 		this.y         = y;
 		this.width     = width;
@@ -73,19 +68,17 @@ public class Particle extends GameObject {
 		this.color     = color;
 		this.dx        = RandomNumberGenerator.generateRandomNumber(3);
 		this.dy        = RandomNumberGenerator.generateRandomNumber(3);
-		this.shapeRenderer.setColor(this.color);
 	}
 	
 	/**
 	 * 
-	 * @param SpriteBatch batch
+	 * @param ShapeRenderer shapeRenderer
 	 */
 	@Override
-	public void draw(SpriteBatch batch) {
+	public void draw(ShapeRenderer shapeRenderer) {
 		if (isAlive) {
-			shapeRenderer.begin(ShapeType.Filled);
+			shapeRenderer.setColor(this.color);
 			shapeRenderer.rect(x, y, width, height);
-			shapeRenderer.end();
 		}
 	}
 

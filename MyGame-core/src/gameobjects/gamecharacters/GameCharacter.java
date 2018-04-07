@@ -1,9 +1,5 @@
 package gameobjects.gamecharacters;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-
 import gameobjects.GameObject;
 
 public class GameCharacter extends GameObject {
@@ -17,21 +13,6 @@ public class GameCharacter extends GameObject {
 	 * Radius for our collision detection circle.
 	 */
 	protected int radius;
-	
-	/**
-	 * ShapeRenderer to draw our characters's circle / hit box / display, etc.
-	 */
-	protected ShapeRenderer shapeRenderer = new ShapeRenderer();
-	
-	/**
-	 * @param SpriteBatch batch
-	 */
-	@Override
-	public void draw(SpriteBatch batch) {
-		shapeRenderer.begin(ShapeType.Filled);
-		shapeRenderer.circle(x, y, radius);
-		shapeRenderer.end();
-	}
 
 	/**
 	 * Moves object along the X axis.

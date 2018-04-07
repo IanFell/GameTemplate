@@ -1,6 +1,7 @@
 package render;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 /**
  * Class to hold rendering objects and perform rendering actions.
@@ -16,16 +17,23 @@ public class Render {
 	public SpriteBatch batch;
 	
 	/**
+	 * ShapeRenderer.
+	 */
+	public ShapeRenderer shapeRenderer;
+	
+	/**
 	 * Initialize renderer.
 	 */
 	public void init() {
-		batch = new SpriteBatch();
+		batch         = new SpriteBatch();
+		shapeRenderer = new ShapeRenderer();
 	}
 	
 	/**
-	 * Dispose of batch.
+	 * Dispose of renderer.
 	 */
 	public void dispose() {
 		batch.dispose();
+		shapeRenderer.dispose();
 	}
 }
