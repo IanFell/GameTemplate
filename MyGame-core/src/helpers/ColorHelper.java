@@ -10,10 +10,19 @@ import com.badlogic.gdx.graphics.Color;
  */
 public class ColorHelper {
 	
+	/**
+	 * Value for non transparent color.
+	 */
 	private static int noTransparancy = 0;
 	
+	/**
+	 * Minimum color value (from 0 - 255).
+	 */
 	private static int minimumColorValue = 0;
 	
+	/**
+	 * Maximum color value (from 0 - 255).
+	 */
 	private static int maximumColorValue = 255;
 	
 	/**
@@ -24,4 +33,5 @@ public class ColorHelper {
 	public static final Color ORANGE = new Color(maximumColorValue, 128, minimumColorValue, noTransparancy);
 	public static final Color WHITE  = new Color(maximumColorValue, maximumColorValue, maximumColorValue, noTransparancy);
 	public static final Color BLUE   = new Color(minimumColorValue, minimumColorValue, maximumColorValue, noTransparancy);
+	public static final Color BLACK  = new Color(maximumColorValue, maximumColorValue, maximumColorValue, noTransparancy);
 }

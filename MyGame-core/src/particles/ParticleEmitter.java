@@ -20,8 +20,6 @@ import helpers.RandomNumberGenerator;
  */
 public class ParticleEmitter extends GameObject {
 	
-	private MyGame myGame;
-	
 	/**
 	 * Array of red particles.
 	 */
@@ -57,7 +55,6 @@ public class ParticleEmitter extends GameObject {
 		this.width        = width;
 		this.height       = height;
 		this.particleType = particleType;
-		this.myGame       = myGame;
 		createParticles("Red", redParticles, 150, myGame);
 		createParticles("Yellow", yellowParticles, 100, myGame);
 		createParticles("Orange", orangeParticles, 100, myGame);

@@ -9,6 +9,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
+import physics.WeatherHandler;
 
 /**
  * Handles different 'screens' of the game.
@@ -90,9 +91,19 @@ public class Screens implements Screen {
 	
 	/**
 	 * Clear screen and set screen color.
+	 * 
+	 * @param int            gameState
+	 * @param WeatherHandler weatherHandler
 	 */
-	protected void clearScreenAndSetScreenColor() {
-		Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+	protected void clearScreenAndSetScreenColor(int gameState, WeatherHandler weatherHandler) {
+		switch (gameState) {
+		case SPLASH_SCREEN:
+			Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+			break;
+		case GAME_SCREEN:
+			Gdx.gl.glClearColor(0, 0, weatherHandler.dayNightCycleValue, 1);
+			break;
+		}
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 	

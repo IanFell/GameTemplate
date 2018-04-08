@@ -26,11 +26,12 @@ public class SplashScreen extends Screens {
 	/**
 	 * Render splash screen.
 	 * 
-	 * @param float delta
+	 * @param float          delta
+	 * @param WeatherHandler weatherHandler
 	 */
 	@Override
 	public void render(float delta) {
-		clearScreenAndSetScreenColor();
+		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, null);
 		updateCamera();
 		myGame.renderer.batch.begin();
 		ImageHelper.drawImageInMiddleOfScreen(

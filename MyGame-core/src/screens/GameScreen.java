@@ -14,6 +14,7 @@ import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
 import physics.LightHandler;
+import physics.WeatherHandler;
 
 /**
  * Screen of the game while in play.
@@ -52,6 +53,14 @@ public class GameScreen extends Screens {
 	 * Handles all in game lighting.
 	 */
 	private LightHandler lightHandler = new LightHandler();
+
+	/**
+	 * Handles in game weather.  This can include:
+	 * 	- Night and day cycles,
+	 *  - Rain,
+	 *  - Etc.
+	 */
+	private WeatherHandler weatherHandler = new WeatherHandler();
 	
 	/**
 	 * Debugs game screen if needed / uncommented.
@@ -89,16 +98,14 @@ public class GameScreen extends Screens {
 			initializeGameScreen();
 			hasBeenInitialized = !hasBeenInitialized;
 		}
-		clearScreenAndSetScreenColor();
+		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, weatherHandler);
 		
 		// Screen only shakes when needed, but we must update it at all times just in case it needs to shake.
 		screenShake.update(delta, camera);
 		updateCamera();
 		myGame.renderer.batch.begin();
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
-		mapRenderer.renderMap(myGame, mapEditor);
-		lightHandler.renderLight(myGame.renderer.batch, myGame.imageLoader);
-		renderAdditionalObjectsOnGameScreenThatDontUseSpriteBatch();
+		renderAllGameObjects();
 		myGame.renderer.batch.end();
 		myGame.renderer.shapeRenderer.end();
 		
@@ -149,7 +156,8 @@ public class GameScreen extends Screens {
 				screenSize, 
 				screenSize * (GameAttributeHelper.SCREEN_HEIGHT / (float) GameAttributeHelper.SCREEN_WIDTH)
 		);
-		camera.position.set(5, 5, 15);
+		int cameraXYPosition = 5;
+		camera.position.set(cameraXYPosition, cameraXYPosition, 15);
 		int cameraDirection = -1;
 		camera.direction.set(cameraDirection, cameraDirection, cameraDirection);
 		matrix.setToRotation(new Vector3(1, 0, 0), -90);
@@ -163,12 +171,29 @@ public class GameScreen extends Screens {
 		myGame.gameObjectLoader.enemy.updateGameObject();
 		updateParticleEmitters();
 		lightHandler.updateLighting(myGame.imageLoader);
+		weatherHandler.performDayAndNightCycle();
 	}
 	
 	/**
-	 * Draw objects associated with a ShapeRenderer.
+	 * Renders all game objects.
 	 */
-	private void renderAdditionalObjectsOnGameScreenThatDontUseSpriteBatch() {
+	private void renderAllGameObjects() {
+		renderObjectsOnGameScreenThatUseSpriteBatch();
+		renderObjectsOnGameScreenThatUseShapeRenderer();
+	}
+	
+	/**
+	 * Draw objects associated with SpriteBatch.
+	 */
+	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
+		mapRenderer.renderMap(myGame, mapEditor);
+		lightHandler.renderLight(myGame.renderer.batch, myGame.imageLoader);
+	}
+	
+	/**
+	 * Draw objects associated with ShapeRenderer.
+	 */
+	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
 		myGame.gameObjectLoader.enemy.draw(myGame.renderer.shapeRenderer);
 		myGame.gameObjectLoader.player.draw(myGame.renderer.shapeRenderer);
 		renderParticleEmitters();
