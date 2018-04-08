@@ -7,7 +7,7 @@ public class GameCharacter extends GameObject {
 	/**
 	 * Size of character.
 	 */
-	protected int characterSize = 16;
+	protected int characterSize = 1;
 	
 	/**
 	 * Radius for our collision detection circle.

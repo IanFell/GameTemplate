@@ -7,6 +7,7 @@ import com.mygdx.mygame.MyGame;
 import controllers.GameStateController;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
+import physics.LightHandler;
 import screens.Screens;
 
 /**
@@ -39,30 +40,41 @@ public class Keyboard extends ComputerInput {
 			float cameraScrollingSpeedTierOne = Screens.SCREEN_SCROLL_SPEED_TIER_ONE;
 			
 			// Get arrow buttons for direction.
-			if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
 				Screens.scrollScreen(-cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
 				myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_LEFT);
 				System.out.println("Player is moving LEFT");
 	        } 
-	        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
+	        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
 	        	Screens.scrollScreen(cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
 	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_RIGHT);
 	        	System.out.println("Player is moving RIGHT");
 	        }
-	        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+	        if (Gdx.input.isKeyPressed(Input.Keys.UP)){
 	        	Screens.scrollScreen(cameraScrollingSpeedNone, cameraScrollingSpeedTierOne);
 	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_UP);
 	        	System.out.println("Player is moving UP");
 	        }
-	        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
+	        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
 	        	Screens.scrollScreen(cameraScrollingSpeedNone, -cameraScrollingSpeedTierOne);
 	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_DOWN);
 	        	System.out.println("Player is moving DOWN");
 	        }
 	        
 	        // Perform screenshake.
-	        if(Gdx.input.isKeyPressed(Input.Keys.S)){ 
+	        if (Gdx.input.isKeyPressed(Input.Keys.S)){ 
 				Screens.screenShake.shake(5, 5);
+			}
+	        
+	        /**
+	         * Perform operations on lighting.  
+	         * This will make the light texture grow,
+	         * then shrink back to normal size when key is released.
+	         */
+	        if (Gdx.input.isKeyPressed(Input.Keys.L)){ 
+				LightHandler.isGrowing = true;
+			} else {
+				LightHandler.isGrowing = false;
 			}
 		}
 	}

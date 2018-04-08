@@ -66,8 +66,8 @@ public class Particle extends GameObject {
 		this.lifeSpan  = lifeSpan;
 		this.isAlive   = true;
 		this.color     = color;
-		this.dx        = RandomNumberGenerator.generateRandomNumber(3);
-		this.dy        = RandomNumberGenerator.generateRandomNumber(3);
+		this.dx        = 0.05f;
+		this.dy        = 0.1f;
 	}
 	
 	/**
@@ -87,16 +87,20 @@ public class Particle extends GameObject {
 	 * @param ParticleEmitter particleEmitter
 	 */
 	public void updateParticles(ParticleEmitter particleEmitter) {
-		float particleEmitterLength    = particleEmitter.getX() + particleEmitter.getWidth();
+		float particleEmitterXPosition = particleEmitter.getX();
 		float particleEmitterYPosition = particleEmitter.getY();
+		float particleEmitterLength    = particleEmitterXPosition + particleEmitter.getWidth();
+		float particleEmitterHeight    = particleEmitterYPosition + particleEmitter.getHeight();
 		if (isAlive) {
 			// If lifeSpan is not over, increase life and move particle up.
 			if (life < lifeSpan) {
-				life += 2;
+				life += 3;
+				// Make dy value appear more random.
+				dy = changeDyValue(dy);
 				y += dy;
 				
 				// If particle is past the point of no return, move it to the side, depending on which side it's on.
-				int move = RandomNumberGenerator.generateRandomNumber(100);
+				int move = RandomNumberGenerator.generateRandomInteger(100);
 				if (move < 25) {
 					int middlePointOfParticleEmitter = 2;
 					if (y > (particleEmitterYPosition + particleEmitter.getHeight()) / middlePointOfParticleEmitter) {
@@ -114,9 +118,32 @@ public class Particle extends GameObject {
 		} else {
 			// If particle is dead, respawn it with new life in a random location based off particleEmitter's location.
 			isAlive    = true;
-			x          = RandomNumberGenerator.generateRandomNumber((int) (particleEmitterLength));
-			y          = particleEmitterYPosition;
 			life       = 0;
+			x          = (float) RandomNumberGenerator.generateRandomDouble(
+							particleEmitterXPosition, 
+							particleEmitterLength
+			);
+			y          = (float) RandomNumberGenerator.generateRandomDouble(
+							particleEmitterYPosition, 
+							particleEmitterHeight
+			);
 		}
+	}
+	
+	/**
+	 * Changes value of dy variable to make particles appear to move more randomly.
+	 * 
+	 * @param flat dy
+	 * @return float
+	 */
+	private float changeDyValue(float dy) {
+		if (dy == 0.1f) {
+			dy = 0.2f;
+		} else if (dy == 0.2f) {
+			dy = 0.05f;
+		} else if (dy == 0.5f) {
+			dy = 0.1f;
+		}
+		return dy;
 	}
 }

@@ -22,12 +22,17 @@ public class ImageLoader {
 	public Texture splashScreenLogo;
 	
 	/**
-	 * Fake tile images for set up..
+	 * Fake tile images for set up.
 	 */
 	public Texture fakeTileOne, fakeTileTwo, fakeTileThree;
 	
 	/**
-	 * Initialize class.
+	 * Light texture.
+	 */
+	public Texture light;
+	
+	/**
+	 * Initialize textures.
 	 */
 	public void init() {
 		splashScreenLogo = new Texture(Gdx.files.internal("logo_ffg.png"));
@@ -35,10 +40,11 @@ public class ImageLoader {
 		fakeTileOne      = new Texture(Gdx.files.internal("FakeTile.png"));
 		fakeTileTwo      = new Texture(Gdx.files.internal("FakeTile2.png"));
 		fakeTileThree    = new Texture(Gdx.files.internal("FakeTile3.png"));
+		light            = new Texture(Gdx.files.internal("Lights.png"));
 	}
 	
 	/**
-	 * Dispose of resources.
+	 * Dispose of textures.
 	 */
 	public void dispose() {
 		splashScreenLogo.dispose();
@@ -46,5 +52,6 @@ public class ImageLoader {
 		fakeTileOne.dispose();
 		fakeTileTwo.dispose();
 		fakeTileThree.dispose();
+		light.dispose();
 	}
 }

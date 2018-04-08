@@ -3,6 +3,7 @@ package gameobjects.gamecharacters;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 
+import helpers.ColorHelper;
 import helpers.GamePlayHelper;
 
 /**
@@ -28,7 +29,7 @@ public class Enemy extends GameCharacter {
 	 */
 	@Override
 	public void draw(ShapeRenderer shapeRenderer) {
-		shapeRenderer.setColor(0, 0, 1, 1);
+		shapeRenderer.setColor(ColorHelper.BLUE);
 		shapeRenderer.circle(x, y, radius);
 	}
 	

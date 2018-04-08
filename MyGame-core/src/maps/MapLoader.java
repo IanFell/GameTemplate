@@ -35,7 +35,8 @@ public class MapLoader {
 					mapEditor.tiles[x][z] = new Tile(Tile.textureThree, true);
 				}
 				mapEditor.tiles[x][z].setPosition(x, z);
-				mapEditor.tiles[x][z].setSize(1, 1); 
+				int tileSize = 1;
+				mapEditor.tiles[x][z].setSize(tileSize, tileSize); 
 			}
 		}
 	}

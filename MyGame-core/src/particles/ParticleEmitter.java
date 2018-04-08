@@ -6,7 +6,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import helpers.ColorHelper;
-import helpers.RandomNumberGenerator;;
+import helpers.RandomNumberGenerator;
 
 /**
  * Loads and draw particle effects.  
@@ -74,20 +74,20 @@ public class ParticleEmitter extends GameObject {
 	private void createParticles(String particleType, Particle[] particles, int size, MyGame myGame) {
 		float emitterWidth  = x + width;
 		float emitterHeight = y + height;
-		float particleSize  = 0.1f;
+		float particleSize  = 0.07f;
 		float startX;
 		float startY;
 		float lifeSpan;
-		Color color;
 		for (int i = 0; i < particles.length; i++) {
-			startX          = RandomNumberGenerator.generateRandomNumber((int) (emitterWidth));
-			startY          = RandomNumberGenerator.generateRandomNumber((int) (emitterHeight)); 
-			lifeSpan        = RandomNumberGenerator.generateRandomNumber(size);
+			startX          = RandomNumberGenerator.generateRandomInteger((int) (emitterWidth));
+			startY          = RandomNumberGenerator.generateRandomInteger((int) (emitterHeight)); 
+			lifeSpan        = RandomNumberGenerator.generateRandomInteger(size);
+			Color color = new Color();
 			if (particleType.equalsIgnoreCase("Red")) {
 				color = ColorHelper.RED;
 			} else if (particleType.equalsIgnoreCase("Yellow")) {
 				color = ColorHelper.YELLOW;
-			} else {
+			} else if (particleType.equalsIgnoreCase("Orange")) {
 				color = ColorHelper.ORANGE;
 			}
 			particles[i] = new Particle(startX, startY, particleSize, particleSize, lifeSpan, color, myGame);

@@ -13,6 +13,7 @@ import maps.MapEditor;
 import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
+import physics.LightHandler;
 
 /**
  * Screen of the game while in play.
@@ -46,6 +47,11 @@ public class GameScreen extends Screens {
 	 * Class to load up the tiles for our level maps.
 	 */
 	private MapLoader mapLoader = new MapLoader();
+	
+	/**
+	 * Handles all in game lighting.
+	 */
+	private LightHandler lightHandler = new LightHandler();
 	
 	/**
 	 * Debugs game screen if needed / uncommented.
@@ -91,7 +97,8 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.begin();
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		mapRenderer.renderMap(myGame, mapEditor);
-		drawAdditionalObjectsOnGameScreenThatDontUseSpriteBatch();
+		lightHandler.renderLight(myGame.renderer.batch, myGame.imageLoader);
+		renderAdditionalObjectsOnGameScreenThatDontUseSpriteBatch();
 		myGame.renderer.batch.end();
 		myGame.renderer.shapeRenderer.end();
 		
@@ -119,9 +126,8 @@ public class GameScreen extends Screens {
 	@Override
 	protected void updateCamera() {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
-		myGame.renderer.shapeRenderer.setProjectionMatrix(myGame.renderer.batch.getProjectionMatrix());
 		myGame.renderer.batch.setTransformMatrix(matrix);
-		myGame.renderer.shapeRenderer.setTransformMatrix(matrix);
+		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
 	    camera.update();
 	}
 	
@@ -130,9 +136,7 @@ public class GameScreen extends Screens {
 	 */
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
-		particleEmitterRed     = new ParticleEmitter(0, 0, 1, 1, "Red", myGame);
-		particleEmitterYellow  = new ParticleEmitter(0, 0, 1, 1, "Yellow", myGame);
-		particleEmitterOrange  = new ParticleEmitter(0, 0, 1, 1, "Orange", myGame);
+		initializeParticleEmitters();
 		initializeCameraForIsometricView();
 	}
 	
@@ -140,12 +144,14 @@ public class GameScreen extends Screens {
 	 * Initializes isometric camera for game screen.
 	 */
 	private void initializeCameraForIsometricView() {
+		int screenSize = 10;
 		camera = new OrthographicCamera(
-				10, 
-				10 * (GameAttributeHelper.SCREEN_HEIGHT / (float) GameAttributeHelper.SCREEN_WIDTH)
+				screenSize, 
+				screenSize * (GameAttributeHelper.SCREEN_HEIGHT / (float) GameAttributeHelper.SCREEN_WIDTH)
 		);
 		camera.position.set(5, 5, 15);
-		camera.direction.set(-1, -1, -1);
+		int cameraDirection = -1;
+		camera.direction.set(cameraDirection, cameraDirection, cameraDirection);
 		matrix.setToRotation(new Vector3(1, 0, 0), -90);
 	}
 	
@@ -155,20 +161,41 @@ public class GameScreen extends Screens {
 	 */
 	private void updateGameScreen() {
 		myGame.gameObjectLoader.enemy.updateGameObject();
+		updateParticleEmitters();
+		lightHandler.updateLighting(myGame.imageLoader);
+	}
+	
+	/**
+	 * Draw objects associated with a ShapeRenderer.
+	 */
+	private void renderAdditionalObjectsOnGameScreenThatDontUseSpriteBatch() {
+		myGame.gameObjectLoader.enemy.draw(myGame.renderer.shapeRenderer);
+		myGame.gameObjectLoader.player.draw(myGame.renderer.shapeRenderer);
+		renderParticleEmitters();
+	}
+	
+	/**
+	 * Initializes particle emitters.
+	 */
+	private void initializeParticleEmitters() {
+		particleEmitterRed     = new ParticleEmitter(0, 0, 1, 1, "Red", myGame);
+		particleEmitterYellow  = new ParticleEmitter(0, 0, 1, 1, "Yellow", myGame);
+		particleEmitterOrange  = new ParticleEmitter(0, 0, 1, 1, "Orange", myGame);
+	}
+	
+	/**
+	 * Updates particle emitters.
+	 */
+	private void updateParticleEmitters() {
 		particleEmitterRed.updateParticleEmitter(myGame);
 		particleEmitterYellow.updateParticleEmitter(myGame);
 		particleEmitterOrange.updateParticleEmitter(myGame);
 	}
 	
 	/**
-	 * Draw objects associated with a ShapeRenderer.
-	 * We need to do this after the sprite batch is rendered
-	 * since if we don't, it will block the sprite batch 
-	 * from rendering.
+	 * Renders particle emitters.
 	 */
-	private void drawAdditionalObjectsOnGameScreenThatDontUseSpriteBatch() {
-		myGame.gameObjectLoader.enemy.draw(myGame.renderer.shapeRenderer);
-		myGame.gameObjectLoader.player.draw(myGame.renderer.shapeRenderer);
+	private void renderParticleEmitters() {
 		particleEmitterRed.drawParticleEmitter(myGame.renderer.shapeRenderer, "Red");
 		particleEmitterYellow.drawParticleEmitter(myGame.renderer.shapeRenderer, "Yellow");
 		particleEmitterOrange.drawParticleEmitter(myGame.renderer.shapeRenderer, "Orange");
