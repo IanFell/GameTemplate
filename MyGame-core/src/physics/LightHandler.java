@@ -43,7 +43,7 @@ public class LightHandler extends AbstractGameObject {
 	 * @param ImageLoader imageLoader
 	 */
 	public void renderLight(SpriteBatch batch, ImageLoader imageLoader) {
-		batch.draw(imageLoader.light, 0, 0, width, height);
+		batch.draw(imageLoader.light, 0, 5, width, height);
 	}
 	
 	/**

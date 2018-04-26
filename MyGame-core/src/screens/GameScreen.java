@@ -27,7 +27,7 @@ public class GameScreen extends Screens {
 	/**
 	 * Used for isometric camera view.
 	 */
-	private final Matrix4 matrix = new Matrix4();	
+	private final Matrix4 matrix = new Matrix4();
 	
 	/**
 	 * Keeps track if screen has been initialized.
@@ -74,6 +74,10 @@ public class GameScreen extends Screens {
 	private ParticleEmitter particleEmitterYellow;
 	private ParticleEmitter particleEmitterOrange;
 	
+	private ParticleEmitter particleEmitterRed2;
+	private ParticleEmitter particleEmitterYellow2;
+	private ParticleEmitter particleEmitterOrange2;
+	
 	/**
 	 * Constructor.
 	 * 
@@ -103,10 +107,15 @@ public class GameScreen extends Screens {
 		// Screen only shakes when needed, but we must update it at all times just in case it needs to shake.
 		screenShake.update(delta, camera);
 		updateCamera();
+		
+		// Draw SpriteBatch.
 		myGame.renderer.batch.begin();
-		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
-		renderAllGameObjects();
+		renderObjectsOnGameScreenThatUseSpriteBatch();
 		myGame.renderer.batch.end();
+		
+		// Draw ShapeRenderer.
+		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
+		renderObjectsOnGameScreenThatUseShapeRenderer();
 		myGame.renderer.shapeRenderer.end();
 		
 		// If a screenshake happened, reset camera to it's original position before shake.
@@ -116,7 +125,7 @@ public class GameScreen extends Screens {
 		updateGameScreen();
 		
 		// Perform debug testing on GameScreen so we know different scenarios work.
-		debugger.debugGameScreen(myGame, mapEditor);
+		//debugger.debugGameScreen(myGame, mapEditor);
 	}
 	
 	/**
@@ -133,9 +142,9 @@ public class GameScreen extends Screens {
 	@Override
 	protected void updateCamera() {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
-		myGame.renderer.batch.setTransformMatrix(matrix);
 		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
-	    camera.update();
+		myGame.renderer.batch.setTransformMatrix(matrix);
+		camera.update();
 	}
 	
 	/**
@@ -151,16 +160,19 @@ public class GameScreen extends Screens {
 	 * Initializes isometric camera for game screen.
 	 */
 	private void initializeCameraForIsometricView() {
-		int screenSize = 10;
+		int cameraSize = 10;
 		camera = new OrthographicCamera(
-				screenSize, 
-				screenSize * (GameAttributeHelper.SCREEN_HEIGHT / (float) GameAttributeHelper.SCREEN_WIDTH)
+				cameraSize, 
+				cameraSize * (GameAttributeHelper.SCREEN_HEIGHT / (float) GameAttributeHelper.SCREEN_WIDTH)
 		);
-		int cameraXYPosition = 5;
-		camera.position.set(cameraXYPosition, cameraXYPosition, 15);
+		int cameraXYPosition = 10;
+		camera.position.set(cameraXYPosition, cameraXYPosition, cameraXYPosition * 2);
 		int cameraDirection = -1;
 		camera.direction.set(cameraDirection, cameraDirection, cameraDirection);
-		matrix.setToRotation(new Vector3(1, 0, 0), -90);
+		int matrixNonRotationValue = 0;
+		matrix.setToRotation(new Vector3(1, matrixNonRotationValue, matrixNonRotationValue), 90);
+		camera.position.x = myGame.gameObjectLoader.player.getX() + 10;
+		camera.position.y = myGame.gameObjectLoader.player.getY();
 	}
 	
 	/**
@@ -168,18 +180,11 @@ public class GameScreen extends Screens {
 	 * For now we only need this for debugging purposes.
 	 */
 	private void updateGameScreen() {
-		myGame.gameObjectLoader.enemy.updateGameObject();
+		//myGame.gameObjectLoader.enemy.updateGameObject();
 		updateParticleEmitters();
 		lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.performDayAndNightCycle();
-	}
-	
-	/**
-	 * Renders all game objects.
-	 */
-	private void renderAllGameObjects() {
-		renderObjectsOnGameScreenThatUseSpriteBatch();
-		renderObjectsOnGameScreenThatUseShapeRenderer();
+		myGame.gameObjectLoader.player.updateObject(myGame, mapEditor);
 	}
 	
 	/**
@@ -188,14 +193,14 @@ public class GameScreen extends Screens {
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
 		mapRenderer.renderMap(myGame, mapEditor);
 		lightHandler.renderLight(myGame.renderer.batch, myGame.imageLoader);
+		myGame.gameObjectLoader.player.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 	}
 	
 	/**
 	 * Draw objects associated with ShapeRenderer.
 	 */
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
-		myGame.gameObjectLoader.enemy.draw(myGame.renderer.shapeRenderer);
-		myGame.gameObjectLoader.player.draw(myGame.renderer.shapeRenderer);
+		//myGame.gameObjectLoader.enemy.draw(myGame.renderer.shapeRenderer);
 		renderParticleEmitters();
 	}
 	
@@ -203,26 +208,54 @@ public class GameScreen extends Screens {
 	 * Initializes particle emitters.
 	 */
 	private void initializeParticleEmitters() {
-		particleEmitterRed     = new ParticleEmitter(0, 0, 1, 1, "Red", myGame);
-		particleEmitterYellow  = new ParticleEmitter(0, 0, 1, 1, "Yellow", myGame);
-		particleEmitterOrange  = new ParticleEmitter(0, 0, 1, 1, "Orange", myGame);
+		particleEmitterRed     = new ParticleEmitter(6, 6, 1, 1, "Red", myGame);
+		particleEmitterYellow  = new ParticleEmitter(6, 6, 1, 1, "Yellow", myGame);
+		particleEmitterOrange  = new ParticleEmitter(6, 6, 1, 1, "Orange", myGame);
+		
+		particleEmitterRed2     = new ParticleEmitter(5, 5, 1, 1, "Red", myGame);
+		particleEmitterYellow2  = new ParticleEmitter(5, 5, 1, 1, "Yellow", myGame);
+		particleEmitterOrange2  = new ParticleEmitter(5, 5, 1, 1, "Orange", myGame);
+		
+		particleEmitterRed.setX(-particleEmitterRed.getX());
+		particleEmitterYellow.setX(-particleEmitterYellow.getX());
+		particleEmitterOrange.setX(-particleEmitterOrange.getX());
+		
+		particleEmitterRed.setY(-particleEmitterRed.getY());
+		particleEmitterYellow.setY(-particleEmitterYellow.getY());
+		particleEmitterOrange.setY(-particleEmitterOrange.getY());
+		
+		particleEmitterRed2.setX(-particleEmitterRed2.getX());
+		particleEmitterYellow2.setX(-particleEmitterYellow2.getX());
+		particleEmitterOrange2.setX(-particleEmitterOrange2.getX());
+		
+		particleEmitterRed2.setY(-particleEmitterRed2.getY());
+		particleEmitterYellow2.setY(-particleEmitterYellow2.getY());
+		particleEmitterOrange2.setY(-particleEmitterOrange2.getY());
 	}
 	
 	/**
 	 * Updates particle emitters.
 	 */
 	private void updateParticleEmitters() {
-		particleEmitterRed.updateParticleEmitter(myGame);
-		particleEmitterYellow.updateParticleEmitter(myGame);
-		particleEmitterOrange.updateParticleEmitter(myGame);
+		particleEmitterRed.updateParticleEmitter(myGame, lightHandler);
+		particleEmitterYellow.updateParticleEmitter(myGame, lightHandler);
+		particleEmitterOrange.updateParticleEmitter(myGame, lightHandler);
+		
+		particleEmitterRed2.updateParticleEmitter(myGame, lightHandler);
+		particleEmitterYellow2.updateParticleEmitter(myGame, lightHandler);
+		particleEmitterOrange2.updateParticleEmitter(myGame, lightHandler);
 	}
 	
 	/**
 	 * Renders particle emitters.
 	 */
 	private void renderParticleEmitters() {
-		particleEmitterRed.drawParticleEmitter(myGame.renderer.shapeRenderer, "Red");
-		particleEmitterYellow.drawParticleEmitter(myGame.renderer.shapeRenderer, "Yellow");
-		particleEmitterOrange.drawParticleEmitter(myGame.renderer.shapeRenderer, "Orange");
+		particleEmitterRed.renderParticleEmitter(myGame.renderer.shapeRenderer, "Red", myGame.renderer.batch, myGame.imageLoader);
+		particleEmitterYellow.renderParticleEmitter(myGame.renderer.shapeRenderer, "Yellow", myGame.renderer.batch, myGame.imageLoader);
+		particleEmitterOrange.renderParticleEmitter(myGame.renderer.shapeRenderer, "Orange", myGame.renderer.batch, myGame.imageLoader);
+		
+		particleEmitterRed2.renderParticleEmitter(myGame.renderer.shapeRenderer, "Red", myGame.renderer.batch, myGame.imageLoader);
+		particleEmitterYellow2.renderParticleEmitter(myGame.renderer.shapeRenderer, "Yellow", myGame.renderer.batch, myGame.imageLoader);
+		particleEmitterOrange2.renderParticleEmitter(myGame.renderer.shapeRenderer, "Orange", myGame.renderer.batch, myGame.imageLoader);
 	}
 }

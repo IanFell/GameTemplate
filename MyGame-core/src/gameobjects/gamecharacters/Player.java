@@ -1,10 +1,11 @@
 package gameobjects.gamecharacters;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Circle;
+import com.mygdx.mygame.MyGame;
 
-import helpers.ColorHelper;
-import helpers.GamePlayHelper;
+import loaders.ImageLoader;
+import maps.MapEditor;
 
 /**
  * Player object.
@@ -15,31 +16,48 @@ import helpers.GamePlayHelper;
 public class Player extends GameCharacter {
 	
 	/**
-	 * Constructor.
-	 */
-	public Player() {
-		this.x      = GamePlayHelper.setObjectXPositionInMiddleOfScreen(this);
-		this.y      = GamePlayHelper.setObjectYPositionInMiddleOfScreen(this);
-		this.radius = characterSize;
-		this.circle = new Circle(x, y, radius);
-	}
-	
-	/**
-	 * @param ShapeRenderer shapeRenderer
-	 */
-	@Override
-	public void draw(ShapeRenderer shapeRenderer) {
-		shapeRenderer.setColor(ColorHelper.WHITE);
-		shapeRenderer.circle(x, y, radius);
-	}
-	
-	/**
 	 * Available directions player can travel.  
-	 * Because of the GameObjectFactory, these variables
-	 * get set in the GameObject class rather than Player class.
 	 */
 	public static final int DIRECTION_LEFT  = 0;
 	public static final int DIRECTION_RIGHT = 1;
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
+	
+	/**
+	 * Constructor.
+	 */
+	public Player() {
+		this.x      = 5;
+		this.y      = 10;
+		this.width  = characterSize;
+		this.height = characterSize;
+	}
+	
+	/**
+	 * 
+	 * @param MyGame    myGame
+	 * @param MapEditor mapEditor
+	 */
+	@Override
+	public void updateObject(MyGame myGame, MapEditor mapEditor) {
+		x += dx;
+		y += dy;
+	}
+	
+	/**
+	 * 
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
+	 */
+	@Override
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+		batch.draw(
+				imageLoader.playerSprite, 
+				x, 
+				y, 
+				width, 
+				height
+				);
+	}
 }

@@ -1,11 +1,13 @@
 package particles;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import helpers.RandomNumberGenerator;
+import loaders.ImageLoader;
 
 /**
  * Individual particles.  
@@ -38,16 +40,6 @@ public class Particle extends GameObject {
 	private Color color;
 	
 	/**
-	 * Speed of side to side movement.
-	 */
-	private float dx;
-	
-	/**
-	 * Speed of up movement.
-	 */
-	private float dy;
-	
-	/**
 	 * Constructor.
 	 * 
 	 * @param float  x
@@ -72,10 +64,12 @@ public class Particle extends GameObject {
 	
 	/**
 	 * 
+	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void draw(ShapeRenderer shapeRenderer) {
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		if (isAlive) {
 			shapeRenderer.setColor(this.color);
 			shapeRenderer.rect(x, y, width, height);
@@ -133,16 +127,18 @@ public class Particle extends GameObject {
 	/**
 	 * Changes value of dy variable to make particles appear to move more randomly.
 	 * 
-	 * @param flat dy
+	 * @param float dy
 	 * @return float
 	 */
 	private float changeDyValue(float dy) {
-		if (dy == 0.1f) {
-			dy = 0.2f;
-		} else if (dy == 0.2f) {
+		float dySpeedFast      = 0.1f;
+		float dySpeedMedium    = 0.2f;
+		if (dy == dySpeedFast) {
+			dy = dySpeedMedium;
+		} else if (dy == dySpeedMedium) {
 			dy = 0.05f;
 		} else if (dy == 0.5f) {
-			dy = 0.1f;
+			dy = dySpeedFast;
 		}
 		return dy;
 	}

@@ -1,12 +1,15 @@
 package particles;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import helpers.ColorHelper;
 import helpers.RandomNumberGenerator;
+import loaders.ImageLoader;
+import physics.LightHandler;
 
 /**
  * Loads and draw particle effects.  
@@ -94,10 +97,12 @@ public class ParticleEmitter extends GameObject {
 	/**
 	 * 
 	 * @param ShapeRenderer shapeRenderer
-	 * @param ParticleType  particleType
+	 * @param String        particleType
+	 * @param SpriteBatch   batch
+	 * @param ImageLoader   imageLoader
 	 */
-	public void drawParticleEmitter(ShapeRenderer shapeRenderer, String particleType) {
-		drawFire(shapeRenderer, particleType);
+	public void renderParticleEmitter(ShapeRenderer shapeRenderer, String particleType, SpriteBatch batch, ImageLoader imageLoader) {
+		drawFire(shapeRenderer, particleType, batch, imageLoader);
 	}
 	
 	/**
@@ -105,30 +110,33 @@ public class ParticleEmitter extends GameObject {
 	 * 
 	 * @param ShapeRenderer shapeRenderer
 	 * @param String        particleType
+	 * @param SpriteBatch   batch
+	 * @param ImageLoader   imageLoader
 	 */
-	private void drawFire(ShapeRenderer shapeRenderer, String particleType) {
+	private void drawFire(ShapeRenderer shapeRenderer, String particleType, SpriteBatch batch, ImageLoader imageLoader) {
 		if (particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
-				redParticles[i].draw(shapeRenderer);
+				redParticles[i].renderObject(batch, shapeRenderer, imageLoader);
 			}
 		}
 		if (particleType.equalsIgnoreCase("Yellow")) {
 			for (int i = 0; i < yellowParticles.length; i++) {
-				yellowParticles[i].draw(shapeRenderer);
+				yellowParticles[i].renderObject(batch, shapeRenderer, imageLoader);
 			}
 		}
 		if (particleType.equalsIgnoreCase("Orange")) {
 			for (int i = 0; i < orangeParticles.length; i++) {
-				orangeParticles[i].draw(shapeRenderer);
+				orangeParticles[i].renderObject(batch, shapeRenderer, imageLoader);
 			}
 		}
 	}
 	
 	/**
 	 * 
-	 * @param MyGame myGame
+	 * @param MyGame       myGame
+	 * @param LightHandler lightHandler
 	 */
-	public void updateParticleEmitter(MyGame myGame) {
+	public void updateParticleEmitter(MyGame myGame, LightHandler lightHandler) {
 		if (particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
 				redParticles[i].updateParticles(this);

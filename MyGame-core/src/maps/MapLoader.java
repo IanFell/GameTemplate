@@ -23,16 +23,16 @@ public class MapLoader {
 		for(int z = 0; z < mapEditor.map.length; z++) {
 			for(int x = 0; x < mapEditor.map[z].length; x++) {
 				if (mapEditor.map[z][x] == 0) {  
-					mapEditor.tiles[x][z] = new Tile(Tile.textureOne, false);
+					mapEditor.tiles[x][z] = new Tile(Tile.textureOne, true);
 				}
 				if (mapEditor.map[z][x] == 1) {  
-					mapEditor.tiles[x][z] = new Tile(Tile.textureOne, false);
-				}
-				if (mapEditor.map[z][x] == 2) {
 					mapEditor.tiles[x][z] = new Tile(Tile.textureTwo, false);
 				}
-				if (mapEditor.map[z][x] == 3) {
+				if (mapEditor.map[z][x] == 2) {  
 					mapEditor.tiles[x][z] = new Tile(Tile.textureThree, true);
+				}
+				if (mapEditor.map[z][x] == 3) {  
+					mapEditor.tiles[x][z] = new Tile(Tile.textureFour, true);
 				}
 				mapEditor.tiles[x][z].setPosition(x, z);
 				int tileSize = 1;

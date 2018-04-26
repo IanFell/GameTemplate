@@ -27,10 +27,9 @@ public class Tile extends Sprite {
 	 */
 	public static Texture textureTwo;
 	
-	/**
-	 * Texture for tile three.
-	 */
 	public static Texture textureThree;
+	
+	public static Texture textureFour;
 	
 	/**
 	 * Contstructor.
@@ -50,7 +49,8 @@ public class Tile extends Sprite {
 	public static void initializeTileTextures(MyGame myGame) {
 		textureOne   = myGame.imageLoader.fakeTileOne;
 		textureTwo   = myGame.imageLoader.fakeTileTwo;
-		textureThree = myGame.imageLoader.fakeTileThree;
+		textureThree = myGame.imageLoader.fakeTileBottom;
+		textureFour = myGame.imageLoader.fakeTileTop;
 	}
 
 	/**

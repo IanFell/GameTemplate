@@ -28,7 +28,7 @@ public class Screens implements Screen {
 	/**
 	 * Scrolling speed for closest tier to screen.
 	 */
-	public final static float SCREEN_SCROLL_SPEED_TIER_ONE = 0.3f;
+	public final static float SCREEN_SCROLL_SPEED_TIER_ONE = 0.1f;
 	 
 	/**
 	 * Available game states.
@@ -199,7 +199,7 @@ public class Screens implements Screen {
 				camera.position.x += bounceBackAmountUponPlayerTileCollision;
 				break;
 			case Player.DIRECTION_RIGHT:
-				camera.position.x -= bounceBackAmountUponPlayerTileCollision;
+				camera.position.x -= bounceBackAmountUponPlayerTileCollision + .01;
 				break;
 			case Player.DIRECTION_UP:
 				camera.position.y -= bounceBackAmountUponPlayerTileCollision;

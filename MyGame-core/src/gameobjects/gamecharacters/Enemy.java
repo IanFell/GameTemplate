@@ -1,10 +1,14 @@
 package gameobjects.gamecharacters;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
+import com.mygdx.mygame.MyGame;
 
 import helpers.ColorHelper;
 import helpers.GamePlayHelper;
+import loaders.ImageLoader;
+import maps.MapEditor;
 
 /**
  * Enemy object.
@@ -25,16 +29,24 @@ public class Enemy extends GameCharacter {
 	}
 	
 	/**
+	 * 
+	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void draw(ShapeRenderer shapeRenderer) {
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		shapeRenderer.setColor(ColorHelper.BLUE);
 		shapeRenderer.circle(x, y, radius);
 	}
 	
+	/**
+	 * 
+	 * @param MyGame    myGame
+	 * @param MapEditor mapEditor
+	 */
 	@Override
-	public void updateGameObject() {
+	public void updateObject(MyGame myGame, MapEditor mapEditor) {
 		circle.x = x;
 		circle.y = y;
 	}

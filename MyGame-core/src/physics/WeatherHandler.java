@@ -12,7 +12,7 @@ package physics;
 public class WeatherHandler {
 	
 	/**
-	 * Determines if it is day time or not.
+	 * Determines if it is day time.
 	 */
 	private boolean isDayTime = true;
 	

@@ -1,7 +1,16 @@
 package gameobjects.gamecharacters;
 
-import gameobjects.GameObject;
+import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
+import maps.MapEditor;
+
+/**
+ * Parent class for game characters.
+ * 
+ * @author Fabulous Fellini
+ *
+ */
 public class GameCharacter extends GameObject {
 	
 	/**
@@ -15,7 +24,7 @@ public class GameCharacter extends GameObject {
 	protected int radius;
 
 	/**
-	 * Moves object along the X axis.
+	 * Moves object along the x axis.
 	 * 
 	 * @param float distance
 	 */
@@ -25,7 +34,7 @@ public class GameCharacter extends GameObject {
 	}
 	
 	/**
-	 * Moves object along the Y axis.
+	 * Moves object along the y axis.
 	 * 
 	 * @param float distance
 	 */
@@ -34,6 +43,11 @@ public class GameCharacter extends GameObject {
 		y += distance;
 	}
 	
+	/**
+	 * 
+	 * @param MyGame    myGame
+	 * @param MapEditor mapEditor
+	 */
 	@Override
-	public void updateGameObject() {}
+	public void updateObject(MyGame myGame, MapEditor mapEditor) {}
 }

@@ -24,12 +24,16 @@ public class ImageLoader {
 	/**
 	 * Fake tile images for set up.
 	 */
-	public Texture fakeTileOne, fakeTileTwo, fakeTileThree;
+	public Texture fakeTileOne, fakeTileTwo;
+	
+	public Texture fakeTileBottom, fakeTileTop;
 	
 	/**
 	 * Light texture.
 	 */
 	public Texture light;
+	
+	public Texture playerSprite;
 	
 	/**
 	 * Initialize textures.
@@ -39,8 +43,10 @@ public class ImageLoader {
 		testImage        = new Texture(Gdx.files.internal("badlogic.jpg"));
 		fakeTileOne      = new Texture(Gdx.files.internal("FakeTile.png"));
 		fakeTileTwo      = new Texture(Gdx.files.internal("FakeTile2.png"));
-		fakeTileThree    = new Texture(Gdx.files.internal("FakeTile3.png"));
-		light            = new Texture(Gdx.files.internal("Lights.png"));
+		fakeTileBottom      = new Texture(Gdx.files.internal("FakeTileBottom.png"));
+		fakeTileTop      = new Texture(Gdx.files.internal("FakeTileTop.png"));
+		light            = new Texture(Gdx.files.internal("Lighting.png"));
+		playerSprite            = new Texture(Gdx.files.internal("PlayerSprite.png"));
 	}
 	
 	/**
@@ -51,7 +57,9 @@ public class ImageLoader {
 		testImage.dispose();
 		fakeTileOne.dispose();
 		fakeTileTwo.dispose();
-		fakeTileThree.dispose();
+		fakeTileBottom.dispose();
+		fakeTileTop.dispose();
 		light.dispose();
+		playerSprite.dispose();
 	}
 }

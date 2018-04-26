@@ -1,11 +1,14 @@
 package gameobjects;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
+import com.mygdx.mygame.MyGame;
 
 import interfaces.GameObjectInterface;
 import loaders.ImageLoader;
+import maps.MapEditor;
 
 /**
  * Class to hold and handle common elements for all game objects.
@@ -33,6 +36,16 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	protected Texture texture;
 
 	/**
+	 * Game object x-axis speed value.
+	 */
+	public float dx;
+	
+	/**
+	 * Game object y-axis speed value.
+	 */
+	public float dy;
+
+	/**
 	 * Constructor.
 	 */
 	public GameObject() {}
@@ -45,19 +58,6 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	public void init(ImageLoader imageLoader) {
 		this.texture = imageLoader.testImage;
 	}
-	
-	/**
-	 * Draw game object.
-	 * 
-	 * @param ShapeRenderer shapeRenderer
-	 */
-	public void draw(ShapeRenderer shapeRenderer) {}
-	
-	/**
-	 * Abstract update method.  
-	 * Most gameObject children will override this.
-	 */
-	public void updateGameObject() {}
 	
 	/**
 	 * Move object along the X axis.
@@ -95,5 +95,28 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 */
 	public void setDirection(int direction) {
 		this.direction = direction;
+	}
+	
+	/**
+	 * Render game object.
+	 * 
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
+	 */
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Update game object.
+	 * 
+	 * @param MyGame    myGame
+	 * @param MapEditor mapEditor
+	 */
+	public void updateObject(MyGame myGame, MapEditor mapEditor) {
+		// TODO Auto-generated method stub
+		
 	}
 }
