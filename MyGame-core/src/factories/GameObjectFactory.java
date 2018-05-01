@@ -1,7 +1,6 @@
 package factories;
 
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 
 /**
@@ -24,9 +23,6 @@ public class GameObjectFactory {
 		}
 		if (objectType.equalsIgnoreCase("player")) {
 			return new Player();
-		}
-		if (objectType.equalsIgnoreCase("enemy")) {
-			return new Enemy();
 		}
 		return null;
 	}

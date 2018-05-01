@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import physics.WeatherHandler;
 
@@ -19,11 +18,6 @@ import physics.WeatherHandler;
  *
  */
 public class Screens implements Screen {
-	
-	/**
-	 * Screen does not scroll if this is set.
-	 */
-	public final static float SCREEN_SCROLL_SPEED_NONE = 0;
 	
 	/**
 	 * Scrolling speed for closest tier to screen.
@@ -184,31 +178,5 @@ public class Screens implements Screen {
 	 */
 	public static void scrollScreen(float x, float y) {
 		camera.translate(x, y);
-	}
-
-	/**
-	 * Moves camera back 1 on the x, y axis, then stops it.
-	 * This is used when a player interacts with a solid tile.
-	 * 
-	 * @param int direction
-	 */
-	public static void stopScrolling(int direction) {
-		float bounceBackAmountUponPlayerTileCollision = 0.3f;
-		switch (direction) {
-			case Player.DIRECTION_LEFT:
-				camera.position.x += bounceBackAmountUponPlayerTileCollision;
-				break;
-			case Player.DIRECTION_RIGHT:
-				camera.position.x -= bounceBackAmountUponPlayerTileCollision + .01;
-				break;
-			case Player.DIRECTION_UP:
-				camera.position.y -= bounceBackAmountUponPlayerTileCollision;
-				break;
-			case Player.DIRECTION_DOWN:
-				camera.position.y += bounceBackAmountUponPlayerTileCollision;
-				break;
-			}
-		float stopScreenValue = SCREEN_SCROLL_SPEED_NONE;
-		camera.translate(stopScreenValue, stopScreenValue);
 	}
 }

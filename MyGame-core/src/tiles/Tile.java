@@ -27,14 +27,11 @@ public class Tile extends Sprite {
 	 */
 	public static Texture textureTwo;
 	
-	public static Texture textureThree;
-	
-	public static Texture textureFour;
-	
 	/**
 	 * Contstructor.
 	 * 
 	 * @param Texture texture
+	 * @param boolean isSolid
 	 */
 	public Tile(Texture texture, boolean isSolid) {
 		super(texture);
@@ -47,10 +44,8 @@ public class Tile extends Sprite {
 	 * @param MyGame myGame
 	 */
 	public static void initializeTileTextures(MyGame myGame) {
-		textureOne   = myGame.imageLoader.fakeTileOne;
-		textureTwo   = myGame.imageLoader.fakeTileTwo;
-		textureThree = myGame.imageLoader.fakeTileBottom;
-		textureFour = myGame.imageLoader.fakeTileTop;
+		textureOne  = myGame.imageLoader.fakeTileOne;
+		textureTwo  = myGame.imageLoader.fakeTileTwo;
 	}
 
 	/**

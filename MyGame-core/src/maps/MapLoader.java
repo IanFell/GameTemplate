@@ -28,12 +28,6 @@ public class MapLoader {
 				if (mapEditor.map[z][x] == 1) {  
 					mapEditor.tiles[x][z] = new Tile(Tile.textureTwo, false);
 				}
-				if (mapEditor.map[z][x] == 2) {  
-					mapEditor.tiles[x][z] = new Tile(Tile.textureThree, true);
-				}
-				if (mapEditor.map[z][x] == 3) {  
-					mapEditor.tiles[x][z] = new Tile(Tile.textureFour, true);
-				}
 				mapEditor.tiles[x][z].setPosition(x, z);
 				int tileSize = 1;
 				mapEditor.tiles[x][z].setSize(tileSize, tileSize); 

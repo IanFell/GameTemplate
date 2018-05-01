@@ -101,7 +101,12 @@ public class ParticleEmitter extends GameObject {
 	 * @param SpriteBatch   batch
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderParticleEmitter(ShapeRenderer shapeRenderer, String particleType, SpriteBatch batch, ImageLoader imageLoader) {
+	public void renderParticleEmitter(
+			ShapeRenderer shapeRenderer, 
+			String particleType, 
+			SpriteBatch batch, 
+			ImageLoader imageLoader
+			) {
 		drawFire(shapeRenderer, particleType, batch, imageLoader);
 	}
 	
@@ -113,7 +118,12 @@ public class ParticleEmitter extends GameObject {
 	 * @param SpriteBatch   batch
 	 * @param ImageLoader   imageLoader
 	 */
-	private void drawFire(ShapeRenderer shapeRenderer, String particleType, SpriteBatch batch, ImageLoader imageLoader) {
+	private void drawFire(
+			ShapeRenderer shapeRenderer, 
+			String particleType, 
+			SpriteBatch batch, 
+			ImageLoader imageLoader
+			) {
 		if (particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
 				redParticles[i].renderObject(batch, shapeRenderer, imageLoader);

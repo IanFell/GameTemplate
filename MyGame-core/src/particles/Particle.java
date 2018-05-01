@@ -91,7 +91,7 @@ public class Particle extends GameObject {
 				life += 3;
 				// Make dy value appear more random.
 				dy = changeDyValue(dy);
-				y += dy;
+				y -= dy;
 				
 				// If particle is past the point of no return, move it to the side, depending on which side it's on.
 				int move = RandomNumberGenerator.generateRandomInteger(100);

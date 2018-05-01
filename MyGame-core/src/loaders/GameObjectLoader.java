@@ -18,18 +18,12 @@ public class GameObjectLoader {
 	public GameObject player;
 	
 	/**
-	 * Our enemy object.
-	 */
-	public GameObject enemy;
-	
-	/**
 	 * Creates our game objects.
 	 * 
 	 * @param MyGame myGame
 	 */
 	public void createObjects(MyGame myGame) {
 		player = myGame.gameObjectFactory.getObject("player");
-		enemy  = myGame.gameObjectFactory.getObject("enemy");
 	}
 	
 	/**
@@ -39,6 +33,5 @@ public class GameObjectLoader {
 	 */
 	public void init(ImageLoader imageLoader) {
 		player.init(imageLoader);
-		enemy.init(imageLoader);
 	}
 }

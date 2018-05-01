@@ -36,47 +36,44 @@ public class Keyboard extends ComputerInput {
 			
 		case Screens.GAME_SCREEN:	
 			
-			float cameraScrollingSpeedNone    = Screens.SCREEN_SCROLL_SPEED_NONE;
 			float cameraScrollingSpeedTierOne = Screens.SCREEN_SCROLL_SPEED_TIER_ONE;
 			
-			/**
-			 * These directions do not seem as they should because we are isometric.
-			 * If we switch the screen to normal the directions will be messed up.
-			 */
-			
 			// Get arrow buttons for direction.
-			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-				myGame.gameObjectLoader.player.dx = -cameraScrollingSpeedTierOne;
-				Screens.scrollScreen(-cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
-				myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_LEFT);
-				System.out.println("Player is moving LEFT");
-	        } 
-			else  if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
-				myGame.gameObjectLoader.player.dx = cameraScrollingSpeedTierOne;
-	        	Screens.scrollScreen(cameraScrollingSpeedTierOne, cameraScrollingSpeedNone);
-	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_RIGHT);
-	        	System.out.println("Player is moving RIGHT");
-	        }
-			else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
-				myGame.gameObjectLoader.player.dy = -cameraScrollingSpeedTierOne;
-	        	Screens.scrollScreen(cameraScrollingSpeedTierOne, cameraScrollingSpeedTierOne);
-	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_UP);
-	        	System.out.println("Player is moving UP");
-	        }
-			else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
-				myGame.gameObjectLoader.player.dy = cameraScrollingSpeedTierOne;
-	        	Screens.scrollScreen(-cameraScrollingSpeedTierOne, -cameraScrollingSpeedTierOne);
-	        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_DOWN);
-	        	System.out.println("Player is moving DOWN");
-	        }
-	        else {
-	        	myGame.gameObjectLoader.player.dx = 0;
+			if (!Player.playerShouldStopMoving) {
+				if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+					myGame.gameObjectLoader.player.dx = -cameraScrollingSpeedTierOne;
+					myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_LEFT);
+					System.out.println("Player is moving LEFT");
+		        } 
+				else  if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
+					myGame.gameObjectLoader.player.dx = cameraScrollingSpeedTierOne;
+		        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_RIGHT);
+		        	System.out.println("Player is moving RIGHT");
+		        }
+				else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
+					myGame.gameObjectLoader.player.dy = -cameraScrollingSpeedTierOne;
+		        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_UP);
+		        	System.out.println("Player is moving UP");
+		        }
+				else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
+					myGame.gameObjectLoader.player.dy = cameraScrollingSpeedTierOne;
+		        	myGame.gameObjectLoader.player.setDirection(Player.DIRECTION_DOWN);
+		        	System.out.println("Player is moving DOWN");
+		        }
+		        else {
+		        	myGame.gameObjectLoader.player.dx = 0;
+					myGame.gameObjectLoader.player.dy = 0;
+				}
+			} else {
+				myGame.gameObjectLoader.player.dx = 0;
 				myGame.gameObjectLoader.player.dy = 0;
+				myGame.gameObjectLoader.player.stopScrolling(myGame.gameObjectLoader.player.getDirection());
+				Player.playerShouldStopMoving = false;
 			}
-	        
+			
 	        // Perform screenshake.
-	        if (Gdx.input.isKeyPressed(Input.Keys.S)){ 
-				Screens.screenShake.shake(5, 5);
+	        if (Gdx.input.isKeyPressed(Input.Keys.S)) { 
+				Screens.screenShake.shake(3, 3);
 			}
 	        
 	        /**
@@ -84,7 +81,7 @@ public class Keyboard extends ComputerInput {
 	         * This will make the light texture grow,
 	         * then shrink back to normal size when key is released.
 	         */
-	        if (Gdx.input.isKeyPressed(Input.Keys.L)){ 
+	        if (Gdx.input.isKeyPressed(Input.Keys.L)) { 
 				LightHandler.isGrowing = true;
 			} else {
 				LightHandler.isGrowing = false;

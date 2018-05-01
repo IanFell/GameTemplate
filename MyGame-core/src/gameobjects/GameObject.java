@@ -3,7 +3,7 @@ package gameobjects;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import interfaces.GameObjectInterface;
@@ -19,16 +19,15 @@ import maps.MapEditor;
 public class GameObject extends AbstractGameObject implements GameObjectInterface {
 	
 	/**
+	 * Rectangle to deal with collisions.
+	 */
+	public Rectangle rectangle = new Rectangle();
+	
+	/**
 	 * Direction game objects can travel in.
-	 * This is more of an illusion, as the camera is scrolling around the world.
 	 * If left arrow is pressed, we can think of this as 'direction = playerMovingLeftConstant'.
 	 */
 	public int direction;
-	
-	/**
-	 * Circle for our collision detection.
-	 */
-	protected Circle circle;
 	
 	/**
 	 * Image for our game object.
@@ -72,14 +71,6 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 * @param float distance
 	 */
 	public void translateY(float distance) {}
-	
-	/**
-	 * 
-	 * @return Circle
-	 */
-	public Circle getCircle() {
-		return circle;
-	}
 
 	/**
 	 * 
@@ -116,6 +107,11 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 * @param MapEditor mapEditor
 	 */
 	public void updateObject(MyGame myGame, MapEditor mapEditor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void stopScrolling(int direction) {
 		// TODO Auto-generated method stub
 		
 	}

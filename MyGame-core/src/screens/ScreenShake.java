@@ -1,8 +1,8 @@
 package screens;
 
-import java.util.Random;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
+
+import helpers.RandomNumberGenerator;
 
 /**
  * Performs screenshake.
@@ -13,6 +13,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 public class ScreenShake {
 	
 	/**
+	 * Keeps track whether screen is shaking.
+	 */
+	public static boolean screenIsShaking = false;
+	
+	/**
 	 * Duration of screenshake in milliseconds.
 	 */
 	private float duration;
@@ -21,11 +26,6 @@ public class ScreenShake {
 	 * How much screenshake time has elapsed.
 	 */
 	private float elapsed;
-	
-	/**
-	 * Used to randomize screenshake.
-	 */
-	private Random random = new Random();
 	
 	/**
 	 * Used to randomize screenshake.
@@ -48,7 +48,8 @@ public class ScreenShake {
 	    this.elapsed     = 0;
 	    this.duration    = duration / 1000f;
 	    this.radius      = radius ;
-	    this.randomAngle = random.nextFloat() % 360f;
+	    this.randomAngle = RandomNumberGenerator.random.nextFloat() % 360f;
+	    screenIsShaking  = true;
 	}
 	 
 	/**
@@ -66,10 +67,10 @@ public class ScreenShake {
 	    	System.out.println("Screen is shaking!");
 	        // Calculate the shake based on the remaining radius.
 	        radius *= 0.9f; // Diminish radius each frame
-	        randomAngle += (150 + random.nextFloat() % 60f);
+	        randomAngle += (150 + RandomNumberGenerator.random.nextFloat() % 60f);
 	        float x = (float) (Math.sin(randomAngle) * radius);
 	        float y = (float) (Math.cos(randomAngle) * radius);
-	        camera.translate(-x, -y);
+	        camera.translate(-x, y);
 	 
 	        // Increase the elapsed time by the delta provided.
 	        elapsed += delta;
