@@ -7,7 +7,7 @@ import com.mygdx.mygame.MyGame;
 import controllers.GameStateController;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
-import physics.LightHandler;
+import physics.Lighting.LightHandler;
 import screens.Screens;
 
 /**
@@ -71,7 +71,7 @@ public class Keyboard extends ComputerInput {
 				Player.playerShouldStopMoving = false;
 			}
 			
-	        // Perform screenshake.
+	        // Execute screenshake.
 	        if (Gdx.input.isKeyPressed(Input.Keys.S)) { 
 				Screens.screenShake.shake(3, 3);
 			}

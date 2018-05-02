@@ -1,20 +1,17 @@
-package physics;
+package physics.Weather;
 
 /**
- * Handles all game weather.  This could include:
- * 	- Day and night cycles,
- *  - Rain,
- *  - Etc.
+ * Handles day and night cycle.  
  *  
  * @author Fabulous Fellini
  *
  */
-public class WeatherHandler {
+public class NightAndDayCycle extends WeatherHandler {
 	
 	/**
 	 * Determines if it is day time.
 	 */
-	private boolean isDayTime = true;
+	public boolean isDayTime = true;
 	
 	/**
 	 * This value is used in the Screens class.
@@ -68,5 +65,13 @@ public class WeatherHandler {
 				isDayTime = !isDayTime;
 			}
 		}
+	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	public boolean isDayTime() {
+		return isDayTime;
 	}
 }

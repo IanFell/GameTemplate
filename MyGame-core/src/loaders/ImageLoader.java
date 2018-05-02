@@ -32,6 +32,11 @@ public class ImageLoader {
 	public Texture light;
 	
 	/**
+	 * Shadow texture.
+	 */
+	public Texture shadow;
+	
+	/**
 	 * Player texture.
 	 */
 	public Texture playerSprite;
@@ -45,6 +50,7 @@ public class ImageLoader {
 		fakeTileOne      = new Texture(Gdx.files.internal("FakeTile.png"));
 		fakeTileTwo      = new Texture(Gdx.files.internal("FakeTile2.png"));
 		light            = new Texture(Gdx.files.internal("Lighting.png"));
+		shadow           = new Texture(Gdx.files.internal("Shadow.png"));
 		playerSprite     = new Texture(Gdx.files.internal("PlayerSprite.png"));
 	}
 	
@@ -57,6 +63,7 @@ public class ImageLoader {
 		fakeTileOne.dispose();
 		fakeTileTwo.dispose();
 		light.dispose();
+		shadow.dispose();
 		playerSprite.dispose();
 	}
 }

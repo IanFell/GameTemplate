@@ -8,7 +8,8 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mygdx.mygame.MyGame;
 
 import helpers.GameAttributeHelper;
-import physics.WeatherHandler;
+import physics.Weather.NightAndDayCycle;
+import physics.Weather.WeatherHandler;
 
 /**
  * Handles different 'screens' of the game.
@@ -18,6 +19,11 @@ import physics.WeatherHandler;
  *
  */
 public class Screens implements Screen {
+	
+	/**
+	 * Handles night and day cycle.  
+	 */
+	protected NightAndDayCycle nightAndDayCycle = new NightAndDayCycle();
 	
 	/**
 	 * Scrolling speed for closest tier to screen.
@@ -95,7 +101,7 @@ public class Screens implements Screen {
 			Gdx.gl.glClearColor(0, 0, 0.2f, 1);
 			break;
 		case GAME_SCREEN:
-			Gdx.gl.glClearColor(0, 0, weatherHandler.dayNightCycleValue, 1);
+			Gdx.gl.glClearColor(0, 0, nightAndDayCycle.dayNightCycleValue, 1);
 			break;
 		}
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

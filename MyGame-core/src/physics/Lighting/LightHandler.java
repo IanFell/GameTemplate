@@ -1,8 +1,8 @@
-package physics;
+package physics.Lighting;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import gameobjects.AbstractGameObject;
+import gameobjects.GameObject;
 import loaders.ImageLoader;
 
 /**
@@ -11,12 +11,7 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class LightHandler extends AbstractGameObject {
-	
-	/**
-	 * Initial texture size.
-	 */
-	private float initialTextureSize = 1;
+public class LightHandler extends GameLightingHandler {
 	
 	/**
 	 * Amount to resize texture.
@@ -29,20 +24,13 @@ public class LightHandler extends AbstractGameObject {
 	public static boolean isGrowing = false;
 	
 	/**
-	 * Constructor.
-	 */
-	public LightHandler() {
-		this.width  = initialTextureSize;
-		this.height = initialTextureSize;
-	}
-	
-	/**
-	 * Renders light texture.
 	 * 
 	 * @param SpriteBatch batch
 	 * @param ImageLoader imageLoader
+	 * @param GameObject  player
 	 */
-	public void renderLight(SpriteBatch batch, ImageLoader imageLoader) {
+	@Override
+	public void renderLighting(SpriteBatch batch, ImageLoader imageLoader, GameObject player) {
 		batch.draw(imageLoader.light, 0, 5, width, height);
 	}
 	
@@ -70,3 +58,4 @@ public class LightHandler extends AbstractGameObject {
 		height += amountToGrow;
 	}
 }
+

@@ -9,7 +9,8 @@ import gameobjects.GameObject;
 import helpers.ColorHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
-import physics.LightHandler;
+import physics.Lighting.LightHandler;
+import screens.GameScreen;
 
 /**
  * Loads and draw particle effects.  
@@ -162,5 +163,47 @@ public class ParticleEmitter extends GameObject {
 				orangeParticles[i].updateParticles(this);
 			}
 		}
+	}
+	
+	/**
+	 * Initializes particle emitters.
+	 * 
+	 * @param MyGame myGame
+	 */
+	public static void initializeParticleEmitters(MyGame myGame) {
+		GameScreen.particleEmitterRed     = new ParticleEmitter(0, 5, 1, 1, "Red", myGame);
+		GameScreen.particleEmitterYellow  = new ParticleEmitter(0, 5, 1, 1, "Yellow", myGame);
+		GameScreen.particleEmitterOrange  = new ParticleEmitter(0, 5, 1, 1, "Orange", myGame);
+		
+		GameScreen.particleEmitterRed.setX(GameScreen.particleEmitterRed.getX());
+		GameScreen.particleEmitterYellow.setX(GameScreen.particleEmitterYellow.getX());
+		GameScreen.particleEmitterOrange.setX(GameScreen.particleEmitterOrange.getX());
+		
+		GameScreen.particleEmitterRed.setY(GameScreen.particleEmitterRed.getY());
+		GameScreen.particleEmitterYellow.setY(GameScreen.particleEmitterYellow.getY());
+		GameScreen.particleEmitterOrange.setY(GameScreen.particleEmitterOrange.getY());
+	}
+	
+	/**
+	 * Updates particle emitters.
+	 * 
+	 * @param MyGame       myGame
+	 * @param LightHandler lightHandler
+	 */
+	public static void updateParticleEmitters(MyGame myGame, LightHandler lightHandler) {
+		GameScreen.particleEmitterRed.updateParticleEmitter(myGame, lightHandler);
+		GameScreen.particleEmitterYellow.updateParticleEmitter(myGame, lightHandler);
+		GameScreen.particleEmitterOrange.updateParticleEmitter(myGame, lightHandler);
+	}
+	
+	/**
+	 * Renders particle emitters.
+	 * 
+	 * @param MyGame myGame
+	 */
+	public static void renderParticleEmitters(MyGame myGame) {
+		GameScreen.particleEmitterRed.renderParticleEmitter(myGame.renderer.shapeRenderer, "Red", myGame.renderer.batch, myGame.imageLoader);
+		GameScreen.particleEmitterYellow.renderParticleEmitter(myGame.renderer.shapeRenderer, "Yellow", myGame.renderer.batch, myGame.imageLoader);
+		GameScreen.particleEmitterOrange.renderParticleEmitter(myGame.renderer.shapeRenderer, "Orange", myGame.renderer.batch, myGame.imageLoader);
 	}
 }

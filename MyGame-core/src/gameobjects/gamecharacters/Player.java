@@ -26,8 +26,7 @@ public class Player extends GameObject {
 	 * Size of character.
 	 */
 	protected int characterSize = 1;
-	
-	
+
 	/**
 	 * Available directions player can travel.  
 	 */
@@ -63,8 +62,8 @@ public class Player extends GameObject {
 	}
 	
 	/**
-	 * Moves camera back 1 on the x, y axis, then stops it.
-	 * This is used when a player interacts with a solid tile.
+	 * Moves player back 1 on the x, y axis depending on which direction player is going, 
+	 * then stops it.  This is used when a player interacts with a solid tile.
 	 * 
 	 * @param int direction
 	 */

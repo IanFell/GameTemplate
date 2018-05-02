@@ -12,8 +12,9 @@ import maps.MapEditor;
 import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
-import physics.LightHandler;
-import physics.WeatherHandler;
+import physics.Lighting.LightHandler;
+import physics.Lighting.ShadowHandler;
+import physics.Weather.RainHandler;
 
 /**
  * Screen of the game while in play.
@@ -22,6 +23,21 @@ import physics.WeatherHandler;
  *
  */
 public class GameScreen extends Screens {
+	
+	/**
+	 * Width of our camera.
+	 */
+	public static int cameraWidth = 10;
+	
+	/**
+	 * Represents camera height taking device into account.
+	 */
+	public static float cameraDeviceHeight = GameAttributeHelper.SCREEN_HEIGHT / (float) GameAttributeHelper.SCREEN_WIDTH;
+	
+	/**
+	 * Represents actual camera height.
+	 */
+	public static float cameraHeight = cameraWidth * cameraDeviceHeight;
 	
 	/**
 	 * Keeps track if screen has been initialized.
@@ -44,17 +60,19 @@ public class GameScreen extends Screens {
 	private MapLoader mapLoader = new MapLoader();
 	
 	/**
-	 * Handles all in game lighting.
+	 * Handles in game lighting.
 	 */
 	private LightHandler lightHandler = new LightHandler();
-
+	
 	/**
-	 * Handles in game weather.  This can include:
-	 * 	- Night and day cycles,
-	 *  - Rain,
-	 *  - Etc.
+	 * Handles in game shadows.
 	 */
-	private WeatherHandler weatherHandler = new WeatherHandler();
+	private ShadowHandler shadowHandler = new ShadowHandler();
+	
+	/**
+	 * Handles raining in game.
+	 */
+	private RainHandler[] rainHandler = new RainHandler[100];
 	
 	/**
 	 * Debugs game screen if needed / uncommented.
@@ -64,9 +82,9 @@ public class GameScreen extends Screens {
 	/**
 	 * Basic particle emitters.
 	 */
-	private ParticleEmitter particleEmitterRed;
-	private ParticleEmitter particleEmitterYellow;
-	private ParticleEmitter particleEmitterOrange;
+	public static ParticleEmitter particleEmitterRed;
+	public static ParticleEmitter particleEmitterYellow;
+	public static ParticleEmitter particleEmitterOrange;
 	
 	/**
 	 * Constructor.
@@ -92,7 +110,7 @@ public class GameScreen extends Screens {
 			initializeGameScreen();
 			hasBeenInitialized = !hasBeenInitialized;
 		}
-		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, weatherHandler);
+		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, nightAndDayCycle);
 		
 		// Screen only shakes when needed, but we must update it at all times just in case it needs to shake.
 		screenShake.update(delta, camera);
@@ -128,7 +146,7 @@ public class GameScreen extends Screens {
 	}
 	
 	/**
-	 * Overriden in order to set the camera to isometric.  Splash screen is not isometric.
+	 * Handle projection matrix and screen shake.
 	 */
 	@Override
 	protected void updateCamera() {
@@ -148,7 +166,10 @@ public class GameScreen extends Screens {
 	 */
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
-		initializeParticleEmitters();
+		ParticleEmitter.initializeParticleEmitters(myGame);
+		for (int i = 0; i < rainHandler.length; i++) {
+			rainHandler[i] = new RainHandler();
+		}
 		initializeCamera();
 	}
 	
@@ -156,9 +177,6 @@ public class GameScreen extends Screens {
 	 * Initializes camera for game screen.
 	 */
 	private void initializeCamera() {
-		int cameraWidth          = 10;
-		float cameraDeviceHeight = GameAttributeHelper.SCREEN_HEIGHT / (float) GameAttributeHelper.SCREEN_WIDTH;
-		float cameraHeight       = cameraWidth * cameraDeviceHeight;
 		camera                   = new OrthographicCamera(cameraWidth, cameraHeight);
 		camera.position.x        = myGame.gameObjectLoader.player.getX();
 		camera.position.y        = myGame.gameObjectLoader.player.getY();
@@ -170,10 +188,20 @@ public class GameScreen extends Screens {
 	 * For now we only need this for debugging purposes.
 	 */
 	private void updateGameScreen() {
-		updateParticleEmitters();
+		ParticleEmitter.updateParticleEmitters(myGame, lightHandler);
 		lightHandler.updateLighting(myGame.imageLoader);
-		weatherHandler.performDayAndNightCycle();
+		nightAndDayCycle.performDayAndNightCycle();
 		myGame.gameObjectLoader.player.updateObject(myGame, mapEditor);
+		
+		// If it is day time, start raining.  Stop raining during night time.
+		if (nightAndDayCycle.isDayTime()) {
+			RainHandler.isRaining = true;
+			for (int i = 0; i < rainHandler.length; i++) {
+				rainHandler[i].updateObject(myGame, mapEditor);
+			}
+		} else {
+			RainHandler.isRaining = false;
+		}
 	}
 	
 	/**
@@ -181,7 +209,8 @@ public class GameScreen extends Screens {
 	 */
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
 		mapRenderer.renderMap(myGame, mapEditor);
-		lightHandler.renderLight(myGame.renderer.batch, myGame.imageLoader);
+		lightHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
+		shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
 		myGame.gameObjectLoader.player.renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
@@ -193,41 +222,9 @@ public class GameScreen extends Screens {
 	 * Draw objects associated with ShapeRenderer.
 	 */
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
-		renderParticleEmitters();
-	}
-	
-	/**
-	 * Initializes particle emitters.
-	 */
-	private void initializeParticleEmitters() {
-		particleEmitterRed     = new ParticleEmitter(0, 5, 1, 1, "Red", myGame);
-		particleEmitterYellow  = new ParticleEmitter(0, 5, 1, 1, "Yellow", myGame);
-		particleEmitterOrange  = new ParticleEmitter(0, 5, 1, 1, "Orange", myGame);
-		
-		particleEmitterRed.setX(particleEmitterRed.getX());
-		particleEmitterYellow.setX(particleEmitterYellow.getX());
-		particleEmitterOrange.setX(particleEmitterOrange.getX());
-		
-		particleEmitterRed.setY(particleEmitterRed.getY());
-		particleEmitterYellow.setY(particleEmitterYellow.getY());
-		particleEmitterOrange.setY(particleEmitterOrange.getY());
-	}
-	
-	/**
-	 * Updates particle emitters.
-	 */
-	private void updateParticleEmitters() {
-		particleEmitterRed.updateParticleEmitter(myGame, lightHandler);
-		particleEmitterYellow.updateParticleEmitter(myGame, lightHandler);
-		particleEmitterOrange.updateParticleEmitter(myGame, lightHandler);
-	}
-	
-	/**
-	 * Renders particle emitters.
-	 */
-	private void renderParticleEmitters() {
-		particleEmitterRed.renderParticleEmitter(myGame.renderer.shapeRenderer, "Red", myGame.renderer.batch, myGame.imageLoader);
-		particleEmitterYellow.renderParticleEmitter(myGame.renderer.shapeRenderer, "Yellow", myGame.renderer.batch, myGame.imageLoader);
-		particleEmitterOrange.renderParticleEmitter(myGame.renderer.shapeRenderer, "Orange", myGame.renderer.batch, myGame.imageLoader);
+		ParticleEmitter.renderParticleEmitters(myGame);
+		for (int i = 0; i < rainHandler.length; i++) {
+			rainHandler[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
+		}
 	}
 }
