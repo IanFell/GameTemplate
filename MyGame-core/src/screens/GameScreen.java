@@ -1,5 +1,7 @@
 package screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Matrix4;
@@ -128,6 +130,10 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.end();
 		
 		// Draw ShapeRenderer.
+		if (!TransitionScreen.isTransitionScreenIsComplete()) {
+			Gdx.gl.glEnable(GL20.GL_BLEND);
+			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+		}
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		renderObjectsOnGameScreenThatUseShapeRenderer();
 		myGame.renderer.shapeRenderer.end();
@@ -176,6 +182,11 @@ public class GameScreen extends Screens {
 		for (int i = 0; i < rainHandler.length; i++) {
 			rainHandler[i] = new RainHandler();
 		}
+		/**
+		 * This overlays the game screen and fades out from black.
+		 * This makes the transition between screens much smoother.
+		 */
+		new TransitionScreen(myGame);
 		initializeCamera();
 	}
 	
@@ -194,6 +205,11 @@ public class GameScreen extends Screens {
 	 * For now we only need this for debugging purposes.
 	 */
 	private void updateGameScreen() {
+		
+		if (!TransitionScreen.isTransitionScreenIsComplete()) {
+			TransitionScreen.updateObject();
+		}
+		
 		ParticleEmitter.updateParticleEmitters(myGame, lightHandler);
 		lightHandler.updateLighting(myGame.imageLoader);
 		nightAndDayCycle.performDayAndNightCycle();
@@ -234,5 +250,9 @@ public class GameScreen extends Screens {
 			rainHandler[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		}
 		lightningHandler.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
+		
+		if (!TransitionScreen.isTransitionScreenIsComplete()) {
+			TransitionScreen.renderObject(myGame.renderer.shapeRenderer);
+		}
 	}
 }

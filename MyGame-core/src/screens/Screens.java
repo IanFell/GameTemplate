@@ -33,10 +33,12 @@ public class Screens implements Screen {
 	/**
 	 * Available game states.
 	 */
-	public final static int SPLASH_SCREEN = 0;
-	public final static int MENU_SCREEN   = 1;
-	public final static int GAME_SCREEN   = 2;
-	public final static int PAUSE_SCREEN  = 3;
+	public final static int SPLASH_SCREEN    = 0;
+	public final static int MENU_SCREEN      = 1;
+	public final static int GAME_SCREEN      = 2;
+	public final static int PAUSE_SCREEN     = 3;
+	public final static int INVENTORY_SCREEN = 4;
+	public final static int GAME_OVER_SCREEN = 5;
 	
 	/**
 	 * Game instance.
@@ -82,11 +84,12 @@ public class Screens implements Screen {
 	 * Creates camera object and sets position for basic camera with a straight on view.
 	 */
 	public void createCamera() {
-		int width  = GameAttributeHelper.SCREEN_WIDTH;
-		int height = GameAttributeHelper.SCREEN_HEIGHT;
-		camera     = new OrthographicCamera(width, height);
-		viewport   = new ExtendViewport(width, height, camera);
-		camera.position.set(0, 0, 0);
+		int width          = GameAttributeHelper.SCREEN_WIDTH;
+		int height         = GameAttributeHelper.SCREEN_HEIGHT;
+		camera             = new OrthographicCamera(width, height);
+		viewport           = new ExtendViewport(width, height, camera);
+		int cameraPosition = 0;
+		camera.position.set(cameraPosition, cameraPosition, cameraPosition);
 	}
 	
 	/**
@@ -96,12 +99,14 @@ public class Screens implements Screen {
 	 * @param WeatherHandler weatherHandler
 	 */
 	protected void clearScreenAndSetScreenColor(int gameState, WeatherHandler weatherHandler) {
+		int minValue = 0;
+		int maxValue = 1;
 		switch (gameState) {
 		case SPLASH_SCREEN:
-			Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+			Gdx.gl.glClearColor(minValue, minValue, minValue, maxValue);
 			break;
 		case GAME_SCREEN:
-			Gdx.gl.glClearColor(0, 0, nightAndDayCycle.dayNightCycleValue, 1);
+			Gdx.gl.glClearColor(minValue, minValue, nightAndDayCycle.dayNightCycleValue, maxValue);
 			break;
 		}
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

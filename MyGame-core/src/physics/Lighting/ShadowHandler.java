@@ -21,8 +21,8 @@ public class ShadowHandler extends GameLightingHandler {
 	 */
 	@Override
 	public void renderLighting(SpriteBatch batch, ImageLoader imageLoader, GameObject player) {
-		int offset = 1;
-		batch.draw(imageLoader.shadow, player.getX() + offset, player.getY() + offset, width, height);
+		float offset = 0.5f;
+		batch.draw(imageLoader.shadow, player.getX(), player.getY() + offset, width, height);
 	}
 
 }

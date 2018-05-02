@@ -66,10 +66,10 @@ public class ScreenShake {
 	    if((elapsed < duration)) {
 	    	System.out.println("Screen is shaking!");
 	        // Calculate the shake based on the remaining radius.
-	        radius *= 0.9f; // Diminish radius each frame
+	        radius      *= 0.9f; // Diminish radius each frame
 	        randomAngle += (150 + RandomNumberGenerator.random.nextFloat() % 60f);
-	        float x = (float) (Math.sin(randomAngle) * radius);
-	        float y = (float) (Math.cos(randomAngle) * radius);
+	        float x     = (float) (Math.sin(randomAngle) * radius);
+	        float y     = (float) (Math.cos(randomAngle) * radius);
 	        camera.translate(-x, y);
 	 
 	        // Increase the elapsed time by the delta provided.
