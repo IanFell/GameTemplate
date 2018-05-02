@@ -33,5 +33,5 @@ public class ColorHelper {
 	public static final Color ORANGE = new Color(maximumColorValue, 128, minimumColorValue, noTransparancy);
 	public static final Color WHITE  = new Color(maximumColorValue, maximumColorValue, maximumColorValue, noTransparancy);
 	public static final Color BLUE   = new Color(minimumColorValue, minimumColorValue, maximumColorValue, noTransparancy);
-	public static final Color BLACK  = new Color(maximumColorValue, maximumColorValue, maximumColorValue, noTransparancy);
+	public static final Color BLACK  = new Color(minimumColorValue, minimumColorValue, minimumColorValue, noTransparancy);
 }

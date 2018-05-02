@@ -42,7 +42,7 @@ public class RainHandler extends WeatherHandler {
 	 * Constructor.
 	 */
 	public RainHandler() {
-		this.x      = RandomNumberGenerator.generateRandomInteger(GameScreen.cameraWidth);
+		this.x      = RandomNumberGenerator.generateRandomInteger(GameScreen.cameraWidth * 2);
 		this.y      = startingYPosition;
 		this.width  = 0.04f;
 		this.height = 0.2f;

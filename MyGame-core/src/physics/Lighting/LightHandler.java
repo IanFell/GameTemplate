@@ -14,14 +14,27 @@ import loaders.ImageLoader;
 public class LightHandler extends GameLightingHandler {
 	
 	/**
-	 * Amount to resize texture.
+	 * Starting x position.  After resizing light, x position will resume to this coordinate.
 	 */
-	private float amountToGrow = 0.01f;
+	private float startX = 0;
+	
+	/**
+	 * Starting y position.  After resizing light, y position will resume to this coordinate.
+	 */
+	private float startY = 5;
 	
 	/**
 	 * Keeps track whether texture is growing.
 	 */
 	public static boolean isGrowing = false;
+	
+	/**
+	 * Constructor.
+	 */
+	public LightHandler() {
+		this.x = startX;
+		this.y = startY;
+	}
 	
 	/**
 	 * 
@@ -31,7 +44,7 @@ public class LightHandler extends GameLightingHandler {
 	 */
 	@Override
 	public void renderLighting(SpriteBatch batch, ImageLoader imageLoader, GameObject player) {
-		batch.draw(imageLoader.light, 0, 5, width, height);
+		batch.draw(imageLoader.light, x, y, width, height);
 	}
 	
 	/**
@@ -43,6 +56,8 @@ public class LightHandler extends GameLightingHandler {
 		if (isGrowing) {
 			increaseLightTextureSize(imageLoader);
 		} else {
+			x      = startX;
+			y      = startY;
 			width  = initialTextureSize;
 			height = initialTextureSize;
 		}
@@ -54,8 +69,12 @@ public class LightHandler extends GameLightingHandler {
 	 * @param ImageLoader imageLoader
 	 */
 	private void increaseLightTextureSize(ImageLoader imageLoader) {
-		width  += amountToGrow;
-		height += amountToGrow;
+		float amountToGrowLeft  = 0.01f;
+		x                       -= amountToGrowLeft;
+		y                       -= amountToGrowLeft;
+		float amountToGrowRight = amountToGrowLeft * 2;
+		width                   += amountToGrowRight;
+		height                  += amountToGrowRight;
 	}
 }
 

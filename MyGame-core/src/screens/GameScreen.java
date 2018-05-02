@@ -14,6 +14,7 @@ import maps.MapRenderer;
 import particles.ParticleEmitter;
 import physics.Lighting.LightHandler;
 import physics.Lighting.ShadowHandler;
+import physics.Weather.LightningHandler;
 import physics.Weather.RainHandler;
 
 /**
@@ -73,6 +74,11 @@ public class GameScreen extends Screens {
 	 * Handles raining in game.
 	 */
 	private RainHandler[] rainHandler = new RainHandler[100];
+	
+	/**
+	 * Handles lightning, which in this case is a white flashing square.
+	 */
+	private LightningHandler lightningHandler = new LightningHandler();
 	
 	/**
 	 * Debugs game screen if needed / uncommented.
@@ -202,6 +208,7 @@ public class GameScreen extends Screens {
 		} else {
 			RainHandler.isRaining = false;
 		}
+		lightningHandler.updateObject(myGame, mapEditor);
 	}
 	
 	/**
@@ -226,5 +233,6 @@ public class GameScreen extends Screens {
 		for (int i = 0; i < rainHandler.length; i++) {
 			rainHandler[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		}
+		lightningHandler.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 	}
 }
