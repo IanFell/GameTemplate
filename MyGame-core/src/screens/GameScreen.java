@@ -81,6 +81,8 @@ public class GameScreen extends Screens {
 	 */
 	private LightningHandler lightningHandler = new LightningHandler();
 	
+	private ScreenShader screenShader = new ScreenShader(myGame);
+	
 	/**
 	 * Debugs game screen if needed / uncommented.
 	 */
@@ -129,10 +131,11 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.end();
 		
 		// Draw ShapeRenderer.
-		if (!TransitionScreen.isTransitionScreenIsComplete()) {
+		if (!TransitionScreen.isTransitionScreenIsComplete() || !nightAndDayCycle.isDayTime()) {
 			Gdx.gl.glEnable(GL20.GL_BLEND);
 			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		}
+		
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		renderObjectsOnGameScreenThatUseShapeRenderer();
 		myGame.renderer.shapeRenderer.end();
@@ -214,7 +217,10 @@ public class GameScreen extends Screens {
 		nightAndDayCycle.performDayAndNightCycle();
 		myGame.gameObjectLoader.player.updateObject(myGame, mapEditor);
 		
-		// If it is day time, start raining.  Stop raining during night time.
+		/**
+		 * If it is day time, start raining.  Stop raining during night time.
+		 * If it is night time, give the screen a dark transparent screen shader.
+		 */
 		if (nightAndDayCycle.isDayTime()) {
 			RainHandler.isRaining = true;
 			for (int i = 0; i < rainHandler.length; i++) {
@@ -244,11 +250,16 @@ public class GameScreen extends Screens {
 	 * Draw objects associated with ShapeRenderer.
 	 */
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
-		ParticleEmitter.renderParticleEmitters(myGame);
+		ParticleEmitter.renderParticleEmitters(myGame, myGame.renderer.shapeRenderer);
 		for (int i = 0; i < rainHandler.length; i++) {
 			rainHandler[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		}
 		lightningHandler.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
+		
+		// Night time places a transparent dark square on the screen to simulate darkness.
+		if (!nightAndDayCycle.isDayTime()) {
+			screenShader.renderObject(myGame.renderer.shapeRenderer);
+		}
 		
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {
 			TransitionScreen.renderObject(myGame.renderer.shapeRenderer);

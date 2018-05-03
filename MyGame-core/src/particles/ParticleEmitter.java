@@ -199,11 +199,12 @@ public class ParticleEmitter extends GameObject {
 	/**
 	 * Renders particle emitters.
 	 * 
-	 * @param MyGame myGame
+	 * @param MyGame        myGame
+	 * @param ShapeRenderer shapeRenderer
 	 */
-	public static void renderParticleEmitters(MyGame myGame) {
-		GameScreen.particleEmitterRed.renderParticleEmitter(myGame.renderer.shapeRenderer, "Red", myGame.renderer.batch, myGame.imageLoader);
-		GameScreen.particleEmitterYellow.renderParticleEmitter(myGame.renderer.shapeRenderer, "Yellow", myGame.renderer.batch, myGame.imageLoader);
-		GameScreen.particleEmitterOrange.renderParticleEmitter(myGame.renderer.shapeRenderer, "Orange", myGame.renderer.batch, myGame.imageLoader);
+	public static void renderParticleEmitters(MyGame myGame, ShapeRenderer shapeRenderer) {
+		GameScreen.particleEmitterRed.renderParticleEmitter(shapeRenderer, "Red", myGame.renderer.batch, myGame.imageLoader);
+		GameScreen.particleEmitterYellow.renderParticleEmitter(shapeRenderer, "Yellow", myGame.renderer.batch, myGame.imageLoader);
+		GameScreen.particleEmitterOrange.renderParticleEmitter(shapeRenderer, "Orange", myGame.renderer.batch, myGame.imageLoader);
 	}
 }
