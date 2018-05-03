@@ -86,6 +86,17 @@ public class Keyboard extends ComputerInput {
 			} else {
 				LightHandler.isGrowing = false;
 			}
+	        
+	        float cameraZoomAmount = 0.01f;
+	        // Zoom camera out.
+	        if (Gdx.input.isKeyPressed(Input.Keys.Z) && Gdx.input.isKeyPressed(Input.Keys.O)) {
+	        	Screens.camera.zoom += cameraZoomAmount;
+	        }
+	        
+	        // Zoom camera in.
+	        if (Gdx.input.isKeyPressed(Input.Keys.Z) && Gdx.input.isKeyPressed(Input.Keys.I)) {
+	        	Screens.camera.zoom -= cameraZoomAmount;
+	        }
 		}
 	}
 }
