@@ -12,21 +12,28 @@ import com.badlogic.gdx.audio.Music;
 public class MusicLoader {
 	
 	/**
-	 * Sample music.
+	 * Sample noise for day time.
 	 */
-	public Music music;
+	public Music dayTimeAmbientNoise;
+	
+	/**
+	 * Sample noise for nigh time.
+	 */
+	public Music nightTimeAmbientNoise;
 	
 	/**
 	 * Initialize music.
 	 */
 	public void init() {
-		music = Gdx.audio.newMusic(Gdx.files.internal("INTRO_MUSIC.wav"));
+		dayTimeAmbientNoise   = Gdx.audio.newMusic(Gdx.files.internal("DayTimeAmbientNoise.wav"));
+		nightTimeAmbientNoise = Gdx.audio.newMusic(Gdx.files.internal("NightTimeAmbientNoise.wav"));
 	}
 	
 	/**
 	 * Dispose of music.
 	 */
 	public void dispose() {
-		music.dispose();
+		dayTimeAmbientNoise.dispose();
+		nightTimeAmbientNoise.dispose();
 	}
 }

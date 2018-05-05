@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Matrix4;
 import com.mygdx.mygame.MyGame;
 
 import debugging.Debugger;
@@ -16,6 +15,7 @@ import particles.ParticleEmitter;
 import physics.Lighting.LightHandler;
 import physics.Lighting.ShadowHandler;
 import physics.Weather.LightningHandler;
+import physics.Weather.NightAndDayCycle;
 import physics.Weather.RainHandler;
 
 /**
@@ -81,6 +81,9 @@ public class GameScreen extends Screens {
 	 */
 	private LightningHandler lightningHandler = new LightningHandler();
 	
+	/**
+	 * Used to shade the screen to simulate darkness.
+	 */
 	private ScreenShader screenShader = new ScreenShader(myGame);
 	
 	/**
@@ -131,7 +134,7 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.end();
 		
 		// Draw ShapeRenderer.
-		if (!TransitionScreen.isTransitionScreenIsComplete() || !nightAndDayCycle.isDayTime()) {
+		if (!TransitionScreen.isTransitionScreenIsComplete() || !NightAndDayCycle.isDayTime()) {
 			Gdx.gl.glEnable(GL20.GL_BLEND);
 			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		}
@@ -166,7 +169,6 @@ public class GameScreen extends Screens {
 	protected void updateCamera() {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
-		myGame.renderer.batch.setTransformMatrix(new Matrix4());
 		
 		if (!ScreenShake.screenIsShaking) {
 			camera.position.x = myGame.gameObjectLoader.player.getX();
@@ -221,7 +223,7 @@ public class GameScreen extends Screens {
 		 * If it is day time, start raining.  Stop raining during night time.
 		 * If it is night time, give the screen a dark transparent screen shader.
 		 */
-		if (nightAndDayCycle.isDayTime()) {
+		if (NightAndDayCycle.isDayTime()) {
 			RainHandler.isRaining = true;
 			for (int i = 0; i < rainHandler.length; i++) {
 				rainHandler[i].updateObject(myGame, mapEditor);
@@ -257,7 +259,7 @@ public class GameScreen extends Screens {
 		lightningHandler.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		
 		// Night time places a transparent dark square on the screen to simulate darkness.
-		if (!nightAndDayCycle.isDayTime()) {
+		if (!NightAndDayCycle.isDayTime()) {
 			screenShader.renderObject(myGame.renderer.shapeRenderer);
 		}
 		

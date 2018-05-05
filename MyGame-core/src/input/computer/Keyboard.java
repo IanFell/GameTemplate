@@ -8,6 +8,7 @@ import controllers.GameStateController;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import physics.Lighting.LightHandler;
+import screens.GameScreen;
 import screens.Screens;
 
 /**
@@ -73,7 +74,7 @@ public class Keyboard extends ComputerInput {
 			
 	        // Execute screenshake.
 	        if (Gdx.input.isKeyPressed(Input.Keys.S)) { 
-				Screens.screenShake.shake(3, 3);
+				GameScreen.screenShake.shake(3, 3);
 			}
 	        
 	        /**
@@ -90,12 +91,12 @@ public class Keyboard extends ComputerInput {
 	        float cameraZoomAmount = 0.01f;
 	        // Zoom camera out.
 	        if (Gdx.input.isKeyPressed(Input.Keys.Z) && Gdx.input.isKeyPressed(Input.Keys.O)) {
-	        	Screens.camera.zoom += cameraZoomAmount;
+	        	GameScreen.camera.zoom += cameraZoomAmount;
 	        }
 	        
 	        // Zoom camera in.
 	        if (Gdx.input.isKeyPressed(Input.Keys.Z) && Gdx.input.isKeyPressed(Input.Keys.I)) {
-	        	Screens.camera.zoom -= cameraZoomAmount;
+	        	GameScreen.camera.zoom -= cameraZoomAmount;
 	        }
 		}
 	}

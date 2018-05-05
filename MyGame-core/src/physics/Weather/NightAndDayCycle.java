@@ -11,7 +11,7 @@ public class NightAndDayCycle extends WeatherHandler {
 	/**
 	 * Determines if it is day time.
 	 */
-	public boolean isDayTime = true;
+	public static boolean isDayTime = true;
 	
 	/**
 	 * This value is used in the Screens class.
@@ -26,7 +26,7 @@ public class NightAndDayCycle extends WeatherHandler {
 	/**
 	 * How fast day/night cycle happens.
 	 */
-	private float dayNightCycleSpeedChange = 0.1f;
+	private float dayNightCycleSpeedChange = 0.02f;
 	
 	/**
 	 * Used as a sort of timer, to determine when to change from day to night and back.
@@ -71,7 +71,7 @@ public class NightAndDayCycle extends WeatherHandler {
 	 * 
 	 * @return boolean
 	 */
-	public boolean isDayTime() {
+	public static boolean isDayTime() {
 		return isDayTime;
 	}
 }
