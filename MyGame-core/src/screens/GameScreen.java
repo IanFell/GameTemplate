@@ -240,7 +240,10 @@ public class GameScreen extends Screens {
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
 		mapRenderer.renderMap(myGame, mapEditor);
 		lightHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
-		shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
+		
+		if (NightAndDayCycle.isDayTime()) {
+			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
+		}
 		myGame.gameObjectLoader.player.renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 

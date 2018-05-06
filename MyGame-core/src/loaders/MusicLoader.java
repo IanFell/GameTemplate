@@ -22,11 +22,17 @@ public class MusicLoader {
 	public Music nightTimeAmbientNoise;
 	
 	/**
+	 * Sample noise for rain and thunder.
+	 */
+	public Music rainAndThunder;
+	
+	/**
 	 * Initialize music.
 	 */
 	public void init() {
 		dayTimeAmbientNoise   = Gdx.audio.newMusic(Gdx.files.internal("DayTimeAmbientNoise.wav"));
 		nightTimeAmbientNoise = Gdx.audio.newMusic(Gdx.files.internal("NightTimeAmbientNoise.wav"));
+		rainAndThunder        = Gdx.audio.newMusic(Gdx.files.internal("RainAndThunder.wav"));
 	}
 	
 	/**
@@ -35,5 +41,6 @@ public class MusicLoader {
 	public void dispose() {
 		dayTimeAmbientNoise.dispose();
 		nightTimeAmbientNoise.dispose();
+		rainAndThunder.dispose();
 	}
 }

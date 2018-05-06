@@ -45,7 +45,7 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 * Game object y-axis speed value.
 	 */
 	public float dy;
-
+	
 	/**
 	 * Constructor.
 	 */

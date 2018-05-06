@@ -25,6 +25,9 @@ public class MusicHandler {
 				musicLoader.dayTimeAmbientNoise.setVolume(1.0f);
 				musicLoader.dayTimeAmbientNoise.play();
 				
+				musicLoader.rainAndThunder.setVolume(1.0f);
+				musicLoader.rainAndThunder.play();
+				
 				if (musicLoader.nightTimeAmbientNoise.isPlaying()) {
 					musicLoader.nightTimeAmbientNoise.stop();
 				}
@@ -34,6 +37,10 @@ public class MusicHandler {
 				
 				if (musicLoader.dayTimeAmbientNoise.isPlaying()) {
 					musicLoader.dayTimeAmbientNoise.stop();
+				}
+				
+				if (musicLoader.rainAndThunder.isPlaying()) {
+					musicLoader.rainAndThunder.stop();
 				}
 			}
 		}

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import handlers.AnimationHandler;
 import loaders.ImageLoader;
 import maps.MapEditor;
 import physics.CollisionHandler;
@@ -106,6 +107,7 @@ public class Player extends GameObject {
 	 * @return Animation <TextureRegion>
 	 */
 	private Animation <TextureRegion> getCurrentAnimation() {
+		currentAnimation = walkDownAnimation;
 		switch (direction) {
 			case Player.DIRECTION_LEFT:
 				currentAnimation = walkLeftAnimation;
@@ -124,9 +126,6 @@ public class Player extends GameObject {
 	}
 	
 	/**
-	 * y + 1 is used because we need to flip the sprite batch vertically.  
-	 * When we do this, player is offset by 1 on the y axis so we need to compensate.
-	 * We flip the y axis by making the height negative.
 	 * 
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
@@ -135,13 +134,7 @@ public class Player extends GameObject {
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		elapsedTime += Gdx.graphics.getDeltaTime();
-		batch.draw( 
-				(TextureRegion) getCurrentAnimation().getKeyFrame(elapsedTime, true),  
-				x,  
-				y + 1, 
-				characterSize, 
-				-characterSize
-				);
+		AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, characterSize);
 	}
 
 	/**
