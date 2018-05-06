@@ -20,9 +20,6 @@ public class XBox360Pad extends ControllerInput
 	 */
 	private float triggerDeadZone = 0.5f;
 	
-	/**
-	 * Constructor.
-	 */
 	public XBox360Pad() {
 		this.BUTTON_X     = 2;
 	    this.BUTTON_Y     = 3;

@@ -52,7 +52,7 @@ public class Player extends GameObject {
 	private Animation <TextureRegion> currentAnimation;
 	
 	/**
-	 * Used for animations.
+	 * Used for animation speed.
 	 */
 	private float elapsedTime = 0;
 	
@@ -61,9 +61,6 @@ public class Player extends GameObject {
 	 */
 	public static boolean playerShouldStopMoving = false;
 	
-	/**
-	 * Size of character.
-	 */
 	protected int characterSize = 1;
 	
 	/**
@@ -74,8 +71,8 @@ public class Player extends GameObject {
 		this.y               = 10;
 		this.width           = characterSize;
 		this.height          = characterSize;
-		rectangle.width      = width;
-		rectangle.height     = height;
+		rectangle.width      = characterSize;
+		rectangle.height     = characterSize;
 		walkDownTexture      = new TextureAtlas(Gdx.files.internal("PlayerSpriteDown.atlas"));
 		walkUpTexture        = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
 		walkRightTexture     = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
@@ -138,7 +135,6 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * Moves object along the x axis.
 	 * 
 	 * @param float distance
 	 */
@@ -148,7 +144,6 @@ public class Player extends GameObject {
 	}
 	
 	/**
-	 * Moves object along the y axis.
 	 * 
 	 * @param float distance
 	 */
@@ -181,4 +176,8 @@ public class Player extends GameObject {
 		}
 	}
 	
+	public void stopPlayer() {
+		dx = 0;
+		dy = 0;
+	}
 }

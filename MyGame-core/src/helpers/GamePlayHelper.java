@@ -7,6 +7,8 @@ import gameobjects.GameObject;
  * position in the middle of the screen upon initialization, or making 
  * the screen scroll.  I might want to break this up later.
  * 
+ * Currently this class is unused but I don't want to get rid of it just yet, just in case.
+ * 
  * @author Fabulous Fellini
  *
  */

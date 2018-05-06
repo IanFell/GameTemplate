@@ -20,19 +20,6 @@ import physics.Weather.WeatherHandler;
  */
 public class Screens implements Screen {
 	
-	/**
-	 * Handles night and day cycle.  
-	 */
-	protected NightAndDayCycle nightAndDayCycle = new NightAndDayCycle();
-	
-	/**
-	 * Scrolling speed for closest tier to screen.
-	 */
-	public final static float SCREEN_SCROLL_SPEED_TIER_ONE = 0.1f;
-	 
-	/**
-	 * Available game states.
-	 */
 	public final static int SPLASH_SCREEN    = 0;
 	public final static int MENU_SCREEN      = 1;
 	public final static int GAME_SCREEN      = 2;
@@ -40,19 +27,17 @@ public class Screens implements Screen {
 	public final static int INVENTORY_SCREEN = 4;
 	public final static int GAME_OVER_SCREEN = 5;
 	
+	protected NightAndDayCycle nightAndDayCycle = new NightAndDayCycle();
+	
 	/**
-	 * Game instance.
+	 * Scrolling speed for closest tier to screen.
 	 */
+	public final static float SCREEN_SCROLL_SPEED_TIER_ONE = 0.1f;
+	
 	protected final MyGame myGame;
 	
-	/**
-	 * Camera object.
-	 */
 	public static OrthographicCamera camera;
-	
-	/**
-	 * Viewport object.
-	 */
+
 	protected ExtendViewport viewport;
 	 
 	/**
@@ -65,13 +50,9 @@ public class Screens implements Screen {
 	 */
 	public static float cameraY;
 	
-	/**
-	 * Performs screenshake.
-	 */
 	public static ScreenShake screenShake = new ScreenShake();
 
 	/**
-	 * Constructor.
 	 * 
 	 * @param MyGame myGame
 	 */
@@ -93,7 +74,8 @@ public class Screens implements Screen {
 	}
 	
 	/**
-	 * Clear screen and set screen color.
+	 * Clear / set screen and set screen color of screen.
+	 * Background can change depending on game weather.
 	 * 
 	 * @param int            gameState
 	 * @param WeatherHandler weatherHandler
@@ -112,10 +94,6 @@ public class Screens implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
 	
-	/**
-	 * Update camera matrices and tell SpriteBatch to render 
-	 * in the coordinate system specified by the camera.
-	 */
 	protected void updateCamera() {
 		// Tell the SpriteBatch to render in the coordinate system specified by the camera.
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
@@ -123,25 +101,16 @@ public class Screens implements Screen {
 		camera.update();
 	}
 	
-	/**
-	 * Saves camera coordinates before screenshake starts.
-	 */
 	public static void saveCameraCoordinatesBeforeScreenShake() {
 		cameraX = camera.position.x;
 		cameraY = camera.position.y;
 	}
 
 	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void show() {}
 
 	@Override
-	public void render(float delta) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void render(float delta) {}
 
 	/**
 	 * This guarantees our screen objects are always rendered in
@@ -158,36 +127,14 @@ public class Screens implements Screen {
 	}
 
 	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
 	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 
 	@Override
-	public void hide() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void hide() {}
 
 	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	/**
-	 * Scroll screen whichever way neccessary.
-	 * 
-	 * @param float x
-	 * @param float y
-	 */
-	public static void scrollScreen(float x, float y) {
-		camera.translate(x, y);
-	}
+	public void dispose() {}
 }

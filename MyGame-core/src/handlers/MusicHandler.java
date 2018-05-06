@@ -20,7 +20,6 @@ public class MusicHandler {
 	 */
 	public void handleMusic(MusicLoader musicLoader) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
-			
 			if (NightAndDayCycle.isDayTime()) {
 				musicLoader.dayTimeAmbientNoise.setVolume(1.0f);
 				musicLoader.dayTimeAmbientNoise.play();

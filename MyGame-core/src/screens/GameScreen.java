@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector3;
 import com.mygdx.mygame.MyGame;
 
 import debugging.Debugger;
@@ -26,9 +28,10 @@ import physics.Weather.RainHandler;
  */
 public class GameScreen extends Screens {
 	
-	/**
-	 * Width of our camera.
-	 */
+	private Matrix4 matrixO = new Matrix4();
+	private Matrix4 matrixR = new Matrix4();
+	private Matrix4 matrixT = new Matrix4();
+
 	public static int cameraWidth = 10;
 	
 	/**
@@ -44,7 +47,7 @@ public class GameScreen extends Screens {
 	/**
 	 * Keeps track if screen has been initialized.
 	 */
-	private boolean hasBeenInitialized;
+	private boolean gameScreenHasBeenInitialized;
 	
 	/**
 	 * Class to render our level maps.
@@ -61,24 +64,12 @@ public class GameScreen extends Screens {
 	 */
 	private MapLoader mapLoader = new MapLoader();
 	
-	/**
-	 * Handles in game lighting.
-	 */
 	private LightHandler lightHandler = new LightHandler();
 	
-	/**
-	 * Handles in game shadows.
-	 */
 	private ShadowHandler shadowHandler = new ShadowHandler();
-	
-	/**
-	 * Handles raining in game.
-	 */
+
 	private RainHandler[] rainHandler = new RainHandler[100];
 	
-	/**
-	 * Handles lightning, which in this case is a white flashing square.
-	 */
 	private LightningHandler lightningHandler = new LightningHandler();
 	
 	/**
@@ -91,26 +82,22 @@ public class GameScreen extends Screens {
 	 */
 	private Debugger debugger = new Debugger();
 	
-	/**
-	 * Basic particle emitters.
-	 */
 	public static ParticleEmitter particleEmitterRed;
 	public static ParticleEmitter particleEmitterYellow;
 	public static ParticleEmitter particleEmitterOrange;
 	
 	/**
-	 * Constructor.
 	 * 
 	 * @param MyGame myGame
 	 */
 	public GameScreen(final MyGame myGame) {
 		super(myGame);
 		GameAttributeHelper.gameState = Screens.GAME_SCREEN;
-		hasBeenInitialized            = false;
+		gameScreenHasBeenInitialized  = false;
 	}
 	
 	/**
-	 * Render game screen.
+	 *
 	 * 
 	 * @param float delta
 	 */
@@ -118,9 +105,9 @@ public class GameScreen extends Screens {
 	public void render(float delta) {
 		
 		// If game screen has not been initialized, go ahead and initialize it.
-		if (!hasBeenInitialized) {
+		if (!gameScreenHasBeenInitialized) {
 			initializeGameScreen();
-			hasBeenInitialized = !hasBeenInitialized;
+			gameScreenHasBeenInitialized = !gameScreenHasBeenInitialized;
 		}
 		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, nightAndDayCycle);
 		
@@ -177,9 +164,6 @@ public class GameScreen extends Screens {
 		camera.update();
 	}
 	
-	/**
-	 * Initializes the game screen.
-	 */
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
 		ParticleEmitter.initializeParticleEmitters(myGame);
@@ -194,20 +178,28 @@ public class GameScreen extends Screens {
 		initializeCamera();
 	}
 	
-	/**
-	 * Initializes camera for game screen.
-	 */
 	private void initializeCamera() {
 		camera                   = new OrthographicCamera(cameraWidth, cameraHeight);
 		camera.position.x        = myGame.gameObjectLoader.player.getX();
 		camera.position.y        = myGame.gameObjectLoader.player.getY();
 		camera.setToOrtho(true, cameraWidth, cameraHeight);
+		//matrixO.setToOrtho(left, right, bottom, top, near, far)
+		//matrixO.setToOrtho(0, GameAttributeHelper.SCREEN_WIDTH, GameAttributeHelper.SCREEN_HEIGHT, 0, 0, 0);
+		//matrixR.setToRotation(new Vector3(1, 0, 0), 45);
+		
+		//Matrix4 matrixT = matrixO.mul(matrixR);
+		//matrixT.translate(matrixT);
+		
+		/*
+		float ex = 4.0f;
+		float ar = GameAttributeHelper.SCREEN_WIDTH /  GameAttributeHelper.SCREEN_HEIGHT;
+		Matrix4 matrix = new Matrix4()
+				.setToOrtho(-ar * ex, ar * ex, -ex, +ex, 0, +10)
+				.setToRotation(new Vector3(1, 0, 0), 45)
+				.translate(0, -1, -1);
+		camera.transform(matrix);*/
 	}
 	
-	/**
-	 * Update objects associated with GameScreen.  
-	 * For now we only need this for debugging purposes.
-	 */
 	private void updateGameScreen() {
 		
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {
@@ -234,9 +226,6 @@ public class GameScreen extends Screens {
 		lightningHandler.updateObject(myGame, mapEditor);
 	}
 	
-	/**
-	 * Draw objects associated with SpriteBatch.
-	 */
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
 		mapRenderer.renderMap(myGame, mapEditor);
 		lightHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
@@ -251,9 +240,6 @@ public class GameScreen extends Screens {
 				);
 	}
 	
-	/**
-	 * Draw objects associated with ShapeRenderer.
-	 */
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
 		ParticleEmitter.renderParticleEmitters(myGame, myGame.renderer.shapeRenderer);
 		for (int i = 0; i < rainHandler.length; i++) {

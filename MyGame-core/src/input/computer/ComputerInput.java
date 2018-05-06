@@ -20,38 +20,20 @@ abstract public class ComputerInput implements ApplicationListener {
 	protected abstract void handleInput(MyGame myGame);
 
 	@Override
-	public void create() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void create() {}
 
 	@Override
-	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resize(int width, int height) {}
 
 	@Override
-	public void render() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void render() {}
 
 	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void pause() {}
 
 	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resume() {}
 
 	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void dispose() {}
 }

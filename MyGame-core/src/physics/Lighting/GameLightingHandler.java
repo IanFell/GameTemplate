@@ -8,21 +8,14 @@ import loaders.ImageLoader;
 
 public class GameLightingHandler extends AbstractGameObject {
 	
-	/**
-	 * Initial texture size.
-	 */
 	protected float initialTextureSize = 1;
 	
-	/**
-	 * Constructor.
-	 */
 	public GameLightingHandler() {
 		this.width  = initialTextureSize;
 		this.height = initialTextureSize;
 	}
 	
 	/**
-	 * Renders lighting texture.
 	 * 
 	 * @param SpriteBatch batch
 	 * @param ImageLoader imageLoader

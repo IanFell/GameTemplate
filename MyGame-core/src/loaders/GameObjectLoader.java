@@ -12,13 +12,9 @@ import gameobjects.GameObject;
  */
 public class GameObjectLoader {
 	
-	/**
-	 * Our player object.
-	 */
 	public GameObject player;
 	
 	/**
-	 * Creates our game objects.
 	 * 
 	 * @param MyGame myGame
 	 */
@@ -27,8 +23,7 @@ public class GameObjectLoader {
 	}
 	
 	/**
-	 * Initializes our game objects.
-	 * 
+	 *
 	 * @param ImageLoader imageLoader
 	 */
 	public void init(ImageLoader imageLoader) {

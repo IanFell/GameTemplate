@@ -17,7 +17,7 @@ public class MapEditor {
 	public final Tile[][] tiles = new Tile[20][20];
 	
 	/**
-	 * Sample map.  This map is the same size as the screen.
+	 * Sample map.  
 	 */
 	public int[][] map =
 		{

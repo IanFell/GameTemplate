@@ -8,9 +8,6 @@ package physics.Weather;
  */
 public class NightAndDayCycle extends WeatherHandler {
 	
-	/**
-	 * Determines if it is day time.
-	 */
 	public static boolean isDayTime = true;
 	
 	/**

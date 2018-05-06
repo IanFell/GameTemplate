@@ -23,6 +23,11 @@ public class GameAttributeHelper {
 	/**
 	 * Holds current state of game, 
 	 * based on the constants located in the Screens class.
+	 * This will include any and all screens:
+	 * 	- Game Screen
+	 *  - Menu Screen
+	 *  - Splash Screen
+	 *  - Etc.
 	 */
 	public static int gameState;
 }

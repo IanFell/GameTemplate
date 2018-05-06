@@ -17,7 +17,6 @@ import screens.Screens;
 public class Mouse extends ComputerInput {
 	
 	/**
-	 * Handle mouse input.
 	 * 
 	 * @param MyGame myGame
 	 */
@@ -25,7 +24,6 @@ public class Mouse extends ComputerInput {
 	public void handleInput(MyGame myGame) {
 		
 		switch (GameAttributeHelper.gameState) {
-		
 		case Screens.SPLASH_SCREEN:
 			if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
 				GameStateController.switchGameStates(myGame, Screens.GAME_SCREEN);

@@ -18,9 +18,6 @@ import screens.GameScreen;
  */
 public class RainHandler extends WeatherHandler {
 	
-	/**
-	 * Keeps track whether or not it is raining.
-	 */
 	public static boolean isRaining = false;
 	
 	/**
@@ -33,17 +30,11 @@ public class RainHandler extends WeatherHandler {
 	 */
 	private float maxDy = 0.3f;
 	
-	/**
-	 * Position where raindrops begin to fall.
-	 */
-	private float startingYPosition = 0;
+	private float startingRainDropYPosition = 0;
 	
-	/**
-	 * Constructor.
-	 */
 	public RainHandler() {
 		this.x      = RandomNumberGenerator.generateRandomInteger(GameScreen.cameraWidth * 2);
-		this.y      = startingYPosition;
+		this.y      = startingRainDropYPosition;
 		this.width  = 0.04f;
 		this.height = 0.2f;
 		this.dy     = (float) RandomNumberGenerator.generateRandomDouble(minDy, maxDy);
@@ -73,7 +64,7 @@ public class RainHandler extends WeatherHandler {
 		if (isRaining) {
 			y += dy;
 			if (y > GameScreen.cameraHeight * 2) {
-				y  = startingYPosition;
+				y  = startingRainDropYPosition;
 				dy = (float) RandomNumberGenerator.generateRandomDouble(minDy, maxDy);
 			}
 			System.out.println("It is raining!");

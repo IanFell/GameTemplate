@@ -23,14 +23,8 @@ public class LightHandler extends GameLightingHandler {
 	 */
 	private float startY = 5;
 	
-	/**
-	 * Keeps track whether texture is growing.
-	 */
 	public static boolean isGrowing = false;
 	
-	/**
-	 * Constructor.
-	 */
 	public LightHandler() {
 		this.x = startX;
 		this.y = startY;
@@ -48,7 +42,6 @@ public class LightHandler extends GameLightingHandler {
 	}
 	
 	/**
-	 * Updates lighting texture.
 	 * 
 	 * @param ImageLoader imageLoader
 	 */

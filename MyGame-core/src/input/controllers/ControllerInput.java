@@ -15,9 +15,6 @@ import helpers.ControllerInputHelper;
  */
 public class ControllerInput extends ApplicationAdapter {
 	
-	/**
-	 * Controller object.
-	 */
 	protected Controller controller;
 	
 	 /**
@@ -25,9 +22,6 @@ public class ControllerInput extends ApplicationAdapter {
      */
     public boolean hasControllers = true;
     
-    /**
-     * Controller name.
-     */
     protected String controllerName;
     
     /**

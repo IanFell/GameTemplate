@@ -14,9 +14,6 @@ public class LogitechF310 extends ControllerInput
 	 protected int BUTTON_LT;
 	 protected int BUTTON_RT;
 	 
-	/**
-	 * Constructor.
-	 */
 	public LogitechF310() {
 		this.BUTTON_X     = 0;
 	    this.BUTTON_Y     = 3;

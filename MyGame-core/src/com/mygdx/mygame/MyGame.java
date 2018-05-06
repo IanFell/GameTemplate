@@ -39,18 +39,15 @@ public class MyGame extends Game {
 	 */
 	public GameAttributeHelper gameAttributeHelper;
 	
-	/**
-	 * Handles audio.
-	 */
 	private AudioHandler audioHandler = new AudioHandler();
 	
 	/**
-	 * Holds all images.
+	 * Loads and holds all images.
 	 */
 	public ImageLoader imageLoader = new ImageLoader();
 	
 	/**
-	 * Handles all game input, whether that is the computer or a game pad.
+	 * Computer or a game pad handler.
 	 */
 	public InputHandler inputHandler = new InputHandler();
 	
@@ -80,7 +77,7 @@ public class MyGame extends Game {
 	}
 	
 	/**
-	 * Main game loop.  60 FPS by default.
+	 * 60 FPS by default.
 	 */
 	private void gameLoop() {
 		audioHandler.handleAudio();

@@ -27,7 +27,7 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	
 	/**
 	 * Direction game objects can travel in.
-	 * If left arrow is pressed, we can think of this as 'direction = playerMovingLeftConstant'.
+	 * If left arrow is pressed, we can think of this as 'direction = player.MovingLeftConstant'.
 	 */
 	public int direction;
 	
@@ -97,10 +97,7 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {}
 
 	/**
 	 * Update game object.
@@ -108,12 +105,16 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 * @param MyGame    myGame
 	 * @param MapEditor mapEditor
 	 */
-	public void updateObject(MyGame myGame, MapEditor mapEditor) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void updateObject(MyGame myGame, MapEditor mapEditor) {}
 
-	public void stopScrolling(int direction) {
+	/**
+	 * Stops object from moving on screen, mostly from collisions with hard game objects.
+	 * 
+	 * @param int direction
+	 */
+	public void stopScrolling(int direction) {}
+
+	public void stopPlayer() {
 		// TODO Auto-generated method stub
 		
 	}

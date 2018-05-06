@@ -27,9 +27,6 @@ public class LightningHandler extends WeatherHandler {
 	 */
 	private int currentNumberOfFlashes = 0;
 	
-	/**
-	 * Keeps track if lightning should be rendered.
-	 */
 	private boolean lightningShouldBeRendered = false;
 	
 	/**
@@ -42,9 +39,6 @@ public class LightningHandler extends WeatherHandler {
 	 */
 	private int increment = 0;
 	
-	/**
-	 * Constructor.
-	 */
 	public LightningHandler() {
 		this.x      = 0;
 		this.y      = 0;

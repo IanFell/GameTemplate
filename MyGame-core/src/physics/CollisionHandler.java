@@ -14,7 +14,6 @@ import maps.MapEditor;
 public class CollisionHandler {
 	
 	/**
-	 * Checks if player has collided with a solid tile.
 	 * 
 	 * @param MyGame    myGame
 	 * @param MapEditor mapEditor

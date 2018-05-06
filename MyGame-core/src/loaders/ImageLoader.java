@@ -16,9 +16,6 @@ public class ImageLoader {
 	 */
 	public Texture testImage;
 	
-	/**
-	 * Splash Screen Logo.
-	 */
 	public Texture splashScreenLogo;
 	
 	/**
@@ -26,24 +23,12 @@ public class ImageLoader {
 	 */
 	public Texture fakeTileOne, fakeTileTwo;
 	
-	/**
-	 * Light texture.
-	 */
 	public Texture light;
 	
-	/**
-	 * Shadow texture.
-	 */
 	public Texture shadow;
 	
-	/**
-	 * Player texture.
-	 */
 	public Texture playerSprite;
 	
-	/**
-	 * Initialize textures.
-	 */
 	public void init() {
 		splashScreenLogo = new Texture(Gdx.files.internal("logo_ffg.png"));
 		testImage        = new Texture(Gdx.files.internal("badlogic.jpg"));
@@ -54,9 +39,6 @@ public class ImageLoader {
 		playerSprite     = new Texture(Gdx.files.internal("PlayerSprite.png"));
 	}
 	
-	/**
-	 * Dispose of textures.
-	 */
 	public void dispose() {
 		splashScreenLogo.dispose();
 		testImage.dispose();

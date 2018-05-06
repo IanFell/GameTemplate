@@ -12,23 +12,13 @@ import com.mygdx.mygame.MyGame;
  */
 public class Tile extends Sprite {
 	
-	/**
-	 * Represents whether tile is solid / player cannot pass through it.
-	 */
 	private boolean isSolid;
 	
-	/**
-	 * Texture for tile one.
-	 */
 	public static Texture textureOne;
 	
-	/**
-	 * Texture for tile two.
-	 */
 	public static Texture textureTwo;
 	
 	/**
-	 * Contstructor.
 	 * 
 	 * @param Texture texture
 	 * @param boolean isSolid
@@ -39,7 +29,6 @@ public class Tile extends Sprite {
 	}
 	
 	/**
-	 * Initializes tile textures.
 	 * 
 	 * @param MyGame myGame
 	 */
@@ -49,7 +38,6 @@ public class Tile extends Sprite {
 	}
 
 	/**
-	 * Returns whether tile is solid.
 	 * 
 	 * @return boolean
 	 */

@@ -11,21 +11,12 @@ import com.badlogic.gdx.audio.Sound;
  */
 public class SoundLoader {
 	
-	/**
-	 * Sample sound.
-	 */
 	public Sound sound;
 	
-	/**
-	 * Initialize sounds.
-	 */
 	public void init() {
 		sound = Gdx.audio.newSound(Gdx.files.internal("bomb.wav"));
 	}
 	
-	/**
-	 * Dispose of sounds.
-	 */
 	public void dispose() {
 		sound.dispose();
 	}
