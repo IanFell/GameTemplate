@@ -10,24 +10,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
  */
 public abstract class AbstractGameObject extends Sprite {
 	
-	/**
-	 * Object X position.
-	 */
 	protected float x;
 	
-	/**
-	 * Object Y position.
-	 */
 	protected float y;
 	
-	/**
-	 * Object width.
-	 */
 	protected float width;
 	
-	/**
-	 * Object height.
-	 */
 	protected float height;
 	
 	/**

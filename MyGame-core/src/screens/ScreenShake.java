@@ -12,25 +12,13 @@ import helpers.RandomNumberGenerator;
  */
 public class ScreenShake {
 	
-	/**
-	 * Keeps track whether screen is shaking.
-	 */
 	public static boolean screenIsShaking = false;
 	
-	/**
-	 * Duration of screenshake in milliseconds.
-	 */
-	private float duration;
+	private float durationOfScreenShakeInMilliseconds;
 	
-	/**
-	 * How much screenshake time has elapsed.
-	 */
-	private float elapsed;
+	private float elapsedScreenShakeTime;
 	
-	/**
-	 * Used to randomize screenshake.
-	 */
-	private float randomAngle;
+	private float randomScreenShakeAngle;
 	
 	/**
 	 * The starting radius for the shake. 
@@ -39,17 +27,17 @@ public class ScreenShake {
 	private float radius;
 	
 	/**
-	 * Start the screen shaking with a given power and duration
+	 * Start the screen shaking with a given power and duration.
 	 *
 	 * @param float radius 
 	 * @param float duration 
 	 */
 	public void shake(float radius , float duration) {
-	    this.elapsed     = 0;
-	    this.duration    = duration / 1000f;
-	    this.radius      = radius ;
-	    this.randomAngle = RandomNumberGenerator.random.nextFloat() % 360f;
-	    screenIsShaking  = true;
+	    this.elapsedScreenShakeTime              = 0;
+	    this.durationOfScreenShakeInMilliseconds = duration / 1000f;
+	    this.radius                              = radius ;
+	    this.randomScreenShakeAngle              = RandomNumberGenerator.random.nextFloat() % 360f;
+	    screenIsShaking                          = true;
 	}
 	 
 	/**
@@ -63,17 +51,17 @@ public class ScreenShake {
 		Screens.saveCameraCoordinatesBeforeScreenShake();
 		
 	    // Only shake when required.
-	    if((elapsed < duration)) {
+	    if((elapsedScreenShakeTime < durationOfScreenShakeInMilliseconds)) {
 	    	System.out.println("Screen is shaking!");
 	        // Calculate the shake based on the remaining radius.
-	        radius      *= 0.9f; // Diminish radius each frame
-	        randomAngle += (150 + RandomNumberGenerator.random.nextFloat() % 60f);
-	        float x     = (float) (Math.sin(randomAngle) * radius);
-	        float y     = (float) (Math.cos(randomAngle) * radius);
+	        radius                 *= 0.9f; // Diminish radius each frame
+	        randomScreenShakeAngle += (150 + RandomNumberGenerator.random.nextFloat() % 60f);
+	        float x                = (float) (Math.sin(randomScreenShakeAngle) * radius);
+	        float y                = (float) (Math.cos(randomScreenShakeAngle) * radius);
 	        camera.translate(-x, y);
 	 
 	        // Increase the elapsed time by the delta provided.
-	        elapsed += delta;
+	        elapsedScreenShakeTime += delta;
 	    } 
 	}
 }

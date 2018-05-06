@@ -11,7 +11,6 @@ import com.mygdx.mygame.MyGame;
 public class GameOverScreen extends Screens {
 
 	/**
-	 * Constructor.
 	 * 
 	 * @param MyGame myGame
 	 */

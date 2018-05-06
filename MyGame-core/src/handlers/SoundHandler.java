@@ -13,7 +13,6 @@ import screens.Screens;
 public class SoundHandler {
 	
 	/**
-	 * Handle sounds in game.
 	 * 
 	 * @param SoundLoader soundLoader
 	 */

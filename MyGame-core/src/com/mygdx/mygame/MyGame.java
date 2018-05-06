@@ -56,7 +56,6 @@ public class MyGame extends Game {
 		imageLoader.init();
 		renderer.init();
 		gameObjectLoader.createObjects(this);
-		gameObjectLoader.init(imageLoader);
 		audioHandler.init();
 		inputHandler.init();
 		gameAttributeHelper = new GameAttributeHelper();

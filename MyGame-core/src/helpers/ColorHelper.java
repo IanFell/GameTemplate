@@ -10,9 +10,6 @@ import com.badlogic.gdx.graphics.Color;
  */
 public class ColorHelper {
 	
-	/**
-	 * Value for non transparent color.
-	 */
 	private static int noTransparancy = 0;
 	
 	/**
@@ -31,7 +28,7 @@ public class ColorHelper {
 	private static int maximumColorValue = 255;
 	
 	/**
-	 * Available colors.
+	 * Available solid colors.
 	 */
 	public static final Color RED    = new Color(maximumColorValue, minimumColorValue, minimumColorValue, noTransparancy);
 	public static final Color YELLOW = new Color(maximumColorValue, maximumColorValue, minimumColorValue, noTransparancy);
@@ -40,5 +37,8 @@ public class ColorHelper {
 	public static final Color BLUE   = new Color(minimumColorValue, minimumColorValue, maximumColorValue, noTransparancy);
 	public static final Color BLACK  = new Color(minimumColorValue, minimumColorValue, minimumColorValue, noTransparancy);
 	
+	/**
+	 * Available transparent colors.
+	 */
 	public static final Color NIGHT_TIME_BLACK = new Color(minimumColorValue, minimumColorValue, minimumColorValue, nightTimeTransparency);
 }

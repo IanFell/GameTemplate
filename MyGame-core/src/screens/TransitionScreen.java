@@ -17,7 +17,7 @@ import com.mygdx.mygame.MyGame;
 public class TransitionScreen extends Screens {
 	
 	/**
-	 * Represents if transition screen has completely faded from black.
+	 * Represents if transition screen has completely faded from black to transparent.
 	 */
 	private static boolean transitionScreenIsComplete = false;
 
@@ -27,7 +27,6 @@ public class TransitionScreen extends Screens {
 	private static float transparencyIncrement = 1;
 
 	/**
-	 * Constructor.
 	 * 
 	 * @param MyGame myGame
 	 */

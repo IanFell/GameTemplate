@@ -24,9 +24,6 @@ public class Particle extends GameObject {
 	 */
 	private float lifeSpan;
 	
-	/**
-	 * Represents if particle is alive.
-	 */
 	private boolean isAlive;
 	
 	/**
@@ -34,13 +31,9 @@ public class Particle extends GameObject {
 	 */
 	private float life = 0;
 	
-	/**
-	 * Particle color.
-	 */
 	private Color color;
 	
 	/**
-	 * Constructor.
 	 * 
 	 * @param float  x
 	 * @param float  y

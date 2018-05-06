@@ -14,7 +14,6 @@ import screens.Screens;
 public class GameStateController {
 	
 	/**
-	 * Switches game states.
 	 * 
 	 * @param MyGame myGame
 	 * @param int    newGameState

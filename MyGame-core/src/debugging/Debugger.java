@@ -13,7 +13,6 @@ import maps.MapEditor;
 public class Debugger {
 	
 	/**
-	 * Perform debug operations.
 	 * 
 	 * @param MyGame    myGame
 	 * @param MapEditor mapEditor

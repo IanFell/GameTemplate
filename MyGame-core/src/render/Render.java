@@ -11,27 +11,15 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
  */
 public class Render {
 	
-	/**
-	 * Sprite batch.
-	 */
 	public SpriteBatch batch;
 	
-	/**
-	 * ShapeRenderer.
-	 */
 	public ShapeRenderer shapeRenderer;
 	
-	/**
-	 * Initialize renderer.
-	 */
 	public void init() {
 		batch         = new SpriteBatch();
 		shapeRenderer = new ShapeRenderer();
 	}
 	
-	/**
-	 * Dispose of renderer.
-	 */
 	public void dispose() {
 		batch.dispose();
 		shapeRenderer.dispose();

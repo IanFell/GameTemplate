@@ -21,12 +21,4 @@ public class GameObjectLoader {
 	public void createObjects(MyGame myGame) {
 		player = myGame.gameObjectFactory.getObject("player");
 	}
-	
-	/**
-	 *
-	 * @param ImageLoader imageLoader
-	 */
-	public void init(ImageLoader imageLoader) {
-		player.init(imageLoader);
-	}
 }

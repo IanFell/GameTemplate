@@ -14,7 +14,6 @@ import screens.Screens;
 public class MusicHandler {
 	
 	/**
-	 * Handle music in game.
 	 * 
 	 * @param MusicLoader musicLoader
 	 */

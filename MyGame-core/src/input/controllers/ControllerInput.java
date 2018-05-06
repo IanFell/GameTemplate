@@ -63,7 +63,7 @@ public class ControllerInput extends ApplicationAdapter {
     protected int AXIS_RIGHT_Y; //-1 is up | +1 is down
     
     /**
-     * Initialize controller.  If a controller is found, set the name.
+     * If a controller is found, set the name.
      */
     public void init() {
 		if(Controllers.getControllers().size == 0) {

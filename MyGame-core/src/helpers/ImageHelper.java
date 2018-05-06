@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class ImageHelper {
 	
 	/**
-	 * Draws the given image in the middle of the screen.
 	 * 
 	 * @param SpriteBatch batch
 	 * @param Texture     texture

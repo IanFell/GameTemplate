@@ -1,6 +1,5 @@
 package gameobjects;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -30,11 +29,6 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 * If left arrow is pressed, we can think of this as 'direction = player.MovingLeftConstant'.
 	 */
 	public int direction;
-	
-	/**
-	 * Image for our game object.
-	 */
-	protected Texture texture;
 
 	/**
 	 * Game object x-axis speed value.
@@ -46,19 +40,7 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 */
 	public float dy;
 	
-	/**
-	 * Constructor.
-	 */
 	public GameObject() {}
-	
-	/**
-	 * Initialize object image.
-	 * 
-	 * @param ImgageLoader imageLoader
-	 */
-	public void init(ImageLoader imageLoader) {
-		this.texture = imageLoader.testImage;
-	}
 	
 	/**
 	 * Move object along the X axis.
@@ -91,7 +73,6 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	}
 	
 	/**
-	 * Render game object.
 	 * 
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
@@ -100,7 +81,6 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {}
 
 	/**
-	 * Update game object.
 	 * 
 	 * @param MyGame    myGame
 	 * @param MapEditor mapEditor
@@ -114,8 +94,5 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 */
 	public void stopScrolling(int direction) {}
 
-	public void stopPlayer() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void stopPlayer() {}
 }

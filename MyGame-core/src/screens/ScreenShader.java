@@ -17,7 +17,6 @@ import helpers.ColorHelper;
 public class ScreenShader extends Screens {
 
 	/**
-	 * Constructor.
 	 * 
 	 * @param MyGame myGame
 	 */

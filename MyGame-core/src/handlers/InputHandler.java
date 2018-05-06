@@ -21,14 +21,8 @@ import input.controllers.XBox360Pad;
  */
 public class InputHandler {
 	
-	/**
-	 * Keyboard input.
-	 */
 	private Keyboard keyboard = new Keyboard();
 	
-	/**
-	 * Mouse input.
-	 */
 	private Mouse mouse = new Mouse();
 	
 	/**
@@ -60,7 +54,6 @@ public class InputHandler {
 	}
 	
 	/**
-	 * Handles all input in game.
 	 * 
 	 * @param MyGame myGame
 	 */

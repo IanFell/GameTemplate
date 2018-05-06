@@ -14,7 +14,6 @@ import helpers.ImageHelper;
 public class SplashScreen extends Screens {
 	
 	/**
-	 * Constructor.
 	 * 
 	 * @param MyGame myGame
 	 */
@@ -24,7 +23,6 @@ public class SplashScreen extends Screens {
 	}
 	
 	/**
-	 * Render splash screen.
 	 * 
 	 * @param float          delta
 	 * @param WeatherHandler weatherHandler

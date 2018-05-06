@@ -11,7 +11,6 @@ import com.mygdx.mygame.MyGame;
 public class InventoryScreen extends Screens {
 	
 	/**
-	 * Constructor.
 	 * 
 	 * @para mMyGame myGame
 	 */

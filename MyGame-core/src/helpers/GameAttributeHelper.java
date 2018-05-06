@@ -10,14 +10,7 @@ import com.badlogic.gdx.Gdx;
  */
 public class GameAttributeHelper {
 	
-	/**
-	 * Width of screen.
-	 */
 	public final static int SCREEN_WIDTH  = Gdx.graphics.getWidth();
-	
-	/**
-	 * Height of screen.
-	 */
 	public final static int SCREEN_HEIGHT = Gdx.graphics.getHeight();
 	
 	/**

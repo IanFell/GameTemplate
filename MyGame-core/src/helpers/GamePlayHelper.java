@@ -15,7 +15,6 @@ import gameobjects.GameObject;
 public class GamePlayHelper {
 	
 	/**
-	 * Sets given object to be in the middle of the screen on the x-axis.
 	 * 
 	 * @param GameObject gameObject
 	 * @return int
@@ -25,7 +24,6 @@ public class GamePlayHelper {
 	}
 	
 	/**
-	 * Sets given object to be in the middle of the screen on the y-axis.
 	 * 
 	 * @param GameObject gameObject
 	 * @return int
