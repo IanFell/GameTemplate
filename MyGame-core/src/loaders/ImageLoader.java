@@ -18,10 +18,11 @@ public class ImageLoader {
 	
 	public Texture splashScreenLogo;
 	
-	public Texture fakeTileOne, fakeTileTwo;
+	public Texture grassTileOne;
+	public Texture grassTileTwo;
+	public Texture solidTile;
 	
 	public Texture light;
-	
 	public Texture shadow;
 	
 	public Texture playerSprite;
@@ -31,8 +32,9 @@ public class ImageLoader {
 	public void init() {
 		splashScreenLogo = new Texture(Gdx.files.internal("logo_ffg.png"));
 		testImage        = new Texture(Gdx.files.internal("badlogic.jpg"));
-		fakeTileOne      = new Texture(Gdx.files.internal("FakeTile.png"));
-		fakeTileTwo      = new Texture(Gdx.files.internal("FakeTile2.png"));
+		grassTileOne     = new Texture(Gdx.files.internal("GrassTileOne.png"));
+		grassTileTwo     = new Texture(Gdx.files.internal("GrassTileTwo.png"));
+		solidTile        = new Texture(Gdx.files.internal("FakeTile.png"));
 		light            = new Texture(Gdx.files.internal("Lighting.png"));
 		shadow           = new Texture(Gdx.files.internal("Shadow.png"));
 		playerSprite     = new Texture(Gdx.files.internal("PlayerSprite.png"));
@@ -42,8 +44,9 @@ public class ImageLoader {
 	public void dispose() {
 		splashScreenLogo.dispose();
 		testImage.dispose();
-		fakeTileOne.dispose();
-		fakeTileTwo.dispose();
+		grassTileOne.dispose();
+		grassTileTwo.dispose();
+		solidTile.dispose();
 		light.dispose();
 		shadow.dispose();
 		playerSprite.dispose();

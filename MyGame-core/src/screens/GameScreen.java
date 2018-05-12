@@ -28,7 +28,9 @@ import physics.Weather.RainHandler;
  */
 public class GameScreen extends Screens {
 	
-	private Matrix4 matrixO, matrixR, matrixT;
+	private Matrix4 matrixO = new Matrix4();
+	private Matrix4 matrixR = new Matrix4();
+	private Matrix4 matrixT = new Matrix4();
 
 	public static int cameraWidth = 10;
 	
@@ -122,7 +124,7 @@ public class GameScreen extends Screens {
 		if (!TransitionScreen.isTransitionScreenIsComplete() || !NightAndDayCycle.isDayTime()) {
 			Gdx.gl.glEnable(GL20.GL_BLEND);
 			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-		}
+		} 
 		
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		renderObjectsOnGameScreenThatUseShapeRenderer();
@@ -182,16 +184,13 @@ public class GameScreen extends Screens {
 		camera.position.y        = myGame.gameObjectLoader.player.getY();
 		camera.setToOrtho(true, cameraWidth, cameraHeight);
 		/*
-		matrixO = new Matrix4();
-		matrixR = new Matrix4();
-		matrixT = new Matrix4();
-		matrixO.setToOrtho(0, cameraWidth, 0, cameraHeight, 1, 100);
-		//matrixO.setToOrtho
-		//matrixO.setToOrtho2D(0, 0, 10, 10);
+		float ex = 10f; // <- 4 units in each direction
+		float ar = (float) cameraWidth / cameraHeight;
+		matrixO.setToOrtho(-ar*ex, ar*ex, -ex, ex, 0, 10);
 		matrixR.setToRotation(new Vector3(1, 0, 0), 45);
 		matrixR.translate(0, -1, -1);
 		matrixT = matrixO.mul(matrixR);
-		camera.transform(matrixT);*/
+		camera.rotate(matrixT);*/
 	}
 	
 	private void updateGameScreen() {

@@ -14,9 +14,9 @@ public class Tile extends Sprite {
 	
 	private boolean isSolid;
 	
-	public static Texture textureOne;
-	
-	public static Texture textureTwo;
+	public static Texture grassTextureOne;
+	public static Texture grassTextureTwo;
+	public static Texture solidTile;
 	
 	/**
 	 * 
@@ -33,8 +33,9 @@ public class Tile extends Sprite {
 	 * @param MyGame myGame
 	 */
 	public static void initializeTileTextures(MyGame myGame) {
-		textureOne  = myGame.imageLoader.fakeTileOne;
-		textureTwo  = myGame.imageLoader.fakeTileTwo;
+		grassTextureOne  = myGame.imageLoader.grassTileOne;
+		grassTextureTwo  = myGame.imageLoader.grassTileTwo;
+		solidTile        = myGame.imageLoader.solidTile;
 	}
 
 	/**

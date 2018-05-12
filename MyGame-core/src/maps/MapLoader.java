@@ -20,18 +20,41 @@ public class MapLoader {
 	 */
 	public void loadMap(MyGame myGame, MapEditor mapEditor) { 
 		Tile.initializeTileTextures(myGame);
-		for(int z = 0; z < mapEditor.map.length; z++) {
-			for(int x = 0; x < mapEditor.map[z].length; x++) {
-				if (mapEditor.map[z][x] == 0) {  
-					mapEditor.tiles[x][z] = new Tile(Tile.textureOne, true);
-				}
-				if (mapEditor.map[z][x] == 1) {  
-					mapEditor.tiles[x][z] = new Tile(Tile.textureTwo, false);
-				}
-				mapEditor.tiles[x][z].setPosition(x, z);
-				int tileSize = 1;
-				mapEditor.tiles[x][z].setSize(tileSize, tileSize); 
+		for(int z = 0; z < mapEditor.grassMapOne.length; z++) {
+			for(int x = 0; x < mapEditor.grassMapOne[z].length; x++) {
+				loadGrassMaps(mapEditor, x, z);
 			}
 		}
+	}
+	
+	/**
+	 * Loads all grass maps.  There are two at the moment, and alternate back and forth to simulate wind.
+	 * 
+	 * @param MapEditor mapEditor
+	 * @param int       x
+	 * @param int       z
+	 */
+	private void loadGrassMaps(MapEditor mapEditor, int x, int z) {
+		int tileSize    = 1;
+		boolean isSolid = true;
+		// "Left side" grass map.
+		if (mapEditor.grassMapOne[z][x] == MapEditor.SolidTile) {  
+			mapEditor.grassTilesOne[x][z] = new Tile(Tile.solidTile, isSolid);
+		}
+		if (mapEditor.grassMapOne[z][x] == MapEditor.GrassTileOne) {  
+			mapEditor.grassTilesOne[x][z] = new Tile(Tile.grassTextureOne, !isSolid);
+		}
+		mapEditor.grassTilesOne[x][z].setPosition(x, z);
+		mapEditor.grassTilesOne[x][z].setSize(tileSize, tileSize); 
+	
+		// "Right side" grass map.
+		if (mapEditor.grassMapTwo[z][x] == MapEditor.SolidTile) {  
+			mapEditor.grassTilesTwo[x][z] = new Tile(Tile.solidTile, isSolid);
+		}
+		if (mapEditor.grassMapTwo[z][x] == MapEditor.GrassTileTwo) {  
+			mapEditor.grassTilesTwo[x][z] = new Tile(Tile.grassTextureTwo, !isSolid);
+		}
+		mapEditor.grassTilesTwo[x][z].setPosition(x, z);
+		mapEditor.grassTilesTwo[x][z].setSize(tileSize, tileSize); 
 	}
 }
