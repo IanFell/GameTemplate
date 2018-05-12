@@ -99,6 +99,18 @@ public class Player extends GameObject {
 	}
 	
 	/**
+	 * 
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
+	 */
+	@Override
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+		elapsedTime += Gdx.graphics.getDeltaTime();
+		AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, characterSize);
+	}
+	
+	/**
 	 * Returns current animation depending on which direction player is facing.
 	 * 
 	 * @return Animation <TextureRegion>
@@ -120,18 +132,6 @@ public class Player extends GameObject {
 				break;
 			}
 		return currentAnimation;
-	}
-	
-	/**
-	 * 
-	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
-	 * @param ImageLoader   imageLoader
-	 */
-	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		elapsedTime += Gdx.graphics.getDeltaTime();
-		AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, characterSize);
 	}
 
 	/**

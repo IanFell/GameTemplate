@@ -1,6 +1,7 @@
 package factories;
 
 import gameobjects.GameObject;
+import gameobjects.StationaryGameObjects.NatureObject;
 import gameobjects.gamecharacters.Player;
 
 /**
@@ -23,6 +24,9 @@ public class GameObjectFactory {
 		}
 		if (objectType.equalsIgnoreCase("player")) {
 			return new Player();
+		}
+		if (objectType.equalsIgnoreCase("tree")) {
+			return new NatureObject();
 		}
 		return null;
 	}

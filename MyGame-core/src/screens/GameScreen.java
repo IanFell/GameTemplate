@@ -28,9 +28,7 @@ import physics.Weather.RainHandler;
  */
 public class GameScreen extends Screens {
 	
-	private Matrix4 matrixO = new Matrix4();
-	private Matrix4 matrixR = new Matrix4();
-	private Matrix4 matrixT = new Matrix4();
+	private Matrix4 matrixO, matrixR, matrixT;
 
 	public static int cameraWidth = 10;
 	
@@ -149,6 +147,20 @@ public class GameScreen extends Screens {
 		ScreenShake.screenIsShaking = false;
 	}
 	
+	public void initializeGameScreen() {
+		mapLoader.loadMap(myGame, mapEditor);
+		ParticleEmitter.initializeParticleEmitters(myGame);
+		for (int i = 0; i < rainHandler.length; i++) {
+			rainHandler[i] = new RainHandler();
+		}
+		/**
+		 * This overlays the game screen and fades out from black.
+		 * This makes the transition between screens much smoother.
+		 */
+		new TransitionScreen(myGame);
+		initializeCamera();
+	}
+	
 	/**
 	 * Handle projection matrix and screen shake.
 	 */
@@ -164,40 +176,22 @@ public class GameScreen extends Screens {
 		camera.update();
 	}
 	
-	public void initializeGameScreen() {
-		mapLoader.loadMap(myGame, mapEditor);
-		ParticleEmitter.initializeParticleEmitters(myGame);
-		for (int i = 0; i < rainHandler.length; i++) {
-			rainHandler[i] = new RainHandler();
-		}
-		/**
-		 * This overlays the game screen and fades out from black.
-		 * This makes the transition between screens much smoother.
-		 */
-		new TransitionScreen(myGame);
-		initializeCamera();
-	}
-	
 	private void initializeCamera() {
 		camera                   = new OrthographicCamera(cameraWidth, cameraHeight);
 		camera.position.x        = myGame.gameObjectLoader.player.getX();
 		camera.position.y        = myGame.gameObjectLoader.player.getY();
 		camera.setToOrtho(true, cameraWidth, cameraHeight);
-		//matrixO.setToOrtho(left, right, bottom, top, near, far)
-		//matrixO.setToOrtho(0, GameAttributeHelper.SCREEN_WIDTH, GameAttributeHelper.SCREEN_HEIGHT, 0, 0, 0);
-		//matrixR.setToRotation(new Vector3(1, 0, 0), 45);
-		
-		//Matrix4 matrixT = matrixO.mul(matrixR);
-		//matrixT.translate(matrixT);
-		
 		/*
-		float ex = 4.0f;
-		float ar = GameAttributeHelper.SCREEN_WIDTH /  GameAttributeHelper.SCREEN_HEIGHT;
-		Matrix4 matrix = new Matrix4()
-				.setToOrtho(-ar * ex, ar * ex, -ex, +ex, 0, +10)
-				.setToRotation(new Vector3(1, 0, 0), 45)
-				.translate(0, -1, -1);
-		camera.transform(matrix);*/
+		matrixO = new Matrix4();
+		matrixR = new Matrix4();
+		matrixT = new Matrix4();
+		matrixO.setToOrtho(0, cameraWidth, 0, cameraHeight, 1, 100);
+		//matrixO.setToOrtho
+		//matrixO.setToOrtho2D(0, 0, 10, 10);
+		matrixR.setToRotation(new Vector3(1, 0, 0), 45);
+		matrixR.translate(0, -1, -1);
+		matrixT = matrixO.mul(matrixR);
+		camera.transform(matrixT);*/
 	}
 	
 	private void updateGameScreen() {
@@ -234,6 +228,11 @@ public class GameScreen extends Screens {
 			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
 		}
 		myGame.gameObjectLoader.player.renderObject(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
+		myGame.gameObjectLoader.tree.renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader

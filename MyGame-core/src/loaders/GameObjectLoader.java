@@ -13,6 +13,7 @@ import gameobjects.GameObject;
 public class GameObjectLoader {
 	
 	public GameObject player;
+	public GameObject tree;
 	
 	/**
 	 * 
@@ -20,5 +21,6 @@ public class GameObjectLoader {
 	 */
 	public void createObjects(MyGame myGame) {
 		player = myGame.gameObjectFactory.getObject("player");
+		tree   = myGame.gameObjectFactory.getObject("tree");
 	}
 }

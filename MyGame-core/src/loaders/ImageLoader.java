@@ -18,9 +18,6 @@ public class ImageLoader {
 	
 	public Texture splashScreenLogo;
 	
-	/**
-	 * Fake tile images for set up.
-	 */
 	public Texture fakeTileOne, fakeTileTwo;
 	
 	public Texture light;
@@ -28,6 +25,8 @@ public class ImageLoader {
 	public Texture shadow;
 	
 	public Texture playerSprite;
+	
+	public Texture tree;
 	
 	public void init() {
 		splashScreenLogo = new Texture(Gdx.files.internal("logo_ffg.png"));
@@ -37,6 +36,7 @@ public class ImageLoader {
 		light            = new Texture(Gdx.files.internal("Lighting.png"));
 		shadow           = new Texture(Gdx.files.internal("Shadow.png"));
 		playerSprite     = new Texture(Gdx.files.internal("PlayerSprite.png"));
+		tree             = new Texture(Gdx.files.internal("Tree.png"));
 	}
 	
 	public void dispose() {
@@ -47,5 +47,6 @@ public class ImageLoader {
 		light.dispose();
 		shadow.dispose();
 		playerSprite.dispose();
+		tree.dispose();
 	}
 }
