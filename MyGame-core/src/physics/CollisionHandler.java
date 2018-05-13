@@ -22,7 +22,7 @@ public class CollisionHandler {
 		for(int z = 0; z < mapEditor.grassMapOne.length; z++) {
 			for(int x = 0; x < mapEditor.grassMapOne[z].length; x++) {
 				if (mapEditor.grassTilesOne[z][x].isSolid()) {
-					if (mapEditor.grassTilesOne[z][x].getBoundingRectangle().overlaps(myGame.gameObjectLoader.player.rectangle)) {
+					if (mapEditor.grassTilesOne[z][x].getBoundingRectangle().overlaps(myGame.gameObjectLoader.playerOne.rectangle)) {
 						Player.playerShouldStopMoving = true;
 						System.out.println("Solid tile hit!");
 					}

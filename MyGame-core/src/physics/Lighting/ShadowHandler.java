@@ -12,7 +12,7 @@ import loaders.ImageLoader;
  *
  */
 public class ShadowHandler extends GameLightingHandler {
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch batch

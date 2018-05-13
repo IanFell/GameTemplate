@@ -172,16 +172,16 @@ public class GameScreen extends Screens {
 		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
 		
 		if (!ScreenShake.screenIsShaking) {
-			camera.position.x = myGame.gameObjectLoader.player.getX();
-			camera.position.y = myGame.gameObjectLoader.player.getY();
+			camera.position.x = myGame.gameObjectLoader.playerOne.getX();
+			camera.position.y = myGame.gameObjectLoader.playerOne.getY();
 		}
 		camera.update();
 	}
 	
 	private void initializeCamera() {
 		camera                   = new OrthographicCamera(cameraWidth, cameraHeight);
-		camera.position.x        = myGame.gameObjectLoader.player.getX();
-		camera.position.y        = myGame.gameObjectLoader.player.getY();
+		camera.position.x        = myGame.gameObjectLoader.playerOne.getX();
+		camera.position.y        = myGame.gameObjectLoader.playerOne.getY();
 		camera.setToOrtho(true, cameraWidth, cameraHeight);
 		/*
 		float ex = 10f; // <- 4 units in each direction
@@ -202,7 +202,7 @@ public class GameScreen extends Screens {
 		ParticleEmitter.updateParticleEmitters(myGame, lightHandler);
 		lightHandler.updateLighting(myGame.imageLoader);
 		nightAndDayCycle.performDayAndNightCycle();
-		myGame.gameObjectLoader.player.updateObject(myGame, mapEditor);
+		myGame.gameObjectLoader.playerOne.updateObject(myGame, mapEditor);
 		
 		/**
 		 * If it is day time, start raining.  Stop raining during night time.
@@ -221,12 +221,24 @@ public class GameScreen extends Screens {
 	
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
 		mapRenderer.renderMap(myGame, mapEditor);
-		lightHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
+		lightHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
 		
 		if (NightAndDayCycle.isDayTime()) {
-			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.player);
+			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
+			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerTwo);
+			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerThree);
 		}
-		myGame.gameObjectLoader.player.renderObject(
+		myGame.gameObjectLoader.playerOne.renderObject(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
+		myGame.gameObjectLoader.playerTwo.renderObject(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
+		myGame.gameObjectLoader.playerThree.renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader

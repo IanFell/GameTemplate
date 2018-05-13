@@ -20,7 +20,7 @@ import physics.CollisionHandler;
  * @author Fabulous Fellini
  *
  */
-public class Player extends GameObject {
+public class Player extends GameObject { 
 	
 	/**
 	 * Available directions player can travel.  
@@ -96,6 +96,67 @@ public class Player extends GameObject {
 		rectangle.x = x;
 		rectangle.y = y;
 		CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(myGame, mapEditor);
+		setPlayersWalkingOrder(myGame);
+	}
+	
+	/**
+	 * Sets players walking order heirarchy.  Player one should always be first.
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void setPlayersWalkingOrder(MyGame myGame) {
+		int playerOneDirection = myGame.gameObjectLoader.playerOne.getDirection();
+		myGame.gameObjectLoader.playerTwo.setDirection(playerOneDirection);
+		myGame.gameObjectLoader.playerThree.setDirection(playerOneDirection);
+		int playerTwoFollowDistance   = 1;
+		int playerThreeFollowDistance = 2;
+		// Sets player two follow distance and location.
+		setPlayerFollowDistanceAndLocation(
+				myGame.gameObjectLoader.playerOne, 
+				myGame.gameObjectLoader.playerTwo, 
+				playerTwoFollowDistance, 
+				playerOneDirection
+				);
+		// Sets player three follow distance and location.
+		setPlayerFollowDistanceAndLocation(
+				myGame.gameObjectLoader.playerOne, 
+				myGame.gameObjectLoader.playerThree, 
+				playerThreeFollowDistance, 
+				playerOneDirection
+				);
+	}
+	
+	/**
+	 * 
+	 * @param GameObject playerLeader
+	 * @param GameObject playerFollower
+	 * @param int        followDistance
+	 * @param int        direction
+	 */
+	private void setPlayerFollowDistanceAndLocation(
+			GameObject playerLeader, 
+			GameObject playerFollower, 
+			int followDistance, 
+			int direction
+			) {
+		switch (direction) {
+		case DIRECTION_LEFT:
+			playerFollower.setX(playerLeader.getX() + followDistance);
+			playerFollower.setY(playerLeader.getY());
+			break;
+		case DIRECTION_RIGHT:
+			playerFollower.setX(playerLeader.getX() - followDistance);
+			playerFollower.setY(playerLeader.getY());
+			break;
+		case DIRECTION_UP:
+			playerFollower.setX(playerLeader.getX());
+			playerFollower.setY(playerLeader.getY() + followDistance);
+			break;
+		case DIRECTION_DOWN:
+			playerFollower.setX(playerLeader.getX());
+			playerFollower.setY(playerLeader.getY() - followDistance);
+			break;
+		}
 	}
 	
 	/**

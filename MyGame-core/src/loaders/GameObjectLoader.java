@@ -12,7 +12,9 @@ import gameobjects.GameObject;
  */
 public class GameObjectLoader {
 	
-	public GameObject player;
+	public GameObject playerOne;
+	public GameObject playerTwo;
+	public GameObject playerThree;
 	public GameObject tree;
 	
 	/**
@@ -20,7 +22,9 @@ public class GameObjectLoader {
 	 * @param MyGame myGame
 	 */
 	public void createObjects(MyGame myGame) {
-		player = myGame.gameObjectFactory.getObject("player");
-		tree   = myGame.gameObjectFactory.getObject("tree");
+		playerOne   = myGame.gameObjectFactory.getObject("player");
+		playerTwo   = myGame.gameObjectFactory.getObject("player");
+		playerThree = myGame.gameObjectFactory.getObject("player");
+		tree        = myGame.gameObjectFactory.getObject("tree");
 	}
 }

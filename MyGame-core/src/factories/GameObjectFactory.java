@@ -15,7 +15,7 @@ public class GameObjectFactory {
 	/**
 	 * Creates our game objects.
 	 * 
-	 * @param string objectType
+	 * @param string  objectType
 	 * @return GameObject
 	 */
 	public GameObject getObject(String objectType) {
