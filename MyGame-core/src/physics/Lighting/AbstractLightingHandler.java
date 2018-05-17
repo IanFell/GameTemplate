@@ -6,11 +6,17 @@ import gameobjects.AbstractGameObject;
 import gameobjects.GameObject;
 import loaders.ImageLoader;
 
-public class GameLightingHandler extends AbstractGameObject {
+/**
+ * Abstract class for game lighting.
+ * 
+ * @author Fabulous Fellini
+ *
+ */
+public class AbstractLightingHandler extends AbstractGameObject {
 	
 	protected float initialTextureSize = 1;
 	
-	public GameLightingHandler() {
+	public AbstractLightingHandler() {
 		this.width  = initialTextureSize;
 		this.height = initialTextureSize;
 	}

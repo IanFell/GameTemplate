@@ -14,10 +14,7 @@ import maps.MapEditor;
 import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
-import physics.Lighting.GameLightingHandler;
-import physics.Lighting.LightHandler;
-import physics.Lighting.ShadowHandler;
-import physics.Weather.LightningHandler;
+import physics.Lighting.LightingHandler;
 import physics.Weather.NightAndDayCycle;
 import physics.Weather.RainHandler;
 import physics.Weather.WeatherHandler;
@@ -29,12 +26,14 @@ import physics.Weather.WeatherHandler;
  *
  */
 public class GameScreen extends Screens {
-	
-	private Matrix4 matrixO = new Matrix4();
-	private Matrix4 matrixR = new Matrix4();
-	private Matrix4 matrixT = new Matrix4();
 
 	public static int cameraWidth = 10;
+	
+	/**
+	 * Used for camera rotation.
+	 */
+	private Matrix4 matrixO = new Matrix4();
+	private Matrix4 matrixR = new Matrix4();
 	
 	/**
 	 * Represents camera height taking device into account.
@@ -66,9 +65,7 @@ public class GameScreen extends Screens {
 	 */
 	private MapLoader mapLoader = new MapLoader();
 	
-	private LightHandler lightHandler = new LightHandler();
-	
-	private ShadowHandler shadowHandler = new ShadowHandler();
+	private LightingHandler lightingHandler = new LightingHandler();
 
 	private WeatherHandler weatherHandler = new WeatherHandler();
 	
@@ -183,14 +180,9 @@ public class GameScreen extends Screens {
 		camera.position.x        = myGame.gameObjectLoader.playerOne.getX();
 		camera.position.y        = myGame.gameObjectLoader.playerOne.getY();
 		camera.setToOrtho(true, cameraWidth, cameraHeight);
-		/*
-		float ex = 10f; // <- 4 units in each direction
-		float ar = (float) cameraWidth / cameraHeight;
-		matrixO.setToOrtho(-ar*ex, ar*ex, -ex, ex, 0, 10);
-		matrixR.setToRotation(new Vector3(1, 0, 0), 45);
-		matrixR.translate(0, -1, -1);
-		matrixT = matrixO.mul(matrixR);
-		camera.rotate(matrixT);*/
+		matrixO.setToOrtho(0, cameraWidth, 0, cameraHeight, 1, 100);
+		matrixR.setToRotation(new Vector3(0, 0, -1), 10);
+		camera.rotate(matrixR);
 	}
 	
 	private void updateGameScreen() {
@@ -199,8 +191,8 @@ public class GameScreen extends Screens {
 			TransitionScreen.updateObject();
 		}
 		
-		ParticleEmitter.updateParticleEmitters(myGame, lightHandler);
-		lightHandler.updateLighting(myGame.imageLoader);
+		ParticleEmitter.updateParticleEmitters(myGame, lightingHandler.lightHandler);
+		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.nightAndDayCycle.performDayAndNightCycle();
 		myGame.gameObjectLoader.playerOne.updateObject(myGame, mapEditor);
 		
@@ -221,12 +213,12 @@ public class GameScreen extends Screens {
 	
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
 		mapRenderer.renderMap(myGame, mapEditor);
-		lightHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
+		lightingHandler.lightHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
 		
 		if (NightAndDayCycle.isDayTime()) {
-			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
-			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerTwo);
-			shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerThree);
+			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
+			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerTwo);
+			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerThree);
 		}
 		myGame.gameObjectLoader.playerOne.renderObject(
 				myGame.renderer.batch, 

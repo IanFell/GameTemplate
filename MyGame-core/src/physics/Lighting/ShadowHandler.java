@@ -11,7 +11,7 @@ import loaders.ImageLoader;
  * @author Fabulous Felini
  *
  */
-public class ShadowHandler extends GameLightingHandler {
+public class ShadowHandler extends AbstractLightingHandler {
 
 	/**
 	 * 

@@ -11,7 +11,7 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class LightHandler extends GameLightingHandler {
+public class LightHandler extends AbstractLightingHandler {
 	
 	/**
 	 * Starting x position.  After resizing light, x position will resume to this coordinate.
@@ -25,6 +25,9 @@ public class LightHandler extends GameLightingHandler {
 	
 	public static boolean isGrowing = false;
 	
+	/**
+	 * Constructor.
+	 */
 	public LightHandler() {
 		this.x = startX;
 		this.y = startY;
