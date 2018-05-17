@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import helpers.ColorHelper;
 import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
@@ -15,7 +16,7 @@ import maps.MapEditor;
  * @author Fabulous Fellini
  *
  */
-public class LightningHandler extends WeatherHandler {
+public class LightningHandler extends GameObject {
 	
 	/**
 	 * Maximum number of lightning flashes that can happen during one rain cycle.

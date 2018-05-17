@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import helpers.ColorHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
@@ -16,7 +17,7 @@ import screens.GameScreen;
  * @author Fabulous Fellini
  *
  */
-public class RainHandler extends WeatherHandler {
+public class RainHandler extends GameObject {
 	
 	public static boolean isRaining = false;
 	

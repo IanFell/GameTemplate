@@ -8,7 +8,6 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mygdx.mygame.MyGame;
 
 import helpers.GameAttributeHelper;
-import physics.Weather.NightAndDayCycle;
 import physics.Weather.WeatherHandler;
 
 /**
@@ -26,8 +25,6 @@ public class Screens implements Screen {
 	public final static int PAUSE_SCREEN     = 3;
 	public final static int INVENTORY_SCREEN = 4;
 	public final static int GAME_OVER_SCREEN = 5;
-	
-	protected NightAndDayCycle nightAndDayCycle = new NightAndDayCycle();
 	
 	/**
 	 * Scrolling speed for closest tier to screen.
@@ -88,7 +85,7 @@ public class Screens implements Screen {
 			Gdx.gl.glClearColor(minValue, minValue, minValue, maxValue);
 			break;
 		case GAME_SCREEN:
-			Gdx.gl.glClearColor(minValue, minValue, nightAndDayCycle.dayNightCycleValue, maxValue);
+			Gdx.gl.glClearColor(minValue, minValue, weatherHandler.nightAndDayCycle.dayNightCycleValue, maxValue);
 			break;
 		}
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

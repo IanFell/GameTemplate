@@ -1,12 +1,14 @@
 package physics.Weather;
 
+import gameobjects.GameObject;
+
 /**
  * Handles day and night cycle.  
  *  
  * @author Fabulous Fellini
  *
  */
-public class NightAndDayCycle extends WeatherHandler {
+public class NightAndDayCycle extends GameObject {
 	
 	public static boolean isDayTime = true;
 	

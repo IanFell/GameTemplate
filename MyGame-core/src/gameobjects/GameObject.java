@@ -40,6 +40,9 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 */
 	public float dy;
 	
+	/**
+	 * Constructor.
+	 */
 	public GameObject() {}
 	
 	/**

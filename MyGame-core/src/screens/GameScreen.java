@@ -14,11 +14,13 @@ import maps.MapEditor;
 import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
+import physics.Lighting.GameLightingHandler;
 import physics.Lighting.LightHandler;
 import physics.Lighting.ShadowHandler;
 import physics.Weather.LightningHandler;
 import physics.Weather.NightAndDayCycle;
 import physics.Weather.RainHandler;
+import physics.Weather.WeatherHandler;
 
 /**
  * Screen of the game while in play.
@@ -68,9 +70,7 @@ public class GameScreen extends Screens {
 	
 	private ShadowHandler shadowHandler = new ShadowHandler();
 
-	private RainHandler[] rainHandler = new RainHandler[100];
-	
-	private LightningHandler lightningHandler = new LightningHandler();
+	private WeatherHandler weatherHandler = new WeatherHandler();
 	
 	/**
 	 * Used to shade the screen to simulate darkness.
@@ -109,7 +109,7 @@ public class GameScreen extends Screens {
 			initializeGameScreen();
 			gameScreenHasBeenInitialized = !gameScreenHasBeenInitialized;
 		}
-		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, nightAndDayCycle);
+		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, weatherHandler);
 		
 		// Screen only shakes when needed, but we must update it at all times just in case it needs to shake.
 		screenShake.update(delta, camera);
@@ -152,8 +152,8 @@ public class GameScreen extends Screens {
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
 		ParticleEmitter.initializeParticleEmitters(myGame);
-		for (int i = 0; i < rainHandler.length; i++) {
-			rainHandler[i] = new RainHandler();
+		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
+			weatherHandler.rainHandler[i] = new RainHandler();
 		}
 		/**
 		 * This overlays the game screen and fades out from black.
@@ -201,7 +201,7 @@ public class GameScreen extends Screens {
 		
 		ParticleEmitter.updateParticleEmitters(myGame, lightHandler);
 		lightHandler.updateLighting(myGame.imageLoader);
-		nightAndDayCycle.performDayAndNightCycle();
+		weatherHandler.nightAndDayCycle.performDayAndNightCycle();
 		myGame.gameObjectLoader.playerOne.updateObject(myGame, mapEditor);
 		
 		/**
@@ -210,13 +210,13 @@ public class GameScreen extends Screens {
 		 */
 		if (NightAndDayCycle.isDayTime()) {
 			RainHandler.isRaining = true;
-			for (int i = 0; i < rainHandler.length; i++) {
-				rainHandler[i].updateObject(myGame, mapEditor);
+			for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
+				weatherHandler.rainHandler[i].updateObject(myGame, mapEditor);
 			}
 		} else {
 			RainHandler.isRaining = false;
 		}
-		lightningHandler.updateObject(myGame, mapEditor);
+		weatherHandler.lightningHandler.updateObject(myGame, mapEditor);
 	}
 	
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -252,10 +252,10 @@ public class GameScreen extends Screens {
 	
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
 		ParticleEmitter.renderParticleEmitters(myGame, myGame.renderer.shapeRenderer);
-		for (int i = 0; i < rainHandler.length; i++) {
-			rainHandler[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
+		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
+			weatherHandler.rainHandler[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		}
-		lightningHandler.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
+		weatherHandler.lightningHandler.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		
 		// Night time places a transparent dark square on the screen to simulate darkness.
 		if (!NightAndDayCycle.isDayTime()) {
