@@ -3,6 +3,7 @@ package screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
@@ -15,6 +16,7 @@ import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
 import physics.Lighting.LightingHandler;
+import physics.Weather.LightningBoltHandler;
 import physics.Weather.NightAndDayCycle;
 import physics.Weather.RainHandler;
 import physics.Weather.WeatherHandler;
@@ -81,7 +83,7 @@ public class GameScreen extends Screens {
 	
 	public static ParticleEmitter particleEmitterRed;
 	public static ParticleEmitter particleEmitterYellow;
-	public static ParticleEmitter particleEmitterOrange;
+	public static ParticleEmitter particleEmitterOrange;   
 	
 	/**
 	 * 
@@ -152,6 +154,7 @@ public class GameScreen extends Screens {
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
 			weatherHandler.rainHandler[i] = new RainHandler();
 		}
+		LightningBoltHandler.setTexture(new Texture("lightningbolt.png"));
 		/**
 		 * This overlays the game screen and fades out from black.
 		 * This makes the transition between screens much smoother.
@@ -176,13 +179,18 @@ public class GameScreen extends Screens {
 	}
 	
 	private void initializeCamera() {
-		camera                   = new OrthographicCamera(cameraWidth, cameraHeight);
-		camera.position.x        = myGame.gameObjectLoader.playerOne.getX();
-		camera.position.y        = myGame.gameObjectLoader.playerOne.getY();
-		camera.setToOrtho(true, cameraWidth, cameraHeight);
+		float aspectRatio    = (float)Gdx.graphics.getHeight() / (float)Gdx.graphics.getWidth();
+        float verticalHeight = 8.0f;
+        float viewportWidth  = verticalHeight / aspectRatio;
+        camera               = new OrthographicCamera(viewportWidth, verticalHeight);
+        camera.position.set(viewportWidth / 2.0f, verticalHeight / 2.0f, 1.0f);
+        camera.setToOrtho(true, viewportWidth, verticalHeight);
+		camera.position.x = myGame.gameObjectLoader.playerOne.getX();
+		camera.position.y = myGame.gameObjectLoader.playerOne.getY();
 		matrixO.setToOrtho(0, cameraWidth, 0, cameraHeight, 1, 100);
 		matrixR.setToRotation(new Vector3(0, 0, -1), 10);
 		camera.rotate(matrixR);
+		camera.update();
 	}
 	
 	private void updateGameScreen() {
@@ -216,6 +224,10 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
 		
 		if (NightAndDayCycle.isDayTime()) {
+			// Do not just constantly flash lightning the whole time.
+			if (weatherHandler.lightningHandler.getCurrentNumberOfFlashes() == 2) {
+				LightningBoltHandler.drawLightningBolt(myGame);
+			}
 			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
 			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerTwo);
 			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerThree);

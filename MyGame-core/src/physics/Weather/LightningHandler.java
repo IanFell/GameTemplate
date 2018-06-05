@@ -18,6 +18,10 @@ import maps.MapEditor;
  */
 public class LightningHandler extends GameObject {
 	
+	public boolean lightningBoltShouldBeRendered = false;
+	
+	
+	
 	/**
 	 * Maximum number of lightning flashes that can happen during one rain cycle.
 	 */
@@ -40,6 +44,9 @@ public class LightningHandler extends GameObject {
 	 */
 	private int increment = 0;
 	
+	/**
+	 * Construct.
+	 */
 	public LightningHandler() {
 		this.x      = 0;
 		this.y      = 0;
@@ -71,20 +78,24 @@ public class LightningHandler extends GameObject {
 		if (RainHandler.isRaining && currentNumberOfFlashes <= maxNumberOfFlashes) {
 			increment++;
 			if (increment >= timeBetweenFlashes) {
-				lightningShouldBeRendered = true;
-				increment                 = 0;
+				increment = 0;
 				currentNumberOfFlashes++;
 				
 				if (currentNumberOfFlashes == 2) {
 					timeBetweenFlashes = 50;
 				}
-			} else {
-				lightningShouldBeRendered = false;
 			}
 		} else {
-			lightningShouldBeRendered = false;
 			currentNumberOfFlashes = 0;
 			timeBetweenFlashes     = 15;
 		}
+	}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getCurrentNumberOfFlashes() {
+		return currentNumberOfFlashes;
 	}
 }
