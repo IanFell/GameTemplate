@@ -24,9 +24,9 @@ import screens.GameScreen;
  */
 public class ParticleEmitter extends GameObject {
 	
-	private Particle redParticles[]    = new Particle[100];
-	private Particle yellowParticles[] = new Particle[75];
-	private Particle orangeParticles[] = new Particle[75];
+	private Particle redParticles[]    = new Particle[1000];
+	private Particle yellowParticles[] = new Particle[750];
+	private Particle orangeParticles[] = new Particle[750];
 	
 	/**
 	 * Basically represents different colors.
@@ -63,7 +63,7 @@ public class ParticleEmitter extends GameObject {
 	private void createParticles(String particleType, Particle[] particles, int size, MyGame myGame) {
 		float emitterWidth  = x + width;
 		float emitterHeight = y + height;
-		float particleSize  = 0.07f;
+		float particleSize  = 0.04f;
 		float startX;
 		float startY;
 		float lifeSpan;
@@ -75,7 +75,7 @@ public class ParticleEmitter extends GameObject {
 			if (particleType.equalsIgnoreCase("Red")) {
 				color = ColorHelper.RED;
 			} else if (particleType.equalsIgnoreCase("Yellow")) {
-				color = ColorHelper.YELLOW;
+				color = ColorHelper.RED;
 			} else if (particleType.equalsIgnoreCase("Orange")) {
 				color = ColorHelper.ORANGE;
 			}
@@ -159,9 +159,9 @@ public class ParticleEmitter extends GameObject {
 	 * @param MyGame myGame
 	 */
 	public static void initializeParticleEmitters(MyGame myGame) {
-		int particleStartX = 0;
-		int particleStaryY = 5;
-		int particleSize   = 1;
+		int particleStartX   = 0;
+		float particleStaryY = 4.5f;
+		int particleSize     = 1;
 		
 		GameScreen.particleEmitterRed     = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Red", myGame);
 		GameScreen.particleEmitterYellow  = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Yellow", myGame);

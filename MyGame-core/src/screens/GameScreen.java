@@ -194,11 +194,9 @@ public class GameScreen extends Screens {
 	}
 	
 	private void updateGameScreen() {
-		
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {
 			TransitionScreen.updateObject();
 		}
-		
 		ParticleEmitter.updateParticleEmitters(myGame, lightingHandler.lightHandler);
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.nightAndDayCycle.performDayAndNightCycle();

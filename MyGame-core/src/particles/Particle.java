@@ -19,8 +19,7 @@ import loaders.ImageLoader;
 public class Particle extends GameObject {
 	
 	/**
-	 * Represents how long particle will live.
-	 * This is randomly set upon instantiation.
+	 * Represents how long particle will live.  This is randomly set upon instantiation.
 	 */
 	private float lifeSpan;
 	
@@ -51,7 +50,7 @@ public class Particle extends GameObject {
 		this.lifeSpan  = lifeSpan;
 		this.isAlive   = true;
 		this.color     = color;
-		this.dx        = 0.05f;
+		this.dx        = 0.03f;
 		this.dy        = 0.1f;
 	}
 	
