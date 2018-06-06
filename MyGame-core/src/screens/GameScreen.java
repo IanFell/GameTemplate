@@ -120,10 +120,11 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.end();
 		
 		// Draw ShapeRenderer.
+		/*
 		if (!TransitionScreen.isTransitionScreenIsComplete() || !NightAndDayCycle.isDayTime()) {
 			Gdx.gl.glEnable(GL20.GL_BLEND);
 			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-		} 
+		} */
 		
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		renderObjectsOnGameScreenThatUseShapeRenderer();
@@ -261,7 +262,7 @@ public class GameScreen extends Screens {
 		
 		// Night time places a transparent dark square on the screen to simulate darkness.
 		if (!NightAndDayCycle.isDayTime()) {
-			screenShader.renderObject(myGame.renderer.shapeRenderer);
+			//screenShader.renderObject(myGame.renderer.shapeRenderer);
 		}
 		
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {

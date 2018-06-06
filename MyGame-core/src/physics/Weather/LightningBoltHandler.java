@@ -23,7 +23,7 @@ public class LightningBoltHandler {
 
 	private static float thickness = .08f;
 	
-	private static int numberOfBolts = 2;
+	private static int numberOfBolts = 1;
 
 	private static Vector2 tempSphereVector = new Vector2(0,0);
 
