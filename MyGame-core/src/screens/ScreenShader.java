@@ -1,5 +1,7 @@
 package screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
@@ -25,10 +27,13 @@ public class ScreenShader extends Screens {
 	}
 	
 	/**
+	 * Use enable blend to shade the scree transparently to simulate darkness.
 	 * 
 	 * @param ShapeRenderer shapeRenderer
 	 */
 	public void renderObject(ShapeRenderer shapeRenderer) {
+		Gdx.gl.glEnable(GL20.GL_BLEND);
+		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		shapeRenderer.setColor(ColorHelper.NIGHT_TIME_BLACK);
 		shapeRenderer.rect(0, 0, 100, 100);
 	}

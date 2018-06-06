@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.mygame.MyGame;
 
+import helpers.ColorHelper;
 import helpers.GameAttributeHelper;
 
 /**
@@ -305,12 +306,14 @@ public class LightningBoltHandler {
 		Vector2[] lightningBoltVectors = new Vector2[] {
 				new Vector2(myGame.gameObjectLoader.playerOne.getX(), myGame.gameObjectLoader.playerOne.getY() - 50),
 				new Vector2(0, GameAttributeHelper.SCREEN_HEIGHT)
-		}; 
+		};
+		
+		Color color = new Color(ColorHelper.WHITE);
 		LightningBoltHandler.drawChainLightning(
 				myGame.renderer.batch,
 				lightningBoltVectors,
-				Color.WHITE,
-				Color.WHITE
+				color,
+				color
 				);
 	}
 }
