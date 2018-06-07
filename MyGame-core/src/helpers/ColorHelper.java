@@ -13,11 +13,6 @@ public class ColorHelper {
 	private static int noTransparancy = 0;
 	
 	/**
-	 * Used to simulate the darkness at night.
-	 */
-	private static float nightTimeTransparency = 0.7f;
-	
-	/**
 	 * Minimum color value (from 0 - 255).
 	 */
 	private static int minimumColorValue = 0;
@@ -36,9 +31,4 @@ public class ColorHelper {
 	public static final Color WHITE  = new Color(maximumColorValue, maximumColorValue, maximumColorValue, noTransparancy);
 	public static final Color BLUE   = new Color(minimumColorValue, minimumColorValue, maximumColorValue, noTransparancy);
 	public static final Color BLACK  = new Color(minimumColorValue, minimumColorValue, minimumColorValue, noTransparancy);
-	
-	/**
-	 * Available transparent colors.
-	 */
-	public static final Color NIGHT_TIME_BLACK = new Color(minimumColorValue, minimumColorValue, minimumColorValue, nightTimeTransparency);
 }

@@ -102,7 +102,6 @@ public class GameScreen extends Screens {
 	 */
 	@Override
 	public void render(float delta) {
-		
 		// If game screen has not been initialized, go ahead and initialize it.
 		if (!gameScreenHasBeenInitialized) {
 			initializeGameScreen();
@@ -215,6 +214,8 @@ public class GameScreen extends Screens {
 			RainHandler.isRaining = false;
 		}
 		weatherHandler.lightningHandler.updateObject(myGame, mapEditor);
+		
+		screenShader.update();
 	}
 	
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -260,9 +261,7 @@ public class GameScreen extends Screens {
 		weatherHandler.lightningHandler.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		
 		// Night time places a transparent dark square on the screen to simulate darkness.
-		if (!NightAndDayCycle.isDayTime()) {
-			screenShader.renderObject(myGame.renderer.shapeRenderer);
-		}
+		screenShader.renderObject(myGame.renderer.shapeRenderer);
 		
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {
 			TransitionScreen.renderObject(myGame.renderer.shapeRenderer);
