@@ -16,8 +16,8 @@ import physics.Weather.NightAndDayCycle;
  */
 public class ScreenShader extends Screens {
 	
-	private float nightTimeTransparencyMax = 0.7f;
 	private float nightTimeTransparencyMin = 0f;
+	private float nightTimeTransparencyMax = 0.7f;
 	
 	/**
 	 * Variable that holds transparency value between min and max.

@@ -149,6 +149,7 @@ public class GameScreen extends Screens {
 	
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
+		myGame.gameObjectLoader.playerOne.init(myGame);
 		ParticleEmitter.initializeParticleEmitters(myGame);
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
 			weatherHandler.rainHandler[i] = new RainHandler();
@@ -186,9 +187,9 @@ public class GameScreen extends Screens {
         camera.setToOrtho(true, viewportWidth, verticalHeight);
 		camera.position.x = myGame.gameObjectLoader.playerOne.getX();
 		camera.position.y = myGame.gameObjectLoader.playerOne.getY();
-		matrixO.setToOrtho(0, cameraWidth, 0, cameraHeight, 1, 100);
-		matrixR.setToRotation(new Vector3(0, 0, -1), 10);
-		camera.rotate(matrixR);
+		//matrixO.setToOrtho(0, cameraWidth, 0, cameraHeight, 1, 100);
+		//matrixR.setToRotation(new Vector3(0, 0, -1), 10);
+		//camera.rotate(matrixR);
 		camera.update();
 	}
 	

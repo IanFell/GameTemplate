@@ -21,7 +21,7 @@ import physics.CollisionHandler;
  *
  */
 public class Player extends GameObject { 
-	
+
 	/**
 	 * Available directions player can travel.  
 	 */
@@ -29,7 +29,7 @@ public class Player extends GameObject {
 	public static final int DIRECTION_RIGHT = 1;
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
-	
+
 	/**
 	 * Textures to go with animations.
 	 */
@@ -37,7 +37,7 @@ public class Player extends GameObject {
 	private TextureAtlas walkUpTexture;
 	private TextureAtlas walkRightTexture;
 	private TextureAtlas walkLeftTexture;
-	
+
 	/**
 	 * Available animations for player object.
 	 */
@@ -45,24 +45,24 @@ public class Player extends GameObject {
 	private Animation <TextureRegion> walkUpAnimation;
 	private Animation <TextureRegion> walkRightAnimation;
 	private Animation <TextureRegion> walkLeftAnimation;
-	
+
 	/**
 	 * Current animation being used in game.
 	 */
 	private Animation <TextureRegion> currentAnimation;
-	
+
 	/**
 	 * Used for animation speed.
 	 */
 	private float elapsedTime = 0;
-	
+
 	/**
 	 * Boolean to check whether player should stop moving upon collisions.
 	 */
 	public static boolean playerShouldStopMoving = false;
-	
+
 	protected int characterSize = 1;
-	
+
 	/**
 	 * Constructor.
 	 */
@@ -83,7 +83,20 @@ public class Player extends GameObject {
 		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
 	}
-	
+
+	@Override
+	public void init(MyGame myGame) {
+		int startingDirection = DIRECTION_LEFT;
+		myGame.gameObjectLoader.playerTwo.setDirection(startingDirection);
+		myGame.gameObjectLoader.playerThree.setDirection(startingDirection);
+
+		myGame.gameObjectLoader.playerTwo.setX(myGame.gameObjectLoader.playerOne.getX() + 1);
+		myGame.gameObjectLoader.playerTwo.setY(myGame.gameObjectLoader.playerOne.getY());
+
+		myGame.gameObjectLoader.playerThree.setX(myGame.gameObjectLoader.playerOne.getX() + 2);
+		myGame.gameObjectLoader.playerThree.setY(myGame.gameObjectLoader.playerOne.getY());
+	}
+
 	/**
 	 * 
 	 * @param MyGame    myGame
@@ -96,69 +109,138 @@ public class Player extends GameObject {
 		rectangle.x = x;
 		rectangle.y = y;
 		CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(myGame, mapEditor);
-		setPlayersWalkingOrder(myGame);
+
+		int playerTwoDirection   = myGame.gameObjectLoader.playerTwo.getDirection();
+		int followDistance       = 1;
+		// Player two follows player one.
+		handleWalking(
+				myGame.gameObjectLoader.playerOne, 
+				myGame.gameObjectLoader.playerTwo, 
+				followDistance, 
+				myGame.gameObjectLoader.playerOne.getDirection(), 
+				playerTwoDirection
+				);
+
+		// Player three follows player two.
+		handleWalking(
+				myGame.gameObjectLoader.playerTwo, 
+				myGame.gameObjectLoader.playerThree, 
+				followDistance, 
+				playerTwoDirection, 
+				myGame.gameObjectLoader.playerThree.getDirection()
+				);
 	}
-	
+
 	/**
 	 * Sets players walking order heirarchy.  Player one should always be first.
 	 * 
-	 * @param MyGame myGame
-	 */
-	private void setPlayersWalkingOrder(MyGame myGame) {
-		int playerOneDirection = myGame.gameObjectLoader.playerOne.getDirection();
-		myGame.gameObjectLoader.playerTwo.setDirection(playerOneDirection);
-		myGame.gameObjectLoader.playerThree.setDirection(playerOneDirection);
-		int playerTwoFollowDistance   = 1;
-		int playerThreeFollowDistance = 2;
-		// Sets player two follow distance and location.
-		setPlayerFollowDistanceAndLocation(
-				myGame.gameObjectLoader.playerOne, 
-				myGame.gameObjectLoader.playerTwo, 
-				playerTwoFollowDistance, 
-				playerOneDirection
-				);
-		// Sets player three follow distance and location.
-		setPlayerFollowDistanceAndLocation(
-				myGame.gameObjectLoader.playerOne, 
-				myGame.gameObjectLoader.playerThree, 
-				playerThreeFollowDistance, 
-				playerOneDirection
-				);
-	}
-	
-	/**
-	 * 
-	 * @param GameObject playerLeader
-	 * @param GameObject playerFollower
+	 * @param GameObject leader
+	 * @param GameObject follower
 	 * @param int        followDistance
-	 * @param int        direction
+	 * @param int        leaderDirection
+	 * @param int        followerDirection
 	 */
-	private void setPlayerFollowDistanceAndLocation(
-			GameObject playerLeader, 
-			GameObject playerFollower, 
-			int followDistance, 
-			int direction
-			) {
-		switch (direction) {
-		case DIRECTION_LEFT:
-			playerFollower.setX(playerLeader.getX() + followDistance);
-			playerFollower.setY(playerLeader.getY());
-			break;
-		case DIRECTION_RIGHT:
-			playerFollower.setX(playerLeader.getX() - followDistance);
-			playerFollower.setY(playerLeader.getY());
-			break;
-		case DIRECTION_UP:
-			playerFollower.setX(playerLeader.getX());
-			playerFollower.setY(playerLeader.getY() + followDistance);
-			break;
-		case DIRECTION_DOWN:
-			playerFollower.setX(playerLeader.getX());
-			playerFollower.setY(playerLeader.getY() - followDistance);
-			break;
+	private void handleWalking(GameObject leader, GameObject follower, int followDistance, int leaderDirection, int followerDirection) {
+
+		float leaderXPosition = leader.getX();
+		float leaderYPosition = leader.getY();
+
+		/**
+		 * See if leader has changed directions.  
+		 * If so, move follower one space in the direction he was going,
+		 * then face him the same way as leader.
+		 */
+		if (leaderDirection != followerDirection) {
+			if (leaderDirection == DIRECTION_UP && followerDirection == DIRECTION_LEFT) {
+				if (leaderYPosition < follower.getY() - followDistance) {
+					follower.setX(follower.getX() - followDistance);
+					follower.setDirection(leaderDirection);
+				}
+			} 
+			else if (leaderDirection == DIRECTION_UP && followerDirection == DIRECTION_RIGHT) {
+				if (leaderYPosition < follower.getY() - followDistance) {
+					follower.setX(follower.getX() + followDistance);
+					follower.setDirection(leaderDirection);
+				}
+			} 
+			else if (leaderDirection == DIRECTION_DOWN && followerDirection == DIRECTION_LEFT) {
+				if (leaderYPosition > follower.getY() + followDistance) {
+					follower.setX(follower.getX() - followDistance);
+					follower.setDirection(leaderDirection);
+				}
+			}
+			else if (leaderDirection == DIRECTION_DOWN && followerDirection == DIRECTION_RIGHT) {
+				if (leaderYPosition > follower.getY() + followDistance) {
+					follower.setX(follower.getX() + followDistance);
+					follower.setDirection(leaderDirection);
+				}
+			}
+			else if (leaderDirection == DIRECTION_LEFT && followerDirection == DIRECTION_UP) {
+				if (leaderXPosition < follower.getX() - followDistance) {
+					follower.setY(follower.getY() + followDistance);
+					follower.setDirection(leaderDirection);
+				}
+			}
+			else if (leaderDirection == DIRECTION_LEFT && followerDirection == DIRECTION_DOWN) {
+				if (leaderXPosition < follower.getX() - followDistance) {
+					follower.setY(follower.getY() + followDistance);
+					follower.setDirection(leaderDirection);
+				}
+			} 
+			else if (leaderDirection == DIRECTION_RIGHT && followerDirection == DIRECTION_DOWN) {
+				if (leaderXPosition > follower.getX() + followDistance) {
+					follower.setY(follower.getY() + followDistance);
+					follower.setDirection(leaderDirection);
+				}
+			} 
+			else if (leaderDirection == DIRECTION_RIGHT && followerDirection == DIRECTION_UP) {
+				if (leaderXPosition > follower.getX() + followDistance) {
+					follower.setY(follower.getY() - followDistance);
+					follower.setDirection(leaderDirection);
+				}
+			} 
+			else if (leaderDirection == DIRECTION_RIGHT && followerDirection == DIRECTION_LEFT) {
+				if (leaderXPosition > follower.getX() + followDistance) {
+					follower.setDirection(leaderDirection);
+				}
+			} 
+			else if (leaderDirection == DIRECTION_LEFT && followerDirection == DIRECTION_RIGHT) {
+				if (leaderXPosition < follower.getX() - followDistance) {
+					follower.setDirection(leaderDirection);
+				}
+			} 
+			else if (leaderDirection == DIRECTION_DOWN && followerDirection == DIRECTION_UP) {
+				if (leaderYPosition > follower.getY() + followDistance) {
+					follower.setDirection(leaderDirection);
+				}
+			} 
+			else if (leaderDirection == DIRECTION_UP && followerDirection == DIRECTION_DOWN) {
+				if (leaderYPosition < follower.getY() - followDistance) {
+					follower.setDirection(leaderDirection);
+				}
+			} 
+		} else {
+			switch(leaderDirection) {
+			case DIRECTION_LEFT:
+				follower.setX(leaderXPosition + followDistance);
+				follower.setY(leaderYPosition);
+				break;
+			case DIRECTION_RIGHT:
+				follower.setX(leaderXPosition - followDistance);
+				follower.setY(leaderYPosition);
+				break;
+			case DIRECTION_UP:
+				follower.setX(leaderXPosition);
+				follower.setY(leaderYPosition + followDistance);
+				break;
+			case DIRECTION_DOWN:
+				follower.setX(leaderXPosition);
+				follower.setY(leaderYPosition - followDistance);
+				break;
+			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
@@ -170,7 +252,7 @@ public class Player extends GameObject {
 		elapsedTime += Gdx.graphics.getDeltaTime();
 		AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, characterSize);
 	}
-	
+
 	/**
 	 * Returns current animation depending on which direction player is facing.
 	 * 
@@ -179,19 +261,19 @@ public class Player extends GameObject {
 	private Animation <TextureRegion> getCurrentAnimation() {
 		currentAnimation = walkDownAnimation;
 		switch (direction) {
-			case Player.DIRECTION_LEFT:
-				currentAnimation = walkLeftAnimation;
-				break;
-			case Player.DIRECTION_RIGHT:
-				currentAnimation = walkRightAnimation;
-				break;
-			case Player.DIRECTION_UP:
-				currentAnimation = walkUpAnimation;
-				break;
-			case Player.DIRECTION_DOWN:
-				currentAnimation = walkDownAnimation;
-				break;
-			}
+		case Player.DIRECTION_LEFT:
+			currentAnimation = walkLeftAnimation;
+			break;
+		case Player.DIRECTION_RIGHT:
+			currentAnimation = walkRightAnimation;
+			break;
+		case Player.DIRECTION_UP:
+			currentAnimation = walkUpAnimation;
+			break;
+		case Player.DIRECTION_DOWN:
+			currentAnimation = walkDownAnimation;
+			break;
+		}
 		return currentAnimation;
 	}
 
@@ -203,7 +285,7 @@ public class Player extends GameObject {
 	public void translateX(float distance) {
 		x += distance;
 	}
-	
+
 	/**
 	 * 
 	 * @param float distance
@@ -212,7 +294,7 @@ public class Player extends GameObject {
 	public void translateY(float distance) {
 		y += distance;
 	}
-	
+
 	/**
 	 * Moves player back 1 on the x, y axis depending on which direction player is going, 
 	 * then stops it.  This is used when a player interacts with a solid tile.
@@ -222,21 +304,21 @@ public class Player extends GameObject {
 	public void stopScrolling(int direction) {
 		float bounceBackAmountUponPlayerTileCollision = 0.1f;
 		switch (direction) {
-			case Player.DIRECTION_LEFT:
-				x += bounceBackAmountUponPlayerTileCollision;
-				break;
-			case Player.DIRECTION_RIGHT:
-				x -= bounceBackAmountUponPlayerTileCollision;
-				break;
-			case Player.DIRECTION_UP:
-				y += bounceBackAmountUponPlayerTileCollision;
-				break;
-			case Player.DIRECTION_DOWN:
-				y -= bounceBackAmountUponPlayerTileCollision;
-				break;
+		case Player.DIRECTION_LEFT:
+			x += bounceBackAmountUponPlayerTileCollision;
+			break;
+		case Player.DIRECTION_RIGHT:
+			x -= bounceBackAmountUponPlayerTileCollision;
+			break;
+		case Player.DIRECTION_UP:
+			y += bounceBackAmountUponPlayerTileCollision;
+			break;
+		case Player.DIRECTION_DOWN:
+			y -= bounceBackAmountUponPlayerTileCollision;
+			break;
 		}
 	}
-	
+
 	public void stopPlayer() {
 		dx = 0;
 		dy = 0;

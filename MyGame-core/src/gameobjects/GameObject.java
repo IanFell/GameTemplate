@@ -45,6 +45,8 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 */
 	public GameObject() {}
 	
+	public void init(MyGame myGame) {}
+	
 	/**
 	 * Move object along the X axis.
 	 * 
