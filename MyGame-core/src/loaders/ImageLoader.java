@@ -10,27 +10,27 @@ import com.badlogic.gdx.graphics.Texture;
  *
  */
 public class ImageLoader {
-	
+
 	/**
 	 * Image used to debug.
 	 */
 	public Texture testImage;
-	
+
 	public Texture splashScreenLogo;
-	
+
 	public Texture grassTileOne;
 	public Texture grassTileTwo;
 	public Texture solidTile;
-	
+
 	public Texture light;
 	public Texture shadow;
-	
+
 	public Texture playerSprite;
-	
+
 	public Texture tree;
-	
-	public Texture lightningbolt;
-	
+
+	public Texture lightningFlash;
+
 	public void init() {
 		splashScreenLogo = new Texture(Gdx.files.internal("logo_ffg.png"));
 		testImage        = new Texture(Gdx.files.internal("badlogic.jpg"));
@@ -41,9 +41,9 @@ public class ImageLoader {
 		shadow           = new Texture(Gdx.files.internal("Shadow.png"));
 		playerSprite     = new Texture(Gdx.files.internal("PlayerSprite.png"));
 		tree             = new Texture(Gdx.files.internal("Tree.png"));
-		lightningbolt    = new Texture(Gdx.files.internal("lightningbolt.png"));
+		lightningFlash   = new Texture(Gdx.files.internal("LightningFlash.png"));
 	}
-	
+
 	public void dispose() {
 		splashScreenLogo.dispose();
 		testImage.dispose();
@@ -54,6 +54,6 @@ public class ImageLoader {
 		shadow.dispose();
 		playerSprite.dispose();
 		tree.dispose();
-		lightningbolt.dispose();
+		lightningFlash.dispose();
 	}
 }

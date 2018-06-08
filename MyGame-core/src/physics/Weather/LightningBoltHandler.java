@@ -23,7 +23,7 @@ public class LightningBoltHandler {
 	public static int renderLightningBoltTime = 0;
 
 	private static float thickness = .08f;
-	
+
 	private static int numberOfBolts = 1;
 
 	private static Vector2 tempSphereVector = new Vector2(0,0);
@@ -33,7 +33,7 @@ public class LightningBoltHandler {
 
 	private static float dx;
 	private static float dy;
-	
+
 	private static Vector2 returnVector = new Vector2(0, 0);
 
 	private static Texture texture;
@@ -304,10 +304,10 @@ public class LightningBoltHandler {
 	public static void drawLightningBolt(MyGame myGame) {
 		System.out.println("Drawing lightning bolts!");
 		Vector2[] lightningBoltVectors = new Vector2[] {
-				new Vector2(myGame.gameObjectLoader.playerOne.getX(), myGame.gameObjectLoader.playerOne.getY() - 50),
-				new Vector2(0, GameAttributeHelper.SCREEN_HEIGHT)
+				new Vector2(myGame.gameObjectLoader.playerOne.getX(), myGame.gameObjectLoader.playerOne.getY() - 200),
+				new Vector2(0, GameAttributeHelper.SCREEN_HEIGHT - 150)
 		};
-		
+
 		Color color = new Color(ColorHelper.WHITE);
 		LightningBoltHandler.drawChainLightning(
 				myGame.renderer.batch,

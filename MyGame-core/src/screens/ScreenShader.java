@@ -16,8 +16,8 @@ import physics.Weather.NightAndDayCycle;
  */
 public class ScreenShader extends Screens {
 	
-	private float nightTimeTransparencyMin = 0f;
-	private float nightTimeTransparencyMax = 0.7f;
+	private float transparencyMin = 0f;
+	private float transparencyMax = 0.7f;
 	
 	/**
 	 * Variable that holds transparency value between min and max.
@@ -44,7 +44,7 @@ public class ScreenShader extends Screens {
 		shapeRenderer.rect(0, 0, 100, 100);
 	}
 	
-	public void update() {
+	public void updateObject() {
 		if (NightAndDayCycle.isDayTime()) {
 			transitionToDay();
 		} else {
@@ -53,13 +53,13 @@ public class ScreenShader extends Screens {
 	}
 	
 	private void transitionToNight() {
-		if (transparencyTransitionValue < nightTimeTransparencyMax) {
+		if (transparencyTransitionValue < transparencyMax) {
 			transparencyTransitionValue += .01f;
 		}
 	}
 	
 	private void transitionToDay() {
-		if (transparencyTransitionValue > nightTimeTransparencyMin) {
+		if (transparencyTransitionValue > transparencyMin) {
 			transparencyTransitionValue -= .01f;
 		}
 	}

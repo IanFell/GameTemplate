@@ -2,7 +2,6 @@ package physics.Weather;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import helpers.ColorHelper;
@@ -18,21 +17,21 @@ import screens.GameScreen;
  *
  */
 public class RainHandler extends GameObject {
-	
+
 	public static boolean isRaining = false;
-	
+
 	/**
 	 * Minimum falling velocity.
 	 */
 	private float minDy = 0.1f;
-	
+
 	/**
 	 * Maximum falling velocity.
 	 */
 	private float maxDy = 0.3f;
-	
+
 	private float startingRainDropYPosition = 0;
-	
+
 	public RainHandler() {
 		this.x      = RandomNumberGenerator.generateRandomInteger(GameScreen.cameraWidth * 2);
 		this.y      = startingRainDropYPosition;
@@ -40,7 +39,7 @@ public class RainHandler extends GameObject {
 		this.height = 0.2f;
 		this.dy     = (float) RandomNumberGenerator.generateRandomDouble(minDy, maxDy);
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
@@ -54,17 +53,16 @@ public class RainHandler extends GameObject {
 			shapeRenderer.rect(x, y, width, height);
 		}
 	}
-	
+
 	/**
 	 * 
-	 * @param MyGame    myGame
-	 * @param MapEditor mapEditor
+	 * @param GameScreen gameScreen
+	 * @param MapEditor  mapEditor
 	 */
-	@Override
-	public void updateObject(MyGame myGame, MapEditor mapEditor) {
+	public void updateObject(GameScreen gameScreen, MapEditor mapEditor) {
 		if (isRaining) {
 			y += dy;
-			if (y > GameScreen.cameraHeight * 2) {
+			if (y > gameScreen.verticalHeight * 2) {
 				y  = startingRainDropYPosition;
 				dy = (float) RandomNumberGenerator.generateRandomDouble(minDy, maxDy);
 			}

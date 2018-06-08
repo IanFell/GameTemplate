@@ -33,11 +33,11 @@ public class ScreenShake {
 	 * @param float duration 
 	 */
 	public void shake(float radius , float duration) {
-	    this.elapsedScreenShakeTime              = 0;
-	    this.durationOfScreenShakeInMilliseconds = duration / 1000f;
-	    this.radius                              = radius ;
-	    this.randomScreenShakeAngle              = RandomNumberGenerator.random.nextFloat() % 360f;
-	    screenIsShaking                          = true;
+	    elapsedScreenShakeTime              = 0;
+	    durationOfScreenShakeInMilliseconds = duration / 1000f;
+	    this.radius                         = radius;
+	    randomScreenShakeAngle              = RandomNumberGenerator.random.nextFloat() % 360f;
+	    screenIsShaking                     = true;
 	}
 	 
 	/**

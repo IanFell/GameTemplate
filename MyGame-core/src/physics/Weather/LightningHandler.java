@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import helpers.ColorHelper;
 import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 import maps.MapEditor;
@@ -17,33 +16,29 @@ import maps.MapEditor;
  *
  */
 public class LightningHandler extends GameObject {
-	
-	public boolean lightningBoltShouldBeRendered = false;
-	
-	
-	
+
 	/**
 	 * Maximum number of lightning flashes that can happen during one rain cycle.
 	 */
 	private int maxNumberOfFlashes = 3;
-	
+
 	/**
 	 * Keeps track of how many flashes have happened in current rain cycle.
 	 */
 	private int currentNumberOfFlashes = 0;
-	
+
 	private boolean lightningShouldBeRendered = false;
-	
+
 	/**
 	 * Time in millisecondes between lightning flashes.
 	 */
 	private int timeBetweenFlashes = 15;
-	
+
 	/**
 	 * Works with timeBetweenFlashes to determine when lightning should flash.
 	 */
 	private int increment = 0;
-	
+
 	/**
 	 * Construct.
 	 */
@@ -53,7 +48,7 @@ public class LightningHandler extends GameObject {
 		this.width  = GameAttributeHelper.SCREEN_WIDTH;
 		this.height = GameAttributeHelper.SCREEN_HEIGHT;
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
@@ -63,11 +58,10 @@ public class LightningHandler extends GameObject {
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		if (lightningShouldBeRendered) {
-			shapeRenderer.setColor(ColorHelper.WHITE);
-			shapeRenderer.rect(x, y, width, height);
+			batch.draw(imageLoader.lightningFlash, x, y, width, height);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame    myGame
@@ -78,16 +72,20 @@ public class LightningHandler extends GameObject {
 		if (RainHandler.isRaining && currentNumberOfFlashes <= maxNumberOfFlashes) {
 			increment++;
 			if (increment >= timeBetweenFlashes) {
-				increment = 0;
+				lightningShouldBeRendered = true;
+				increment                 = 0;
 				currentNumberOfFlashes++;
-				
+
 				if (currentNumberOfFlashes == 2) {
 					timeBetweenFlashes = 50;
 				}
+			} else {
+				lightningShouldBeRendered = false;
 			}
 		} else {
-			currentNumberOfFlashes = 0;
-			timeBetweenFlashes     = 15;
+			lightningShouldBeRendered = false;
+			currentNumberOfFlashes    = 0;
+			timeBetweenFlashes        = 15;
 		}
 	}
 
