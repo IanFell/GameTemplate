@@ -7,11 +7,11 @@ package physics.Lighting;
  *
  */
 public class LightingHandler {
-	
+
 	public LightHandler lightHandler;
-	
+
 	public ShadowHandler shadowHandler;
-	
+
 	/**
 	 * Constructor.
 	 */

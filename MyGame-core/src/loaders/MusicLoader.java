@@ -10,19 +10,19 @@ import com.badlogic.gdx.audio.Music;
  *
  */
 public class MusicLoader {
-	
+
 	public Music dayTimeAmbientNoise;
-	
+
 	public Music nightTimeAmbientNoise;
-	
+
 	public Music rainAndThunder;
-	
+
 	public void init() {
 		dayTimeAmbientNoise   = Gdx.audio.newMusic(Gdx.files.internal("DayTimeAmbientNoise.wav"));
 		nightTimeAmbientNoise = Gdx.audio.newMusic(Gdx.files.internal("NightTimeAmbientNoise.wav"));
 		rainAndThunder        = Gdx.audio.newMusic(Gdx.files.internal("RainAndThunder.wav"));
 	}
-	
+
 	public void dispose() {
 		dayTimeAmbientNoise.dispose();
 		nightTimeAmbientNoise.dispose();

@@ -11,13 +11,13 @@ import maps.MapEditor;
  *
  */
 public class Debugger {
-	
+
 	/**
 	 * 
 	 * @param MyGame    myGame
 	 * @param MapEditor mapEditor
 	 */
 	public void debugGameScreen(MyGame myGame, MapEditor mapEditor) {
-		
+
 	}
 }

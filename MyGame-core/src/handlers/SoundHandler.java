@@ -11,16 +11,16 @@ import screens.Screens;
  *
  */
 public class SoundHandler {
-	
+
 	/**
 	 * 
 	 * @param SoundLoader soundLoader
 	 */
 	public void handleSound(SoundLoader soundLoader) {
 		if (GameAttributeHelper.gameState == Screens.SPLASH_SCREEN) {
-			soundLoader.sound.play(0.5f);
+			//soundLoader.sound.play(0.5f);
 		} else {
-			soundLoader.sound.stop();
+			//soundLoader.sound.stop();
 		}
 	}
 }

@@ -15,7 +15,7 @@ import com.mygdx.mygame.MyGame;
  *
  */
 public class TransitionScreen extends Screens {
-	
+
 	/**
 	 * Represents if transition screen has completely faded from black to transparent.
 	 */
@@ -33,7 +33,7 @@ public class TransitionScreen extends Screens {
 	public TransitionScreen(MyGame myGame) {
 		super(myGame);
 	}
-	
+
 	/**
 	 * 
 	 * @param ShapeRenderer shapeRenderer
@@ -42,18 +42,18 @@ public class TransitionScreen extends Screens {
 		shapeRenderer.setColor(new Color(0, 0, 0, transparencyIncrement));
 		shapeRenderer.rect(0, 0, 100, 100);
 	}
-	
+
 	/**
 	 * If transition is not yet complete, increase transparency.
 	 */
 	public static void updateObject() {
 		transparencyIncrement -= 0.01f;
-		
+
 		if (transparencyIncrement < 0) {
 			transitionScreenIsComplete = !transitionScreenIsComplete;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @return boolean

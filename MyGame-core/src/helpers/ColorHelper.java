@@ -9,19 +9,19 @@ import com.badlogic.gdx.graphics.Color;
  *
  */
 public class ColorHelper {
-	
+
 	private static int noTransparancy = 0;
-	
+
 	/**
 	 * Minimum color value (from 0 - 255).
 	 */
 	private static int minimumColorValue = 0;
-	
+
 	/**
 	 * Maximum color value (from 0 - 255).
 	 */
 	private static int maximumColorValue = 255;
-	
+
 	/**
 	 * Available solid colors.
 	 */

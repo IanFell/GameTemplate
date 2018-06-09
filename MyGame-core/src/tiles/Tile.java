@@ -11,13 +11,13 @@ import com.mygdx.mygame.MyGame;
  *
  */
 public class Tile extends Sprite {
-	
+
 	private boolean isSolid;
-	
+
 	public static Texture grassTextureOne;
 	public static Texture grassTextureTwo;
 	public static Texture solidTile;
-	
+
 	/**
 	 * 
 	 * @param Texture texture
@@ -27,7 +27,7 @@ public class Tile extends Sprite {
 		super(texture);
 		this.isSolid = isSolid;
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame

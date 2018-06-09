@@ -1,5 +1,6 @@
 package gameobjects;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -17,13 +18,18 @@ import maps.MapEditor;
  * @author Fabulous Fellini
  *
  */
-public class GameObject extends AbstractGameObject implements GameObjectInterface {
-	
+public class GameObject extends Sprite implements GameObjectInterface {
+
+	protected float x;
+	protected float y;
+	protected float width;
+	protected float height;
+
 	/**
 	 * Rectangle to deal with collisions.
 	 */
 	public Rectangle rectangle = new Rectangle();
-	
+
 	/**
 	 * Direction game objects can travel in.
 	 * If left arrow is pressed, we can think of this as 'direction = player.MovingLeftConstant'.
@@ -34,26 +40,26 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	 * Game object x-axis speed value.
 	 */
 	public float dx;
-	
+
 	/**
 	 * Game object y-axis speed value.
 	 */
 	public float dy;
-	
+
 	/**
 	 * Constructor.
 	 */
 	public GameObject() {}
-	
+
 	public void init(MyGame myGame) {}
-	
+
 	/**
 	 * Move object along the X axis.
 	 * 
 	 * @param float distance
 	 */
 	public void translateX(float distance) {}
-	
+
 	/**
 	 * Move object along the Y axis.
 	 * 
@@ -76,7 +82,7 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
@@ -100,4 +106,68 @@ public class GameObject extends AbstractGameObject implements GameObjectInterfac
 	public void stopScrolling(int direction) {}
 
 	public void stopPlayer() {}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getX() {
+		return x;
+	}
+
+	/**
+	 * 
+	 * @param float x
+	 */
+	public void setX(float x) {
+		this.x = x;
+	}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getY() {
+		return y;
+	}
+
+	/**
+	 * 
+	 * @param float y
+	 */
+	public void setY(float y) {
+		this.y = y;
+	}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getWidth() {
+		return width;
+	}
+
+	/**
+	 * 
+	 * @param float width
+	 */
+	public void setWidth(float width) {
+		this.width = width;
+	}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getHeight() {
+		return height;
+	}
+
+	/**
+	 * 
+	 * @param float height
+	 */
+	public void setHeight(float height) {
+		this.height = height;
+	}
 }

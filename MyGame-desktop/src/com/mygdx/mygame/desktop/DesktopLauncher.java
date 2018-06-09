@@ -15,6 +15,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.addIcon("GrassTileOne.png", FileType.Internal);
+		config.title  = "MyGame";
 		float f       = 0.5f;
 		float width   = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
 		float height  = LwjglApplicationConfiguration.getDesktopDisplayMode().height;

@@ -23,16 +23,16 @@ import screens.GameScreen;
  *
  */
 public class ParticleEmitter extends GameObject {
-	
+
 	private Particle redParticles[]    = new Particle[1000];
 	private Particle yellowParticles[] = new Particle[750];
 	private Particle orangeParticles[] = new Particle[750];
-	
+
 	/**
 	 * Basically represents different colors.
 	 */
 	private String particleType;
-	
+
 	/**
 	 * 
 	 * @param float  x
@@ -52,7 +52,7 @@ public class ParticleEmitter extends GameObject {
 		createParticles("Yellow", yellowParticles, 100, myGame);
 		createParticles("Orange", orangeParticles, 100, myGame);
 	}
-	
+
 	/**
 	 * 
 	 * @param String  particleType
@@ -82,7 +82,7 @@ public class ParticleEmitter extends GameObject {
 			particles[i] = new Particle(startX, startY, particleSize, particleSize, lifeSpan, color, myGame);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param ShapeRenderer shapeRenderer
@@ -98,7 +98,7 @@ public class ParticleEmitter extends GameObject {
 			) {
 		drawFire(shapeRenderer, particleType, batch, imageLoader);
 	}
-	
+
 	/**
 	 * Draws fire particle effects.
 	 * This draws three different particle emitters.
@@ -130,7 +130,7 @@ public class ParticleEmitter extends GameObject {
 			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame       myGame
@@ -153,7 +153,7 @@ public class ParticleEmitter extends GameObject {
 			}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame
@@ -162,20 +162,20 @@ public class ParticleEmitter extends GameObject {
 		int particleStartX   = 0;
 		float particleStaryY = 4.5f;
 		int particleSize     = 1;
-		
+
 		GameScreen.particleEmitterRed     = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Red", myGame);
 		GameScreen.particleEmitterYellow  = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Yellow", myGame);
 		GameScreen.particleEmitterOrange  = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Orange", myGame);
-		
+
 		GameScreen.particleEmitterRed.setX(GameScreen.particleEmitterRed.getX());
 		GameScreen.particleEmitterYellow.setX(GameScreen.particleEmitterYellow.getX());
 		GameScreen.particleEmitterOrange.setX(GameScreen.particleEmitterOrange.getX());
-		
+
 		GameScreen.particleEmitterRed.setY(GameScreen.particleEmitterRed.getY());
 		GameScreen.particleEmitterYellow.setY(GameScreen.particleEmitterYellow.getY());
 		GameScreen.particleEmitterOrange.setY(GameScreen.particleEmitterOrange.getY());
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame       myGame
@@ -186,7 +186,7 @@ public class ParticleEmitter extends GameObject {
 		GameScreen.particleEmitterYellow.updateParticleEmitter(myGame, lightHandler);
 		GameScreen.particleEmitterOrange.updateParticleEmitter(myGame, lightHandler);
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame        myGame

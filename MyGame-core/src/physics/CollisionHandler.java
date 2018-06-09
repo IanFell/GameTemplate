@@ -12,7 +12,7 @@ import maps.MapEditor;
  *
  */
 public class CollisionHandler {
-	
+
 	/**
 	 * 
 	 * @param MyGame    myGame

@@ -162,7 +162,7 @@ public class GameScreen extends Screens {
 	}
 
 	private void initializeCamera() {
-		float aspectRatio         = (float)Gdx.graphics.getHeight() / (float)Gdx.graphics.getWidth();
+		float aspectRatio         = (float)GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH;
 		float viewportWidth       = verticalHeight / aspectRatio;
 		camera                    = new OrthographicCamera(viewportWidth, verticalHeight);
 		camera.setToOrtho(true, viewportWidth, verticalHeight);

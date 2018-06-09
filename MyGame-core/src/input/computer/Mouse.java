@@ -15,14 +15,14 @@ import screens.Screens;
  *
  */
 public class Mouse extends ComputerInput {
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame
 	 */
 	@Override
 	public void handleInput(MyGame myGame) {
-		
+
 		switch (GameAttributeHelper.gameState) {
 		case Screens.SPLASH_SCREEN:
 			if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){

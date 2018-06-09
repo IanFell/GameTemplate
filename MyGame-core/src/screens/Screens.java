@@ -18,25 +18,20 @@ import physics.Weather.WeatherHandler;
  *
  */
 public class Screens implements Screen {
-	
+
 	public final static int SPLASH_SCREEN    = 0;
 	public final static int MENU_SCREEN      = 1;
 	public final static int GAME_SCREEN      = 2;
 	public final static int PAUSE_SCREEN     = 3;
 	public final static int INVENTORY_SCREEN = 4;
 	public final static int GAME_OVER_SCREEN = 5;
-	
-	/**
-	 * Scrolling speed for closest tier to screen.
-	 */
-	public final static float SCREEN_SCROLL_SPEED_TIER_ONE = 0.1f;
-	
+
 	protected final MyGame myGame;
-	
+
 	public static OrthographicCamera camera;
 
 	protected ExtendViewport viewport;
-	 
+
 	/**
 	 * Saves camera X position before screen shake.
 	 */
@@ -46,7 +41,7 @@ public class Screens implements Screen {
 	 * Saves camera Y position before screen shake.
 	 */
 	public static float cameraY;
-	
+
 	public static ScreenShake screenShake = new ScreenShake();
 
 	/**
@@ -57,7 +52,7 @@ public class Screens implements Screen {
 		this.myGame = myGame;
 		createCamera();
 	}
-	
+
 	/**
 	 * Creates camera object and sets position for basic camera with a straight on view.
 	 */
@@ -69,7 +64,7 @@ public class Screens implements Screen {
 		int cameraPosition = 0;
 		camera.position.set(cameraPosition, cameraPosition, cameraPosition);
 	}
-	
+
 	/**
 	 * Clear / set screen and set screen color of screen.
 	 * Background can change depending on game weather.
@@ -90,14 +85,14 @@ public class Screens implements Screen {
 		}
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	}
-	
+
 	protected void updateCamera() {
 		// Tell the SpriteBatch to render in the coordinate system specified by the camera.
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		// Update camera matrices.
 		camera.update();
 	}
-	
+
 	public static void saveCameraCoordinatesBeforeScreenShake() {
 		cameraX = camera.position.x;
 		cameraY = camera.position.y;
@@ -119,8 +114,8 @@ public class Screens implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		viewport.update(width, height, true);
-	    myGame.renderer.batch.setProjectionMatrix(camera.combined);
-	    camera.update();
+		myGame.renderer.batch.setProjectionMatrix(camera.combined);
+		camera.update();
 	}
 
 	@Override

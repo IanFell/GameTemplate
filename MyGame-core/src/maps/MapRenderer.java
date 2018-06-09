@@ -9,12 +9,12 @@ import com.mygdx.mygame.MyGame;
  *
  */
 public class MapRenderer {
-	
+
 	/**
 	 * Used to determine when to switch grass animations.
 	 */
 	private int timer = 0;
-	
+
 	/**
 	 * Renders map.
 	 * 

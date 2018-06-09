@@ -18,39 +18,39 @@ import screens.SplashScreen;
  *
  */
 public class MyGame extends Game {
-		
+
 	/**
 	 * Game renderer.
 	 */
 	public Render renderer = new Render();
-	
+
 	/**
 	 * Factory for creating game objects.
 	 */
 	public GameObjectFactory gameObjectFactory = new GameObjectFactory();
-	
+
 	/**
 	 * Creates and initializes game objects.
 	 */
 	public GameObjectLoader gameObjectLoader = new GameObjectLoader();
-	
+
 	/**
 	 * Holds game attributes such as screen size, game state, etc.
 	 */
 	public GameAttributeHelper gameAttributeHelper;
-	
+
 	private AudioHandler audioHandler = new AudioHandler();
-	
+
 	/**
 	 * Loads and holds all images.
 	 */
 	public ImageLoader imageLoader = new ImageLoader();
-	
+
 	/**
 	 * Computer or a game pad handler.
 	 */
 	public InputHandler inputHandler = new InputHandler();
-	
+
 	@Override
 	public void create () {
 		imageLoader.init();
@@ -67,14 +67,14 @@ public class MyGame extends Game {
 		super.render();
 		gameLoop();
 	}
-	
+
 	@Override
 	public void dispose () {
 		renderer.dispose();
 		imageLoader.dispose(); 
 		audioHandler.dispose();
 	}
-	
+
 	/**
 	 * 60 FPS by default.
 	 */

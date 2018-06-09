@@ -11,7 +11,7 @@ import tiles.Tile;
  *
  */
 public class MapLoader {
-	
+
 	/**
 	 * Creates and initializes tiles for map.
 	 * 
@@ -26,7 +26,7 @@ public class MapLoader {
 			}
 		}
 	}
-	
+
 	/**
 	 * Loads all grass maps.  There are two at the moment, and alternate back and forth to simulate wind.
 	 * 
@@ -46,7 +46,7 @@ public class MapLoader {
 		}
 		mapEditor.grassTilesOne[x][z].setPosition(x, z);
 		mapEditor.grassTilesOne[x][z].setSize(tileSize, tileSize); 
-	
+
 		// "Right side" grass map.
 		if (mapEditor.grassMapTwo[z][x] == MapEditor.SolidTile) {  
 			mapEditor.grassTilesTwo[x][z] = new Tile(Tile.solidTile, isSolid);

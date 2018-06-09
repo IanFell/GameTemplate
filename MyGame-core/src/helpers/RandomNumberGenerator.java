@@ -9,12 +9,12 @@ import java.util.Random;
  *
  */
 public class RandomNumberGenerator {
-	
+
 	/**
 	 * Used for all random numbers that need to be generated.
 	 */
 	public static Random random = new Random();
-	
+
 	/**
 	 * Return random integer based between 0 and nextInt.
 	 * 
@@ -24,7 +24,7 @@ public class RandomNumberGenerator {
 	public static int generateRandomInteger(int nextInt) {
 		return random.nextInt(nextInt);
 	}
-	
+
 	/**
 	 * Return random double based between min and max.
 	 * 

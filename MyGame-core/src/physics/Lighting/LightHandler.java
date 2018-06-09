@@ -12,19 +12,19 @@ import loaders.ImageLoader;
  *
  */
 public class LightHandler extends AbstractLightingHandler {
-	
+
 	/**
 	 * Starting x position.  After resizing light, x position will resume to this coordinate.
 	 */
 	private float startX = 0;
-	
+
 	/**
 	 * Starting y position.  After resizing light, y position will resume to this coordinate.
 	 */
 	private float startY = 5;
-	
+
 	public static boolean isGrowing = false;
-	
+
 	/**
 	 * Constructor.
 	 */
@@ -32,7 +32,7 @@ public class LightHandler extends AbstractLightingHandler {
 		this.x = startX;
 		this.y = startY;
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch batch
@@ -43,7 +43,7 @@ public class LightHandler extends AbstractLightingHandler {
 	public void renderLighting(SpriteBatch batch, ImageLoader imageLoader, GameObject player) {
 		batch.draw(imageLoader.light, x, y, width, height);
 	}
-	
+
 	/**
 	 * 
 	 * @param ImageLoader imageLoader
@@ -58,7 +58,7 @@ public class LightHandler extends AbstractLightingHandler {
 			height = initialTextureSize;
 		}
 	}
-	
+
 	/**
 	 * Increases width and height of light texture.
 	 * 

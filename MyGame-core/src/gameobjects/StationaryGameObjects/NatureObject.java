@@ -12,7 +12,7 @@ import loaders.ImageLoader;
  *
  */
 public class NatureObject extends GameObject {
-	
+
 	/**
 	 * Constructor.
 	 */
@@ -22,7 +22,7 @@ public class NatureObject extends GameObject {
 		this.width  = 2;
 		this.height = 4;
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch batch

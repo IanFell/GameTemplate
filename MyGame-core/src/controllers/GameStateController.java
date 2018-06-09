@@ -12,7 +12,7 @@ import screens.Screens;
  *
  */
 public class GameStateController {
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame
@@ -20,9 +20,9 @@ public class GameStateController {
 	 */
 	public static void switchGameStates(MyGame myGame, int newGameState) {
 		switch (newGameState) {
-			case Screens.GAME_SCREEN:
-					myGame.setScreen(new GameScreen(myGame));
-				break;
-			}
+		case Screens.GAME_SCREEN:
+			myGame.setScreen(new GameScreen(myGame));
+			break;
+		}
 	}
 }

@@ -12,7 +12,7 @@ import helpers.ImageHelper;
  *
  */
 public class SplashScreen extends Screens {
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame
@@ -21,7 +21,7 @@ public class SplashScreen extends Screens {
 		super(myGame);
 		GameAttributeHelper.gameState = Screens.SPLASH_SCREEN;
 	}
-	
+
 	/**
 	 * 
 	 * @param float          delta
@@ -37,7 +37,7 @@ public class SplashScreen extends Screens {
 				myGame.imageLoader.splashScreenLogo, 
 				GameAttributeHelper.SCREEN_WIDTH, 
 				GameAttributeHelper.SCREEN_HEIGHT
-		);
+				);
 		myGame.renderer.batch.end();
 	}
 }

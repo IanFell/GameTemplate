@@ -10,13 +10,13 @@ package physics.Weather;
  *
  */
 public class WeatherHandler {
-	
+
 	public RainHandler[] rainHandler;
-	
+
 	public LightningHandler lightningHandler;
-	
+
 	public NightAndDayCycle nightAndDayCycle;
-	
+
 	/**
 	 * Constructor.
 	 */

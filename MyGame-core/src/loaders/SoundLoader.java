@@ -10,13 +10,13 @@ import com.badlogic.gdx.audio.Sound;
  *
  */
 public class SoundLoader {
-	
+
 	public Sound sound;
-	
+
 	public void init() {
 		sound = Gdx.audio.newSound(Gdx.files.internal("bomb.wav"));
 	}
-	
+
 	public void dispose() {
 		sound.dispose();
 	}

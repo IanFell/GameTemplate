@@ -2,7 +2,6 @@ package physics.Lighting;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import gameobjects.AbstractGameObject;
 import gameobjects.GameObject;
 import loaders.ImageLoader;
 
@@ -12,15 +11,15 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class AbstractLightingHandler extends AbstractGameObject {
-	
+public class AbstractLightingHandler extends GameObject {
+
 	protected float initialTextureSize = 1;
-	
+
 	public AbstractLightingHandler() {
 		this.width  = initialTextureSize;
 		this.height = initialTextureSize;
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch batch

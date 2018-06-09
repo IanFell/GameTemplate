@@ -15,10 +15,10 @@ import physics.Weather.NightAndDayCycle;
  *
  */
 public class ScreenShader extends Screens {
-	
+
 	private float transparencyMin = 0f;
 	private float transparencyMax = 0.7f;
-	
+
 	/**
 	 * Variable that holds transparency value between min and max.
 	 */
@@ -31,7 +31,7 @@ public class ScreenShader extends Screens {
 	public ScreenShader(MyGame myGame) {
 		super(myGame);
 	}
-	
+
 	/**
 	 * Use enable blend to shade the screen transparently to simulate darkness.
 	 * 
@@ -43,7 +43,7 @@ public class ScreenShader extends Screens {
 		shapeRenderer.setColor(new Color(0, 0, 0, transparencyTransitionValue));
 		shapeRenderer.rect(0, 0, 100, 100);
 	}
-	
+
 	public void updateObject() {
 		if (NightAndDayCycle.isDayTime()) {
 			transitionToDay();
@@ -51,13 +51,13 @@ public class ScreenShader extends Screens {
 			transitionToNight();
 		}
 	}
-	
+
 	private void transitionToNight() {
 		if (transparencyTransitionValue < transparencyMax) {
 			transparencyTransitionValue += .01f;
 		}
 	}
-	
+
 	private void transitionToDay() {
 		if (transparencyTransitionValue > transparencyMin) {
 			transparencyTransitionValue -= .01f;

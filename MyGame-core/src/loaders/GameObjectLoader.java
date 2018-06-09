@@ -11,12 +11,12 @@ import gameobjects.GameObject;
  *
  */
 public class GameObjectLoader {
-	
+
 	public GameObject playerOne;
 	public GameObject playerTwo;
 	public GameObject playerThree;
 	public GameObject tree;
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame

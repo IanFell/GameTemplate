@@ -10,7 +10,7 @@ import com.mygdx.mygame.MyGame;
  *
  */
 abstract public class ComputerInput implements ApplicationListener {
-	
+
 	/**
 	 * Abstract method to handle computer input.  This method is overriden
 	 * in Keyboard and Mouse input classes.

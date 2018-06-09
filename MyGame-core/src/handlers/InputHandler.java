@@ -20,17 +20,17 @@ import input.controllers.XBox360Pad;
  *
  */
 public class InputHandler {
-	
+
 	private Keyboard keyboard = new Keyboard();
-	
+
 	private Mouse mouse = new Mouse();
-	
+
 	/**
 	 * GamePads.  This can be any gamepad, as it will
 	 * be instantiated after we grab the controller's name.
 	 */
 	private ControllerInput controllerInput;
-	
+
 	/**
 	 * Initialize input.  First we get the name of the first controller found.
 	 * Then we use the name to instantiate a certain type of controller.
@@ -38,7 +38,7 @@ public class InputHandler {
 	public void init() {
 		String controllerName = ControllerInputHelper.getControllerName();
 		System.out.println(controllerName + " found.");
-		
+
 		// Instantiate correct controller based off controller name.
 		if (controllerName.contains("Logitech")) {
 			controllerInput = new LogitechF310();
@@ -46,13 +46,13 @@ public class InputHandler {
 		if (controllerName.contains("Xbox") && controllerName.contains("360")) {
 			controllerInput = new XBox360Pad();
 		}
-		
+
 		// If we have found a controller, initialize it.
 		if (controllerInput != null) {
 			controllerInput.init();
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame

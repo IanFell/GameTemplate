@@ -12,7 +12,7 @@ import screens.Screens;
  *
  */
 public class MusicHandler {
-	
+
 	/**
 	 * 
 	 * @param MusicLoader musicLoader
@@ -22,21 +22,21 @@ public class MusicHandler {
 			if (NightAndDayCycle.isDayTime()) {
 				musicLoader.dayTimeAmbientNoise.setVolume(1.0f);
 				musicLoader.dayTimeAmbientNoise.play();
-				
+
 				musicLoader.rainAndThunder.setVolume(1.0f);
 				musicLoader.rainAndThunder.play();
-				
+
 				if (musicLoader.nightTimeAmbientNoise.isPlaying()) {
 					musicLoader.nightTimeAmbientNoise.stop();
 				}
 			} else {
 				musicLoader.nightTimeAmbientNoise.setVolume(1.0f);
 				musicLoader.nightTimeAmbientNoise.play();
-				
+
 				if (musicLoader.dayTimeAmbientNoise.isPlaying()) {
 					musicLoader.dayTimeAmbientNoise.stop();
 				}
-				
+
 				if (musicLoader.rainAndThunder.isPlaying()) {
 					musicLoader.rainAndThunder.stop();
 				}

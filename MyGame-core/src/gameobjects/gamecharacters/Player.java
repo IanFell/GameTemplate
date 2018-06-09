@@ -29,6 +29,11 @@ public class Player extends GameObject {
 	public static final int DIRECTION_RIGHT = 1;
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
+	
+	/**
+	 * Scrolling speed for closest tier to screen.
+	 */
+	public final static float PLAYER_SPEED = 0.1f;
 
 	/**
 	 * Textures to go with animations.
@@ -240,7 +245,7 @@ public class Player extends GameObject {
 			}
 		}
 	}
-
+	
 	/**
 	 * 
 	 * @param SpriteBatch   batch

@@ -11,7 +11,7 @@ import gameobjects.gamecharacters.Player;
  *
  */
 public class GameObjectFactory {
-	
+
 	/**
 	 * Creates our game objects.
 	 * 

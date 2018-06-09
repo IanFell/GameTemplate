@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  *
  */
 public class AnimationHandler {
-	
+
 	/**
 	 * y + 1 is used because we need to flip the sprite batch vertically.  
 	 * When we do this, player is offset by 1 on the y axis so we need to compensate.

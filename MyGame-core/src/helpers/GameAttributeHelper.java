@@ -9,10 +9,10 @@ import com.badlogic.gdx.Gdx;
  *
  */
 public class GameAttributeHelper {
-	
+
 	public final static int SCREEN_WIDTH  = Gdx.graphics.getWidth();
 	public final static int SCREEN_HEIGHT = Gdx.graphics.getHeight();
-	
+
 	/**
 	 * Holds current state of game, 
 	 * based on the constants located in the Screens class.

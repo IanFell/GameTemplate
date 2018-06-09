@@ -17,21 +17,21 @@ import loaders.ImageLoader;
  *
  */
 public class Particle extends GameObject {
-	
+
 	/**
 	 * Represents how long particle will live.  This is randomly set upon instantiation.
 	 */
 	private float lifeSpan;
-	
+
 	private boolean isAlive;
-	
+
 	/**
 	 * Represents how much time has passed in particle's life.
 	 */
 	private float life = 0;
-	
+
 	private Color color;
-	
+
 	/**
 	 * 
 	 * @param float  x
@@ -53,7 +53,7 @@ public class Particle extends GameObject {
 		this.dx        = 0.03f;
 		this.dy        = 0.1f;
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
@@ -84,7 +84,7 @@ public class Particle extends GameObject {
 				// Make dy value appear more random.
 				dy = changeDyValue(dy);
 				y -= dy;
-				
+
 				// If particle is past the point of no return, move it to the side, depending on which side it's on.
 				int move = RandomNumberGenerator.generateRandomInteger(100);
 				if (move < 25) {
@@ -106,16 +106,16 @@ public class Particle extends GameObject {
 			isAlive    = true;
 			life       = 0;
 			x          = (float) RandomNumberGenerator.generateRandomDouble(
-							particleEmitterXPosition, 
-							particleEmitterLength
-			);
+					particleEmitterXPosition, 
+					particleEmitterLength
+					);
 			y          = (float) RandomNumberGenerator.generateRandomDouble(
-							particleEmitterYPosition, 
-							particleEmitterHeight
-			);
+					particleEmitterYPosition, 
+					particleEmitterHeight
+					);
 		}
 	}
-	
+
 	/**
 	 * Changes value of dy variable to make particles appear to move more randomly.
 	 * 
