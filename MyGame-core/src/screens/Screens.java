@@ -43,6 +43,8 @@ public class Screens implements Screen {
 	public static float cameraY;
 
 	public static ScreenShake screenShake = new ScreenShake();
+	
+	protected float verticalHeight = 8.0f;
 
 	/**
 	 * 
@@ -129,4 +131,12 @@ public class Screens implements Screen {
 
 	@Override
 	public void dispose() {}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getVerticalHeight() {
+		return verticalHeight;
+	}
 }

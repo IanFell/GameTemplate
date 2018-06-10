@@ -26,12 +26,8 @@ import physics.Weather.WeatherHandler;
  *
  */
 public class GameScreen extends Screens {
-	
-	private GuiScreen guiScreen = new GuiScreen(myGame);
 
 	public static int cameraWidth = 10;
-
-	public float verticalHeight = 8.0f;
 
 	/**
 	 * Keeps track if screen has been initialized.
@@ -61,6 +57,8 @@ public class GameScreen extends Screens {
 	 * Used to shade the screen to simulate darkness.
 	 */
 	private ScreenShader screenShader = new ScreenShader(myGame);
+	
+	private GuiScreen guiScreen = new GuiScreen(myGame);
 
 	/**
 	 * Debugs game screen if needed / uncommented.

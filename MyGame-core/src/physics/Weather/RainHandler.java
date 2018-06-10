@@ -62,7 +62,7 @@ public class RainHandler extends GameObject {
 	public void updateObject(GameScreen gameScreen, MapEditor mapEditor) {
 		if (isRaining) {
 			y += dy;
-			if (y > gameScreen.verticalHeight * 2) {
+			if (y > gameScreen.getVerticalHeight() * 2) {
 				y  = startingRainDropYPosition;
 				dy = (float) RandomNumberGenerator.generateRandomDouble(minDy, maxDy);
 			}
