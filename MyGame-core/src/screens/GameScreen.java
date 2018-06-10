@@ -26,6 +26,8 @@ import physics.Weather.WeatherHandler;
  *
  */
 public class GameScreen extends Screens {
+	
+	private GuiScreen guiScreen = new GuiScreen(myGame);
 
 	public static int cameraWidth = 10;
 
@@ -111,6 +113,8 @@ public class GameScreen extends Screens {
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		renderObjectsOnGameScreenThatUseShapeRenderer();
 		myGame.renderer.shapeRenderer.end();
+		
+		guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
 
 		// If a screenshake happened, reset camera to it's original position before shake.
 		resetCameraAfterScreenShake();

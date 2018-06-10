@@ -30,6 +30,8 @@ public class ImageLoader {
 	public Texture tree;
 
 	public Texture lightningFlash;
+	
+	public Texture playerScore;
 
 	public void init() {
 		splashScreenLogo = new Texture(Gdx.files.internal("logo_ffg.png"));
@@ -42,6 +44,7 @@ public class ImageLoader {
 		playerSprite     = new Texture(Gdx.files.internal("PlayerSprite.png"));
 		tree             = new Texture(Gdx.files.internal("Tree.png"));
 		lightningFlash   = new Texture(Gdx.files.internal("LightningFlash.png"));
+		playerScore      = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
 	}
 
 	public void dispose() {
@@ -55,5 +58,6 @@ public class ImageLoader {
 		playerSprite.dispose();
 		tree.dispose();
 		lightningFlash.dispose();
+		playerScore.dispose();
 	}
 }

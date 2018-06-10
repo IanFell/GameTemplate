@@ -30,9 +30,6 @@ public class Player extends GameObject {
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
 	
-	/**
-	 * Scrolling speed for closest tier to screen.
-	 */
 	public final static float PLAYER_SPEED = 0.1f;
 
 	/**
