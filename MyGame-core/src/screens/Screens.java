@@ -28,9 +28,14 @@ public class Screens implements Screen {
 
 	protected final MyGame myGame;
 
+	/**
+	 * Camera variables.
+	 */
 	public static OrthographicCamera camera;
-
 	protected ExtendViewport viewport;
+	protected float verticalHeight = 8.0f;
+	protected float aspectRatio    = (float)GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH;
+	protected float viewportWidth  = verticalHeight / aspectRatio;
 
 	/**
 	 * Saves camera X position before screen shake.
@@ -43,8 +48,6 @@ public class Screens implements Screen {
 	public static float cameraY;
 
 	public static ScreenShake screenShake = new ScreenShake();
-	
-	protected float verticalHeight = 8.0f;
 
 	/**
 	 * 

@@ -19,10 +19,10 @@ public class CollisionHandler {
 	 * @param MapEditor mapEditor
 	 */
 	public static void checkIfPlayerHasCollidedWithASolidTile(MyGame myGame, MapEditor mapEditor) {
-		for(int z = 0; z < mapEditor.grassMapOne.length; z++) {
-			for(int x = 0; x < mapEditor.grassMapOne[z].length; x++) {
-				if (mapEditor.grassTilesOne[z][x].isSolid()) {
-					if (mapEditor.grassTilesOne[z][x].getBoundingRectangle().overlaps(myGame.gameObjectLoader.playerOne.rectangle)) {
+		for(int z = 0; z < mapEditor.worldMap.length; z++) {
+			for(int x = 0; x < mapEditor.worldMap[z].length; x++) {
+				if (mapEditor.tileMap[z][x].isSolid()) {
+					if (mapEditor.tileMap[z][x].getBoundingRectangle().overlaps(myGame.gameObjectLoader.playerOne.rectangle)) {
 						Player.playerShouldStopMoving = true;
 						System.out.println("Solid tile hit!");
 					}

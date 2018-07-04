@@ -115,7 +115,9 @@ public class GameScreen extends Screens {
 		guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
 
 		// If a screenshake happened, reset camera to it's original position before shake.
-		resetCameraAfterScreenShake();
+		if (!weatherHandler.lightningHandler.isLightningShouldBeRendered()) {
+			resetCameraAfterScreenShake();
+		}
 
 		// Update objects associated with GameScreen.
 		updateGameScreen();
@@ -164,9 +166,7 @@ public class GameScreen extends Screens {
 	}
 
 	private void initializeCamera() {
-		float aspectRatio         = (float)GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH;
-		float viewportWidth       = verticalHeight / aspectRatio;
-		camera                    = new OrthographicCamera(viewportWidth, verticalHeight);
+		camera = new OrthographicCamera(viewportWidth, verticalHeight);
 		camera.setToOrtho(true, viewportWidth, verticalHeight);
 		camera.position.x = myGame.gameObjectLoader.playerOne.getX();
 		camera.position.y = myGame.gameObjectLoader.playerOne.getY();

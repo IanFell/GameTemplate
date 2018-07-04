@@ -8,6 +8,7 @@ import gameobjects.GameObject;
 import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 import maps.MapEditor;
+import screens.GameScreen;
 
 /**
  * Handles in game lightning flashes.
@@ -59,6 +60,9 @@ public class LightningHandler extends GameObject {
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		if (lightningShouldBeRendered) {
 			batch.draw(imageLoader.lightningFlash, x, y, width, height);
+			
+			// Shake screen a bit to simulate thunder crash shakeing things.
+			GameScreen.screenShake.shake(3, 3);
 		}
 	}
 
@@ -95,5 +99,13 @@ public class LightningHandler extends GameObject {
 	 */
 	public int getCurrentNumberOfFlashes() {
 		return currentNumberOfFlashes;
+	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	public boolean isLightningShouldBeRendered() {
+		return lightningShouldBeRendered;
 	}
 }

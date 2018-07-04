@@ -17,6 +17,7 @@ public class Tile extends Sprite {
 	public static Texture grassTextureOne;
 	public static Texture grassTextureTwo;
 	public static Texture solidTile;
+	public static Texture sandTexture;
 
 	/**
 	 * 
@@ -36,6 +37,7 @@ public class Tile extends Sprite {
 		grassTextureOne  = myGame.imageLoader.grassTileOne;
 		grassTextureTwo  = myGame.imageLoader.grassTileTwo;
 		solidTile        = myGame.imageLoader.solidTile;
+		sandTexture      = myGame.imageLoader.sandTile;
 	}
 
 	/**

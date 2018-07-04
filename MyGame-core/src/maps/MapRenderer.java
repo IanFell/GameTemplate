@@ -26,9 +26,9 @@ public class MapRenderer {
 		if (timer > 100) {
 			timer = 0;
 		}
-		for(int z = 0; z < mapEditor.grassMapOne.length; z++) {
-			for(int x = 0; x < mapEditor.grassMapOne[z].length; x++) {
-				mapEditor.grassTilesOne[x][z].draw(myGame.renderer.batch);
+		for(int z = 0; z < mapEditor.worldMap.length; z++) {
+			for(int x = 0; x < mapEditor.worldMap[z].length; x++) {
+				mapEditor.tileMap[x][z].draw(myGame.renderer.batch);
 			}
 		}
 		// Below is if we want grass to simulate wind.

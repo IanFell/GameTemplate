@@ -38,16 +38,20 @@ public class MapLoader {
 		int tileSize    = 1;
 		boolean isSolid = true;
 		// "Left side" grass map.
-		if (mapEditor.grassMapOne[z][x] == MapEditor.SolidTile) {  
-			mapEditor.grassTilesOne[x][z] = new Tile(Tile.solidTile, isSolid);
+		if (mapEditor.worldMap[z][x] == MapEditor.SolidTile) {  
+			mapEditor.tileMap[x][z] = new Tile(Tile.solidTile, isSolid);
 		}
-		if (mapEditor.grassMapOne[z][x] == MapEditor.GrassTileOne) {  
-			mapEditor.grassTilesOne[x][z] = new Tile(Tile.grassTextureOne, !isSolid);
+		if (mapEditor.worldMap[z][x] == MapEditor.SandTile) {  
+			mapEditor.tileMap[x][z] = new Tile(Tile.sandTexture, !isSolid);
 		}
-		mapEditor.grassTilesOne[x][z].setPosition(x, z);
-		mapEditor.grassTilesOne[x][z].setSize(tileSize, tileSize); 
+		if (mapEditor.worldMap[z][x] == MapEditor.GrassTileOne) {  
+			mapEditor.tileMap[x][z] = new Tile(Tile.grassTextureOne, !isSolid);
+		}
+		mapEditor.tileMap[x][z].setPosition(x, z);
+		mapEditor.tileMap[x][z].setSize(tileSize, tileSize); 
 
 		// "Right side" grass map.
+		/*
 		if (mapEditor.grassMapTwo[z][x] == MapEditor.SolidTile) {  
 			mapEditor.grassTilesTwo[x][z] = new Tile(Tile.solidTile, isSolid);
 		}
@@ -55,6 +59,6 @@ public class MapLoader {
 			mapEditor.grassTilesTwo[x][z] = new Tile(Tile.grassTextureTwo, !isSolid);
 		}
 		mapEditor.grassTilesTwo[x][z].setPosition(x, z);
-		mapEditor.grassTilesTwo[x][z].setSize(tileSize, tileSize); 
+		mapEditor.grassTilesTwo[x][z].setSize(tileSize, tileSize); */
 	}
 }

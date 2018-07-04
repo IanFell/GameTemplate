@@ -309,7 +309,7 @@ public class LightningBoltHandler {
 		};
 
 		Color color = new Color(ColorHelper.WHITE);
-		LightningBoltHandler.drawChainLightning(
+		drawChainLightning(
 				myGame.renderer.batch,
 				lightningBoltVectors,
 				color,

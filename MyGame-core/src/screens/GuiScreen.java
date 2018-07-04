@@ -3,7 +3,6 @@ package screens;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
-import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 
 /**
@@ -21,17 +20,16 @@ public class GuiScreen extends Screens {
 	public GuiScreen(MyGame myGame) {
 		super(myGame);
 	}
+	
 	/**
 	 * 
 	 * @param SpriteBatch batch
 	 * @param ImageLoader imageLoader
 	 */
 	public void render(SpriteBatch batch, ImageLoader imageLoader) {
-		float aspectRatio   = (float)GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH;
-		float viewportWidth = verticalHeight / aspectRatio;
-		myGame.renderer.batch.begin();
 		int denominator = 2;
 		int height      = 1;
+		myGame.renderer.batch.begin();
 		batch.draw(
 				imageLoader.playerScore, 
 				camera.position.x - viewportWidth / denominator, 
