@@ -62,7 +62,7 @@ public class LightningHandler extends GameObject {
 			batch.draw(imageLoader.lightningFlash, x, y, width, height);
 			
 			// Shake screen a bit to simulate thunder crash shakeing things.
-			GameScreen.screenShake.shake(3, 3);
+			GameScreen.screenShake.shake(0.3f, 3);
 		}
 	}
 

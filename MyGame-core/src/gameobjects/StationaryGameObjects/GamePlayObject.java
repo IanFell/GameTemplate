@@ -11,18 +11,18 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class NatureObject extends GameObject {
-
+public class GamePlayObject extends GameObject {
+	
 	/**
 	 * Constructor.
 	 */
-	public NatureObject() {
-		this.x      = 4;
-		this.y      = 5;
-		this.width  = 2;
-		this.height = 4;
+	public GamePlayObject() {
+		this.x      = 15;
+		this.y      = 8;
+		this.width  = 4;
+		this.height = 2;
 	}
-
+	
 	/**
 	 * 
 	 * @param SpriteBatch batch
@@ -31,6 +31,6 @@ public class NatureObject extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		batch.draw(imageLoader.tree, x, y, width, -height);
+		batch.draw(imageLoader.chest, x, y, width, -height);
 	}
 }

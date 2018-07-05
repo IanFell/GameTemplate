@@ -3,6 +3,7 @@ package handlers;
 import helpers.GameAttributeHelper;
 import loaders.MusicLoader;
 import physics.Weather.NightAndDayCycle;
+import physics.Weather.WeatherHandler;
 import screens.Screens;
 
 /**
@@ -15,7 +16,7 @@ public class MusicHandler {
 
 	/**
 	 * 
-	 * @param MusicLoader musicLoader
+	 * @param MusicLoader    musicLoader
 	 */
 	public void handleMusic(MusicLoader musicLoader) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
@@ -23,8 +24,14 @@ public class MusicHandler {
 				musicLoader.dayTimeAmbientNoise.setVolume(1.0f);
 				musicLoader.dayTimeAmbientNoise.play();
 
-				musicLoader.rainAndThunder.setVolume(1.0f);
-				musicLoader.rainAndThunder.play();
+				if (WeatherHandler.isStorming()) {
+					musicLoader.rainAndThunder.setVolume(1.0f);
+					musicLoader.rainAndThunder.play();
+				} else {
+					if (musicLoader.rainAndThunder.isPlaying()) {
+						musicLoader.rainAndThunder.stop();
+					}
+				}
 
 				if (musicLoader.nightTimeAmbientNoise.isPlaying()) {
 					musicLoader.nightTimeAmbientNoise.stop();

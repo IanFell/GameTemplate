@@ -13,8 +13,6 @@ import maps.MapEditor;
 /**
  * Class to hold and handle common elements for all game objects.
  * 
- * TODO Figure out how to dispose of player textures.
- * 
  * @author Fabulous Fellini
  *
  */

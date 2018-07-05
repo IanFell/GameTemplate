@@ -11,6 +11,8 @@ import tiles.Tile;
  *
  */
 public class MapLoader {
+	
+	private boolean isSolid = true;
 
 	/**
 	 * Creates and initializes tiles for map.
@@ -20,45 +22,97 @@ public class MapLoader {
 	 */
 	public void loadMap(MyGame myGame, MapEditor mapEditor) { 
 		Tile.initializeTileTextures(myGame);
-		for(int z = 0; z < mapEditor.grassMapOne.length; z++) {
-			for(int x = 0; x < mapEditor.grassMapOne[z].length; x++) {
-				loadGrassMaps(mapEditor, x, z);
+		for(int z = 0; z < mapEditor.worldMap.length; z++) {
+			for(int x = 0; x < mapEditor.worldMap[z].length; x++) {
+				loadWorldMaps(mapEditor, x, z);
 			}
 		}
 	}
 
 	/**
-	 * Loads all grass maps.  There are two at the moment, and alternate back and forth to simulate wind.
+	 * Loads all world maps.  
 	 * 
 	 * @param MapEditor mapEditor
 	 * @param int       x
 	 * @param int       z
 	 */
-	private void loadGrassMaps(MapEditor mapEditor, int x, int z) {
+	private void loadWorldMaps(MapEditor mapEditor, int x, int z) {
 		int tileSize    = 1;
-		boolean isSolid = true;
-		// "Left side" grass map.
-		if (mapEditor.worldMap[z][x] == MapEditor.SolidTile) {  
-			mapEditor.tileMap[x][z] = new Tile(Tile.solidTile, isSolid);
+		
+		loadTile(mapEditor.worldMap, mapEditor.tileMap, x, z);
+		setTile(mapEditor.tileMap, x, z, tileSize, x, z);
+		
+		loadTile(mapEditor.worldMapAnimated, mapEditor.tileMapAnimated, x, z);
+		setTile(mapEditor.tileMapAnimated, x, z, tileSize, x, z);
+		
+		// Solid sand map.
+		if (mapEditor.solidSandWorldMap[z][x] == MapEditor.SolidTile) {  
+			mapEditor.solidSandTileMap1927[x][z] = new Tile(Tile.buildingTexture, isSolid);
+			mapEditor.solidSandTileMap1926[x][z] = new Tile(Tile.buildingTexture, isSolid);
+			mapEditor.solidSandTileMap1826[x][z] = new Tile(Tile.buildingTexture, isSolid);
+			mapEditor.solidSandTileMap1825[x][z] = new Tile(Tile.buildingTexture, isSolid);
 		}
-		if (mapEditor.worldMap[z][x] == MapEditor.SandTile) {  
-			mapEditor.tileMap[x][z] = new Tile(Tile.sandTexture, !isSolid);
+		if (mapEditor.solidSandWorldMap[z][x] == MapEditor.SandTile) {  
+			mapEditor.solidSandTileMap1927[x][z] = new Tile(Tile.sandTexture, !isSolid);
+			mapEditor.solidSandTileMap1926[x][z] = new Tile(Tile.sandTexture, !isSolid);
+			mapEditor.solidSandTileMap1826[x][z] = new Tile(Tile.sandTexture, !isSolid);
+			mapEditor.solidSandTileMap1825[x][z] = new Tile(Tile.sandTexture, !isSolid);
 		}
-		if (mapEditor.worldMap[z][x] == MapEditor.GrassTileOne) {  
-			mapEditor.tileMap[x][z] = new Tile(Tile.grassTextureOne, !isSolid);
+		int gridOffset = 20;
+		setTile(mapEditor.solidSandTileMap1927, x, z, tileSize, x, z - gridOffset);
+		setTile(mapEditor.solidSandTileMap1926, x, z, tileSize, x - gridOffset, z - gridOffset);
+		setTile(mapEditor.solidSandTileMap1826, x, z, tileSize, x - gridOffset, z - gridOffset * 2);
+		setTile(mapEditor.solidSandTileMap1825, x, z, tileSize, x - gridOffset * 2, z - gridOffset * 2);
+	}
+	
+	/**
+	 * 
+	 * @param int[][]  worldMap
+	 * @param Tile[][] tileMap
+	 * @param int      x
+	 * @param int      z
+	 */
+	private void loadTile(int[][] worldMap, Tile[][] tileMap, int x, int z) {
+		if (worldMap[z][x] == MapEditor.SolidTile) {  
+			tileMap[x][z] = new Tile(Tile.buildingTexture, isSolid);
 		}
-		mapEditor.tileMap[x][z].setPosition(x, z);
-		mapEditor.tileMap[x][z].setSize(tileSize, tileSize); 
-
-		// "Right side" grass map.
-		/*
-		if (mapEditor.grassMapTwo[z][x] == MapEditor.SolidTile) {  
-			mapEditor.grassTilesTwo[x][z] = new Tile(Tile.solidTile, isSolid);
+		if (worldMap[z][x] == MapEditor.SandTile) {  
+			tileMap[x][z] = new Tile(Tile.sandTexture, !isSolid);
 		}
-		if (mapEditor.grassMapTwo[z][x] == MapEditor.GrassTileTwo) {  
-			mapEditor.grassTilesTwo[x][z] = new Tile(Tile.grassTextureTwo, !isSolid);
+		if (worldMap[z][x] == MapEditor.GrassTileOne) {  
+			tileMap[x][z] = new Tile(Tile.grassTextureOne, !isSolid);
 		}
-		mapEditor.grassTilesTwo[x][z].setPosition(x, z);
-		mapEditor.grassTilesTwo[x][z].setSize(tileSize, tileSize); */
+		if (worldMap[z][x] == MapEditor.WaterTileOne) {  
+			tileMap[x][z] = new Tile(Tile.waterTextureOne, !isSolid);
+		}
+		if (worldMap[z][x] == MapEditor.WaterTileTwo) {  
+			tileMap[x][z] = new Tile(Tile.waterTextureTwo, !isSolid);
+		}
+		if (worldMap[z][x] == MapEditor.WaterLowerLeftHalfAndHalf) {  
+			tileMap[x][z] = new Tile(Tile.waterLowerLeftHalfAndHalfTexture, !isSolid);
+		}
+		if (worldMap[z][x] == MapEditor.WaterUpperLeftHalfAndHalf) {  
+			tileMap[x][z] = new Tile(Tile.waterUpperLeftHalfAndHalfTexture, !isSolid);
+		}
+		if (worldMap[z][x] == MapEditor.WaterLowerRightHalfAndHalf) {  
+			tileMap[x][z] = new Tile(Tile.waterLowerRightHalfAndHalfTexture, !isSolid);
+		}
+		if (worldMap[z][x] == MapEditor.WaterUpperRightHalfAndHalf) {  
+			tileMap[x][z] = new Tile(Tile.waterUpperRightHalfAndHalfTexture, !isSolid);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param Tile tile
+	 * @param int  x
+	 * @param int  z
+	 * @param int  size
+	 * @param int  xPosition
+	 * @param int  zPosition
+	 */
+	private void setTile(Tile[][] tile, int x, int z, int size, int xPosition, int zPosition) {
+		tile[x][z].setPosition(xPosition, zPosition);
+		tile[x][z].setSize(size, size);
 	}
 }

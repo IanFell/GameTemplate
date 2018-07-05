@@ -24,7 +24,7 @@ public class CollisionHandler {
 				if (mapEditor.tileMap[z][x].isSolid()) {
 					if (mapEditor.tileMap[z][x].getBoundingRectangle().overlaps(myGame.gameObjectLoader.playerOne.rectangle)) {
 						Player.playerShouldStopMoving = true;
-						System.out.println("Solid tile hit!");
+						System.out.println("Player collided with solid tile!");
 					}
 				}
 			}

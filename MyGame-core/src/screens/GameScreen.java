@@ -3,7 +3,6 @@ package screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.mygdx.mygame.MyGame;
 
@@ -15,7 +14,6 @@ import maps.MapRenderer;
 import particles.ParticleEmitter;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
-import physics.Weather.NightAndDayCycle;
 import physics.Weather.RainHandler;
 import physics.Weather.WeatherHandler;
 
@@ -142,7 +140,7 @@ public class GameScreen extends Screens {
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
 			weatherHandler.rainHandler[i] = new RainHandler();
 		}
-		LightningBoltHandler.setTexture(new Texture("lightningbolt.png"));
+		LightningBoltHandler.init();
 		/**
 		 * This overlays the game screen and fades out from black.
 		 * This makes the transition between screens much smoother.
@@ -180,21 +178,10 @@ public class GameScreen extends Screens {
 		ParticleEmitter.updateParticleEmitters(myGame, lightingHandler.lightHandler);
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.nightAndDayCycle.performDayAndNightCycle();
+		weatherHandler.updateStormCycle(myGame, this, mapEditor);
 		myGame.gameObjectLoader.playerOne.updateObject(myGame, mapEditor);
-
-		/**
-		 * If it is day time, start raining.  Stop raining during night time.
-		 * If it is night time, give the screen a dark transparent screen shader.
-		 */
-		if (NightAndDayCycle.isDayTime()) {
-			RainHandler.isRaining = true;
-			for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
-				weatherHandler.rainHandler[i].updateObject(this, mapEditor);
-			}
-		} else {
-			RainHandler.isRaining = false;
-		}
-		weatherHandler.lightningHandler.updateObject(myGame, mapEditor);
+		
+		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
 	}
 
@@ -205,20 +192,19 @@ public class GameScreen extends Screens {
 				myGame.imageLoader, 
 				myGame.gameObjectLoader.playerOne
 				);
-		weatherHandler.lightningHandler.renderObject(
+		weatherHandler.renderStormCycle(myGame);
+		lightingHandler.renderShadows(myGame);
+		
+		myGame.gameObjectLoader.tree.renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
-		if (NightAndDayCycle.isDayTime()) {
-			// Do not just constantly flash lightning the whole time.
-			if (weatherHandler.lightningHandler.getCurrentNumberOfFlashes() == 2) {
-				LightningBoltHandler.drawLightningBolt(myGame);
-			}
-			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerOne);
-			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerTwo);
-			lightingHandler.shadowHandler.renderLighting(myGame.renderer.batch, myGame.imageLoader, myGame.gameObjectLoader.playerThree);
-		}
+		myGame.gameObjectLoader.chest.renderObject(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
 
 		myGame.gameObjectLoader.playerOne.renderObject(
 				myGame.renderer.batch, 
@@ -235,11 +221,6 @@ public class GameScreen extends Screens {
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
-		myGame.gameObjectLoader.tree.renderObject(
-				myGame.renderer.batch, 
-				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
-				);
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
@@ -248,7 +229,7 @@ public class GameScreen extends Screens {
 			weatherHandler.rainHandler[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		}
 
-		// Night time places a transparent dark square on the screen to simulate darkness.
+		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.renderObject(myGame.renderer.shapeRenderer);
 
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {

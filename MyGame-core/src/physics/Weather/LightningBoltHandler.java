@@ -37,6 +37,10 @@ public class LightningBoltHandler {
 	private static Vector2 returnVector = new Vector2(0, 0);
 
 	private static Texture texture;
+	
+	public static void init() {
+		setTexture(new Texture("lightningbolt.png"));
+	}
 
 	/**
 	 * 
@@ -177,8 +181,8 @@ public class LightningBoltHandler {
 		float length = getDistanceAccurate(x1, y1, x2, y2);
 		float dx = x1;
 		float dy = y1;
-		dx = dx - x2;
-		dy = dy - y2;
+		dx       = dx - x2;
+		dy       = dy - y2;
 		float angle = MathUtils.radiansToDegrees * MathUtils.atan2(dy, dx);
 		angle = angle-180;
 		batch.draw(tex, x1, y1, 0f, thickness * 0.5f, length, thickness, 1f, 1f, angle, 0, 0, tex.getWidth(), tex.getHeight(), false, false);

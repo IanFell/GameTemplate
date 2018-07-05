@@ -16,6 +16,7 @@ public class GameObjectLoader {
 	public GameObject playerTwo;
 	public GameObject playerThree;
 	public GameObject tree;
+	public GameObject chest;
 
 	/**
 	 * 
@@ -26,5 +27,6 @@ public class GameObjectLoader {
 		playerTwo   = myGame.gameObjectFactory.getObject("player");
 		playerThree = myGame.gameObjectFactory.getObject("player");
 		tree        = myGame.gameObjectFactory.getObject("tree");
+		chest       = myGame.gameObjectFactory.getObject("chest");
 	}
 }
