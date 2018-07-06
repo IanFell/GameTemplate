@@ -29,15 +29,37 @@ public class MapRenderer {
 		
 		// Alternate tile maps to simulate water movement.
 		if (timer > 50) {
-			for(int z = 0; z < mapEditor.worldMap.length; z++) {
-				for(int x = 0; x < mapEditor.worldMap[z].length; x++) {
-					mapEditor.tileMap[x][z].draw(myGame.renderer.batch);
+			for(int z = 0; z < mapEditor.worldMap2027.length; z++) {
+				for(int x = 0; x < mapEditor.worldMap2027[z].length; x++) {
+					mapEditor.tileMap2027[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMap2026[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMap1925[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMap1827[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2025[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2024[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2023[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2022[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2021[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2020[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2019[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap1924[x][z].draw(myGame.renderer.batch);
 				}
 			}
 		} else {
-			for(int z = 0; z < mapEditor.worldMapAnimated.length; z++) {
-				for(int x = 0; x < mapEditor.worldMapAnimated[z].length; x++) {
-					mapEditor.tileMapAnimated[x][z].draw(myGame.renderer.batch);
+			for(int z = 0; z < mapEditor.worldMapAnimated2027.length; z++) {
+				for(int x = 0; x < mapEditor.worldMapAnimated2027[z].length; x++) {
+					mapEditor.tileMapAnimated2027[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMapAnimated2026[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMapAnimated1925[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMapAnimated1827[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2025[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2024[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2023[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2022[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2021[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2020[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2019[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated1924[x][z].draw(myGame.renderer.batch);
 				}
 			}
 		}

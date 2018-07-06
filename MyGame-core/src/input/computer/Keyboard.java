@@ -87,7 +87,7 @@ public class Keyboard extends ComputerInput {
 				LightHandler.isGrowing = false;
 			}
 
-			float cameraZoomAmount = 0.01f;
+			float cameraZoomAmount = 0.1f;
 			// Zoom camera out.
 			if (Gdx.input.isKeyPressed(Input.Keys.Z) && Gdx.input.isKeyPressed(Input.Keys.O)) {
 				GameScreen.camera.zoom += cameraZoomAmount;
