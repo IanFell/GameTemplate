@@ -24,6 +24,7 @@ public class Tile extends Sprite {
 	public static Texture waterUpperLeftHalfAndHalfTexture;
 	public static Texture waterLowerRightHalfAndHalfTexture;
 	public static Texture waterUpperRightHalfAndHalfTexture;
+	public static Texture waterUpperLeftCurvedTexture;
 
 	/**
 	 * 
@@ -40,16 +41,17 @@ public class Tile extends Sprite {
 	 * @param MyGame myGame
 	 */
 	public static void initializeTileTextures(MyGame myGame) {
-		grassTextureOne                  = myGame.imageLoader.grassTileOne;
-		grassTextureTwo                  = myGame.imageLoader.grassTileTwo;
-		buildingTexture                  = myGame.imageLoader.solidTile;
-		sandTexture                      = myGame.imageLoader.sandTile;
-		waterTextureOne                  = myGame.imageLoader.waterTileOne;
-		waterTextureTwo                  = myGame.imageLoader.waterTileTwo;
-		waterLowerLeftHalfAndHalfTexture = myGame.imageLoader.waterLowerLeftHalfAndHalfTile;
-		waterUpperLeftHalfAndHalfTexture = myGame.imageLoader.waterUpperLeftHalfAndHalfTile;
+		grassTextureOne                   = myGame.imageLoader.grassTileOne;
+		grassTextureTwo                   = myGame.imageLoader.grassTileTwo;
+		buildingTexture                   = myGame.imageLoader.solidTile;
+		sandTexture                       = myGame.imageLoader.sandTile;
+		waterTextureOne                   = myGame.imageLoader.waterTileOne;
+		waterTextureTwo                   = myGame.imageLoader.waterTileTwo;
+		waterLowerLeftHalfAndHalfTexture  = myGame.imageLoader.waterLowerLeftHalfAndHalfTile;
+		waterUpperLeftHalfAndHalfTexture  = myGame.imageLoader.waterUpperLeftHalfAndHalfTile;
 		waterLowerRightHalfAndHalfTexture = myGame.imageLoader.waterLowerRightHalfAndHalfTile;
 		waterUpperRightHalfAndHalfTexture = myGame.imageLoader.waterUpperRightHalfAndHalfTile;
+		waterUpperLeftCurvedTexture       = myGame.imageLoader.waterUpperLeftCurvedTile;
 	}
 
 	/**

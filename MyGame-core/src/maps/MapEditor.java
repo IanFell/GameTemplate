@@ -10,16 +10,17 @@ import tiles.Tile;
  */
 public class MapEditor {
 
-	public static final int SolidTile                 = 0;
-	public static final int GrassTileOne              = 1;
-	public static final int GrassTileTwo              = 2;
-	public static final int SandTile                  = 3;
-	public static final int WaterTileOne              = 4;
-	public static final int WaterTileTwo              = 5;
-	public static final int WaterLowerLeftHalfAndHalf = 6;
-	public static final int WaterUpperLeftHalfAndHalf = 7;
-	public static final int WaterUpperRightHalfAndHalf = 8;
-	public static final int WaterLowerRightHalfAndHalf = 9;
+	public static final int SolidTile                  = 0;
+	public static final int GrassTileOne               = 1;
+	public static final int GrassTileTwo               = 2;
+	public static final int SandTile                   = 3;
+	public static final int WaterTileOne               = 4;
+	public static final int WaterTileTwo               = 5;
+	public static final int WaterLowerLeftHalfAndHalf  = 6;
+	public static final int WaterUpperLeftHalfAndHalf  = 7;
+	public static final int WaterUpperLeftCurved       = 8;
+	public static final int WaterUpperRightHalfAndHalf = 9;
+	public static final int WaterLowerRightHalfAndHalf = 10;
 
 	private final int WORLD_WIDTH  = 21;
 	private final int WORLD_HEIGHT = 21;
@@ -30,7 +31,7 @@ public class MapEditor {
 	 */
 	public final Tile[][] tileMap = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public int[][] worldMap       = 
-		{
+			{
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -44,14 +45,14 @@ public class MapEditor {
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{4, 4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{4, 4, 4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{4, 4, 4, 4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{4, 4, 4, 4, 4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{4, 4, 4, 4, 4, 4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{4, 4, 4, 4, 4, 4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
-		};
+				{8, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+				{4, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+				{4, 4, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+				{4, 4, 4, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+				{4, 4, 4, 4, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+				{4, 4, 4, 4, 4, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+				{4, 4, 4, 4, 4, 4, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
+			};
 	
 	public final Tile[][] tileMapAnimated = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public int[][] worldMapAnimated       = 
@@ -69,13 +70,13 @@ public class MapEditor {
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+				{8, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{5, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{5, 5, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{5, 5, 5, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{5, 5, 5, 5, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 				{5, 5, 5, 5, 5, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
-				{5, 5, 5, 5, 5, 5, 3, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
+				{5, 5, 5, 5, 5, 5, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
 		};
 	
 	/**

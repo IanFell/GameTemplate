@@ -28,6 +28,7 @@ public class ImageLoader {
 	public Texture waterUpperLeftHalfAndHalfTile;
 	public Texture waterLowerRightHalfAndHalfTile;
 	public Texture waterUpperRightHalfAndHalfTile;
+	public Texture waterUpperLeftCurvedTile;
 
 	public Texture light;
 	public Texture shadow;
@@ -43,25 +44,26 @@ public class ImageLoader {
 	public Texture playerScore;
 
 	public void init() {
-		splashScreenLogo              = new Texture(Gdx.files.internal("logo_ffg.png"));
-		testImage                     = new Texture(Gdx.files.internal("badlogic.jpg"));
-		grassTileOne     			  = new Texture(Gdx.files.internal("GrassTileOne.png"));
-		grassTileTwo                  = new Texture(Gdx.files.internal("GrassTileTwo.png"));
-		waterTileOne                  = new Texture(Gdx.files.internal("WaterOne.png"));
-		waterTileTwo                  = new Texture(Gdx.files.internal("WaterTwo.png"));
-		waterLowerLeftHalfAndHalfTile = new Texture(Gdx.files.internal("WaterLowerLeftHalfAndHalf.png"));
-		waterUpperLeftHalfAndHalfTile = new Texture(Gdx.files.internal("WaterUpperLeftHalfAndHalf.png"));
+		splashScreenLogo               = new Texture(Gdx.files.internal("logo_ffg.png"));
+		testImage                      = new Texture(Gdx.files.internal("badlogic.jpg"));
+		grassTileOne     			   = new Texture(Gdx.files.internal("GrassTileOne.png"));
+		grassTileTwo                   = new Texture(Gdx.files.internal("GrassTileTwo.png"));
+		waterTileOne                   = new Texture(Gdx.files.internal("WaterOne.png"));
+		waterTileTwo                   = new Texture(Gdx.files.internal("WaterTwo.png"));
+		waterLowerLeftHalfAndHalfTile  = new Texture(Gdx.files.internal("WaterLowerLeftHalfAndHalf.png"));
+		waterUpperLeftHalfAndHalfTile  = new Texture(Gdx.files.internal("WaterUpperLeftHalfAndHalf.png"));
+		waterUpperLeftCurvedTile       = new Texture(Gdx.files.internal("WaterUpperLeftCurved.png"));
 		waterLowerRightHalfAndHalfTile = new Texture(Gdx.files.internal("WaterLowerRightHalfAndHalf.png"));
 		waterUpperRightHalfAndHalfTile = new Texture(Gdx.files.internal("WaterUpperRightHalfAndHalf.png"));
-		sandTile                      = new Texture(Gdx.files.internal("SandTile.png"));
-		solidTile                     = new Texture(Gdx.files.internal("FakeTile.png"));
-		light                         = new Texture(Gdx.files.internal("Lighting.png"));
-		shadow                        = new Texture(Gdx.files.internal("Shadow.png"));
-		playerSprite                  = new Texture(Gdx.files.internal("PlayerSprite.png"));
-		tree                          = new Texture(Gdx.files.internal("SampleTree.png"));
-		chest                         = new Texture(Gdx.files.internal("SampleChest.png"));
-		lightningFlash                = new Texture(Gdx.files.internal("LightningFlash.png"));
-		playerScore                   = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
+		sandTile                       = new Texture(Gdx.files.internal("SandTile.png"));
+		solidTile                      = new Texture(Gdx.files.internal("FakeTile.png"));
+		light                          = new Texture(Gdx.files.internal("Lighting.png"));
+		shadow                         = new Texture(Gdx.files.internal("Shadow.png"));
+		playerSprite                   = new Texture(Gdx.files.internal("PlayerSprite.png"));
+		tree                           = new Texture(Gdx.files.internal("SampleTree.png"));
+		chest                          = new Texture(Gdx.files.internal("SampleChest.png"));
+		lightningFlash                 = new Texture(Gdx.files.internal("LightningFlash.png"));
+		playerScore                    = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
 	}
 
 	public void dispose() {
@@ -75,6 +77,7 @@ public class ImageLoader {
 		waterUpperLeftHalfAndHalfTile.dispose();
 		waterLowerRightHalfAndHalfTile.dispose();
 		waterUpperRightHalfAndHalfTile.dispose();
+		waterUpperLeftCurvedTile.dispose();
 		solidTile.dispose();
 		sandTile.dispose();
 		light.dispose();

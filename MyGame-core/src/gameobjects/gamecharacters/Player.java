@@ -31,6 +31,11 @@ public class Player extends GameObject {
 	public static final int DIRECTION_DOWN  = 3;
 	
 	public final static float PLAYER_SPEED = 0.1f;
+	
+	/**
+	 * Used to determine whether footsteps sound effect should play.
+	 */
+	public static boolean playerIsMoving = false;
 
 	/**
 	 * Textures to go with animations.

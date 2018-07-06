@@ -39,35 +39,41 @@ public class Keyboard extends ComputerInput {
 				if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
 					myGame.gameObjectLoader.playerOne.dx = -cameraScrollingSpeedTierOne;
 					myGame.gameObjectLoader.playerOne.setDirection(Player.DIRECTION_LEFT);
+					Player.playerIsMoving = true;
 					System.out.println("Player is moving LEFT");
 				} 
 				else  if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
 					myGame.gameObjectLoader.playerOne.dx = cameraScrollingSpeedTierOne;
 					myGame.gameObjectLoader.playerOne.setDirection(Player.DIRECTION_RIGHT);
+					Player.playerIsMoving = true;
 					System.out.println("Player is moving RIGHT");
 				}
 				else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
 					myGame.gameObjectLoader.playerOne.dy = -cameraScrollingSpeedTierOne;
 					myGame.gameObjectLoader.playerOne.setDirection(Player.DIRECTION_UP);
+					Player.playerIsMoving = true;
 					System.out.println("Player is moving UP");
 				}
 				else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
 					myGame.gameObjectLoader.playerOne.dy = cameraScrollingSpeedTierOne;
 					myGame.gameObjectLoader.playerOne.setDirection(Player.DIRECTION_DOWN);
+					Player.playerIsMoving = true;
 					System.out.println("Player is moving DOWN");
 				}
 				else {
 					myGame.gameObjectLoader.playerOne.stopPlayer();
+					Player.playerIsMoving = false;
 				}
 			} else {
 				myGame.gameObjectLoader.playerOne.stopPlayer();
 				myGame.gameObjectLoader.playerOne.stopScrolling(myGame.gameObjectLoader.playerOne.getDirection());
 				Player.playerShouldStopMoving = false;
+				Player.playerIsMoving         = false;
 			}
 
 			// Execute screenshake.
 			if (Gdx.input.isKeyPressed(Input.Keys.S)) { 
-				GameScreen.screenShake.shake(3, 3);
+				GameScreen.screenShake.shake(0.3f, 3);
 			}
 
 			/**

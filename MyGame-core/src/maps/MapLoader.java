@@ -100,6 +100,9 @@ public class MapLoader {
 		if (worldMap[z][x] == MapEditor.WaterUpperRightHalfAndHalf) {  
 			tileMap[x][z] = new Tile(Tile.waterUpperRightHalfAndHalfTexture, !isSolid);
 		}
+		if (worldMap[z][x] == MapEditor.WaterUpperLeftCurved) {  
+			tileMap[x][z] = new Tile(Tile.waterUpperLeftCurvedTexture, !isSolid);
+		}
 	}
 	
 	/**

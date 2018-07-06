@@ -1,5 +1,6 @@
 package handlers;
 
+import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import loaders.MusicLoader;
 import physics.Weather.NightAndDayCycle;
@@ -16,10 +17,18 @@ public class MusicHandler {
 
 	/**
 	 * 
-	 * @param MusicLoader    musicLoader
+	 * @param MusicLoader musicLoader
 	 */
 	public void handleMusic(MusicLoader musicLoader) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
+			
+			if (Player.playerIsMoving) {
+				musicLoader.footsteps.setVolume(1.0f);
+				musicLoader.footsteps.play();
+			} else {
+				musicLoader.footsteps.stop();
+			}
+			
 			if (NightAndDayCycle.isDayTime()) {
 				musicLoader.dayTimeAmbientNoise.setVolume(1.0f);
 				musicLoader.dayTimeAmbientNoise.play();
