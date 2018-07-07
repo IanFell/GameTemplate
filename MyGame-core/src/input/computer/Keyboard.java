@@ -37,36 +37,36 @@ public class Keyboard extends ComputerInput {
 			// Get arrow buttons for direction.
 			if (!Player.playerShouldStopMoving) {
 				if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-					myGame.gameObjectLoader.playerOne.dx = -cameraScrollingSpeedTierOne;
-					myGame.gameObjectLoader.playerOne.setDirection(Player.DIRECTION_LEFT);
+					myGame.getPlayer().setDx(-cameraScrollingSpeedTierOne);
+					myGame.getPlayer().setDirection(Player.DIRECTION_LEFT);
 					Player.playerIsMoving = true;
 					System.out.println("Player is moving LEFT");
 				} 
 				else  if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
-					myGame.gameObjectLoader.playerOne.dx = cameraScrollingSpeedTierOne;
-					myGame.gameObjectLoader.playerOne.setDirection(Player.DIRECTION_RIGHT);
+					myGame.getPlayer().setDx(cameraScrollingSpeedTierOne);
+					myGame.getPlayer().setDirection(Player.DIRECTION_RIGHT);
 					Player.playerIsMoving = true;
 					System.out.println("Player is moving RIGHT");
 				}
 				else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
-					myGame.gameObjectLoader.playerOne.dy = -cameraScrollingSpeedTierOne;
-					myGame.gameObjectLoader.playerOne.setDirection(Player.DIRECTION_UP);
+					myGame.getPlayer().setDy(-cameraScrollingSpeedTierOne); 
+					myGame.getPlayer().setDirection(Player.DIRECTION_UP);
 					Player.playerIsMoving = true;
 					System.out.println("Player is moving UP");
 				}
 				else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
-					myGame.gameObjectLoader.playerOne.dy = cameraScrollingSpeedTierOne;
-					myGame.gameObjectLoader.playerOne.setDirection(Player.DIRECTION_DOWN);
+					myGame.getPlayer().setDy(cameraScrollingSpeedTierOne); 
+					myGame.getPlayer().setDirection(Player.DIRECTION_DOWN);
 					Player.playerIsMoving = true;
 					System.out.println("Player is moving DOWN");
 				}
 				else {
-					myGame.gameObjectLoader.playerOne.stopPlayer();
+					myGame.getPlayer().stopPlayer();
 					Player.playerIsMoving = false;
 				}
 			} else {
-				myGame.gameObjectLoader.playerOne.stopPlayer();
-				myGame.gameObjectLoader.playerOne.stopScrolling(myGame.gameObjectLoader.playerOne.getDirection());
+				myGame.getPlayer().stopPlayer();
+				myGame.getPlayer().stopScrolling(myGame.getPlayer().getDirection());
 				Player.playerShouldStopMoving = false;
 				Player.playerIsMoving         = false;
 			}

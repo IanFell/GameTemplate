@@ -33,7 +33,7 @@ public class LightingHandler {
 			shadowHandler.renderLighting(
 					myGame.renderer.batch, 
 					myGame.imageLoader, 
-					myGame.gameObjectLoader.playerOne
+					myGame.getPlayer()
 					);
 			shadowHandler.renderLighting(
 					myGame.renderer.batch, 

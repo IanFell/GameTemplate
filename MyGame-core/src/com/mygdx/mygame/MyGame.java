@@ -3,6 +3,7 @@ package com.mygdx.mygame;
 import com.badlogic.gdx.Game;
 
 import factories.GameObjectFactory;
+import gameobjects.GameObject;
 import handlers.AudioHandler;
 import handlers.InputHandler;
 import helpers.GameAttributeHelper;
@@ -81,5 +82,9 @@ public class MyGame extends Game {
 	private void gameLoop() {
 		audioHandler.handleAudio();
 		inputHandler.handleInput(this);
+	}
+	
+	public GameObject getPlayer() {
+		return gameObjectLoader.playerOne;
 	}
 }

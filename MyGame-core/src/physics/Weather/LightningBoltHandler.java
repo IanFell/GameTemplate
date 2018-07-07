@@ -308,7 +308,7 @@ public class LightningBoltHandler {
 	public static void drawLightningBolt(MyGame myGame) {
 		System.out.println("Drawing lightning bolts!");
 		Vector2[] lightningBoltVectors = new Vector2[] {
-				new Vector2(myGame.gameObjectLoader.playerOne.getX(), myGame.gameObjectLoader.playerOne.getY() - 200),
+				new Vector2(myGame.getPlayer().getX(), myGame.getPlayer().getY() - 200),
 				new Vector2(0, GameAttributeHelper.SCREEN_HEIGHT - 150)
 		};
 

@@ -135,7 +135,7 @@ public class GameScreen extends Screens {
 
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
-		myGame.gameObjectLoader.playerOne.init(myGame);
+		myGame.getPlayer().init(myGame);
 		ParticleEmitter.initializeParticleEmitters(myGame);
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
 			weatherHandler.rainHandler[i] = new RainHandler();
@@ -157,8 +157,8 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
 		if (!ScreenShake.screenIsShaking) {
-			camera.position.x = myGame.gameObjectLoader.playerOne.getX();
-			camera.position.y = myGame.gameObjectLoader.playerOne.getY();
+			camera.position.x = myGame.getPlayer().getX();
+			camera.position.y = myGame.getPlayer().getY();
 		}
 		camera.update();
 	}
@@ -166,8 +166,8 @@ public class GameScreen extends Screens {
 	private void initializeCamera() {
 		camera = new OrthographicCamera(viewportWidth, verticalHeight);
 		camera.setToOrtho(true, viewportWidth, verticalHeight);
-		camera.position.x = myGame.gameObjectLoader.playerOne.getX();
-		camera.position.y = myGame.gameObjectLoader.playerOne.getY();
+		camera.position.x = myGame.getPlayer().getX();
+		camera.position.y = myGame.getPlayer().getY();
 		camera.update();
 	}
 
@@ -179,7 +179,7 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.nightAndDayCycle.performDayAndNightCycle();
 		weatherHandler.updateStormCycle(myGame, this, mapEditor);
-		myGame.gameObjectLoader.playerOne.updateObject(myGame, mapEditor);
+		myGame.getPlayer().updateObject(myGame, mapEditor);
 		
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
@@ -190,7 +190,7 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.renderLighting(
 				myGame.renderer.batch, 
 				myGame.imageLoader, 
-				myGame.gameObjectLoader.playerOne
+				myGame.getPlayer()
 				);
 		weatherHandler.renderStormCycle(myGame);
 		lightingHandler.renderShadows(myGame);
@@ -206,7 +206,7 @@ public class GameScreen extends Screens {
 				myGame.imageLoader
 				);
 
-		myGame.gameObjectLoader.playerOne.renderObject(
+		myGame.getPlayer().renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader

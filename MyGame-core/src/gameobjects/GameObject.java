@@ -168,4 +168,36 @@ public class GameObject extends Sprite implements GameObjectInterface {
 	public void setHeight(float height) {
 		this.height = height;
 	}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getDx() {
+		return dx;
+	}
+
+	/**
+	 * 
+	 * @param float dx
+	 */
+	public void setDx(float dx) {
+		this.dx = dx;
+	}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getDy() {
+		return dy;
+	}
+
+	/**
+	 * 
+	 * @param float dy
+	 */
+	public void setDy(float dy) {
+		this.dy = dy;
+	}
 }
