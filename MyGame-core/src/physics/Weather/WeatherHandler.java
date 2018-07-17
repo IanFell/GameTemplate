@@ -25,7 +25,7 @@ public class WeatherHandler {
 	
 	private int randomNumberToDetermineIfStormCycleShouldBegin = 0;
 	
-	private int maxLimitToDetermineIfStormCycleShouldBegin = 10000;
+	private int maxLimitToDetermineIfStormCycleShouldBegin = 10;
 	
 	private static boolean isStorming = false;
 
@@ -40,14 +40,16 @@ public class WeatherHandler {
 	
 	/**
 	 * 
-	 * @param MyGame myGame
+	 * @param MyGame     myGame
+	 * @param GameScreen gameScreen
 	 */
-	public void renderStormCycle(MyGame myGame) {
-		if (isStorming) {
+	public void renderStormCycle(MyGame myGame, GameScreen gameScreen) {
+		if (isStorming) { 
 			lightningHandler.renderObject(
 					myGame.renderer.batch, 
 					myGame.renderer.shapeRenderer, 
-					myGame.imageLoader
+					myGame.imageLoader,
+					gameScreen
 					);
 			if (NightAndDayCycle.isDayTime()) {
 				// Do not just constantly flash lightning the whole time.
@@ -78,7 +80,7 @@ public class WeatherHandler {
 			if (NightAndDayCycle.isDayTime()) {
 				RainHandler.isRaining = true;
 				for (int i = 0; i < rainHandler.length; i++) {
-					rainHandler[i].updateObject(gameScreen, mapEditor);
+					rainHandler[i].updateObject(gameScreen, mapEditor, myGame);
 				}
 			} else {
 				RainHandler.isRaining = false;

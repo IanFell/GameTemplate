@@ -36,6 +36,7 @@ public class MusicHandler {
 				if (WeatherHandler.isStorming()) {
 					musicLoader.rainAndThunder.setVolume(1.0f);
 					musicLoader.rainAndThunder.play();
+					musicLoader.dayTimeAmbientNoise.stop();
 				} else {
 					if (musicLoader.rainAndThunder.isPlaying()) {
 						musicLoader.rainAndThunder.stop();

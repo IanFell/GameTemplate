@@ -1,6 +1,7 @@
 package com.mygdx.mygame;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 
 import factories.GameObjectFactory;
 import gameobjects.GameObject;
@@ -82,9 +83,27 @@ public class MyGame extends Game {
 	private void gameLoop() {
 		audioHandler.handleAudio();
 		inputHandler.handleInput(this);
+		System.out.println("Frames Per Second: " + Gdx.graphics.getFramesPerSecond());
 	}
 	
-	public GameObject getPlayer() {
-		return gameObjectLoader.playerOne;
+	/**
+	 * 
+	 * @param int player
+	 * @return GameObject
+	 */
+	public GameObject getPlayer(int player) {
+		GameObject desiredPlayer = null;
+		switch (player) {
+		case 1:
+			desiredPlayer = gameObjectLoader.playerOne;
+			break;
+		case 2:
+			desiredPlayer = gameObjectLoader.playerTwo;
+			break;
+		case 3:
+			desiredPlayer = gameObjectLoader.playerThree;
+			break;
+		}
+		return desiredPlayer;
 	}
 }

@@ -186,6 +186,51 @@ public class MapEditor {
 	 * 20, 20
 	 * 20, 19
 	 * 19, 24
+	 * 18, 20
+	 * 17, 20
+	 * 16, 20
+	 * 15, 20
+	 * 14, 20
+	 * 13, 20
+	 * 12, 20
+	 * 11, 20
+	 * 10, 20
+	 * 09, 20
+	 * 08, 20
+	 * 07, 20
+	 * 06, 20
+	 * 05, 20
+	 * 04, 20
+	 * 03, 20
+	 * 02, 20
+	 * 01, 20
+	 * 01, 19
+	 * 02, 19
+	 * 03, 19
+	 * 04, 19
+	 * 05, 19
+	 * 06, 19
+	 * 07, 19
+	 * 08, 19
+	 * 09, 19
+	 * 10, 19
+	 * 12, 19
+	 * 13, 19
+	 * 14, 19
+	 * 15, 19
+	 * 16, 19
+	 * 17, 19
+	 * 18, 19
+	 * 19, 19
+	 * 20, 19
+	 * 21, 19
+	 * 22, 19
+	 * 23, 19
+	 * 20, 18
+	 * 20, 17
+	 * 20, 16
+	 * 20, 15
+	 * 20, 14
 	 */
 	public final Tile[][] solidWaterTileMap2025 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public final Tile[][] solidWaterTileMap2024 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
@@ -195,6 +240,51 @@ public class MapEditor {
 	public final Tile[][] solidWaterTileMap2020 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public final Tile[][] solidWaterTileMap2019 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public final Tile[][] solidWaterTileMap1924 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1820 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1720 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1620 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1520 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1420 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1320 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1220 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1120 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1020 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0920 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0820 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0720 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0620 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0520 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0420 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0320 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0220 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0120 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0119 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0219 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0319 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0419 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0519 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0619 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0719 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0819 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap0919 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1019 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1219 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1319 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1419 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1519 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1619 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1719 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1819 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1919 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap1920 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap2119 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap2219 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap2319 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap2018 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap2017 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap2016 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap2015 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMap2014 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public int[][] solidWaterWorldMap           = 
 		{
 				{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
@@ -229,6 +319,51 @@ public class MapEditor {
 	 * 20, 20
 	 * 20, 19
 	 * 19, 24
+	 * 18, 20
+	 * 17, 20
+	 * 16, 20
+	 * 15, 20
+	 * 14, 20
+	 * 13, 20
+	 * 12, 20
+	 * 11, 20
+	 * 10, 20
+	 * 09, 20
+	 * 08, 20
+	 * 07, 20
+	 * 06, 20
+	 * 05, 20
+	 * 04, 20
+	 * 03, 20
+	 * 02, 20
+	 * 01, 20
+	 * 01, 19
+	 * 02, 19
+	 * 03, 19
+	 * 04, 19
+	 * 05, 19
+	 * 06, 19
+	 * 07, 19
+	 * 08, 19
+	 * 09, 19
+	 * 10, 19
+	 * 12, 19
+	 * 13, 19
+	 * 14, 19
+	 * 15, 19
+	 * 16, 19
+	 * 17, 19
+	 * 18, 19
+	 * 19, 19
+	 * 20, 19
+	 * 21, 19
+	 * 22, 19
+	 * 23, 19
+	 * 20, 18
+	 * 20, 17
+	 * 20, 16
+	 * 20, 15
+	 * 20, 14
 	 */
 	public final Tile[][] solidWaterTileMapAnimated2025 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public final Tile[][] solidWaterTileMapAnimated2024 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
@@ -238,6 +373,51 @@ public class MapEditor {
 	public final Tile[][] solidWaterTileMapAnimated2020 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public final Tile[][] solidWaterTileMapAnimated2019 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public final Tile[][] solidWaterTileMapAnimated1924 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1820 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1720 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1620 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1520 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1420 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1320 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1220 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1120 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1020 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0920 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0820 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0720 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0620 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0520 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0420 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0320 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0220 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0120 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0119 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0219 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0319 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0419 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0519 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0619 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0719 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0819 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated0919 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1019 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1219 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1319 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1419 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1519 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1619 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1719 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1819 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1919 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated1920 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated2119 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated2219 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated2319 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated2018 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated2017 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated2016 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated2015 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTileMapAnimated2014 = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public int[][] solidWaterWorldMapAnimated           = 
 		{
 				{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},

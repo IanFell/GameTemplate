@@ -37,36 +37,40 @@ public class Keyboard extends ComputerInput {
 			// Get arrow buttons for direction.
 			if (!Player.playerShouldStopMoving) {
 				if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-					myGame.getPlayer().setDx(-cameraScrollingSpeedTierOne);
-					myGame.getPlayer().setDirection(Player.DIRECTION_LEFT);
+					myGame.getPlayer(Player.PLAYER_ONE).setDx(-cameraScrollingSpeedTierOne);
+					myGame.getPlayer(Player.PLAYER_ONE).setDy(0);
+					myGame.getPlayer(Player.PLAYER_ONE).setDirection(Player.DIRECTION_LEFT);
 					Player.playerIsMoving = true;
 					System.out.println("Player is moving LEFT");
 				} 
 				else  if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ 
-					myGame.getPlayer().setDx(cameraScrollingSpeedTierOne);
-					myGame.getPlayer().setDirection(Player.DIRECTION_RIGHT);
+					myGame.getPlayer(Player.PLAYER_ONE).setDx(cameraScrollingSpeedTierOne);
+					myGame.getPlayer(Player.PLAYER_ONE).setDy(0);
+					myGame.getPlayer(Player.PLAYER_ONE).setDirection(Player.DIRECTION_RIGHT);
 					Player.playerIsMoving = true;
 					System.out.println("Player is moving RIGHT");
 				}
 				else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
-					myGame.getPlayer().setDy(-cameraScrollingSpeedTierOne); 
-					myGame.getPlayer().setDirection(Player.DIRECTION_UP);
+					myGame.getPlayer(Player.PLAYER_ONE).setDy(-cameraScrollingSpeedTierOne); 
+					myGame.getPlayer(Player.PLAYER_ONE).setDx(0);
+					myGame.getPlayer(Player.PLAYER_ONE).setDirection(Player.DIRECTION_UP);
 					Player.playerIsMoving = true;
 					System.out.println("Player is moving UP");
 				}
 				else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){ 
-					myGame.getPlayer().setDy(cameraScrollingSpeedTierOne); 
-					myGame.getPlayer().setDirection(Player.DIRECTION_DOWN);
+					myGame.getPlayer(Player.PLAYER_ONE).setDy(cameraScrollingSpeedTierOne);
+					myGame.getPlayer(Player.PLAYER_ONE).setDx(0);
+					myGame.getPlayer(Player.PLAYER_ONE).setDirection(Player.DIRECTION_DOWN);
 					Player.playerIsMoving = true;
 					System.out.println("Player is moving DOWN");
 				}
 				else {
-					myGame.getPlayer().stopPlayer();
+					myGame.getPlayer(Player.PLAYER_ONE).stopPlayer();
 					Player.playerIsMoving = false;
 				}
 			} else {
-				myGame.getPlayer().stopPlayer();
-				myGame.getPlayer().stopScrolling(myGame.getPlayer().getDirection());
+				myGame.getPlayer(Player.PLAYER_ONE).stopPlayer();
+				myGame.getPlayer(Player.PLAYER_ONE).stopScrolling(myGame.getPlayer(Player.PLAYER_ONE).getDirection());
 				Player.playerShouldStopMoving = false;
 				Player.playerIsMoving         = false;
 			}
@@ -87,7 +91,7 @@ public class Keyboard extends ComputerInput {
 				LightHandler.isGrowing = false;
 			}
 
-			float cameraZoomAmount = 0.1f;
+			float cameraZoomAmount = 1.0f;
 			// Zoom camera out.
 			if (Gdx.input.isKeyPressed(Input.Keys.Z) && Gdx.input.isKeyPressed(Input.Keys.O)) {
 				GameScreen.camera.zoom += cameraZoomAmount;

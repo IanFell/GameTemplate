@@ -32,7 +32,7 @@ public class Screens implements Screen {
 	 * Camera variables.
 	 */
 	public static OrthographicCamera camera;
-	protected ExtendViewport viewport;
+	public ExtendViewport viewport;
 	protected float verticalHeight = 8.0f;
 	protected float aspectRatio    = (float)GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH;
 	protected float viewportWidth  = verticalHeight / aspectRatio;
@@ -46,6 +46,11 @@ public class Screens implements Screen {
 	 * Saves camera Y position before screen shake.
 	 */
 	public static float cameraY;
+	
+	/**
+	 * Used to for an offset so images are drawn at 0, 0 and not in the center of the screen.
+	 */
+	protected int denominatorOffset = 2;
 
 	public static ScreenShake screenShake = new ScreenShake();
 
@@ -141,5 +146,21 @@ public class Screens implements Screen {
 	 */
 	public float getVerticalHeight() {
 		return verticalHeight;
+	}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getViewportWidth() {
+		return viewportWidth;
+	}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getDenominatorOffset() {
+		return denominatorOffset;
 	}
 }

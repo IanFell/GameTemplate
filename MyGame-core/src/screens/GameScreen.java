@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.mygdx.mygame.MyGame;
 
 import debugging.Debugger;
+import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import maps.MapEditor;
 import maps.MapLoader;
@@ -66,6 +67,11 @@ public class GameScreen extends Screens {
 	public static ParticleEmitter particleEmitterRed;
 	public static ParticleEmitter particleEmitterYellow;
 	public static ParticleEmitter particleEmitterOrange;   
+	
+	/**
+	 *  Screen fades in during transitions.
+	 */
+	private TransitionScreen transitionScreen = new TransitionScreen(myGame);
 
 	/**
 	 * 
@@ -135,10 +141,10 @@ public class GameScreen extends Screens {
 
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
-		myGame.getPlayer().init(myGame);
+		myGame.getPlayer(Player.PLAYER_ONE).init(myGame);
 		ParticleEmitter.initializeParticleEmitters(myGame);
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
-			weatherHandler.rainHandler[i] = new RainHandler();
+			weatherHandler.rainHandler[i] = new RainHandler(this);
 		}
 		LightningBoltHandler.init();
 		/**
@@ -157,8 +163,8 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
 		if (!ScreenShake.screenIsShaking) {
-			camera.position.x = myGame.getPlayer().getX();
-			camera.position.y = myGame.getPlayer().getY();
+			camera.position.x = myGame.getPlayer(Player.PLAYER_ONE).getX();
+			camera.position.y = myGame.getPlayer(Player.PLAYER_ONE).getY();
 		}
 		camera.update();
 	}
@@ -166,8 +172,8 @@ public class GameScreen extends Screens {
 	private void initializeCamera() {
 		camera = new OrthographicCamera(viewportWidth, verticalHeight);
 		camera.setToOrtho(true, viewportWidth, verticalHeight);
-		camera.position.x = myGame.getPlayer().getX();
-		camera.position.y = myGame.getPlayer().getY();
+		camera.position.x = myGame.getPlayer(Player.PLAYER_ONE).getX();
+		camera.position.y = myGame.getPlayer(Player.PLAYER_ONE).getY();
 		camera.update();
 	}
 
@@ -179,7 +185,7 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.nightAndDayCycle.performDayAndNightCycle();
 		weatherHandler.updateStormCycle(myGame, this, mapEditor);
-		myGame.getPlayer().updateObject(myGame, mapEditor);
+		myGame.getPlayer(Player.PLAYER_ONE).updateObject(myGame, mapEditor);
 		
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
@@ -190,9 +196,9 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.renderLighting(
 				myGame.renderer.batch, 
 				myGame.imageLoader, 
-				myGame.getPlayer()
+				myGame.getPlayer(Player.PLAYER_ONE)
 				);
-		weatherHandler.renderStormCycle(myGame);
+		weatherHandler.renderStormCycle(myGame, this);
 		lightingHandler.renderShadows(myGame);
 		
 		myGame.gameObjectLoader.tree.renderObject(
@@ -206,34 +212,41 @@ public class GameScreen extends Screens {
 				myGame.imageLoader
 				);
 
-		myGame.getPlayer().renderObject(
+		myGame.getPlayer(Player.PLAYER_ONE).renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
-		myGame.gameObjectLoader.playerTwo.renderObject(
+		myGame.getPlayer(Player.PLAYER_TWO).renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
-		myGame.gameObjectLoader.playerThree.renderObject(
+		myGame.getPlayer(Player.PLAYER_THREE).renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
+		
+		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
+			weatherHandler.rainHandler[i].renderObject(
+					myGame.renderer.batch, 
+					myGame.renderer.shapeRenderer, 
+					myGame.imageLoader,
+					this
+					);
+		}
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
 		ParticleEmitter.renderParticleEmitters(myGame, myGame.renderer.shapeRenderer);
-		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
-			weatherHandler.rainHandler[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
-		}
 
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.renderObject(myGame.renderer.shapeRenderer);
 
+		// Fade screen in during transitions of screens.
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {
-			TransitionScreen.renderObject(myGame.renderer.shapeRenderer);
+			transitionScreen.renderObject(myGame.renderer.shapeRenderer);
 		}
 	}
 }

@@ -38,9 +38,14 @@ public class TransitionScreen extends Screens {
 	 * 
 	 * @param ShapeRenderer shapeRenderer
 	 */
-	public static void renderObject(ShapeRenderer shapeRenderer) {
+	public void renderObject(ShapeRenderer shapeRenderer) {
 		shapeRenderer.setColor(new Color(0, 0, 0, transparencyIncrement));
-		shapeRenderer.rect(0, 0, 100, 100);
+		shapeRenderer.rect(
+				camera.position.x - viewportWidth / denominatorOffset, 
+				camera.position.y - verticalHeight / denominatorOffset, 
+				camera.viewportWidth, 
+				camera.viewportHeight
+				);
 	}
 
 	/**

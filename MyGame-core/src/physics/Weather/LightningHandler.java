@@ -55,11 +55,22 @@ public class LightningHandler extends GameObject {
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
+	 * @param GameScreen    gameScreen
 	 */
-	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(
+			SpriteBatch batch, 
+			ShapeRenderer shapeRenderer, 
+			ImageLoader imageLoader, 
+			GameScreen gameScreen
+			) {
 		if (lightningShouldBeRendered) {
-			batch.draw(imageLoader.lightningFlash, x, y, width, height);
+			batch.draw(
+					imageLoader.lightningFlash, 
+					GameScreen.camera.position.x - gameScreen.getViewportWidth() / gameScreen.getDenominatorOffset(), 
+					GameScreen.camera.position.y - gameScreen.getVerticalHeight() / gameScreen.getDenominatorOffset(), 
+					GameScreen.camera.viewportWidth, 
+					GameScreen.camera.viewportHeight
+					);
 			
 			// Shake screen a bit to simulate thunder crash shakeing things.
 			GameScreen.screenShake.shake(0.3f, 3);

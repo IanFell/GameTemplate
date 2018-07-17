@@ -27,13 +27,12 @@ public class GuiScreen extends Screens {
 	 * @param ImageLoader imageLoader
 	 */
 	public void render(SpriteBatch batch, ImageLoader imageLoader) {
-		int denominator = 2;
-		int height      = 1;
+		int height = 1;
 		myGame.renderer.batch.begin();
 		batch.draw(
 				imageLoader.playerScore, 
-				camera.position.x - viewportWidth / denominator, 
-				camera.position.y - verticalHeight / denominator + height, 
+				camera.position.x - getViewportWidth() / denominatorOffset, 
+				camera.position.y - verticalHeight / denominatorOffset + height, 
 				3, 
 				-height
 				);

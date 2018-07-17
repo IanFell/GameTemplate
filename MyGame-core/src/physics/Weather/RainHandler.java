@@ -2,9 +2,10 @@ package physics.Weather;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import helpers.ColorHelper;
+import gameobjects.gamecharacters.Player;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import maps.MapEditor;
@@ -32,8 +33,13 @@ public class RainHandler extends GameObject {
 
 	private float startingRainDropYPosition = 0;
 
-	public RainHandler() {
-		this.x      = RandomNumberGenerator.generateRandomInteger(GameScreen.cameraWidth * 2);
+	/**
+	 * Constructor.
+	 * 
+	 * @param GameScreen gameScreen
+	 */
+	public RainHandler(GameScreen gameScreen) {
+		this.x      = RandomNumberGenerator.generateRandomInteger((int)gameScreen.getViewportWidth());
 		this.y      = startingRainDropYPosition;
 		this.width  = 0.04f;
 		this.height = 0.2f;
@@ -45,12 +51,17 @@ public class RainHandler extends GameObject {
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
+	 * @param GameScreen    gameScreen
 	 */
-	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(
+			SpriteBatch batch, 
+			ShapeRenderer shapeRenderer, 
+			ImageLoader imageLoader, 
+			GameScreen gameScreen
+			) {
 		if (isRaining) {
-			shapeRenderer.setColor(ColorHelper.BLUE);
-			shapeRenderer.rect(x, y, width, height);
+			batch.setProjectionMatrix(GameScreen.camera.combined);
+			batch.draw(imageLoader.rain, x, y, width, height);
 		}
 	}
 
@@ -59,11 +70,18 @@ public class RainHandler extends GameObject {
 	 * @param GameScreen gameScreen
 	 * @param MapEditor  mapEditor
 	 */
-	public void updateObject(GameScreen gameScreen, MapEditor mapEditor) {
+	public void updateObject(GameScreen gameScreen, MapEditor mapEditor, MyGame myGame) {
 		if (isRaining) {
 			y += dy;
 			if (y > gameScreen.getVerticalHeight() * 2) {
-				y  = startingRainDropYPosition;
+				// Only make it rain around player.
+				int rainBoundary       = 10;
+				float middleOfBoundary = myGame.getPlayer(Player.PLAYER_ONE).getX();
+				x  = (float) RandomNumberGenerator.generateRandomDouble(
+						middleOfBoundary - rainBoundary, 
+						middleOfBoundary + rainBoundary
+						);
+				y  = myGame.getPlayer(Player.PLAYER_ONE).getY() - rainBoundary / 2;
 				dy = (float) RandomNumberGenerator.generateRandomDouble(minDy, maxDy);
 			}
 			System.out.println("It is raining!");

@@ -41,6 +41,8 @@ public class ImageLoader {
 
 	public Texture lightningFlash;
 	
+	public Texture rain;
+	
 	public Texture playerScore;
 
 	public void init() {
@@ -64,6 +66,7 @@ public class ImageLoader {
 		chest                          = new Texture(Gdx.files.internal("SampleChest.png"));
 		lightningFlash                 = new Texture(Gdx.files.internal("LightningFlash.png"));
 		playerScore                    = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
+		rain 						   = new Texture(Gdx.files.internal("Rain.png"));
 	}
 
 	public void dispose() {
@@ -87,5 +90,6 @@ public class ImageLoader {
 		chest.dispose();
 		lightningFlash.dispose();
 		playerScore.dispose();
+		rain.dispose();
 	}
 }
