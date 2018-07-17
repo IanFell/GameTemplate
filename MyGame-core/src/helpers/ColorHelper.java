@@ -31,4 +31,6 @@ public class ColorHelper {
 	public static final Color WHITE  = new Color(maximumColorValue, maximumColorValue, maximumColorValue, noTransparancy);
 	public static final Color BLUE   = new Color(minimumColorValue, minimumColorValue, maximumColorValue, noTransparancy);
 	public static final Color BLACK  = new Color(minimumColorValue, minimumColorValue, minimumColorValue, noTransparancy);
+
+	public static final Color RED_ORANGE = new Color(255, 74, 14, noTransparancy);
 }

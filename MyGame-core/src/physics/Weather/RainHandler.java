@@ -73,7 +73,7 @@ public class RainHandler extends GameObject {
 	public void updateObject(GameScreen gameScreen, MapEditor mapEditor, MyGame myGame) {
 		if (isRaining) {
 			y += dy;
-			if (y > gameScreen.getVerticalHeight() * 2) {
+			if (y > gameScreen.getVerticalHeight() * 2.5f) {
 				// Only make it rain around player.
 				int rainBoundary       = 10;
 				float middleOfBoundary = myGame.getPlayer(Player.PLAYER_ONE).getX();

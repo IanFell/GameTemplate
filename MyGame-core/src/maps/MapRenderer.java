@@ -2,6 +2,8 @@ package maps;
 
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.gamecharacters.Player;
+
 /**
  * Renders tile maps for levels, based off the MapEditor class.
  * 
@@ -26,17 +28,39 @@ public class MapRenderer {
 		if (timer > 100) {
 			timer = 0;
 		}
+		// Quandrant One.
+		if (playerIsWithinQuadrantBoundaries(
+				mapEditor.tileMap2026[0][0].getX(),
+				mapEditor.solidSandTileMap1927[19][19].getX() + mapEditor.solidSandTileMap1927[19][19].getWidth(),
+				mapEditor.solidSandTileMap1927[0][0].getY(),
+				mapEditor.tileMap2026[19][19].getY(),
+				myGame
+				)) {
+			drawQuandrantOne(myGame, mapEditor);
+		} 
+		// Quandrant Two.
+		else if (playerIsWithinQuadrantBoundaries(
+				mapEditor.solidWaterTileMapAnimated2024[0][0].getX(),
+				mapEditor.solidWaterTileMapAnimated2025[19][19].getX() + mapEditor.solidWaterTileMapAnimated2025[19][19].getWidth(),
+				mapEditor.tileMap1925[0][0].getY(),
+				mapEditor.solidWaterTileMapAnimated2024[19][19].getY(),
+				myGame
+				)) {
+			drawQuandrantTwo(myGame, mapEditor);
+		}
 		
+		
+		/*
 		// Alternate tile maps to simulate water movement.
 		if (timer > 50) {
 			for(int z = 0; z < mapEditor.worldMap2027.length; z++) {
 				for(int x = 0; x < mapEditor.worldMap2027[z].length; x++) {
-					mapEditor.tileMap2027[x][z].draw(myGame.renderer.batch);
-					mapEditor.tileMap2026[x][z].draw(myGame.renderer.batch);
-					mapEditor.tileMap1925[x][z].draw(myGame.renderer.batch);
+					//mapEditor.tileMap2027[x][z].draw(myGame.renderer.batch);
+					//mapEditor.tileMap2026[x][z].draw(myGame.renderer.batch);
+					//mapEditor.tileMap1925[x][z].draw(myGame.renderer.batch);
 					mapEditor.tileMap1827[x][z].draw(myGame.renderer.batch);
-					mapEditor.solidWaterTileMap2025[x][z].draw(myGame.renderer.batch);
-					mapEditor.solidWaterTileMap2024[x][z].draw(myGame.renderer.batch);
+					//mapEditor.solidWaterTileMap2025[x][z].draw(myGame.renderer.batch);
+					//mapEditor.solidWaterTileMap2024[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMap2023[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMap2022[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMap2021[x][z].draw(myGame.renderer.batch);
@@ -45,7 +69,7 @@ public class MapRenderer {
 					mapEditor.solidWaterTileMap1820[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMap1720[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMap1620[x][z].draw(myGame.renderer.batch);
-					mapEditor.solidWaterTileMap1924[x][z].draw(myGame.renderer.batch);
+					//mapEditor.solidWaterTileMap1924[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMap1520[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMap1420[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMap1320[x][z].draw(myGame.renderer.batch);
@@ -93,12 +117,12 @@ public class MapRenderer {
 		} else {
 			for(int z = 0; z < mapEditor.worldMapAnimated2027.length; z++) {
 				for(int x = 0; x < mapEditor.worldMapAnimated2027[z].length; x++) {
-					mapEditor.tileMapAnimated2027[x][z].draw(myGame.renderer.batch);
-					mapEditor.tileMapAnimated2026[x][z].draw(myGame.renderer.batch);
-					mapEditor.tileMapAnimated1925[x][z].draw(myGame.renderer.batch);
+					//mapEditor.tileMapAnimated2027[x][z].draw(myGame.renderer.batch);
+					//mapEditor.tileMapAnimated2026[x][z].draw(myGame.renderer.batch);
+					//mapEditor.tileMapAnimated1925[x][z].draw(myGame.renderer.batch);
 					mapEditor.tileMapAnimated1827[x][z].draw(myGame.renderer.batch);
-					mapEditor.solidWaterTileMapAnimated2025[x][z].draw(myGame.renderer.batch);
-					mapEditor.solidWaterTileMapAnimated2024[x][z].draw(myGame.renderer.batch);
+					//mapEditor.solidWaterTileMapAnimated2025[x][z].draw(myGame.renderer.batch);
+					//mapEditor.solidWaterTileMapAnimated2024[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMapAnimated2023[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMapAnimated2022[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMapAnimated2021[x][z].draw(myGame.renderer.batch);
@@ -107,7 +131,7 @@ public class MapRenderer {
 					mapEditor.solidWaterTileMapAnimated1820[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMapAnimated1720[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMapAnimated1620[x][z].draw(myGame.renderer.batch);
-					mapEditor.solidWaterTileMapAnimated1924[x][z].draw(myGame.renderer.batch);
+					//mapEditor.solidWaterTileMapAnimated1924[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMapAnimated1520[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMapAnimated1420[x][z].draw(myGame.renderer.batch);
 					mapEditor.solidWaterTileMapAnimated1320[x][z].draw(myGame.renderer.batch);
@@ -156,10 +180,95 @@ public class MapRenderer {
 		
 		for(int z = 0; z < mapEditor.solidSandWorldMap.length; z++) {
 			for(int x = 0; x < mapEditor.solidSandWorldMap[z].length; x++) {
-				mapEditor.solidSandTileMap1927[x][z].draw(myGame.renderer.batch);
-				mapEditor.solidSandTileMap1926[x][z].draw(myGame.renderer.batch);
+				//mapEditor.solidSandTileMap1927[x][z].draw(myGame.renderer.batch);
+				//mapEditor.solidSandTileMap1926[x][z].draw(myGame.renderer.batch);
 				mapEditor.solidSandTileMap1826[x][z].draw(myGame.renderer.batch);
 				mapEditor.solidSandTileMap1825[x][z].draw(myGame.renderer.batch);
+			}
+		}*/
+	}
+	
+	/**
+	 * Checks if player is within given quandrant coordinates.
+	 * If he is, we will draw quandrant.
+	 * 
+	 * @param float  leftBoundary
+	 * @param float  rightBoundary
+	 * @param float  topBoundary
+	 * @param float  bottomBoundary
+	 * @param MyGame myGame
+	 * @return
+	 */
+	private boolean playerIsWithinQuadrantBoundaries(
+			float leftBoundary, 
+			float rightBoundary, 
+			float topBoundary, 
+			float bottomBoundary,
+			MyGame myGame) {
+		if (
+				myGame.getPlayer(Player.PLAYER_ONE).getX() > leftBoundary && 
+				myGame.getPlayer(Player.PLAYER_ONE).getX() < rightBoundary &&
+				myGame.getPlayer(Player.PLAYER_ONE).getY() > topBoundary &&
+				myGame.getPlayer(Player.PLAYER_ONE).getY() < bottomBoundary
+				) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param MyGame    myGame
+	 * @param MapEditor mapEditor
+	 */
+	private void drawQuandrantOne(MyGame myGame, MapEditor mapEditor) {
+		if (timer > 50) {
+			for(int z = 0; z < mapEditor.worldMap2027.length; z++) {
+				for(int x = 0; x < mapEditor.worldMap2027[z].length; x++) {
+					mapEditor.tileMap2027[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMap2026[x][z].draw(myGame.renderer.batch);
+				}
+			}
+		} else {
+			for(int z = 0; z < mapEditor.worldMapAnimated2027.length; z++) {
+				for(int x = 0; x < mapEditor.worldMapAnimated2027[z].length; x++) {
+					mapEditor.tileMapAnimated2027[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMapAnimated2026[x][z].draw(myGame.renderer.batch);
+				}
+			}
+		}
+		
+		for(int z = 0; z < mapEditor.solidSandWorldMap.length; z++) {
+			for(int x = 0; x < mapEditor.solidSandWorldMap[z].length; x++) {
+				mapEditor.solidSandTileMap1927[x][z].draw(myGame.renderer.batch);
+				mapEditor.solidSandTileMap1926[x][z].draw(myGame.renderer.batch);
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 * @param MyGame    myGame
+	 * @param MapEditor mapEditor
+	 */
+	private void drawQuandrantTwo(MyGame myGame, MapEditor mapEditor) {
+		if (timer > 50) {
+			for(int z = 0; z < mapEditor.worldMap2027.length; z++) {
+				for(int x = 0; x < mapEditor.worldMap2027[z].length; x++) {
+					mapEditor.solidWaterTileMap1924[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMap1925[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2024[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMap2025[x][z].draw(myGame.renderer.batch);
+				}
+			}
+		} else {
+			for(int z = 0; z < mapEditor.worldMapAnimated2027.length; z++) {
+				for(int x = 0; x < mapEditor.worldMapAnimated2027[z].length; x++) {
+					mapEditor.solidWaterTileMapAnimated1924[x][z].draw(myGame.renderer.batch);
+					mapEditor.tileMapAnimated1925[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2024[x][z].draw(myGame.renderer.batch);
+					mapEditor.solidWaterTileMapAnimated2025[x][z].draw(myGame.renderer.batch);
+				}
 			}
 		}
 	}

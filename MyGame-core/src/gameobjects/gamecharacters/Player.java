@@ -98,6 +98,9 @@ public class Player extends GameObject {
 		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
 	}
 
+	/**
+	 * @param MyGame myGame
+	 */
 	@Override
 	public void init(MyGame myGame) {
 		int startingDirection = DIRECTION_LEFT;

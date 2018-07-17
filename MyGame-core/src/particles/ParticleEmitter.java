@@ -75,7 +75,7 @@ public class ParticleEmitter extends GameObject {
 			if (particleType.equalsIgnoreCase("Red")) {
 				color = ColorHelper.RED;
 			} else if (particleType.equalsIgnoreCase("Yellow")) {
-				color = ColorHelper.RED;
+				color = ColorHelper.RED_ORANGE;
 			} else if (particleType.equalsIgnoreCase("Orange")) {
 				color = ColorHelper.ORANGE;
 			}

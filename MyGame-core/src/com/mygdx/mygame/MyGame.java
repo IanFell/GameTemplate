@@ -87,23 +87,24 @@ public class MyGame extends Game {
 	}
 	
 	/**
+	 * This method should be moved to the GameObject class.
 	 * 
-	 * @param int player
+	 * @param int object
 	 * @return GameObject
 	 */
-	public GameObject getPlayer(int player) {
-		GameObject desiredPlayer = null;
-		switch (player) {
+	public GameObject getPlayer(int object) {
+		GameObject desiredObject = null;
+		switch (object) {
 		case 1:
-			desiredPlayer = gameObjectLoader.playerOne;
+			desiredObject = gameObjectLoader.playerOne;
 			break;
 		case 2:
-			desiredPlayer = gameObjectLoader.playerTwo;
+			desiredObject = gameObjectLoader.playerTwo;
 			break;
 		case 3:
-			desiredPlayer = gameObjectLoader.playerThree;
+			desiredObject = gameObjectLoader.playerThree;
 			break;
 		}
-		return desiredPlayer;
+		return desiredObject;
 	}
 }
