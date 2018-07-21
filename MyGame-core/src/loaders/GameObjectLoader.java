@@ -1,5 +1,7 @@
 package loaders;
 
+import java.util.ArrayList;
+
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
@@ -17,6 +19,11 @@ public class GameObjectLoader {
 	public GameObject playerThree;
 	public GameObject tree;
 	public GameObject chest;
+	
+	/**
+	 * This holds all game objects, for the purpose of drawing order.
+	 */
+	public static ArrayList <GameObject> gameObjectList = new ArrayList<GameObject>();
 
 	/**
 	 * 
@@ -28,5 +35,10 @@ public class GameObjectLoader {
 		playerThree = myGame.gameObjectFactory.getObject("player");
 		tree        = myGame.gameObjectFactory.getObject("tree");
 		chest       = myGame.gameObjectFactory.getObject("chest");
+		
+		gameObjectList.add(playerOne);
+		gameObjectList.add(playerTwo);
+		gameObjectList.add(playerThree);
+		gameObjectList.add(tree);
 	}
 }

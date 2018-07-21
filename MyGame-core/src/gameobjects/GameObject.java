@@ -17,6 +17,14 @@ import maps.MapEditor;
  *
  */
 public class GameObject extends Sprite implements GameObjectInterface {
+	
+	/**
+	 * Used to ensure the correct player is returned in getGameObject() method.
+	 */
+	public static final int PLAYER_ONE   = 1;
+	public static final int PLAYER_TWO   = 2;
+	public static final int PLAYER_THREE = 3;
+	public static final int TREE         = 4;
 
 	protected float x;
 	protected float y;

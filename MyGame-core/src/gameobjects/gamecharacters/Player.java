@@ -21,13 +21,6 @@ import physics.CollisionHandler;
  *
  */
 public class Player extends GameObject { 
-	
-	/**
-	 * Used to ensure the correct player is returned in getPlayer() method.
-	 */
-	public static final int PLAYER_ONE   = 1;
-	public static final int PLAYER_TWO   = 2;
-	public static final int PLAYER_THREE = 3;
 
 	/**
 	 * Available directions player can travel.  
@@ -104,14 +97,15 @@ public class Player extends GameObject {
 	@Override
 	public void init(MyGame myGame) {
 		int startingDirection = DIRECTION_LEFT;
-		myGame.getPlayer(Player.PLAYER_TWO).setDirection(startingDirection);
-		myGame.getPlayer(Player.PLAYER_THREE).setDirection(startingDirection);
+		int startingPosition  = 1;
+		myGame.getGameObject(GameObject.PLAYER_TWO).setDirection(startingDirection);
+		myGame.getGameObject(GameObject.PLAYER_THREE).setDirection(startingDirection);
 
-		myGame.getPlayer(Player.PLAYER_TWO).setX(myGame.gameObjectLoader.playerOne.getX() + 1);
-		myGame.getPlayer(Player.PLAYER_TWO).setY(myGame.gameObjectLoader.playerOne.getY());
+		myGame.getGameObject(GameObject.PLAYER_TWO).setX(myGame.gameObjectLoader.playerOne.getX() + startingPosition);
+		myGame.getGameObject(GameObject.PLAYER_TWO).setY(myGame.gameObjectLoader.playerOne.getY());
 
-		myGame.getPlayer(Player.PLAYER_THREE).setX(myGame.gameObjectLoader.playerOne.getX() + 2);
-		myGame.getPlayer(Player.PLAYER_THREE).setY(myGame.gameObjectLoader.playerOne.getY());
+		myGame.getGameObject(GameObject.PLAYER_THREE).setX(myGame.gameObjectLoader.playerOne.getX() + startingPosition * 2);
+		myGame.getGameObject(GameObject.PLAYER_THREE).setY(myGame.gameObjectLoader.playerOne.getY());
 	}
 
 	/**
@@ -131,20 +125,20 @@ public class Player extends GameObject {
 		int followDistance       = 1;
 		// Player two follows player one.
 		handleWalking(
-				myGame.getPlayer(Player.PLAYER_ONE), 
-				myGame.getPlayer(Player.PLAYER_TWO), 
+				myGame.getGameObject(GameObject.PLAYER_ONE), 
+				myGame.getGameObject(GameObject.PLAYER_TWO), 
 				followDistance, 
-				myGame.getPlayer(Player.PLAYER_ONE).getDirection(), 
+				myGame.getGameObject(GameObject.PLAYER_ONE).getDirection(), 
 				playerTwoDirection
 				);
 
 		// Player three follows player two.
 		handleWalking(
-				myGame.getPlayer(Player.PLAYER_TWO), 
-				myGame.getPlayer(Player.PLAYER_THREE), 
+				myGame.getGameObject(GameObject.PLAYER_TWO), 
+				myGame.getGameObject(GameObject.PLAYER_THREE), 
 				followDistance, 
 				playerTwoDirection, 
-				myGame.getPlayer(Player.PLAYER_THREE).getDirection()
+				myGame.getGameObject(GameObject.PLAYER_THREE).getDirection()
 				);
 	}
 

@@ -2,7 +2,7 @@ package maps;
 
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.gamecharacters.Player;
+import gameobjects.GameObject;
 
 /**
  * Renders tile maps for levels, based off the MapEditor class.
@@ -206,10 +206,10 @@ public class MapRenderer {
 			float bottomBoundary,
 			MyGame myGame) {
 		if (
-				myGame.getPlayer(Player.PLAYER_ONE).getX() > leftBoundary && 
-				myGame.getPlayer(Player.PLAYER_ONE).getX() < rightBoundary &&
-				myGame.getPlayer(Player.PLAYER_ONE).getY() > topBoundary &&
-				myGame.getPlayer(Player.PLAYER_ONE).getY() < bottomBoundary
+				myGame.getGameObject(GameObject.PLAYER_ONE).getX() > leftBoundary && 
+				myGame.getGameObject(GameObject.PLAYER_ONE).getX() < rightBoundary &&
+				myGame.getGameObject(GameObject.PLAYER_ONE).getY() > topBoundary &&
+				myGame.getGameObject(GameObject.PLAYER_ONE).getY() < bottomBoundary
 				) {
 			return true;
 		}

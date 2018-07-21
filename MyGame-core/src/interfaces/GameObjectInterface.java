@@ -7,5 +7,5 @@ package interfaces;
  *
  */
 public interface GameObjectInterface {
-	
+
 }

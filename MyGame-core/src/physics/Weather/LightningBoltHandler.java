@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.ColorHelper;
 import helpers.GameAttributeHelper;
@@ -309,7 +310,7 @@ public class LightningBoltHandler {
 	public static void drawLightningBolt(MyGame myGame) {
 		System.out.println("Drawing lightning bolts!");
 		Vector2[] lightningBoltVectors = new Vector2[] {
-				new Vector2(myGame.getPlayer(Player.PLAYER_ONE).getX(), myGame.getPlayer(Player.PLAYER_ONE).getY() - 200),
+				new Vector2(myGame.getGameObject(GameObject.PLAYER_ONE).getX(), myGame.getGameObject(GameObject.PLAYER_ONE).getY() - 200),
 				new Vector2(0, GameAttributeHelper.SCREEN_HEIGHT - 150)
 		};
 

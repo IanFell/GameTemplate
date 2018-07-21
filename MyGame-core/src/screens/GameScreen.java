@@ -1,14 +1,20 @@
 package screens;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.mygdx.mygame.MyGame;
 
 import debugging.Debugger;
-import gameobjects.gamecharacters.Player;
+import gameobjects.GameObject;
 import helpers.GameAttributeHelper;
+import loaders.GameObjectLoader;
+import loaders.ImageLoader;
 import maps.MapEditor;
 import maps.MapLoader;
 import maps.MapRenderer;
@@ -66,7 +72,7 @@ public class GameScreen extends Screens {
 
 	public static ParticleEmitter particleEmitterRed;
 	public static ParticleEmitter particleEmitterYellow;
-	public static ParticleEmitter particleEmitterOrange;   
+	public static ParticleEmitter particleEmitterOrange;
 	
 	/**
 	 *  Screen fades in during transitions.
@@ -141,7 +147,7 @@ public class GameScreen extends Screens {
 
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapEditor);
-		myGame.getPlayer(Player.PLAYER_ONE).init(myGame);
+		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		ParticleEmitter.initializeParticleEmitters(myGame);
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
 			weatherHandler.rainHandler[i] = new RainHandler(this);
@@ -163,8 +169,8 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
 		if (!ScreenShake.screenIsShaking) {
-			camera.position.x = myGame.getPlayer(Player.PLAYER_ONE).getX();
-			camera.position.y = myGame.getPlayer(Player.PLAYER_ONE).getY();
+			camera.position.x = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
+			camera.position.y = myGame.getGameObject(GameObject.PLAYER_ONE).getY();
 		}
 		camera.update();
 	}
@@ -172,8 +178,8 @@ public class GameScreen extends Screens {
 	private void initializeCamera() {
 		camera = new OrthographicCamera(viewportWidth, verticalHeight);
 		camera.setToOrtho(true, viewportWidth, verticalHeight);
-		camera.position.x = myGame.getPlayer(Player.PLAYER_ONE).getX();
-		camera.position.y = myGame.getPlayer(Player.PLAYER_ONE).getY();
+		camera.position.x = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
+		camera.position.y = myGame.getGameObject(GameObject.PLAYER_ONE).getY();
 		camera.update();
 	}
 
@@ -185,7 +191,7 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.nightAndDayCycle.performDayAndNightCycle();
 		weatherHandler.updateStormCycle(myGame, this, mapEditor);
-		myGame.getPlayer(Player.PLAYER_ONE).updateObject(myGame, mapEditor);
+		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapEditor);
 		
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
@@ -196,38 +202,25 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.renderLighting(
 				myGame.renderer.batch, 
 				myGame.imageLoader, 
-				myGame.getPlayer(Player.PLAYER_ONE)
+				myGame.getGameObject(GameObject.PLAYER_ONE)
 				);
 		weatherHandler.renderStormCycle(myGame, this);
 		lightingHandler.renderShadows(myGame);
 		
-		myGame.gameObjectLoader.tree.renderObject(
+		sortObjectsForRenderingAndRenderObjectsInOrder(
+				GameObjectLoader.gameObjectList, 
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
+		
 		myGame.gameObjectLoader.chest.renderObject(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
-
-		myGame.getPlayer(Player.PLAYER_ONE).renderObject(
-				myGame.renderer.batch, 
-				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
-				);
-		myGame.getPlayer(Player.PLAYER_TWO).renderObject(
-				myGame.renderer.batch, 
-				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
-				);
-		myGame.getPlayer(Player.PLAYER_THREE).renderObject(
-				myGame.renderer.batch, 
-				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
-				);
 		
+		// Rain should be in front of all objects. 
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
 			weatherHandler.rainHandler[i].renderObject(
 					myGame.renderer.batch, 
@@ -237,7 +230,46 @@ public class GameScreen extends Screens {
 					);
 		}
 	}
-
+	
+	/**
+	 * Sort objects based on their y-axis position vs player y-axis position, and render accordingly.
+	 * gameObjectList[0, 1, 2] = playerOne, playerTwo, playerThree.
+	 * 
+	 * @param ArrayList     gameObjectList
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
+	 */
+	private void sortObjectsForRenderingAndRenderObjectsInOrder(
+			ArrayList<GameObject> gameObjectList,
+			SpriteBatch batch,
+			ShapeRenderer shapeRenderer,
+			ImageLoader imageLoader
+			) {
+		for (int i = 0; i < gameObjectList.size(); i++) {
+			System.out.println(gameObjectList);
+			
+			if (i > 0) {
+				float playerPosition = myGame.getGameObject(GameObject.PLAYER_ONE).getY() + myGame.getGameObject(GameObject.PLAYER_ONE).getHeight();
+				float objectPosition = gameObjectList.get(i).getY();
+				if (playerPosition < objectPosition)  {
+					// Render player behind object.
+					System.out.println("Player is behing Object " + i);
+					gameObjectList.get(0).renderObject(batch, shapeRenderer, imageLoader);
+					gameObjectList.get(1).renderObject(batch, shapeRenderer, imageLoader);
+					gameObjectList.get(2).renderObject(batch, shapeRenderer, imageLoader);
+					gameObjectList.get(i).renderObject(batch, shapeRenderer, imageLoader);
+				} else {
+					// Render player in front of object.
+					gameObjectList.get(i).renderObject(batch, shapeRenderer, imageLoader);
+					gameObjectList.get(0).renderObject(batch, shapeRenderer, imageLoader);
+					gameObjectList.get(1).renderObject(batch, shapeRenderer, imageLoader);
+					gameObjectList.get(2).renderObject(batch, shapeRenderer, imageLoader);
+				}
+			}
+		}
+	}
+	
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
 		ParticleEmitter.renderParticleEmitters(myGame, myGame.renderer.shapeRenderer);
 

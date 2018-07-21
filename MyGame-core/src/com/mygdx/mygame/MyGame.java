@@ -92,7 +92,7 @@ public class MyGame extends Game {
 	 * @param int object
 	 * @return GameObject
 	 */
-	public GameObject getPlayer(int object) {
+	public GameObject getGameObject(int object) {
 		GameObject desiredObject = null;
 		switch (object) {
 		case 1:
@@ -104,6 +104,8 @@ public class MyGame extends Game {
 		case 3:
 			desiredObject = gameObjectLoader.playerThree;
 			break;
+		case 4:
+			desiredObject = gameObjectLoader.tree;
 		}
 		return desiredObject;
 	}

@@ -2,6 +2,7 @@ package physics.Lighting;
 
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import physics.Weather.NightAndDayCycle;
 
@@ -34,17 +35,17 @@ public class LightingHandler {
 			shadowHandler.renderLighting(
 					myGame.renderer.batch, 
 					myGame.imageLoader, 
-					myGame.getPlayer(Player.PLAYER_ONE)
+					myGame.getGameObject(GameObject.PLAYER_ONE)
 					);
 			shadowHandler.renderLighting(
 					myGame.renderer.batch, 
 					myGame.imageLoader, 
-					myGame.getPlayer(Player.PLAYER_TWO)
+					myGame.getGameObject(GameObject.PLAYER_TWO)
 					);
 			shadowHandler.renderLighting(
 					myGame.renderer.batch, 
 					myGame.imageLoader, 
-					myGame.getPlayer(Player.PLAYER_THREE)
+					myGame.getGameObject(GameObject.PLAYER_THREE)
 					);
 		}
 	}
