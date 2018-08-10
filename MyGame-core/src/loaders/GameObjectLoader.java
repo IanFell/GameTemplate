@@ -40,5 +40,6 @@ public class GameObjectLoader {
 		gameObjectList.add(playerTwo);
 		gameObjectList.add(playerThree);
 		gameObjectList.add(tree);
+		gameObjectList.add(chest);
 	}
 }

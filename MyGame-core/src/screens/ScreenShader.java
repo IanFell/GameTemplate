@@ -42,11 +42,17 @@ public class ScreenShader extends Screens {
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		int colorValue = 0;
 		shapeRenderer.setColor(new Color(colorValue, colorValue, colorValue, transparencyTransitionValue));
+		/**
+		 * Use these variables because if we just use regular width and height,
+		 * the screen shader gets offset when player moves.
+		 */
+		int xyOffset          = 1;
+		int widthHeightOffset = 2;
 		shapeRenderer.rect(
-				camera.position.x - getViewportWidth() / denominatorOffset, 
-				camera.position.y - verticalHeight / denominatorOffset, 
-				camera.viewportWidth, 
-				camera.viewportHeight
+				camera.position.x - getViewportWidth() / denominatorOffset - xyOffset, 
+				camera.position.y - verticalHeight / denominatorOffset - xyOffset, 
+				camera.viewportWidth + widthHeightOffset, 
+				camera.viewportHeight + widthHeightOffset
 				);
 	}
 

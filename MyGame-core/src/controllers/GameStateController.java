@@ -4,6 +4,7 @@ import com.mygdx.mygame.MyGame;
 
 import screens.GameScreen;
 import screens.Screens;
+import screens.TitleScreen;
 
 /**
  * Handles switching between game states.
@@ -22,6 +23,9 @@ public class GameStateController {
 		switch (newGameState) {
 		case Screens.GAME_SCREEN:
 			myGame.setScreen(new GameScreen(myGame));
+			break;
+		case Screens.TITLE_SCREEN:
+			myGame.setScreen(new TitleScreen(myGame));
 			break;
 		}
 	}

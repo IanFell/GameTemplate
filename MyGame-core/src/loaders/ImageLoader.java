@@ -17,6 +17,7 @@ public class ImageLoader {
 	public Texture testImage;
 
 	public Texture splashScreenLogo;
+	public Texture titleScreenLogo;
 
 	public Texture grassTileOne;
 	public Texture grassTileTwo;
@@ -47,6 +48,7 @@ public class ImageLoader {
 
 	public void init() {
 		splashScreenLogo               = new Texture(Gdx.files.internal("logo_ffg.png"));
+		titleScreenLogo                = new Texture(Gdx.files.internal("GoldenAgeLogo.png"));
 		testImage                      = new Texture(Gdx.files.internal("badlogic.jpg"));
 		grassTileOne     			   = new Texture(Gdx.files.internal("GrassTileOne.png"));
 		grassTileTwo                   = new Texture(Gdx.files.internal("GrassTileTwo.png"));
@@ -63,7 +65,7 @@ public class ImageLoader {
 		shadow                         = new Texture(Gdx.files.internal("Shadow.png"));
 		playerSprite                   = new Texture(Gdx.files.internal("PlayerSprite.png"));
 		tree                           = new Texture(Gdx.files.internal("SampleTree.png"));
-		chest                          = new Texture(Gdx.files.internal("SampleChest.png"));
+		chest                          = new Texture(Gdx.files.internal("Chest.png"));
 		lightningFlash                 = new Texture(Gdx.files.internal("LightningFlash.png"));
 		playerScore                    = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
 		rain 						   = new Texture(Gdx.files.internal("Rain.png"));
@@ -71,6 +73,7 @@ public class ImageLoader {
 
 	public void dispose() {
 		splashScreenLogo.dispose();
+		titleScreenLogo.dispose();
 		testImage.dispose();
 		grassTileOne.dispose();
 		grassTileTwo.dispose();

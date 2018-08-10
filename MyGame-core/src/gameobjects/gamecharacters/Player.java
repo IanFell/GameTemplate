@@ -84,7 +84,7 @@ public class Player extends GameObject {
 		walkUpTexture        = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
 		walkRightTexture     = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
 		walkLeftTexture      = new TextureAtlas(Gdx.files.internal("PlayerSpriteLeft.atlas"));
-		float animationSpeed = 3/15f;
+		float animationSpeed = 7/15f;
 		walkDownAnimation    = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
 		walkUpAnimation      = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());

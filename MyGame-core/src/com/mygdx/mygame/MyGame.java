@@ -11,7 +11,7 @@ import helpers.GameAttributeHelper;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import render.Render;
-import screens.SplashScreen;
+import screens.GameScreen;
 
 /**
  * Main game class.
@@ -61,7 +61,7 @@ public class MyGame extends Game {
 		audioHandler.init();
 		inputHandler.init();
 		gameAttributeHelper = new GameAttributeHelper();
-		this.setScreen(new SplashScreen(this));
+		this.setScreen(new GameScreen(this));
 	}
 
 	@Override

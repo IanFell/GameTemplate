@@ -6,22 +6,22 @@ import helpers.GameAttributeHelper;
 import helpers.ImageHelper;
 
 /**
- * Fabulous Fellini logo screen.
+ * Title screen.
  * 
  * @author Fabulous Fellini
  *
  */
-public class SplashScreen extends Screens {
+public class TitleScreen extends Screens {
 
 	/**
 	 * 
 	 * @param MyGame myGame
 	 */
-	public SplashScreen(final MyGame myGame) {
+	public TitleScreen(MyGame myGame) {
 		super(myGame);
-		GameAttributeHelper.gameState = Screens.SPLASH_SCREEN;
+		GameAttributeHelper.gameState = Screens.TITLE_SCREEN;
 	}
-
+	
 	/**
 	 * 
 	 * @param float delta
@@ -33,7 +33,7 @@ public class SplashScreen extends Screens {
 		myGame.renderer.batch.begin();
 		ImageHelper.drawImageInMiddleOfScreen(
 				myGame.renderer.batch, 
-				myGame.imageLoader.splashScreenLogo, 
+				myGame.imageLoader.titleScreenLogo, 
 				GameAttributeHelper.SCREEN_WIDTH, 
 				GameAttributeHelper.SCREEN_HEIGHT
 				);

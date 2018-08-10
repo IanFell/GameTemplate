@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Player;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import maps.MapEditor;
@@ -72,6 +71,7 @@ public class RainHandler extends GameObject {
 	 */
 	public void updateObject(GameScreen gameScreen, MapEditor mapEditor, MyGame myGame) {
 		if (isRaining) {
+			x += .05;
 			y += dy;
 			if (y > gameScreen.getVerticalHeight() * 2.5f) {
 				// Only make it rain around player.

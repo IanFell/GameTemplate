@@ -25,6 +25,7 @@ public class Screens implements Screen {
 	public final static int PAUSE_SCREEN     = 3;
 	public final static int INVENTORY_SCREEN = 4;
 	public final static int GAME_OVER_SCREEN = 5;
+	public final static int TITLE_SCREEN     = 6;
 
 	protected final MyGame myGame;
 
