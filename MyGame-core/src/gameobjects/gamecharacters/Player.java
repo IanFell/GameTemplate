@@ -11,7 +11,8 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import handlers.AnimationHandler;
 import loaders.ImageLoader;
-import maps.MapEditor;
+import maps.MapInformationHolder;
+import maps.MapHandler;
 import physics.CollisionHandler;
 
 /**
@@ -30,7 +31,7 @@ public class Player extends GameObject {
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
 	
-	public final static float PLAYER_SPEED = 0.1f;
+	public final static float PLAYER_SPEED = 1.1f;   // .1f
 	
 	/**
 	 * Used to determine whether footsteps sound effect should play.
@@ -110,16 +111,16 @@ public class Player extends GameObject {
 
 	/**
 	 * 
-	 * @param MyGame    myGame
-	 * @param MapEditor mapEditor
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
 	 */
 	@Override
-	public void updateObject(MyGame myGame, MapEditor mapEditor) {
+	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		x += dx;
 		y += dy;
 		rectangle.x = x;
 		rectangle.y = y;
-		CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(myGame, mapEditor);
+		//CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(myGame, mapHandler);
 
 		int playerTwoDirection   = myGame.gameObjectLoader.playerTwo.getDirection();
 		int followDistance       = 1;

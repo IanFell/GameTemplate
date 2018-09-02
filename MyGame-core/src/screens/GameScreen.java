@@ -10,21 +10,14 @@ import debugging.Debugger;
 import gameobjects.GameObject;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
-import helpers.RandomNumberGenerator;
 import loaders.GameObjectLoader;
-import loaders.ImageLoader;
-import maps.MapEditor;
+import maps.MapHandler;
 import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
 import physics.Lighting.LightingHandler;
-import physics.Weather.Cloud;
 import physics.Weather.LightningBoltHandler;
-import physics.Weather.NightAndDayCycle;
-import physics.Weather.RainHandler;
 import physics.Weather.WeatherHandler;
-import tiles.Chunk;
-import tiles.Map;
 
 /**
  * Screen of the game while in play.
@@ -34,10 +27,6 @@ import tiles.Map;
  */
 public class GameScreen extends Screens {
 	
-	//Chunk chunk = new Chunk();
-	
-	Map map = new Map();
-
 	public static int cameraWidth = 10;
 
 	/**
@@ -48,18 +37,18 @@ public class GameScreen extends Screens {
 	/**
 	 * Class to render our level maps.
 	 */
-	//private MapRenderer mapRenderer = new MapRenderer();
+	private MapRenderer mapRenderer = new MapRenderer();
 
 	/**
 	 * Class to draw our level maps.
 	 */
-	private MapEditor mapEditor = new MapEditor();
+	private MapHandler mapHandler = new MapHandler();
 
 	/**
 	 * Class to load up the tiles for our level maps.
 	 */
 	private MapLoader mapLoader = new MapLoader();
-
+	
 	private LightingHandler lightingHandler = new LightingHandler();
 
 	private WeatherHandler weatherHandler = new WeatherHandler();
@@ -139,7 +128,7 @@ public class GameScreen extends Screens {
 		updateGameScreen();
 
 		// Perform debug testing on GameScreen so we know different scenarios work.
-		debugger.debugGameScreen(myGame, mapEditor);
+		debugger.debugGameScreen(myGame, mapHandler);
 	}
 
 	/**
@@ -152,8 +141,8 @@ public class GameScreen extends Screens {
 	}
 
 	public void initializeGameScreen() {
-		map.init(myGame);
-		mapLoader.loadMap(myGame, mapEditor);
+		//map.init(myGame);
+		mapLoader.loadMap(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		ParticleEmitter.initializeParticleEmitters(myGame);
 		
@@ -195,17 +184,17 @@ public class GameScreen extends Screens {
 		}
 		ParticleEmitter.updateParticleEmitters(myGame, lightingHandler.lightHandler);
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
-		weatherHandler.update(myGame, this, mapEditor);
-		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapEditor);
+		weatherHandler.update(myGame, this, mapHandler);
+		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapHandler);
 
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
-		//mapRenderer.renderMap(myGame, mapEditor);
+		mapRenderer.renderMap(myGame, mapHandler);
 		//chunk.render(myGame);
-		map.render(myGame);
+		//map.render(myGame);
 		lightingHandler.lightHandler.renderLighting(
 				myGame.renderer.batch, 
 				myGame.imageLoader, 
@@ -254,6 +243,4 @@ public class GameScreen extends Screens {
 	public WeatherHandler getWeatherHandler() {
 		return weatherHandler;
 	}
-	
-	
 }

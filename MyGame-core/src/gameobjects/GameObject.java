@@ -8,7 +8,7 @@ import com.mygdx.mygame.MyGame;
 
 import interfaces.GameObjectInterface;
 import loaders.ImageLoader;
-import maps.MapEditor;
+import maps.MapHandler;
 
 /**
  * Class to hold and handle common elements for all game objects.
@@ -99,10 +99,10 @@ public class GameObject extends Sprite implements GameObjectInterface {
 
 	/**
 	 * 
-	 * @param MyGame    myGame
-	 * @param MapEditor mapEditor
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
 	 */
-	public void updateObject(MyGame myGame, MapEditor mapEditor) {}
+	public void updateObject(MyGame myGame, MapHandler mapHandler) {}
 
 	/**
 	 * Stops object from moving on screen, mostly from collisions with hard game objects.

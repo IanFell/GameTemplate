@@ -7,7 +7,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
-import maps.MapEditor;
+import maps.MapHandler;
 import screens.GameScreen;
 
 /**
@@ -69,7 +69,7 @@ public class RainHandler extends GameObject {
 	 * @param GameScreen gameScreen
 	 * @param MapEditor  mapEditor
 	 */
-	public void updateObject(GameScreen gameScreen, MapEditor mapEditor, MyGame myGame) {
+	public void updateObject(GameScreen gameScreen, MapHandler mapHandler, MyGame myGame) {
 		if (isRaining) {
 			x += .05;
 			y += dy;

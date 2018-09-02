@@ -7,7 +7,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
-import maps.MapEditor;
+import maps.MapHandler;
 import screens.GameScreen;
 
 /**
@@ -79,11 +79,11 @@ public class LightningHandler extends GameObject {
 
 	/**
 	 * 
-	 * @param MyGame    myGame
-	 * @param MapEditor mapEditor
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
 	 */
 	@Override
-	public void updateObject(MyGame myGame, MapEditor mapEditor) {
+	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		if (RainHandler.isRaining && currentNumberOfFlashes <= maxNumberOfFlashes) {
 			increment++;
 			if (increment >= timeBetweenFlashes) {

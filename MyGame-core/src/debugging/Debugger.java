@@ -2,7 +2,8 @@ package debugging;
 
 import com.mygdx.mygame.MyGame;
 
-import maps.MapEditor;
+import maps.MapInformationHolder;
+import maps.MapHandler;
 
 /**
  * Debugs various scenarios.
@@ -14,10 +15,10 @@ public class Debugger {
 
 	/**
 	 * 
-	 * @param MyGame    myGame
-	 * @param MapEditor mapEditor
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
 	 */
-	public void debugGameScreen(MyGame myGame, MapEditor mapEditor) {
+	public void debugGameScreen(MyGame myGame, MapHandler mapHandler) {
 
 	}
 }

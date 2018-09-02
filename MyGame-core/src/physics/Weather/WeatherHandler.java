@@ -3,7 +3,7 @@ package physics.Weather;
 import com.mygdx.mygame.MyGame;
 
 import helpers.RandomNumberGenerator;
-import maps.MapEditor;
+import maps.MapHandler;
 import screens.GameScreen;
 
 /**
@@ -59,11 +59,11 @@ public class WeatherHandler {
 	 * 
 	 * @param MyGame     myGame
 	 * @param GameScreen gameScreen
-	 * @param MapEditor  mapEditor
+	 * @param MapHandler mapHandler
 	 */
-	public void update(MyGame myGame, GameScreen gameScreen, MapEditor mapEditor) {
+	public void update(MyGame myGame, GameScreen gameScreen, MapHandler mapHandler) {
 		nightAndDayCycle.performDayAndNightCycle();
-		updateStormCycle(myGame, gameScreen, mapEditor);
+		updateStormCycle(myGame, gameScreen, mapHandler);
 		updateClouds(myGame, gameScreen);
 	}
 	
@@ -179,9 +179,9 @@ public class WeatherHandler {
 	 * 
 	 * @param MyGame     myGame
 	 * @param GameScreen gameScreen
-	 * @param MapEditor  mapEditor
+	 * @param MapHandler mapHandler
 	 */
-	private void updateStormCycle(MyGame myGame, GameScreen gameScreen, MapEditor mapEditor) {
+	private void updateStormCycle(MyGame myGame, GameScreen gameScreen, MapHandler mapHandler) {
 		// First determine if it should start storming with a random number.
 		randomNumberToDetermineIfStormCycleShouldBegin = RandomNumberGenerator.generateRandomInteger(
 				maxLimitToDetermineIfStormCycleShouldBegin
@@ -195,13 +195,13 @@ public class WeatherHandler {
 			if (NightAndDayCycle.isDayTime()) {
 				RainHandler.isRaining = true;
 				for (int i = 0; i < rainHandler.length; i++) {
-					rainHandler[i].updateObject(gameScreen, mapEditor, myGame);
+					rainHandler[i].updateObject(gameScreen, mapHandler, myGame);
 				}
 			} else {
 				RainHandler.isRaining = false;
 				isStorming = false;
 			}
-			lightningHandler.updateObject(myGame, mapEditor);
+			lightningHandler.updateObject(myGame, mapHandler);
 		}
 	}
 

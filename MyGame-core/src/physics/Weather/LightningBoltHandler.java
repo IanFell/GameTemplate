@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Player;
 import helpers.ColorHelper;
 import helpers.GameAttributeHelper;
 
