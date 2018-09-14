@@ -118,6 +118,23 @@ public class MapRenderer {
 				mapHandler.mapChunkThirtyOne.tileMap[x][z].draw(myGame.renderer.batch);
 				mapHandler.mapChunkThirtyTwo.tileMap[x][z].draw(myGame.renderer.batch);
 				mapHandler.mapChunkThirtyThree.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtyFour.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtyFive.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtySix.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtySeven.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtyEight.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtyNine.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourty.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtyOne.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtyTwo.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtyThree.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtyFour.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtyFive.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtySix.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtySeven.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtyEight.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFourtyNine.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkFifty.tileMap[x][z].draw(myGame.renderer.batch);
 			}
 		}
 	}

@@ -128,6 +128,59 @@ public class MapLoader {
 				yPositionRowDistance = 4;
 				loadTile(mapHandler.mapChunkThirtyThree.worldMap, mapHandler.mapChunkThirtyThree.tileMap, x, z);
 				setTile(mapHandler.mapChunkThirtyThree.tileMap, x, z, tileSize, x, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkThirtyFour.worldMap, mapHandler.mapChunkThirtyFour.tileMap, x, z);
+				setTile(mapHandler.mapChunkThirtyFour.tileMap, x, z, tileSize, x + chunkOffsetXValue, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkThirtyFive.worldMap, mapHandler.mapChunkThirtyFive.tileMap, x, z);
+				setTile(mapHandler.mapChunkThirtyFive.tileMap, x, z, tileSize, x + chunkOffsetXValue * 2, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkThirtySix.worldMap, mapHandler.mapChunkThirtySix.tileMap, x, z);
+				setTile(mapHandler.mapChunkThirtySix.tileMap, x, z, tileSize, x + chunkOffsetXValue * 3, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkThirtySeven.worldMap, mapHandler.mapChunkThirtySeven.tileMap, x, z);
+				setTile(mapHandler.mapChunkThirtySeven.tileMap, x, z, tileSize, x + chunkOffsetXValue * 4, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkThirtyEight.worldMap, mapHandler.mapChunkThirtyEight.tileMap, x, z);
+				setTile(mapHandler.mapChunkThirtyEight.tileMap, x, z, tileSize, x + chunkOffsetXValue * 5, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkThirtyNine.worldMap, mapHandler.mapChunkThirtyNine.tileMap, x, z);
+				setTile(mapHandler.mapChunkThirtyNine.tileMap, x, z, tileSize, x + chunkOffsetXValue * 6, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkFourty.worldMap, mapHandler.mapChunkFourty.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourty.tileMap, x, z, tileSize, x + chunkOffsetXValue * 7, z + chunkOffsetYValue * yPositionRowDistance);
+			
+				yPositionRowDistance = 5;
+				loadTile(mapHandler.mapChunkFourtyOne.worldMap, mapHandler.mapChunkFourtyOne.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtyOne.tileMap, x, z, tileSize, x, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkFourtyTwo.worldMap, mapHandler.mapChunkFourtyTwo.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtyTwo.tileMap, x, z, tileSize, x + chunkOffsetXValue, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkFourtyThree.worldMap, mapHandler.mapChunkFourtyThree.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtyThree.tileMap, x, z, tileSize, x + chunkOffsetXValue * 2, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkFourtyFour.worldMap, mapHandler.mapChunkFourtyFour.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtyFour.tileMap, x, z, tileSize, x + chunkOffsetXValue * 3, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkFourtyFive.worldMap, mapHandler.mapChunkFourtyFive.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtyFive.tileMap, x, z, tileSize, x + chunkOffsetXValue * 4, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkFourtySix.worldMap, mapHandler.mapChunkFourtySix.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtySix.tileMap, x, z, tileSize, x + chunkOffsetXValue * 5, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkFourtySeven.worldMap, mapHandler.mapChunkFourtySeven.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtySeven.tileMap, x, z, tileSize, x + chunkOffsetXValue * 6, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				loadTile(mapHandler.mapChunkFourtyEight.worldMap, mapHandler.mapChunkFourtyEight.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtyEight.tileMap, x, z, tileSize, x + chunkOffsetXValue * 7, z + chunkOffsetYValue * yPositionRowDistance);
+				
+				yPositionRowDistance = 6;
+				loadTile(mapHandler.mapChunkFourtyNine.worldMap, mapHandler.mapChunkFourtyNine.tileMap, x, z);
+				setTile(mapHandler.mapChunkFourtyNine.tileMap, x, z, tileSize, x, z + chunkOffsetYValue * yPositionRowDistance);
+			
+				loadTile(mapHandler.mapChunkFifty.worldMap, mapHandler.mapChunkFifty.tileMap, x, z);
+				setTile(mapHandler.mapChunkFifty.tileMap, x, z, tileSize, x + chunkOffsetXValue, z + chunkOffsetYValue * yPositionRowDistance);
 			}
 		}
 	}
