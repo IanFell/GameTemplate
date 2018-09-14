@@ -1,8 +1,11 @@
 package maps.mapchunks;
 
-import maps.MapInformationHolder;
-
-public class MapChunkSeven extends MapInformationHolder {
+/**
+ * 
+ * @author Fabulous Fellini
+ *
+ */
+public class MapChunkSeven extends MapChunk {
 	
 	public int[][] worldMap = 
 		{
