@@ -2,33 +2,17 @@ package maps;
 
 import java.util.ArrayList;
 
+import maps.mapchunks.AllSandChunk;
+import maps.mapchunks.AllWaterChunk;
 import maps.mapchunks.MapChunk;
-import maps.mapchunks.MapChunkEight;
 import maps.mapchunks.MapChunkEighteen;
 import maps.mapchunks.MapChunkEleven;
-import maps.mapchunks.MapChunkFifteen;
-import maps.mapchunks.MapChunkFive;
-import maps.mapchunks.MapChunkFour;
-import maps.mapchunks.MapChunkFourteen;
-import maps.mapchunks.MapChunkNine;
 import maps.mapchunks.MapChunkNineteen;
-import maps.mapchunks.MapChunkOne;
-import maps.mapchunks.MapChunkSeven;
-import maps.mapchunks.MapChunkSeventeen;
-import maps.mapchunks.MapChunkSix;
-import maps.mapchunks.MapChunkSixteen;
 import maps.mapchunks.MapChunkTen;
-import maps.mapchunks.MapChunkThirteen;
 import maps.mapchunks.MapChunkThree;
-import maps.mapchunks.MapChunkTwelve;
 import maps.mapchunks.MapChunkTwenty;
-import maps.mapchunks.MapChunkTwentyFive;
-import maps.mapchunks.MapChunkTwentyFour;
-import maps.mapchunks.MapChunkTwentyOne;
-import maps.mapchunks.MapChunkTwentySeven;
+import maps.mapchunks.MapChunkTwentyEight;
 import maps.mapchunks.MapChunkTwentySix;
-import maps.mapchunks.MapChunkTwentyThree;
-import maps.mapchunks.MapChunkTwentyTwo;
 import maps.mapchunks.MapChunkTwo;
 
 /**
@@ -38,33 +22,39 @@ import maps.mapchunks.MapChunkTwo;
  */
 public class MapHandler {
 	
-	public MapChunkOne mapChunkOne                 = new MapChunkOne();
+	public AllWaterChunk mapChunkOne               = new AllWaterChunk();
 	public MapChunkTwo mapChunkTwo                 = new MapChunkTwo();
 	public MapChunkThree mapChunkThree             = new MapChunkThree();
-	public MapChunkFour mapChunkFour               = new MapChunkFour();
-	public MapChunkFive mapChunkFive               = new MapChunkFive();
-	public MapChunkSix mapChunkSix                 = new MapChunkSix();
-	public MapChunkSeven mapChunkSeven             = new MapChunkSeven();
-	public MapChunkEight mapChunkEight             = new MapChunkEight();
-	public MapChunkNine mapChunkNine               = new MapChunkNine();
+	public AllSandChunk mapChunkFour               = new AllSandChunk();
+	public AllSandChunk mapChunkFive               = new AllSandChunk();
+	public AllSandChunk mapChunkSix                = new AllSandChunk();
+	public AllSandChunk mapChunkSeven              = new AllSandChunk();
+	public AllSandChunk mapChunkEight              = new AllSandChunk();
+	public AllWaterChunk mapChunkNine              = new AllWaterChunk();
 	public MapChunkTen mapChunkTen                 = new MapChunkTen();
 	public MapChunkEleven mapChunkEleven           = new MapChunkEleven();
-	public MapChunkTwelve mapChunkTwelve           = new MapChunkTwelve();
-	public MapChunkThirteen mapChunkThirteen       = new MapChunkThirteen();
-	public MapChunkFourteen mapChunkFourteen       = new MapChunkFourteen();
-	public MapChunkFifteen mapChunkFifteen         = new MapChunkFifteen();
-	public MapChunkSixteen mapChunkSixteen         = new MapChunkSixteen();
-	public MapChunkSeventeen mapChunkSeventeen     = new MapChunkSeventeen();
+	public AllSandChunk mapChunkTwelve             = new AllSandChunk();
+	public AllSandChunk mapChunkThirteen           = new AllSandChunk();
+	public AllSandChunk mapChunkFourteen           = new AllSandChunk();
+	public AllSandChunk mapChunkFifteen            = new AllSandChunk();
+	public AllSandChunk mapChunkSixteen            = new AllSandChunk();
+	public AllWaterChunk mapChunkSeventeen         = new AllWaterChunk();
 	public MapChunkEighteen mapChunkEighteen       = new MapChunkEighteen();
 	public MapChunkNineteen mapChunkNineteen       = new MapChunkNineteen();
 	public MapChunkTwenty mapChunkTwenty           = new MapChunkTwenty();
-	public MapChunkTwentyOne mapChunkTwentyOne     = new MapChunkTwentyOne();
-	public MapChunkTwentyTwo mapChunkTwentyTwo     = new MapChunkTwentyTwo();
-	public MapChunkTwentyThree mapChunkTwentyThree = new MapChunkTwentyThree();
-	public MapChunkTwentyFour mapChunkTwentyFour   = new MapChunkTwentyFour();
-	public MapChunkTwentyFive mapChunkTwentyFive   = new MapChunkTwentyFive();
+	public AllSandChunk mapChunkTwentyOne          = new AllSandChunk();
+	public AllSandChunk mapChunkTwentyTwo          = new AllSandChunk();
+	public AllSandChunk mapChunkTwentyThree        = new AllSandChunk();
+	public AllSandChunk mapChunkTwentyFour         = new AllSandChunk();
+	public AllWaterChunk mapChunkTwentyFive        = new AllWaterChunk();
 	public MapChunkTwentySix mapChunkTwentySix     = new MapChunkTwentySix();
-	public MapChunkTwentySeven mapChunkTwentySeven = new MapChunkTwentySeven();
+	public AllWaterChunk mapChunkTwentySeven       = new AllWaterChunk();
+	public MapChunkTwentyEight mapChunkTwentyEight = new MapChunkTwentyEight();
+	public AllSandChunk mapChunkTwentyNine         = new AllSandChunk();
+	public AllSandChunk mapChunkThirty             = new AllSandChunk();
+	public AllSandChunk mapChunkThirtyOne          = new AllSandChunk();
+	public AllSandChunk mapChunkThirtyTwo          = new AllSandChunk();
+	public AllWaterChunk mapChunkThirtyThree       = new AllWaterChunk();
 	
 	public static ArrayList<MapChunk> mapChunks = new ArrayList<MapChunk>();
 	
@@ -95,5 +85,12 @@ public class MapHandler {
 		mapChunks.add(mapChunkTwentyFour);
 		mapChunks.add(mapChunkTwentyFive);
 		mapChunks.add(mapChunkTwentySix);
+		mapChunks.add(mapChunkTwentySeven);
+		mapChunks.add(mapChunkTwentyEight);
+		mapChunks.add(mapChunkTwentyNine);
+		mapChunks.add(mapChunkThirty);
+		mapChunks.add(mapChunkThirtyOne);
+		mapChunks.add(mapChunkThirtyTwo);
+		mapChunks.add(mapChunkThirtyThree);
 	}
 }

@@ -5,7 +5,7 @@ package maps.mapchunks;
  * @author Fabulous Fellini
  *
  */
-public class MapChunkNine extends MapChunk {
+public class AllWaterChunk extends MapChunk {
 	
 	public int[][] worldMap = 
 		{

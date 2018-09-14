@@ -111,7 +111,13 @@ public class MapRenderer {
 				mapHandler.mapChunkTwentyFour.tileMap[x][z].draw(myGame.renderer.batch);
 				mapHandler.mapChunkTwentyFive.tileMap[x][z].draw(myGame.renderer.batch);
 				mapHandler.mapChunkTwentySix.tileMap[x][z].draw(myGame.renderer.batch);
-				//mapHandler.mapChunkTwentySeven.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkTwentySeven.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkTwentyEight.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkTwentyNine.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirty.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtyOne.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtyTwo.tileMap[x][z].draw(myGame.renderer.batch);
+				mapHandler.mapChunkThirtyThree.tileMap[x][z].draw(myGame.renderer.batch);
 			}
 		}
 	}
