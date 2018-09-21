@@ -64,14 +64,14 @@ public class MapRenderer {
 							z
 							)
 							) {
-						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
+						//MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
 					}
 				}
 			}
 		}
 		
 		// Uncomment this to draw entire game world.
-		//drawEntireGameWorldAkaAllChunksAtOnce(myGame, mapHandler);
+		drawEntireGameWorldAkaAllChunksAtOnce(myGame, mapHandler);
 	}
 	
 	/**
@@ -83,58 +83,12 @@ public class MapRenderer {
 	 * @param MapHandler mapHandler
 	 */
 	private void drawEntireGameWorldAkaAllChunksAtOnce(MyGame myGame, MapHandler mapHandler) {
-		for(int z = 0; z < mapHandler.mapChunkOne.worldMap.length; z++) {
-			for(int x = 0; x < mapHandler.mapChunkOne.worldMap[z].length; x++) {
-				mapHandler.mapChunkOne.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwo.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThree.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFour.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFive.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkSix.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkSeven.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkEight.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkNine.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTen.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkEleven.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwelve.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirteen.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourteen.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFifteen.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkSixteen.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkSeventeen.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkEighteen.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkNineteen.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwenty.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentyOne.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentyTwo.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentyThree.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentyFour.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentyFive.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentySix.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentySeven.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentyEight.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkTwentyNine.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirty.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtyOne.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtyTwo.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtyThree.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtyFour.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtyFive.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtySix.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtySeven.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtyEight.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkThirtyNine.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourty.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtyOne.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtyTwo.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtyThree.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtyFour.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtyFive.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtySix.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtySeven.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtyEight.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFourtyNine.tileMap[x][z].draw(myGame.renderer.batch);
-				mapHandler.mapChunkFifty.tileMap[x][z].draw(myGame.renderer.batch);
+		int chunkWidth = mapHandler.mapChunkOne.worldMap.length;
+		for (int i = 0; i < MapHandler.mapChunks.size(); i++) {
+			for(int z = 0; z < chunkWidth; z++) {
+				for(int x = 0; x < MapInformationHolder.CHUNK_WIDTH; x++) {
+						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
+				}
 			}
 		}
 	}
