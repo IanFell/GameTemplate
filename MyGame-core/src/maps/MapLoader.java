@@ -254,7 +254,7 @@ public class MapLoader {
 			tileMap[x][z] = new Tile(Tile.sandTexture, !isSolid);
 		}
 		if (worldMap[z][x] == MapInformationHolder.WaterTileOne) {  
-			tileMap[x][z] = new Tile(Tile.waterTextureOne, !isSolid);
+			tileMap[x][z] = new Tile(Tile.waterTextureOne, isSolid);
 		}
 		if (worldMap[z][x] == MapInformationHolder.WaterTileTwo) {  
 			tileMap[x][z] = new Tile(Tile.waterTextureTwo, !isSolid);

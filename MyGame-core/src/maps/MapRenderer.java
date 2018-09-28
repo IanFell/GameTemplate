@@ -4,6 +4,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import maps.mapchunks.MapChunk;
+import physics.CollisionHandler;
 
 /**
  * Renders tile maps for game world.
@@ -62,6 +63,7 @@ public class MapRenderer {
 							)
 							) {
 						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
+						CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(myGame, mapHandler, MapHandler.mapChunks.get(i).tileMap[x][z]);
 					}
 				}
 			}

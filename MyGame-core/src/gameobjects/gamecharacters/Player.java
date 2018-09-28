@@ -29,7 +29,7 @@ public class Player extends GameObject {
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
 	
-	public final static float PLAYER_SPEED = 1.1f;   // .1f
+	public final static float PLAYER_SPEED = 0.1f;   // .1f
 	
 	/**
 	 * Used to determine whether footsteps sound effect should play.
@@ -73,7 +73,7 @@ public class Player extends GameObject {
 	 * Constructor.
 	 */
 	public Player() {
-		this.x               = 5;
+		this.x               = 115;
 		this.y               = 10;
 		this.width           = characterSize;
 		this.height          = characterSize;
@@ -118,7 +118,6 @@ public class Player extends GameObject {
 		y += dy;
 		rectangle.x = x;
 		rectangle.y = y;
-		//CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(myGame, mapHandler);
 
 		int playerTwoDirection   = myGame.gameObjectLoader.playerTwo.getDirection();
 		int followDistance       = 1;
@@ -150,7 +149,13 @@ public class Player extends GameObject {
 	 * @param int        leaderDirection
 	 * @param int        followerDirection
 	 */
-	private void handleWalking(GameObject leader, GameObject follower, int followDistance, int leaderDirection, int followerDirection) {
+	private void handleWalking(
+			GameObject leader, 
+			GameObject follower, 
+			int followDistance, 
+			int leaderDirection, 
+			int followerDirection
+			) {
 
 		float leaderXPosition = leader.getX();
 		float leaderYPosition = leader.getY();
@@ -312,7 +317,7 @@ public class Player extends GameObject {
 	 * @param int direction
 	 */
 	public void stopScrolling(int direction) {
-		float bounceBackAmountUponPlayerTileCollision = 0.1f;
+		float bounceBackAmountUponPlayerTileCollision = 0.03f;
 		switch (direction) {
 		case Player.DIRECTION_LEFT:
 			x += bounceBackAmountUponPlayerTileCollision;

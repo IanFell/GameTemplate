@@ -100,10 +100,10 @@ public class WeatherHandler {
 	 */
 	private void initializeClouds(MyGame myGame) {
 		for (int i = 0; i < cloud.length; i++) {
-			double min = RandomNumberGenerator.generateRandomDouble(7, 7.5);
-			double max = RandomNumberGenerator.generateRandomDouble(7.5, 8);
+			double min     = RandomNumberGenerator.generateRandomDouble(7, 7.5);
+			double max     = RandomNumberGenerator.generateRandomDouble(7.5, 8);
 			double[] range = {min, max};
-			cloud[i] = new Cloud(
+			cloud[i]       = new Cloud(
 					myGame, 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),

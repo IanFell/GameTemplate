@@ -164,7 +164,7 @@ public class GameScreen extends Screens {
 		camera = new OrthographicCamera(viewportWidth, verticalHeight);
 		camera.setToOrtho(true, viewportWidth, verticalHeight);
 		camera.position.x = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
-		camera.position.y = myGame.getGameObject(GameObject.PLAYER_ONE).getY();
+		camera.position.y = myGame.getGameObject(GameObject.PLAYER_ONE).getY();  
 		camera.update();
 	}
 

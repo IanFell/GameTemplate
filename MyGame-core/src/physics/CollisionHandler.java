@@ -5,6 +5,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import maps.MapHandler;
+import tiles.Tile;
 
 /**
  * Class to handle collisions between game objects.
@@ -18,16 +19,13 @@ public class CollisionHandler {
 	 * 
 	 * @param MyGame     myGame
 	 * @param MapHandler mapHandler
+	 * @param Tile       tile
 	 */
-	public static void checkIfPlayerHasCollidedWithASolidTile(MyGame myGame, MapHandler mapHandler) {
-		for(int z = 0; z < mapHandler.mapChunkOne.worldMap.length; z++) {
-			for(int x = 0; x < mapHandler.mapChunkOne.worldMap[z].length; x++) {
-				if (mapHandler.mapChunkOne.tileMap[z][x].isSolid()) {
-					if (mapHandler.mapChunkOne.tileMap[z][x].getBoundingRectangle().overlaps(myGame.getGameObject(GameObject.PLAYER_ONE).rectangle)) {
-						Player.playerShouldStopMoving = true;
-						System.out.println("Player collided with solid tile!");
-					}
-				}
+	public static void checkIfPlayerHasCollidedWithASolidTile(MyGame myGame, MapHandler mapHandler, Tile tile) {
+		if (tile.isSolid()) {
+			if (tile.getBoundingRectangle().overlaps(myGame.getGameObject(GameObject.PLAYER_ONE).rectangle)) {
+				Player.playerShouldStopMoving = true;
+				System.out.println("Player collided with solid tile!");
 			}
 		}
 	}
