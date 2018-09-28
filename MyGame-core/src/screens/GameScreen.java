@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.mygdx.mygame.MyGame;
 
-import debugging.Debugger;
 import gameobjects.GameObject;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
@@ -59,11 +58,6 @@ public class GameScreen extends Screens {
 	private ScreenShader screenShader = new ScreenShader(myGame);
 
 	private GuiScreen guiScreen = new GuiScreen(myGame);
-
-	/**
-	 * Debugs game screen if needed / uncommented.
-	 */
-	private Debugger debugger = new Debugger();
 
 	public static ParticleEmitter particleEmitterRed;
 	public static ParticleEmitter particleEmitterYellow;
@@ -126,9 +120,6 @@ public class GameScreen extends Screens {
 
 		// Update objects associated with GameScreen.
 		updateGameScreen();
-
-		// Perform debug testing on GameScreen so we know different scenarios work.
-		debugger.debugGameScreen(myGame, mapHandler);
 	}
 
 	/**
@@ -141,7 +132,6 @@ public class GameScreen extends Screens {
 	}
 
 	public void initializeGameScreen() {
-		//map.init(myGame);
 		mapLoader.loadMap(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		ParticleEmitter.initializeParticleEmitters(myGame);
@@ -192,9 +182,7 @@ public class GameScreen extends Screens {
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
-		mapRenderer.renderMap(myGame, mapHandler);
-		//chunk.render(myGame);
-		//map.render(myGame);
+		mapRenderer.renderMapOfChunks(myGame, mapHandler);
 		lightingHandler.lightHandler.renderLighting(
 				myGame.renderer.batch, 
 				myGame.imageLoader, 

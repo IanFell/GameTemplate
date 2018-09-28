@@ -11,9 +11,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import handlers.AnimationHandler;
 import loaders.ImageLoader;
-import maps.MapInformationHolder;
 import maps.MapHandler;
-import physics.CollisionHandler;
 
 /**
  * Player object.

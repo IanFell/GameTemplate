@@ -308,9 +308,10 @@ public class LightningBoltHandler {
 	 */
 	public static void drawLightningBolt(MyGame myGame) {
 		System.out.println("Drawing lightning bolts!");
+		float lightningBoltXPosition = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
 		Vector2[] lightningBoltVectors = new Vector2[] {
-				new Vector2(myGame.getGameObject(GameObject.PLAYER_ONE).getX(), myGame.getGameObject(GameObject.PLAYER_ONE).getY() - 200),
-				new Vector2(0, GameAttributeHelper.SCREEN_HEIGHT - 150)
+				new Vector2(lightningBoltXPosition, myGame.getGameObject(GameObject.PLAYER_ONE).getY() - 200),
+				new Vector2(lightningBoltXPosition, GameAttributeHelper.SCREEN_HEIGHT - 150)
 		};
 
 		Color color = new Color(ColorHelper.WHITE);

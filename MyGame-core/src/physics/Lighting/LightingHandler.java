@@ -3,7 +3,6 @@ package physics.Lighting;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Player;
 import physics.Weather.NightAndDayCycle;
 
 /**

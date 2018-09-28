@@ -13,10 +13,13 @@ import maps.mapchunks.MapChunk;
  */
 public class MapRenderer {
 
+	private int chunkWidth  = MapInformationHolder.CHUNK_WIDTH;
+	private int chunkHeight = MapInformationHolder.CHUNK_HEIGHT;
+	
 	/**
-	 * Used to determine when to switch grass animations.
+	 * Represents all chunks in the grid.  The grid is 8 x 8.
 	 */
-	private int timer = 0;
+	private int totalChunkCount = 64;
 	
 	/**
 	 * 
@@ -43,20 +46,14 @@ public class MapRenderer {
 	}
 	
 	/**
-	 * Renders map.
 	 * 
 	 * @param MyGame    myGame
 	 * @param MapHandler mapHandler
 	 */
-	public void renderMap(MyGame myGame, MapHandler mapHandler) { 
-		timer++;
-		if (timer > 100) {
-			timer = 0;
-		}
-		int chunkWidth = mapHandler.mapChunkOne.worldMap.length;
-		for (int i = 0; i < MapHandler.mapChunks.size(); i++) {
-			for(int z = 0; z < chunkWidth; z++) {
-				for(int x = 0; x < MapInformationHolder.CHUNK_WIDTH; x++) {
+	public void renderMapOfChunks(MyGame myGame, MapHandler mapHandler) { 
+		for (int i = 0; i < totalChunkCount; i++) {
+			for(int z = 0; z < chunkHeight; z++) {
+				for(int x = 0; x < chunkWidth; x++) {
 					if (playerIsWithinBoundsOfRenderingChunk(
 							myGame,
 							MapHandler.mapChunks.get(i), 
@@ -64,32 +61,13 @@ public class MapRenderer {
 							z
 							)
 							) {
-						//MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
+						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
 					}
 				}
 			}
 		}
 		
 		// Uncomment this to draw entire game world.
-		drawEntireGameWorldAkaAllChunksAtOnce(myGame, mapHandler);
-	}
-	
-	/**
-	 * This method is for debugging purposes.  
-	 * It draws the entire game world at once.
-	 * Note: If this is activated, the game runs at about 5 frames per second.
-	 * 
-	 * @param MyGame     myGame
-	 * @param MapHandler mapHandler
-	 */
-	private void drawEntireGameWorldAkaAllChunksAtOnce(MyGame myGame, MapHandler mapHandler) {
-		int chunkWidth = mapHandler.mapChunkOne.worldMap.length;
-		for (int i = 0; i < MapHandler.mapChunks.size(); i++) {
-			for(int z = 0; z < chunkWidth; z++) {
-				for(int x = 0; x < MapInformationHolder.CHUNK_WIDTH; x++) {
-						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
-				}
-			}
-		}
+		//Debugger.drawEntireGameWorldAllChunksAtOnce(myGame, mapHandler, totalChunkCount, chunkWidth, chunkHeight);
 	}
 }
