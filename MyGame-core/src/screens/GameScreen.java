@@ -196,7 +196,10 @@ public class GameScreen extends Screens {
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader,
-				myGame
+				myGame,
+				myGame.getGameObject(GameObject.PLAYER_ONE),
+				myGame.getGameObject(GameObject.PLAYER_TWO),
+				myGame.getGameObject(GameObject.PLAYER_THREE)
 				);
 
 		// Rain should be in front of all objects. 

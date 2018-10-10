@@ -48,7 +48,7 @@ public class MapRenderer {
 	
 	/**
 	 * 
-	 * @param MyGame    myGame
+	 * @param MyGame     myGame
 	 * @param MapHandler mapHandler
 	 */
 	public void renderMapOfChunks(MyGame myGame, MapHandler mapHandler) { 

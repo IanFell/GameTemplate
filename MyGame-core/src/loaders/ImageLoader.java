@@ -38,9 +38,11 @@ public class ImageLoader {
 
 	public Texture tree;
 	
+	public Texture palmTree;
+	
 	public Texture chest;
 
-	public Texture lightningFlash;
+	public Texture whiteSquare;
 	
 	public Texture rain;
 	
@@ -66,9 +68,10 @@ public class ImageLoader {
 		playerSprite                   = new Texture(Gdx.files.internal("PlayerSprite.png"));
 		tree                           = new Texture(Gdx.files.internal("SampleTree.png"));
 		chest                          = new Texture(Gdx.files.internal("Chest.png"));
-		lightningFlash                 = new Texture(Gdx.files.internal("LightningFlash.png"));
+		whiteSquare                    = new Texture(Gdx.files.internal("WhiteSquare.png"));
 		playerScore                    = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
 		rain 						   = new Texture(Gdx.files.internal("Rain.png"));
+		palmTree					   = new Texture(Gdx.files.internal("PalmTree.png"));
 	}
 
 	public void dispose() {
@@ -91,8 +94,9 @@ public class ImageLoader {
 		playerSprite.dispose();
 		tree.dispose();
 		chest.dispose();
-		lightningFlash.dispose();
+		whiteSquare.dispose();
 		playerScore.dispose();
 		rain.dispose();
+		palmTree.dispose();
 	}
 }

@@ -1,6 +1,7 @@
 package tiles;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.mygame.MyGame;
 
@@ -13,7 +14,7 @@ import com.mygdx.mygame.MyGame;
 public class Tile extends Sprite {
 
 	private boolean isSolid;
-
+	
 	public static Texture grassTextureOne;
 	public static Texture grassTextureTwo;
 	public static Texture buildingTexture;
@@ -38,8 +39,8 @@ public class Tile extends Sprite {
 	protected static final int WaterUpperRightHalfAndHalf = 9;
 	protected static final int WaterUpperLeftCurved       = 10;
 	
-	protected final int WORLD_WIDTH  = 21;
-	protected final int WORLD_HEIGHT = 21;
+	protected final static int WORLD_WIDTH  = 21;
+	protected final static int WORLD_HEIGHT = 21;
 	
 	/**
 	 * 
@@ -75,5 +76,14 @@ public class Tile extends Sprite {
 	 */
 	public boolean isSolid() {
 		return isSolid;
+	}
+	
+	/**
+	 * 
+	 * @param Batch batch
+	 */
+	@Override
+	public void draw (Batch batch) {
+		super.draw(batch);
 	}
 }

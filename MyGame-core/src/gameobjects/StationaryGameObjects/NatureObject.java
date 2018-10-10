@@ -15,12 +15,15 @@ public class NatureObject extends GameObject {
 
 	/**
 	 * Constructor.
+	 * 
+	 * @param int x
+	 * @param int y
 	 */
-	public NatureObject() {
-		this.x      = 4;
-		this.y      = 5;
-		this.width  = 2;
-		this.height = 4;
+	public NatureObject(int x, int y) {
+		this.x      = x;
+		this.y      = y;
+		this.width  = 1;
+		this.height = 2;
 	}
 
 	/**
@@ -31,6 +34,6 @@ public class NatureObject extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		batch.draw(imageLoader.tree, x, y, width, -height);
+		batch.draw(imageLoader.palmTree, x, y, width, -height);
 	}
 }

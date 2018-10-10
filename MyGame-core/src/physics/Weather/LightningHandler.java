@@ -65,7 +65,7 @@ public class LightningHandler extends GameObject {
 			) {
 		if (lightningShouldBeRendered) {
 			batch.draw(
-					imageLoader.lightningFlash, 
+					imageLoader.whiteSquare, 
 					GameScreen.camera.position.x - gameScreen.getViewportWidth() / gameScreen.getDenominatorOffset(), 
 					GameScreen.camera.position.y - gameScreen.getVerticalHeight() / gameScreen.getDenominatorOffset(), 
 					GameScreen.camera.viewportWidth, 

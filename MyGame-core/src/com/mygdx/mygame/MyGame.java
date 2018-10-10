@@ -105,7 +105,7 @@ public class MyGame extends Game {
 			desiredObject = gameObjectLoader.playerThree;
 			break;
 		case 4:
-			desiredObject = gameObjectLoader.tree;
+			//desiredObject = gameObjectLoader.tree;
 		}
 		return desiredObject;
 	}

@@ -2,6 +2,7 @@ package physics.Weather;
 
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import helpers.RandomNumberGenerator;
 import maps.MapHandler;
 import screens.GameScreen;
@@ -99,9 +100,10 @@ public class WeatherHandler {
 	 * @param MyGame myGame
 	 */
 	private void initializeClouds(MyGame myGame) {
+		float playerXPosition = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
 		for (int i = 0; i < cloud.length; i++) {
-			double min     = RandomNumberGenerator.generateRandomDouble(7, 7.5);
-			double max     = RandomNumberGenerator.generateRandomDouble(7.5, 8);
+			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 7, playerXPosition + 7.5);
+			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 7.5, playerXPosition + 8);
 			double[] range = {min, max};
 			cloud[i]       = new Cloud(
 					myGame, 
@@ -114,8 +116,8 @@ public class WeatherHandler {
 		
 		// Clouds 2 and 3 are together.
 		for (int i = 0; i < cloud2.length; i++) {
-			double min = RandomNumberGenerator.generateRandomDouble(5, 5.5);
-			double max = RandomNumberGenerator.generateRandomDouble(5.5, 6);
+			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
+			double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
 			double[] range = {min, max};
 			cloud2[i] = new Cloud(
 					myGame, 
@@ -127,8 +129,8 @@ public class WeatherHandler {
 		}
 		
 		for (int i = 0; i < cloud3.length; i++) {
-			double min = RandomNumberGenerator.generateRandomDouble(5, 5.5);
-			double max = RandomNumberGenerator.generateRandomDouble(5.5, 6);
+			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
+			double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
 			double[] range = {min, max};
 			cloud3[i] = new Cloud(
 					myGame, 
@@ -140,8 +142,8 @@ public class WeatherHandler {
 		}
 		
 		for (int i = 0; i < cloud4.length; i++) {
-			double min = RandomNumberGenerator.generateRandomDouble(5, 5.5);
-			double max = RandomNumberGenerator.generateRandomDouble(5.5, 6);
+			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
+			double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
 			double[] range = {min, max};
 			cloud4[i] = new Cloud(
 					myGame, 

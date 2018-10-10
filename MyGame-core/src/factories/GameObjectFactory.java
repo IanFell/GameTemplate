@@ -19,7 +19,7 @@ public class GameObjectFactory {
 	 * @param string  objectType
 	 * @return GameObject
 	 */
-	public GameObject getObject(String objectType) {
+	public GameObject getObject(String objectType, int x, int y) {
 		if (objectType == null) {
 			return null;
 		}
@@ -27,7 +27,7 @@ public class GameObjectFactory {
 			return new Player();
 		}
 		if (objectType.equalsIgnoreCase("tree")) {
-			return new NatureObject();
+			return new NatureObject(x, y);
 		}
 		if (objectType.equalsIgnoreCase("chest")) {
 			return new GamePlayObject();

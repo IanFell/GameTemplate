@@ -73,8 +73,8 @@ public class Player extends GameObject {
 	 * Constructor.
 	 */
 	public Player() {
-		this.x               = 115;
-		this.y               = 10;
+		this.x               = 140;
+		this.y               = 5;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
@@ -317,7 +317,7 @@ public class Player extends GameObject {
 	 * @param int direction
 	 */
 	public void stopScrolling(int direction) {
-		float bounceBackAmountUponPlayerTileCollision = 0.03f;
+		float bounceBackAmountUponPlayerTileCollision = 0.01f;
 		switch (direction) {
 		case Player.DIRECTION_LEFT:
 			x += bounceBackAmountUponPlayerTileCollision;
