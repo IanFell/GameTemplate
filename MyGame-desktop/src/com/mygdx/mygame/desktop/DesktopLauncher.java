@@ -15,15 +15,15 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.addIcon("GrassTileOne.png", FileType.Internal);
-		config.title  = "MyGame";
-		/*
+		config.title  = "The Golden Age";
+		
 		float f       = 0.5f;
 		float width   = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
 		float height  = LwjglApplicationConfiguration.getDesktopDisplayMode().height;
 		config.width  = (int)(width * f);
-		config.height = (int)(height * f);*/
-		config.width  = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
-		config.height = LwjglApplicationConfiguration.getDesktopDisplayMode().height;
+		config.height = (int)(height * f);
+		//config.width  = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
+		//config.height = LwjglApplicationConfiguration.getDesktopDisplayMode().height;
 		new LwjglApplication(new MyGame(), config);
 	}
 }

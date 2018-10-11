@@ -1,10 +1,10 @@
 package helpers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import loaders.ImageLoader;
@@ -16,7 +16,7 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class GamePlayHelper {
+public class GamePlayHelper  {
 
 	/**
 	 * 
@@ -35,71 +35,39 @@ public class GamePlayHelper {
 	public static float setObjectYPositionInMiddleOfScreen(GameObject gameObject) {
 		return (GameAttributeHelper.SCREEN_HEIGHT / 2) - (gameObject.getHeight() / 2);	
 	}
-
+	
 	/**
-	 * Render objects based on their y-axis position vs player y-axis position.
-	 * If player Y is behind object Y, render player first. 
-	 * If player Y is in front of object Y, render object first.
+	 * Render objects based on their y-axis sort order to simulate depth.
 	 * 
 	 * @param ArrayList gameObjectList
 	 * @param SpriteBatch batch
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader imageLoader
-	 * @param MyGame myGame
-	 * @param GameObject playerOne
-	 * @param GameObject playerTwo
-	 * @param GameObject playerThree
 	 */
 	public static void sortAndRenderObjectsInYPositionOrder(
 			ArrayList<GameObject> gameObjectList,
 			SpriteBatch batch,
 			ShapeRenderer shapeRenderer,
-			ImageLoader imageLoader,
-			MyGame myGame,
-			GameObject playerOne,
-			GameObject playerTwo,
-			GameObject playerThree
+			ImageLoader imageLoader
 			) {
-
-		float playerX           = playerOne.getX();
-		float playerY           = playerOne.getY();
-		float playerYPlusHeight = playerOne.getY() + playerOne.getHeight();
-		float drawDistance      = 9; 
-
+		Collections.sort(gameObjectList);
 		for (int i = 0; i < gameObjectList.size(); i++) {
-
-			float gameObjectXPosition = gameObjectList.get(i).getX();
-			float gameObjectYPosition = gameObjectList.get(i).getY();
-
-			// If player position is within bounds to draw.
-			if (playerPositionIsWithinBoundsToDraw(
-					playerX, playerY, 
-					gameObjectXPosition, 
-					gameObjectYPosition, 
-					drawDistance,
+			if (playerPositionIsWithinBoundsToDrawToRenderGameObjects(
+					gameObjectList.get(0).getX(), 
+					gameObjectList.get(0).getY(), 
+					gameObjectList.get(i).getX(), 
+					gameObjectList.get(i).getY(), 
+					9,
 					gameObjectList.get(i).getHeight(),
 					gameObjectList.get(i).getWidth()
 					)) {
-				if (playerYPlusHeight < gameObjectYPosition)  {
-					// Render players behind object.
-					System.out.println("Player is behing Object " + i);
-					playerOne.renderObject(batch, shapeRenderer, imageLoader);
-					playerTwo.renderObject(batch, shapeRenderer, imageLoader);
-					playerThree.renderObject(batch, shapeRenderer, imageLoader);
-					gameObjectList.get(i).renderObject(batch, shapeRenderer, imageLoader);
-				} else {
-					// Render players in front of object.
-					System.out.println("Player is in front of Object " + i);
-					gameObjectList.get(i).renderObject(batch, shapeRenderer, imageLoader);
-					playerOne.renderObject(batch, shapeRenderer, imageLoader);
-					playerTwo.renderObject(batch, shapeRenderer, imageLoader);
-					playerThree.renderObject(batch, shapeRenderer, imageLoader);
-				}
-			} 
+				gameObjectList.get(i).renderObject(batch, shapeRenderer, imageLoader);
+			}
 		}
 	}
 
 	/**
+	 * Determines whether to render game objects based on player one's position.
 	 * 
 	 * @param float playerX
 	 * @param float playerY
@@ -110,7 +78,7 @@ public class GamePlayHelper {
 	 * @param float gameObjectWidth
 	 * @return boolean
 	 */
-	private static boolean playerPositionIsWithinBoundsToDraw(
+	private static boolean playerPositionIsWithinBoundsToDrawToRenderGameObjects(
 			float playerX, 
 			float playerY, 
 			float gameObjectXPosition, 

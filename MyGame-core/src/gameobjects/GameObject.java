@@ -16,7 +16,7 @@ import maps.MapHandler;
  * @author Fabulous Fellini
  *
  */
-public class GameObject extends Sprite implements GameObjectInterface {
+public class GameObject extends Sprite implements GameObjectInterface, Comparable<Object> {
 	
 	/**
 	 * Used to ensure the correct player is returned in getGameObject() method.
@@ -57,6 +57,10 @@ public class GameObject extends Sprite implements GameObjectInterface {
 	 */
 	public GameObject() {}
 
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
 	public void init(MyGame myGame) {}
 
 	/**
@@ -207,5 +211,11 @@ public class GameObject extends Sprite implements GameObjectInterface {
 	 */
 	public void setDy(float dy) {
 		this.dy = dy;
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

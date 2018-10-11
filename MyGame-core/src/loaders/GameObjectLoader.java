@@ -10,7 +10,7 @@ import gameobjects.StationaryGameObjects.NatureObject;
 /**
  * Creates are game objects and initializes them.
  * 
- * @author Fabulous Felini
+ * @author Fabulous Fellini
  *
  */
 public class GameObjectLoader {
@@ -168,6 +168,9 @@ public class GameObjectLoader {
 	}
 
 	private void addGameObjectsToGameObjectArrayList() {
+		gameObjectList.add(playerOne);
+		gameObjectList.add(playerTwo);
+		gameObjectList.add(playerThree);
 		for (int i = 0; i < treesMapChunkTwo.length; i++) {
 			gameObjectList.add(treesMapChunkTwo[i]);
 		}
