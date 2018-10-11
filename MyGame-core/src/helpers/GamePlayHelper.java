@@ -11,12 +11,16 @@ import loaders.ImageLoader;
 
 /**
  * Contains methods to help with game play.
- * Currently this class is unused but I don't want to get rid of it just yet, just in case.
  * 
  * @author Fabulous Fellini
  *
  */
 public class GamePlayHelper  {
+	
+	/**
+	 * Distance to determine if a game object should be rendered, based on player one's position.
+	 */
+	private static int drawDistance = 9;
 
 	/**
 	 * 
@@ -52,12 +56,11 @@ public class GamePlayHelper  {
 			) {
 		Collections.sort(gameObjectList);
 		for (int i = 0; i < gameObjectList.size(); i++) {
-			if (playerPositionIsWithinBoundsToDrawToRenderGameObjects(
+			if (playerPositionIsWithinBoundsToRenderGameObjects(
 					gameObjectList.get(0).getX(), 
 					gameObjectList.get(0).getY(), 
 					gameObjectList.get(i).getX(), 
 					gameObjectList.get(i).getY(), 
-					9,
 					gameObjectList.get(i).getHeight(),
 					gameObjectList.get(i).getWidth()
 					)) {
@@ -73,17 +76,15 @@ public class GamePlayHelper  {
 	 * @param float playerY
 	 * @param float gameObjectXPosition
 	 * @param float gameObjectYPosition
-	 * @param float drawDistance
 	 * @param float gameObjectHeight
 	 * @param float gameObjectWidth
 	 * @return boolean
 	 */
-	private static boolean playerPositionIsWithinBoundsToDrawToRenderGameObjects(
+	private static boolean playerPositionIsWithinBoundsToRenderGameObjects(
 			float playerX, 
 			float playerY, 
 			float gameObjectXPosition, 
 			float gameObjectYPosition,
-			float drawDistance,
 			float gameObjectHeight,
 			float gameObjectWidth
 			) {

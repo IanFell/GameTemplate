@@ -29,7 +29,7 @@ public class Player extends GameObject {
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
 	
-	public final static float PLAYER_SPEED = 0.1f;   // .1f
+	public final static float PLAYER_SPEED = 0.1f;  
 	
 	/**
 	 * Used to determine whether footsteps sound effect should play.
@@ -73,7 +73,7 @@ public class Player extends GameObject {
 	 * Constructor.
 	 */
 	public Player() {
-		this.x               = 140;
+		this.x               = 204;
 		this.y               = 5;
 		this.width           = characterSize;
 		this.height          = characterSize;
