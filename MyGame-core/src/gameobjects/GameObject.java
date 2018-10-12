@@ -16,7 +16,7 @@ import maps.MapHandler;
  * @author Fabulous Fellini
  *
  */
-public class GameObject extends Sprite implements GameObjectInterface, Comparable<Object> {
+public class GameObject extends Sprite implements GameObjectInterface, Comparable<GameObject> {
 	
 	/**
 	 * Used to ensure the correct player is returned in getGameObject() method.
@@ -213,9 +213,16 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 		this.dy = dy;
 	}
 
+	/**
+	 * TODO: This sorts correctly, but does not render in the correct order in GamePlayHelper.
+	 * @param Object object
+	 */
 	@Override
-	public int compareTo(Object arg0) {
-		// TODO Auto-generated method stub
+	public int compareTo(GameObject object) {
+		/*
+		if (this.getY() < object.getY()) {
+			return 1;
+		}*/
 		return 0;
 	}
 }
