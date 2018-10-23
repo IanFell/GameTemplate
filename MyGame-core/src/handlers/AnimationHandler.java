@@ -37,7 +37,7 @@ public class AnimationHandler {
 				x,  
 				y + 1, 
 				size, 
-				-size
+				-size * 2
 				);
 	}
 

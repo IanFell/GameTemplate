@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import gameobjects.GameObject;
 import loaders.ImageLoader;
+import screens.GameScreen;
 
 /**
  * Contains methods to help with game play.
@@ -16,11 +17,6 @@ import loaders.ImageLoader;
  *
  */
 public class GamePlayHelper  {
-	
-	/**
-	 * Distance to determine if a game object should be rendered, based on player one's position.
-	 */
-	private static int drawDistance = 9;
 
 	/**
 	 * 
@@ -56,44 +52,30 @@ public class GamePlayHelper  {
 			) {
 		Collections.sort(gameObjectList);
 		for (int i = 0; i < gameObjectList.size(); i++) {
-			if (playerPositionIsWithinBoundsToRenderGameObjects(
-					gameObjectList.get(0).getX(), 
-					gameObjectList.get(0).getY(), 
-					gameObjectList.get(i).getX(), 
-					gameObjectList.get(i).getY(), 
-					gameObjectList.get(i).getHeight(),
-					gameObjectList.get(i).getWidth()
-					)) {
+			if (gameObjectIsWithinScreenBounds(gameObjectList.get(i))) {
 				gameObjectList.get(i).renderObject(batch, shapeRenderer, imageLoader);
 			}
 		}
 	}
-
+	
 	/**
-	 * Determines whether to render game objects based on player one's position.
+	 * Determines if game object is rendering bounds.
 	 * 
-	 * @param float playerX
-	 * @param float playerY
-	 * @param float gameObjectXPosition
-	 * @param float gameObjectYPosition
-	 * @param float gameObjectHeight
-	 * @param float gameObjectWidth
+	 * @param GameObject gameObject
 	 * @return boolean
 	 */
-	private static boolean playerPositionIsWithinBoundsToRenderGameObjects(
-			float playerX, 
-			float playerY, 
-			float gameObjectXPosition, 
-			float gameObjectYPosition,
-			float gameObjectHeight,
-			float gameObjectWidth
-			) {
+	private static boolean gameObjectIsWithinScreenBounds(GameObject gameObject) {
+		float cameraXPosition = GameScreen.camera.position.x;
+		float cameraYPosition = GameScreen.camera.position.y;
+		float playerXPosition = gameObject.getX();
+		float playerYPosition = gameObject.getY();
+		int screenBoundOffset = 10;
 		if (
-				playerY > gameObjectYPosition - drawDistance &&
-				playerY < gameObjectYPosition - gameObjectHeight + drawDistance &&
-				playerX > gameObjectXPosition - drawDistance &&
-				playerX < gameObjectXPosition + gameObjectWidth + drawDistance
-				) { 
+				playerXPosition < cameraXPosition + screenBoundOffset &&
+				playerXPosition > cameraXPosition - screenBoundOffset &&
+				playerYPosition < cameraYPosition + screenBoundOffset &&
+				playerYPosition > cameraYPosition - screenBoundOffset
+				) {
 			return true;
 		}
 		return false;

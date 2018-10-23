@@ -214,15 +214,11 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	}
 
 	/**
-	 * TODO: This sorts correctly, but does not render in the correct order in GamePlayHelper.
-	 * @param Object object
+	 *
+	 * @param GameObject gameObject
 	 */
 	@Override
-	public int compareTo(GameObject object) {
-		/*
-		if (this.getY() < object.getY()) {
-			return 1;
-		}*/
-		return 0;
+	public int compareTo(GameObject gameObject) {
+		return Float.compare(getY(), gameObject.getY());
 	}
 }
