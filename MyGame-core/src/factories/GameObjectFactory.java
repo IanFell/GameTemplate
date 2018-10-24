@@ -1,9 +1,9 @@
 package factories;
 
 import gameobjects.GameObject;
-import gameobjects.StationaryGameObjects.GamePlayObject;
-import gameobjects.StationaryGameObjects.NatureObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.stationarygameobjects.GamePlayObject;
+import gameobjects.stationarygameobjects.NatureObject;
 
 /**
  * Factory to create our game objects.

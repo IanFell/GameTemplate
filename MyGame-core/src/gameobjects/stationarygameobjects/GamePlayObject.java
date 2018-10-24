@@ -1,4 +1,4 @@
-package gameobjects.StationaryGameObjects;
+package gameobjects.stationarygameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;

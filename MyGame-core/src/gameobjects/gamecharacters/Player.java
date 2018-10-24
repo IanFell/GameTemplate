@@ -67,7 +67,10 @@ public class Player extends GameObject {
 	 */
 	public static boolean playerShouldStopMoving = false;
 
-	protected int characterSize = 1;
+	/**
+	 * Character size is the same size as a tile.
+	 */
+	private int characterSize = 1;
 
 	/**
 	 * Constructor.
@@ -91,6 +94,7 @@ public class Player extends GameObject {
 	}
 
 	/**
+	 * 
 	 * @param MyGame myGame
 	 */
 	@Override
@@ -274,7 +278,6 @@ public class Player extends GameObject {
 	 * @return Animation <TextureRegion>
 	 */
 	private Animation <TextureRegion> getCurrentAnimation() {
-		currentAnimation = walkDownAnimation;
 		switch (direction) {
 		case Player.DIRECTION_LEFT:
 			currentAnimation = walkLeftAnimation;
