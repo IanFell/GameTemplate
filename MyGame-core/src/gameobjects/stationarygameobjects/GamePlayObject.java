@@ -7,6 +7,8 @@ import gameobjects.GameObject;
 import loaders.ImageLoader;
 
 /**
+ * GamePlayObjects represent objects that will interact with the player,
+ * such as a chest or a key.
  * 
  * @author Fabulous Fellini
  *
@@ -25,9 +27,9 @@ public class GamePlayObject extends GameObject {
 	
 	/**
 	 * 
-	 * @param SpriteBatch batch
-	 * @param ImageLoader imageLoader
-	 * @param GameObject  player
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shaperender
+	 * @param ImageLoader   imageLoader
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {

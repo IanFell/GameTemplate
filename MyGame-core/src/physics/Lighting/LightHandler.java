@@ -16,12 +16,12 @@ public class LightHandler extends AbstractLightingHandler {
 	/**
 	 * Starting x position.  After resizing light, x position will resume to this coordinate.
 	 */
-	private float startX = 0;
+	private float startX = 204 + 68 + 68 + 67.5f;
 
 	/**
 	 * Starting y position.  After resizing light, y position will resume to this coordinate.
 	 */
-	private float startY = 5;
+	private float startY = 55;
 
 	public static boolean isGrowing = false;
 

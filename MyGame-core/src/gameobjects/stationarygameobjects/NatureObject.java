@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import gameobjects.GameObject;
+import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 
 /**
@@ -20,10 +21,11 @@ public class NatureObject extends GameObject {
 	 * @param int y
 	 */
 	public NatureObject(int x, int y) {
-		this.x      = x;
-		this.y      = y;
-		this.width  = 1;
-		this.height = 2;
+		this.x              = x;
+		this.y              = y;
+		this.width          = 1;
+		double randomHeight = RandomNumberGenerator.generateRandomDouble(2.0f, 4.0f);
+		this.height         = (float) randomHeight;
 	}
 
 	/**

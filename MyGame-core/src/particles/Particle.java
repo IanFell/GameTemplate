@@ -43,15 +43,15 @@ public class Particle extends GameObject {
 	 * @param MyGame myGame
 	 */
 	public Particle(float x, float y, float width, float height, float lifeSpan, Color color, MyGame myGame) {
-		this.x         = x;
-		this.y         = y;
-		this.width     = width;
-		this.height    = height;
-		this.lifeSpan  = lifeSpan;
-		this.isAlive   = true;
-		this.color     = color;
-		this.dx        = 0.03f;
-		this.dy        = 0.1f;
+		this.x        = x;
+		this.y        = y;
+		this.width    = width;
+		this.height   = height;
+		this.lifeSpan = lifeSpan;
+		this.isAlive  = true;
+		this.color    = color;
+		this.dx       = 0.03f;
+		this.dy       = 0.1f;
 	}
 
 	/**
@@ -103,9 +103,9 @@ public class Particle extends GameObject {
 			}
 		} else {
 			// If particle is dead, respawn it with new life in a random location based off particleEmitter's location.
-			isAlive    = true;
-			life       = 0;
-			x          = (float) RandomNumberGenerator.generateRandomDouble(
+			isAlive = true;
+			life    = 0;
+			x       = (float) RandomNumberGenerator.generateRandomDouble(
 					particleEmitterXPosition, 
 					particleEmitterLength
 					);
@@ -123,8 +123,8 @@ public class Particle extends GameObject {
 	 * @return float
 	 */
 	private float changeDyValue(float dy) {
-		float dySpeedFast      = 0.1f;
-		float dySpeedMedium    = 0.2f;
+		float dySpeedFast   = 0.1f;
+		float dySpeedMedium = 0.2f;
 		if (dy == dySpeedFast) {
 			dy = dySpeedMedium;
 		} else if (dy == dySpeedMedium) {
