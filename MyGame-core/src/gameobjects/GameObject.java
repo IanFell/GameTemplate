@@ -214,7 +214,9 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	}
 
 	/**
-	 *
+	 * Compares y values with this instance and some other object in gameObject array
+	 * in order to determine rendering order (to simulate depth of objects).
+	 * 
 	 * @param GameObject gameObject
 	 */
 	@Override
