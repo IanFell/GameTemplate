@@ -19,20 +19,25 @@ public class GameObjectLoader {
 	public GameObject playerTwo;
 	public GameObject playerThree;
 	public GameObject chest;
-	public GameObject[] treesMapChunkTwo      = new NatureObject[45];
-	public GameObject[] treesMapChunkThree    = new NatureObject[86];
-	public GameObject[] treesMapChunkFour     = new NatureObject[140];
-	public GameObject[] treesMapChunkFive     = new NatureObject[140];
-	public GameObject[] treesMapChunkSix      = new NatureObject[140];
-	public GameObject[] treesMapChunkSeven    = new NatureObject[140];
-	public GameObject[] treesMapChunkEight    = new NatureObject[140];
-	public GameObject[] treesMapChunkEleven   = new NatureObject[30];
-	public GameObject[] treesMapChunkTwelve   = new NatureObject[140];
-	public GameObject[] treesMapChunkThirteen = new NatureObject[140];
-	public GameObject[] treesMapChunkFourteen = new NatureObject[140];
-	public GameObject[] treesMapChunkFifteen  = new NatureObject[140];
-	public GameObject[] treesMapChunkSixteen  = new NatureObject[140];
-	public GameObject[] treesMapChunkEighteen = new NatureObject[9];
+	public GameObject[] treesMapChunkTwo         = new NatureObject[45];
+	public GameObject[] treesMapChunkThree       = new NatureObject[86];
+	public GameObject[] treesMapChunkFour        = new NatureObject[140];
+	public GameObject[] treesMapChunkFive        = new NatureObject[140];
+	public GameObject[] treesMapChunkSix         = new NatureObject[140];
+	public GameObject[] treesMapChunkSeven       = new NatureObject[140];
+	public GameObject[] treesMapChunkEight       = new NatureObject[140];
+	public GameObject[] treesMapChunkEleven      = new NatureObject[30];
+	public GameObject[] treesMapChunkTwelve      = new NatureObject[140];
+	public GameObject[] treesMapChunkThirteen    = new NatureObject[140];
+	public GameObject[] treesMapChunkFourteen    = new NatureObject[140];
+	public GameObject[] treesMapChunkFifteen     = new NatureObject[140];
+	public GameObject[] treesMapChunkSixteen     = new NatureObject[140];
+	public GameObject[] treesMapChunkEighteen    = new NatureObject[9];
+	public GameObject[] treesMapChunkTwenty      = new NatureObject[49];
+	public GameObject[] treesMapChunkTwentyOne   = new NatureObject[140];
+	public GameObject[] treesMapChunkTwentyTwo   = new NatureObject[140];
+	public GameObject[] treesMapChunkTwentyThree = new NatureObject[140];
+	public GameObject[] treesMapChunkTwentyFour  = new NatureObject[140];
 
 	/**
 	 * This holds all game objects, for the purpose of drawing order.
@@ -52,7 +57,7 @@ public class GameObjectLoader {
 		int rowOneStartPosition   = 1;
 		int rowTwoStartPosition   = rowOneStartPosition + verticalRowIncrement;
 		int rowThreeStartPosition = rowTwoStartPosition + verticalRowIncrement;
-		
+
 		// MapChunkTwo trees.  
 		int startXPosition   = 100;
 		int row   		     = rowOneStartPosition;
@@ -206,7 +211,7 @@ public class GameObjectLoader {
 		treesMapChunkThree[83] = new NatureObject(startXPosition + 55, row);
 		treesMapChunkThree[84] = new NatureObject(startXPosition + 58, row);
 		treesMapChunkThree[85] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkFourTrees.
 		startXPosition		   = 204;
 		row 				   = rowOneStartPosition;
@@ -364,7 +369,7 @@ public class GameObjectLoader {
 		treesMapChunkFour[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkFour[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkFour[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkFive trees.
 		startXPosition		   = 272;
 		row 				   = rowOneStartPosition;
@@ -522,7 +527,7 @@ public class GameObjectLoader {
 		treesMapChunkFive[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkFive[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkFive[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkSix trees.
 		startXPosition		  = 340;
 		row 				  = rowOneStartPosition;
@@ -680,7 +685,7 @@ public class GameObjectLoader {
 		treesMapChunkSix[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkSix[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkSix[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkSeven trees.
 		startXPosition		    = 408;
 		row 				    = rowOneStartPosition;
@@ -838,7 +843,7 @@ public class GameObjectLoader {
 		treesMapChunkSeven[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkSeven[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkSeven[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkEight trees.
 		startXPosition		    = 476;
 		row 				    = rowOneStartPosition;
@@ -996,7 +1001,7 @@ public class GameObjectLoader {
 		treesMapChunkEight[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkEight[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkEight[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkEleven trees.
 		startXPosition         = 135;
 		row                    = rowTwoStartPosition + 2;
@@ -1038,7 +1043,7 @@ public class GameObjectLoader {
 		treesMapChunkEleven[28] = new NatureObject(startXPosition + 66, row);
 		row 				    = rowTwoStartPosition + 49;
 		treesMapChunkEleven[29] = new NatureObject(startXPosition + 68, row);
-		
+
 		// MapChunkTwelve trees.
 		startXPosition		     = 204;
 		row 				     = rowTwoStartPosition;
@@ -1196,7 +1201,7 @@ public class GameObjectLoader {
 		treesMapChunkTwelve[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkTwelve[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkTwelve[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkThirteen trees.
 		startXPosition		       = 272;
 		row 				       = rowTwoStartPosition;
@@ -1354,7 +1359,7 @@ public class GameObjectLoader {
 		treesMapChunkThirteen[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkThirteen[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkThirteen[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkFourteen trees.
 		startXPosition		       = 340;
 		row 				       = rowTwoStartPosition;
@@ -1512,7 +1517,7 @@ public class GameObjectLoader {
 		treesMapChunkFourteen[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkFourteen[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkFourteen[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkFifteen trees.
 		startXPosition		      = 340 + 68;
 		row 				      = rowTwoStartPosition;
@@ -1670,7 +1675,7 @@ public class GameObjectLoader {
 		treesMapChunkFifteen[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkFifteen[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkFifteen[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkSixteen trees.
 		startXPosition		      = 340 + 68 + 68;
 		row 				      = rowTwoStartPosition;
@@ -1828,7 +1833,7 @@ public class GameObjectLoader {
 		treesMapChunkSixteen[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkSixteen[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkSixteen[139] = new NatureObject(startXPosition + 66, row);
-		
+
 		// MapChunkEighteen trees.
 		startXPosition		     = 68;
 		row                      = rowThreeStartPosition;
@@ -1847,7 +1852,702 @@ public class GameObjectLoader {
 		row                      = rowThreeStartPosition + 42;
 		treesMapChunkEighteen[7] = new NatureObject(startXPosition + 3, row);
 		treesMapChunkEighteen[8] = new NatureObject(startXPosition + 4, row);
+
+		// MapChunkTwenty trees.
+		startXPosition		     = 68 + 68 + 68;
+		row                      = rowThreeStartPosition + 5;
+		treesMapChunkTwenty[0]   = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwenty[1]   = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwenty[2]   = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwenty[3]   = new NatureObject(startXPosition + 42, row);
+		treesMapChunkTwenty[4]   = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwenty[5]   = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwenty[6]   = new NatureObject(startXPosition + 54, row);
+		row                      = rowThreeStartPosition + 13;
+		treesMapChunkTwenty[7]   = new NatureObject(startXPosition + 34, row);
+		treesMapChunkTwenty[8]   = new NatureObject(startXPosition + 35, row);
+		treesMapChunkTwenty[9]   = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwenty[10]  = new NatureObject(startXPosition + 52, row);
+		row                      = rowThreeStartPosition + 17;
+		treesMapChunkTwenty[11]  = new NatureObject(startXPosition + 43, row);
+		treesMapChunkTwenty[12]  = new NatureObject(startXPosition + 44, row);
+		treesMapChunkTwenty[13]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwenty[14]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwenty[15]  = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwenty[16]  = new NatureObject(startXPosition + 60, row);
+		treesMapChunkTwenty[17]  = new NatureObject(startXPosition + 67, row);
+		row                      = rowThreeStartPosition + 21;
+		treesMapChunkTwenty[18]  = new NatureObject(startXPosition + 32, row);
+		treesMapChunkTwenty[19]  = new NatureObject(startXPosition + 33, row);
+		treesMapChunkTwenty[20]  = new NatureObject(startXPosition + 37, row);
+		treesMapChunkTwenty[21]  = new NatureObject(startXPosition + 38, row);
+		treesMapChunkTwenty[22]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwenty[23]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwenty[24]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwenty[25]  = new NatureObject(startXPosition + 55, row);
+		treesMapChunkTwenty[26]  = new NatureObject(startXPosition + 63, row);
+		row                      = rowThreeStartPosition + 29;
+		treesMapChunkTwenty[27]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwenty[28]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwenty[29]  = new NatureObject(startXPosition + 42, row);
+		treesMapChunkTwenty[30]  = new NatureObject(startXPosition + 43, row);
+		treesMapChunkTwenty[31]  = new NatureObject(startXPosition + 44, row);
+		treesMapChunkTwenty[32]  = new NatureObject(startXPosition + 54, row);
+		treesMapChunkTwenty[33]  = new NatureObject(startXPosition + 55, row);
+		treesMapChunkTwenty[34]  = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwenty[35]  = new NatureObject(startXPosition + 57, row);
+		treesMapChunkTwenty[36]  = new NatureObject(startXPosition + 58, row);
+		row                      = rowThreeStartPosition + 35;
+		treesMapChunkTwenty[37]  = new NatureObject(startXPosition + 31, row);
+		treesMapChunkTwenty[38]  = new NatureObject(startXPosition + 34, row);
+		treesMapChunkTwenty[39]  = new NatureObject(startXPosition + 37, row);
+		treesMapChunkTwenty[40]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwenty[41]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwenty[42]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwenty[43]  = new NatureObject(startXPosition + 60, row);
+		treesMapChunkTwenty[44]  = new NatureObject(startXPosition + 61, row);
+		treesMapChunkTwenty[45]  = new NatureObject(startXPosition + 62, row);
+		row                      = rowThreeStartPosition + 45;
+		treesMapChunkTwenty[46]  = new NatureObject(startXPosition + 35, row);
+		treesMapChunkTwenty[47]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwenty[48]  = new NatureObject(startXPosition + 55, row);
+
+		// MapChunkTwentyOne trees.
+		startXPosition		        = 68 + 68 + 68 + 68;
+		row 				        = rowThreeStartPosition;
+		treesMapChunkTwentyOne[0]   = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyOne[1]   = new NatureObject(startXPosition + 1, row);
+		treesMapChunkTwentyOne[2]   = new NatureObject(startXPosition + 2, row);
+		treesMapChunkTwentyOne[3]   = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyOne[4]   = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyOne[5]   = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyOne[6]   = new NatureObject(startXPosition + 6, row);
+		treesMapChunkTwentyOne[7]   = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyOne[8]   = new NatureObject(startXPosition + 8, row);
+		treesMapChunkTwentyOne[9]   = new NatureObject(startXPosition + 9, row);
+		treesMapChunkTwentyOne[10]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyOne[11]  = new NatureObject(startXPosition + 21, row);
+		treesMapChunkTwentyOne[12]  = new NatureObject(startXPosition + 22, row);
+		treesMapChunkTwentyOne[13]  = new NatureObject(startXPosition + 23, row);
+		treesMapChunkTwentyOne[14]  = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyOne[15]  = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyOne[16]  = new NatureObject(startXPosition + 26, row);
+		treesMapChunkTwentyOne[17]  = new NatureObject(startXPosition + 27, row);
+		treesMapChunkTwentyOne[18]  = new NatureObject(startXPosition + 28, row);
+		treesMapChunkTwentyOne[19]  = new NatureObject(startXPosition + 29, row);
+		treesMapChunkTwentyOne[20]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyOne[21]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwentyOne[22]  = new NatureObject(startXPosition + 42, row);
+		treesMapChunkTwentyOne[23]  = new NatureObject(startXPosition + 43, row);
+		treesMapChunkTwentyOne[24]  = new NatureObject(startXPosition + 44, row);
+		treesMapChunkTwentyOne[25]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwentyOne[26]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyOne[27]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwentyOne[28]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwentyOne[29]  = new NatureObject(startXPosition + 49, row);
+		treesMapChunkTwentyOne[30]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyOne[31]  = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwentyOne[32]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwentyOne[33]  = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwentyOne[34]  = new NatureObject(startXPosition + 54, row);
+		treesMapChunkTwentyOne[35]  = new NatureObject(startXPosition + 55, row);
+		treesMapChunkTwentyOne[36]  = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyOne[37]  = new NatureObject(startXPosition + 57, row);
+		treesMapChunkTwentyOne[38]  = new NatureObject(startXPosition + 58, row);
+		treesMapChunkTwentyOne[39]  = new NatureObject(startXPosition + 59, row);
+		treesMapChunkTwentyOne[40]  = new NatureObject(startXPosition + 60, row);
+		treesMapChunkTwentyOne[41]  = new NatureObject(startXPosition + 61, row);
+		treesMapChunkTwentyOne[42]  = new NatureObject(startXPosition + 62, row);
+		treesMapChunkTwentyOne[43]  = new NatureObject(startXPosition + 63, row);
+		treesMapChunkTwentyOne[44]  = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyOne[45]  = new NatureObject(startXPosition + 65, row);
+		treesMapChunkTwentyOne[46]  = new NatureObject(startXPosition + 66, row);
+		treesMapChunkTwentyOne[47]  = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 1;
+		treesMapChunkTwentyOne[48]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyOne[49]  = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyOne[50]  = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyOne[51]  = new NatureObject(startXPosition + 6, row);
+		treesMapChunkTwentyOne[52]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyOne[53]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyOne[54]  = new NatureObject(startXPosition + 45, row);
+		row 			            = rowThreeStartPosition + 2;
+		treesMapChunkTwentyOne[55]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyOne[56]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyOne[57]  = new NatureObject(startXPosition + 45, row);
+		row 			            = rowThreeStartPosition + 3;
+		treesMapChunkTwentyOne[58]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyOne[59]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyOne[60]  = new NatureObject(startXPosition + 45, row);
+		row 				        = rowThreeStartPosition + 4;
+		treesMapChunkTwentyOne[61]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyOne[62]  = new NatureObject(startXPosition + 21, row);
+		treesMapChunkTwentyOne[63]  = new NatureObject(startXPosition + 22, row);
+		treesMapChunkTwentyOne[64]  = new NatureObject(startXPosition + 23, row);
+		treesMapChunkTwentyOne[65]  = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyOne[66]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyOne[67]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwentyOne[68]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyOne[69]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwentyOne[70]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwentyOne[71]  = new NatureObject(startXPosition + 49, row);
+		row 				        = rowThreeStartPosition + 8;
+		treesMapChunkTwentyOne[72]  = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyOne[73]  = new NatureObject(startXPosition + 1, row);
+		treesMapChunkTwentyOne[74]  = new NatureObject(startXPosition + 2, row);
+		treesMapChunkTwentyOne[75]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyOne[76]  = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyOne[77]  = new NatureObject(startXPosition + 10, row);
+		treesMapChunkTwentyOne[78]  = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyOne[79]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyOne[80]  = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyOne[81]  = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyOne[82]  = new NatureObject(startXPosition + 35, row);
+		treesMapChunkTwentyOne[83]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyOne[84]  = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwentyOne[85]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwentyOne[86]  = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwentyOne[87]  = new NatureObject(startXPosition + 63, row);
+		treesMapChunkTwentyOne[88]  = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyOne[89]  = new NatureObject(startXPosition + 65, row);
+		row 				        = rowThreeStartPosition + 9;
+		treesMapChunkTwentyOne[90]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyOne[91]  = new NatureObject(startXPosition + 8, row);
+		treesMapChunkTwentyOne[92]  = new NatureObject(startXPosition + 14, row);
+		treesMapChunkTwentyOne[93]  = new NatureObject(startXPosition + 28, row);
+		treesMapChunkTwentyOne[94]  = new NatureObject(startXPosition + 29, row);
+		treesMapChunkTwentyOne[95]  = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyOne[96]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyOne[97]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwentyOne[98]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyOne[99]  = new NatureObject(startXPosition + 60, row);
+		row 				        = rowThreeStartPosition + 10;
+		treesMapChunkTwentyOne[100] = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyOne[101] = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyOne[102] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyOne[103] = new NatureObject(startXPosition + 10, row);
+		treesMapChunkTwentyOne[104] = new NatureObject(startXPosition + 13, row);
+		treesMapChunkTwentyOne[105] = new NatureObject(startXPosition + 37, row);
+		treesMapChunkTwentyOne[106] = new NatureObject(startXPosition + 38, row);
+		row 				        = rowThreeStartPosition + 19;
+		treesMapChunkTwentyOne[107] = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyOne[108] = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyOne[109] = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyOne[110] = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyOne[111] = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyOne[112] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 20;
+		treesMapChunkTwentyOne[113] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 21;
+		treesMapChunkTwentyOne[114] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 22;
+		treesMapChunkTwentyOne[115] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 24;
+		treesMapChunkTwentyOne[116] = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyOne[117] = new NatureObject(startXPosition + 14, row);
+		treesMapChunkTwentyOne[118] = new NatureObject(startXPosition + 26, row);
+		treesMapChunkTwentyOne[119] = new NatureObject(startXPosition + 33, row);
+		treesMapChunkTwentyOne[120] = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyOne[121] = new NatureObject(startXPosition + 65, row);
+		treesMapChunkTwentyOne[122] = new NatureObject(startXPosition + 66, row);
+		treesMapChunkTwentyOne[123] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 34;
+		treesMapChunkTwentyOne[124] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyOne[125] = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyOne[126] = new NatureObject(startXPosition + 16, row);
+		treesMapChunkTwentyOne[127] = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyOne[128] = new NatureObject(startXPosition + 36, row);
+		treesMapChunkTwentyOne[129] = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyOne[130] = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyOne[131] = new NatureObject(startXPosition + 66, row);
+		row 				        = rowThreeStartPosition + 49;
+		treesMapChunkTwentyOne[132] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyOne[133] = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyOne[134] = new NatureObject(startXPosition + 16, row);
+		treesMapChunkTwentyOne[135] = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyOne[136] = new NatureObject(startXPosition + 36, row);
+		treesMapChunkTwentyOne[137] = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyOne[138] = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyOne[139] = new NatureObject(startXPosition + 66, row);
 		
+		// MapChunkTwentyTwo trees.
+		startXPosition		        = 68 + 68 + 68 + 68 + 68;
+		row 				        = rowThreeStartPosition;
+		treesMapChunkTwentyTwo[0]   = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyTwo[1]   = new NatureObject(startXPosition + 1, row);
+		treesMapChunkTwentyTwo[2]   = new NatureObject(startXPosition + 2, row);
+		treesMapChunkTwentyTwo[3]   = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyTwo[4]   = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyTwo[5]   = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyTwo[6]   = new NatureObject(startXPosition + 6, row);
+		treesMapChunkTwentyTwo[7]   = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyTwo[8]   = new NatureObject(startXPosition + 8, row);
+		treesMapChunkTwentyTwo[9]   = new NatureObject(startXPosition + 9, row);
+		treesMapChunkTwentyTwo[10]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyTwo[11]  = new NatureObject(startXPosition + 21, row);
+		treesMapChunkTwentyTwo[12]  = new NatureObject(startXPosition + 22, row);
+		treesMapChunkTwentyTwo[13]  = new NatureObject(startXPosition + 23, row);
+		treesMapChunkTwentyTwo[14]  = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyTwo[15]  = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyTwo[16]  = new NatureObject(startXPosition + 26, row);
+		treesMapChunkTwentyTwo[17]  = new NatureObject(startXPosition + 27, row);
+		treesMapChunkTwentyTwo[18]  = new NatureObject(startXPosition + 28, row);
+		treesMapChunkTwentyTwo[19]  = new NatureObject(startXPosition + 29, row);
+		treesMapChunkTwentyTwo[20]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyTwo[21]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwentyTwo[22]  = new NatureObject(startXPosition + 42, row);
+		treesMapChunkTwentyTwo[23]  = new NatureObject(startXPosition + 43, row);
+		treesMapChunkTwentyTwo[24]  = new NatureObject(startXPosition + 44, row);
+		treesMapChunkTwentyTwo[25]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwentyTwo[26]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyTwo[27]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwentyTwo[28]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwentyTwo[29]  = new NatureObject(startXPosition + 49, row);
+		treesMapChunkTwentyTwo[30]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyTwo[31]  = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwentyTwo[32]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwentyTwo[33]  = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwentyTwo[34]  = new NatureObject(startXPosition + 54, row);
+		treesMapChunkTwentyTwo[35]  = new NatureObject(startXPosition + 55, row);
+		treesMapChunkTwentyTwo[36]  = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyTwo[37]  = new NatureObject(startXPosition + 57, row);
+		treesMapChunkTwentyTwo[38]  = new NatureObject(startXPosition + 58, row);
+		treesMapChunkTwentyTwo[39]  = new NatureObject(startXPosition + 59, row);
+		treesMapChunkTwentyTwo[40]  = new NatureObject(startXPosition + 60, row);
+		treesMapChunkTwentyTwo[41]  = new NatureObject(startXPosition + 61, row);
+		treesMapChunkTwentyTwo[42]  = new NatureObject(startXPosition + 62, row);
+		treesMapChunkTwentyTwo[43]  = new NatureObject(startXPosition + 63, row);
+		treesMapChunkTwentyTwo[44]  = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyTwo[45]  = new NatureObject(startXPosition + 65, row);
+		treesMapChunkTwentyTwo[46]  = new NatureObject(startXPosition + 66, row);
+		treesMapChunkTwentyTwo[47]  = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 1;
+		treesMapChunkTwentyTwo[48]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyTwo[49]  = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyTwo[50]  = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyTwo[51]  = new NatureObject(startXPosition + 6, row);
+		treesMapChunkTwentyTwo[52]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyTwo[53]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyTwo[54]  = new NatureObject(startXPosition + 45, row);
+		row 			            = rowThreeStartPosition + 2;
+		treesMapChunkTwentyTwo[55]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyTwo[56]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyTwo[57]  = new NatureObject(startXPosition + 45, row);
+		row 			            = rowThreeStartPosition + 3;
+		treesMapChunkTwentyTwo[58]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyTwo[59]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyTwo[60]  = new NatureObject(startXPosition + 45, row);
+		row 				        = rowThreeStartPosition + 4;
+		treesMapChunkTwentyTwo[61]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyTwo[62]  = new NatureObject(startXPosition + 21, row);
+		treesMapChunkTwentyTwo[63]  = new NatureObject(startXPosition + 22, row);
+		treesMapChunkTwentyTwo[64]  = new NatureObject(startXPosition + 23, row);
+		treesMapChunkTwentyTwo[65]  = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyTwo[66]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyTwo[67]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwentyTwo[68]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyTwo[69]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwentyTwo[70]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwentyTwo[71]  = new NatureObject(startXPosition + 49, row);
+		row 				        = rowThreeStartPosition + 8;
+		treesMapChunkTwentyTwo[72]  = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyTwo[73]  = new NatureObject(startXPosition + 1, row);
+		treesMapChunkTwentyTwo[74]  = new NatureObject(startXPosition + 2, row);
+		treesMapChunkTwentyTwo[75]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyTwo[76]  = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyTwo[77]  = new NatureObject(startXPosition + 10, row);
+		treesMapChunkTwentyTwo[78]  = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyTwo[79]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyTwo[80]  = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyTwo[81]  = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyTwo[82]  = new NatureObject(startXPosition + 35, row);
+		treesMapChunkTwentyTwo[83]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyTwo[84]  = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwentyTwo[85]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwentyTwo[86]  = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwentyTwo[87]  = new NatureObject(startXPosition + 63, row);
+		treesMapChunkTwentyTwo[88]  = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyTwo[89]  = new NatureObject(startXPosition + 65, row);
+		row 				        = rowThreeStartPosition + 9;
+		treesMapChunkTwentyTwo[90]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyTwo[91]  = new NatureObject(startXPosition + 8, row);
+		treesMapChunkTwentyTwo[92]  = new NatureObject(startXPosition + 14, row);
+		treesMapChunkTwentyTwo[93]  = new NatureObject(startXPosition + 28, row);
+		treesMapChunkTwentyTwo[94]  = new NatureObject(startXPosition + 29, row);
+		treesMapChunkTwentyTwo[95]  = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyTwo[96]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyTwo[97]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwentyTwo[98]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyTwo[99]  = new NatureObject(startXPosition + 60, row);
+		row 				        = rowThreeStartPosition + 10;
+		treesMapChunkTwentyTwo[100] = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyTwo[101] = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyTwo[102] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyTwo[103] = new NatureObject(startXPosition + 10, row);
+		treesMapChunkTwentyTwo[104] = new NatureObject(startXPosition + 13, row);
+		treesMapChunkTwentyTwo[105] = new NatureObject(startXPosition + 37, row);
+		treesMapChunkTwentyTwo[106] = new NatureObject(startXPosition + 38, row);
+		row 				        = rowThreeStartPosition + 19;
+		treesMapChunkTwentyTwo[107] = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyTwo[108] = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyTwo[109] = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyTwo[110] = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyTwo[111] = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyTwo[112] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 20;
+		treesMapChunkTwentyTwo[113] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 21;
+		treesMapChunkTwentyTwo[114] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 22;
+		treesMapChunkTwentyTwo[115] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 24;
+		treesMapChunkTwentyTwo[116] = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyTwo[117] = new NatureObject(startXPosition + 14, row);
+		treesMapChunkTwentyTwo[118] = new NatureObject(startXPosition + 26, row);
+		treesMapChunkTwentyTwo[119] = new NatureObject(startXPosition + 33, row);
+		treesMapChunkTwentyTwo[120] = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyTwo[121] = new NatureObject(startXPosition + 65, row);
+		treesMapChunkTwentyTwo[122] = new NatureObject(startXPosition + 66, row);
+		treesMapChunkTwentyTwo[123] = new NatureObject(startXPosition + 67, row);
+		row 				        = rowThreeStartPosition + 34;
+		treesMapChunkTwentyTwo[124] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyTwo[125] = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyTwo[126] = new NatureObject(startXPosition + 16, row);
+		treesMapChunkTwentyTwo[127] = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyTwo[128] = new NatureObject(startXPosition + 36, row);
+		treesMapChunkTwentyTwo[129] = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyTwo[130] = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyTwo[131] = new NatureObject(startXPosition + 66, row);
+		row 				        = rowThreeStartPosition + 49;
+		treesMapChunkTwentyTwo[132] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyTwo[133] = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyTwo[134] = new NatureObject(startXPosition + 16, row);
+		treesMapChunkTwentyTwo[135] = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyTwo[136] = new NatureObject(startXPosition + 36, row);
+		treesMapChunkTwentyTwo[137] = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyTwo[138] = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyTwo[139] = new NatureObject(startXPosition + 66, row);
+		
+		// MapChunkTwentyThree trees.
+		startXPosition		          = 68 + 68 + 68 + 68 + 68 + 68;
+		row 				          = rowThreeStartPosition;
+		treesMapChunkTwentyThree[0]   = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyThree[1]   = new NatureObject(startXPosition + 1, row);
+		treesMapChunkTwentyThree[2]   = new NatureObject(startXPosition + 2, row);
+		treesMapChunkTwentyThree[3]   = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyThree[4]   = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyThree[5]   = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyThree[6]   = new NatureObject(startXPosition + 6, row);
+		treesMapChunkTwentyThree[7]   = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyThree[8]   = new NatureObject(startXPosition + 8, row);
+		treesMapChunkTwentyThree[9]   = new NatureObject(startXPosition + 9, row);
+		treesMapChunkTwentyThree[10]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyThree[11]  = new NatureObject(startXPosition + 21, row);
+		treesMapChunkTwentyThree[12]  = new NatureObject(startXPosition + 22, row);
+		treesMapChunkTwentyThree[13]  = new NatureObject(startXPosition + 23, row);
+		treesMapChunkTwentyThree[14]  = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyThree[15]  = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyThree[16]  = new NatureObject(startXPosition + 26, row);
+		treesMapChunkTwentyThree[17]  = new NatureObject(startXPosition + 27, row);
+		treesMapChunkTwentyThree[18]  = new NatureObject(startXPosition + 28, row);
+		treesMapChunkTwentyThree[19]  = new NatureObject(startXPosition + 29, row);
+		treesMapChunkTwentyThree[20]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyThree[21]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwentyThree[22]  = new NatureObject(startXPosition + 42, row);
+		treesMapChunkTwentyThree[23]  = new NatureObject(startXPosition + 43, row);
+		treesMapChunkTwentyThree[24]  = new NatureObject(startXPosition + 44, row);
+		treesMapChunkTwentyThree[25]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwentyThree[26]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyThree[27]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwentyThree[28]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwentyThree[29]  = new NatureObject(startXPosition + 49, row);
+		treesMapChunkTwentyThree[30]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyThree[31]  = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwentyThree[32]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwentyThree[33]  = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwentyThree[34]  = new NatureObject(startXPosition + 54, row);
+		treesMapChunkTwentyThree[35]  = new NatureObject(startXPosition + 55, row);
+		treesMapChunkTwentyThree[36]  = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyThree[37]  = new NatureObject(startXPosition + 57, row);
+		treesMapChunkTwentyThree[38]  = new NatureObject(startXPosition + 58, row);
+		treesMapChunkTwentyThree[39]  = new NatureObject(startXPosition + 59, row);
+		treesMapChunkTwentyThree[40]  = new NatureObject(startXPosition + 60, row);
+		treesMapChunkTwentyThree[41]  = new NatureObject(startXPosition + 61, row);
+		treesMapChunkTwentyThree[42]  = new NatureObject(startXPosition + 62, row);
+		treesMapChunkTwentyThree[43]  = new NatureObject(startXPosition + 63, row);
+		treesMapChunkTwentyThree[44]  = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyThree[45]  = new NatureObject(startXPosition + 65, row);
+		treesMapChunkTwentyThree[46]  = new NatureObject(startXPosition + 66, row);
+		treesMapChunkTwentyThree[47]  = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 1;
+		treesMapChunkTwentyThree[48]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyThree[49]  = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyThree[50]  = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyThree[51]  = new NatureObject(startXPosition + 6, row);
+		treesMapChunkTwentyThree[52]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyThree[53]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyThree[54]  = new NatureObject(startXPosition + 45, row);
+		row 			              = rowThreeStartPosition + 2;
+		treesMapChunkTwentyThree[55]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyThree[56]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyThree[57]  = new NatureObject(startXPosition + 45, row);
+		row 			              = rowThreeStartPosition + 3;
+		treesMapChunkTwentyThree[58]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyThree[59]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyThree[60]  = new NatureObject(startXPosition + 45, row);
+		row 				          = rowThreeStartPosition + 4;
+		treesMapChunkTwentyThree[61]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyThree[62]  = new NatureObject(startXPosition + 21, row);
+		treesMapChunkTwentyThree[63]  = new NatureObject(startXPosition + 22, row);
+		treesMapChunkTwentyThree[64]  = new NatureObject(startXPosition + 23, row);
+		treesMapChunkTwentyThree[65]  = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyThree[66]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyThree[67]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwentyThree[68]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyThree[69]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwentyThree[70]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwentyThree[71]  = new NatureObject(startXPosition + 49, row);
+		row 				          = rowThreeStartPosition + 8;
+		treesMapChunkTwentyThree[72]  = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyThree[73]  = new NatureObject(startXPosition + 1, row);
+		treesMapChunkTwentyThree[74]  = new NatureObject(startXPosition + 2, row);
+		treesMapChunkTwentyThree[75]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyThree[76]  = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyThree[77]  = new NatureObject(startXPosition + 10, row);
+		treesMapChunkTwentyThree[78]  = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyThree[79]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyThree[80]  = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyThree[81]  = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyThree[82]  = new NatureObject(startXPosition + 35, row);
+		treesMapChunkTwentyThree[83]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyThree[84]  = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwentyThree[85]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwentyThree[86]  = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwentyThree[87]  = new NatureObject(startXPosition + 63, row);
+		treesMapChunkTwentyThree[88]  = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyThree[89]  = new NatureObject(startXPosition + 65, row);
+		row 				          = rowThreeStartPosition + 9;
+		treesMapChunkTwentyThree[90]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyThree[91]  = new NatureObject(startXPosition + 8, row);
+		treesMapChunkTwentyThree[92]  = new NatureObject(startXPosition + 14, row);
+		treesMapChunkTwentyThree[93]  = new NatureObject(startXPosition + 28, row);
+		treesMapChunkTwentyThree[94]  = new NatureObject(startXPosition + 29, row);
+		treesMapChunkTwentyThree[95]  = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyThree[96]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyThree[97]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwentyThree[98]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyThree[99]  = new NatureObject(startXPosition + 60, row);
+		row 				          = rowThreeStartPosition + 10;
+		treesMapChunkTwentyThree[100] = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyThree[101] = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyThree[102] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyThree[103] = new NatureObject(startXPosition + 10, row);
+		treesMapChunkTwentyThree[104] = new NatureObject(startXPosition + 13, row);
+		treesMapChunkTwentyThree[105] = new NatureObject(startXPosition + 37, row);
+		treesMapChunkTwentyThree[106] = new NatureObject(startXPosition + 38, row);
+		row 				          = rowThreeStartPosition + 19;
+		treesMapChunkTwentyThree[107] = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyThree[108] = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyThree[109] = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyThree[110] = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyThree[111] = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyThree[112] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 20;
+		treesMapChunkTwentyThree[113] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 21;
+		treesMapChunkTwentyThree[114] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 22;
+		treesMapChunkTwentyThree[115] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 24;
+		treesMapChunkTwentyThree[116] = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyThree[117] = new NatureObject(startXPosition + 14, row);
+		treesMapChunkTwentyThree[118] = new NatureObject(startXPosition + 26, row);
+		treesMapChunkTwentyThree[119] = new NatureObject(startXPosition + 33, row);
+		treesMapChunkTwentyThree[120] = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyThree[121] = new NatureObject(startXPosition + 65, row);
+		treesMapChunkTwentyThree[122] = new NatureObject(startXPosition + 66, row);
+		treesMapChunkTwentyThree[123] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 34;
+		treesMapChunkTwentyThree[124] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyThree[125] = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyThree[126] = new NatureObject(startXPosition + 16, row);
+		treesMapChunkTwentyThree[127] = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyThree[128] = new NatureObject(startXPosition + 36, row);
+		treesMapChunkTwentyThree[129] = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyThree[130] = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyThree[131] = new NatureObject(startXPosition + 66, row);
+		row 				          = rowThreeStartPosition + 49;
+		treesMapChunkTwentyThree[132] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyThree[133] = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyThree[134] = new NatureObject(startXPosition + 16, row);
+		treesMapChunkTwentyThree[135] = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyThree[136] = new NatureObject(startXPosition + 36, row);
+		treesMapChunkTwentyThree[137] = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyThree[138] = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyThree[139] = new NatureObject(startXPosition + 66, row);
+		
+		
+		
+		
+		
+		// MapChunkTwentyFour trees.
+		startXPosition		          = 68 + 68 + 68 + 68 + 68 + 68 + 68;
+		row 				          = rowThreeStartPosition;
+		treesMapChunkTwentyFour[0]   = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyFour[1]   = new NatureObject(startXPosition + 1, row);
+		treesMapChunkTwentyFour[2]   = new NatureObject(startXPosition + 2, row);
+		treesMapChunkTwentyFour[3]   = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyFour[4]   = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyFour[5]   = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyFour[6]   = new NatureObject(startXPosition + 6, row);
+		treesMapChunkTwentyFour[7]   = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyFour[8]   = new NatureObject(startXPosition + 8, row);
+		treesMapChunkTwentyFour[9]   = new NatureObject(startXPosition + 9, row);
+		treesMapChunkTwentyFour[10]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyFour[11]  = new NatureObject(startXPosition + 21, row);
+		treesMapChunkTwentyFour[12]  = new NatureObject(startXPosition + 22, row);
+		treesMapChunkTwentyFour[13]  = new NatureObject(startXPosition + 23, row);
+		treesMapChunkTwentyFour[14]  = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyFour[15]  = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyFour[16]  = new NatureObject(startXPosition + 26, row);
+		treesMapChunkTwentyFour[17]  = new NatureObject(startXPosition + 27, row);
+		treesMapChunkTwentyFour[18]  = new NatureObject(startXPosition + 28, row);
+		treesMapChunkTwentyFour[19]  = new NatureObject(startXPosition + 29, row);
+		treesMapChunkTwentyFour[20]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyFour[21]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwentyFour[22]  = new NatureObject(startXPosition + 42, row);
+		treesMapChunkTwentyFour[23]  = new NatureObject(startXPosition + 43, row);
+		treesMapChunkTwentyFour[24]  = new NatureObject(startXPosition + 44, row);
+		treesMapChunkTwentyFour[25]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwentyFour[26]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyFour[27]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwentyFour[28]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwentyFour[29]  = new NatureObject(startXPosition + 49, row);
+		treesMapChunkTwentyFour[30]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyFour[31]  = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwentyFour[32]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwentyFour[33]  = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwentyFour[34]  = new NatureObject(startXPosition + 54, row);
+		treesMapChunkTwentyFour[35]  = new NatureObject(startXPosition + 55, row);
+		treesMapChunkTwentyFour[36]  = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyFour[37]  = new NatureObject(startXPosition + 57, row);
+		treesMapChunkTwentyFour[38]  = new NatureObject(startXPosition + 58, row);
+		treesMapChunkTwentyFour[39]  = new NatureObject(startXPosition + 59, row);
+		treesMapChunkTwentyFour[40]  = new NatureObject(startXPosition + 60, row);
+		treesMapChunkTwentyFour[41]  = new NatureObject(startXPosition + 61, row);
+		treesMapChunkTwentyFour[42]  = new NatureObject(startXPosition + 62, row);
+		treesMapChunkTwentyFour[43]  = new NatureObject(startXPosition + 63, row);
+		treesMapChunkTwentyFour[44]  = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyFour[45]  = new NatureObject(startXPosition + 65, row);
+		treesMapChunkTwentyFour[46]  = new NatureObject(startXPosition + 66, row);
+		treesMapChunkTwentyFour[47]  = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 1;
+		treesMapChunkTwentyFour[48]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyFour[49]  = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyFour[50]  = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyFour[51]  = new NatureObject(startXPosition + 6, row);
+		treesMapChunkTwentyFour[52]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyFour[53]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyFour[54]  = new NatureObject(startXPosition + 45, row);
+		row 			              = rowThreeStartPosition + 2;
+		treesMapChunkTwentyFour[55]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyFour[56]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyFour[57]  = new NatureObject(startXPosition + 45, row);
+		row 			              = rowThreeStartPosition + 3;
+		treesMapChunkTwentyFour[58]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyFour[59]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyFour[60]  = new NatureObject(startXPosition + 45, row);
+		row 				          = rowThreeStartPosition + 4;
+		treesMapChunkTwentyFour[61]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyFour[62]  = new NatureObject(startXPosition + 21, row);
+		treesMapChunkTwentyFour[63]  = new NatureObject(startXPosition + 22, row);
+		treesMapChunkTwentyFour[64]  = new NatureObject(startXPosition + 23, row);
+		treesMapChunkTwentyFour[65]  = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyFour[66]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyFour[67]  = new NatureObject(startXPosition + 45, row);
+		treesMapChunkTwentyFour[68]  = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyFour[69]  = new NatureObject(startXPosition + 47, row);
+		treesMapChunkTwentyFour[70]  = new NatureObject(startXPosition + 48, row);
+		treesMapChunkTwentyFour[71]  = new NatureObject(startXPosition + 49, row);
+		row 				          = rowThreeStartPosition + 8;
+		treesMapChunkTwentyFour[72]  = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyFour[73]  = new NatureObject(startXPosition + 1, row);
+		treesMapChunkTwentyFour[74]  = new NatureObject(startXPosition + 2, row);
+		treesMapChunkTwentyFour[75]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyFour[76]  = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyFour[77]  = new NatureObject(startXPosition + 10, row);
+		treesMapChunkTwentyFour[78]  = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyFour[79]  = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyFour[80]  = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyFour[81]  = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyFour[82]  = new NatureObject(startXPosition + 35, row);
+		treesMapChunkTwentyFour[83]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyFour[84]  = new NatureObject(startXPosition + 51, row);
+		treesMapChunkTwentyFour[85]  = new NatureObject(startXPosition + 52, row);
+		treesMapChunkTwentyFour[86]  = new NatureObject(startXPosition + 53, row);
+		treesMapChunkTwentyFour[87]  = new NatureObject(startXPosition + 63, row);
+		treesMapChunkTwentyFour[88]  = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyFour[89]  = new NatureObject(startXPosition + 65, row);
+		row 				          = rowThreeStartPosition + 9;
+		treesMapChunkTwentyFour[90]  = new NatureObject(startXPosition + 3, row);
+		treesMapChunkTwentyFour[91]  = new NatureObject(startXPosition + 8, row);
+		treesMapChunkTwentyFour[92]  = new NatureObject(startXPosition + 14, row);
+		treesMapChunkTwentyFour[93]  = new NatureObject(startXPosition + 28, row);
+		treesMapChunkTwentyFour[94]  = new NatureObject(startXPosition + 29, row);
+		treesMapChunkTwentyFour[95]  = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyFour[96]  = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyFour[97]  = new NatureObject(startXPosition + 41, row);
+		treesMapChunkTwentyFour[98]  = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyFour[99]  = new NatureObject(startXPosition + 60, row);
+		row 				          = rowThreeStartPosition + 10;
+		treesMapChunkTwentyFour[100] = new NatureObject(startXPosition, row);
+		treesMapChunkTwentyFour[101] = new NatureObject(startXPosition + 4, row);
+		treesMapChunkTwentyFour[102] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyFour[103] = new NatureObject(startXPosition + 10, row);
+		treesMapChunkTwentyFour[104] = new NatureObject(startXPosition + 13, row);
+		treesMapChunkTwentyFour[105] = new NatureObject(startXPosition + 37, row);
+		treesMapChunkTwentyFour[106] = new NatureObject(startXPosition + 38, row);
+		row 				          = rowThreeStartPosition + 19;
+		treesMapChunkTwentyFour[107] = new NatureObject(startXPosition + 20, row);
+		treesMapChunkTwentyFour[108] = new NatureObject(startXPosition + 25, row);
+		treesMapChunkTwentyFour[109] = new NatureObject(startXPosition + 30, row);
+		treesMapChunkTwentyFour[110] = new NatureObject(startXPosition + 40, row);
+		treesMapChunkTwentyFour[111] = new NatureObject(startXPosition + 50, row);
+		treesMapChunkTwentyFour[112] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 20;
+		treesMapChunkTwentyFour[113] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 21;
+		treesMapChunkTwentyFour[114] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 22;
+		treesMapChunkTwentyFour[115] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 24;
+		treesMapChunkTwentyFour[116] = new NatureObject(startXPosition + 5, row);
+		treesMapChunkTwentyFour[117] = new NatureObject(startXPosition + 14, row);
+		treesMapChunkTwentyFour[118] = new NatureObject(startXPosition + 26, row);
+		treesMapChunkTwentyFour[119] = new NatureObject(startXPosition + 33, row);
+		treesMapChunkTwentyFour[120] = new NatureObject(startXPosition + 64, row);
+		treesMapChunkTwentyFour[121] = new NatureObject(startXPosition + 65, row);
+		treesMapChunkTwentyFour[122] = new NatureObject(startXPosition + 66, row);
+		treesMapChunkTwentyFour[123] = new NatureObject(startXPosition + 67, row);
+		row 				          = rowThreeStartPosition + 34;
+		treesMapChunkTwentyFour[124] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyFour[125] = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyFour[126] = new NatureObject(startXPosition + 16, row);
+		treesMapChunkTwentyFour[127] = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyFour[128] = new NatureObject(startXPosition + 36, row);
+		treesMapChunkTwentyFour[129] = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyFour[130] = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyFour[131] = new NatureObject(startXPosition + 66, row);
+		row 				          = rowThreeStartPosition + 49;
+		treesMapChunkTwentyFour[132] = new NatureObject(startXPosition + 7, row);
+		treesMapChunkTwentyFour[133] = new NatureObject(startXPosition + 15, row);
+		treesMapChunkTwentyFour[134] = new NatureObject(startXPosition + 16, row);
+		treesMapChunkTwentyFour[135] = new NatureObject(startXPosition + 24, row);
+		treesMapChunkTwentyFour[136] = new NatureObject(startXPosition + 36, row);
+		treesMapChunkTwentyFour[137] = new NatureObject(startXPosition + 46, row);
+		treesMapChunkTwentyFour[138] = new NatureObject(startXPosition + 56, row);
+		treesMapChunkTwentyFour[139] = new NatureObject(startXPosition + 66, row);
+
 		chest = myGame.gameObjectFactory.getObject("chest", 0, 0);
 
 		addGameObjectsToGameObjectArrayList();
@@ -1898,6 +2598,21 @@ public class GameObjectLoader {
 		}
 		for (int i = 0; i < treesMapChunkEighteen.length; i++) {
 			gameObjectList.add(treesMapChunkEighteen[i]);
+		}
+		for (int i = 0; i < treesMapChunkTwenty.length; i++) {
+			gameObjectList.add(treesMapChunkTwenty[i]);
+		}
+		for (int i = 0; i < treesMapChunkTwentyOne.length; i++) {
+			gameObjectList.add(treesMapChunkTwentyOne[i]);
+		}
+		for (int i = 0; i < treesMapChunkTwentyTwo.length; i++) {
+			gameObjectList.add(treesMapChunkTwentyTwo[i]);
+		}
+		for (int i = 0; i < treesMapChunkTwentyThree.length; i++) {
+			gameObjectList.add(treesMapChunkTwentyThree[i]);
+		}
+		for (int i = 0; i < treesMapChunkTwentyFour.length; i++) {
+			gameObjectList.add(treesMapChunkTwentyFour[i]);
 		}
 		gameObjectList.add(chest);
 	}
