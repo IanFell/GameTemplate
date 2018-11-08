@@ -76,8 +76,8 @@ public class Player extends GameObject {
 	 * Constructor.
 	 */
 	public Player() {
-		this.x               = 68 + 68 + 68;
-		this.y               = 151;
+		this.x               = 68;
+		this.y               = 201;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
