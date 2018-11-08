@@ -55,6 +55,7 @@ public class MyGame extends Game {
 
 	@Override
 	public void create () {
+		Gdx.graphics.setContinuousRendering(true);
 		imageLoader.init();
 		renderer.init();
 		gameObjectLoader.createObjects(this);
