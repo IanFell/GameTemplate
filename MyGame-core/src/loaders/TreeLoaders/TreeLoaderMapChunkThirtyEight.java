@@ -13,6 +13,7 @@ public class TreeLoaderMapChunkThirtyEight extends MapChunkTreeLoader {
 	
 	public GameObject[] treesMapChunkThirtyEight = new NatureObject[140];
 	
+	@Override
 	public void loadTrees() {
 		startXPosition		          = chunkWidth * 5;
 		row 				          = rowFiveStartPosition;

@@ -6,7 +6,7 @@ import maps.MapInformationHolder;
  * 
  * @author Fabulous Fellini
  *
- */
+ */ 
 public class MapChunkTreeLoader {
 	
 	protected int startXPosition;
@@ -20,4 +20,6 @@ public class MapChunkTreeLoader {
 	protected  int rowFiveStartPosition  = rowFourStartPosition + verticalRowIncrement;
 	
 	protected void addGameObjectsToGameObjectArrayList() {}
+	
+	protected void loadTrees() {}
 }

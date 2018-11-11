@@ -80,7 +80,6 @@ public class GameScreen extends Screens {
 
 	/**
 	 *
-	 * 
 	 * @param float delta
 	 */
 	@Override

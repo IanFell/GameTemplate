@@ -35,16 +35,16 @@ public class GameObjectLoader {
 	public GameObject[] treesMapChunkEighteen    = new NatureObject[9];
 	public GameObject[] treesMapChunkTwenty      = new NatureObject[49];
 	public GameObject[] treesMapChunkTwentyOne   = new NatureObject[140];
-	public GameObject[] treesMapChunkTwentyTwo   = new NatureObject[140];
-	public GameObject[] treesMapChunkTwentyThree = new NatureObject[140];
-	public GameObject[] treesMapChunkTwentyFour  = new NatureObject[140];
-	public GameObject[] treesMapChunkTwentySix   = new NatureObject[16];
-	public GameObject[] treesMapChunkTwentyEight = new NatureObject[14];
-	public GameObject[] treesMapChunkTwentyNine  = new NatureObject[140];
-	public GameObject[] treesMapChunkThirty      = new NatureObject[140];
-	public GameObject[] treesMapChunkThirtyOne   = new NatureObject[140];
-	public GameObject[] treesMapChunkThirtyTwo   = new NatureObject[140];
-	public GameObject[] treesMapChunkThirtyFour  = new NatureObject[4];
+	//public GameObject[] treesMapChunkTwentyTwo   = new NatureObject[140];
+	//public GameObject[] treesMapChunkTwentyThree = new NatureObject[140];
+	//public GameObject[] treesMapChunkTwentyFour  = new NatureObject[140];
+	//public GameObject[] treesMapChunkTwentySix   = new NatureObject[16];
+	//public GameObject[] treesMapChunkTwentyEight = new NatureObject[14];
+	//public GameObject[] treesMapChunkTwentyNine  = new NatureObject[140];
+	//public GameObject[] treesMapChunkThirty      = new NatureObject[140];
+	//public GameObject[] treesMapChunkThirtyOne   = new NatureObject[140];
+	//public GameObject[] treesMapChunkThirtyTwo   = new NatureObject[140];
+	//public GameObject[] treesMapChunkThirtyFour  = new NatureObject[4];
 	//public GameObject[] treesMapChunkThirtySeven = new NatureObject[14];
 	//public GameObject[] treesMapChunkThirtyEight = new NatureObject[140];
 	public TreeLoader treeLoader;
@@ -2081,7 +2081,7 @@ public class GameObjectLoader {
 		treesMapChunkTwentyOne[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkTwentyOne[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkTwentyOne[139] = new NatureObject(startXPosition + 66, row);
-		
+		/*
 		// MapChunkTwentyTwo trees.
 		startXPosition		        = 68 + 68 + 68 + 68 + 68;
 		row 				        = rowThreeStartPosition;
@@ -2239,7 +2239,7 @@ public class GameObjectLoader {
 		treesMapChunkTwentyTwo[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkTwentyTwo[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkTwentyTwo[139] = new NatureObject(startXPosition + 66, row);
-		
+		/*
 		// MapChunkTwentyThree trees.
 		startXPosition		          = 68 + 68 + 68 + 68 + 68 + 68;
 		row 				          = rowThreeStartPosition;
@@ -2397,7 +2397,7 @@ public class GameObjectLoader {
 		treesMapChunkTwentyThree[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkTwentyThree[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkTwentyThree[139] = new NatureObject(startXPosition + 66, row);
-		
+		/*
 		// MapChunkTwentyFour trees.
 		startXPosition		          = 68 + 68 + 68 + 68 + 68 + 68 + 68;
 		row 				          = rowThreeStartPosition;
@@ -2555,7 +2555,7 @@ public class GameObjectLoader {
 		treesMapChunkTwentyFour[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkTwentyFour[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkTwentyFour[139] = new NatureObject(startXPosition + 66, row);
-		
+		/*
 		// MapChunkTwentySix trees.
 		startXPosition		         = 68;
 		row 				         = rowFourStartPosition;
@@ -2580,7 +2580,7 @@ public class GameObjectLoader {
 		row 				         = rowFourStartPosition + 45;
 		treesMapChunkTwentySix[14]   = new NatureObject(startXPosition + 25, row);
 		treesMapChunkTwentySix[15]   = new NatureObject(startXPosition + 30, row);
-		
+		/*
 		// MapChunkTwentyEight trees.
 		startXPosition		         = 68 + 68 + 68;
 		row 				         = rowFourStartPosition;
@@ -2600,7 +2600,7 @@ public class GameObjectLoader {
 		treesMapChunkTwentyEight[11] = new NatureObject(startXPosition + 41, row);
 		treesMapChunkTwentyEight[12] = new NatureObject(startXPosition + 50, row);
 		treesMapChunkTwentyEight[13] = new NatureObject(startXPosition + 51, row);
-		
+		/*
 		// MapChunkTwentyNine trees.
 		startXPosition		         = 68 + 68 + 68 + 68;
 		row 				         = rowFourStartPosition;
@@ -2758,7 +2758,7 @@ public class GameObjectLoader {
 		treesMapChunkTwentyNine[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkTwentyNine[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkTwentyNine[139] = new NatureObject(startXPosition + 66, row);
-		
+		/*
 		// MapChunkThirty trees.
 		startXPosition		         = 68 + 68 + 68 + 68 + 68;
 		row 				         = rowFourStartPosition;
@@ -2916,7 +2916,7 @@ public class GameObjectLoader {
 		treesMapChunkThirty[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkThirty[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkThirty[139] = new NatureObject(startXPosition + 66, row);
-		
+		/*
 		// MapChunkThirtyOne trees.
 		startXPosition		         = 68 + 68 + 68 + 68 + 68 + 68;
 		row 				         = rowFourStartPosition;
@@ -3074,7 +3074,7 @@ public class GameObjectLoader {
 		treesMapChunkThirtyOne[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkThirtyOne[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkThirtyOne[139] = new NatureObject(startXPosition + 66, row);
-		
+		/*
 		// MapChunkThirtyTwo trees.
 		startXPosition		         = 68 + 68 + 68 + 68 + 68 + 68 + 68;
 		row 				         = rowFourStartPosition;
@@ -3232,7 +3232,7 @@ public class GameObjectLoader {
 		treesMapChunkThirtyTwo[137] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkThirtyTwo[138] = new NatureObject(startXPosition + 56, row);
 		treesMapChunkThirtyTwo[139] = new NatureObject(startXPosition + 66, row);
-		
+		/*
 		// MapChunkThirtyFour trees.
 		startXPosition		         = 68;
 		row 				         = rowFiveStartPosition;
@@ -3240,7 +3240,7 @@ public class GameObjectLoader {
 		treesMapChunkThirtyFour[1]   = new NatureObject(startXPosition + 36, row);
 		row 				         = rowFiveStartPosition + 25;
 		treesMapChunkThirtyFour[2]   = new NatureObject(startXPosition + 39, row);
-		treesMapChunkThirtyFour[3]   = new NatureObject(startXPosition + 46, row);
+		treesMapChunkThirtyFour[3]   = new NatureObject(startXPosition + 46, row);*/
 		/*
 		// MapChunkThirtySeven trees.
 		startXPosition		         = 68 + 68 + 68 + 68;
@@ -3483,36 +3483,46 @@ public class GameObjectLoader {
 		for (int i = 0; i < treesMapChunkTwentyOne.length; i++) {
 			gameObjectList.add(treesMapChunkTwentyOne[i]);
 		}
+		/*
 		for (int i = 0; i < treesMapChunkTwentyTwo.length; i++) {
 			gameObjectList.add(treesMapChunkTwentyTwo[i]);
 		}
+		/*
 		for (int i = 0; i < treesMapChunkTwentyThree.length; i++) {
 			gameObjectList.add(treesMapChunkTwentyThree[i]);
 		}
+		/*
 		for (int i = 0; i < treesMapChunkTwentyFour.length; i++) {
 			gameObjectList.add(treesMapChunkTwentyFour[i]);
 		}
+		/*
 		for (int i = 0; i < treesMapChunkTwentySix.length; i++) {
 			gameObjectList.add(treesMapChunkTwentySix[i]);
 		}
+		/*
 		for (int i = 0; i < treesMapChunkTwentyEight.length; i++) {
 			gameObjectList.add(treesMapChunkTwentyEight[i]);
 		}
+		/*
 		for (int i = 0; i < treesMapChunkTwentyNine.length; i++) {
 			gameObjectList.add(treesMapChunkTwentyNine[i]);
-		}
+		}*/
+		/*
 		for (int i = 0; i < treesMapChunkThirty.length; i++) {
 			gameObjectList.add(treesMapChunkThirty[i]);
 		}
+		/*
 		for (int i = 0; i < treesMapChunkThirtyOne.length; i++) {
 			gameObjectList.add(treesMapChunkThirtyOne[i]);
-		}
+		}*/
+		/*
 		for (int i = 0; i < treesMapChunkThirtyTwo.length; i++) {
 			gameObjectList.add(treesMapChunkThirtyTwo[i]);
-		}
+		}*/
+		/*
 		for (int i = 0; i < treesMapChunkThirtyFour.length; i++) {
 			gameObjectList.add(treesMapChunkThirtyFour[i]);
-		}
+		}*/
 		/*
 		for (int i = 0; i < treesMapChunkThirtySeven.length; i++) {
 			gameObjectList.add(treesMapChunkThirtySeven[i]);
