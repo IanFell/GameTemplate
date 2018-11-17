@@ -4,6 +4,11 @@ import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.NatureObject;
 import loaders.GameObjectLoader;
 
+/**
+ * 
+ * @author Fabulous Fellini
+ *
+ */
 public class TreeLoaderMapChunkTwentyEight extends MapChunkTreeLoader {
 	public GameObject[] treesMapChunkTwentyEight = new NatureObject[14];
 	

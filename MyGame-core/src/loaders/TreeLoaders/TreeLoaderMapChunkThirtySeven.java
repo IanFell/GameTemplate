@@ -10,7 +10,6 @@ import loaders.GameObjectLoader;
  *
  */
 public class TreeLoaderMapChunkThirtySeven extends MapChunkTreeLoader {
-	
 	public GameObject[] treesMapChunkThirtySeven = new NatureObject[14];
 	
 	@Override
