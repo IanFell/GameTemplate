@@ -2,6 +2,7 @@ package loaders.TreeLoaders;
 
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.NatureObject;
+import loaders.GameObjectLoader;
 import maps.MapInformationHolder;
 
 /**
@@ -15,14 +16,22 @@ public abstract class MapChunkTreeLoader {
 	protected int chunkWidth            = MapInformationHolder.CHUNK_WIDTH;
 	protected int verticalRowIncrement  = MapInformationHolder.CHUNK_HEIGHT;
 	protected int rowOneStartPosition   = 1;
-	protected int rowTwoStartPosition   = rowOneStartPosition + verticalRowIncrement;
-	protected int rowThreeStartPosition = rowTwoStartPosition + verticalRowIncrement;
+	protected int rowTwoStartPosition   = rowOneStartPosition   + verticalRowIncrement;
+	protected int rowThreeStartPosition = rowTwoStartPosition   + verticalRowIncrement;
 	protected int rowFourStartPosition  = rowThreeStartPosition + verticalRowIncrement;
-	protected int rowFiveStartPosition  = rowFourStartPosition + verticalRowIncrement;
-	protected int rowSixStartPosition   = rowFiveStartPosition + verticalRowIncrement;
-	protected int rowSevenStartPosition = rowSixStartPosition + verticalRowIncrement;
+	protected int rowFiveStartPosition  = rowFourStartPosition  + verticalRowIncrement;
+	protected int rowSixStartPosition   = rowFiveStartPosition  + verticalRowIncrement;
+	protected int rowSevenStartPosition = rowSixStartPosition   + verticalRowIncrement;
 	
-	protected abstract void addGameObjectsToGameObjectArrayList();
+	/**
+	 * 
+	 * @param GameObject gameObject
+	 */
+	protected void addGameObjectsToGameObjectArrayList(GameObject[] gameObject) {
+		for (int i = 0; i < gameObject.length; i++) {
+			GameObjectLoader.gameObjectList.add(gameObject[i]);
+		}
+	}
 	
 	protected abstract void loadTrees();
 	

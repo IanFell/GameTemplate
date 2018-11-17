@@ -3,6 +3,7 @@ package loaders.TreeLoaders;
 import loaders.GameObjectLoader;
 
 /**
+ * Instantiate, load, and place all trees.
  * 
  * @author Fabulous Fellini
  *

@@ -2,7 +2,6 @@ package loaders.TreeLoaders;
 
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.NatureObject;
-import loaders.GameObjectLoader;
 
 /**
  * 
@@ -16,13 +15,6 @@ public class TreeLoaderMapChunkThirty extends MapChunkTreeLoader {
 	public void loadTrees() {
 		startXPosition = chunkWidth * 5;
 		placeTreesForAllSandChunk(treesMapChunkThirty, startXPosition, rowFourStartPosition);
-		addGameObjectsToGameObjectArrayList();
-	}
-	
-	@Override
-	protected void addGameObjectsToGameObjectArrayList() {
-		for (int i = 0; i < treesMapChunkThirty.length; i++) {
-			GameObjectLoader.gameObjectList.add(treesMapChunkThirty[i]);
-		}
+		addGameObjectsToGameObjectArrayList(treesMapChunkThirty);
 	}
 }
