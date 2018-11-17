@@ -19,6 +19,8 @@ public abstract class MapChunkTreeLoader {
 	protected int rowThreeStartPosition = rowTwoStartPosition + verticalRowIncrement;
 	protected int rowFourStartPosition  = rowThreeStartPosition + verticalRowIncrement;
 	protected int rowFiveStartPosition  = rowFourStartPosition + verticalRowIncrement;
+	protected int rowSixStartPosition   = rowFiveStartPosition + verticalRowIncrement;
+	protected int rowSevenStartPosition = rowSixStartPosition + verticalRowIncrement;
 	
 	protected abstract void addGameObjectsToGameObjectArrayList();
 	

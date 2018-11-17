@@ -36,6 +36,19 @@ public class TreeLoader extends GameObjectLoader {
 	private TreeLoaderMapChunkThirtyFour treeLoaderMapChunkThirtyFour;
 	private TreeLoaderMapChunkThirtySeven treeLoaderMapChunkThirtySeven;
 	private TreeLoaderMapChunkThirtyEight treeLoaderMapChunkThirtyEight;
+	private TreeLoaderMapChunkThirtyNine treeLoaderMapChunkThirtyNine;
+	private TreeLoaderMapChunkFourty treeLoaderMapChunkFourty;
+	private TreeLoaderMapChunkFourtyThree treeLoaderMapChunkFourtyThree;
+	private TreeLoaderMapChunkFourtyFive treeLoaderMapChunkFourtyFive;
+	private TreeLoaderMapChunkFourtySix treeLoaderMapChunkFourtySix;
+	private TreeLoaderMapChunkFourtySeven treeLoaderMapChunkFourtySeven;
+	private TreeLoaderMapChunkFourtyEight treeLoaderMapChunkFourtyEight;
+	private TreeLoaderMapChunkFiftyOne treeLoaderMapChunkFiftyOne;
+	private TreeLoaderMapChunkFiftyTwo treeLoaderMapChunkFiftyTwo;
+	private TreeLoaderMapChunkFiftyThree treeLoaderMapChunkFiftyThree;
+	private TreeLoaderMapChunkFiftyFour treeLoaderMapChunkFiftyFour;
+	private TreeLoaderMapChunkFiftyFive treeLoaderMapChunkFiftyFive;
+	private TreeLoaderMapChunkFiftySix treeLoaderMapChunkFiftySix;
 	
 	/**
 	 * Constructor.
@@ -69,6 +82,19 @@ public class TreeLoader extends GameObjectLoader {
 		treeLoaderMapChunkThirtyFour  = new TreeLoaderMapChunkThirtyFour();
 		treeLoaderMapChunkThirtySeven = new TreeLoaderMapChunkThirtySeven();
 		treeLoaderMapChunkThirtyEight = new TreeLoaderMapChunkThirtyEight();
+		treeLoaderMapChunkThirtyNine  = new TreeLoaderMapChunkThirtyNine();
+		treeLoaderMapChunkFourty      = new TreeLoaderMapChunkFourty();
+		treeLoaderMapChunkFourtyThree = new TreeLoaderMapChunkFourtyThree();
+		treeLoaderMapChunkFourtyFive  = new TreeLoaderMapChunkFourtyFive();
+		treeLoaderMapChunkFourtySix   = new TreeLoaderMapChunkFourtySix();
+		treeLoaderMapChunkFourtySeven = new TreeLoaderMapChunkFourtySeven();
+		treeLoaderMapChunkFourtyEight = new TreeLoaderMapChunkFourtyEight();
+		treeLoaderMapChunkFiftyOne    = new TreeLoaderMapChunkFiftyOne();
+		treeLoaderMapChunkFiftyTwo    = new TreeLoaderMapChunkFiftyTwo();
+		treeLoaderMapChunkFiftyThree  = new TreeLoaderMapChunkFiftyThree();
+		treeLoaderMapChunkFiftyFour   = new TreeLoaderMapChunkFiftyFour();
+		treeLoaderMapChunkFiftyFive   = new TreeLoaderMapChunkFiftyFive();
+		treeLoaderMapChunkFiftySix    = new TreeLoaderMapChunkFiftySix();
 		loadTrees();
 	}
 	
@@ -101,5 +127,18 @@ public class TreeLoader extends GameObjectLoader {
 		treeLoaderMapChunkThirtyFour.loadTrees();
 		treeLoaderMapChunkThirtySeven.loadTrees();
 		treeLoaderMapChunkThirtyEight.loadTrees();
+		treeLoaderMapChunkThirtyNine.loadTrees();
+		treeLoaderMapChunkFourty.loadTrees();
+		treeLoaderMapChunkFourtyThree.loadTrees();
+		treeLoaderMapChunkFourtyFive.loadTrees();
+		treeLoaderMapChunkFourtySix.loadTrees();
+		treeLoaderMapChunkFourtySeven.loadTrees();
+		treeLoaderMapChunkFourtyEight.loadTrees();
+		treeLoaderMapChunkFiftyOne.loadTrees();
+		treeLoaderMapChunkFiftyTwo.loadTrees();
+		treeLoaderMapChunkFiftyThree.loadTrees();
+		treeLoaderMapChunkFiftyFour.loadTrees();
+		treeLoaderMapChunkFiftyFive.loadTrees();
+		treeLoaderMapChunkFiftySix.loadTrees();
 	}
 }
