@@ -42,6 +42,10 @@ public class Keyboard extends ComputerInput {
 		case Screens.GAME_SCREEN:	
 			handleKeyboardDirectionalButtons(myGame, "arrows");
 			//handleKeyboardDirectionalButtons(myGame, "wasd");
+			
+			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+				Player.isJumping = true;
+			}
 
 			// Execute screenshake.
 			if (Gdx.input.isKeyPressed(Input.Keys.R)) { 

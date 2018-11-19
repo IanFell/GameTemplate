@@ -5,6 +5,8 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.mygdx.mygame.MyGame;
 
+import helpers.GameAttributeHelper;
+
 /**
  * Launch game on desktop.
  * 
@@ -16,7 +18,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.addIcon("GrassTileOne.png", FileType.Internal);
 		config.title         = "The Golden Age";
-		config.foregroundFPS = 30;
+		config.foregroundFPS = GameAttributeHelper.FRAMES_PER_SECOND;
 		
 		float f       = 0.5f;
 		float width   = LwjglApplicationConfiguration.getDesktopDisplayMode().width;

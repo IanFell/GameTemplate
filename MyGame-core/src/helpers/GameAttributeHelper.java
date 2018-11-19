@@ -12,6 +12,8 @@ public class GameAttributeHelper {
 
 	public final static int SCREEN_WIDTH  = Gdx.graphics.getWidth();
 	public final static int SCREEN_HEIGHT = Gdx.graphics.getHeight();
+	
+	public final static int FRAMES_PER_SECOND = 30;
 
 	/**
 	 * Holds current state of game, 

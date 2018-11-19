@@ -10,6 +10,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import handlers.AnimationHandler;
+import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -29,7 +30,22 @@ public class Player extends GameObject {
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
 	
-	public final static float PLAYER_SPEED = 0.1f;  
+	public final static float PLAYER_SPEED = 0.1f;
+	
+	/**
+	 * If player jumps, isJumping will be true until jumpCount surpases jumpCountMax.
+	 * When it does, jumpCount is reset to 0 and ready for another jump.
+	 */
+	public static boolean isJumping         = false;
+	private static int jumpCount            = 0;
+	private static final int jumpCountMax   = GameAttributeHelper.FRAMES_PER_SECOND;
+	
+	public static int jumpingAction;
+	private float jumpSpeed;
+	
+	private static final int ON_GROUND      = 0;
+	public static final int ASCENDING_JUMP  = 1;
+	public static final int DESCENDING_JUMP = 2;
 	
 	/**
 	 * Used to determine whether footsteps sound effect should play.
@@ -142,6 +158,59 @@ public class Player extends GameObject {
 				playerTwoDirection, 
 				myGame.getGameObject(GameObject.PLAYER_THREE).getDirection()
 				);
+		
+		handleJumping(myGame);
+	}
+	
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void handleJumping(MyGame myGame) {
+		if (isJumping) {
+			System.out.println("Player is jumping");
+			jumpCount++;
+			if (jumpCount >= jumpCountMax) {
+				// Reset jump variables and get ready to jump again.
+				isJumping = !isJumping;
+				jumpCount = 0;
+			}
+			// If player is still jumping up.
+			if (playerIsBelowPeakJump()) {
+				jumpingAction = ASCENDING_JUMP;
+				System.out.println("Player is ascending during jumping");
+			} else {
+				// If player has reached jumping peak and is falling back to the ground.
+				jumpingAction = DESCENDING_JUMP;
+				System.out.println("Player is descending during jumping");
+			}
+			float jumpingSpeedValue = 0.10f;
+			switch (jumpingAction) {
+			case ASCENDING_JUMP:
+				jumpSpeed = -jumpingSpeedValue;
+				break;
+			case DESCENDING_JUMP:
+				jumpSpeed = jumpingSpeedValue;
+				break;
+			}
+			myGame.getGameObject(
+					GameObject.PLAYER_ONE).setY(myGame.getGameObject(GameObject.PLAYER_ONE).getY() + jumpSpeed
+							);
+		} else {
+			jumpingAction = ON_GROUND;
+		}
+	}
+	
+	/**
+	 * Checks if player is ascending during jump.
+	 * 
+	 * @return boolean
+	 */
+	private boolean playerIsBelowPeakJump() {
+		if (jumpCount < jumpCountMax / 2) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
