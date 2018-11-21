@@ -85,6 +85,12 @@ public class Keyboard extends ComputerInput {
 	private void handleKeyboardDirectionalButtons(MyGame myGame, String directions) {
 		System.out.println("Keyboard directional controls: " + directions);
 		float cameraScrollingSpeedTierOne = Player.PLAYER_SPEED;
+		// If user presses the T button to use turbo.
+		int turboSpeed = 3;
+		if (Gdx.input.isKeyPressed(Input.Keys.T)) {
+			System.out.println("Player is using turbo!  Going fast!");
+			cameraScrollingSpeedTierOne = Player.PLAYER_SPEED * turboSpeed;
+		}
 		int up;
 		int down;
 		int left;
