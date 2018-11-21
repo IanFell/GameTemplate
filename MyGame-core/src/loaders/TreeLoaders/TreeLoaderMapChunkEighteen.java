@@ -2,6 +2,7 @@ package loaders.TreeLoaders;
 
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.NatureObject;
+import helpers.GameAttributeHelper;
 
 /**
  * 
@@ -13,21 +14,22 @@ public class TreeLoaderMapChunkEighteen extends MapChunkTreeLoader {
 	
 	@Override
 	public void loadTrees() {
-		startXPosition		     = chunkWidth;
-		row                      = rowThreeStartPosition;
+		startXPosition		     = GameAttributeHelper.CHUNK_TWO_X_POSITION_START;
+		startYPosition           = GameAttributeHelper.CHUNK_THREE_Y_POSITION_START;
+		row                      = startYPosition;
 		treesMapChunkEighteen[0] = new NatureObject(startXPosition + 8, row);
-		row                      = rowThreeStartPosition + 1;
+		row                      = startYPosition + 1;
 		treesMapChunkEighteen[1] = new NatureObject(startXPosition + 9, row);
-		row                      = rowThreeStartPosition + 12;
+		row                      = startYPosition + 12;
 		treesMapChunkEighteen[2] = new NatureObject(startXPosition + 9, row);
-		row                      = rowThreeStartPosition + 20;
+		row                      = startYPosition + 20;
 		treesMapChunkEighteen[3] = new NatureObject(startXPosition + 7, row);
-		row                      = rowThreeStartPosition + 30;
+		row                      = startYPosition + 30;
 		treesMapChunkEighteen[4] = new NatureObject(startXPosition + 9, row);
-		row                      = rowThreeStartPosition + 37;
+		row                      = startYPosition + 37;
 		treesMapChunkEighteen[5] = new NatureObject(startXPosition + 1, row);
 		treesMapChunkEighteen[6] = new NatureObject(startXPosition + 2, row);
-		row                      = rowThreeStartPosition + 42;
+		row                      = startYPosition + 42;
 		treesMapChunkEighteen[7] = new NatureObject(startXPosition + 3, row);
 		treesMapChunkEighteen[8] = new NatureObject(startXPosition + 4, row);
 		

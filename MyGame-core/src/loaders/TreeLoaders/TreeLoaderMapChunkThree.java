@@ -2,6 +2,7 @@ package loaders.TreeLoaders;
 
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.NatureObject;
+import helpers.GameAttributeHelper;
 
 /**
  * 
@@ -13,8 +14,9 @@ public class TreeLoaderMapChunkThree extends MapChunkTreeLoader {
 	
 	@Override
 	public void loadTrees() {
-		startXPosition         = 135;
-		row                    = rowOneStartPosition;
+		startXPosition         = GameAttributeHelper.CHUNK_THREE_X_POSITION_START - 1;
+		startYPosition         = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START;
+		row                    = startYPosition;
 		treesMapChunkThree[0]  = new NatureObject(startXPosition + 5, row);
 		treesMapChunkThree[1]  = new NatureObject(startXPosition + 15, row);
 		treesMapChunkThree[2]  = new NatureObject(startXPosition + 16, row);
@@ -26,11 +28,11 @@ public class TreeLoaderMapChunkThree extends MapChunkTreeLoader {
 		treesMapChunkThree[8]  = new NatureObject(startXPosition + 31, row);
 		treesMapChunkThree[9]  = new NatureObject(startXPosition + 32, row);
 		treesMapChunkThree[10] = new NatureObject(startXPosition + 33, row);
-		row                    = rowOneStartPosition + 5;
+		row                    = startYPosition + 5;
 		treesMapChunkThree[11] = new NatureObject(startXPosition + 7, row);
 		treesMapChunkThree[12] = new NatureObject(startXPosition + 8, row);
 		treesMapChunkThree[13] = new NatureObject(startXPosition + 9, row);
-		row                    = rowOneStartPosition + 14;
+		row                    = startYPosition + 14;
 		treesMapChunkThree[14] = new NatureObject(startXPosition + 20, row);
 		treesMapChunkThree[15] = new NatureObject(startXPosition + 21, row);
 		treesMapChunkThree[16] = new NatureObject(startXPosition + 22, row);
@@ -47,7 +49,7 @@ public class TreeLoaderMapChunkThree extends MapChunkTreeLoader {
 		treesMapChunkThree[27] = new NatureObject(startXPosition + 66, row);
 		treesMapChunkThree[28] = new NatureObject(startXPosition + 67, row);
 		treesMapChunkThree[29] = new NatureObject(startXPosition + 68, row);
-		row                    = rowOneStartPosition + 19;
+		row                    = startYPosition + 19;
 		treesMapChunkThree[30] = new NatureObject(startXPosition + 5, row);
 		treesMapChunkThree[31] = new NatureObject(startXPosition + 6, row);
 		treesMapChunkThree[32] = new NatureObject(startXPosition + 10, row);
@@ -61,7 +63,7 @@ public class TreeLoaderMapChunkThree extends MapChunkTreeLoader {
 		treesMapChunkThree[40] = new NatureObject(startXPosition + 45, row);
 		treesMapChunkThree[41] = new NatureObject(startXPosition + 46, row);
 		treesMapChunkThree[42] = new NatureObject(startXPosition + 47, row);
-		row                    = rowOneStartPosition + 26;
+		row                    = startYPosition + 26;
 		treesMapChunkThree[43] = new NatureObject(startXPosition + 16, row);
 		treesMapChunkThree[44] = new NatureObject(startXPosition + 17, row);
 		treesMapChunkThree[45] = new NatureObject(startXPosition + 18, row);
@@ -70,7 +72,7 @@ public class TreeLoaderMapChunkThree extends MapChunkTreeLoader {
 		treesMapChunkThree[48] = new NatureObject(startXPosition + 37, row);
 		treesMapChunkThree[49] = new NatureObject(startXPosition + 55, row);
 		treesMapChunkThree[50] = new NatureObject(startXPosition + 56, row);
-		row                    = rowOneStartPosition + 36;
+		row                    = startYPosition + 36;
 		treesMapChunkThree[51] = new NatureObject(startXPosition + 15, row);
 		treesMapChunkThree[52] = new NatureObject(startXPosition + 25, row);
 		treesMapChunkThree[53] = new NatureObject(startXPosition + 35, row);
@@ -80,7 +82,7 @@ public class TreeLoaderMapChunkThree extends MapChunkTreeLoader {
 		treesMapChunkThree[57] = new NatureObject(startXPosition + 58, row);
 		treesMapChunkThree[58] = new NatureObject(startXPosition + 67, row);
 		treesMapChunkThree[59] = new NatureObject(startXPosition + 68, row);
-		row                    = rowOneStartPosition + 44;
+		row                    = startYPosition + 44;
 		treesMapChunkThree[60] = new NatureObject(startXPosition + 25, row);
 		treesMapChunkThree[61] = new NatureObject(startXPosition + 26, row);
 		treesMapChunkThree[62] = new NatureObject(startXPosition + 27, row);
@@ -96,7 +98,7 @@ public class TreeLoaderMapChunkThree extends MapChunkTreeLoader {
 		treesMapChunkThree[72] = new NatureObject(startXPosition + 60, row);
 		treesMapChunkThree[73] = new NatureObject(startXPosition + 67, row);
 		treesMapChunkThree[74] = new NatureObject(startXPosition + 68, row);
-		row 				   = rowOneStartPosition + 49;
+		row 				   = startYPosition + 49;
 		treesMapChunkThree[75] = new NatureObject(startXPosition + 28, row);
 		treesMapChunkThree[76] = new NatureObject(startXPosition + 29, row);
 		treesMapChunkThree[77] = new NatureObject(startXPosition + 30, row);

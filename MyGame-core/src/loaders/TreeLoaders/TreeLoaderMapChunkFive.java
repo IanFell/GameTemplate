@@ -2,6 +2,7 @@ package loaders.TreeLoaders;
 
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.NatureObject;
+import helpers.GameAttributeHelper;
 
 /**
  * 
@@ -13,8 +14,11 @@ public class TreeLoaderMapChunkFive extends MapChunkTreeLoader {
 	
 	@Override
 	public void loadTrees() {
-		startXPosition = 272;
-		placeTreesForAllSandChunk(treesMapChunkFive, startXPosition, rowOneStartPosition);
+		placeTreesForAllSandChunk(
+				treesMapChunkFive, 
+				GameAttributeHelper.CHUNK_FIVE_X_POSITION_START, 
+				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START
+				);
 		addGameObjectsToGameObjectArrayList(treesMapChunkFive);
 	}
 }

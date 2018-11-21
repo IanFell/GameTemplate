@@ -2,6 +2,7 @@ package loaders.TreeLoaders;
 
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.NatureObject;
+import helpers.GameAttributeHelper;
 
 /**
  * 
@@ -13,27 +14,28 @@ public class TreeLoaderMapChunkTwentySix extends MapChunkTreeLoader {
 	
 	@Override
 	public void loadTrees() {
-		startXPosition		         = chunkWidth;
-		row 				         = rowFourStartPosition;
+		startXPosition		         = GameAttributeHelper.CHUNK_TWO_X_POSITION_START;
+		startYPosition               = GameAttributeHelper.CHUNK_FOUR_Y_POSITION_START;
+		row 				         = startYPosition;
 		treesMapChunkTwentySix[0]    = new NatureObject(startXPosition, row);
 		treesMapChunkTwentySix[1]    = new NatureObject(startXPosition + 1, row);
 		treesMapChunkTwentySix[2]    = new NatureObject(startXPosition + 2, row);
 		treesMapChunkTwentySix[3]    = new NatureObject(startXPosition + 10, row);
 		treesMapChunkTwentySix[4]    = new NatureObject(startXPosition + 15, row);
-		row 				         = rowFourStartPosition + 5;
+		row 				         = startYPosition + 5;
 		treesMapChunkTwentySix[5]    = new NatureObject(startXPosition + 5, row);
 		treesMapChunkTwentySix[6]    = new NatureObject(startXPosition + 8, row);
-		row 				         = rowFourStartPosition + 15;
+		row 				         = startYPosition + 15;
 		treesMapChunkTwentySix[7]    = new NatureObject(startXPosition + 9, row);
 		treesMapChunkTwentySix[8]    = new NatureObject(startXPosition + 10, row);
 		treesMapChunkTwentySix[9]    = new NatureObject(startXPosition + 11, row);
-		row 				         = rowFourStartPosition + 25;
+		row 				         = startYPosition + 25;
 		treesMapChunkTwentySix[10]   = new NatureObject(startXPosition + 12, row);
 		treesMapChunkTwentySix[11]   = new NatureObject(startXPosition + 17, row);
-		row 				         = rowFourStartPosition + 35;
+		row 				         = startYPosition + 35;
 		treesMapChunkTwentySix[12]   = new NatureObject(startXPosition + 12, row);
 		treesMapChunkTwentySix[13]   = new NatureObject(startXPosition + 17, row);
-		row 				         = rowFourStartPosition + 45;
+		row 				         = startYPosition + 45;
 		treesMapChunkTwentySix[14]   = new NatureObject(startXPosition + 25, row);
 		treesMapChunkTwentySix[15]   = new NatureObject(startXPosition + 30, row);
 		

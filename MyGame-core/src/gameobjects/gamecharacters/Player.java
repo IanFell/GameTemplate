@@ -36,9 +36,9 @@ public class Player extends GameObject {
 	 * If player jumps, isJumping will be true until jumpCount surpases jumpCountMax.
 	 * When it does, jumpCount is reset to 0 and ready for another jump.
 	 */
-	public static boolean isJumping         = false;
-	private static int jumpCount            = 0;
-	private static final int jumpCountMax   = GameAttributeHelper.FRAMES_PER_SECOND;
+	public static boolean isJumping       = false;
+	private static int jumpCount          = 0;
+	private static final int jumpCountMax = GameAttributeHelper.FRAMES_PER_SECOND;
 	
 	public static int jumpingAction;
 	private float jumpSpeed;
@@ -92,8 +92,8 @@ public class Player extends GameObject {
 	 * Constructor.
 	 */
 	public Player() {
-		this.x               = 68 + 68;
-		this.y               = 351;
+		this.x               = -1;
+		this.y               = -1;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
