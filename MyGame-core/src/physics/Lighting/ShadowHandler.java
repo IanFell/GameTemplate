@@ -33,20 +33,30 @@ public class ShadowHandler extends AbstractLightingHandler {
 	 */
 	private void handleShadowSizeDuringPlayerJump(GameObject player) {
 		float sizeAndMovementValue = 0.01f;
+		float shadowOffsetValue    = 5 + .02f;
 		if (Player.jumpingAction == Player.ASCENDING_JUMP) {
 			width  -= sizeAndMovementValue;
 			height -= sizeAndMovementValue;
 			y      += sizeAndMovementValue;
+			// Shadows behave differently if player is facing down.
+			if (player.getDirection() == Player.DIRECTION_DOWN) {
+				y += sizeAndMovementValue * shadowOffsetValue;
+			}
 		} else if (Player.jumpingAction == Player.DESCENDING_JUMP) {
 			width  += sizeAndMovementValue;
 			height += sizeAndMovementValue;
 			y      -= sizeAndMovementValue;
+			// Shadows behave differently if player is facing down.
+			if (player.getDirection() == Player.DIRECTION_DOWN) {
+				y -= sizeAndMovementValue * shadowOffsetValue;
+			}
 		} else {
 			// If player has completed jump and is on ground.
-			int originalValue = 1;
-			width             = originalValue;
-			height            = originalValue;
-			y                 = player.getY();
+			float originalValue = 1;
+			width               = originalValue;
+			height              = originalValue;
+			x 					= player.getX();
+			y                   = player.getY();
 		}
 	}
 }

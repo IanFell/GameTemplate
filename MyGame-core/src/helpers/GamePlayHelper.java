@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import loaders.ImageLoader;

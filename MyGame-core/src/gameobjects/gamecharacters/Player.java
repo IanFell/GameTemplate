@@ -125,6 +125,8 @@ public class Player extends GameObject {
 
 		myGame.getGameObject(GameObject.PLAYER_THREE).setX(myGame.gameObjectLoader.playerOne.getX() + startingPosition * 2);
 		myGame.getGameObject(GameObject.PLAYER_THREE).setY(myGame.gameObjectLoader.playerOne.getY());
+		
+		//rotateAngle = 0.0f;
 	}
 
 	/**
@@ -139,8 +141,8 @@ public class Player extends GameObject {
 		rectangle.x = x;
 		rectangle.y = y;
 
-		int playerTwoDirection   = myGame.gameObjectLoader.playerTwo.getDirection();
-		int followDistance       = 1;
+		int playerTwoDirection = myGame.gameObjectLoader.playerTwo.getDirection();
+		int followDistance     = 1;
 		// Player two follows player one.
 		handleWalking(
 				myGame.getGameObject(GameObject.PLAYER_ONE), 
