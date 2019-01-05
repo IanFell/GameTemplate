@@ -1,7 +1,7 @@
 package loaders.TreeLoaders;
 
 import gameobjects.GameObject;
-import gameobjects.stationarygameobjects.NatureObject;
+import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import helpers.GameAttributeHelper;
 
 /**
@@ -10,7 +10,7 @@ import helpers.GameAttributeHelper;
  *
  */
 public class TreeLoaderMapChunkThirty extends MapChunkTreeLoader {
-	public GameObject[] treesMapChunkThirty = new NatureObject[140];
+	public GameObject[] treesMapChunkThirty = new PalmTree[140];
 	
 	@Override
 	public void loadTrees() {

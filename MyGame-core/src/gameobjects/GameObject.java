@@ -25,6 +25,7 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	public static final int PLAYER_TWO   = 2;
 	public static final int PLAYER_THREE = 3;
 	public static final int TREE         = 4;
+	public static final int PLANT        = 5;
 
 	protected float x;
 	protected float y;

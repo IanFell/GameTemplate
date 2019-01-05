@@ -39,6 +39,7 @@ public class ImageLoader {
 	public Texture tree;
 	
 	public Texture palmTree;
+	public Texture plant;
 	
 	public Texture chest;
 
@@ -72,6 +73,7 @@ public class ImageLoader {
 		playerScore                    = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
 		rain 						   = new Texture(Gdx.files.internal("Rain.png"));
 		palmTree					   = new Texture(Gdx.files.internal("PalmTree.png"));
+		plant                          = new Texture(Gdx.files.internal("Plant.png"));
 	}
 
 	public void dispose() {
@@ -98,5 +100,6 @@ public class ImageLoader {
 		playerScore.dispose();
 		rain.dispose();
 		palmTree.dispose();
+		plant.dispose();
 	}
 }

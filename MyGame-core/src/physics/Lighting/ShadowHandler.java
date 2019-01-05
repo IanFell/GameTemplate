@@ -23,17 +23,19 @@ public class ShadowHandler extends AbstractLightingHandler {
 	@Override
 	public void renderLighting(SpriteBatch batch, ImageLoader imageLoader, GameObject player) {
 		float offset = 0.5f;
-		batch.draw(imageLoader.shadow, player.getX(), y + offset, width, height);
+		batch.draw(imageLoader.shadow, player.getX(), player.getY() + offset, width, height);
 		handleShadowSizeDuringPlayerJump(player);
 	}
 	
 	/**
+	 * This method currently does not do anything.  The above render method needs to reflect
+	 * the shadow's y position for this method to work correctly.
 	 * 
 	 * @param GameObject player
 	 */
 	private void handleShadowSizeDuringPlayerJump(GameObject player) {
 		float sizeAndMovementValue = 0.01f;
-		float shadowOffsetValue    = 5 + .02f;
+		float shadowOffsetValue    = 5 + 0.02f;
 		if (Player.jumpingAction == Player.ASCENDING_JUMP) {
 			width  -= sizeAndMovementValue;
 			height -= sizeAndMovementValue;
@@ -52,11 +54,9 @@ public class ShadowHandler extends AbstractLightingHandler {
 			}
 		} else {
 			// If player has completed jump and is on ground.
-			float originalValue = 1;
+			float originalValue = 1;  
 			width               = originalValue;
 			height              = originalValue;
-			x 					= player.getX();
-			y                   = player.getY();
 		}
 	}
 }

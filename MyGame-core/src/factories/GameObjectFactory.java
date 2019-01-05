@@ -4,6 +4,7 @@ import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.GamePlayObject;
 import gameobjects.stationarygameobjects.NatureObject;
+import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 
 /**
  * Factory to create our game objects.
@@ -27,6 +28,9 @@ public class GameObjectFactory {
 			return new Player();
 		}
 		if (objectType.equalsIgnoreCase("tree")) {
+			return new PalmTree(x, y);
+		}
+		if (objectType.equalsIgnoreCase("plant")) {
 			return new NatureObject(x, y);
 		}
 		if (objectType.equalsIgnoreCase("chest")) {
