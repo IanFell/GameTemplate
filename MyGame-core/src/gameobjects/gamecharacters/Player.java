@@ -92,7 +92,7 @@ public class Player extends GameObject {
 	 * Constructor.
 	 */
 	public Player() {
-		this.x               = -1;
+		this.x               = GameAttributeHelper.CHUNK_THREE_X_POSITION_START;
 		this.y               = -1;
 		this.width           = characterSize;
 		this.height          = characterSize;

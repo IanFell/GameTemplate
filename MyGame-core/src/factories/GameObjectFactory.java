@@ -3,8 +3,8 @@ package factories;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.GamePlayObject;
-import gameobjects.stationarygameobjects.NatureObject;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
+import gameobjects.stationarygameobjects.treeobjects.Plant;
 
 /**
  * Factory to create our game objects.
@@ -31,7 +31,7 @@ public class GameObjectFactory {
 			return new PalmTree(x, y);
 		}
 		if (objectType.equalsIgnoreCase("plant")) {
-			return new NatureObject(x, y);
+			return new Plant(x, y);
 		}
 		if (objectType.equalsIgnoreCase("chest")) {
 			return new GamePlayObject();
