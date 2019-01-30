@@ -37,16 +37,16 @@ public class ShadowHandler extends AbstractLightingHandler {
 		float sizeAndMovementValue = 0.01f;
 		float shadowOffsetValue    = 5 + 0.02f;
 		if (Player.jumpingAction == Player.ASCENDING_JUMP) {
-			width  -= sizeAndMovementValue;
-			height -= sizeAndMovementValue;
+			//width  -= sizeAndMovementValue;
+			//height -= sizeAndMovementValue;
 			y      += sizeAndMovementValue;
 			// Shadows behave differently if player is facing down.
 			if (player.getDirection() == Player.DIRECTION_DOWN) {
 				y += sizeAndMovementValue * shadowOffsetValue;
 			}
 		} else if (Player.jumpingAction == Player.DESCENDING_JUMP) {
-			width  += sizeAndMovementValue;
-			height += sizeAndMovementValue;
+			//width  += sizeAndMovementValue;
+			//height += sizeAndMovementValue;
 			y      -= sizeAndMovementValue;
 			// Shadows behave differently if player is facing down.
 			if (player.getDirection() == Player.DIRECTION_DOWN) {
@@ -54,9 +54,12 @@ public class ShadowHandler extends AbstractLightingHandler {
 			}
 		} else {
 			// If player has completed jump and is on ground.
-			float originalValue = 1;  
-			width               = originalValue;
-			height              = originalValue;
+			//float originalValue = 1;  
+			//width               = originalValue;
+			//height              = originalValue;
+			// To get code back to how it was, uncomment everything above,
+			// comment below line out, and change render to be player.getY() + offset.
+			//y = player.getY() + 0.5f;
 		}
 	}
 }
