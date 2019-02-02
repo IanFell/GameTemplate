@@ -68,7 +68,7 @@ public class ImageLoader {
 		shadow                         = new Texture(Gdx.files.internal("Shadow.png"));
 		playerSprite                   = new Texture(Gdx.files.internal("PlayerSprite.png"));
 		tree                           = new Texture(Gdx.files.internal("SampleTree.png"));
-		chest                          = new Texture(Gdx.files.internal("Chest.png"));
+		chest                          = new Texture(Gdx.files.internal("FakeTile.png"));
 		whiteSquare                    = new Texture(Gdx.files.internal("WhiteSquare.png"));
 		playerScore                    = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
 		rain 						   = new Texture(Gdx.files.internal("Rain.png"));

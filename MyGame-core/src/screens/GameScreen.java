@@ -14,6 +14,7 @@ import maps.MapHandler;
 import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
+import physics.CollisionHandler;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
@@ -116,6 +117,11 @@ public class GameScreen extends Screens {
 		if (!weatherHandler.lightningHandler.isLightningShouldBeRendered()) {
 			resetCameraAfterScreenShake();
 		}
+		
+		CollisionHandler.checkIfPlayerHasCollidedWithChest(
+				myGame.getGameObject(GameObject.PLAYER_ONE),
+				myGame.getGameObject(GameObject.CHEST)
+				);
 
 		// Update objects associated with GameScreen.
 		updateGameScreen();
@@ -175,6 +181,7 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.update(myGame, this, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapHandler);
+		myGame.getGameObject(GameObject.CHEST).updateObject(myGame, mapHandler);
 
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();

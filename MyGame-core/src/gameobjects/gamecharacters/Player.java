@@ -30,7 +30,7 @@ public class Player extends GameObject {
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
 	
-	public final static float PLAYER_SPEED = 0.1f;
+	public final static float PLAYER_SPEED = 0.10f;
 	
 	/**
 	 * If player jumps, isJumping will be true until jumpCount surpases jumpCountMax.
@@ -42,6 +42,7 @@ public class Player extends GameObject {
 	
 	public static int jumpingAction;
 	private float jumpSpeed;
+	private float jumpingSpeedValue = 0.10f;
 	
 	private static final int ON_GROUND      = 0;
 	public static final int ASCENDING_JUMP  = 1;
@@ -87,13 +88,15 @@ public class Player extends GameObject {
 	 * Character size is the same size as a tile.
 	 */
 	private int characterSize = 1;
+	
+	private int playerScore;
 
 	/**
 	 * Constructor.
 	 */
 	public Player() {
-		this.x               = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START;
-		this.y               = GameAttributeHelper.CHUNK_FOUR_Y_POSITION_START;
+		this.x               = GameAttributeHelper.CHUNK_ONE_X_POSITION_START;
+		this.y               = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
@@ -107,6 +110,7 @@ public class Player extends GameObject {
 		walkUpAnimation      = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+		playerScore          = 0;
 	}
 
 	/**
@@ -125,8 +129,6 @@ public class Player extends GameObject {
 
 		myGame.getGameObject(GameObject.PLAYER_THREE).setX(myGame.gameObjectLoader.playerOne.getX() + startingPosition * 2);
 		myGame.getGameObject(GameObject.PLAYER_THREE).setY(myGame.gameObjectLoader.playerOne.getY());
-		
-		//rotateAngle = 0.0f;
 	}
 
 	/**
@@ -136,6 +138,9 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
+		
+		System.out.println("Player Score: " + playerScore);
+		
 		x += dx;
 		y += dy;
 		rectangle.x = x;
@@ -143,6 +148,7 @@ public class Player extends GameObject {
 
 		int playerTwoDirection = myGame.gameObjectLoader.playerTwo.getDirection();
 		int followDistance     = 1;
+		
 		// Player two follows player one.
 		handleWalking(
 				myGame.getGameObject(GameObject.PLAYER_ONE), 
@@ -186,7 +192,7 @@ public class Player extends GameObject {
 				jumpingAction = DESCENDING_JUMP;
 				System.out.println("Player is descending during jumping");
 			}
-			float jumpingSpeedValue = 0.10f;
+			
 			switch (jumpingAction) {
 			case ASCENDING_JUMP:
 				jumpSpeed = -jumpingSpeedValue;
@@ -411,5 +417,29 @@ public class Player extends GameObject {
 	public void stopPlayer() {
 		dx = 0;
 		dy = 0;
+	}
+
+	/**
+	 * 
+	 * @return float
+	 */
+	public float getJumpingSpeedValue() {
+		return jumpingSpeedValue;
+	}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getPlayerScore() {
+		return playerScore;
+	}
+
+	/**
+	 * 
+	 * @param int playerScore
+	 */
+	public void setPlayerScore(int playerScore) {
+		this.playerScore = playerScore;
 	}
 }

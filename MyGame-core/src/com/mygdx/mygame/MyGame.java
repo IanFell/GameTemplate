@@ -96,17 +96,17 @@ public class MyGame extends Game {
 	public GameObject getGameObject(int object) {
 		GameObject desiredObject = null;
 		switch (object) {
-		case 1:
+		case GameObject.PLAYER_ONE:
 			desiredObject = gameObjectLoader.playerOne;
 			break;
-		case 2:
+		case GameObject.PLAYER_TWO:
 			desiredObject = gameObjectLoader.playerTwo;
 			break;
-		case 3:
+		case GameObject.PLAYER_THREE:
 			desiredObject = gameObjectLoader.playerThree;
 			break;
-		case 4:
-			//desiredObject = gameObjectLoader.tree;
+		case GameObject.CHEST:
+			desiredObject = gameObjectLoader.chest;
 		}
 		return desiredObject;
 	}

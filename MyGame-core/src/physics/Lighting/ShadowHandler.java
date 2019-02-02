@@ -15,6 +15,11 @@ import loaders.ImageLoader;
 public class ShadowHandler extends AbstractLightingHandler {
 
 	/**
+	 * Amount to offset shadows under player so they do not appear behind player.
+	 */
+	private float offset = 0.5f;
+	
+	/**
 	 * 
 	 * @param SpriteBatch batch
 	 * @param ImageLoader imageLoader
@@ -22,44 +27,22 @@ public class ShadowHandler extends AbstractLightingHandler {
 	 */
 	@Override
 	public void renderLighting(SpriteBatch batch, ImageLoader imageLoader, GameObject player) {
-		float offset = 0.5f;
 		batch.draw(imageLoader.shadow, player.getX(), player.getY() + offset, width, height);
-		handleShadowSizeDuringPlayerJump(player);
+		handleShadowSizeDuringPlayerJump((Player) player);
 	}
 	
 	/**
-	 * This method currently does not do anything.  The above render method needs to reflect
-	 * the shadow's y position for this method to work correctly.
 	 * 
-	 * @param GameObject player
+	 * @param Player player
 	 */
-	private void handleShadowSizeDuringPlayerJump(GameObject player) {
-		float sizeAndMovementValue = 0.01f;
-		float shadowOffsetValue    = 5 + 0.02f;
+	private void handleShadowSizeDuringPlayerJump(Player player) {
 		if (Player.jumpingAction == Player.ASCENDING_JUMP) {
-			//width  -= sizeAndMovementValue;
-			//height -= sizeAndMovementValue;
-			y      += sizeAndMovementValue;
-			// Shadows behave differently if player is facing down.
-			if (player.getDirection() == Player.DIRECTION_DOWN) {
-				y += sizeAndMovementValue * shadowOffsetValue;
-			}
+			offset += player.getJumpingSpeedValue();
 		} else if (Player.jumpingAction == Player.DESCENDING_JUMP) {
-			//width  += sizeAndMovementValue;
-			//height += sizeAndMovementValue;
-			y      -= sizeAndMovementValue;
-			// Shadows behave differently if player is facing down.
-			if (player.getDirection() == Player.DIRECTION_DOWN) {
-				y -= sizeAndMovementValue * shadowOffsetValue;
-			}
+			offset -= player.getJumpingSpeedValue();
 		} else {
 			// If player has completed jump and is on ground.
-			//float originalValue = 1;  
-			//width               = originalValue;
-			//height              = originalValue;
-			// To get code back to how it was, uncomment everything above,
-			// comment below line out, and change render to be player.getY() + offset.
-			//y = player.getY() + 0.5f;
+			offset = 0.5f;
 		}
 	}
 }
