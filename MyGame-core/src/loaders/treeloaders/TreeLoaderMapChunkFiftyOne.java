@@ -14,7 +14,7 @@ public class TreeLoaderMapChunkFiftyOne extends MapChunkTreeLoader {
 	
 	@Override
 	public void loadTrees() {
-		startXPosition             = GameAttributeHelper.CHUNK_TWO_X_POSITION_START;
+		startXPosition             = GameAttributeHelper.CHUNK_THREE_X_POSITION_START;
 		startYPosition             = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START;
 		row 				       = startYPosition + 10;
 		treesMapChunkFfiftyOne[0]  = new PalmTree(startXPosition + 27, row);

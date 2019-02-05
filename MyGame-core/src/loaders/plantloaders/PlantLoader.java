@@ -33,6 +33,21 @@ public class PlantLoader extends GameObjectLoader {
 	private PlantLoaderMapChunkThirty plantLoaderMapChunkThirty;
 	private PlantLoaderMapChunkThirtyOne plantLoaderMapChunkThirtyOne;
 	private PlantLoaderMapChunkThirtyTwo plantLoaderMapChunkThirtyTwo;
+	private PlantLoaderMapChunkThirtySeven plantLoaderMapChunkThirtySeven;
+	private PlantLoaderMapChunkThirtyEight plantLoaderMapChunkThirtyEight;
+	private PlantLoaderMapChunkThirtyNine plantLoaderMapChunkThirtyNine;
+	private PlantLoaderMapChunkFourty plantLoaderMapChunkFourty;
+	private PlantLoaderMapChunkFourtyThree plantLoaderMapChunkFourtyThree;
+	private PlantLoaderMapChunkFourtyFive plantLoaderMapChunkFourtyFive;
+	private PlantLoaderMapChunkFourtySix plantLoaderMapChunkFourtySix;
+	private PlantLoaderMapChunkFourtySeven plantLoaderMapChunkFourtySeven;
+	private PlantLoaderMapChunkFourtyEight plantLoaderMapChunkFourtyEight;
+	private PlantLoaderMapChunkFiftyOne plantLoaderMapChunkFiftyOne;
+	private PlantLoaderMapChunkFiftyTwo plantLoaderMapChunkFiftyTwo;
+	private PlantLoaderMapChunkFiftyThree plantLoaderMapChunkFiftyThree;
+	private PlantLoaderMapChunkFiftyFour plantLoaderMapChunkFiftyFour;
+	private PlantLoaderMapChunkFiftyFive plantLoaderMapChunkFiftyFive;
+	private PlantLoaderMapChunkFiftySix plantLoaderMapChunkFiftySix;
 	
 	public PlantLoader() {
 		plantLoaderMapChunkTwo         = new PlantLoaderMapChunkTwo();
@@ -59,6 +74,21 @@ public class PlantLoader extends GameObjectLoader {
 		plantLoaderMapChunkThirty      = new PlantLoaderMapChunkThirty();
 		plantLoaderMapChunkThirtyOne   = new PlantLoaderMapChunkThirtyOne();
 		plantLoaderMapChunkThirtyTwo   = new PlantLoaderMapChunkThirtyTwo();
+		plantLoaderMapChunkThirtySeven = new PlantLoaderMapChunkThirtySeven();
+		plantLoaderMapChunkThirtyEight = new PlantLoaderMapChunkThirtyEight();
+		plantLoaderMapChunkThirtyNine  = new PlantLoaderMapChunkThirtyNine();
+		plantLoaderMapChunkFourty      = new PlantLoaderMapChunkFourty();
+		plantLoaderMapChunkFourtyThree = new PlantLoaderMapChunkFourtyThree();
+		plantLoaderMapChunkFourtyFive  = new PlantLoaderMapChunkFourtyFive();
+		plantLoaderMapChunkFourtySix   = new PlantLoaderMapChunkFourtySix();
+		plantLoaderMapChunkFourtySeven = new PlantLoaderMapChunkFourtySeven();
+		plantLoaderMapChunkFourtyEight = new PlantLoaderMapChunkFourtyEight();
+		plantLoaderMapChunkFiftyOne    = new PlantLoaderMapChunkFiftyOne();
+		plantLoaderMapChunkFiftyTwo    = new PlantLoaderMapChunkFiftyTwo();
+		plantLoaderMapChunkFiftyThree  = new PlantLoaderMapChunkFiftyThree();
+		plantLoaderMapChunkFiftyFour   = new PlantLoaderMapChunkFiftyFour();
+		plantLoaderMapChunkFiftyFive   = new PlantLoaderMapChunkFiftyFive();
+		plantLoaderMapChunkFiftySix    = new PlantLoaderMapChunkFiftySix();
 		loadPlants();
 	}
 	
@@ -87,5 +117,20 @@ public class PlantLoader extends GameObjectLoader {
 		plantLoaderMapChunkThirty.loadPlants();
 		plantLoaderMapChunkThirtyOne.loadPlants();
 		plantLoaderMapChunkThirtyTwo.loadPlants();
+		plantLoaderMapChunkThirtySeven.loadPlants();
+		plantLoaderMapChunkThirtyEight.loadPlants();
+		plantLoaderMapChunkThirtyNine.loadPlants();
+		plantLoaderMapChunkFourty.loadPlants();
+		plantLoaderMapChunkFourtyThree.loadPlants();
+		plantLoaderMapChunkFourtyFive.loadPlants();
+		plantLoaderMapChunkFourtySix.loadPlants();
+		plantLoaderMapChunkFourtySeven.loadPlants();
+		plantLoaderMapChunkFourtyEight.loadPlants();
+		plantLoaderMapChunkFiftyOne.loadPlants();
+		plantLoaderMapChunkFiftyTwo.loadPlants();
+		plantLoaderMapChunkFiftyThree.loadPlants();
+		plantLoaderMapChunkFiftyFour.loadPlants();
+		plantLoaderMapChunkFiftyFive.loadPlants();
+		plantLoaderMapChunkFiftySix.loadPlants();
 	}
 }
