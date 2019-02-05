@@ -8,7 +8,6 @@ import loaders.GameObjectLoader;
  *
  */
 public class PlantLoader extends GameObjectLoader {
-	
 	private PlantLoaderMapChunkTwo plantLoaderMapChunkTwo;
 	private PlantLoaderMapChunkThree plantLoaderMapChunkThree;
 	private PlantLoaderMapChunkFour plantLoaderMapChunkFour;
