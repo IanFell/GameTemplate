@@ -1,6 +1,5 @@
 package loaders.plantloaders;
 
-import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.treeobjects.Plant;
 import helpers.GameAttributeHelper;
 
@@ -10,15 +9,21 @@ import helpers.GameAttributeHelper;
  *
  */
 public class PlantLoaderMapChunkThirty extends MapChunkPlantLoader {
-	public GameObject[] plantsMapChunkThirty = new Plant[15];
+	
+	/**
+	 * Constructor.
+	 */
+	public PlantLoaderMapChunkThirty() {
+		plants = new Plant[15];
+	}
 
 	@Override
 	public void loadPlants() {
 		placePlantsForAllSandChunk(
-				plantsMapChunkThirty, 
+				plants, 
 				GameAttributeHelper.CHUNK_SIX_X_POSITION_START, 
 				GameAttributeHelper.CHUNK_FOUR_Y_POSITION_START
 				);
-		addGameObjectsToGameObjectArrayList(plantsMapChunkThirty);
+		addGameObjectsToGameObjectArrayList(plants);
 	}
 }

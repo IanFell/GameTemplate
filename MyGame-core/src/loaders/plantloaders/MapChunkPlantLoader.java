@@ -11,6 +11,8 @@ import maps.MapInformationHolder;
  *
  */
 public class MapChunkPlantLoader {
+	
+	protected GameObject[] plants;
 
 	protected int startXPosition;
 	protected int startYPosition;
