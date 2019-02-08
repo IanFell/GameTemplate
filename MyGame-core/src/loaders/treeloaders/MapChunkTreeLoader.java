@@ -12,6 +12,8 @@ import maps.MapInformationHolder;
  */ 
 public class MapChunkTreeLoader {
 	
+	protected GameObject[] trees;
+	
 	protected int startXPosition;
 	protected int startYPosition;
 	protected int row;

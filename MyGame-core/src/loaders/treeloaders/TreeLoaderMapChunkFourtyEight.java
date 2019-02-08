@@ -1,6 +1,5 @@
 package loaders.treeloaders;
 
-import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import helpers.GameAttributeHelper;
 
@@ -10,22 +9,27 @@ import helpers.GameAttributeHelper;
  *
  */
 public class TreeLoaderMapChunkFourtyEight extends MapChunkTreeLoader {
-	public GameObject[] treesMapChunkFourtyEight = new PalmTree[8];
-	
+
+	/**
+	 * Constructor.
+	 */
+	public TreeLoaderMapChunkFourtyEight() {
+		trees = new PalmTree[8];
+	}
+
 	@Override
 	public void loadTrees() {
-		startXPosition              = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START;
-		startYPosition              = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START;
-		row 				        = startYPosition + 5;
-		treesMapChunkFourtyEight[0] = new PalmTree(startXPosition + 2, row);
-		treesMapChunkFourtyEight[1] = new PalmTree(startXPosition + 6, row);
-		treesMapChunkFourtyEight[2] = new PalmTree(startXPosition + 10, row);
-		treesMapChunkFourtyEight[3] = new PalmTree(startXPosition + 16, row);
-		treesMapChunkFourtyEight[4] = new PalmTree(startXPosition + 20, row);
-		treesMapChunkFourtyEight[5] = new PalmTree(startXPosition + 30, row);
-		treesMapChunkFourtyEight[6] = new PalmTree(startXPosition + 40, row);
-		treesMapChunkFourtyEight[7] = new PalmTree(startXPosition + 41, row);
-		
-		addGameObjectsToGameObjectArrayList(treesMapChunkFourtyEight);
+		startXPosition = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START;
+		startYPosition = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START;
+		row 		   = startYPosition + 5;
+		trees[0]       = new PalmTree(startXPosition + 2, row);
+		trees[1]       = new PalmTree(startXPosition + 6, row);
+		trees[2]       = new PalmTree(startXPosition + 10, row);
+		trees[3]       = new PalmTree(startXPosition + 16, row);
+		trees[4]       = new PalmTree(startXPosition + 20, row);
+		trees[5]       = new PalmTree(startXPosition + 30, row);
+		trees[6]       = new PalmTree(startXPosition + 40, row);
+		trees[7]       = new PalmTree(startXPosition + 41, row);
+		addGameObjectsToGameObjectArrayList(trees);
 	}
 }

@@ -1,6 +1,5 @@
 package loaders.treeloaders;
 
-import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import helpers.GameAttributeHelper;
 
@@ -10,15 +9,21 @@ import helpers.GameAttributeHelper;
  *
  */
 public class TreeLoaderMapChunkTwentyFour extends MapChunkTreeLoader {
-	public GameObject[] treesMapChunkTwentyFour = new PalmTree[140];
+	
+	/**
+	 * Constructor.
+	 */
+	public TreeLoaderMapChunkTwentyFour() {
+		trees = new PalmTree[140];
+	}
 
 	@Override
 	public void loadTrees() {
 		placeTreesForAllSandChunk(
-				treesMapChunkTwentyFour, 
+				trees, 
 				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START, 
 				GameAttributeHelper.CHUNK_THREE_Y_POSITION_START
 				);
-		addGameObjectsToGameObjectArrayList(treesMapChunkTwentyFour);
+		addGameObjectsToGameObjectArrayList(trees);
 	}
 }

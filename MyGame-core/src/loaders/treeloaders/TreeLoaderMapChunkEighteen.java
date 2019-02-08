@@ -1,6 +1,5 @@
 package loaders.treeloaders;
 
-import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import helpers.GameAttributeHelper;
 
@@ -10,29 +9,34 @@ import helpers.GameAttributeHelper;
  *
  */
 public class TreeLoaderMapChunkEighteen extends MapChunkTreeLoader {
-	public GameObject[] treesMapChunkEighteen = new PalmTree[9];
-	
+
+	/**
+	 * Constructor.
+	 */
+	public TreeLoaderMapChunkEighteen() {
+		trees = new PalmTree[9];
+	}
+
 	@Override
 	public void loadTrees() {
-		startXPosition		     = GameAttributeHelper.CHUNK_TWO_X_POSITION_START;
-		startYPosition           = GameAttributeHelper.CHUNK_THREE_Y_POSITION_START;
-		row                      = startYPosition;
-		treesMapChunkEighteen[0] = new PalmTree(startXPosition + 8, row);
-		row                      = startYPosition + 1;
-		treesMapChunkEighteen[1] = new PalmTree(startXPosition + 9, row);
-		row                      = startYPosition + 12;
-		treesMapChunkEighteen[2] = new PalmTree(startXPosition + 9, row);
-		row                      = startYPosition + 20;
-		treesMapChunkEighteen[3] = new PalmTree(startXPosition + 7, row);
-		row                      = startYPosition + 30;
-		treesMapChunkEighteen[4] = new PalmTree(startXPosition + 9, row);
-		row                      = startYPosition + 37;
-		treesMapChunkEighteen[5] = new PalmTree(startXPosition + 1, row);
-		treesMapChunkEighteen[6] = new PalmTree(startXPosition + 2, row);
-		row                      = startYPosition + 42;
-		treesMapChunkEighteen[7] = new PalmTree(startXPosition + 3, row);
-		treesMapChunkEighteen[8] = new PalmTree(startXPosition + 4, row);
-		
-		addGameObjectsToGameObjectArrayList(treesMapChunkEighteen);
+		startXPosition = GameAttributeHelper.CHUNK_TWO_X_POSITION_START;
+		startYPosition = GameAttributeHelper.CHUNK_THREE_Y_POSITION_START;
+		row            = startYPosition;
+		trees[0]       = new PalmTree(startXPosition + 8, row);
+		row            = startYPosition + 1;
+		trees[1]       = new PalmTree(startXPosition + 9, row);
+		row            = startYPosition + 12;
+		trees[2]       = new PalmTree(startXPosition + 9, row);
+		row            = startYPosition + 20;
+		trees[3]       = new PalmTree(startXPosition + 7, row);
+		row            = startYPosition + 30;
+		trees[4]       = new PalmTree(startXPosition + 9, row);
+		row            = startYPosition + 37;
+		trees[5]       = new PalmTree(startXPosition + 1, row);
+		trees[6]       = new PalmTree(startXPosition + 2, row);
+		row            = startYPosition + 42;
+		trees[7]       = new PalmTree(startXPosition + 3, row);
+		trees[8]       = new PalmTree(startXPosition + 4, row);
+		addGameObjectsToGameObjectArrayList(trees);
 	}
 }
