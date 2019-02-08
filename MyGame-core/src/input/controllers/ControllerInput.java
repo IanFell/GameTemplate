@@ -20,7 +20,7 @@ public class ControllerInput extends ApplicationAdapter {
 	/**
 	 * Determine whether a controller has been detected.
 	 */
-	public boolean hasControllers = true;
+	private boolean hasControllers = true;
 
 	protected String controllerName;
 
@@ -57,10 +57,10 @@ public class ControllerInput extends ApplicationAdapter {
 	/**
 	 * Controller sticks.
 	 */
-	protected int AXIS_LEFT_X;  //-1 is left | +1 is right
-	protected int AXIS_LEFT_Y;  //-1 is up | +1 is down
-	protected int AXIS_RIGHT_X; //-1 is left | +1 is right
-	protected int AXIS_RIGHT_Y; //-1 is up | +1 is down
+	protected int AXIS_LEFT_X;  // -1 is left | +1 is right
+	protected int AXIS_LEFT_Y;  // -1 is up | +1 is down
+	protected int AXIS_RIGHT_X; // -1 is left | +1 is right
+	protected int AXIS_RIGHT_Y; // -1 is up | +1 is down
 
 	/**
 	 * If a controller is found, set the name.
@@ -92,18 +92,9 @@ public class ControllerInput extends ApplicationAdapter {
 	/**
 	 * Polls controller for A, B, X, and Y.
 	 */
-	private void pollMainFourButtons() {
-		if(controller.getButton(BUTTON_Y)) {
-			System.out.print("Y button pressed \n");
-		}
-		if(controller.getButton(BUTTON_A)) {
-			System.out.print("A button pressed \n");
-		}
+	protected void pollMainFourButtons() {
 		if(controller.getButton(BUTTON_X)) {
 			System.out.print("X button pressed \n");
-		}
-		if(controller.getButton(BUTTON_B)) {
-			System.out.print("B button pressed \n");
 		}
 	}
 
@@ -142,7 +133,7 @@ public class ControllerInput extends ApplicationAdapter {
 	/**
 	 * Polls controller for analog sticks.
 	 */
-	private void pollSticks() {
+	protected void pollSticks() {
 		// Left stick.
 		if (stickIsMoved(AXIS_LEFT_X)) {
 			System.out.print("LEFT STICK X pressed \n");
@@ -167,27 +158,27 @@ public class ControllerInput extends ApplicationAdapter {
 	}
 
 	/**
-	 * Determines if either joystick has been moved.
-	 * 
-	 * @param int axis
-	 * @return boolean
-	 */
-	private boolean stickIsMoved(int axis) {
-		if (controller.getAxis(axis) > deadZone  || controller.getAxis(axis) < -deadZone) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * Polls controller for start, back/select buttons.
 	 */
-	private void pollStartSection() {
+	protected void pollStartSection() {
 		if(controller.getButton(BUTTON_BACK)) {
 			System.out.print("BACK button pressed \n");
 		}
 		if(controller.getButton(BUTTON_START)) {
 			System.out.print("START button pressed \n");
 		}
+	}
+	
+	/**
+	 * Determines if either joystick has been moved.
+	 * 
+	 * @param int axis
+	 * @return boolean
+	 */
+	protected boolean stickIsMoved(int axis) {
+		if (controller.getAxis(axis) > deadZone  || controller.getAxis(axis) < -deadZone) {
+			return true;
+		}
+		return false;
 	}
 }

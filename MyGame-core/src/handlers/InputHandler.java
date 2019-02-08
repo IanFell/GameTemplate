@@ -7,6 +7,7 @@ import input.computer.Keyboard;
 import input.computer.Mouse;
 import input.controllers.ControllerInput;
 import input.controllers.LogitechF310;
+import input.controllers.PlayStation4Pad;
 import input.controllers.XBox360Pad;
 
 /**
@@ -45,6 +46,9 @@ public class InputHandler {
 		}
 		if (controllerName.contains("Xbox") && controllerName.contains("360")) {
 			controllerInput = new XBox360Pad();
+		}
+		if (controllerName.contains("Wireless Controller")) {
+			controllerInput = new PlayStation4Pad();
 		}
 
 		// If we have found a controller, initialize it.

@@ -27,11 +27,10 @@ public class LogitechF310 extends ControllerInput
 		this.BUTTON_R3    = 11;
 		this.BUTTON_LT    = 6;
 		this.BUTTON_RT    = 7;
-
-		this.AXIS_LEFT_X  = 3; //-1 is left | +1 is right
-		this.AXIS_LEFT_Y  = 2; //-1 is up | +1 is down
-		this.AXIS_RIGHT_X = 1; //-1 is left | +1 is right
-		this.AXIS_RIGHT_Y = 0; //-1 is up | +1 is down
+		this.AXIS_LEFT_X  = 3; // -1 is left | +1 is right
+		this.AXIS_LEFT_Y  = 2; // -1 is up | +1 is down
+		this.AXIS_RIGHT_X = 1; // -1 is left | +1 is right
+		this.AXIS_RIGHT_Y = 0; // -1 is up | +1 is down
 	}
 
 	/**
@@ -45,6 +44,23 @@ public class LogitechF310 extends ControllerInput
 		}
 		if(controller.getButton(BUTTON_RT)) {
 			System.out.print("RT button pressed \n");
+		}
+	}
+
+	/**
+	 * Polls controller for A, B, X, and Y.
+	 */
+	@Override
+	protected void pollMainFourButtons() {
+		super.pollMainFourButtons();
+		if(controller.getButton(BUTTON_Y)) {
+			System.out.print("Y button pressed \n");
+		}
+		if(controller.getButton(BUTTON_A)) {
+			System.out.print("A button pressed \n");
+		}
+		if(controller.getButton(BUTTON_B)) {
+			System.out.print("B button pressed \n");
 		}
 	}
 }
