@@ -15,29 +15,19 @@ public class Tile extends Sprite {
 
 	public boolean isSolid;
 	
+	protected final String name;
+	
 	public static Texture grassTextureOne;
 	public static Texture grassTextureTwo;
 	public static Texture buildingTexture;
 	public static Texture sandTexture;
 	public static Texture waterTextureOne;
-	public static Texture waterTextureTwo;
-	public static Texture waterLowerLeftHalfAndHalfTexture;
-	public static Texture waterUpperLeftHalfAndHalfTexture;
-	public static Texture waterLowerRightHalfAndHalfTexture;
-	public static Texture waterUpperRightHalfAndHalfTexture;
-	public static Texture waterUpperLeftCurvedTexture;
 	
-	protected static final int SolidTile                  = 0;
-	protected static final int GrassTileOne               = 1;
-	protected static final int GrassTileTwo               = 2;
-	protected static final int SandTile                   = 3;
-	protected static final int WaterTileOne               = 4;
-	protected static final int WaterTileTwo               = 5;
-	protected static final int WaterLowerLeftHalfAndHalf  = 6;
-	protected static final int WaterUpperLeftHalfAndHalf  = 7;
-	protected static final int WaterLowerRightHalfAndHalf = 8;
-	protected static final int WaterUpperRightHalfAndHalf = 9;
-	protected static final int WaterUpperLeftCurved       = 10;
+	protected static final int SolidTile     = 0;
+	protected static final int GrassTileOne  = 1;
+	protected static final int GrassTileTwo  = 2;
+	protected static final int SandTile      = 3;
+	protected static final int WaterTileOne  = 4;
 	
 	protected final static int WORLD_WIDTH  = 21;
 	protected final static int WORLD_HEIGHT = 21;
@@ -46,10 +36,20 @@ public class Tile extends Sprite {
 	 * 
 	 * @param Texture texture
 	 * @param boolean isSolid
+	 * @param String  name
 	 */
-	public Tile(Texture texture, boolean isSolid) {
+	public Tile(Texture texture, boolean isSolid, String name) {
 		super(texture);
 		this.isSolid = isSolid;
+		this.name    = name;
+	}
+	
+	/**
+	 * 
+	 * @return String
+	 */
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -57,17 +57,11 @@ public class Tile extends Sprite {
 	 * @param MyGame myGame
 	 */
 	public static void initializeTileTextures(MyGame myGame) {
-		grassTextureOne                   = myGame.imageLoader.grassTileOne;
-		grassTextureTwo                   = myGame.imageLoader.grassTileTwo;
-		buildingTexture                   = myGame.imageLoader.solidTile;
-		sandTexture                       = myGame.imageLoader.sandTile;
-		waterTextureOne                   = myGame.imageLoader.waterTileOne;
-		waterTextureTwo                   = myGame.imageLoader.waterTileTwo;
-		waterLowerLeftHalfAndHalfTexture  = myGame.imageLoader.waterLowerLeftHalfAndHalfTile;
-		waterUpperLeftHalfAndHalfTexture  = myGame.imageLoader.waterUpperLeftHalfAndHalfTile;
-		waterLowerRightHalfAndHalfTexture = myGame.imageLoader.waterLowerRightHalfAndHalfTile;
-		waterUpperRightHalfAndHalfTexture = myGame.imageLoader.waterUpperRightHalfAndHalfTile;
-		waterUpperLeftCurvedTexture       = myGame.imageLoader.waterUpperLeftCurvedTile;
+		grassTextureOne = myGame.imageLoader.grassTileOne;
+		grassTextureTwo = myGame.imageLoader.grassTileTwo;
+		buildingTexture = myGame.imageLoader.solidTile;
+		sandTexture     = myGame.imageLoader.sandTile;
+		waterTextureOne = myGame.imageLoader.waterTileOne;
 	}
 
 	/**

@@ -10,18 +10,18 @@ import com.badlogic.gdx.graphics.Texture;
  *
  */
 public class WaterTile extends Tile {
-
+	
 	/**
 	 * Constructor.
 	 * 
 	 * @param Texture texture
 	 * @param boolean isSolid
 	 */
-	public WaterTile(Texture texture, boolean isSolid) {
-		super(texture, isSolid);
+	public WaterTile(Texture texture, boolean isSolid, String name) {
+		super(texture, isSolid, name);
 	}
 	
-	public final Tile[][] solidWaterTile = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
+	public final Tile[][] solidWaterTile = new WaterTile[WORLD_WIDTH][WORLD_HEIGHT];
 	public int[][] solidWaterMap         = 
 		{
 				{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},

@@ -3,7 +3,7 @@ package tiles;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
- * Water tile consists of a grid of 20 x 20 tiles.
+ * Sand tile consists of a grid of 20 x 20 tiles.
  * 
  * @author Fabulous Fellini
  *
@@ -16,8 +16,8 @@ public class SandTile extends Tile {
 	 * @param Texture texture
 	 * @param boolean isSolid
 	 */
-	public SandTile(Texture texture, boolean isSolid) {
-		super(texture, isSolid);
+	public SandTile(Texture texture, boolean isSolid, String name) {
+		super(texture, isSolid, name);
 	}
 	
 	public final Tile[][] solidSandTile = new Tile[WORLD_WIDTH][WORLD_HEIGHT];

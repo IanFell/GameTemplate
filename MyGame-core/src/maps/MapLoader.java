@@ -251,16 +251,14 @@ public class MapLoader {
 	 */
 	private void loadTile(int[][] worldMap, Tile[][] tileMap, int x, int z) {
 		if (worldMap[z][x] == MapInformationHolder.SandTile) {  
-			tileMap[x][z] = new Tile(Tile.sandTexture, !isSolid);
+			tileMap[x][z] = new Tile(Tile.sandTexture, !isSolid, "Sand");
 		}
 		if (worldMap[z][x] == MapInformationHolder.WaterTileOne) {  
-			tileMap[x][z] = new Tile(Tile.waterTextureOne, !isSolid);
+			tileMap[x][z] = new Tile(Tile.waterTextureOne, !isSolid, "Water");
 		}
-		if (worldMap[z][x] == MapInformationHolder.WaterTileTwo) {  
-			tileMap[x][z] = new Tile(Tile.waterTextureTwo, !isSolid);
-		}
+		// Solid sand tile under transparent tree pngs.
 		if (worldMap[z][x] == MapInformationHolder.SolidTile) {  
-			tileMap[x][z] = new Tile(Tile.sandTexture, isSolid);
+			tileMap[x][z] = new Tile(Tile.sandTexture, isSolid, "Solid");
 		}
 	}
 }
