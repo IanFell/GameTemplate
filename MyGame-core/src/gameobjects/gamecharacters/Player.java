@@ -42,7 +42,7 @@ public class Player extends GameObject {
 	
 	public static int jumpingAction;
 	private float jumpSpeed;
-	private float jumpingSpeedValue = 0.10f;
+	private float jumpingSpeedValue = 0.05f;
 	
 	private static final int ON_GROUND      = 0;
 	public static final int ASCENDING_JUMP  = 1;
@@ -80,14 +80,9 @@ public class Player extends GameObject {
 	private float elapsedTime = 0;
 
 	/**
-	 * Boolean to check whether player should stop moving upon collisions.
-	 */
-	public static boolean playerShouldStopMoving = false;
-
-	/**
 	 * Character size is the same size as a tile.
 	 */
-	private int characterSize = 1;
+	private float characterSize = 0.5f;
 	
 	private int playerScore;
 
@@ -95,8 +90,8 @@ public class Player extends GameObject {
 	 * Constructor.
 	 */
 	public Player() {
-		this.x               = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 2;
-		this.y               = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 2;
+		this.x               = GameAttributeHelper.CHUNK_THREE_X_POSITION_START + 25;
+		this.y               = GameAttributeHelper.CHUNK_TWO_Y_POSITION_START + 4;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
@@ -167,7 +162,7 @@ public class Player extends GameObject {
 				myGame.getGameObject(GameObject.PLAYER_THREE).getDirection()
 				);
 		
-		handleJumping(myGame);
+		handleJumping(myGame); 
 	}
 	
 	/**
@@ -388,30 +383,6 @@ public class Player extends GameObject {
 	@Override
 	public void translateY(float distance) {
 		y += distance;
-	}
-
-	/**
-	 * Moves player back 1 on the x, y axis depending on which direction player is going, 
-	 * then stops it.  This is used when a player interacts with a solid tile.
-	 * 
-	 * @param int direction
-	 */
-	public void stopScrolling(int direction) {
-		float bounceBackAmountUponPlayerTileCollision = 0.01f;
-		switch (direction) {
-		case Player.DIRECTION_LEFT:
-			x += bounceBackAmountUponPlayerTileCollision;
-			break;
-		case Player.DIRECTION_RIGHT:
-			x -= bounceBackAmountUponPlayerTileCollision;
-			break;
-		case Player.DIRECTION_UP:
-			y += bounceBackAmountUponPlayerTileCollision;
-			break;
-		case Player.DIRECTION_DOWN:
-			y -= bounceBackAmountUponPlayerTileCollision;
-			break;
-		}
 	}
 
 	public void stopPlayer() {

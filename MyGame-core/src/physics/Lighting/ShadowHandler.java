@@ -17,7 +17,7 @@ public class ShadowHandler extends AbstractLightingHandler {
 	/**
 	 * Amount to offset shadows under player so they do not appear behind player.
 	 */
-	private float offset = 0.5f;
+	private float offset = 0.7f;
 	
 	/**
 	 * 
@@ -42,7 +42,7 @@ public class ShadowHandler extends AbstractLightingHandler {
 			offset -= player.getJumpingSpeedValue();
 		} else {
 			// If player has completed jump and is on ground.
-			offset = 0.5f;
+			offset = 0.7f;
 		}
 	}
 }

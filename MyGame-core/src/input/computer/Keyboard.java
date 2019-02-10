@@ -32,7 +32,7 @@ public class Keyboard extends ComputerInput {
 				GameStateController.switchGameStates(myGame, Screens.TITLE_SCREEN);
 			}
 			break;
-			
+
 		case Screens.TITLE_SCREEN:
 			if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){ 
 				GameStateController.switchGameStates(myGame, Screens.GAME_SCREEN);
@@ -42,7 +42,7 @@ public class Keyboard extends ComputerInput {
 		case Screens.GAME_SCREEN:	
 			handleKeyboardDirectionalButtons(myGame, "arrows");
 			//handleKeyboardDirectionalButtons(myGame, "wasd");
-			
+
 			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
 				Player.isJumping = true;
 			}
@@ -75,7 +75,7 @@ public class Keyboard extends ComputerInput {
 			}
 		}
 	}
-	
+
 	/**
 	 * Handles arrows and WASD.
 	 * 
@@ -83,19 +83,22 @@ public class Keyboard extends ComputerInput {
 	 * @param String directions
 	 */
 	private void handleKeyboardDirectionalButtons(MyGame myGame, String directions) {
+
 		System.out.println("Keyboard directional controls: " + directions);
-		float cameraScrollingSpeedTierOne = Player.PLAYER_SPEED;
+
 		// If user presses the T button to use turbo.
 		int turboSpeed = 3;
+		float playerSpeed = Player.PLAYER_SPEED;
 		if (Gdx.input.isKeyPressed(Input.Keys.T)) {
 			System.out.println("Player is using turbo!  Going fast!");
-			cameraScrollingSpeedTierOne = Player.PLAYER_SPEED * turboSpeed;
+			playerSpeed = Player.PLAYER_SPEED * turboSpeed;
 		}
+
 		int up;
 		int down;
 		int left;
 		int right;
-		
+
 		if (directions.equalsIgnoreCase("arrows")) {
 			up    = Input.Keys.UP;
 			down  = Input.Keys.DOWN;
@@ -107,45 +110,31 @@ public class Keyboard extends ComputerInput {
 			left  = Input.Keys.A;
 			right = Input.Keys.D;
 		}
-		
-		if (!Player.playerShouldStopMoving) {
-			if (Gdx.input.isKeyPressed(left)){
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDx(-cameraScrollingSpeedTierOne);
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDy(0);
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDirection(Player.DIRECTION_LEFT);
-				Player.playerIsMoving = true;
-				System.out.println("Player is moving LEFT");
-			} 
-			else  if (Gdx.input.isKeyPressed(right)){ 
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDx(cameraScrollingSpeedTierOne);
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDy(0);
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDirection(Player.DIRECTION_RIGHT);
-				Player.playerIsMoving = true;
-				System.out.println("Player is moving RIGHT");
-			}
-			else if (Gdx.input.isKeyPressed(up)){
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDy(-cameraScrollingSpeedTierOne); 
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDx(0);
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDirection(Player.DIRECTION_UP);
-				Player.playerIsMoving = true;
-				System.out.println("Player is moving UP");
-			}
-			else if (Gdx.input.isKeyPressed(down)){ 
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDy(cameraScrollingSpeedTierOne);
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDx(0);
-				myGame.getGameObject(GameObject.PLAYER_ONE).setDirection(Player.DIRECTION_DOWN);
-				Player.playerIsMoving = true;
-				System.out.println("Player is moving DOWN");
-			}
-			else {
-				myGame.getGameObject(GameObject.PLAYER_ONE).stopPlayer();
-				Player.playerIsMoving = false;
-			}
-		} else {
-			myGame.getGameObject(GameObject.PLAYER_ONE).stopPlayer();
-			myGame.getGameObject(GameObject.PLAYER_ONE).stopScrolling(myGame.getGameObject(GameObject.PLAYER_ONE).getDirection());
-			Player.playerShouldStopMoving = false;
-			Player.playerIsMoving         = false;
+
+		if (Gdx.input.isKeyPressed(left)){
+			myGame.getGameObject(GameObject.PLAYER_ONE).translateX(-playerSpeed);
+			myGame.getGameObject(GameObject.PLAYER_ONE).setDirection(Player.DIRECTION_LEFT);
+			Player.playerIsMoving = true;
+		}
+		else if (Gdx.input.isKeyPressed(right)){
+			myGame.getGameObject(GameObject.PLAYER_ONE).translateX(playerSpeed);
+			myGame.getGameObject(GameObject.PLAYER_ONE).setDirection(Player.DIRECTION_RIGHT);
+			Player.playerIsMoving = true;
+		}
+		else if (Gdx.input.isKeyPressed(up)){
+			myGame.getGameObject(GameObject.PLAYER_ONE).translateY(-playerSpeed);
+			myGame.getGameObject(GameObject.PLAYER_ONE).setDirection(Player.DIRECTION_UP);
+			Player.playerIsMoving = true;
+		}
+		else if (Gdx.input.isKeyPressed(down)){
+			myGame.getGameObject(GameObject.PLAYER_ONE).translateY(playerSpeed);
+			myGame.getGameObject(GameObject.PLAYER_ONE).setDirection(Player.DIRECTION_DOWN);
+			Player.playerIsMoving = true;
+		}
+		else {
+			myGame.getGameObject(GameObject.PLAYER_ONE).setDx(0);
+			myGame.getGameObject(GameObject.PLAYER_ONE).setDy(0);
+			Player.playerIsMoving = false;
 		}
 	}
 }

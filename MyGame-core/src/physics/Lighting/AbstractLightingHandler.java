@@ -13,7 +13,7 @@ import loaders.ImageLoader;
  */
 public class AbstractLightingHandler extends GameObject {
 
-	protected float initialTextureSize = 1;
+	protected float initialTextureSize = 0.5f;
 
 	public AbstractLightingHandler() {
 		this.width  = initialTextureSize;

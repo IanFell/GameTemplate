@@ -16,12 +16,12 @@ public class MapRenderer {
 
 	private int chunkWidth  = MapInformationHolder.CHUNK_WIDTH;
 	private int chunkHeight = MapInformationHolder.CHUNK_HEIGHT;
-	
+
 	/**
 	 * Represents all chunks in the grid.  The grid is 8 x 8.
 	 */
 	private int totalChunkCount = 64;
-	
+
 	/**
 	 * 
 	 * @param MyGame   myGame
@@ -45,7 +45,7 @@ public class MapRenderer {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame     myGame
@@ -63,12 +63,16 @@ public class MapRenderer {
 							)
 							) {
 						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
-						CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(myGame, mapHandler, MapHandler.mapChunks.get(i).tileMap[x][z]);
+						CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(
+								myGame.getGameObject(GameObject.PLAYER_ONE), 
+								mapHandler, 
+								MapHandler.mapChunks.get(i).tileMap[x][z]
+								);
 					}
 				}
 			}
 		}
-		
+
 		// Uncomment this to draw entire game world.
 		//Debugger.drawEntireGameWorldAllChunksAtOnce(myGame, mapHandler, totalChunkCount, chunkWidth, chunkHeight);
 	}

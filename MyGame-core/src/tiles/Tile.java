@@ -13,7 +13,7 @@ import com.mygdx.mygame.MyGame;
  */
 public class Tile extends Sprite {
 
-	private boolean isSolid;
+	public boolean isSolid;
 	
 	public static Texture grassTextureOne;
 	public static Texture grassTextureTwo;

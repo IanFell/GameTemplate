@@ -1,7 +1,5 @@
 package physics;
 
-import com.mygdx.mygame.MyGame;
-
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.GamePlayObject;
@@ -18,15 +16,30 @@ public class CollisionHandler {
 
 	/**
 	 * 
-	 * @param MyGame     myGame
+	 * @param GameObject player
 	 * @param MapHandler mapHandler
 	 * @param Tile       tile
 	 */
-	public static void checkIfPlayerHasCollidedWithASolidTile(MyGame myGame, MapHandler mapHandler, Tile tile) {
+	public static void checkIfPlayerHasCollidedWithASolidTile(GameObject player, MapHandler mapHandler, Tile tile) {
 		if (tile.isSolid()) {
-			if (tile.getBoundingRectangle().overlaps(myGame.getGameObject(GameObject.PLAYER_ONE).rectangle)) {
-				Player.playerShouldStopMoving = true;
+			if (tile.getBoundingRectangle().overlaps(player.rectangle)) {
 				System.out.println("Player collided with solid tile!");
+				player.stopPlayer();
+				// Move player so he is not longer overlapping tile bounds.
+				switch (player.getDirection()) {
+				case Player.DIRECTION_LEFT:
+					player.setX(player.getX() + Player.PLAYER_SPEED);
+					break;
+				case Player.DIRECTION_RIGHT:
+					player.setX(player.getX() - Player.PLAYER_SPEED);
+					break;
+				case Player.DIRECTION_UP:
+					player.setY(player.getY() + Player.PLAYER_SPEED);
+					break;
+				case Player.DIRECTION_DOWN:
+					player.setY(player.getY() - Player.PLAYER_SPEED);
+					break;
+				}
 			}
 		}
 	}
