@@ -30,9 +30,9 @@ public class GameObjectLoader {
 	 * @param MyGame myGame
 	 */
 	public void createObjects(MyGame myGame) {
-		playerOne   = myGame.gameObjectFactory.getObject("player", 0, 0);
-		playerTwo   = myGame.gameObjectFactory.getObject("player", 0, 0);
-		playerThree = myGame.gameObjectFactory.getObject("player", 0, 0);
+		playerOne   = myGame.gameObjectFactory.getObject("playerOne", 0, 0);
+		playerTwo   = myGame.gameObjectFactory.getObject("playerTwo", 0, 0);
+		playerThree = myGame.gameObjectFactory.getObject("playerThree", 0, 0);
 		// GameWorld does not load tiles.
 		gameWorld   = new GameWorld();
 		chest       = myGame.gameObjectFactory.getObject("chest", 0, 0);

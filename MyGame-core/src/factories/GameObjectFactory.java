@@ -1,7 +1,9 @@
 package factories;
 
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Player;
+import gameobjects.gamecharacters.PlayerOne;
+import gameobjects.gamecharacters.PlayerThree;
+import gameobjects.gamecharacters.PlayerTwo;
 import gameobjects.stationarygameobjects.GamePlayObject;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import gameobjects.stationarygameobjects.treeobjects.Plant;
@@ -24,8 +26,14 @@ public class GameObjectFactory {
 		if (objectType == null) {
 			return null;
 		}
-		if (objectType.equalsIgnoreCase("player")) {
-			return new Player();
+		if (objectType.equalsIgnoreCase("playerOne")) {
+			return new PlayerOne("Blackbeard");
+		}
+		if (objectType.equalsIgnoreCase("playerTwo")) {
+			return new PlayerTwo("Jolly Roger");
+		}
+		if (objectType.equalsIgnoreCase("playerThree")) {
+			return new PlayerThree("Peg Leg");
 		}
 		if (objectType.equalsIgnoreCase("tree")) {
 			return new PalmTree(x, y);

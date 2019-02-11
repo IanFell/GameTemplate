@@ -22,6 +22,8 @@ import maps.MapHandler;
  */
 public class Player extends GameObject { 
 
+	private String name;
+
 	/**
 	 * Available directions player can travel.  
 	 */
@@ -29,9 +31,9 @@ public class Player extends GameObject {
 	public static final int DIRECTION_RIGHT = 1;
 	public static final int DIRECTION_UP    = 2;
 	public static final int DIRECTION_DOWN  = 3;
-	
+
 	public final static float PLAYER_SPEED = 0.10f;
-	
+
 	/**
 	 * If player jumps, isJumping will be true until jumpCount surpases jumpCountMax.
 	 * When it does, jumpCount is reset to 0 and ready for another jump.
@@ -39,19 +41,25 @@ public class Player extends GameObject {
 	public static boolean isJumping       = false;
 	private static int jumpCount          = 0;
 	private static final int jumpCountMax = GameAttributeHelper.FRAMES_PER_SECOND;
-	
+
 	public static int jumpingAction;
 	private float jumpSpeed;
 	private float jumpingSpeedValue = 0.05f;
-	
+
 	private static final int ON_GROUND      = 0;
 	public static final int ASCENDING_JUMP  = 1;
 	public static final int DESCENDING_JUMP = 2;
-	
+
 	/**
 	 * Used to determine whether footsteps sound effect should play.
 	 */
 	public static boolean playerIsMoving = false;
+	
+	/**
+	 * Distance player two and player three follow player one,
+	 * as well as the direction value.
+	 */
+	protected int playerOneFollowAndDirectionValueOffset;
 
 	/**
 	 * Textures to go with animations.
@@ -83,15 +91,17 @@ public class Player extends GameObject {
 	 * Character size is the same size as a tile.
 	 */
 	private float characterSize = 0.5f;
-	
+
 	private int playerScore;
 
 	/**
 	 * Constructor.
+	 * 
+	 *  String name
 	 */
-	public Player() {
-		this.x               = GameAttributeHelper.CHUNK_TWO_X_POSITION_START;
-		this.y               = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START;
+	public Player(String name) {
+		this.x               = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START;
+		this.y               = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 5;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
@@ -106,24 +116,18 @@ public class Player extends GameObject {
 		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
 		playerScore          = 0;
+		this.name            = name;
 	}
 
 	/**
 	 * 
 	 * @param MyGame myGame
+	 * @param Player player
 	 */
-	@Override
-	public void init(MyGame myGame) {
-		int startingDirection = DIRECTION_LEFT;
-		int startingPosition  = 1;
-		myGame.getGameObject(GameObject.PLAYER_TWO).setDirection(startingDirection);
-		myGame.getGameObject(GameObject.PLAYER_THREE).setDirection(startingDirection);
-
-		myGame.getGameObject(GameObject.PLAYER_TWO).setX(myGame.gameObjectLoader.playerOne.getX() + startingPosition);
-		myGame.getGameObject(GameObject.PLAYER_TWO).setY(myGame.gameObjectLoader.playerOne.getY());
-
-		myGame.getGameObject(GameObject.PLAYER_THREE).setX(myGame.gameObjectLoader.playerOne.getX() + startingPosition * 2);
-		myGame.getGameObject(GameObject.PLAYER_THREE).setY(myGame.gameObjectLoader.playerOne.getY());
+	public void init(MyGame myGame, Player player) {
+		setDirection(DIRECTION_LEFT);
+		player.setX(myGame.gameObjectLoader.playerOne.getX());
+		player.setY(myGame.gameObjectLoader.playerOne.getY());
 	}
 
 	/**
@@ -133,43 +137,18 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		
 		System.out.println("Player Score: " + playerScore);
-		
 		x += dx;
 		y += dy;
 		rectangle.x = x;
 		rectangle.y = y;
-
-		int playerTwoDirection = myGame.gameObjectLoader.playerTwo.getDirection();
-		int followDistance     = 1;
-		
-		// Player two follows player one.
-		handleWalking(
-				myGame.getGameObject(GameObject.PLAYER_ONE), 
-				myGame.getGameObject(GameObject.PLAYER_TWO), 
-				followDistance, 
-				myGame.getGameObject(GameObject.PLAYER_ONE).getDirection(), 
-				playerTwoDirection
-				);
-
-		// Player three follows player two.
-		handleWalking(
-				myGame.getGameObject(GameObject.PLAYER_TWO), 
-				myGame.getGameObject(GameObject.PLAYER_THREE), 
-				followDistance, 
-				playerTwoDirection, 
-				myGame.getGameObject(GameObject.PLAYER_THREE).getDirection()
-				);
-		
-		handleJumping(myGame); 
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame
 	 */
-	private void handleJumping(MyGame myGame) {
+	protected void handleJumping(MyGame myGame) {
 		if (isJumping) {
 			System.out.println("Player is jumping");
 			jumpCount++;
@@ -187,7 +166,7 @@ public class Player extends GameObject {
 				jumpingAction = DESCENDING_JUMP;
 				System.out.println("Player is descending during jumping");
 			}
-			
+
 			switch (jumpingAction) {
 			case ASCENDING_JUMP:
 				jumpSpeed = -jumpingSpeedValue;
@@ -199,11 +178,17 @@ public class Player extends GameObject {
 			myGame.getGameObject(
 					GameObject.PLAYER_ONE).setY(myGame.getGameObject(GameObject.PLAYER_ONE).getY() + jumpSpeed
 							);
+			myGame.getGameObject(
+					GameObject.PLAYER_TWO).setY(myGame.getGameObject(GameObject.PLAYER_TWO).getY() + jumpSpeed
+							);
+			myGame.getGameObject(
+					GameObject.PLAYER_THREE).setY(myGame.getGameObject(GameObject.PLAYER_THREE).getY() + jumpSpeed
+							);
 		} else {
 			jumpingAction = ON_GROUND;
 		}
 	}
-	
+
 	/**
 	 * Checks if player is ascending during jump.
 	 * 
@@ -217,121 +202,11 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * Sets players walking order heirarchy.  Player one should always be first.
 	 * 
-	 * @param GameObject leader
-	 * @param GameObject follower
-	 * @param int        followDistance
-	 * @param int        leaderDirection
-	 * @param int        followerDirection
+	 * @param MyGame myGame
 	 */
-	private void handleWalking(
-			GameObject leader, 
-			GameObject follower, 
-			int followDistance, 
-			int leaderDirection, 
-			int followerDirection
-			) {
+	protected void handleWalking(MyGame myGame) {}
 
-		float leaderXPosition = leader.getX();
-		float leaderYPosition = leader.getY();
-
-		/**
-		 * See if leader has changed directions.  
-		 * If so, move follower one space in the direction he was going,
-		 * then face him the same way as leader.
-		 */
-		if (leaderDirection != followerDirection) {
-			if (leaderDirection == DIRECTION_UP && followerDirection == DIRECTION_LEFT) {
-				if (leaderYPosition < follower.getY() - followDistance) {
-					follower.setX(follower.getX() - followDistance);
-					follower.setDirection(leaderDirection);
-				}
-			} 
-			else if (leaderDirection == DIRECTION_UP && followerDirection == DIRECTION_RIGHT) {
-				if (leaderYPosition < follower.getY() - followDistance) {
-					follower.setX(follower.getX() + followDistance);
-					follower.setDirection(leaderDirection);
-				}
-			} 
-			else if (leaderDirection == DIRECTION_DOWN && followerDirection == DIRECTION_LEFT) {
-				if (leaderYPosition > follower.getY() + followDistance) {
-					follower.setX(follower.getX() - followDistance);
-					follower.setDirection(leaderDirection);
-				}
-			}
-			else if (leaderDirection == DIRECTION_DOWN && followerDirection == DIRECTION_RIGHT) {
-				if (leaderYPosition > follower.getY() + followDistance) {
-					follower.setX(follower.getX() + followDistance);
-					follower.setDirection(leaderDirection);
-				}
-			}
-			else if (leaderDirection == DIRECTION_LEFT && followerDirection == DIRECTION_UP) {
-				if (leaderXPosition < follower.getX() - followDistance) {
-					follower.setY(follower.getY() + followDistance);
-					follower.setDirection(leaderDirection);
-				}
-			}
-			else if (leaderDirection == DIRECTION_LEFT && followerDirection == DIRECTION_DOWN) {
-				if (leaderXPosition < follower.getX() - followDistance) {
-					follower.setY(follower.getY() + followDistance);
-					follower.setDirection(leaderDirection);
-				}
-			} 
-			else if (leaderDirection == DIRECTION_RIGHT && followerDirection == DIRECTION_DOWN) {
-				if (leaderXPosition > follower.getX() + followDistance) {
-					follower.setY(follower.getY() + followDistance);
-					follower.setDirection(leaderDirection);
-				}
-			} 
-			else if (leaderDirection == DIRECTION_RIGHT && followerDirection == DIRECTION_UP) {
-				if (leaderXPosition > follower.getX() + followDistance) {
-					follower.setY(follower.getY() - followDistance);
-					follower.setDirection(leaderDirection);
-				}
-			} 
-			else if (leaderDirection == DIRECTION_RIGHT && followerDirection == DIRECTION_LEFT) {
-				if (leaderXPosition > follower.getX() + followDistance) {
-					follower.setDirection(leaderDirection);
-				}
-			} 
-			else if (leaderDirection == DIRECTION_LEFT && followerDirection == DIRECTION_RIGHT) {
-				if (leaderXPosition < follower.getX() - followDistance) {
-					follower.setDirection(leaderDirection);
-				}
-			} 
-			else if (leaderDirection == DIRECTION_DOWN && followerDirection == DIRECTION_UP) {
-				if (leaderYPosition > follower.getY() + followDistance) {
-					follower.setDirection(leaderDirection);
-				}
-			} 
-			else if (leaderDirection == DIRECTION_UP && followerDirection == DIRECTION_DOWN) {
-				if (leaderYPosition < follower.getY() - followDistance) {
-					follower.setDirection(leaderDirection);
-				}
-			} 
-		} else {
-			switch(leaderDirection) {
-			case DIRECTION_LEFT:
-				follower.setX(leaderXPosition + followDistance);
-				follower.setY(leaderYPosition);
-				break;
-			case DIRECTION_RIGHT:
-				follower.setX(leaderXPosition - followDistance);
-				follower.setY(leaderYPosition);
-				break;
-			case DIRECTION_UP:
-				follower.setX(leaderXPosition);
-				follower.setY(leaderYPosition + followDistance);
-				break;
-			case DIRECTION_DOWN:
-				follower.setX(leaderXPosition);
-				follower.setY(leaderYPosition - followDistance);
-				break;
-			}
-		}
-	}
-	
 	/**
 	 * 
 	 * @param SpriteBatch   batch
@@ -412,5 +287,13 @@ public class Player extends GameObject {
 	 */
 	public void setPlayerScore(int playerScore) {
 		this.playerScore = playerScore;
+	}
+
+	/**
+	 * 
+	 * @return String
+	 */
+	public String getName() {
+		return name;
 	}
 }

@@ -139,6 +139,8 @@ public class GameScreen extends Screens {
 	public void initializeGameScreen() {
 		mapLoader.loadMap(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
+		myGame.getGameObject(GameObject.PLAYER_TWO).init(myGame);
+		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
 		ParticleEmitter.initializeParticleEmitters(myGame);
 		
 		weatherHandler.init(myGame, this);
@@ -181,6 +183,8 @@ public class GameScreen extends Screens {
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.update(myGame, this, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapHandler);
+		myGame.getGameObject(GameObject.PLAYER_TWO).updateObject(myGame, mapHandler);
+		myGame.getGameObject(GameObject.PLAYER_THREE).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.CHEST).updateObject(myGame, mapHandler);
 
 		// If it is night time, give the screen a dark transparent screen shader.

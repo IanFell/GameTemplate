@@ -18,14 +18,12 @@ public class Tile extends Sprite {
 	protected final String name;
 	
 	public static Texture grassTextureOne;
-	public static Texture grassTextureTwo;
 	public static Texture buildingTexture;
 	public static Texture sandTexture;
 	public static Texture waterTextureOne;
 	
 	protected static final int SolidTile     = 0;
 	protected static final int GrassTileOne  = 1;
-	protected static final int GrassTileTwo  = 2;
 	protected static final int SandTile      = 3;
 	protected static final int WaterTileOne  = 4;
 	
@@ -58,7 +56,6 @@ public class Tile extends Sprite {
 	 */
 	public static void initializeTileTextures(MyGame myGame) {
 		grassTextureOne = myGame.imageLoader.grassTileOne;
-		grassTextureTwo = myGame.imageLoader.grassTileTwo;
 		buildingTexture = myGame.imageLoader.solidTile;
 		sandTexture     = myGame.imageLoader.sandTile;
 		waterTextureOne = myGame.imageLoader.waterTileOne;
