@@ -115,21 +115,25 @@ public class Keyboard extends ComputerInput {
 			player.translateX(-playerSpeed);
 			player.setDirection(Player.DIRECTION_LEFT);
 			Player.playerIsMoving = true;
+			System.out.println("Player is moving left");
 		}
 		else if (Gdx.input.isKeyPressed(right)) {
 			player.translateX(playerSpeed);
 			player.setDirection(Player.DIRECTION_RIGHT);
 			Player.playerIsMoving = true;
+			System.out.println("Player is moving right");
 		}
 		else if (Gdx.input.isKeyPressed(up)) {
 			player.translateY(-playerSpeed);
 			player.setDirection(Player.DIRECTION_UP);
 			Player.playerIsMoving = true;
+			System.out.println("Player is moving up");
 		}
 		else if (Gdx.input.isKeyPressed(down)) {
 			player.translateY(playerSpeed);
 			player.setDirection(Player.DIRECTION_DOWN);
 			Player.playerIsMoving = true;
+			System.out.println("Player is moving down");
 		}
 		else {
 			player.stopPlayer();

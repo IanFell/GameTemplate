@@ -12,6 +12,8 @@ import maps.MapHandler;
  *
  */
 public class PlayerOne extends Player {
+	
+	private int playerScore;
 
 	/**
 	 * Keeps a list of player one's coordinates and direction.  
@@ -28,6 +30,7 @@ public class PlayerOne extends Player {
 	 */
 	public PlayerOne(String name) {
 		super(name);
+		playerScore = 0;
 	}
 
 	/**
@@ -37,6 +40,7 @@ public class PlayerOne extends Player {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
+		System.out.println("Player Score: " + playerScore);
 		super.updateObject(myGame, mapHandler);
 		handleWalking(myGame);
 		handleJumping(myGame);
@@ -58,5 +62,21 @@ public class PlayerOne extends Player {
 			playerOneYPositions.add(y);
 			playerDirections.add(getDirection());
 		}
+	}
+	
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getPlayerScore() {
+		return playerScore;
+	}
+
+	/**
+	 * 
+	 * @param int playerScore
+	 */
+	public void setPlayerScore(int playerScore) {
+		this.playerScore = playerScore;
 	}
 }

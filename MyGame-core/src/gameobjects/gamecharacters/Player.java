@@ -100,8 +100,8 @@ public class Player extends GameObject {
 	 *  String name
 	 */
 	public Player(String name) {
-		this.x               = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START;
-		this.y               = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 5;
+		this.x               = GameAttributeHelper.CHUNK_FOUR_X_POSITION_START;
+		this.y               = GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
@@ -137,7 +137,6 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		System.out.println("Player Score: " + playerScore);
 		x += dx;
 		y += dy;
 		rectangle.x = x;

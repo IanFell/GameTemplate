@@ -263,5 +263,20 @@ public class MapLoader {
 		if (worldMap[z][x] == MapInformationHolder.GrassTile) {  
 			tileMap[x][z] = new Tile(Tile.grassTextureOne, !isSolid, "Grass");
 		}
+		if (worldMap[z][x] == MapInformationHolder.SandTileHorizontalPath) {  
+			tileMap[x][z] = new Tile(Tile.sandTextureHorizontalPath, !isSolid, "SandTileHorizontalPath");
+		}
+		if (worldMap[z][x] == MapInformationHolder.SandTileLeftDownPath) {  
+			tileMap[x][z] = new Tile(Tile.sandTextureLeftDownPath, !isSolid, "SandTileLeftDownPath");
+		}
+		if (worldMap[z][x] == MapInformationHolder.SandTileVerticalPath) {  
+			tileMap[x][z] = new Tile(Tile.sandTextureVerticalPath, !isSolid, "SandTileVerticalPath");
+		}
+		if (worldMap[z][x] == MapInformationHolder.SandTileTopRightPath) {  
+			tileMap[x][z] = new Tile(Tile.sandTextureTopRightPath, !isSolid, "SandTileTopRightPath");
+		}
+		if (worldMap[z][x] == MapInformationHolder.SandTileCrossPath) {  
+			tileMap[x][z] = new Tile(Tile.sandTextureCrossPath, !isSolid, "SandTileCrossPath");
+		}
 	}
 }

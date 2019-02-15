@@ -1,5 +1,7 @@
 package handlers;
 
+import com.mygdx.mygame.MyGame;
+
 import loaders.MusicLoader;
 import loaders.SoundLoader;
 
@@ -41,8 +43,12 @@ public class AudioHandler {
 		musicLoader.dispose();
 	}
 
-	public void handleAudio() {
-		soundHandler.handleSound(soundLoader);
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	public void handleAudio(MyGame myGame) {
+		soundHandler.handleSound(soundLoader, myGame);
 		musicHandler.handleMusic(musicLoader);
 	}
 }

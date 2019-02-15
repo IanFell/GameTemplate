@@ -45,7 +45,7 @@ public class CollisionHandler {
 	}
 	
 	/**
-	 * If player collides with chest, increase player score.
+	 * If player collides with chest, increase player score and play chest opening sound.
 	 * 
 	 * @param GameObject player
 	 * @param GameObject gameObject
@@ -54,7 +54,8 @@ public class CollisionHandler {
 		if (gameObject.rectangle.overlaps(player.rectangle)) {
 			if (((GamePlayObject) gameObject).isClosed()) {
 				((GamePlayObject) gameObject).setClosed(false);
-				((Player) player).setPlayerScore(5);
+				((GamePlayObject) gameObject).setPlaySound(true);
+				((Player) player).setPlayerScore(((Player) player).getPlayerScore() + 5);
 				System.out.println("Player collided with chest!");
 			}
 		}

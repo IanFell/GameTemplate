@@ -79,10 +79,10 @@ public class MyGame extends Game {
 	}
 
 	/**
-	 * 60 FPS by default.
+	 * 30 FPS.
 	 */
 	private void gameLoop() {
-		audioHandler.handleAudio();
+		audioHandler.handleAudio(this);
 		inputHandler.handleInput(this);
 		System.out.println("Frames Per Second: " + Gdx.graphics.getFramesPerSecond());
 	}

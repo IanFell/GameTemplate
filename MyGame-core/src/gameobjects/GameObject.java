@@ -17,7 +17,7 @@ import maps.MapHandler;
  *
  */
 public class GameObject extends Sprite implements GameObjectInterface, Comparable<GameObject> {
-	
+
 	/**
 	 * Used to ensure the correct player is returned in getGameObject() method.
 	 */
@@ -225,4 +225,18 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	public int compareTo(GameObject gameObject) {
 		return Float.compare(getY(), gameObject.getY());
 	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	public boolean getPlaySound() {
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param boolean playSound
+	 */
+	public void setPlaySound(boolean playSound) {}
 }
