@@ -14,9 +14,9 @@ import com.mygdx.mygame.MyGame;
 public class Tile extends Sprite {
 
 	public boolean isSolid;
-	
+
 	protected final String name;
-	
+
 	public static Texture grassTextureOne;
 	public static Texture buildingTexture;
 	public static Texture sandTexture;
@@ -26,7 +26,7 @@ public class Tile extends Sprite {
 	public static Texture sandTextureTopRightPath;
 	public static Texture sandTextureCrossPath;
 	public static Texture waterTextureOne;
-	
+
 	protected static final int SolidTile              = 0;
 	protected static final int GrassTileOne           = 1;
 	protected static final int SandTile               = 3;
@@ -36,11 +36,10 @@ public class Tile extends Sprite {
 	protected static final int SandTileVerticalPath   = 7;
 	protected static final int SandTileTopRightPath   = 8;
 	protected static final int SandTileCrossPath      = 9;
-	
-	
+
 	protected final static int WORLD_WIDTH  = 21;
 	protected final static int WORLD_HEIGHT = 21;
-	
+
 	/**
 	 * 
 	 * @param Texture texture
@@ -52,7 +51,7 @@ public class Tile extends Sprite {
 		this.isSolid = isSolid;
 		this.name    = name;
 	}
-	
+
 	/**
 	 * 
 	 * @return String
@@ -84,7 +83,7 @@ public class Tile extends Sprite {
 	public boolean isSolid() {
 		return isSolid;
 	}
-	
+
 	/**
 	 * 
 	 * @param Batch batch

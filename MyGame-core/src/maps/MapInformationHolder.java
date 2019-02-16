@@ -18,7 +18,7 @@ public class MapInformationHolder {
 	protected static final int SandTileVerticalPath   = 7;
 	protected static final int SandTileTopRightPath   = 8;
 	protected static final int SandTileCrossPath      = 9;
-	
+
 	public final static int CHUNK_WIDTH  = 68;
 	public final static int CHUNK_HEIGHT = 50;
 }

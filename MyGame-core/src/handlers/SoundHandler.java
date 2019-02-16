@@ -2,9 +2,9 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.GameObject;
 import helpers.GameAttributeHelper;
 import loaders.SoundLoader;
+import loaders.chestloader.ChestLoader;
 import screens.Screens;
 
 /**
@@ -21,10 +21,12 @@ public class SoundHandler {
 	 */
 	public void handleSound(SoundLoader soundLoader, MyGame myGame) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
-			if (myGame.getGameObject(GameObject.CHEST).getPlaySound()) {
-				soundLoader.sound.play(0.5f);
-				myGame.getGameObject(GameObject.CHEST).setPlaySound(false);
+			for (int i = 0; i < ChestLoader.chests.length; i++) {
+				if (ChestLoader.chests[i].getPlaySound()) {
+					soundLoader.sound.play(0.5f);
+					ChestLoader.chests[i].setPlaySound(false);
+				}
 			}
-		} 
+		}
 	}
 }

@@ -4,7 +4,7 @@ import gameobjects.GameObject;
 import gameobjects.gamecharacters.PlayerOne;
 import gameobjects.gamecharacters.PlayerThree;
 import gameobjects.gamecharacters.PlayerTwo;
-import gameobjects.stationarygameobjects.GamePlayObject;
+import gameobjects.stationarygameobjects.Chest;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import gameobjects.stationarygameobjects.treeobjects.Plant;
 
@@ -42,7 +42,7 @@ public class GameObjectFactory {
 			return new Plant(x, y);
 		}
 		if (objectType.equalsIgnoreCase("chest")) {
-			return new GamePlayObject();
+			return new Chest(5, 5);
 		}
 		return null;
 	}

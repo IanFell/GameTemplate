@@ -2,6 +2,7 @@ package physics;
 
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.stationarygameobjects.Chest;
 import gameobjects.stationarygameobjects.GamePlayObject;
 import maps.MapHandler;
 import tiles.Tile;
@@ -43,18 +44,18 @@ public class CollisionHandler {
 			}
 		}
 	}
-	
+
 	/**
 	 * If player collides with chest, increase player score and play chest opening sound.
 	 * 
 	 * @param GameObject player
-	 * @param GameObject gameObject
+	 * @param Chest      chest
 	 */
-	public static void checkIfPlayerHasCollidedWithChest(GameObject player, GameObject gameObject) {
-		if (gameObject.rectangle.overlaps(player.rectangle)) {
-			if (((GamePlayObject) gameObject).isClosed()) {
-				((GamePlayObject) gameObject).setClosed(false);
-				((GamePlayObject) gameObject).setPlaySound(true);
+	public static void checkIfPlayerHasCollidedWithChest(GameObject player, Chest chest) {
+		if (chest.rectangle.overlaps(player.rectangle)) {
+			if ((chest).isClosed()) {
+				(chest).setClosed(false);
+				((GamePlayObject) chest).setPlaySound(true);
 				((Player) player).setPlayerScore(((Player) player).getPlayerScore() + 5);
 				System.out.println("Player collided with chest!");
 			}

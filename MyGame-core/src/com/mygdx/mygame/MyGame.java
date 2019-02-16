@@ -86,7 +86,7 @@ public class MyGame extends Game {
 		inputHandler.handleInput(this);
 		System.out.println("Frames Per Second: " + Gdx.graphics.getFramesPerSecond());
 	}
-	
+
 	/**
 	 * This method should be moved to the GameObject class.
 	 * 
@@ -105,8 +105,6 @@ public class MyGame extends Game {
 		case GameObject.PLAYER_THREE:
 			desiredObject = gameObjectLoader.playerThree;
 			break;
-		case GameObject.CHEST:
-			desiredObject = gameObjectLoader.chest;
 		}
 		return desiredObject;
 	}

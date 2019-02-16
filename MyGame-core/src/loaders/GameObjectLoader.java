@@ -17,7 +17,7 @@ public class GameObjectLoader {
 	public GameObject playerOne;
 	public GameObject playerTwo;
 	public GameObject playerThree;
-	public GameObject chest;
+	//public GameObject chestOne, chestTwo;
 	public GameWorld gameWorld;
 
 	/**
@@ -35,7 +35,6 @@ public class GameObjectLoader {
 		playerThree = myGame.gameObjectFactory.getObject("playerThree", 0, 0);
 		// GameWorld does not load tiles.
 		gameWorld   = new GameWorld();
-		chest       = myGame.gameObjectFactory.getObject("chest", 0, 0);
 		addGameObjectsToGameObjectArrayList();
 	}
 
@@ -43,6 +42,5 @@ public class GameObjectLoader {
 		gameObjectList.add(playerOne);
 		gameObjectList.add(playerTwo);
 		gameObjectList.add(playerThree);
-		gameObjectList.add(chest);
 	}
 }

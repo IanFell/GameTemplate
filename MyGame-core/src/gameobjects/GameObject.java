@@ -26,7 +26,8 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	public static final int PLAYER_THREE = 3;
 	public static final int TREE         = 4;
 	public static final int PLANT        = 5;
-	public static final int CHEST        = 6;
+	public static final int CHEST_ONE    = 6;
+	public static final int CHEST_TWO    = 7;
 
 	protected float x;
 	protected float y;
@@ -239,4 +240,10 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * @param boolean playSound
 	 */
 	public void setPlaySound(boolean playSound) {}
+
+	/**
+	 * 
+	 * @param boolean isClosed
+	 */
+	public void setClosed(boolean isClosed) {}
 }

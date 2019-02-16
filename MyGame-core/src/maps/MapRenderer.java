@@ -60,7 +60,7 @@ public class MapRenderer {
 	 */
 	public void renderMapOfChunks(MyGame myGame, MapHandler mapHandler) { 
 		timer++;
-		if (timer > 100) {
+		if (timer > 60) {
 			timer = 0;
 		}
 		for (int i = 0; i < totalChunkCount; i++) {
@@ -101,15 +101,17 @@ public class MapRenderer {
 		Tile tile = MapHandler.mapChunks.get(tileNumber).tileMap[row][column];
 		if (tile.getName().equals("Water")) {
 			if (
-					(timer > 10 && timer < 20) || 
-					(timer > 30 && timer < 40) || 
-					(timer > 50 && timer < 60) ||
-					(timer > 70 && timer < 80) ||
-					(timer > 90 && timer < 100)
+					(timer > 0 && timer < 10) ||
+					(timer >= 30 && timer < 40)
 					) {
 				tile.setTexture(myGame.imageLoader.waterTileOne);
-			} else {
+			} else if (
+					(timer >= 10 && timer < 20) ||
+					(timer >= 40 && timer < 50)
+					) {
 				tile.setTexture(myGame.imageLoader.waterTileTwo);
+			} else {
+				tile.setTexture(myGame.imageLoader.waterTileThree);
 			}
 		}
 	}

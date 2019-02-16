@@ -30,7 +30,8 @@ public class ImageLoader {
 	public Texture sandTileCrossPath;
 	public Texture waterTileOne;
 	public Texture waterTileTwo;
-	
+	public Texture waterTileThree;
+
 
 	public Texture light;
 	public Texture shadow;
@@ -38,17 +39,17 @@ public class ImageLoader {
 	public Texture playerSprite;
 
 	public Texture tree;
-	
+
 	public Texture palmTree;
 	public Texture plant;
-	
+
 	public Texture chestClosed;
 	public Texture chestOpen;
 
 	public Texture whiteSquare;
-	
+
 	public Texture rain;
-	
+
 	public Texture playerScore;
 
 	public void init() {
@@ -59,6 +60,7 @@ public class ImageLoader {
 		grassTileTwo                   = new Texture(Gdx.files.internal("GrassTileTwo.png"));
 		waterTileOne                   = new Texture(Gdx.files.internal("WaterOne.png"));
 		waterTileTwo                   = new Texture(Gdx.files.internal("WaterTwo.png"));
+		waterTileThree				   = new Texture(Gdx.files.internal("WaterThree.png"));
 		sandTile                       = new Texture(Gdx.files.internal("SandTile.png"));
 		sandTileHorizontalPath         = new Texture(Gdx.files.internal("SandTileHorizontalPath.png"));
 		sandTileLeftDownPath           = new Texture(Gdx.files.internal("SandTileLeftDownPath.png"));
@@ -87,6 +89,7 @@ public class ImageLoader {
 		grassTileTwo.dispose();
 		waterTileOne.dispose();
 		waterTileTwo.dispose();
+		waterTileThree.dispose();
 		solidTile.dispose();
 		sandTile.dispose();
 		sandTileHorizontalPath.dispose();

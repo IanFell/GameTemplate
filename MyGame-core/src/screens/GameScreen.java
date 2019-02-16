@@ -10,11 +10,11 @@ import gameobjects.GameObject;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
 import loaders.GameObjectLoader;
+import loaders.chestloader.ChestLoader;
 import maps.MapHandler;
 import maps.MapLoader;
 import maps.MapRenderer;
 import particles.ParticleEmitter;
-import physics.CollisionHandler;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
@@ -26,7 +26,7 @@ import physics.Weather.WeatherHandler;
  *
  */
 public class GameScreen extends Screens {
-	
+
 	public static int cameraWidth = 10;
 
 	/**
@@ -48,7 +48,7 @@ public class GameScreen extends Screens {
 	 * Class to load up the tiles for our level maps.
 	 */
 	private MapLoader mapLoader = new MapLoader();
-	
+
 	private LightingHandler lightingHandler = new LightingHandler();
 
 	private WeatherHandler weatherHandler = new WeatherHandler();
@@ -117,11 +117,6 @@ public class GameScreen extends Screens {
 		if (!weatherHandler.lightningHandler.isLightningShouldBeRendered()) {
 			resetCameraAfterScreenShake();
 		}
-		
-		CollisionHandler.checkIfPlayerHasCollidedWithChest(
-				myGame.getGameObject(GameObject.PLAYER_ONE),
-				myGame.getGameObject(GameObject.CHEST)
-				);
 
 		// Update objects associated with GameScreen.
 		updateGameScreen();
@@ -142,7 +137,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_TWO).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
 		ParticleEmitter.initializeParticleEmitters(myGame);
-		
+
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		/**
@@ -185,7 +180,9 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_TWO).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_THREE).updateObject(myGame, mapHandler);
-		myGame.getGameObject(GameObject.CHEST).updateObject(myGame, mapHandler);
+		for (int i = 0; i< ChestLoader.chests.length; i++) {
+			ChestLoader.chests[i].updateObject(myGame, mapHandler);
+		}
 
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
@@ -229,7 +226,7 @@ public class GameScreen extends Screens {
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {
 			transitionScreen.renderObject(myGame.renderer.shapeRenderer);
 		}
-		
+
 		weatherHandler.renderClouds(myGame);
 	}
 
