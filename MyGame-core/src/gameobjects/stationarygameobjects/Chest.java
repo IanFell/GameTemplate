@@ -2,6 +2,8 @@ package gameobjects.stationarygameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Timer;
+import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
@@ -24,6 +26,19 @@ public class Chest extends GamePlayObject {
 	private boolean playSound;
 
 	/**
+	 * When chest has been opened, timer begins.
+	 * After one hour, chest will be closed and reset to original values.
+	 * timerIsOn will be reset to false until chest is opened again.
+	 */
+	private boolean timerIsOn = false;
+
+	/**
+	 * Time is in seconds.  3600 seconds are in one hour.
+	 * Use this variable to reset chest to original values, one hour after it is opened.
+	 */
+	private int amountOfTimeUntilChestIsResetInSecondsAfterItIsOpened = 3600;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param int x
@@ -31,8 +46,7 @@ public class Chest extends GamePlayObject {
 	 */
 	public Chest(int x, int y) {
 		super(x, y);
-		isClosed           = true;
-		playSound          = false;
+		setChestToOriginalValues();
 	}
 
 	/**
@@ -80,6 +94,32 @@ public class Chest extends GamePlayObject {
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this
 				);
+
+		/**
+		 * If chest is opened, timerIsOn gets set to true.
+		 * This timer runs for one hour, after which it is turned off and chest is reset to it's original values.
+		 */
+		if(timerIsOn) {
+			Timer.schedule(new Task() {
+				@Override
+				public void run() {
+					Timer.instance().clear();
+					setChestToOriginalValues();
+				}
+			}, amountOfTimeUntilChestIsResetInSecondsAfterItIsOpened);
+		} 
+	}
+
+	private void setChestToOriginalValues() {
+		isClosed  = true;
+		playSound = false;
+		timerIsOn = false;
+	}
+
+	public void setChestValuesAfterCollisionWithPlayer() {
+		isClosed  = false;
+		playSound = true;
+		timerIsOn = true;
 	}
 
 	/**
@@ -88,14 +128,5 @@ public class Chest extends GamePlayObject {
 	 */
 	public boolean isClosed() {
 		return isClosed;
-	}
-
-	/**
-	 * 
-	 * @param boolean isClosed
-	 */
-	@Override
-	public void setClosed(boolean isClosed) {
-		this.isClosed = isClosed;
 	}
 }

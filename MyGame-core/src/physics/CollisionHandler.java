@@ -3,7 +3,6 @@ package physics;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
-import gameobjects.stationarygameobjects.GamePlayObject;
 import maps.MapHandler;
 import tiles.Tile;
 
@@ -53,9 +52,8 @@ public class CollisionHandler {
 	 */
 	public static void checkIfPlayerHasCollidedWithChest(GameObject player, Chest chest) {
 		if (chest.rectangle.overlaps(player.rectangle)) {
-			if ((chest).isClosed()) {
-				(chest).setClosed(false);
-				((GamePlayObject) chest).setPlaySound(true);
+			if (chest.isClosed()) {
+				chest.setChestValuesAfterCollisionWithPlayer();
 				((Player) player).setPlayerScore(((Player) player).getPlayerScore() + 5);
 				System.out.println("Player collided with chest!");
 			}

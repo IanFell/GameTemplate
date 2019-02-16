@@ -26,11 +26,11 @@ public class ChestLoader {
 	}
 
 	public void loadChests() {
-		
+
 		int chestOneForAllSandChunkXPositionOffset = 10;
 		int chestTwoForAllSandChunkXPositionOffset = 34;
 		int chestOneForAllSandChunkYPositionOffset = 29;
-		
+
 		chests[0]  = new Chest(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 38, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 2);
 		chests[1]  = new Chest(GameAttributeHelper.CHUNK_THREE_X_POSITION_START + 1, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 34);
 		chests[2]  = new Chest(GameAttributeHelper.CHUNK_THREE_X_POSITION_START + 58, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 4);
