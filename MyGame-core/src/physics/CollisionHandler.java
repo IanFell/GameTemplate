@@ -4,6 +4,7 @@ import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import maps.MapHandler;
+import missions.MissionChests;
 import tiles.Tile;
 
 /**
@@ -54,8 +55,13 @@ public class CollisionHandler {
 		if (chest.rectangle.overlaps(player.rectangle)) {
 			if (chest.isClosed()) {
 				chest.setChestValuesAfterCollisionWithPlayer();
-				((Player) player).setPlayerScore(((Player) player).getPlayerScore() + 5);
+				((Player) player).updatePlayerScore(5);
 				System.out.println("Player collided with chest!");
+				
+				// Testing mission.  Later, this will be controlled.  Right now, it is always on.
+				if (MissionChests.executeMission) {
+					MissionChests.increaseNumberOfChestsOpened();
+				}
 			}
 		}
 	}

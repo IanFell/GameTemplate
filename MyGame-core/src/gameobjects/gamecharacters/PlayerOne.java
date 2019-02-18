@@ -12,7 +12,7 @@ import maps.MapHandler;
  *
  */
 public class PlayerOne extends Player {
-	
+
 	private int playerScore;
 
 	/**
@@ -31,6 +31,14 @@ public class PlayerOne extends Player {
 	public PlayerOne(String name) {
 		super(name);
 		playerScore = 0;
+	}
+
+	/**
+	 * 
+	 * @param int score
+	 */
+	public void updatePlayerScore(int score) {
+		playerScore = playerScore += score;
 	}
 
 	/**
@@ -63,7 +71,7 @@ public class PlayerOne extends Player {
 			playerDirections.add(getDirection());
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @return int

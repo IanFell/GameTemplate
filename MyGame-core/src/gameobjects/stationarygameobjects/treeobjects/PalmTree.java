@@ -22,9 +22,10 @@ public class PalmTree extends NatureObject {
 	 */
 	public PalmTree(int x, int y) {
 		super(x, y);
-		this.width          = 1;
+		this.width          = 2;
 		double randomHeight = RandomNumberGenerator.generateRandomDouble(2.0f, 4.0f);
 		this.height         = (float) randomHeight;
+		this.x = x - 0.5f;
 	}
 
 	/**

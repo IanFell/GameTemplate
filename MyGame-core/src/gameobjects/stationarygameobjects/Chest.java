@@ -36,7 +36,7 @@ public class Chest extends GamePlayObject {
 	 * Time is in seconds.  3600 seconds are in one hour.
 	 * Use this variable to reset chest to original values, one hour after it is opened.
 	 */
-	private int amountOfTimeUntilChestIsResetInSecondsAfterItIsOpened = 3600;
+	private int amountOfTimeUntilChestIsResetInSecondsAfterItIsOpened = 3;
 
 	/**
 	 * Constructor.

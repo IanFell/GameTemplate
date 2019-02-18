@@ -282,11 +282,9 @@ public class Player extends GameObject {
 
 	/**
 	 * 
-	 * @param int playerScore
+	 * @param int score
 	 */
-	public void setPlayerScore(int playerScore) {
-		this.playerScore = playerScore;
-	}
+	public void updatePlayerScore(int score) {}
 
 	/**
 	 * 

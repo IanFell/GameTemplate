@@ -77,8 +77,8 @@ public class ImageLoader {
 		whiteSquare                    = new Texture(Gdx.files.internal("WhiteSquare.png"));
 		playerScore                    = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
 		rain 						   = new Texture(Gdx.files.internal("Rain.png"));
-		palmTree					   = new Texture(Gdx.files.internal("PalmTree.png"));
-		plant                          = new Texture(Gdx.files.internal("Plant.png"));
+		palmTree					   = new Texture(Gdx.files.internal("PalmTreeNewOriginal3.png"));
+		plant                          = new Texture(Gdx.files.internal("PlantNewOriginal.png"));
 	}
 
 	public void dispose() {

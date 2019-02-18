@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
 import loaders.GameObjectLoader;
@@ -14,6 +15,7 @@ import loaders.chestloader.ChestLoader;
 import maps.MapHandler;
 import maps.MapLoader;
 import maps.MapRenderer;
+import missions.MissionChests;
 import particles.ParticleEmitter;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
@@ -186,6 +188,9 @@ public class GameScreen extends Screens {
 
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
+		
+		// Test mission.  This will be controlled differently later, but for now it is always on.
+		MissionChests.updateMission((Player) myGame.getGameObject(GameObject.PLAYER_ONE));
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
