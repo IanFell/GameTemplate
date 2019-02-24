@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
@@ -158,10 +159,15 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
 		if (!ScreenShake.screenIsShaking) {
-			camera.position.x = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
-			camera.position.y = myGame.getGameObject(GameObject.PLAYER_ONE).getY();
+			cameraFollowCurrentPlayer();
 		}
 		camera.update();
+	}
+
+	private void cameraFollowCurrentPlayer() {
+		GameObject player = PlayerController.getCurrentPlayer(myGame);
+		camera.position.x = player.getX();
+		camera.position.y = player.getY();
 	}
 
 	private void initializeCamera() {
@@ -188,7 +194,7 @@ public class GameScreen extends Screens {
 
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
-		
+
 		// Test mission.  This will be controlled differently later, but for now it is always on.
 		MissionChests.updateMission((Player) myGame.getGameObject(GameObject.PLAYER_ONE));
 	}

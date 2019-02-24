@@ -52,6 +52,8 @@ public class ImageLoader {
 
 	public Texture playerScore;
 
+	public Texture teePee;
+
 	public void init() {
 		splashScreenLogo               = new Texture(Gdx.files.internal("logo_ffg.png"));
 		titleScreenLogo                = new Texture(Gdx.files.internal("GoldenAgeLogo.png"));
@@ -79,6 +81,7 @@ public class ImageLoader {
 		rain 						   = new Texture(Gdx.files.internal("Rain.png"));
 		palmTree					   = new Texture(Gdx.files.internal("PalmTreeNewOriginal3.png"));
 		plant                          = new Texture(Gdx.files.internal("PlantNewOriginal.png"));
+		teePee   					   = new Texture(Gdx.files.internal("TeePee.png"));
 	}
 
 	public void dispose() {
@@ -108,5 +111,6 @@ public class ImageLoader {
 		rain.dispose();
 		palmTree.dispose();
 		plant.dispose();
+		teePee.dispose();
 	}
 }

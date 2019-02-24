@@ -15,6 +15,10 @@ public class AbstractLightingHandler extends GameObject {
 
 	protected float initialTextureSize = 0.5f;
 
+	/**
+	 * Constructor.
+	 * This should not have a constructor considering the class was abstract, but that was changed.
+	 */
 	public AbstractLightingHandler() {
 		this.width  = initialTextureSize;
 		this.height = initialTextureSize;

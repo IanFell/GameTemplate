@@ -14,11 +14,11 @@ public class MissionChests {
 	private static int numberOfChestsOpened                  = 0;
 	private static int numberOfChestsNeededToCompleteMission = 3;
 
-	public static boolean executeMission = true;
+	public static boolean executeMission  = true;
 	private static boolean playerHasWon   = false;
-	
+
 	private static int timer = 0;
-	
+
 	/**
 	 * Must complete mission in this amount of a count.
 	 * This does not use a formal timer because I wanted it to be a little more random.
@@ -34,7 +34,7 @@ public class MissionChests {
 	 * @param Player player
 	 */
 	public static void updateMission(Player player) {
-		
+
 		if (executeMission) {
 			// Use this to time the mission.
 			timer++;
@@ -48,7 +48,7 @@ public class MissionChests {
 				System.out.println("Number of chests opened for chest mission: " + numberOfChestsOpened);
 			}
 		}
-		
+
 		if (playerHasWon) {
 			executeMission = false;
 			System.out.println("CHEST MISSION COMPLETE!");

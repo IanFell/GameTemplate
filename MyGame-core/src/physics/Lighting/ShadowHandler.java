@@ -18,7 +18,7 @@ public class ShadowHandler extends AbstractLightingHandler {
 	 * Amount to offset shadows under player so they do not appear behind player.
 	 */
 	private float offset = 0.7f;
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch batch
@@ -30,7 +30,7 @@ public class ShadowHandler extends AbstractLightingHandler {
 		batch.draw(imageLoader.shadow, player.getX(), player.getY() + offset, width, height);
 		handleShadowSizeDuringPlayerJump((Player) player);
 	}
-	
+
 	/**
 	 * 
 	 * @param Player player

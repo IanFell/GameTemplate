@@ -3,6 +3,7 @@ package physics.Lighting;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import loaders.GameObjectLoader;
 
 /**
  * Handles ALL in game lighting.
@@ -22,7 +23,7 @@ public class LightingHandler {
 		lightHandler  = new LightHandler();
 		shadowHandler = new ShadowHandler();
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame
@@ -30,21 +31,27 @@ public class LightingHandler {
 	public void renderShadows(MyGame myGame) {
 		// If we want shadows to dissapear from players at night time, use this if statement.
 		//if (NightAndDayCycle.isDayTime()) {
+		if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_ONE))) {
 			shadowHandler.renderLighting(
 					myGame.renderer.batch, 
 					myGame.imageLoader, 
 					myGame.getGameObject(GameObject.PLAYER_ONE)
 					);
+		}
+		if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_TWO))) {
 			shadowHandler.renderLighting(
 					myGame.renderer.batch, 
 					myGame.imageLoader, 
 					myGame.getGameObject(GameObject.PLAYER_TWO)
 					);
+		}
+		if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_THREE))) {
 			shadowHandler.renderLighting(
 					myGame.renderer.batch, 
 					myGame.imageLoader, 
 					myGame.getGameObject(GameObject.PLAYER_THREE)
 					);
+		}
 		//}
 	}
 }

@@ -4,16 +4,17 @@ import java.util.ArrayList;
 
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
+import loaders.GameObjectLoader;
 import maps.MapHandler;
 
 /**
+ * Jolly Roger.
  * 
  * @author Fabulous Fellini
  *
  */
 public class PlayerOne extends Player {
-
-	private int playerScore;
 
 	/**
 	 * Keeps a list of player one's coordinates and direction.  
@@ -38,7 +39,7 @@ public class PlayerOne extends Player {
 	 * @param int score
 	 */
 	public void updatePlayerScore(int score) {
-		playerScore = playerScore += score;
+		playerScore += score;
 	}
 
 	/**
@@ -52,6 +53,20 @@ public class PlayerOne extends Player {
 		super.updateObject(myGame, mapHandler);
 		handleWalking(myGame);
 		handleJumping(myGame);
+		if (playerHealth <= 0) {
+			GameObjectLoader.gameObjectList.remove(this);
+		}
+		//simulateDeath(myGame, this);
+	}
+
+	/**
+	 * 
+	 * @param MyGame     myGame
+	 * @param GameObject player
+	 */
+	@Override
+	protected void simulateDeath(MyGame myGame, GameObject player) {
+		playerHealth--;
 	}
 
 	/**
@@ -63,28 +78,8 @@ public class PlayerOne extends Player {
 		System.out.println("Player One is walking");
 		/**
 		 * Only save player coordiantes if player is moving.  
-		 * This is so player two and three stop with player one.
+		 * This is so player two and three stop and move with player one.
 		 */
-		if (playerIsMoving) {
-			playerOneXPositions.add(x);
-			playerOneYPositions.add(y);
-			playerDirections.add(getDirection());
-		}
-	}
-
-	/**
-	 * 
-	 * @return int
-	 */
-	public int getPlayerScore() {
-		return playerScore;
-	}
-
-	/**
-	 * 
-	 * @param int playerScore
-	 */
-	public void setPlayerScore(int playerScore) {
-		this.playerScore = playerScore;
+		savePlayerCurrentPositionAndDirection(x, y, playerOneXPositions, playerOneYPositions, playerDirections);
 	}
 }

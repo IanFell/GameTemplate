@@ -246,4 +246,12 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * @param boolean isClosed
 	 */
 	public void setClosed(boolean isClosed) {}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getPlayerHealth() {
+		return 0;
+	}
 }

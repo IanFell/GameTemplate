@@ -63,6 +63,7 @@ public class MapRenderer {
 		if (timer > 60) {
 			timer = 0;
 		}
+		//GameObject player = PlayerController.getCurrentPlayer(myGame);
 		for (int i = 0; i < totalChunkCount; i++) {
 			for(int z = 0; z < chunkHeight; z++) {
 				for(int x = 0; x < chunkWidth; x++) {
@@ -75,11 +76,15 @@ public class MapRenderer {
 							) {
 						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
 						animateWaterTiles(i, myGame, x, z);
-						CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(
-								myGame.getGameObject(GameObject.PLAYER_ONE), 
-								mapHandler, 
-								MapHandler.mapChunks.get(i).tileMap[x][z]
-								);
+						// Might need to make this method take a certain player, other wise its slow as shit.
+						//if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_ONE))) {
+							CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(
+									myGame.getGameObject(GameObject.PLAYER_ONE), 
+									mapHandler, 
+									MapHandler.mapChunks.get(i).tileMap[x][z]
+									);
+						//}
+						
 					}
 				}
 			}

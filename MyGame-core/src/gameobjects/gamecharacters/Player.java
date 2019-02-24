@@ -1,5 +1,7 @@
 package gameobjects.gamecharacters;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,6 +13,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import handlers.AnimationHandler;
 import helpers.GameAttributeHelper;
+import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -92,7 +95,9 @@ public class Player extends GameObject {
 	 */
 	private float characterSize = 0.5f;
 
-	private int playerScore;
+	protected int playerScore;
+
+	protected int playerHealth;
 
 	/**
 	 * Constructor.
@@ -115,7 +120,7 @@ public class Player extends GameObject {
 		walkUpAnimation      = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
-		playerScore          = 0;
+		playerHealth     	 = 100;
 		this.name            = name;
 	}
 
@@ -282,6 +287,14 @@ public class Player extends GameObject {
 
 	/**
 	 * 
+	 * @param int playerScore
+	 */
+	public void setPlayerScore(int playerScore) {
+		this.playerScore = playerScore;
+	}
+
+	/**
+	 * 
 	 * @param int score
 	 */
 	public void updatePlayerScore(int score) {}
@@ -292,5 +305,67 @@ public class Player extends GameObject {
 	 */
 	public String getName() {
 		return name;
+	}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	@Override
+	public int getPlayerHealth() {
+		return playerHealth;
+	}
+
+	/**
+	 * 
+	 * @param myGame
+	 * @return boolean
+	 */
+	protected boolean playerOneIsMovingAndNotDead(MyGame myGame) {
+		return Player.playerIsMoving && myGame.getGameObject(GameObject.PLAYER_ONE).getPlayerHealth() > 0;
+	}
+
+	/**
+	 * 
+	 * @param MyGame     myGame
+	 * @param GameObject player
+	 */
+	protected void simulateDeath(MyGame myGame, GameObject player) {
+		if (!GameObjectLoader.gameObjectList.contains(player)) {
+			playerHealth--;
+		}
+	}
+
+	/**
+	 * 
+	 * @param GameObject previousPlayer
+	 * @param GameObject currentPlayer
+	 */
+	protected void removeCurrentPlayerIfDead(GameObject previousPlayer, GameObject currentPlayer) {
+		if (playerHealth <= 0 && !GameObjectLoader.gameObjectList.contains(previousPlayer)) {
+			GameObjectLoader.gameObjectList.remove(currentPlayer);
+		}
+	}
+
+	/**
+	 * 
+	 * @param float              x
+	 * @param float              y
+	 * @param ArrayList<Float>   xPositions
+	 * @param ArrayList<Float>   yPositions
+	 * @param ArrayList<Integer> directions
+	 */
+	protected void savePlayerCurrentPositionAndDirection(
+			float x, 
+			float y, 
+			ArrayList<Float> xPositions, 
+			ArrayList<Float> yPositions, 
+			ArrayList<Integer> directions
+			) {
+		if (playerIsMoving) {
+			xPositions.add(x);
+			yPositions.add(y);
+			directions.add(getDirection());
+		}
 	}
 }

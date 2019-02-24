@@ -5,9 +5,11 @@ import com.badlogic.gdx.Input;
 import com.mygdx.mygame.MyGame;
 
 import controllers.GameStateController;
+import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
+import loaders.GameObjectLoader;
 import physics.Lighting.LightHandler;
 import screens.GameScreen;
 import screens.Screens;
@@ -40,7 +42,7 @@ public class Keyboard extends ComputerInput {
 			break;
 
 		case Screens.GAME_SCREEN:	
-			handleKeyboardDirectionalButtons(myGame.getGameObject(GameObject.PLAYER_ONE), "arrows");
+			handleKeyboardDirectionalButtons(myGame, "arrows");
 			//handleKeyboardDirectionalButtons(myGame, "wasd");
 
 			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
@@ -73,6 +75,10 @@ public class Keyboard extends ComputerInput {
 			if (Gdx.input.isKeyPressed(Input.Keys.Z) && Gdx.input.isKeyPressed(Input.Keys.I)) {
 				GameScreen.camera.zoom -= cameraZoomAmount;
 			}
+
+			if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+				System.exit(0);
+			}
 		}
 	}
 
@@ -82,9 +88,11 @@ public class Keyboard extends ComputerInput {
 	 * @param GameObject player
 	 * @param String     directions
 	 */
-	private void handleKeyboardDirectionalButtons(GameObject player, String directions) {
+	private void handleKeyboardDirectionalButtons(MyGame myGame, String directions) {
 
 		System.out.println("Keyboard directional controls: " + directions);
+
+		GameObject player = PlayerController.getCurrentPlayer(myGame);
 
 		// If user presses the T button to use turbo.
 		int turboSpeed    = 3;
@@ -111,33 +119,35 @@ public class Keyboard extends ComputerInput {
 			right = Input.Keys.D;
 		}
 
-		if (Gdx.input.isKeyPressed(left)) {
-			player.translateX(-playerSpeed);
-			player.setDirection(Player.DIRECTION_LEFT);
-			Player.playerIsMoving = true;
-			System.out.println("Player is moving left");
-		}
-		else if (Gdx.input.isKeyPressed(right)) {
-			player.translateX(playerSpeed);
-			player.setDirection(Player.DIRECTION_RIGHT);
-			Player.playerIsMoving = true;
-			System.out.println("Player is moving right");
-		}
-		else if (Gdx.input.isKeyPressed(up)) {
-			player.translateY(-playerSpeed);
-			player.setDirection(Player.DIRECTION_UP);
-			Player.playerIsMoving = true;
-			System.out.println("Player is moving up");
-		}
-		else if (Gdx.input.isKeyPressed(down)) {
-			player.translateY(playerSpeed);
-			player.setDirection(Player.DIRECTION_DOWN);
-			Player.playerIsMoving = true;
-			System.out.println("Player is moving down");
-		}
-		else {
-			player.stopPlayer();
-			Player.playerIsMoving = false;
+		if(GameObjectLoader.gameObjectList.contains(player)) {
+			if (Gdx.input.isKeyPressed(left)) {
+				player.translateX(-playerSpeed);
+				player.setDirection(Player.DIRECTION_LEFT);
+				Player.playerIsMoving = true;
+				System.out.println("Player is moving left");
+			}
+			else if (Gdx.input.isKeyPressed(right)) {
+				player.translateX(playerSpeed);
+				player.setDirection(Player.DIRECTION_RIGHT);
+				Player.playerIsMoving = true;
+				System.out.println("Player is moving right");
+			}
+			else if (Gdx.input.isKeyPressed(up)) {
+				player.translateY(-playerSpeed);
+				player.setDirection(Player.DIRECTION_UP);
+				Player.playerIsMoving = true;
+				System.out.println("Player is moving up");
+			}
+			else if (Gdx.input.isKeyPressed(down)) {
+				player.translateY(playerSpeed);
+				player.setDirection(Player.DIRECTION_DOWN);
+				Player.playerIsMoving = true;
+				System.out.println("Player is moving down");
+			}
+			else {
+				player.stopPlayer();
+				Player.playerIsMoving = false;
+			}
 		}
 	}
 }
