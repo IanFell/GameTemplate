@@ -46,7 +46,7 @@ public class GameObjectFactory {
 			return new Chest(5, 5);
 		}
 		if (objectType.equalsIgnoreCase("teepee")) {
-			return new TeePee(0, 0);
+			return new TeePee(0, 0, null);
 		}
 		return null;
 	}

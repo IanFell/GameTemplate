@@ -18,7 +18,6 @@ public class GameObjectLoader {
 	public GameObject playerTwo;
 	public GameObject playerThree;
 	public GameWorld gameWorld;
-	public GameObject teePee;
 
 	/**
 	 * This holds all game objects, for the purpose of drawing order.
@@ -35,14 +34,12 @@ public class GameObjectLoader {
 		playerThree = myGame.gameObjectFactory.getObject("playerThree", 0, 0);
 		// GameWorld does not load tiles.
 		gameWorld   = new GameWorld();
-		teePee = myGame.gameObjectFactory.getObject("teepee", 0, 0);
-		addGameObjectsToGameObjectArrayList();
+		addPlayersToGameObjectArrayList();
 	}
 
-	private void addGameObjectsToGameObjectArrayList() {
+	private void addPlayersToGameObjectArrayList() {
 		gameObjectList.add(playerOne);
 		gameObjectList.add(playerTwo);
 		gameObjectList.add(playerThree);
-		gameObjectList.add(teePee);
 	}
 }

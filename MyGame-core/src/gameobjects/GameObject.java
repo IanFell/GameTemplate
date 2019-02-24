@@ -19,15 +19,15 @@ import maps.MapHandler;
 public class GameObject extends Sprite implements GameObjectInterface, Comparable<GameObject> {
 
 	/**
-	 * Used to ensure the correct player is returned in getGameObject() method.
+	 * Used to ensure the correct object is returned in getGameObject() method.
 	 */
 	public static final int PLAYER_ONE   = 1;
 	public static final int PLAYER_TWO   = 2;
 	public static final int PLAYER_THREE = 3;
 	public static final int TREE         = 4;
 	public static final int PLANT        = 5;
-	public static final int CHEST_ONE    = 6;
-	public static final int CHEST_TWO    = 7;
+	public static final int CHEST_OPEN   = 6;
+	public static final int CHEST_CLOSED = 7;
 
 	protected float x;
 	protected float y;
