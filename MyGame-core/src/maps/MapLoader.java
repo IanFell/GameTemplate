@@ -251,32 +251,32 @@ public class MapLoader {
 	 */
 	private void loadTile(int[][] worldMap, Tile[][] tileMap, int x, int z) {
 		if (worldMap[z][x] == MapInformationHolder.SandTile) {  
-			tileMap[x][z] = new Tile(Tile.sandTexture, !isSolid, "Sand");
+			tileMap[x][z] = new Tile(Tile.sandTexture, !isSolid, "Sand", false);
 		}
 		if (worldMap[z][x] == MapInformationHolder.WaterTileOne) {  
-			tileMap[x][z] = new Tile(Tile.waterTextureOne, !isSolid, "Water");
+			tileMap[x][z] = new Tile(Tile.waterTextureOne, !isSolid, "Water", true);
 		}
 		// Solid sand tile under transparent tree pngs.
 		if (worldMap[z][x] == MapInformationHolder.SolidTile) {  
-			tileMap[x][z] = new Tile(Tile.sandTexture, isSolid, "Solid");
+			tileMap[x][z] = new Tile(Tile.sandTexture, isSolid, "Solid", false);
 		}
 		if (worldMap[z][x] == MapInformationHolder.GrassTile) {  
-			tileMap[x][z] = new Tile(Tile.grassTextureOne, !isSolid, "Grass");
+			tileMap[x][z] = new Tile(Tile.grassTextureOne, !isSolid, "Grass", false);
 		}
 		if (worldMap[z][x] == MapInformationHolder.SandTileHorizontalPath) {  
-			tileMap[x][z] = new Tile(Tile.sandTextureHorizontalPath, !isSolid, "SandTileHorizontalPath");
+			tileMap[x][z] = new Tile(Tile.sandTextureHorizontalPath, !isSolid, "SandTileHorizontalPath", false);
 		}
 		if (worldMap[z][x] == MapInformationHolder.SandTileLeftDownPath) {  
-			tileMap[x][z] = new Tile(Tile.sandTextureLeftDownPath, !isSolid, "SandTileLeftDownPath");
+			tileMap[x][z] = new Tile(Tile.sandTextureLeftDownPath, !isSolid, "SandTileLeftDownPath", false);
 		}
 		if (worldMap[z][x] == MapInformationHolder.SandTileVerticalPath) {  
-			tileMap[x][z] = new Tile(Tile.sandTextureVerticalPath, !isSolid, "SandTileVerticalPath");
+			tileMap[x][z] = new Tile(Tile.sandTextureVerticalPath, !isSolid, "SandTileVerticalPath", false);
 		}
 		if (worldMap[z][x] == MapInformationHolder.SandTileTopRightPath) {  
-			tileMap[x][z] = new Tile(Tile.sandTextureTopRightPath, !isSolid, "SandTileTopRightPath");
+			tileMap[x][z] = new Tile(Tile.sandTextureTopRightPath, !isSolid, "SandTileTopRightPath", false);
 		}
 		if (worldMap[z][x] == MapInformationHolder.SandTileCrossPath) {  
-			tileMap[x][z] = new Tile(Tile.sandTextureCrossPath, !isSolid, "SandTileCrossPath");
+			tileMap[x][z] = new Tile(Tile.sandTextureCrossPath, !isSolid, "SandTileCrossPath", false);
 		}
 	}
 }

@@ -15,11 +15,13 @@ public class SandTile extends Tile {
 	 * 
 	 * @param Texture texture
 	 * @param boolean isSolid
+	 * @param String  name
+	 * @param boolean isWater
 	 */
-	public SandTile(Texture texture, boolean isSolid, String name) {
-		super(texture, isSolid, name);
+	public SandTile(Texture texture, boolean isSolid, String name, boolean isWater) {
+		super(texture, isSolid, name, isWater);
 	}
-	
+
 	public final Tile[][] solidSandTile = new Tile[WORLD_WIDTH][WORLD_HEIGHT];
 	public int[][] solidSandMap           = 
 		{

@@ -14,6 +14,7 @@ import com.mygdx.mygame.MyGame;
 public class Tile extends Sprite {
 
 	public boolean isSolid;
+	public boolean isWater;
 
 	protected final String name;
 
@@ -45,11 +46,13 @@ public class Tile extends Sprite {
 	 * @param Texture texture
 	 * @param boolean isSolid
 	 * @param String  name
+	 * @param boolean isWater
 	 */
-	public Tile(Texture texture, boolean isSolid, String name) {
+	public Tile(Texture texture, boolean isSolid, String name, boolean isWater) {
 		super(texture);
 		this.isSolid = isSolid;
 		this.name    = name;
+		this.isWater = isWater;
 	}
 
 	/**
@@ -82,6 +85,14 @@ public class Tile extends Sprite {
 	 */
 	public boolean isSolid() {
 		return isSolid;
+	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	public boolean isWater() {
+		return isWater;
 	}
 
 	/**

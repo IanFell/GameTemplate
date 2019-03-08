@@ -12,7 +12,7 @@ import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
 import loaders.GameObjectLoader;
-import loaders.chestloader.ChestLoader;
+import loaders.GameWorld;
 import maps.MapHandler;
 import maps.MapLoader;
 import maps.MapRenderer;
@@ -188,9 +188,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_TWO).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_THREE).updateObject(myGame, mapHandler);
-		for (int i = 0; i< ChestLoader.chests.length; i++) {
-			ChestLoader.chests[i].updateObject(myGame, mapHandler);
-		}
+		GameWorld.updateGameWorld(myGame, mapHandler);
 
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();

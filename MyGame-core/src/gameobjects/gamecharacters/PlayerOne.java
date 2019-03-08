@@ -75,7 +75,6 @@ public class PlayerOne extends Player {
 	 */
 	@Override
 	protected void handleWalking(MyGame myGame) {
-		System.out.println("Player One is walking");
 		/**
 		 * Only save player coordiantes if player is moving.  
 		 * This is so player two and three stop and move with player one.

@@ -78,13 +78,23 @@ public class MapRenderer {
 						animateWaterTiles(i, myGame, x, z);
 						// Might need to make this method take a certain player, other wise its slow as shit.
 						//if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_ONE))) {
-							CollisionHandler.checkIfPlayerHasCollidedWithASolidTile(
-									myGame.getGameObject(GameObject.PLAYER_ONE), 
-									mapHandler, 
-									MapHandler.mapChunks.get(i).tileMap[x][z]
-									);
+						CollisionHandler.checkIfPlayerHasCollidedWithSolidTile(
+								myGame.getGameObject(GameObject.PLAYER_ONE), 
+								mapHandler, 
+								MapHandler.mapChunks.get(i).tileMap[x][z]
+								);
+						CollisionHandler.checkIfPlayerHasCollidedWithWaterTile(
+								myGame.getGameObject(GameObject.PLAYER_ONE), 
+								mapHandler, 
+								MapHandler.mapChunks.get(i).tileMap[x][z]
+								);
+						CollisionHandler.checkIfPlayerHasCollidedWithSandTile(
+								myGame.getGameObject(GameObject.PLAYER_ONE), 
+								mapHandler, 
+								MapHandler.mapChunks.get(i).tileMap[x][z]
+								);
 						//}
-						
+
 					}
 				}
 			}
@@ -95,7 +105,7 @@ public class MapRenderer {
 	}
 
 	/**
-	 * Currently these tiles just animate back and forth.
+	 * Animate tiles to the right.
 	 * 
 	 * @param int    tileNumber
 	 * @param MyGame myGame

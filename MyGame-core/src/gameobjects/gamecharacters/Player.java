@@ -24,8 +24,15 @@ import maps.MapHandler;
  *
  */
 public class Player extends GameObject { 
+	
+	public static boolean isInWater = false;
 
 	private String name;
+	
+	/**
+	 * Used for water animation.
+	 */
+	private int timer;
 
 	/**
 	 * Available directions player can travel.  
@@ -105,8 +112,8 @@ public class Player extends GameObject {
 	 *  String name
 	 */
 	public Player(String name) {
-		this.x               = GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START;
-		this.y               = GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START;
+		this.x               = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 50;
+		this.y               = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 25;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
@@ -146,6 +153,11 @@ public class Player extends GameObject {
 		y += dy;
 		rectangle.x = x;
 		rectangle.y = y;
+		// Timer for water animation.
+		timer++;
+		if (timer > 20) {
+			timer = 0;
+		}
 	}
 
 	/**
@@ -220,7 +232,29 @@ public class Player extends GameObject {
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		elapsedTime += Gdx.graphics.getDeltaTime();
-		AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, characterSize);
+		if (isInWater) {
+			float offset = 1.0f;
+			if (timer < 10) {
+				offset = 1.1f;
+			}
+			int resizedValue = 2;
+			switch (getDirection()) {
+			case DIRECTION_LEFT:
+				batch.draw(imageLoader.playerHeadLeft, x, y + offset, characterSize, -characterSize * resizedValue);
+				break;
+			case DIRECTION_RIGHT:
+				batch.draw(imageLoader.playerHeadRight, x, y + offset, characterSize, -characterSize * resizedValue);
+				break;
+			case DIRECTION_UP:
+				batch.draw(imageLoader.playerHeadUp, x, y + offset, characterSize, -characterSize * resizedValue);
+				break;
+			case DIRECTION_DOWN:
+				batch.draw(imageLoader.playerHeadDown, x, y + offset, characterSize, -characterSize * resizedValue);
+				break;
+			}
+		} else {
+			AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, characterSize);
+		}
 	}
 
 	/**
@@ -252,6 +286,9 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void translateX(float distance) {
+		if (isInWater) {
+			distance = distance / 2;
+		}
 		x += distance;
 	}
 
@@ -261,6 +298,9 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void translateY(float distance) {
+		if (isInWater) {
+			distance = distance / 2;
+		}
 		y += distance;
 	}
 

@@ -38,6 +38,11 @@ public class ImageLoader {
 
 	public Texture playerSprite;
 
+	public Texture playerHeadUp;
+	public Texture playerHeadDown;
+	public Texture playerHeadLeft;
+	public Texture playerHeadRight;
+
 	public Texture tree;
 
 	public Texture palmTree;
@@ -53,6 +58,9 @@ public class ImageLoader {
 	public Texture playerScore;
 
 	public Texture teePee;
+	public Texture rawbar;
+
+	public Texture ui;
 
 	public void init() {
 		splashScreenLogo               = new Texture(Gdx.files.internal("logo_ffg.png"));
@@ -82,6 +90,12 @@ public class ImageLoader {
 		palmTree					   = new Texture(Gdx.files.internal("PalmTreeNewOriginal3.png"));
 		plant                          = new Texture(Gdx.files.internal("PlantNewOriginal.png"));
 		teePee   					   = new Texture(Gdx.files.internal("TeePee.png"));
+		playerHeadUp 				   = new Texture(Gdx.files.internal("PlayerHeadUp.png"));
+		playerHeadDown 				   = new Texture(Gdx.files.internal("PlayerHeadDown.png"));
+		playerHeadLeft 				   = new Texture(Gdx.files.internal("PlayerHeadLeft.png"));
+		playerHeadRight 			   = new Texture(Gdx.files.internal("PlayerHeadRight.png"));
+		ui 							   = new Texture(Gdx.files.internal("UI.png"));
+		rawbar						   = new Texture(Gdx.files.internal("RawBar.png"));
 	}
 
 	public void dispose() {
@@ -112,5 +126,11 @@ public class ImageLoader {
 		palmTree.dispose();
 		plant.dispose();
 		teePee.dispose();
+		playerHeadUp.dispose();
+		playerHeadDown.dispose();
+		playerHeadLeft.dispose();
+		playerHeadRight.dispose();
+		ui.dispose();
+		rawbar.dispose();
 	}
 }

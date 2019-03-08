@@ -5,6 +5,7 @@ import gameobjects.gamecharacters.PlayerOne;
 import gameobjects.gamecharacters.PlayerThree;
 import gameobjects.gamecharacters.PlayerTwo;
 import gameobjects.stationarygameobjects.Chest;
+import gameobjects.stationarygameobjects.RawBar;
 import gameobjects.stationarygameobjects.TeePee;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import gameobjects.stationarygameobjects.treeobjects.Plant;
@@ -47,6 +48,9 @@ public class GameObjectFactory {
 		}
 		if (objectType.equalsIgnoreCase("teepee")) {
 			return new TeePee(0, 0, null);
+		}
+		if (objectType.equalsIgnoreCase("rawbar")) {
+			return new RawBar(0, 0);
 		}
 		return null;
 	}

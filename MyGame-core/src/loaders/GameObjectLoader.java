@@ -17,7 +17,7 @@ public class GameObjectLoader {
 	public GameObject playerOne;
 	public GameObject playerTwo;
 	public GameObject playerThree;
-	public GameWorld gameWorld;
+	public static GameWorld gameWorld;
 
 	/**
 	 * This holds all game objects, for the purpose of drawing order.

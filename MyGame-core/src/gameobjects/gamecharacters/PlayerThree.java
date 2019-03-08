@@ -66,7 +66,6 @@ public class PlayerThree extends Player {
 	 * @param ArrayList<Float> yPosition
 	 */
 	protected void handleWalking(MyGame myGame, int size, ArrayList<Float> xPosition, ArrayList<Float> yPosition) {
-		System.out.println("Player Three is walking");
 		if (size > playerOneFollowAndDirectionValueOffset - 1) {
 			x = PlayerTwo.playerTwoXPositions.get(size - playerOneFollowAndDirectionValueOffset / 2);
 			y = PlayerTwo.playerTwoYPositions.get(size - playerOneFollowAndDirectionValueOffset / 2);

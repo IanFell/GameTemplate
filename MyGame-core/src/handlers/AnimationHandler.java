@@ -40,5 +40,4 @@ public class AnimationHandler {
 				-size * 2
 				);
 	}
-
 }

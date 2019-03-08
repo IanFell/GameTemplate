@@ -55,7 +55,6 @@ public class PlayerTwo extends Player {
 	 */
 	@Override
 	protected void handleWalking(MyGame myGame) {
-		System.out.println("Player Two is walking");
 		int playerOneXPositionSize = PlayerOne.playerOneXPositions.size();
 		if (playerOneXPositionSize > playerOneFollowAndDirectionValueOffset - 1) {
 			x = PlayerOne.playerOneXPositions.get(playerOneXPositionSize - playerOneFollowAndDirectionValueOffset);
