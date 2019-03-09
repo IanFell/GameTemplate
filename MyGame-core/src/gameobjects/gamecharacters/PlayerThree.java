@@ -66,10 +66,11 @@ public class PlayerThree extends Player {
 	 * @param ArrayList<Float> yPosition
 	 */
 	protected void handleWalking(MyGame myGame, int size, ArrayList<Float> xPosition, ArrayList<Float> yPosition) {
+		int half = 2;
 		if (size > playerOneFollowAndDirectionValueOffset - 1) {
-			x = PlayerTwo.playerTwoXPositions.get(size - playerOneFollowAndDirectionValueOffset / 2);
-			y = PlayerTwo.playerTwoYPositions.get(size - playerOneFollowAndDirectionValueOffset / 2);
-			setDirection(PlayerTwo.playerDirections.get(size - playerOneFollowAndDirectionValueOffset / 2));
+			x = PlayerTwo.playerTwoXPositions.get(size - playerOneFollowAndDirectionValueOffset / half);
+			y = PlayerTwo.playerTwoYPositions.get(size - playerOneFollowAndDirectionValueOffset / half);
+			setDirection(PlayerTwo.playerDirections.get(size - playerOneFollowAndDirectionValueOffset / half));
 		}
 	}
 }

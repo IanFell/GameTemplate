@@ -37,9 +37,10 @@ public class RawBar extends GamePlayObject {
 	 */
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		CollisionHandler.checkIfPlayerHasCollidedWithRawBar(
+		CollisionHandler.checkIfPlayerHasCollidedWithStructure(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
-				this
+				this,
+				"Raw Bar"
 				);
 	}
 

@@ -21,8 +21,9 @@ public class TeePee extends GamePlayObject {
 	/**
 	 * Constructor.
 	 * 
-	 * @param int x
-	 * @param int y
+	 * @param int    x
+	 * @param int    y
+	 * @param String name
 	 */
 	public TeePee(int x, int y, String name) {
 		super(x, y);
@@ -50,9 +51,10 @@ public class TeePee extends GamePlayObject {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		CollisionHandler.checkIfPlayerHasCollidedWithTeePee(
+		CollisionHandler.checkIfPlayerHasCollidedWithStructure(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
-				this
+				this,
+				"Tee Pee"
 				);
 	}
 }

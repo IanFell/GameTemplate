@@ -3,8 +3,6 @@ package physics;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
-import gameobjects.stationarygameobjects.RawBar;
-import gameobjects.stationarygameobjects.TeePee;
 import maps.MapHandler;
 import missions.MissionChests;
 import tiles.Tile;
@@ -53,28 +51,16 @@ public class CollisionHandler {
 	 * @param MapHandler mapHandler
 	 * @param Tile       tile
 	 */
-	public static void checkIfPlayerHasCollidedWithWaterTile(GameObject player, MapHandler mapHandler, Tile tile) {
-		if (tile.isWater()) {
-			if (tile.getBoundingRectangle().overlaps(player.rectangle)) {
+	public static void checkIfPlayerHasCollidedWithSandOrWaterTile(GameObject player, MapHandler mapHandler, Tile tile) {
+		if (tile.getBoundingRectangle().overlaps(player.rectangle)) {
+			if (tile.isWater()) {
 				System.out.println("Player collided with water tile!");
 				Player.isInWater = true;
-			} 
-		} 
-	}
-
-	/**
-	 * 
-	 * @param GameObject player
-	 * @param MapHandler mapHandler
-	 * @param Tile       tile
-	 */
-	public static void checkIfPlayerHasCollidedWithSandTile(GameObject player, MapHandler mapHandler, Tile tile) {
-		if (!tile.isWater()) {
-			if (tile.getBoundingRectangle().overlaps(player.rectangle)) {
+			} else {
 				System.out.println("Player collided with sand tile!");
 				Player.isInWater = false;
 			} 
-		} 
+		}
 	}
 
 	/**
@@ -101,23 +87,12 @@ public class CollisionHandler {
 	/**
 	 * 
 	 * @param GameObject player
-	 * @param TeePee     teePee
+	 * @param GameObject structure
+	 * @param String     structureName
 	 */
-	public static void checkIfPlayerHasCollidedWithTeePee(GameObject player, TeePee teePee) {
-		if (teePee.rectangle.overlaps(player.rectangle)) {
-			System.out.println("Player has collided with tee pee!");
-			System.exit(0);
-		}
-	}
-
-	/**
-	 * 
-	 * @param GameObject player
-	 * @param RawBar     rawbar
-	 */
-	public static void checkIfPlayerHasCollidedWithRawBar(GameObject player, RawBar rawbar) {
-		if (rawbar.rectangle.overlaps(player.rectangle)) {
-			System.out.println("Player has collided with Raw Bar!");
+	public static void checkIfPlayerHasCollidedWithStructure(GameObject player, GameObject structure, String structureName) {
+		if (structure.rectangle.overlaps(player.rectangle)) {
+			System.out.println("Player has collided with " + structureName + "!");
 			System.exit(0);
 		}
 	}
