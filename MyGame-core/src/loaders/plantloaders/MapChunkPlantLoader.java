@@ -2,7 +2,7 @@ package loaders.plantloaders;
 
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.treeobjects.Plant;
-import loaders.GameObjectLoader;
+import loaders.ClassObjectLoader;
 import maps.MapInformationHolder;
 
 /**
@@ -10,7 +10,7 @@ import maps.MapInformationHolder;
  * @author Fabulous Fellini
  *
  */
-public class MapChunkPlantLoader {
+public class MapChunkPlantLoader extends ClassObjectLoader {
 	
 	protected GameObject[] plants;
 
@@ -18,16 +18,6 @@ public class MapChunkPlantLoader {
 	protected int startYPosition;
 	protected int row;
 	protected final int chunkWidth = MapInformationHolder.CHUNK_WIDTH;
-
-	/**
-	 * 
-	 * @param GameObject[] plant
-	 */
-	protected void addGameObjectsToGameObjectArrayList(GameObject[] plant) {
-		for (int i = 0; i < plant.length; i++) {
-			GameObjectLoader.gameObjectList.add(plant[i]);
-		}
-	}
 
 	protected void loadPlants() {}
 

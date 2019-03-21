@@ -96,4 +96,16 @@ public class CollisionHandler {
 			System.exit(0);
 		}
 	}
+
+	/**
+	 * 
+	 * @param GameObject player
+	 * @param GameObject fire
+	 */
+	public static void checkIfPlayerHasCollidedWithFire(GameObject player, GameObject fire) {
+		if (fire.rectangle.overlaps(player.rectangle)) {
+			System.out.println("Player has collided with fire!");
+			System.exit(0);
+		}
+	}
 }

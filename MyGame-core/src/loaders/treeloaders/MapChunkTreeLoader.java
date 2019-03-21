@@ -2,7 +2,7 @@ package loaders.treeloaders;
 
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
-import loaders.GameObjectLoader;
+import loaders.ClassObjectLoader;
 import maps.MapInformationHolder;
 
 /**
@@ -10,7 +10,7 @@ import maps.MapInformationHolder;
  * @author Fabulous Fellini
  *
  */ 
-public class MapChunkTreeLoader {
+public class MapChunkTreeLoader extends ClassObjectLoader {
 	
 	protected GameObject[] trees;
 	
@@ -18,16 +18,6 @@ public class MapChunkTreeLoader {
 	protected int startYPosition;
 	protected int row;
 	protected final int chunkWidth = MapInformationHolder.CHUNK_WIDTH;
-	
-	/**
-	 * 
-	 * @param GameObject[] tree
-	 */
-	protected void addGameObjectsToGameObjectArrayList(GameObject[] tree) {
-		for (int i = 0; i < tree.length; i++) {
-			GameObjectLoader.gameObjectList.add(tree[i]);
-		}
-	}
 	
 	protected void loadTrees() {}
 	

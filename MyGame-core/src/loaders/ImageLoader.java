@@ -63,17 +63,19 @@ public class ImageLoader {
 	public Texture ui;
 
 	public Texture lightHouse;
-	
+
 	public Texture fireOne;
 	public Texture fireTwo;
 	public Texture fireThree;
 	public Texture fireFour;
+	public Texture logs;
 
 	public void init() {
-		fireOne = new Texture(Gdx.files.internal("Fire1.png"));
-		fireTwo = new Texture(Gdx.files.internal("Fire2.png"));
-		fireThree = new Texture(Gdx.files.internal("Fire3.png"));
-		fireFour = new Texture(Gdx.files.internal("Fire4.png"));
+		logs                           = new Texture(Gdx.files.internal("Logs.png"));
+		fireOne                        = new Texture(Gdx.files.internal("Fire1.png"));
+		fireTwo                        = new Texture(Gdx.files.internal("Fire2.png"));
+		fireThree                      = new Texture(Gdx.files.internal("Fire3.png"));
+		fireFour                       = new Texture(Gdx.files.internal("Fire4.png"));
 		splashScreenLogo               = new Texture(Gdx.files.internal("logo_ffg.png"));
 		titleScreenLogo                = new Texture(Gdx.files.internal("GoldenAgeLogo.png"));
 		testImage                      = new Texture(Gdx.files.internal("badlogic.jpg"));
@@ -149,5 +151,6 @@ public class ImageLoader {
 		fireTwo.dispose();
 		fireThree.dispose();
 		fireFour.dispose();
+		logs.dispose();
 	}
 }

@@ -3,7 +3,7 @@ package loaders.chestloader;
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.Chest;
 import helpers.GameAttributeHelper;
-import loaders.GameObjectLoader;
+import loaders.ClassObjectLoader;
 
 /**
  * Loads chests for all chunks.
@@ -11,19 +11,9 @@ import loaders.GameObjectLoader;
  * @author Fabulous Fellini
  *
  */
-public class ChestLoader {
+public class ChestLoader extends ClassObjectLoader {
 
 	public static GameObject[] chests = new GameObject[65];
-
-	/**
-	 * 
-	 * @param GameObject[] chest
-	 */
-	protected void addGameObjectsToGameObjectArrayList(GameObject[] chest) {
-		for (int i = 0; i < chest.length; i++) {
-			GameObjectLoader.gameObjectList.add(chest[i]);
-		}
-	}
 
 	public void loadChests() {
 

@@ -10,7 +10,6 @@ import helpers.ColorHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import physics.Lighting.LightHandler;
-import screens.GameScreen;
 
 /**
  * Loads and draw particle effects.  
@@ -162,18 +161,16 @@ public class ParticleEmitter extends GameObject {
 	 * @param MyGame myGame
 	 */
 	public static void initializeParticleEmitters(MyGame myGame) {
-		int particleStartX   = 1;
-		float particleStaryY = 1;
-		float particleSize   = 0.1f;
+		//int particleStartX   = 1;
+		//float particleStaryY = 1;
+		//float particleSize   = 0.1f;
 		/*
 		GameScreen.particleEmitterRed     = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Red", myGame);
 		GameScreen.particleEmitterYellow  = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Yellow", myGame);
 		GameScreen.particleEmitterOrange  = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Orange", myGame);
-
 		GameScreen.particleEmitterRed.setX(GameScreen.particleEmitterRed.getX());
 		GameScreen.particleEmitterYellow.setX(GameScreen.particleEmitterYellow.getX());
 		GameScreen.particleEmitterOrange.setX(GameScreen.particleEmitterOrange.getX());
-
 		GameScreen.particleEmitterRed.setY(GameScreen.particleEmitterRed.getY());
 		GameScreen.particleEmitterYellow.setY(GameScreen.particleEmitterYellow.getY());
 		GameScreen.particleEmitterOrange.setY(GameScreen.particleEmitterOrange.getY());*/

@@ -1,6 +1,5 @@
 package loaders.rawbarloader;
 
-import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.RawBar;
 import helpers.GameAttributeHelper;
 import loaders.GameObjectLoader;
@@ -13,14 +12,6 @@ import loaders.GameObjectLoader;
 public class RawBarLoader {
 
 	public static RawBar rawbar;
-
-	/**
-	 * 
-	 * @param GameObject rawbar
-	 */
-	protected void addGameObjectsToGameObjectArrayList(GameObject rawbar) {
-		GameObjectLoader.gameObjectList.add(rawbar);
-	}
 
 	public void loadRawBar() {
 		rawbar = new RawBar(

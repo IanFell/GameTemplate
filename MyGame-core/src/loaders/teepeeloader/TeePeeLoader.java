@@ -3,26 +3,16 @@ package loaders.teepeeloader;
 import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.TeePee;
 import helpers.GameAttributeHelper;
-import loaders.GameObjectLoader;
+import loaders.ClassObjectLoader;
 
 /**
  * 
  * @author Fabulous Fellini
  *
  */
-public class TeePeeLoader {
+public class TeePeeLoader extends ClassObjectLoader {
 
 	public static GameObject[] teePees = new GameObject[6];
-
-	/**
-	 * 
-	 * @param GameObject[] teePee
-	 */
-	protected void addGameObjectsToGameObjectArrayList(GameObject[] teePee) {
-		for (int i = 0; i < teePee.length; i++) {
-			GameObjectLoader.gameObjectList.add(teePee[i]);
-		}
-	}
 
 	public void loadTeePees() {
 		teePees[0] = new TeePee(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 49, 5, "Mexico Beach"); 

@@ -1,6 +1,5 @@
 package loaders.lighthouseloader;
 
-import gameobjects.GameObject;
 import gameobjects.stationarygameobjects.LightHouse;
 import helpers.GameAttributeHelper;
 import loaders.GameObjectLoader;
@@ -13,14 +12,6 @@ import loaders.GameObjectLoader;
 public class LightHouseLoader {
 
 	public static LightHouse lightHouse;
-
-	/**
-	 * 
-	 * @param GameObject lighthouse
-	 */
-	protected void addGameObjectsToGameObjectArrayList(GameObject lighthouse) {
-		GameObjectLoader.gameObjectList.add(lighthouse);
-	}
 
 	public void loadLightHouse() {
 		lightHouse = new LightHouse(
