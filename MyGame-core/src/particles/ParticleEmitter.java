@@ -116,17 +116,20 @@ public class ParticleEmitter extends GameObject {
 			) {
 		if (particleType.equalsIgnoreCase("Red")) {
 			for (int i = 0; i < redParticles.length; i++) {
-				redParticles[i].renderObject(batch, shapeRenderer, imageLoader);
+				//redParticles[i].renderObject(batch, shapeRenderer, imageLoader);
+				batch.draw(imageLoader.whiteSquare, x, y, width, -height);
 			}
 		}
 		if (particleType.equalsIgnoreCase("Yellow")) {
 			for (int i = 0; i < yellowParticles.length; i++) {
-				yellowParticles[i].renderObject(batch, shapeRenderer, imageLoader);
+				//yellowParticles[i].renderObject(batch, shapeRenderer, imageLoader);
+				batch.draw(imageLoader.rawbar, x, y, width, -height);
 			}
 		}
 		if (particleType.equalsIgnoreCase("Orange")) {
 			for (int i = 0; i < orangeParticles.length; i++) {
-				orangeParticles[i].renderObject(batch, shapeRenderer, imageLoader);
+				//orangeParticles[i].renderObject(batch, shapeRenderer, imageLoader);
+				batch.draw(imageLoader.rawbar, x, y, width, -height);
 			}
 		}
 	}
@@ -159,10 +162,10 @@ public class ParticleEmitter extends GameObject {
 	 * @param MyGame myGame
 	 */
 	public static void initializeParticleEmitters(MyGame myGame) {
-		int particleStartX   = 204 + 68 + 68 + 68;
-		float particleStaryY = 55.5f;
+		int particleStartX   = 1;
+		float particleStaryY = 1;
 		float particleSize   = 0.1f;
-
+		/*
 		GameScreen.particleEmitterRed     = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Red", myGame);
 		GameScreen.particleEmitterYellow  = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Yellow", myGame);
 		GameScreen.particleEmitterOrange  = new ParticleEmitter(particleStartX, particleStaryY, particleSize, particleSize, "Orange", myGame);
@@ -173,7 +176,7 @@ public class ParticleEmitter extends GameObject {
 
 		GameScreen.particleEmitterRed.setY(GameScreen.particleEmitterRed.getY());
 		GameScreen.particleEmitterYellow.setY(GameScreen.particleEmitterYellow.getY());
-		GameScreen.particleEmitterOrange.setY(GameScreen.particleEmitterOrange.getY());
+		GameScreen.particleEmitterOrange.setY(GameScreen.particleEmitterOrange.getY());*/
 	}
 
 	/**
@@ -182,9 +185,9 @@ public class ParticleEmitter extends GameObject {
 	 * @param LightHandler lightHandler
 	 */
 	public static void updateParticleEmitters(MyGame myGame, LightHandler lightHandler) {
-		GameScreen.particleEmitterRed.updateParticleEmitter(myGame, lightHandler);
-		GameScreen.particleEmitterYellow.updateParticleEmitter(myGame, lightHandler);
-		GameScreen.particleEmitterOrange.updateParticleEmitter(myGame, lightHandler);
+		//GameScreen.particleEmitterRed.updateParticleEmitter(myGame, lightHandler);
+		//GameScreen.particleEmitterYellow.updateParticleEmitter(myGame, lightHandler);
+		//GameScreen.particleEmitterOrange.updateParticleEmitter(myGame, lightHandler);
 	}
 
 	/**
@@ -193,8 +196,8 @@ public class ParticleEmitter extends GameObject {
 	 * @param ShapeRenderer shapeRenderer
 	 */
 	public static void renderParticleEmitters(MyGame myGame, ShapeRenderer shapeRenderer) {
-		GameScreen.particleEmitterRed.renderParticleEmitter(shapeRenderer, "Red", myGame.renderer.batch, myGame.imageLoader);
-		GameScreen.particleEmitterYellow.renderParticleEmitter(shapeRenderer, "Yellow", myGame.renderer.batch, myGame.imageLoader);
-		GameScreen.particleEmitterOrange.renderParticleEmitter(shapeRenderer, "Orange", myGame.renderer.batch, myGame.imageLoader);
+		//GameScreen.particleEmitterRed.renderParticleEmitter(shapeRenderer, "Red", myGame.renderer.batch, myGame.imageLoader);
+		//GameScreen.particleEmitterYellow.renderParticleEmitter(shapeRenderer, "Yellow", myGame.renderer.batch, myGame.imageLoader);
+		//GameScreen.particleEmitterOrange.renderParticleEmitter(shapeRenderer, "Orange", myGame.renderer.batch, myGame.imageLoader);
 	}
 }

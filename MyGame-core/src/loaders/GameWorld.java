@@ -3,6 +3,7 @@ package loaders;
 import com.mygdx.mygame.MyGame;
 
 import loaders.chestloader.ChestLoader;
+import loaders.lighthouseloader.LightHouseLoader;
 import loaders.plantloaders.PlantLoader;
 import loaders.rawbarloader.RawBarLoader;
 import loaders.teepeeloader.TeePeeLoader;
@@ -21,16 +22,18 @@ public class GameWorld {
 	private ChestLoader chestLoader;
 	private TeePeeLoader teePeeLoader;
 	private RawBarLoader rawBarLoader;
+	private LightHouseLoader lightHouseLoader;
 
 	/*
 	 * Constructor.
 	 */
 	public GameWorld() {
-		treeLoader   = new TreeLoader();
-		plantLoader  = new PlantLoader();
-		chestLoader  = new ChestLoader();
-		teePeeLoader = new TeePeeLoader();
-		rawBarLoader = new RawBarLoader();
+		treeLoader       = new TreeLoader();
+		plantLoader      = new PlantLoader();
+		chestLoader      = new ChestLoader();
+		teePeeLoader     = new TeePeeLoader();
+		rawBarLoader     = new RawBarLoader();
+		lightHouseLoader = new LightHouseLoader();
 		loadGameWorld();
 	}
 
@@ -40,6 +43,7 @@ public class GameWorld {
 		chestLoader.loadChests();
 		teePeeLoader.loadTeePees();
 		rawBarLoader.loadRawBar();
+		lightHouseLoader.loadLightHouse();
 	}
 
 	/**

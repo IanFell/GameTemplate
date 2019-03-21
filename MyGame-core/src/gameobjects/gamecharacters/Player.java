@@ -48,9 +48,9 @@ public class Player extends GameObject {
 	 * If player jumps, isJumping will be true until jumpCount surpases jumpCountMax.
 	 * When it does, jumpCount is reset to 0 and ready for another jump.
 	 */
-	public static boolean isJumping       = false;
-	private static int jumpCount          = 0;
-	private static final int jumpCountMax = GameAttributeHelper.FRAMES_PER_SECOND;
+	public static boolean isJumping         = false;
+	private static int jumpCount            = 0;
+	private static final int JUMP_COUNT_MAX = GameAttributeHelper.FRAMES_PER_SECOND;
 
 	public static int jumpingAction;
 	private float jumpSpeed;
@@ -112,8 +112,9 @@ public class Player extends GameObject {
 	 *  String name
 	 */
 	public Player(String name) {
-		this.x               = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 50;
-		this.y               = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 25;
+		// Use 0, 0 to test how the hit box rectangles work.  Otherwise put player where you desire.
+		this.x               = 0;
+		this.y               = 0;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;
@@ -168,7 +169,7 @@ public class Player extends GameObject {
 		if (isJumping) {
 			System.out.println("Player is jumping");
 			jumpCount++;
-			if (jumpCount >= jumpCountMax) {
+			if (jumpCount >= JUMP_COUNT_MAX) {
 				// Reset jump variables and get ready to jump again.
 				isJumping = !isJumping;
 				jumpCount = 0;
@@ -211,7 +212,7 @@ public class Player extends GameObject {
 	 * @return boolean
 	 */
 	private boolean playerIsBelowPeakJump() {
-		if (jumpCount < jumpCountMax / 2) {
+		if (jumpCount < JUMP_COUNT_MAX / 2) {
 			return true;
 		}
 		return false;

@@ -9,8 +9,18 @@ import loaders.ImageLoader;
 import maps.MapHandler;
 import physics.CollisionHandler;
 
+/**
+ * 
+ * @author Fabulous Fellini
+ *
+ */
 public class RawBar extends GamePlayObject {
 
+	/**
+	 * 
+	 * @param int x
+	 * @param int y
+	 */
 	public RawBar(int x, int y) {
 		super(x, y);
 		this.width       = 5;

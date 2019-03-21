@@ -5,6 +5,11 @@ import gameobjects.stationarygameobjects.RawBar;
 import helpers.GameAttributeHelper;
 import loaders.GameObjectLoader;
 
+/**
+ * 
+ * @author Fabulous Fellini
+ *
+ */
 public class RawBarLoader {
 
 	public static RawBar rawbar;

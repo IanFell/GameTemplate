@@ -62,7 +62,18 @@ public class ImageLoader {
 
 	public Texture ui;
 
+	public Texture lightHouse;
+	
+	public Texture fireOne;
+	public Texture fireTwo;
+	public Texture fireThree;
+	public Texture fireFour;
+
 	public void init() {
+		fireOne = new Texture(Gdx.files.internal("Fire1.png"));
+		fireTwo = new Texture(Gdx.files.internal("Fire2.png"));
+		fireThree = new Texture(Gdx.files.internal("Fire3.png"));
+		fireFour = new Texture(Gdx.files.internal("Fire4.png"));
 		splashScreenLogo               = new Texture(Gdx.files.internal("logo_ffg.png"));
 		titleScreenLogo                = new Texture(Gdx.files.internal("GoldenAgeLogo.png"));
 		testImage                      = new Texture(Gdx.files.internal("badlogic.jpg"));
@@ -71,7 +82,7 @@ public class ImageLoader {
 		waterTileOne                   = new Texture(Gdx.files.internal("WaterOne.png"));
 		waterTileTwo                   = new Texture(Gdx.files.internal("WaterTwo.png"));
 		waterTileThree				   = new Texture(Gdx.files.internal("WaterThree.png"));
-		sandTile                       = new Texture(Gdx.files.internal("SandTile.png"));
+		sandTile                       = new Texture(Gdx.files.internal("SandTile2.png"));
 		sandTileHorizontalPath         = new Texture(Gdx.files.internal("SandTileHorizontalPath.png"));
 		sandTileLeftDownPath           = new Texture(Gdx.files.internal("SandTileLeftDownPath.png"));
 		sandTileVerticalPath		   = new Texture(Gdx.files.internal("SandTileVerticalPath.png"));
@@ -96,6 +107,7 @@ public class ImageLoader {
 		playerHeadRight 			   = new Texture(Gdx.files.internal("PlayerHeadRight.png"));
 		ui 							   = new Texture(Gdx.files.internal("UI.png"));
 		rawbar						   = new Texture(Gdx.files.internal("RawBar.png"));
+		lightHouse                     = new Texture(Gdx.files.internal("LightHouse.png"));
 	}
 
 	public void dispose() {
@@ -132,5 +144,10 @@ public class ImageLoader {
 		playerHeadRight.dispose();
 		ui.dispose();
 		rawbar.dispose();
+		lightHouse.dispose();
+		fireOne.dispose();
+		fireTwo.dispose();
+		fireThree.dispose();
+		fireFour.dispose();
 	}
 }

@@ -18,6 +18,7 @@ import maps.MapLoader;
 import maps.MapRenderer;
 import missions.MissionChests;
 import particles.ParticleEmitter;
+import physics.Lighting.Fire;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
@@ -29,6 +30,8 @@ import physics.Weather.WeatherHandler;
  *
  */
 public class GameScreen extends Screens {
+	
+	private Fire fire;
 
 	public static int cameraWidth = 10;
 
@@ -63,9 +66,9 @@ public class GameScreen extends Screens {
 
 	private GuiScreen guiScreen = new GuiScreen(myGame);
 
-	public static ParticleEmitter particleEmitterRed;
-	public static ParticleEmitter particleEmitterYellow;
-	public static ParticleEmitter particleEmitterOrange;
+	//public static ParticleEmitter particleEmitterRed;
+	//public static ParticleEmitter particleEmitterYellow;
+	//public static ParticleEmitter particleEmitterOrange;
 
 	/**
 	 *  Screen fades in during transitions.
@@ -139,7 +142,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_TWO).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
-		ParticleEmitter.initializeParticleEmitters(myGame);
+		//ParticleEmitter.initializeParticleEmitters(myGame);
 
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
@@ -149,6 +152,8 @@ public class GameScreen extends Screens {
 		 */
 		new TransitionScreen(myGame);
 		initializeCamera();
+		
+		fire = new Fire(0, 0, 1, 1);
 	}
 
 	/**
@@ -182,7 +187,7 @@ public class GameScreen extends Screens {
 		if (!TransitionScreen.isTransitionScreenIsComplete()) {
 			TransitionScreen.updateObject();
 		}
-		ParticleEmitter.updateParticleEmitters(myGame, lightingHandler.lightHandler);
+		//ParticleEmitter.updateParticleEmitters(myGame, lightingHandler.lightHandler);
 		lightingHandler.lightHandler.updateLighting(myGame.imageLoader);
 		weatherHandler.update(myGame, this, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapHandler);
@@ -195,6 +200,8 @@ public class GameScreen extends Screens {
 
 		// Test mission.  This will be controlled differently later, but for now it is always on.
 		MissionChests.updateMission((Player) myGame.getGameObject(GameObject.PLAYER_ONE));
+		
+		fire.updateFire(myGame);
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -223,10 +230,16 @@ public class GameScreen extends Screens {
 					this
 					);
 		}
+		
+		fire.renderObject(myGame.renderer.batch, 
+					myGame.renderer.shapeRenderer, 
+					myGame.imageLoader
+					);
+		//ParticleEmitter.renderParticleEmitters(myGame, myGame.renderer.shapeRenderer);
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
-		ParticleEmitter.renderParticleEmitters(myGame, myGame.renderer.shapeRenderer);
+		//ParticleEmitter.renderParticleEmitters(myGame, myGame.renderer.shapeRenderer);
 
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.renderObject(myGame.renderer.shapeRenderer);
