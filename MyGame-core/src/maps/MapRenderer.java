@@ -88,13 +88,6 @@ public class MapRenderer {
 								mapHandler, 
 								MapHandler.mapChunks.get(i).tileMap[x][z]
 								);
-						/*CollisionHandler.checkIfPlayerHasCollidedWithSandTile(
-								myGame.getGameObject(GameObject.PLAYER_ONE), 
-								mapHandler, 
-								MapHandler.mapChunks.get(i).tileMap[x][z]
-								);*/
-						//}
-
 					}
 				}
 			}

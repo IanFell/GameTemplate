@@ -35,7 +35,7 @@ public class AnimationHandler {
 		batch.draw( 
 				animation.getKeyFrame(elapsedTime, true),  
 				x,  
-				y + 1, 
+				y, 
 				size, 
 				-size * 2
 				);

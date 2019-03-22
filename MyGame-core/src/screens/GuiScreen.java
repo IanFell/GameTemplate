@@ -3,6 +3,9 @@ package screens;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
+import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
 
 /**
@@ -27,14 +30,58 @@ public class GuiScreen extends Screens {
 	 * @param ImageLoader imageLoader
 	 */
 	public void render(SpriteBatch batch, ImageLoader imageLoader) {
+		GameObject player = PlayerController.getCurrentPlayer(myGame);
+		
 		myGame.renderer.batch.begin();
-		batch.draw(
-				imageLoader.ui, 
-				camera.position.x - getViewportWidth() / denominatorOffset, 
-				camera.position.y - verticalHeight / denominatorOffset + 8, 
-				camera.viewportWidth, 
-				-camera.viewportHeight
-				);
+		if (Player.playerIsMoving) {
+			switch (player.getDirection()) {
+			case Player.DIRECTION_RIGHT:
+				batch.draw(
+						imageLoader.ui, 
+						camera.position.x - getViewportWidth() / denominatorOffset - Player.PLAYER_SPEED, 
+						camera.position.y - verticalHeight / denominatorOffset + 8, 
+						camera.viewportWidth, 
+						-camera.viewportHeight
+						);
+				break;
+			case Player.DIRECTION_LEFT:
+				batch.draw(
+						imageLoader.ui, 
+						camera.position.x - getViewportWidth() / denominatorOffset + Player.PLAYER_SPEED, 
+						camera.position.y - verticalHeight / denominatorOffset + 8, 
+						camera.viewportWidth, 
+						-camera.viewportHeight
+						);
+				break;
+			case Player.DIRECTION_UP:
+				batch.draw(
+						imageLoader.ui, 
+						camera.position.x - getViewportWidth() / denominatorOffset, 
+						camera.position.y - verticalHeight / denominatorOffset + 8 + Player.PLAYER_SPEED, 
+						camera.viewportWidth, 
+						-camera.viewportHeight
+						);
+				break;
+			case Player.DIRECTION_DOWN:
+				batch.draw(
+						imageLoader.ui, 
+						camera.position.x - getViewportWidth() / denominatorOffset, 
+						camera.position.y - verticalHeight / denominatorOffset + 8 - Player.PLAYER_SPEED, 
+						camera.viewportWidth, 
+						-camera.viewportHeight
+						);
+				break;
+			}
+		} else {
+			batch.draw(
+					imageLoader.ui, 
+					camera.position.x - getViewportWidth() / denominatorOffset, 
+					camera.position.y - verticalHeight / denominatorOffset + 8, 
+					camera.viewportWidth, 
+					-camera.viewportHeight
+					);
+		}
+		
 		myGame.renderer.batch.end();
 	}
 }
