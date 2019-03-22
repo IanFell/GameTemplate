@@ -113,8 +113,8 @@ public class Player extends GameObject {
 	 */
 	public Player(String name) {
 		// Use 0, 0 to test how the hit box rectangles work.  Otherwise put player where you desire.
-		this.x               = GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START;
-		this.y               = GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START + 2;
+		this.x               = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 35;
+		this.y               = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45;
 		this.width           = characterSize;
 		this.height          = characterSize;
 		rectangle.width      = characterSize;

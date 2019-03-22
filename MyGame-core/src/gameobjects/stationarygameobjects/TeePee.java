@@ -27,9 +27,11 @@ public class TeePee extends GamePlayObject {
 	 */
 	public TeePee(int x, int y, String name) {
 		super(x, y);
-		this.width  = 3;
-		this.height = 4;
-		this.name   = name;
+		this.width            = 3;
+		this.height           = 4;
+		this.name             = name;
+		this.rectangle.width  = width;
+		this.rectangle.height = height;
 	}
 
 	/**
@@ -54,7 +56,8 @@ public class TeePee extends GamePlayObject {
 		CollisionHandler.checkIfPlayerHasCollidedWithStructure(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this,
-				"Tee Pee"
+				"Tee Pee",
+				myGame
 				);
 	}
 }

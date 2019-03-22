@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
-import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
 
@@ -30,11 +29,9 @@ public class GuiScreen extends Screens {
 	 * @param ImageLoader imageLoader
 	 */
 	public void render(SpriteBatch batch, ImageLoader imageLoader) {
-		GameObject player = PlayerController.getCurrentPlayer(myGame);
-		
 		myGame.renderer.batch.begin();
 		if (Player.playerIsMoving) {
-			switch (player.getDirection()) {
+			switch (PlayerController.getCurrentPlayer(myGame).getDirection()) {
 			case Player.DIRECTION_RIGHT:
 				batch.draw(
 						imageLoader.ui, 
@@ -81,7 +78,6 @@ public class GuiScreen extends Screens {
 					-camera.viewportHeight
 					);
 		}
-		
 		myGame.renderer.batch.end();
 	}
 }

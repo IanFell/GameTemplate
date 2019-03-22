@@ -1,10 +1,14 @@
 package physics;
 
+import com.mygdx.mygame.MyGame;
+
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import maps.MapHandler;
 import missions.MissionChests;
+import screens.RawBarScreen;
+import screens.TeePeeScreen;
 import tiles.Tile;
 
 /**
@@ -89,11 +93,22 @@ public class CollisionHandler {
 	 * @param GameObject player
 	 * @param GameObject structure
 	 * @param String     structureName
+	 * @param MyGame     myGame
 	 */
-	public static void checkIfPlayerHasCollidedWithStructure(GameObject player, GameObject structure, String structureName) {
+	public static void checkIfPlayerHasCollidedWithStructure(
+			GameObject player, 
+			GameObject structure, 
+			String structureName, 
+			MyGame myGame
+			) {
 		if (structure.rectangle.overlaps(player.rectangle)) {
 			System.out.println("Player has collided with " + structureName + "!");
-			System.exit(0);
+			if (structureName.equalsIgnoreCase("Raw Bar")) {
+				new RawBarScreen(myGame);
+			}
+			if (structureName.equalsIgnoreCase("Tee Pee")) {
+				new TeePeeScreen(myGame);
+			}
 		}
 	}
 

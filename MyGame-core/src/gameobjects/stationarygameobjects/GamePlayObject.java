@@ -23,14 +23,14 @@ public class GamePlayObject extends GameObject {
 	 * @param int y
 	 */
 	public GamePlayObject(int x, int y) {
-		this.x             = x;
-		this.y             = y;
-		this.width         = objectSize;
-		this.height        = objectSize;
-		rectangle.x        = x;
-		rectangle.y        = y;
-		rectangle.width    = objectSize;
-		rectangle.height   = objectSize;
+		this.x                  = x;
+		this.y                  = y;
+		this.width              = objectSize;
+		this.height             = objectSize;
+		this.rectangle.x        = x;
+		this.rectangle.y        = y;
+		this.rectangle.width    = objectSize;
+		this.rectangle.height   = objectSize;
 	}
 
 	/**
@@ -42,6 +42,6 @@ public class GamePlayObject extends GameObject {
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		rectangle.x = x;
 		// Compensate for having to flip the texture on the y-axis.
-		rectangle.y = y - objectSize;
+		rectangle.y = y - height;
 	}
 }

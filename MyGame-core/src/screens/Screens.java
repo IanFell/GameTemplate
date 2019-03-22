@@ -26,6 +26,8 @@ public class Screens implements Screen {
 	public final static int INVENTORY_SCREEN = 4;
 	public final static int GAME_OVER_SCREEN = 5;
 	public final static int TITLE_SCREEN     = 6;
+	public final static int RAW_BAR_SCREEN   = 7;
+	public final static int TEE_PEE_SCREEN   = 8;
 
 	protected final MyGame myGame;
 

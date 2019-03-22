@@ -23,10 +23,10 @@ public class RawBar extends GamePlayObject {
 	 */
 	public RawBar(int x, int y) {
 		super(x, y);
-		this.width       = 5;
-		this.height      = 4;
-		this.rectangle.x = width;
-		this.rectangle.y = height;
+		this.width            = 7;
+		this.height           = 6;
+		this.rectangle.width  = width;
+		this.rectangle.height = height;
 	}
 
 	/**
@@ -50,7 +50,8 @@ public class RawBar extends GamePlayObject {
 		CollisionHandler.checkIfPlayerHasCollidedWithStructure(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this,
-				"Raw Bar"
+				"Raw Bar",
+				myGame
 				);
 	}
 
