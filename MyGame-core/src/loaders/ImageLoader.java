@@ -71,7 +71,10 @@ public class ImageLoader {
 	public Texture fireFour;
 	public Texture logs;
 
+	public Texture sword;
+
 	public void init() {
+		sword                          = new Texture(Gdx.files.internal("Sword.png"));
 		logs                           = new Texture(Gdx.files.internal("Logs.png"));
 		fireOne                        = new Texture(Gdx.files.internal("Fire1.png"));
 		fireTwo                        = new Texture(Gdx.files.internal("Fire2.png"));
@@ -155,5 +158,6 @@ public class ImageLoader {
 		fireFour.dispose();
 		logs.dispose();
 		drSuessTree.dispose();
+		sword.dispose();
 	}
 }

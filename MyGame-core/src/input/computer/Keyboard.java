@@ -76,6 +76,15 @@ public class Keyboard extends ComputerInput {
 				GameScreen.camera.zoom -= cameraZoomAmount;
 			}
 
+			if (Gdx.input.isKeyPressed(Input.Keys.F)) {
+				Player.hasTorch = !Player.hasTorch;
+			}
+
+			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
+				GameObject player = PlayerController.getCurrentPlayer(myGame);
+				((Player) player).getInventory().setInventoryIsEquipped(!((Player) player).getInventory().getInventoryIsEquipped());
+			}
+
 			if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
 				System.exit(0);
 			}

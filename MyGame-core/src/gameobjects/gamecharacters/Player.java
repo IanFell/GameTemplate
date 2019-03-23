@@ -11,8 +11,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import gameobjects.Torch;
 import handlers.AnimationHandler;
 import helpers.GameAttributeHelper;
+import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -24,11 +26,11 @@ import maps.MapHandler;
  *
  */
 public class Player extends GameObject { 
-	
+
 	public static boolean isInWater = false;
 
 	private String name;
-	
+
 	/**
 	 * Used for water animation.
 	 */
@@ -106,13 +108,18 @@ public class Player extends GameObject {
 
 	protected int playerHealth;
 
+	private Torch torch;
+	public static boolean hasTorch;
+
+	private Inventory inventory;
+
 	/**
 	 * Constructor.
 	 * 
 	 *  String name
 	 */
 	public Player(String name) {
-		this.x               = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 30;
+		this.x               = 0;
 		this.y               = 5;
 		this.width           = characterSize;
 		this.height          = characterSize;
@@ -129,6 +136,9 @@ public class Player extends GameObject {
 		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
 		playerHealth     	 = 100;
 		this.name            = name;
+		torch                = new Torch(0, 0);
+		hasTorch             = false;
+		inventory            = new Inventory();
 	}
 
 	/**
@@ -149,6 +159,9 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
+
+		System.out.println("Player Inventory includes: " + inventory);
+
 		x += dx;
 		y += dy;
 		rectangle.x = x;
@@ -158,6 +171,12 @@ public class Player extends GameObject {
 		if (timer > 20) {
 			timer = 0;
 		}
+
+		if (hasTorch) {	
+			torch.updateObject(myGame, mapHandler);
+		}
+
+		inventory.updateInventory(x, y);
 	}
 
 	/**
@@ -255,6 +274,20 @@ public class Player extends GameObject {
 		} else {
 			AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, characterSize);
 		}
+
+		if (hasTorch) {	
+			torch.renderObject(batch, shapeRenderer, imageLoader);
+		}
+
+		inventory.renderInventory(batch, shapeRenderer, imageLoader);
+	}
+
+	/**
+	 * 
+	 * @return Inventory
+	 */
+	public Inventory getInventory() {
+		return inventory;
 	}
 
 	/**

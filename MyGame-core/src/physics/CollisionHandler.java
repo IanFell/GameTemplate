@@ -7,6 +7,7 @@ import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import maps.MapHandler;
 import missions.MissionChests;
+import missions.MissionLegendOfTheSevenSwords;
 import screens.RawBarScreen;
 import screens.TeePeeScreen;
 import tiles.Tile;
@@ -121,6 +122,21 @@ public class CollisionHandler {
 		if (fire.rectangle.overlaps(player.rectangle)) {
 			System.out.println("Player has collided with fire!");
 			System.exit(0);
+		}
+	}
+
+	/**
+	 * 
+	 * @param GameObject player
+	 * @param GameObject legendSword
+	 */
+	public static void checkIfPlayerHasCollidedWithLegendSword(GameObject player, GameObject legendSword) {
+		if (legendSword.rectangle.overlaps(player.rectangle)) {
+			System.out.println("Player has collided with Legend Sword!");
+			MissionLegendOfTheSevenSwords.swordsCollected++;
+			MissionLegendOfTheSevenSwords.legendSwordCollection.add(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			legendSword.hasBeenCollected = true;
 		}
 	}
 }

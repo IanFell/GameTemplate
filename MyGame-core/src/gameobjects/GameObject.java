@@ -56,6 +56,11 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	public float dy;
 
 	/**
+	 * Used for Mission Legend of the Seven Swords.
+	 */
+	public boolean hasBeenCollected;
+
+	/**
 	 * Constructor.
 	 */
 	public GameObject() {}

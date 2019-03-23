@@ -8,7 +8,7 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Player;
+import handlers.MissionHandler;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
 import loaders.GameObjectLoader;
@@ -16,7 +16,6 @@ import loaders.GameWorld;
 import maps.MapHandler;
 import maps.MapLoader;
 import maps.MapRenderer;
-import missions.MissionChests;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
@@ -66,6 +65,11 @@ public class GameScreen extends Screens {
 	 *  Screen fades in during transitions.
 	 */
 	private TransitionScreen transitionScreen = new TransitionScreen(myGame);
+
+	/**
+	 * Handles all game missions.
+	 */
+	private MissionHandler missionHandler = new MissionHandler();
 
 	/**
 	 * 
@@ -187,7 +191,7 @@ public class GameScreen extends Screens {
 		screenShader.updateObject();
 
 		// Test mission.  This will be controlled differently later, but for now it is always on.
-		MissionChests.updateMission((Player) myGame.getGameObject(GameObject.PLAYER_ONE));
+		missionHandler.handleMissions(myGame, mapHandler);
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -216,6 +220,12 @@ public class GameScreen extends Screens {
 					this
 					);
 		}
+
+		missionHandler.renderMissions(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
