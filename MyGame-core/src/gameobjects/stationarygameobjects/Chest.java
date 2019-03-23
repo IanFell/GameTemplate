@@ -76,9 +76,9 @@ public class Chest extends GamePlayObject {
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		if (isClosed) {
-			batch.draw(imageLoader.chestClosed, x, y, width, -height);
+			batch.draw(imageLoader.chestClosed, x, y - height, width, -height);
 		} else {
-			batch.draw(imageLoader.chestOpen, x, y, width, -height);
+			batch.draw(imageLoader.chestOpen, x, y - height, width, -height);
 		}
 	}
 

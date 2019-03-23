@@ -11,16 +11,16 @@ import maps.MapInformationHolder;
  *
  */ 
 public class MapChunkTreeLoader extends ClassObjectLoader {
-	
+
 	protected GameObject[] trees;
-	
+
 	protected int startXPosition;
 	protected int startYPosition;
 	protected int row;
 	protected final int chunkWidth = MapInformationHolder.CHUNK_WIDTH;
-	
+
 	protected void loadTrees() {}
-	
+
 	/**
 	 * 
 	 * @param GameObject tree

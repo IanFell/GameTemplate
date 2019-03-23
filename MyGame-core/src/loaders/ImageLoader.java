@@ -45,6 +45,7 @@ public class ImageLoader {
 
 	public Texture tree;
 
+	public Texture drSuessTree;
 	public Texture palmTree;
 	public Texture plant;
 
@@ -102,6 +103,7 @@ public class ImageLoader {
 		rain 						   = new Texture(Gdx.files.internal("Rain.png"));
 		palmTree					   = new Texture(Gdx.files.internal("PalmTreeNewOriginal3.png"));
 		plant                          = new Texture(Gdx.files.internal("PlantNewOriginal.png"));
+		drSuessTree                    = new Texture(Gdx.files.internal("DrSuessTree.png"));
 		teePee   					   = new Texture(Gdx.files.internal("TeePee.png"));
 		playerHeadUp 				   = new Texture(Gdx.files.internal("PlayerHeadUp.png"));
 		playerHeadDown 				   = new Texture(Gdx.files.internal("PlayerHeadDown.png"));
@@ -152,5 +154,6 @@ public class ImageLoader {
 		fireThree.dispose();
 		fireFour.dispose();
 		logs.dispose();
+		drSuessTree.dispose();
 	}
 }

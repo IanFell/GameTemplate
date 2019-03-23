@@ -49,7 +49,7 @@ public class Screens implements Screen {
 	 * Saves camera Y position before screen shake.
 	 */
 	public static float cameraY;
-	
+
 	/**
 	 * Used to for an offset so images are drawn at 0, 0 and not in the center of the screen.
 	 */

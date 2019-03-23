@@ -22,7 +22,7 @@ public class GuiScreen extends Screens {
 	public GuiScreen(MyGame myGame) {
 		super(myGame);
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch batch
@@ -30,54 +30,45 @@ public class GuiScreen extends Screens {
 	 */
 	public void render(SpriteBatch batch, ImageLoader imageLoader) {
 		myGame.renderer.batch.begin();
+		float xPosition = 0f;
+		float yPosition = 0f;
+		// offsetValue is different depending on player speed (land vs water).
+		float offsetValue = 0f;
 		if (Player.playerIsMoving) {
+			if (Player.isInWater) {
+				offsetValue = Player.PLAYER_SPEED - 0.05f;
+			} else {
+				offsetValue = Player.PLAYER_SPEED;
+			}
 			switch (PlayerController.getCurrentPlayer(myGame).getDirection()) {
 			case Player.DIRECTION_RIGHT:
-				batch.draw(
-						imageLoader.ui, 
-						camera.position.x - getViewportWidth() / denominatorOffset - Player.PLAYER_SPEED, 
-						camera.position.y - verticalHeight / denominatorOffset + 8, 
-						camera.viewportWidth, 
-						-camera.viewportHeight
-						);
+				xPosition = camera.position.x - getViewportWidth() / denominatorOffset - offsetValue;
+				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8;
 				break;
 			case Player.DIRECTION_LEFT:
-				batch.draw(
-						imageLoader.ui, 
-						camera.position.x - getViewportWidth() / denominatorOffset + Player.PLAYER_SPEED, 
-						camera.position.y - verticalHeight / denominatorOffset + 8, 
-						camera.viewportWidth, 
-						-camera.viewportHeight
-						);
+				xPosition = camera.position.x - getViewportWidth() / denominatorOffset + offsetValue;
+				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8;
 				break;
 			case Player.DIRECTION_UP:
-				batch.draw(
-						imageLoader.ui, 
-						camera.position.x - getViewportWidth() / denominatorOffset, 
-						camera.position.y - verticalHeight / denominatorOffset + 8 + Player.PLAYER_SPEED, 
-						camera.viewportWidth, 
-						-camera.viewportHeight
-						);
+				xPosition = camera.position.x - getViewportWidth() / denominatorOffset;
+				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8 + offsetValue;
 				break;
 			case Player.DIRECTION_DOWN:
-				batch.draw(
-						imageLoader.ui, 
-						camera.position.x - getViewportWidth() / denominatorOffset, 
-						camera.position.y - verticalHeight / denominatorOffset + 8 - Player.PLAYER_SPEED, 
-						camera.viewportWidth, 
-						-camera.viewportHeight
-						);
+				xPosition = camera.position.x - getViewportWidth() / denominatorOffset;
+				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8 - offsetValue;
 				break;
 			}
 		} else {
-			batch.draw(
-					imageLoader.ui, 
-					camera.position.x - getViewportWidth() / denominatorOffset, 
-					camera.position.y - verticalHeight / denominatorOffset + 8, 
-					camera.viewportWidth, 
-					-camera.viewportHeight
-					);
+			xPosition = camera.position.x - getViewportWidth() / denominatorOffset;
+			yPosition = camera.position.y - verticalHeight / denominatorOffset + 8;
 		}
+		batch.draw(
+				imageLoader.ui, 
+				xPosition, 
+				yPosition, 
+				camera.viewportWidth, 
+				-camera.viewportHeight
+				);
 		myGame.renderer.batch.end();
 	}
 }

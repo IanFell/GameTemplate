@@ -7,6 +7,7 @@ import gameobjects.gamecharacters.PlayerTwo;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.stationarygameobjects.RawBar;
 import gameobjects.stationarygameobjects.TeePee;
+import gameobjects.stationarygameobjects.treeobjects.DrSuessTree;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import gameobjects.stationarygameobjects.treeobjects.Plant;
 
@@ -39,6 +40,9 @@ public class GameObjectFactory {
 		}
 		if (objectType.equalsIgnoreCase("tree")) {
 			return new PalmTree(x, y);
+		}
+		if (objectType.equalsIgnoreCase("drSuessTree")) {
+			return new DrSuessTree(x, y);
 		}
 		if (objectType.equalsIgnoreCase("plant")) {
 			return new Plant(x, y);

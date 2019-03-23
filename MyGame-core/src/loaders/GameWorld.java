@@ -8,6 +8,7 @@ import loaders.lighthouseloader.LightHouseLoader;
 import loaders.plantloaders.PlantLoader;
 import loaders.rawbarloader.RawBarLoader;
 import loaders.teepeeloader.TeePeeLoader;
+import loaders.treeloaders.DrSuessTreeLoader;
 import loaders.treeloaders.TreeLoader;
 import maps.MapHandler;
 
@@ -19,6 +20,7 @@ import maps.MapHandler;
 public class GameWorld {
 
 	private TreeLoader treeLoader;
+	private DrSuessTreeLoader drSuessTreeLoader;
 	private PlantLoader plantLoader;
 	private ChestLoader chestLoader;
 	private TeePeeLoader teePeeLoader;
@@ -30,18 +32,20 @@ public class GameWorld {
 	 * Constructor.
 	 */
 	public GameWorld() {
-		treeLoader       = new TreeLoader();
-		plantLoader      = new PlantLoader();
-		chestLoader      = new ChestLoader();
-		teePeeLoader     = new TeePeeLoader();
-		rawBarLoader     = new RawBarLoader();
-		lightHouseLoader = new LightHouseLoader();
-		fireLoader       = new FireLoader();
+		treeLoader        = new TreeLoader();
+		drSuessTreeLoader = new DrSuessTreeLoader();
+		plantLoader       = new PlantLoader();
+		chestLoader       = new ChestLoader();
+		teePeeLoader      = new TeePeeLoader();
+		rawBarLoader      = new RawBarLoader();
+		lightHouseLoader  = new LightHouseLoader();
+		fireLoader        = new FireLoader();
 		loadGameWorld();
 	}
 
 	private void loadGameWorld() {
 		treeLoader.loadTrees();
+		drSuessTreeLoader.loadTrees();
 		plantLoader.loadPlants();
 		chestLoader.loadChests();
 		teePeeLoader.loadTeePees();
