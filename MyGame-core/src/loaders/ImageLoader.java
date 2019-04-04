@@ -82,9 +82,23 @@ public class ImageLoader {
 	public Texture legendSwordOrange;
 	public Texture legendSwordPurple;
 	public Texture legendSwordPink;
+	public Texture legendSwordRedHalf;
+	public Texture legendSwordBlueHalf;
+	public Texture legendSwordGreenHalf;
+	public Texture legendSwordYellowHalf;
+	public Texture legendSwordOrangeHalf;
+	public Texture legendSwordPurpleHalf;
+	public Texture legendSwordPinkHalf;
 	public Texture legendSwordRainbow;
 
 	public void init() {
+		legendSwordRedHalf             = new Texture(Gdx.files.internal("LegendSwordRedHalf.png"));
+		legendSwordBlueHalf            = new Texture(Gdx.files.internal("LegendSwordBlueHalf.png"));
+		legendSwordGreenHalf           = new Texture(Gdx.files.internal("LegendSwordGreenHalf.png"));
+		legendSwordYellowHalf          = new Texture(Gdx.files.internal("LegendSwordYellowHalf.png"));
+		legendSwordOrangeHalf          = new Texture(Gdx.files.internal("LegendSwordOrangeHalf.png"));
+		legendSwordPurpleHalf          = new Texture(Gdx.files.internal("LegendSwordPurpleHalf.png"));
+		legendSwordPinkHalf            = new Texture(Gdx.files.internal("LegendSwordPinkHalf.png"));
 		missionComplete                = new Texture(Gdx.files.internal("MissionComplete.png"));
 		legendSwordRainbow             = new Texture(Gdx.files.internal("SwordRainbow.png"));
 		legendSwordRed                 = new Texture(Gdx.files.internal("SwordRed.png"));
@@ -188,5 +202,12 @@ public class ImageLoader {
 		legendSwordOrange.dispose();
 		legendSwordPink.dispose();
 		legendSwordRainbow.dispose();
+		legendSwordRedHalf.dispose();
+		legendSwordYellowHalf.dispose();
+		legendSwordBlueHalf.dispose();
+		legendSwordGreenHalf.dispose();
+		legendSwordPurpleHalf.dispose();
+		legendSwordPinkHalf.dispose();
+		legendSwordOrangeHalf.dispose();
 	}
 }

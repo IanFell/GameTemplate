@@ -11,6 +11,7 @@ import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.LegendSword;
 import gameobjects.gamecharacters.Player;
+import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -50,13 +51,13 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 	public MissionLegendOfTheSevenSwords(MyGame myGame) {
 		super();
 		swordsCollected             = 0;
-		legendSwords[SWORD_RED]     = new LegendSword(0, 0, SWORD_RED, new TextureRegion(myGame.imageLoader.legendSwordRed));
-		legendSwords[SWORD_BLUE]    = new LegendSword(10, 0, SWORD_BLUE, new TextureRegion(myGame.imageLoader.legendSwordBlue));
-		legendSwords[SWORD_GREEN]   = new LegendSword(20, 0, SWORD_GREEN, new TextureRegion(myGame.imageLoader.legendSwordGreen));
-		legendSwords[SWORD_YELLOW]  = new LegendSword(30, 0, SWORD_YELLOW, new TextureRegion(myGame.imageLoader.legendSwordYellow));
-		legendSwords[SWORD_PURPLE]  = new LegendSword(40, 0, SWORD_PURPLE, new TextureRegion(myGame.imageLoader.legendSwordPurple));
-		legendSwords[SWORD_ORANGE]  = new LegendSword(50, 0, SWORD_ORANGE, new TextureRegion(myGame.imageLoader.legendSwordOrange));
-		legendSwords[SWORD_PINK]    = new LegendSword(60, 0, SWORD_PINK, new TextureRegion(myGame.imageLoader.legendSwordPink));
+		legendSwords[SWORD_RED]     = new LegendSword(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 40, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 5, SWORD_RED, new TextureRegion(myGame.imageLoader.legendSwordRed), new TextureRegion(myGame.imageLoader.legendSwordRedHalf));
+		legendSwords[SWORD_BLUE]    = new LegendSword(GameAttributeHelper.CHUNK_FIVE_X_POSITION_START + 40, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 35, SWORD_BLUE, new TextureRegion(myGame.imageLoader.legendSwordBlue), new TextureRegion(myGame.imageLoader.legendSwordBlueHalf));
+		legendSwords[SWORD_GREEN]   = new LegendSword(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 10, GameAttributeHelper.CHUNK_TWO_Y_POSITION_START + 40, SWORD_GREEN, new TextureRegion(myGame.imageLoader.legendSwordGreen), new TextureRegion(myGame.imageLoader.legendSwordGreenHalf));
+		legendSwords[SWORD_YELLOW]  = new LegendSword(GameAttributeHelper.CHUNK_SIX_X_POSITION_START + 5, GameAttributeHelper.CHUNK_FOUR_Y_POSITION_START + 4, SWORD_YELLOW, new TextureRegion(myGame.imageLoader.legendSwordYellow), new TextureRegion(myGame.imageLoader.legendSwordYellowHalf));
+		legendSwords[SWORD_PURPLE]  = new LegendSword(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 5, GameAttributeHelper.CHUNK_FOUR_Y_POSITION_START + 4, SWORD_PURPLE, new TextureRegion(myGame.imageLoader.legendSwordPurple), new TextureRegion(myGame.imageLoader.legendSwordPurpleHalf));
+		legendSwords[SWORD_ORANGE]  = new LegendSword(GameAttributeHelper.CHUNK_FIVE_X_POSITION_START + 25, GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 3, SWORD_ORANGE, new TextureRegion(myGame.imageLoader.legendSwordOrange), new TextureRegion(myGame.imageLoader.legendSwordOrangeHalf));
+		legendSwords[SWORD_PINK]    = new LegendSword(GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START + 15, GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 45, SWORD_PINK, new TextureRegion(myGame.imageLoader.legendSwordPink), new TextureRegion(myGame.imageLoader.legendSwordPinkHalf));
 		legendSwordCollection.clear();
 	}
 

@@ -44,7 +44,7 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * If left arrow is pressed, we can think of this as 'direction = player.MovingLeftConstant'.
 	 */
 	public static int direction;
-	
+
 	protected boolean playSound;
 
 	/**

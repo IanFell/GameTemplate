@@ -24,7 +24,8 @@ public class LegendSword extends GameObject {
 
 	private int rotationAngle;
 	public static boolean playSound;
-	private TextureRegion textureRegion;
+	private TextureRegion textureRegionFull;
+	private TextureRegion textureRegionHalf;
 
 	/**
 	 * Constructor.
@@ -33,18 +34,19 @@ public class LegendSword extends GameObject {
 	 * @param int           y
 	 * @param TextureRegion textureRegion
 	 */
-	public LegendSword(int x, int y, int color, TextureRegion textureRegion) {
+	public LegendSword(int x, int y, int color, TextureRegion textureRegionFull, TextureRegion textureRegionHalf) {
 		this.x                = x;
 		this.y                = y;
 		this.width            = 1;
-		this.height           = 2;
+		this.height           = 1;
 		this.rectangle.width  = width;
 		this.rectangle.height = height;
 		hasBeenCollected      = false;
 		this.color            = color;
 		this.rotationAngle    = 0;
 		playSound             = false;
-		this.textureRegion = textureRegion;
+		this.textureRegionFull    = textureRegionFull;
+		this.textureRegionHalf    = textureRegionHalf;
 	}
 
 	/**
@@ -55,18 +57,33 @@ public class LegendSword extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		batch.draw(
-				textureRegion, 
-				x, 
-				y, 
-				width / 2, 
-				height / 2, 
-				width, 
-				-height, 
-				1, 
-				1, 
-				rotationAngle
-				); 
+		if (hasBeenCollected) {
+			batch.draw(
+					textureRegionFull, 
+					x, 
+					y, 
+					width / 2, 
+					height / 2, 
+					width, 
+					-height, 
+					1, 
+					1, 
+					rotationAngle
+					); 
+		} else {
+			batch.draw(
+					textureRegionHalf, 
+					x, 
+					y, 
+					width / 2, 
+					height / 2, 
+					width, 
+					-height, 
+					1, 
+					1, 
+					rotationAngle
+					); 
+		}
 		//renderHitBox(batch, imageLoader);
 	}
 
@@ -102,6 +119,7 @@ public class LegendSword extends GameObject {
 					this
 					);
 		} else {
+			height = 2;
 			updateHitBox();
 			// This will be changed to all enemies eventually.  For now, just check chests.
 			for (int i = 0; i < ChestLoader.chests.length; i++) {
