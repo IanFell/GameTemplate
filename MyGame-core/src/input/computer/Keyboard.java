@@ -9,6 +9,7 @@ import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
+import inventory.Inventory;
 import loaders.GameObjectLoader;
 import physics.Lighting.LightHandler;
 import screens.GameScreen;
@@ -28,6 +29,7 @@ public class Keyboard extends ComputerInput {
 	 */
 	@Override
 	public void handleInput(MyGame myGame) {
+		GameObject player = PlayerController.getCurrentPlayer(myGame);
 		switch (GameAttributeHelper.gameState) {
 		case Screens.SPLASH_SCREEN:
 			if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){ 
@@ -42,7 +44,7 @@ public class Keyboard extends ComputerInput {
 			break;
 
 		case Screens.GAME_SCREEN:	
-			handleKeyboardDirectionalButtons(myGame, "arrows");
+			handleKeyboardDirectionalButtons(myGame, "arrows", player);
 			//handleKeyboardDirectionalButtons(myGame, "wasd");
 
 			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
@@ -80,9 +82,31 @@ public class Keyboard extends ComputerInput {
 				Player.hasTorch = !Player.hasTorch;
 			}
 
+			if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+				Player.playerIsPerformingAttack = true;
+			}
+
 			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
-				GameObject player = PlayerController.getCurrentPlayer(myGame);
 				((Player) player).getInventory().setInventoryIsEquipped(!((Player) player).getInventory().getInventoryIsEquipped());
+			}
+
+			if (Gdx.input.isKeyPressed(Input.Keys.M)) {
+				if (Inventory.currentlySelectedInventoryObject < ((Player) player).getInventory().inventory.size() - 1) {
+					Inventory.currentlySelectedInventoryObject++;
+				}
+			}
+
+			if (Gdx.input.isKeyPressed(Input.Keys.N)) {
+				if (Inventory.currentlySelectedInventoryObject > 0) {
+					Inventory.currentlySelectedInventoryObject--;
+				}
+			}
+
+			// Display all inventory.
+			if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+				Inventory.allInventoryShouldBeRendered = true;
+			} else {
+				Inventory.allInventoryShouldBeRendered = false;
 			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
@@ -97,11 +121,9 @@ public class Keyboard extends ComputerInput {
 	 * @param GameObject player
 	 * @param String     directions
 	 */
-	private void handleKeyboardDirectionalButtons(MyGame myGame, String directions) {
-
+	private void handleKeyboardDirectionalButtons(MyGame myGame, String directions, GameObject player) {
+		
 		System.out.println("Keyboard directional controls: " + directions);
-
-		GameObject player = PlayerController.getCurrentPlayer(myGame);
 
 		// If user presses the T button to use turbo.
 		int turboSpeed    = 3;

@@ -3,6 +3,7 @@ package physics;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import gameobjects.LegendSword;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import maps.MapHandler;
@@ -32,7 +33,7 @@ public class CollisionHandler {
 				System.out.println("Player collided with solid tile!");
 				player.stopPlayer();
 				// Move player so he is not longer overlapping tile bounds.
-				switch (player.getDirection()) {
+				switch (Player.direction) {
 				case Player.DIRECTION_LEFT:
 					player.setX(player.getX() + Player.PLAYER_SPEED);
 					break;
@@ -137,6 +138,18 @@ public class CollisionHandler {
 			MissionLegendOfTheSevenSwords.legendSwordCollection.add(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword);
 			legendSword.hasBeenCollected = true;
+			LegendSword.playSound        = true;
+		}
+	}
+
+	/**
+	 * 
+	 * @param GameObject object
+	 * @param GameObject legendSword
+	 */
+	public static void checkIfSwordHasCollidedWithObject(GameObject object, GameObject legendSword) {
+		if (legendSword.rectangle.overlaps(object.rectangle)) {
+			System.out.println("Legend Sword has collided with Object!");
 		}
 	}
 }

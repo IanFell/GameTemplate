@@ -1,6 +1,11 @@
 package missions;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.mygdx.mygame.MyGame;
+
 import gameobjects.gamecharacters.Player;
+import loaders.ImageLoader;
 
 /**
  * Mission: Open a given amount of chests in a given amount of time, collecting loot.
@@ -9,15 +14,14 @@ import gameobjects.gamecharacters.Player;
  * @author Fabulous Fellini
  *
  */
-public class MissionChests {
+public class MissionChests extends Mission {
 
-	private static int numberOfChestsOpened                  = 0;
-	private static int numberOfChestsNeededToCompleteMission = 3;
+	private static int numberOfChestsOpened                              = 0;
+	private static final int AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION = 3;
 
 	public static boolean executeMission  = true;
-	private static boolean playerHasWon   = false;
 
-	private static int timer = 0;
+	private static int countDownTimer = 0;
 
 	/**
 	 * Must complete mission in this amount of a count.
@@ -33,29 +37,44 @@ public class MissionChests {
 	 * 
 	 * @param Player player
 	 */
-	public static void updateMission(Player player) {
+	public void updateMission(Player player) {
 
 		if (executeMission) {
 			// Use this to time the mission.
-			timer++;
+			countDownTimer++;
 			// If mission is complete:
-			if (numberOfChestsOpened >= numberOfChestsNeededToCompleteMission) {
+			if (numberOfChestsOpened >= AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION) {
 				// Give player bonus score.
 				player.updatePlayerScore(100);
-				executeMission = false;
-				playerHasWon   = true;
+				executeMission  = false;
+				missionComplete = true;
 			} else {
 				System.out.println("Number of chests opened for chest mission: " + numberOfChestsOpened);
 			}
 		}
 
-		if (playerHasWon) {
+		if (missionComplete) {
 			executeMission = false;
 			System.out.println("CHEST MISSION COMPLETE!");
-		} else if (timer >= maxMissionCount) {
-			executeMission = false;
-			playerHasWon   = false;
+		} else if (countDownTimer >= maxMissionCount) {
+			executeMission   = false;
+			missionComplete  = false;
 			System.out.println("CHEST MISSION FAILED!");
+		}
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
+	 * @param MyGame        myGame
+	 */
+	@Override
+	public void renderMission(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
+		// If mission is complete, render "Mission Complete" message for a little while.
+		if (missionComplete) {
+			renderMissionCompleteMessage(batch, shapeRenderer, imageLoader, myGame);
 		}
 	}
 }

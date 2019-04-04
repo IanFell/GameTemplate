@@ -43,7 +43,9 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * Direction game objects can travel in.
 	 * If left arrow is pressed, we can think of this as 'direction = player.MovingLeftConstant'.
 	 */
-	public int direction;
+	public static int direction;
+	
+	protected boolean playSound;
 
 	/**
 	 * Game object x-axis speed value.
@@ -89,7 +91,7 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * 
 	 * @return int
 	 */
-	public int getDirection() {
+	public static int getDirection() {
 		return direction;
 	}
 
@@ -98,7 +100,7 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * @param int direction
 	 */
 	public void setDirection(int direction) {
-		this.direction = direction;
+		GameObject.direction = direction;
 	}
 
 	/**

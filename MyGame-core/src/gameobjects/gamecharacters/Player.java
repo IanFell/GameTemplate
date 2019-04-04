@@ -27,8 +27,6 @@ import maps.MapHandler;
  */
 public class Player extends GameObject { 
 
-	public static boolean isInWater = false;
-
 	private String name;
 
 	/**
@@ -45,6 +43,11 @@ public class Player extends GameObject {
 	public static final int DIRECTION_DOWN  = 3;
 
 	public final static float PLAYER_SPEED = 0.10f;
+
+	public static boolean isInWater = false;
+
+	public static boolean playerIsPerformingAttack;
+	public static int attackTimer;
 
 	/**
 	 * If player jumps, isJumping will be true until jumpCount surpases jumpCountMax.
@@ -111,7 +114,7 @@ public class Player extends GameObject {
 	private Torch torch;
 	public static boolean hasTorch;
 
-	private Inventory inventory;
+	protected Inventory inventory;
 
 	/**
 	 * Constructor.
@@ -119,26 +122,27 @@ public class Player extends GameObject {
 	 *  String name
 	 */
 	public Player(String name) {
-		this.x               = 0;
-		this.y               = 5;
-		this.width           = characterSize;
-		this.height          = characterSize;
-		rectangle.width      = characterSize;
-		rectangle.height     = characterSize;
-		walkDownTexture      = new TextureAtlas(Gdx.files.internal("PlayerSpriteDown.atlas"));
-		walkUpTexture        = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
-		walkRightTexture     = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
-		walkLeftTexture      = new TextureAtlas(Gdx.files.internal("PlayerSpriteLeft.atlas"));
-		float animationSpeed = 7/15f;
-		walkDownAnimation    = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
-		walkUpAnimation      = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
-		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
-		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
-		playerHealth     	 = 100;
-		this.name            = name;
-		torch                = new Torch(0, 0);
-		hasTorch             = false;
-		inventory            = new Inventory();
+		this.x                   = 0;
+		this.y                   = 5;
+		this.width               = characterSize;
+		this.height              = characterSize;
+		rectangle.width          = characterSize;
+		rectangle.height         = characterSize;
+		walkDownTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteDown.atlas"));
+		walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
+		walkRightTexture         = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
+		walkLeftTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteLeft.atlas"));
+		float animationSpeed     = 7/15f;
+		walkDownAnimation        = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
+		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
+		walkRightAnimation       = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
+		walkLeftAnimation        = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+		playerHealth     	     = 100;
+		this.name                = name;
+		torch                    = new Torch(0, 0);
+		hasTorch                 = false;
+		inventory                = new Inventory();
+		playerIsPerformingAttack = false;
 	}
 
 	/**
@@ -159,13 +163,12 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-
 		System.out.println("Player Inventory includes: " + inventory);
-
 		x += dx;
 		y += dy;
 		rectangle.x = x;
 		rectangle.y = y;
+
 		// Timer for water animation.
 		timer++;
 		if (timer > 20) {
@@ -176,7 +179,13 @@ public class Player extends GameObject {
 			torch.updateObject(myGame, mapHandler);
 		}
 
-		inventory.updateInventory(x, y);
+		if (playerIsPerformingAttack) {
+			attackTimer++;
+			if (attackTimer > 5) {
+				attackTimer              = 0;
+				playerIsPerformingAttack = false;
+			}
+		}
 	}
 
 	/**
@@ -257,7 +266,7 @@ public class Player extends GameObject {
 				offset = 1.1f;
 			}
 			int resizedValue = 2;
-			switch (getDirection()) {
+			switch (direction) {
 			case DIRECTION_LEFT:
 				batch.draw(imageLoader.playerHeadLeft, x, y + offset, characterSize, -characterSize * resizedValue);
 				break;
@@ -278,8 +287,6 @@ public class Player extends GameObject {
 		if (hasTorch) {	
 			torch.renderObject(batch, shapeRenderer, imageLoader);
 		}
-
-		inventory.renderInventory(batch, shapeRenderer, imageLoader);
 	}
 
 	/**
@@ -391,7 +398,7 @@ public class Player extends GameObject {
 
 	/**
 	 * 
-	 * @param myGame
+	 * @param MyGame myGame
 	 * @return boolean
 	 */
 	protected boolean playerOneIsMovingAndNotDead(MyGame myGame) {
@@ -438,7 +445,7 @@ public class Player extends GameObject {
 		if (playerIsMoving) {
 			xPositions.add(x);
 			yPositions.add(y);
-			directions.add(getDirection());
+			directions.add(direction);
 		}
 	}
 }

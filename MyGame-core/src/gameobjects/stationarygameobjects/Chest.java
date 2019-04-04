@@ -23,8 +23,6 @@ public class Chest extends GamePlayObject {
 	 */
 	private boolean isClosed;
 
-	private boolean playSound;
-
 	/**
 	 * When chest has been opened, timer begins.
 	 * After one hour, chest will be closed and reset to original values.

@@ -18,7 +18,17 @@ import missions.MissionLegendOfTheSevenSwords;
  */
 public class MissionHandler {
 
-	private MissionLegendOfTheSevenSwords missionLegendOfTheSevenSwords = new MissionLegendOfTheSevenSwords();
+	private MissionChests missionChests                                ;
+	private MissionLegendOfTheSevenSwords missionLegendOfTheSevenSwords ;
+
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	public MissionHandler(MyGame myGame) {
+		missionChests                 = new MissionChests();
+		missionLegendOfTheSevenSwords = new MissionLegendOfTheSevenSwords(myGame);
+	}
 
 	/**
 	 * 
@@ -26,7 +36,7 @@ public class MissionHandler {
 	 * @param MapHanlder mapHandler
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
-		MissionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame));
+		missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame));
 		missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 	}
 
@@ -35,8 +45,10 @@ public class MissionHandler {
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
+	 * @param MyGame        myGame
 	 */
-	public void renderMissions(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		missionLegendOfTheSevenSwords.renderMission(batch, shapeRenderer, imageLoader);
+	public void renderMissions(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
+		missionChests.renderMission(batch, shapeRenderer, imageLoader, myGame);
+		missionLegendOfTheSevenSwords.renderMission(batch, shapeRenderer, imageLoader, myGame);
 	}
 }

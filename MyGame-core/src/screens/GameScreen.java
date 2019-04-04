@@ -69,7 +69,7 @@ public class GameScreen extends Screens {
 	/**
 	 * Handles all game missions.
 	 */
-	private MissionHandler missionHandler = new MissionHandler();
+	private MissionHandler missionHandler;
 
 	/**
 	 * 
@@ -147,6 +147,7 @@ public class GameScreen extends Screens {
 		 */
 		new TransitionScreen(myGame);
 		initializeCamera();
+		missionHandler = new MissionHandler(myGame);
 	}
 
 	/**
@@ -224,7 +225,8 @@ public class GameScreen extends Screens {
 		missionHandler.renderMissions(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
+				myGame.imageLoader,
+				myGame
 				);
 	}
 

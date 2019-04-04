@@ -63,6 +63,8 @@ public class ImageLoader {
 
 	public Texture ui;
 
+	public Texture missionComplete;
+
 	public Texture lightHouse;
 
 	public Texture fireOne;
@@ -73,7 +75,25 @@ public class ImageLoader {
 
 	public Texture sword;
 
+	public Texture legendSwordRed;
+	public Texture legendSwordBlue;
+	public Texture legendSwordGreen;
+	public Texture legendSwordYellow;
+	public Texture legendSwordOrange;
+	public Texture legendSwordPurple;
+	public Texture legendSwordPink;
+	public Texture legendSwordRainbow;
+
 	public void init() {
+		missionComplete                = new Texture(Gdx.files.internal("MissionComplete.png"));
+		legendSwordRainbow             = new Texture(Gdx.files.internal("SwordRainbow.png"));
+		legendSwordRed                 = new Texture(Gdx.files.internal("SwordRed.png"));
+		legendSwordBlue                = new Texture(Gdx.files.internal("SwordBlue.png"));
+		legendSwordGreen               = new Texture(Gdx.files.internal("SwordGreen.png"));
+		legendSwordYellow              = new Texture(Gdx.files.internal("SwordYellow.png"));
+		legendSwordOrange              = new Texture(Gdx.files.internal("SwordOrange.png"));
+		legendSwordPurple              = new Texture(Gdx.files.internal("SwordPurple.png"));
+		legendSwordPink                = new Texture(Gdx.files.internal("SwordPink.png"));
 		sword                          = new Texture(Gdx.files.internal("Sword.png"));
 		logs                           = new Texture(Gdx.files.internal("Logs.png"));
 		fireOne                        = new Texture(Gdx.files.internal("Fire1.png"));
@@ -118,6 +138,7 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		missionComplete.dispose();
 		splashScreenLogo.dispose();
 		titleScreenLogo.dispose();
 		testImage.dispose();
@@ -159,5 +180,13 @@ public class ImageLoader {
 		logs.dispose();
 		drSuessTree.dispose();
 		sword.dispose();
+		legendSwordRed.dispose();
+		legendSwordBlue.dispose();
+		legendSwordGreen.dispose();
+		legendSwordYellow.dispose();
+		legendSwordPurple.dispose();
+		legendSwordOrange.dispose();
+		legendSwordPink.dispose();
+		legendSwordRainbow.dispose();
 	}
 }

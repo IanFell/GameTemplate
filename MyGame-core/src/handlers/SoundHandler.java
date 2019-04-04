@@ -2,6 +2,7 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.LegendSword;
 import helpers.GameAttributeHelper;
 import loaders.SoundLoader;
 import loaders.chestloader.ChestLoader;
@@ -26,6 +27,10 @@ public class SoundHandler {
 					soundLoader.sound.play(0.5f);
 					ChestLoader.chests[i].setPlaySound(false);
 				}
+			}
+			if (LegendSword.playSound) {
+				soundLoader.sound.play(0.5f);
+				LegendSword.playSound = false;
 			}
 		}
 	}
