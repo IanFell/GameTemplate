@@ -5,6 +5,7 @@ import gameobjects.gamecharacters.PlayerOne;
 import gameobjects.gamecharacters.PlayerThree;
 import gameobjects.gamecharacters.PlayerTwo;
 import gameobjects.stationarygameobjects.Chest;
+import gameobjects.stationarygameobjects.PigglyWiggly;
 import gameobjects.stationarygameobjects.RawBar;
 import gameobjects.stationarygameobjects.TeePee;
 import gameobjects.stationarygameobjects.treeobjects.DrSuessTree;
@@ -55,6 +56,9 @@ public class GameObjectFactory {
 		}
 		if (objectType.equalsIgnoreCase("rawbar")) {
 			return new RawBar(0, 0);
+		}
+		if (objectType.equalsIgnoreCase("pigglywiggly")) {
+			return new PigglyWiggly(0, 0);
 		}
 		return null;
 	}

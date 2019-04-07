@@ -66,6 +66,7 @@ public class ImageLoader {
 	public Texture missionComplete;
 
 	public Texture lightHouse;
+	public Texture pigglywiggly;
 
 	public Texture fireOne;
 	public Texture fireTwo;
@@ -149,6 +150,7 @@ public class ImageLoader {
 		ui 							   = new Texture(Gdx.files.internal("UI.png"));
 		rawbar						   = new Texture(Gdx.files.internal("RawBar.png"));
 		lightHouse                     = new Texture(Gdx.files.internal("LightHouse.png"));
+		pigglywiggly                   = new Texture(Gdx.files.internal("PigglyWiggly.png"));
 	}
 
 	public void dispose() {
@@ -209,5 +211,6 @@ public class ImageLoader {
 		legendSwordPurpleHalf.dispose();
 		legendSwordPinkHalf.dispose();
 		legendSwordOrangeHalf.dispose();
+		pigglywiggly.dispose();
 	}
 }
