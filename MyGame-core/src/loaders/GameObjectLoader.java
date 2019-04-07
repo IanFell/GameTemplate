@@ -33,7 +33,7 @@ public class GameObjectLoader {
 		playerTwo   = myGame.gameObjectFactory.getObject("playerTwo", 0, 0);
 		playerThree = myGame.gameObjectFactory.getObject("playerThree", 0, 0);
 		// GameWorld does not load tiles.
-		gameWorld   = new GameWorld();
+		gameWorld   = new GameWorld(myGame);
 		addPlayersToGameObjectArrayList();
 	}
 

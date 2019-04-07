@@ -30,32 +30,38 @@ public class GameWorld {
 	private FireLoader fireLoader;
 	private PigglyWigglyLoader pigglyWigglyLoader;
 
-	/*
+	/**
 	 * Constructor.
+	 * 
+	 * @param MyGame myGame
 	 */
-	public GameWorld() {
-		treeLoader        = new TreeLoader();
-		drSuessTreeLoader = new DrSuessTreeLoader();
-		plantLoader       = new PlantLoader();
-		chestLoader       = new ChestLoader();
-		teePeeLoader      = new TeePeeLoader();
-		rawBarLoader      = new RawBarLoader();
-		lightHouseLoader  = new LightHouseLoader();
-		fireLoader        = new FireLoader();
+	public GameWorld(MyGame myGame) {
+		treeLoader         = new TreeLoader();
+		drSuessTreeLoader  = new DrSuessTreeLoader();
+		plantLoader        = new PlantLoader();
+		chestLoader        = new ChestLoader();
+		teePeeLoader       = new TeePeeLoader();
+		rawBarLoader       = new RawBarLoader();
+		lightHouseLoader   = new LightHouseLoader();
+		fireLoader         = new FireLoader();
 		pigglyWigglyLoader = new PigglyWigglyLoader();
-		loadGameWorld();
+		loadGameWorld(myGame);
 	}
 
-	private void loadGameWorld() {
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void loadGameWorld(MyGame myGame) {
 		treeLoader.loadTrees();
 		drSuessTreeLoader.loadTrees();
 		plantLoader.loadPlants();
 		chestLoader.loadChests();
-		teePeeLoader.loadTeePees();
-		rawBarLoader.loadRawBar();
-		lightHouseLoader.loadLightHouse();
+		teePeeLoader.loadTeePees(myGame);
+		rawBarLoader.loadRawBar(myGame);
+		lightHouseLoader.loadLightHouse(myGame);
 		fireLoader.loadFire();
-		pigglyWigglyLoader.loadPigglyWiggly();
+		pigglyWigglyLoader.loadPigglyWiggly(myGame);
 	}
 
 	/**

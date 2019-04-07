@@ -5,9 +5,10 @@ import gameobjects.gamecharacters.PlayerOne;
 import gameobjects.gamecharacters.PlayerThree;
 import gameobjects.gamecharacters.PlayerTwo;
 import gameobjects.stationarygameobjects.Chest;
-import gameobjects.stationarygameobjects.PigglyWiggly;
-import gameobjects.stationarygameobjects.RawBar;
-import gameobjects.stationarygameobjects.TeePee;
+import gameobjects.stationarygameobjects.buildings.LightHouse;
+import gameobjects.stationarygameobjects.buildings.PigglyWiggly;
+import gameobjects.stationarygameobjects.buildings.RawBar;
+import gameobjects.stationarygameobjects.buildings.TeePee;
 import gameobjects.stationarygameobjects.treeobjects.DrSuessTree;
 import gameobjects.stationarygameobjects.treeobjects.PalmTree;
 import gameobjects.stationarygameobjects.treeobjects.Plant;
@@ -52,13 +53,16 @@ public class GameObjectFactory {
 			return new Chest(5, 5);
 		}
 		if (objectType.equalsIgnoreCase("teepee")) {
-			return new TeePee(0, 0, null);
+			return new TeePee(0, 0, 0, 0, null, null);
 		}
 		if (objectType.equalsIgnoreCase("rawbar")) {
-			return new RawBar(0, 0);
+			return new RawBar(0, 0, 0, 0, null);
 		}
 		if (objectType.equalsIgnoreCase("pigglywiggly")) {
-			return new PigglyWiggly(0, 0);
+			return new PigglyWiggly(0, 0, 0, 0, null);
+		}
+		if (objectType.equalsIgnoreCase("lighthouse")) {
+			return new LightHouse(0, 0, 0, 0, null);
 		}
 		return null;
 	}

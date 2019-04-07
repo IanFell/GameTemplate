@@ -122,8 +122,8 @@ public class Player extends GameObject {
 	 *  String name
 	 */
 	public Player(String name) {
-		this.x                   = GameAttributeHelper.CHUNK_FOUR_X_POSITION_START;
-		this.y                   = GameAttributeHelper.CHUNK_THREE_Y_POSITION_START;
+		this.x                   = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 45;
+		this.y                   = GameAttributeHelper.CHUNK_FIVE_Y_POSITION_START + 9;
 		this.width               = characterSize;
 		this.height              = characterSize;
 		rectangle.width          = characterSize;
