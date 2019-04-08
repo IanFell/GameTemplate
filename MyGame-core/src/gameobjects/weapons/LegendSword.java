@@ -1,4 +1,4 @@
-package gameobjects;
+package gameobjects.weapons;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,7 +17,7 @@ import physics.CollisionHandler;
  * @author Fabulous Fellini
  *
  */
-public class LegendSword extends GameObject {
+public class LegendSword extends Weapon {
 
 	// This variable is basically so it's easier to see which color sword is being created. 
 	private int color;
@@ -35,18 +35,18 @@ public class LegendSword extends GameObject {
 	 * @param TextureRegion textureRegion
 	 */
 	public LegendSword(int x, int y, int color, TextureRegion textureRegionFull, TextureRegion textureRegionHalf) {
-		this.x                = x;
-		this.y                = y;
-		this.width            = 1;
-		this.height           = 1;
-		this.rectangle.width  = width;
-		this.rectangle.height = height;
-		hasBeenCollected      = false;
-		this.color            = color;
-		this.rotationAngle    = 0;
-		playSound             = false;
+		super(x, y);
+		this.width                = 1;
+		this.height               = 1;
+		this.rectangle.width      = width;
+		this.rectangle.height     = height;
+		hasBeenCollected          = false;
+		this.color                = color;
+		this.rotationAngle        = 0;
+		playSound                 = false;
 		this.textureRegionFull    = textureRegionFull;
 		this.textureRegionHalf    = textureRegionHalf;
+		this.damageInflicted      = Weapon.DAMAGE_INFLICTED_LEGEND_SWORD;
 	}
 
 	/**
@@ -122,12 +122,7 @@ public class LegendSword extends GameObject {
 			height = 2;
 			updateHitBox();
 			// This will be changed to all enemies eventually.  For now, just check chests.
-			for (int i = 0; i < ChestLoader.chests.length; i++) {
-				CollisionHandler.checkIfSwordHasCollidedWithObject(
-						ChestLoader.chests[i],
-						this
-						);
-			}
+			checkIfWeaponHasCollidedWithObject(ChestLoader.chests, this);
 			setRotationAngleDependingOnPlayerDirection();
 		}
 	}
@@ -150,7 +145,7 @@ public class LegendSword extends GameObject {
 	}
 
 	/**
-	 * Change hit box x, y, width, and height depending to match rotation of object.
+	 * Change hit box x, y, width, and height to match the shape of rotated object.
 	 */
 	private void updateHitBox() {
 		float offsetValue = 0.5f;

@@ -9,8 +9,8 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.GameObject;
-import gameobjects.LegendSword;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.ImageLoader;

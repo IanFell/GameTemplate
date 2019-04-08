@@ -2,7 +2,7 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.LegendSword;
+import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
 import loaders.SoundLoader;
 import loaders.chestloader.ChestLoader;

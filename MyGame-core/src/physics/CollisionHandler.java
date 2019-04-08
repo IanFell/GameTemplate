@@ -3,9 +3,10 @@ package physics;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import gameobjects.LegendSword;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
+import gameobjects.weapons.LegendSword;
+import gameobjects.weapons.Weapon;
 import maps.MapHandler;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
@@ -145,11 +146,11 @@ public class CollisionHandler {
 	/**
 	 * 
 	 * @param GameObject object
-	 * @param GameObject legendSword
+	 * @param GameObject weapon
 	 */
-	public static void checkIfSwordHasCollidedWithObject(GameObject object, GameObject legendSword) {
-		if (legendSword.rectangle.overlaps(object.rectangle)) {
-			System.out.println("Legend Sword has collided with Object!");
+	public static void checkIfWeaponHasCollidedWithObject(GameObject object, Weapon weapon) {
+		if (weapon.rectangle.overlaps(object.rectangle)) {
+			System.out.println("Weapon has collided with Object!");
 		}
 	}
 }

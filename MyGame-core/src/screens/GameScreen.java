@@ -9,6 +9,7 @@ import com.mygdx.mygame.MyGame;
 import controllers.PlayerController;
 import gameobjects.GameObject;
 import handlers.MissionHandler;
+import handlers.WeaponHandler;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
 import loaders.GameObjectLoader;
@@ -70,6 +71,8 @@ public class GameScreen extends Screens {
 	 * Handles all game missions.
 	 */
 	private MissionHandler missionHandler;
+
+	private WeaponHandler weaponHandler = new WeaponHandler();
 
 	/**
 	 * 
@@ -138,16 +141,16 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_TWO).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
-
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
+		missionHandler = new MissionHandler(myGame);
+		weaponHandler.init(myGame);
 		/**
 		 * This overlays the game screen and fades out from black.
 		 * This makes the transition between screens much smoother.
 		 */
 		new TransitionScreen(myGame);
 		initializeCamera();
-		missionHandler = new MissionHandler(myGame);
 	}
 
 	/**
@@ -193,6 +196,8 @@ public class GameScreen extends Screens {
 
 		// Test mission.  This will be controlled differently later, but for now it is always on.
 		missionHandler.handleMissions(myGame, mapHandler);
+
+		WeaponHandler.updateWeapons(myGame, mapHandler);
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
