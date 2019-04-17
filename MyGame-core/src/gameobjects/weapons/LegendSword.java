@@ -33,7 +33,8 @@ public class LegendSword extends Weapon {
 	 * 
 	 * @param int           x
 	 * @param int           y
-	 * @param TextureRegion textureRegion
+	 * @param TextureRegion textureRegionFull
+	 * @param TextureRegion textureReguionHalf
 	 */
 	public LegendSword(int x, int y, int color, TextureRegion textureRegionFull, TextureRegion textureRegionHalf) {
 		super(x, y);
@@ -58,22 +59,19 @@ public class LegendSword extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		if (hasBeenCollected && Inventory.inventoryIsEquipped && Inventory.currentlySelectedInventoryObject == Inventory.LEGEND_SWORD || Inventory.allInventoryShouldBeRendered) {
-			// Only draw sword if gun is not equipped, or player wants to see all inventory.
-			//if (/*!Gun.playerIsEquippedWithGun ||*/ Inventory.allInventoryShouldBeRendered) {
-				batch.draw(
-						textureRegionFull, 
-						x, 
-						y, 
-						width / 2, 
-						height / 2, 
-						width, 
-						-height, 
-						1, 
-						1, 
-						rotationAngle
-						); 
-			//}
+		if (hasBeenCollected && Inventory.inventoryIsEquipped || Inventory.allInventoryShouldBeRendered) {
+			batch.draw(
+					textureRegionFull, 
+					x, 
+					y, 
+					width / 2, 
+					height / 2, 
+					width, 
+					-height, 
+					1, 
+					1, 
+					rotationAngle
+					); 
 		} else if (Inventory.allInventoryShouldBeRendered) {
 			batch.draw(
 					textureRegionFull, 
@@ -87,8 +85,7 @@ public class LegendSword extends Weapon {
 					1, 
 					rotationAngle
 					); 
-		}else {
-		
+		} else {
 			batch.draw(
 					textureRegionHalf, 
 					x, 

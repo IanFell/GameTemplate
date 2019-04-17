@@ -8,15 +8,12 @@ import controllers.GameStateController;
 import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
-import gameobjects.weapons.Gun;
-import handlers.WeaponHandler;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.bulletloader.BulletLoader;
 import physics.Lighting.LightHandler;
 import screens.GameScreen;
-import screens.InventoryScreen;
 import screens.Screens;
 
 /**
@@ -46,21 +43,18 @@ public class Keyboard extends ComputerInput {
 				GameStateController.switchGameStates(myGame, Screens.GAME_SCREEN);
 			}
 			break;
-			
+
 		case Screens.INVENTORY_SCREEN:
 			// Display all inventory.
-						if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-							
-								Inventory.allInventoryShouldBeRendered = true;
-							
-						} else {
-							Inventory.allInventoryShouldBeRendered = false;
-						}
-						
-						if(Gdx.input.isButtonPressed(0)) {
-					//InventoryScreen.hide();
-							GameStateController.switchGameStates(myGame, Screens.GAME_SCREEN);
-						}
+			if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+				Inventory.allInventoryShouldBeRendered = true;
+			} else {
+				Inventory.allInventoryShouldBeRendered = false;
+			}
+
+			if(Gdx.input.isButtonPressed(0)) {
+				GameStateController.switchGameStates(myGame, Screens.GAME_SCREEN);
+			}
 			break;
 
 		case Screens.GAME_SCREEN:	
@@ -113,20 +107,18 @@ public class Keyboard extends ComputerInput {
 			if (Gdx.input.isKeyPressed(Input.Keys.M)) {
 				if (Inventory.currentlySelectedInventoryObject < ((Player) player).getInventory().inventory.size() - 1) {
 					Inventory.currentlySelectedInventoryObject++;
-				//Inventory.currentlySelectedInventoryObject = Inventory.LEGEND_SWORD;
 				}
 			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.N)) {
 				if (Inventory.currentlySelectedInventoryObject > 0) {
 					Inventory.currentlySelectedInventoryObject--;
-				//Inventory.currentlySelectedInventoryObject = Inventory.GUN;
 				}
 			}
 
 			// Display all inventory.
 			if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-					Inventory.allInventoryShouldBeRendered = true;
+				Inventory.allInventoryShouldBeRendered = true;
 			} else {
 				Inventory.allInventoryShouldBeRendered = false;
 			}
@@ -139,10 +131,6 @@ public class Keyboard extends ComputerInput {
 				//Gun.playerIsEquippedWithGun = !Gun.playerIsEquippedWithGun;
 			}
 
-			if (Gdx.input.isKeyPressed(Input.Keys.E)) {
-				((Player) player).getInventory().addObjectToInventory(WeaponHandler.gun);
-			}
-			
 			if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
 				GameStateController.switchGameStates(myGame, Screens.INVENTORY_SCREEN);
 			}

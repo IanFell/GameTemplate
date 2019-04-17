@@ -62,17 +62,6 @@ public class BulletLoader {
 	public static void createBullet(MyGame myGame) {
 		// Only create new bullet if previous bullet is dead.  This is to prevent infinite bullets.
 		if (bullets.size() < 1) {
-			/*
-			float yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 0.5f;
-			// Do this so bullet doesn't spawn behind player's head.
-			if (Player.direction == Player.DIRECTION_UP) {
-				yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 1;
-			}
-			bullets.add(new Bullet(
-					PlayerController.getCurrentPlayer(myGame).getX() + 1,
-					yPosition
-					));
-					*/
 			float xPosition = 0;
 			float yPosition = 0;
 			switch (Player.direction) {
@@ -93,10 +82,7 @@ public class BulletLoader {
 				yPosition = PlayerController.getCurrentPlayer(myGame).getY() + 1;
 				break;
 			}
-			bullets.add(new Bullet(
-					xPosition,
-					yPosition
-					));
+			bullets.add(new Bullet(xPosition, yPosition));
 			timer = 0;
 		}
 	}

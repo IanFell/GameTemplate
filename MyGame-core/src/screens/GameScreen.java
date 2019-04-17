@@ -72,7 +72,7 @@ public class GameScreen extends Screens {
 	 */
 	private MissionHandler missionHandler;
 
-	private WeaponHandler weaponHandler = new WeaponHandler();
+	//private WeaponHandler weaponHandler = new WeaponHandler();
 
 	/**
 	 * 
@@ -144,7 +144,6 @@ public class GameScreen extends Screens {
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
-		weaponHandler.init(myGame);
 		/**
 		 * This overlays the game screen and fades out from black.
 		 * This makes the transition between screens much smoother.
@@ -233,6 +232,8 @@ public class GameScreen extends Screens {
 				myGame.imageLoader,
 				myGame
 				);
+
+		WeaponHandler.renderWeapons(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, myGame);
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {

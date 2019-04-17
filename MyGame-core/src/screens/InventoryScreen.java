@@ -6,7 +6,6 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
-import helpers.ImageHelper;
 import inventory.Inventory;
 
 /**
@@ -31,8 +30,6 @@ public class InventoryScreen extends Screens {
 		camera.position.y = myGame.getGameObject(GameObject.PLAYER_ONE).getY();  
 		camera.update();
 	}
-	
-	
 
 	/**
 	 * 
@@ -44,13 +41,6 @@ public class InventoryScreen extends Screens {
 		updateCamera();
 		myGame.renderer.batch.begin();
 		myGame.getGameObject(Player.PLAYER_ONE).renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
-		/*
-		ImageHelper.drawImageInMiddleOfScreen(
-				myGame.renderer.batch, 
-				myGame.imageLoader.splashScreenLogo, 
-				GameAttributeHelper.SCREEN_WIDTH, 
-				GameAttributeHelper.SCREEN_HEIGHT
-				);*/
 		myGame.renderer.batch.end();
 	}
 }

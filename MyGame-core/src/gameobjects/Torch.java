@@ -19,7 +19,7 @@ public class Torch extends GameObject {
 	private Fire fire;
 
 	protected int width  = 1;
-	protected int height = 1;
+	protected int height = 3;
 
 	/**
 	 * 
@@ -40,7 +40,7 @@ public class Torch extends GameObject {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		fire.setX(PlayerController.getCurrentPlayer(myGame).getX());
-		fire.setY(PlayerController.getCurrentPlayer(myGame).getY() - height);
+		fire.setY(PlayerController.getCurrentPlayer(myGame).getY() - 1);
 		fire.updateObject(myGame, mapHandler);
 	}
 

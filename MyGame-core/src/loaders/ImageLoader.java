@@ -77,6 +77,12 @@ public class ImageLoader {
 	public Texture fireTwo;
 	public Texture fireThree;
 	public Texture fireFour;
+	public Texture fireFive;
+	public Texture fireSix;
+	public Texture fireSeven;
+	public Texture fireEight;
+	public Texture fireNine;
+	public Texture fireTen;
 	public Texture logs;
 
 	public Texture sword;
@@ -124,6 +130,12 @@ public class ImageLoader {
 		fireTwo                        = new Texture(Gdx.files.internal("Fire2.png"));
 		fireThree                      = new Texture(Gdx.files.internal("Fire3.png"));
 		fireFour                       = new Texture(Gdx.files.internal("Fire4.png"));
+		fireFive                       = new Texture(Gdx.files.internal("Fire5.png"));
+		fireSix                        = new Texture(Gdx.files.internal("Fire6.png"));
+		fireSeven                      = new Texture(Gdx.files.internal("Fire7.png"));
+		fireEight                      = new Texture(Gdx.files.internal("Fire8.png"));
+		fireNine	                   = new Texture(Gdx.files.internal("Fire9.png"));
+		fireTen                        = new Texture(Gdx.files.internal("Fire10.png"));
 		splashScreenLogo               = new Texture(Gdx.files.internal("logo_ffg.png"));
 		titleScreenLogo                = new Texture(Gdx.files.internal("GoldenAgeLogo.png"));
 		testImage                      = new Texture(Gdx.files.internal("badlogic.jpg"));
@@ -206,6 +218,12 @@ public class ImageLoader {
 		fireTwo.dispose();
 		fireThree.dispose();
 		fireFour.dispose();
+		fireFive.dispose();
+		fireSix.dispose();
+		fireSeven.dispose();
+		fireEight.dispose();
+		fireNine.dispose();
+		fireTen.dispose();
 		logs.dispose();
 		drSuessTree.dispose();
 		sword.dispose();
