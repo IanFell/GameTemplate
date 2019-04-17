@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import gameobjects.weapons.Gun;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
@@ -31,6 +32,7 @@ public class WeaponHandler {
 	 */
 	public void init(MyGame myGame) {
 		GameObjectLoader.gameObjectList.add(gun);
+		//myGame.getGameObject(GameObject.PLAYER_ONE).getInventory().addObjectToInventory(gun);
 	}
 
 	/**
@@ -48,7 +50,7 @@ public class WeaponHandler {
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public static void renderWeapons(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public static void renderWeapons(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {	
 		gun.renderObject(batch, shapeRenderer, imageLoader);
 	}
 }

@@ -7,6 +7,7 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.gamecharacters.Player;
+import inventory.Inventory;
 import loaders.ImageLoader;
 import loaders.chestloader.ChestLoader;
 import maps.MapHandler;
@@ -57,7 +58,23 @@ public class LegendSword extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		if (hasBeenCollected) {
+		if (hasBeenCollected && Inventory.inventoryIsEquipped && Inventory.currentlySelectedInventoryObject == Inventory.LEGEND_SWORD || Inventory.allInventoryShouldBeRendered) {
+			// Only draw sword if gun is not equipped, or player wants to see all inventory.
+			//if (/*!Gun.playerIsEquippedWithGun ||*/ Inventory.allInventoryShouldBeRendered) {
+				batch.draw(
+						textureRegionFull, 
+						x, 
+						y, 
+						width / 2, 
+						height / 2, 
+						width, 
+						-height, 
+						1, 
+						1, 
+						rotationAngle
+						); 
+			//}
+		} else if (Inventory.allInventoryShouldBeRendered) {
 			batch.draw(
 					textureRegionFull, 
 					x, 
@@ -70,7 +87,8 @@ public class LegendSword extends Weapon {
 					1, 
 					rotationAngle
 					); 
-		} else {
+		}else {
+		
 			batch.draw(
 					textureRegionHalf, 
 					x, 

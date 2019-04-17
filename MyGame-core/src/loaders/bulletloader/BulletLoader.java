@@ -62,13 +62,39 @@ public class BulletLoader {
 	public static void createBullet(MyGame myGame) {
 		// Only create new bullet if previous bullet is dead.  This is to prevent infinite bullets.
 		if (bullets.size() < 1) {
-			float yPosition = PlayerController.getCurrentPlayer(myGame).getY();
+			/*
+			float yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 0.5f;
 			// Do this so bullet doesn't spawn behind player's head.
 			if (Player.direction == Player.DIRECTION_UP) {
 				yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 1;
 			}
 			bullets.add(new Bullet(
-					PlayerController.getCurrentPlayer(myGame).getX(),
+					PlayerController.getCurrentPlayer(myGame).getX() + 1,
+					yPosition
+					));
+					*/
+			float xPosition = 0;
+			float yPosition = 0;
+			switch (Player.direction) {
+			case Player.DIRECTION_LEFT:
+				xPosition = PlayerController.getCurrentPlayer(myGame).getX() - 1.5f;
+				yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 0.7f;
+				break;
+			case Player.DIRECTION_RIGHT:
+				xPosition = PlayerController.getCurrentPlayer(myGame).getX() + 1.5f;
+				yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 0.7f;
+				break;
+			case Player.DIRECTION_UP:
+				xPosition = PlayerController.getCurrentPlayer(myGame).getX() + 0.5f;
+				yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 2.5f;
+				break;
+			case Player.DIRECTION_DOWN:
+				xPosition = PlayerController.getCurrentPlayer(myGame).getX() - 0.2f;
+				yPosition = PlayerController.getCurrentPlayer(myGame).getY() + 1;
+				break;
+			}
+			bullets.add(new Bullet(
+					xPosition,
 					yPosition
 					));
 			timer = 0;

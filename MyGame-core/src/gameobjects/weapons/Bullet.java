@@ -70,7 +70,7 @@ public class Bullet extends Weapon {
 		}
 		x += dx;
 		y += dy;
-		
+
 		checkIfWeaponHasCollidedWithObject(ChestLoader.chests, this);
 	}
 

@@ -5,8 +5,11 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
+import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.Weapon;
+import handlers.WeaponHandler;
+import inventory.Inventory;
 import maps.MapHandler;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
@@ -140,6 +143,17 @@ public class CollisionHandler {
 			((Player) player).getInventory().addObjectToInventory(legendSword);
 			legendSword.hasBeenCollected = true;
 			LegendSword.playSound        = true;
+			//Inventory.currentlySelectedInventoryObject = Inventory.LEGEND_SWORD;
+		}
+	}
+	
+	public static void checkIfPlayerHasCollidedWithGun(GameObject player, GameObject gun) {
+		if (gun.rectangle.overlaps(player.rectangle)) {
+			System.out.println("Player has collided with Gun!");
+			((Player) player).getInventory().addObjectToInventory(gun);
+			//Gun.playerIsEquippedWithGun = true;
+			Gun.hasBeenCollected = true;
+			//Inventory.currentlySelectedInventoryObject = Inventory.GUN;
 		}
 	}
 

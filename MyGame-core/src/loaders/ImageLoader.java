@@ -16,6 +16,11 @@ public class ImageLoader {
 	 */
 	public Texture testImage;
 
+	public Texture gunRight;
+	public Texture gunLeft;
+	public Texture gunUp;
+	public Texture gunDown;
+
 	public Texture splashScreenLogo;
 	public Texture titleScreenLogo;
 
@@ -93,6 +98,10 @@ public class ImageLoader {
 	public Texture legendSwordRainbow;
 
 	public void init() {
+		gunRight   					   = new Texture(Gdx.files.internal("GunRight.png"));
+		gunLeft                        = new Texture(Gdx.files.internal("GunLeft.png"));
+		gunUp  					       = new Texture(Gdx.files.internal("GunUp.png"));
+		gunDown                        = new Texture(Gdx.files.internal("GunDown.png"));
 		legendSwordRedHalf             = new Texture(Gdx.files.internal("LegendSwordRedHalf.png"));
 		legendSwordBlueHalf            = new Texture(Gdx.files.internal("LegendSwordBlueHalf.png"));
 		legendSwordGreenHalf           = new Texture(Gdx.files.internal("LegendSwordGreenHalf.png"));
@@ -154,6 +163,10 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		gunUp.dispose();
+		gunDown.dispose();
+		gunRight.dispose();
+		gunLeft.dispose();
 		missionComplete.dispose();
 		splashScreenLogo.dispose();
 		titleScreenLogo.dispose();

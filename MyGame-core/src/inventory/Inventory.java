@@ -18,9 +18,14 @@ import screens.GameScreen;
  *
  */
 public class Inventory {
+	
+	public static final int GUN = 0;
+	public static final int LEGEND_SWORD = 1;
 
+	private int inventoryCount;
+	public ArrayList <Integer> inventoryId;
 	public ArrayList <GameObject> inventory;
-	private boolean inventoryIsEquipped;
+	public static boolean inventoryIsEquipped;
 	public static boolean allInventoryShouldBeRendered;
 	public static int currentlySelectedInventoryObject;
 
@@ -29,10 +34,13 @@ public class Inventory {
 	 */
 	public Inventory() {
 		inventory                        = new ArrayList<GameObject>();
+		inventoryId                      = new ArrayList<Integer>();
 		inventoryIsEquipped              = false;
 		allInventoryShouldBeRendered     = false;
 		currentlySelectedInventoryObject = 0;
 		inventory.clear();
+		inventoryId.clear();
+		inventoryCount = 0;
 	}
 
 	/**
@@ -49,6 +57,7 @@ public class Inventory {
 	 */
 	public void addObjectToInventory(GameObject object) {
 		inventory.add(object);
+		//inventoryId.add(inventoryCount + 1);
 	}
 
 	/**
@@ -56,8 +65,11 @@ public class Inventory {
 	 * @param float x
 	 * @param float y
 	 */
+	
+	// try adding (if currently selected inventory object is legend sword, put all that stuff in its own method.
 	public void updateInventory(float x, float y) {
 		// Set all inventory to follow player.
+		//if (inventory.size() > 0) {
 		float xPosition = 0;
 		float yPosition = 0;
 		for (int i = 0; i < inventory.size(); i++) {
@@ -152,6 +164,7 @@ public class Inventory {
 			inventory.get(i).setX(xPosition);
 			inventory.get(i).setY(yPosition);
 		}
+		//}
 	}
 
 	/**
@@ -177,13 +190,15 @@ public class Inventory {
 	 * @param ImageLoader   imageLoader
 	 */
 	public void renderInventory(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+		System.out.println("Inventory size: " + inventory.size());
+		System.out.println("Currently Selected Inventory: " + Inventory.currentlySelectedInventoryObject);
 		if (inventory.size() > 0) {
 			if (inventoryIsEquipped) {
 				inventory.get(currentlySelectedInventoryObject).renderObject(batch, shapeRenderer, imageLoader);
 			}
-			if (allInventoryShouldBeRendered) {
-				renderInventoryDisplay(batch, shapeRenderer, imageLoader);
-			}
+		}
+		if (allInventoryShouldBeRendered) {
+			renderInventoryDisplay(batch, shapeRenderer, imageLoader);
 		}
 	}
 
@@ -201,8 +216,15 @@ public class Inventory {
 				inventory.get(i).setX(x);
 				inventory.get(i).setY(y);
 				inventory.get(i).renderObject(batch, shapeRenderer, imageLoader);
-				x += 1;
+				x += 2;
 			}
 		}
+	}
+	
+	public boolean containsObject(GameObject object) {
+		if (inventory.contains(object)) {
+			return true;
+		}
+		return false;
 	}
 }

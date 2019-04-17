@@ -3,6 +3,7 @@ package controllers;
 import com.mygdx.mygame.MyGame;
 
 import screens.GameScreen;
+import screens.InventoryScreen;
 import screens.Screens;
 import screens.TitleScreen;
 
@@ -26,6 +27,9 @@ public class GameStateController {
 			break;
 		case Screens.TITLE_SCREEN:
 			myGame.setScreen(new TitleScreen(myGame));
+			break;
+		case Screens.INVENTORY_SCREEN:
+			myGame.setScreen(new InventoryScreen(myGame));
 			break;
 		}
 	}
