@@ -52,9 +52,9 @@ public class MyGame extends Game {
 	 * Computer or a game pad handler.
 	 */
 	public InputHandler inputHandler = new InputHandler();
-	
+
 	public GameScreen gameScreen;
-	
+
 	public GameScreen getGameScreen() {
 		return gameScreen;
 	}

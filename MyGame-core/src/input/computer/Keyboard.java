@@ -62,7 +62,6 @@ public class Keyboard extends ComputerInput {
 		case Screens.GAME_SCREEN:	
 			handleKeyboardDirectionalButtons(myGame, "arrows", player);
 			//handleKeyboardDirectionalButtons(myGame, "wasd");
-			handleMouseButtons(myGame, "mouse", player);
 
 			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
 				Player.isJumping = true;
@@ -146,54 +145,6 @@ public class Keyboard extends ComputerInput {
 		}
 	}
 
-	private void handleMouseButtons(MyGame myGame, String directions, GameObject player) {
-
-		// If user presses the T button to use turbo.
-		int turboSpeed    = 3;
-		float playerSpeed = Player.PLAYER_SPEED;
-		if (Gdx.input.isKeyPressed(Input.Keys.T)) {
-			System.out.println("Player is using turbo!  Going fast!");
-			playerSpeed = Player.PLAYER_SPEED * turboSpeed;
-		}
-
-		int up;
-		int down;
-		int left;
-		int right;
-
-		if(GameObjectLoader.gameObjectList.contains(player)) {
-			System.out.println(Gdx.input.getX());
-			if (Gdx.input.isButtonPressed(0)) {
-				if (Gdx.input.getX() > GameScreen.cameraX + 260) {
-					player.translateX(playerSpeed);
-					player.setDirection(Player.DIRECTION_RIGHT);
-					Player.playerIsMoving = true;
-					System.out.println("Player is moving right");
-				}  
-				else if (Gdx.input.getX() <= GameScreen.cameraX + 260) {
-					player.translateX(-playerSpeed);
-					player.setDirection(Player.DIRECTION_LEFT);
-					Player.playerIsMoving = true;
-					System.out.println("Player is moving left");
-				}
-			}
-			if (Gdx.input.isButtonPressed(1)) {
-				if (Gdx.input.getY() > GameScreen.cameraY + 206) {
-					player.translateY(playerSpeed);
-					player.setDirection(Player.DIRECTION_DOWN);
-					Player.playerIsMoving = true;
-					System.out.println("Player is moving down");
-				}  
-				if (Gdx.input.getY() <= GameScreen.cameraY + 206) {
-					player.translateY(-playerSpeed);
-					player.setDirection(Player.DIRECTION_UP);
-					Player.playerIsMoving = true;
-					System.out.println("Player is moving up");
-				}
-			}
-		}
-	}
-
 	/**
 	 * Handles arrows and WASD.
 	 * 
@@ -255,7 +206,6 @@ public class Keyboard extends ComputerInput {
 				System.out.println("Player is moving down");
 			}
 			else {
-				player.stopPlayer();
 				Player.playerIsMoving = false;
 			}
 		}
