@@ -52,6 +52,12 @@ public class MyGame extends Game {
 	 * Computer or a game pad handler.
 	 */
 	public InputHandler inputHandler = new InputHandler();
+	
+	public GameScreen gameScreen;
+	
+	public GameScreen getGameScreen() {
+		return gameScreen;
+	}
 
 	@Override
 	public void create () {
@@ -62,13 +68,15 @@ public class MyGame extends Game {
 		audioHandler.init();
 		inputHandler.init();
 		gameAttributeHelper = new GameAttributeHelper();
-		this.setScreen(new GameScreen(this));
+		gameScreen = new GameScreen(this);
+		this.setScreen(gameScreen);
 	}
 
 	@Override
 	public void render () {
 		super.render();
 		gameLoop();
+		System.out.println("Game State: " + GameAttributeHelper.gameState);
 	}
 
 	@Override

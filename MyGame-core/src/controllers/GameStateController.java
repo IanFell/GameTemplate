@@ -23,7 +23,7 @@ public class GameStateController {
 	public static void switchGameStates(MyGame myGame, int newGameState) {
 		switch (newGameState) {
 		case Screens.GAME_SCREEN:
-			myGame.setScreen(new GameScreen(myGame));
+			myGame.setScreen(myGame.getGameScreen());
 			break;
 		case Screens.TITLE_SCREEN:
 			myGame.setScreen(new TitleScreen(myGame));
