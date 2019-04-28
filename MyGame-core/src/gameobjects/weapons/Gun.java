@@ -167,7 +167,7 @@ public class Gun extends Weapon {
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		//f (hasBeenCollected && (Inventory.inventoryIsEquipped || Inventory.allInventoryShouldBeRendered)) {
 		if (hasBeenCollected &&
-				Inventory.inventoryIsEquipped && Inventory.currentlySelectedInventoryObject == Inventory.GUN || Inventory.allInventoryShouldBeRendered) {
+				Inventory.inventoryIsEquipped && Inventory.allInventoryShouldBeRendered) {
 
 			Texture image = null;
 			switch (Player.direction) {

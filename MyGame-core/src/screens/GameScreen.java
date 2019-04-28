@@ -8,6 +8,7 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
 import handlers.MissionHandler;
 import handlers.WeaponHandler;
 import helpers.GameAttributeHelper;
@@ -115,8 +116,6 @@ public class GameScreen extends Screens {
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		renderObjectsOnGameScreenThatUseShapeRenderer();
 		myGame.renderer.shapeRenderer.end();
-
-		guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
 
 		// If a screenshake happened, reset camera to it's original position before shake.
 		if (!weatherHandler.lightningHandler.isLightningShouldBeRendered()) {
@@ -234,6 +233,8 @@ public class GameScreen extends Screens {
 				);
 
 		WeaponHandler.renderWeapons(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, myGame);
+		guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
+		myGame.getGameObject(Player.PLAYER_ONE).inventory.renderInventory(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {

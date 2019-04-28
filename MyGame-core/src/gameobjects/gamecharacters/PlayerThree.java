@@ -19,9 +19,10 @@ public class PlayerThree extends Player {
 	 * Constructor.
 	 * 
 	 * @param String name
+	 * @param MyGame myGame
 	 */
-	public PlayerThree(String name) {
-		super(name);
+	public PlayerThree(String name, MyGame myGame) {
+		super(name, myGame);
 		playerOneFollowAndDirectionValueOffset = 13;
 	}
 

@@ -1,6 +1,7 @@
 package gameobjects.weapons;
 
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Enemy;
 import physics.CollisionHandler;
 
 /**
@@ -28,15 +29,20 @@ public class Weapon extends GameObject {
 
 	/**
 	 * 
-	 * @param GameObject[] objects
+	 * @param GameObject   object
 	 * @param Weapon       weapon
 	 */
-	protected void checkIfWeaponHasCollidedWithObject(GameObject[] objects, Weapon weapon) {
+	protected void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
+		/*
 		for (int i = 0; i < objects.length; i++) {
 			CollisionHandler.checkIfWeaponHasCollidedWithObject(
 					objects[i],
 					weapon
 					);
-		}
+		}*/
+		CollisionHandler.checkIfWeaponHasCollidedWithEnemy(
+				enemy,
+				weapon
+				);
 	}
 }

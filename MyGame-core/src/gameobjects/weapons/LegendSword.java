@@ -9,7 +9,7 @@ import controllers.PlayerController;
 import gameobjects.gamecharacters.Player;
 import inventory.Inventory;
 import loaders.ImageLoader;
-import loaders.chestloader.ChestLoader;
+import loaders.enemyloader.EnemyLoader;
 import maps.MapHandler;
 import physics.CollisionHandler;
 
@@ -59,7 +59,7 @@ public class LegendSword extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		if (hasBeenCollected && Inventory.inventoryIsEquipped || Inventory.allInventoryShouldBeRendered) {
+		if (hasBeenCollected && Inventory.inventoryIsEquipped) {
 			batch.draw(
 					textureRegionFull, 
 					x, 
@@ -135,10 +135,10 @@ public class LegendSword extends Weapon {
 					);
 		} else {
 			height = 2;
+			setRotationAngleDependingOnPlayerDirection();
 			updateHitBox();
 			// This will be changed to all enemies eventually.  For now, just check chests.
-			checkIfWeaponHasCollidedWithObject(ChestLoader.chests, this);
-			setRotationAngleDependingOnPlayerDirection();
+			CollisionHandler.checkIfWeaponHasCollidedWithEnemy(EnemyLoader.enemy, this);
 		}
 	}
 

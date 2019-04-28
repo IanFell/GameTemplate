@@ -4,40 +4,53 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerTwo;
+import input.computer.Mouse;
 import loaders.ImageLoader;
-
+import maps.MapHandler;
+import physics.Lighting.Fire;
 import screens.GameScreen;
+import screens.Screens;
 
 /**
  * 
  * @author Fabulous Fellini
  *
  */
-public class Inventory {
-
-	public static final int GUN = 0;
-	public static final int LEGEND_SWORD = 1;
-
+public class Inventory extends Screens {
+	
+	public static boolean mouseIsClickingOnInventoryObject;
+	public static Rectangle rectangle;
+	public static boolean playClickSound;
+	private Fire fire;
 	public ArrayList <GameObject> inventory;
 	public static boolean inventoryIsEquipped;
 	public static boolean allInventoryShouldBeRendered;
 	public static int currentlySelectedInventoryObject;
-
+	
 	/**
 	 * Constructor.
+	 * 
+	 * @param MyGame myGame
 	 */
-	public Inventory() {
+	public Inventory(final MyGame myGame) {
+		super(myGame);
 		inventory                        = new ArrayList<GameObject>();
 		inventoryIsEquipped              = false;
 		allInventoryShouldBeRendered     = false;
 		currentlySelectedInventoryObject = 0;
+		rectangle                        = new Rectangle(0, 0, 2, 2);
+		mouseIsClickingOnInventoryObject = false;
+		fire                             = new Fire(0, 0, 0, 0, "inventory", false);
+		playClickSound                   = false;
 		inventory.clear();
 	}
-
+	
 	/**
 	 * 
 	 * @param boolean shouldRenderAllInventory
@@ -56,10 +69,11 @@ public class Inventory {
 
 	/**
 	 * 
-	 * @param float x
-	 * @param float y
+	 * @param float      x
+	 * @param float      y
+	 * @param MapHandler mapHandler
 	 */
-	public void updateInventory(float x, float y) {
+	public void updateInventory(float x, float y, MapHandler mapHandler) {
 		// Set all inventory to follow player.
 		float xPosition = 0;
 		float yPosition = 0;
@@ -155,6 +169,7 @@ public class Inventory {
 			inventory.get(i).setX(xPosition);
 			inventory.get(i).setY(yPosition);
 		}
+		fire.updateObject(myGame, mapHandler);
 	}
 
 	/**
@@ -188,25 +203,128 @@ public class Inventory {
 			}
 		}
 		if (allInventoryShouldBeRendered) {
+			int borderShrinkOffset = 1;
+			batch.draw(
+					imageLoader.inventoryScreen,
+					camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset,
+					(camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight,
+					camera.viewportWidth - borderShrinkOffset * 2, 
+					-camera.viewportHeight
+					);
 			renderInventoryDisplay(batch, shapeRenderer, imageLoader);
+			
+			int clickedObject = 0;
+			if (mouseIsClickingOnInventoryObject) {
+				for (int i = 0; i < Mouse.inventoryButtonIsPressed.length; i++) {
+					if (Mouse.inventoryButtonIsPressed[i]) {
+						clickedObject = i;
+					}
+				}
+				// White square that flashes when player clicks on an inventory square.
+				drawClickHover(batch, imageLoader, clickedObject);
+			}
+			fire.setX(rectangle.x);
+			fire.setY(rectangle.y);
+			fire.setWidth(rectangle.getWidth());
+			fire.setHeight(rectangle.getHeight());
+			fire.renderObject(batch, shapeRenderer, imageLoader);
 		}
+	}
+	
+	/**
+	 * Draws the white square that flashes when player clicks on an inventory square.
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param int         hoverValue
+	 */
+	private void drawClickHover(SpriteBatch batch, ImageLoader imageLoader, int hoverValue) {
+		int borderShrinkOffset = 1;
+		switch (hoverValue) {
+		case 0:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 3.4f;
+			break;
+		case 1:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 2;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 3.4f;
+			break;
+		case 2:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 3.9f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 3.4f;
+			break;
+		case 3:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 5.8f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 3.4f;
+			break;
+		case 4:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 7.8f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 3.4f;
+			break;
+		case 5:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 9.7f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 3.4f;
+			break;
+		case 6:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 1.0f;
+			break;
+		case 7:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 2f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 1.0f;
+			break;
+		case 8:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 3.9f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 1.0f;
+			break;
+		case 9:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 5.8f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 1.0f;
+			break;
+		case 10:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 7.8f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 1.0f;
+			break;
+		case 11:
+			rectangle.x = camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset + 0.3f + 9.7f;
+			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 1.0f;
+			break;
+		}
+		
+		batch.draw(
+				imageLoader.whiteSquare,
+				rectangle.x,
+				rectangle.y,
+				rectangle.width,
+				-rectangle.height
+				);
 	}
 
 	/**
+	 * Renders the inventory objects over their inventory sqaures.
 	 * 
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
 	public void renderInventoryDisplay(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		float x = GameScreen.camera.position.x - GameScreen.cameraWidth / 2;
-		float y = GameScreen.camera.position.y;
+		float xStartPosition = GameScreen.camera.position.x - GameScreen.cameraWidth / 2 - 0.3f;
+		float yStartPosition = GameScreen.camera.position.y + 0.65f;
+		float x              = xStartPosition;
+		float y              = GameScreen.camera.position.y + 0.65f;
+		boolean resetX       = true;
 		if (inventory.size() > 0) {
 			for (int i = 0; i < inventory.size(); i++) {
 				inventory.get(i).setX(x);
 				inventory.get(i).setY(y);
 				inventory.get(i).renderObject(batch, shapeRenderer, imageLoader);
-				x += 2;
+				x += 1.95f;
+				
+				if (i > 4 && resetX) {
+					x = xStartPosition;
+					y = yStartPosition + 2.4f;
+					resetX = false;
+				}
 			}
 		}
 	}

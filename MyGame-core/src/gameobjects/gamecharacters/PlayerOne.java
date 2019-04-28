@@ -31,9 +31,10 @@ public class PlayerOne extends Player {
 	 * Constructor.
 	 * 
 	 * @param String name
+	 * @param MyGame myGame
 	 */
-	public PlayerOne(String name) {
-		super(name);
+	public PlayerOne(String name, MyGame myGame) {
+		super(name, myGame);
 		playerScore = 0;
 	}
 
@@ -60,7 +61,7 @@ public class PlayerOne extends Player {
 			GameObjectLoader.gameObjectList.remove(this);
 		}
 		//simulateDeath(myGame, this);
-		inventory.updateInventory(x, y);
+		inventory.updateInventory(x, y, mapHandler);
 	}
 
 	/**
@@ -72,12 +73,6 @@ public class PlayerOne extends Player {
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		super.renderObject(batch, shapeRenderer, imageLoader);
-		/**
-		 * Render inventory here for now since we are only currently dealing with player one.
-		 * Eventually all players will have their own inventory variable, and when the first player dies,
-		 * his inventory will be copied to the second player's.
-		 */
-		inventory.renderInventory(batch, shapeRenderer, imageLoader);
 	}
 
 	/**

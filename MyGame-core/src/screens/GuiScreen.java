@@ -3,7 +3,6 @@ package screens;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
-import controllers.PlayerController;
 import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
 
@@ -29,7 +28,6 @@ public class GuiScreen extends Screens {
 	 * @param ImageLoader imageLoader
 	 */
 	public void render(SpriteBatch batch, ImageLoader imageLoader) {
-		myGame.renderer.batch.begin();
 		float xPosition = 0f;
 		float yPosition = 0f;
 		// offsetValue is different depending on player speed (land vs water).
@@ -40,7 +38,7 @@ public class GuiScreen extends Screens {
 			} else {
 				offsetValue = Player.PLAYER_SPEED;
 			}
-			switch (PlayerController.getCurrentPlayer(myGame).getDirection()) {
+			switch (Player.direction) {
 			case Player.DIRECTION_RIGHT:
 				xPosition = camera.position.x - getViewportWidth() / denominatorOffset - offsetValue;
 				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8;
@@ -69,6 +67,5 @@ public class GuiScreen extends Screens {
 				camera.viewportWidth, 
 				-camera.viewportHeight
 				);
-		myGame.renderer.batch.end();
 	}
 }

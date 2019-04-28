@@ -3,11 +3,13 @@ package physics;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.Weapon;
+import inventory.Inventory;
 import maps.MapHandler;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
@@ -124,7 +126,7 @@ public class CollisionHandler {
 	public static void checkIfPlayerHasCollidedWithFire(GameObject player, GameObject fire) {
 		if (fire.rectangle.overlaps(player.rectangle)) {
 			System.out.println("Player has collided with fire!");
-			System.exit(0);
+			//System.exit(0);
 		}
 	}
 
@@ -139,6 +141,19 @@ public class CollisionHandler {
 			MissionLegendOfTheSevenSwords.swordsCollected++;
 			MissionLegendOfTheSevenSwords.legendSwordCollection.add(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword);
+			// Uncomment this to fill up inventory.
+			/*
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);
+			((Player) player).getInventory().addObjectToInventory(legendSword);*/
 			legendSword.hasBeenCollected = true;
 			LegendSword.playSound        = true;
 		}
@@ -162,9 +177,13 @@ public class CollisionHandler {
 	 * @param GameObject object
 	 * @param GameObject weapon
 	 */
-	public static void checkIfWeaponHasCollidedWithObject(GameObject object, Weapon weapon) {
-		if (weapon.rectangle.overlaps(object.rectangle)) {
-			System.out.println("Weapon has collided with Object!");
+	public static void checkIfWeaponHasCollidedWithEnemy(GameObject object, Weapon weapon) {
+		if (object.rectangle.overlaps(weapon.rectangle)) {
+			if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
+				System.out.println("Weapon has collided with Object!");
+				Enemy.dead = true;
+				Enemy.playSound = true;
+			}
 		}
 	}
 }

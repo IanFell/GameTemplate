@@ -100,12 +100,17 @@ public class Keyboard extends ComputerInput {
 
 			if (Gdx.input.isKeyPressed(Input.Keys.A)) {
 				Player.playerIsPerformingAttack = true;
+			} else {
+				Player.playerIsPerformingAttack = false;
 			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
-				((Player) player).getInventory().setInventoryIsEquipped(!((Player) player).getInventory().getInventoryIsEquipped());
-			}
+				if (!Inventory.allInventoryShouldBeRendered) {
+					((Player) player).getInventory().setInventoryIsEquipped(!((Player) player).getInventory().getInventoryIsEquipped());
 
+				}
+			}
+			/*
 			if (Gdx.input.isKeyPressed(Input.Keys.M)) {
 				if (Inventory.currentlySelectedInventoryObject < ((Player) player).getInventory().inventory.size() - 1) {
 					Inventory.currentlySelectedInventoryObject++;
@@ -117,13 +122,11 @@ public class Keyboard extends ComputerInput {
 					Inventory.currentlySelectedInventoryObject--;
 				}
 			}
-
+			 */
 			// Display all inventory.
 			if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-				Inventory.allInventoryShouldBeRendered = true;
-			} else {
-				Inventory.allInventoryShouldBeRendered = false;
-			}
+				Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
+			} 
 
 			if (Gdx.input.isKeyPressed(Input.Keys.P)) {
 				BulletLoader.createBullet(myGame);
@@ -131,12 +134,6 @@ public class Keyboard extends ComputerInput {
 
 			if (Gdx.input.isKeyPressed(Input.Keys.G)) {
 				//Gun.playerIsEquippedWithGun = !Gun.playerIsEquippedWithGun;
-			}
-
-			if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
-				GameStateController.switchGameStates(myGame, Screens.INVENTORY_SCREEN);
-				myGame.gameScreen.pause();
-				myGame.gameScreen.hide();
 			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
@@ -182,28 +179,16 @@ public class Keyboard extends ComputerInput {
 
 		if(GameObjectLoader.gameObjectList.contains(player)) {
 			if (Gdx.input.isKeyPressed(left)) {
-				player.translateX(-playerSpeed);
-				player.setDirection(Player.DIRECTION_LEFT);
-				Player.playerIsMoving = true;
-				System.out.println("Player is moving left");
+				((Player) player).moveLeft(playerSpeed);
 			}
 			else if (Gdx.input.isKeyPressed(right)) {
-				player.translateX(playerSpeed);
-				player.setDirection(Player.DIRECTION_RIGHT);
-				Player.playerIsMoving = true;
-				System.out.println("Player is moving right");
+				((Player) player).moveRight(playerSpeed);
 			}
 			else if (Gdx.input.isKeyPressed(up)) {
-				player.translateY(-playerSpeed);
-				player.setDirection(Player.DIRECTION_UP);
-				Player.playerIsMoving = true;
-				System.out.println("Player is moving up");
+				((Player) player).moveUp(playerSpeed);
 			}
 			else if (Gdx.input.isKeyPressed(down)) {
-				player.translateY(playerSpeed);
-				player.setDirection(Player.DIRECTION_DOWN);
-				Player.playerIsMoving = true;
-				System.out.println("Player is moving down");
+				((Player) player).moveDown(playerSpeed);
 			}
 			else {
 				Player.playerIsMoving = false;

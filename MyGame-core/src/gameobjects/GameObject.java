@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import interfaces.GameObjectInterface;
+import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -62,6 +63,8 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 */
 	public boolean hasBeenCollected;
 
+	public Inventory inventory;
+
 	/**
 	 * Constructor.
 	 */
@@ -101,6 +104,14 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 */
 	public void setDirection(int direction) {
 		GameObject.direction = direction;
+	}
+
+	/**
+	 * 
+	 * @return Inventory
+	 */
+	public Inventory getInventory() {
+		return inventory;
 	}
 
 	/**

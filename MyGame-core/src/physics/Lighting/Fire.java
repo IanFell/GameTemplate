@@ -92,7 +92,7 @@ public class Fire extends GameObject {
 			batch.draw(imageLoader.fireTen, x, y, width, -height);
 		}
 		if (hasLogs) {
-			batch.draw(imageLoader.logs, x, y, width, -height);
+			batch.draw(imageLoader.logs, x, y, width, -height / 2);
 		}
 	}
 }

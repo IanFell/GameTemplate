@@ -114,14 +114,13 @@ public class Player extends GameObject {
 	private Torch torch;
 	public static boolean hasTorch;
 
-	protected Inventory inventory;
-
 	/**
 	 * Constructor.
 	 * 
-	 *  String name
+	 * @param String name
+	 * @param MyGame myGame
 	 */
-	public Player(String name) {
+	public Player(String name, MyGame myGame) {
 		this.x                   = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 40;
 		this.y                   = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 7;
 		this.width               = characterSize;
@@ -141,7 +140,7 @@ public class Player extends GameObject {
 		this.name                = name;
 		torch                    = new Torch(0, 0);
 		hasTorch                 = false;
-		inventory                = new Inventory();
+		inventory                = new Inventory(myGame);
 		playerIsPerformingAttack = false;
 	}
 
@@ -290,14 +289,6 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * 
-	 * @return Inventory
-	 */
-	public Inventory getInventory() {
-		return inventory;
-	}
-
-	/**
 	 * Returns current animation depending on which direction player is facing.
 	 * 
 	 * @return Animation <TextureRegion>
@@ -342,6 +333,50 @@ public class Player extends GameObject {
 			distance = distance / 2;
 		}
 		y += distance;
+	}
+
+	/**
+	 * 
+	 * @param float speed
+	 */
+	public void moveRight(float speed) {
+		translateX(speed);
+		setDirection(Player.DIRECTION_RIGHT);
+		playerIsMoving = true;
+		System.out.println("Player is moving right");
+	}
+
+	/**
+	 * 
+	 * @param float speed
+	 */
+	public void moveLeft(float speed) {
+		translateX(-speed);
+		setDirection(Player.DIRECTION_LEFT);
+		playerIsMoving = true;
+		System.out.println("Player is moving left");
+	}
+
+	/**
+	 * 
+	 * @param float speed
+	 */
+	public void moveUp(float speed) {
+		translateY(-speed);
+		setDirection(Player.DIRECTION_UP);
+		playerIsMoving = true;
+		System.out.println("Player is moving up");
+	}
+
+	/**
+	 * 
+	 * @param float speed
+	 */
+	public void moveDown(float speed) {
+		translateY(speed);
+		setDirection(Player.DIRECTION_DOWN);
+		playerIsMoving = true;
+		System.out.println("Player is moving down");
 	}
 
 	public void stopPlayer() {

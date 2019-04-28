@@ -16,6 +16,8 @@ public class ImageLoader {
 	 */
 	public Texture testImage;
 
+	public Texture enemy;
+
 	public Texture gunRight;
 	public Texture gunLeft;
 	public Texture gunUp;
@@ -23,6 +25,8 @@ public class ImageLoader {
 
 	public Texture splashScreenLogo;
 	public Texture titleScreenLogo;
+
+	public Texture inventoryScreen;
 
 	public Texture grassTileOne;
 	public Texture grassTileTwo;
@@ -103,7 +107,12 @@ public class ImageLoader {
 	public Texture legendSwordPinkHalf;
 	public Texture legendSwordRainbow;
 
+	public Texture inventoryLabel;
+
 	public void init() {
+		enemy    					   = new Texture(Gdx.files.internal("Enemy.png"));
+		inventoryScreen                = new Texture(Gdx.files.internal("InventoryScreen.png"));
+		inventoryLabel                 = new Texture(Gdx.files.internal("InventoryLabel.png"));
 		gunRight   					   = new Texture(Gdx.files.internal("GunRight.png"));
 		gunLeft                        = new Texture(Gdx.files.internal("GunLeft.png"));
 		gunUp  					       = new Texture(Gdx.files.internal("GunUp.png"));
@@ -175,6 +184,9 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		enemy.dispose();
+		inventoryScreen.dispose();
+		inventoryLabel.dispose();
 		gunUp.dispose();
 		gunDown.dispose();
 		gunRight.dispose();

@@ -32,13 +32,13 @@ public class GameObjectFactory {
 			return null;
 		}
 		if (objectType.equalsIgnoreCase("playerOne")) {
-			return new PlayerOne("Blackbeard");
+			return new PlayerOne("Blackbeard", null);
 		}
 		if (objectType.equalsIgnoreCase("playerTwo")) {
-			return new PlayerTwo("Jolly Roger");
+			return new PlayerTwo("Jolly Roger", null);
 		}
 		if (objectType.equalsIgnoreCase("playerThree")) {
-			return new PlayerThree("Peg Leg");
+			return new PlayerThree("Peg Leg", null);
 		}
 		if (objectType.equalsIgnoreCase("tree")) {
 			return new PalmTree(x, y);

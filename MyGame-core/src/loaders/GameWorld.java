@@ -3,6 +3,7 @@ package loaders;
 import com.mygdx.mygame.MyGame;
 
 import loaders.chestloader.ChestLoader;
+import loaders.enemyloader.EnemyLoader;
 import loaders.fireloader.FireLoader;
 import loaders.lighthouseloader.LightHouseLoader;
 import loaders.pigglywigglyloader.PigglyWigglyLoader;
@@ -29,6 +30,7 @@ public class GameWorld {
 	private LightHouseLoader lightHouseLoader;
 	private FireLoader fireLoader;
 	private PigglyWigglyLoader pigglyWigglyLoader;
+	private EnemyLoader enemyLoader;
 
 	/**
 	 * Constructor.
@@ -45,6 +47,7 @@ public class GameWorld {
 		lightHouseLoader   = new LightHouseLoader();
 		fireLoader         = new FireLoader();
 		pigglyWigglyLoader = new PigglyWigglyLoader();
+		enemyLoader        = new EnemyLoader();
 		loadGameWorld(myGame);
 	}
 
@@ -62,6 +65,7 @@ public class GameWorld {
 		lightHouseLoader.loadLightHouse(myGame);
 		fireLoader.loadFire();
 		pigglyWigglyLoader.loadPigglyWiggly(myGame);
+		enemyLoader.loadEnemy(myGame);
 	}
 
 	/**
@@ -81,5 +85,6 @@ public class GameWorld {
 		}
 		RawBarLoader.rawbar.updateObject(myGame, mapHandler);
 		PigglyWigglyLoader.pigglyWiggly.updateObject(myGame, mapHandler);
+		EnemyLoader.enemy.updateObject(myGame, mapHandler);
 	}
 }
