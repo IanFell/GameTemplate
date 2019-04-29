@@ -3,9 +3,7 @@ package gameobjects.stationarygameobjects.buildings;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.GameObject;
 import maps.MapHandler;
-import physics.CollisionHandler;
 
 /**
  * 
@@ -38,11 +36,13 @@ public class TeePee extends Building {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
+		/*
 		CollisionHandler.checkIfPlayerHasCollidedWithStructure(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this,
 				"Tee Pee",
 				myGame
 				);
+				*/
 	}
 }

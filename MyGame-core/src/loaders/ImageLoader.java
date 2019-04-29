@@ -16,7 +16,11 @@ public class ImageLoader {
 	 */
 	public Texture testImage;
 
+	public Texture[] cutSceneDialogueOne = new Texture[9];
+
 	public Texture enemy;
+
+	public Texture boat;
 
 	public Texture gunRight;
 	public Texture gunLeft;
@@ -27,6 +31,7 @@ public class ImageLoader {
 	public Texture titleScreenLogo;
 
 	public Texture inventoryScreen;
+	public Texture legendOfTheSevenSwordsBeginMissionText;
 
 	public Texture grassTileOne;
 	public Texture grassTileTwo;
@@ -110,6 +115,8 @@ public class ImageLoader {
 	public Texture inventoryLabel;
 
 	public void init() {
+		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("LegendOfTheSevenSwords.png"));
+		boat    					   = new Texture(Gdx.files.internal("BOAT_NEW.png"));
 		enemy    					   = new Texture(Gdx.files.internal("Enemy.png"));
 		inventoryScreen                = new Texture(Gdx.files.internal("InventoryScreen.png"));
 		inventoryLabel                 = new Texture(Gdx.files.internal("InventoryLabel.png"));
@@ -178,12 +185,24 @@ public class ImageLoader {
 		playerHeadLeft 				   = new Texture(Gdx.files.internal("PlayerHeadLeft.png"));
 		playerHeadRight 			   = new Texture(Gdx.files.internal("PlayerHeadRight.png"));
 		ui 							   = new Texture(Gdx.files.internal("UI.png"));
-		rawbar						   = new Texture(Gdx.files.internal("RawBar.png"));
+		rawbar						   = new Texture(Gdx.files.internal("RawBar3d.png"));
 		lightHouse                     = new Texture(Gdx.files.internal("LightHouse.png"));
 		pigglywiggly                   = new Texture(Gdx.files.internal("PigglyWiggly.png"));
+
+		cutSceneDialogueOne[0] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_One.png"));
+		cutSceneDialogueOne[1] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Two.png"));
+		cutSceneDialogueOne[2] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Three.png"));
+		cutSceneDialogueOne[3] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Four.png"));
+		cutSceneDialogueOne[4] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Five.png"));
+		cutSceneDialogueOne[5] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Six.png"));
+		cutSceneDialogueOne[6] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Seven.png"));
+		cutSceneDialogueOne[7] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Eight.png"));
+		cutSceneDialogueOne[8] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Nine.png"));
 	}
 
 	public void dispose() {
+		legendOfTheSevenSwordsBeginMissionText.dispose();
+		boat.dispose();
 		enemy.dispose();
 		inventoryScreen.dispose();
 		inventoryLabel.dispose();
@@ -255,5 +274,9 @@ public class ImageLoader {
 		legendSwordPinkHalf.dispose();
 		legendSwordOrangeHalf.dispose();
 		pigglywiggly.dispose();
+
+		for(int i = 0; i < cutSceneDialogueOne.length; i++) {
+			cutSceneDialogueOne[i].dispose();
+		}
 	}
 }

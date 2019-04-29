@@ -165,10 +165,12 @@ public class CollisionHandler {
 	 * @param GameObject gun
 	 */
 	public static void checkIfPlayerHasCollidedWithGun(GameObject player, GameObject gun) {
-		if (gun.rectangle.overlaps(player.rectangle)) {
-			System.out.println("Player has collided with Gun!");
-			((Player) player).getInventory().addObjectToInventory(gun);
-			Gun.hasBeenCollected = true;
+		if (!Gun.hasBeenCollected) {
+			if (gun.rectangle.overlaps(player.rectangle)) {
+				System.out.println("Player has collided with Gun!");
+				((Player) player).getInventory().addObjectToInventory(gun);
+				Gun.hasBeenCollected = true;
+			}
 		}
 	}
 

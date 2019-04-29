@@ -15,6 +15,7 @@ import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import screens.GameScreen;
 
 /**
  * 
@@ -42,6 +43,9 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 	 * Collection of swords player currently obtains.
 	 */
 	public static ArrayList<GameObject> legendSwordCollection = new ArrayList<GameObject>(); 
+	
+	private int missionBeginTextTimer;
+	private final int MISSION_BEGIN_TEXT_MAX_TIME = 250;
 
 	/**
 	 * Constructor.
@@ -50,6 +54,7 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 	 */
 	public MissionLegendOfTheSevenSwords(MyGame myGame) {
 		super();
+		missionBeginTextTimer       = 0;
 		swordsCollected             = 0;
 		legendSwords[SWORD_RED]     = new LegendSword(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 40, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 5, SWORD_RED, new TextureRegion(myGame.imageLoader.legendSwordRed), new TextureRegion(myGame.imageLoader.legendSwordRedHalf));
 		legendSwords[SWORD_BLUE]    = new LegendSword(GameAttributeHelper.CHUNK_FIVE_X_POSITION_START + 40, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 35, SWORD_BLUE, new TextureRegion(myGame.imageLoader.legendSwordBlue), new TextureRegion(myGame.imageLoader.legendSwordBlueHalf));
@@ -80,6 +85,18 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 		if (missionComplete) {
 			renderMissionCompleteMessage(batch, shapeRenderer, imageLoader, myGame);
 		}
+		
+		if (missionBeginTextTimer < MISSION_BEGIN_TEXT_MAX_TIME) {
+			int missionCompleteSize = 10;
+			GameObject player       = PlayerController.getCurrentPlayer(myGame);
+			batch.draw(
+					imageLoader.legendOfTheSevenSwordsBeginMissionText, 
+					player.getX() - GameScreen.cameraWidth / 2, 
+					player.getY() + GameScreen.cameraWidth / 2, 
+					missionCompleteSize, 
+					-missionCompleteSize
+					);
+		}
 	}
 
 	/**
@@ -100,6 +117,10 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 			System.out.println("Player has completed Legend of the Seven Swords Mission!");
 			missionComplete = true;
 			//clearSevenSwordsFromInventory(myGame);
+		}
+		
+		if (missionBeginTextTimer < MISSION_BEGIN_TEXT_MAX_TIME) {
+			missionBeginTextTimer++;
 		}
 	}
 

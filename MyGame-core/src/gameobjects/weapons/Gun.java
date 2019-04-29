@@ -27,6 +27,8 @@ public class Gun extends Weapon {
 	private boolean playerHasBeenGivenGunToStartGameWith;
 
 	private int timer;
+	
+	public static boolean shouldNotRender = true;
 
 	/**
 	 * 
@@ -90,7 +92,7 @@ public class Gun extends Weapon {
 					);*/
 		//}
 
-		if (hasBeenCollected) { 
+		if (hasBeenCollected && !Inventory.allInventoryShouldBeRendered) { 
 			float leftRightOffset = 0.5f;
 			switch (Player.direction) {
 			case Player.DIRECTION_LEFT:
@@ -122,11 +124,8 @@ public class Gun extends Weapon {
 			this.rectangle.y = y;
 			BulletLoader.updateBullets(myGame, mapHandler);
 		} else {
-
-
 			x                = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 43;
 			y                = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 7;
-
 			this.rectangle.x = x;
 			this.rectangle.y = y;
 			CollisionHandler.checkIfPlayerHasCollidedWithGun(
@@ -134,7 +133,7 @@ public class Gun extends Weapon {
 					this
 					);
 		}
-
+		/*
 		if (timer < 10) {
 			timer++;
 		} else {
@@ -152,10 +151,7 @@ public class Gun extends Weapon {
 			} else {
 				//PlayerController.getCurrentPlayer(myGame).getInventory().addObjectToInventory(this);
 			}
-		}
-
-
-
+		}*/
 	}
 
 	/**
@@ -165,34 +161,40 @@ public class Gun extends Weapon {
 	 * @param ImageLoader   imageLoader
 	 */
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		//f (hasBeenCollected && (Inventory.inventoryIsEquipped || Inventory.allInventoryShouldBeRendered)) {
-		if (hasBeenCollected &&
-				Inventory.inventoryIsEquipped && Inventory.allInventoryShouldBeRendered) {
-
-			Texture image = null;
+		if (hasBeenCollected && Inventory.inventoryIsEquipped) {
+			Texture texture = null;
 			switch (Player.direction) {
 			case Player.DIRECTION_LEFT:
-				image = imageLoader.gunLeft;
+				texture = imageLoader.gunLeft;
 				break;
 			case Player.DIRECTION_RIGHT:
-				image = imageLoader.gunRight;
+				texture = imageLoader.gunRight;
 				break;
 			case Player.DIRECTION_UP:
-				image = imageLoader.gunUp;
+				texture = imageLoader.gunUp;
 				break;
 			case Player.DIRECTION_DOWN:
-				image = imageLoader.gunDown;
+				texture = imageLoader.gunDown;
 				break;
 			}
 			batch.draw(
-					image,
+					texture,
 					x, 
 					y,
 					width,
 					-height
 					);
 			BulletLoader.renderBullets(batch, shapeRenderer, imageLoader);
-		} else if (!hasBeenCollected) {
+		} else if (Inventory.allInventoryShouldBeRendered) {
+			batch.draw(
+					imageLoader.gunUp,
+					x, 
+					y,
+					width,
+					-height
+					);
+		}
+		else if (!hasBeenCollected) {
 			batch.draw(
 					imageLoader.gunRight,
 					x, 
@@ -201,8 +203,5 @@ public class Gun extends Weapon {
 					-height
 					);
 		}
-		//if (playerIsEquippedWithGun) {
-
-		//}
 	}
 }

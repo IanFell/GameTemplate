@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
+import cutscenes.CutSceneIntro;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import handlers.MissionHandler;
@@ -59,7 +60,8 @@ public class GameScreen extends Screens {
 	/**
 	 * Used to shade the screen to simulate darkness.
 	 */
-	private ScreenShader screenShader = new ScreenShader(myGame);
+	private ScreenShader screenShader          = new ScreenShader(myGame);
+	private ScreenShader screenShaderPostIntro = new ScreenShader(myGame);
 
 	private GuiScreen guiScreen = new GuiScreen(myGame);
 
@@ -73,7 +75,9 @@ public class GameScreen extends Screens {
 	 */
 	private MissionHandler missionHandler;
 
-	//private WeaponHandler weaponHandler = new WeaponHandler();
+	private WeaponHandler weaponHandler = new WeaponHandler();
+
+	private CutSceneIntro cutSceneIntro;
 
 	/**
 	 * 
@@ -83,6 +87,7 @@ public class GameScreen extends Screens {
 		super(myGame);
 		GameAttributeHelper.gameState = Screens.GAME_SCREEN;
 		gameScreenHasBeenInitialized  = false;
+		cutSceneIntro = new CutSceneIntro("Intro");
 	}
 
 	/**
@@ -159,7 +164,12 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
 		if (!ScreenShake.screenIsShaking) {
-			cameraFollowCurrentPlayer();
+			if (cutSceneIntro.isCutSceneIsInProgress()) {
+				camera.position.x = cutSceneIntro.getStartXPosition() + 5;
+				camera.position.y = cutSceneIntro.getStartYPosition() + 1;
+			} else {
+				cameraFollowCurrentPlayer();
+			}
 		}
 		camera.update();
 	}
@@ -192,10 +202,21 @@ public class GameScreen extends Screens {
 		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
 
-		// Test mission.  This will be controlled differently later, but for now it is always on.
-		missionHandler.handleMissions(myGame, mapHandler);
+		// Fade into gameplay after intro cutscene.
+		if (cutSceneIntro.isCutSceneConcluded()) {
+			screenShaderPostIntro.updateObject();
+		}
+		
+		// Start missions after intro cutscene.
+		if (cutSceneIntro.isCutSceneConcluded()) {
+			missionHandler.handleMissions(myGame, mapHandler);
+		}
 
 		WeaponHandler.updateWeapons(myGame, mapHandler);
+
+		if (cutSceneIntro.isCutSceneIsInProgress()) {
+			cutSceneIntro.updateCutScene();
+		}
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -232,9 +253,28 @@ public class GameScreen extends Screens {
 				myGame
 				);
 
-		WeaponHandler.renderWeapons(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, myGame);
-		guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
-		myGame.getGameObject(Player.PLAYER_ONE).inventory.renderInventory(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
+		WeaponHandler.renderWeapons(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader, 
+				myGame
+				);
+		if (!cutSceneIntro.isCutSceneIsInProgress()) {
+			guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
+		}
+		myGame.getGameObject(Player.PLAYER_ONE).inventory.renderInventory(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
+
+		if (cutSceneIntro.isCutSceneIsInProgress()) {
+			cutSceneIntro.renderCutScene(
+					myGame.renderer.batch, 
+					myGame.renderer.shapeRenderer, 
+					myGame.imageLoader
+					);
+		}
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {

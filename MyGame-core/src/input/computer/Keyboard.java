@@ -24,6 +24,10 @@ import screens.Screens;
  */
 public class Keyboard extends ComputerInput {
 
+	// Make sure inventory button if held down is not being hit infinite times.
+	private int inventoryClickTimer = 0;
+	private boolean startInventoryClickTimer = false;
+
 	/**
 	 * 
 	 * @param MyGame myGame
@@ -110,22 +114,20 @@ public class Keyboard extends ComputerInput {
 
 				}
 			}
-			/*
-			if (Gdx.input.isKeyPressed(Input.Keys.M)) {
-				if (Inventory.currentlySelectedInventoryObject < ((Player) player).getInventory().inventory.size() - 1) {
-					Inventory.currentlySelectedInventoryObject++;
-				}
-			}
 
-			if (Gdx.input.isKeyPressed(Input.Keys.N)) {
-				if (Inventory.currentlySelectedInventoryObject > 0) {
-					Inventory.currentlySelectedInventoryObject--;
-				}
-			}
-			 */
 			// Display all inventory.
 			if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-				Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
+				if (!startInventoryClickTimer) {
+					startInventoryClickTimer               = true;
+					Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
+				} else {
+					// Make sure inventory button is only hit once.
+					inventoryClickTimer++;
+					if (inventoryClickTimer > 1) {
+						inventoryClickTimer      = 0;
+						startInventoryClickTimer = false;
+					}
+				}
 			} 
 
 			if (Gdx.input.isKeyPressed(Input.Keys.P)) {

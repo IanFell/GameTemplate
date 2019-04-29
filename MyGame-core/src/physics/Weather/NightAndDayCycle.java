@@ -25,7 +25,7 @@ public class NightAndDayCycle extends GameObject {
 	/**
 	 * How fast day/night cycle happens.
 	 */
-	private float dayNightCycleSpeedChange = 0.02f;
+	private float dayNightCycleSpeedChange = 0.0002f;
 
 	/**
 	 * Used as a sort of timer, to determine when to change from day to night and back.
