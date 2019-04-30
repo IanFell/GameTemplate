@@ -43,7 +43,7 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 	 * Collection of swords player currently obtains.
 	 */
 	public static ArrayList<GameObject> legendSwordCollection = new ArrayList<GameObject>(); 
-	
+
 	private int missionBeginTextTimer;
 	private final int MISSION_BEGIN_TEXT_MAX_TIME = 250;
 
@@ -85,7 +85,7 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 		if (missionComplete) {
 			renderMissionCompleteMessage(batch, shapeRenderer, imageLoader, myGame);
 		}
-		
+
 		if (missionBeginTextTimer < MISSION_BEGIN_TEXT_MAX_TIME) {
 			int missionCompleteSize = 10;
 			GameObject player       = PlayerController.getCurrentPlayer(myGame);
@@ -118,7 +118,7 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 			missionComplete = true;
 			//clearSevenSwordsFromInventory(myGame);
 		}
-		
+
 		if (missionBeginTextTimer < MISSION_BEGIN_TEXT_MAX_TIME) {
 			missionBeginTextTimer++;
 		}

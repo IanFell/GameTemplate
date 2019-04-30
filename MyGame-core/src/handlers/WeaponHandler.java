@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.weapons.Gun;
-import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 import loaders.bulletloader.BulletLoader;
 import maps.MapHandler;
@@ -16,14 +15,14 @@ import maps.MapHandler;
  *
  */
 public class WeaponHandler {
-	
+
 	public static Gun gun;
-	
+
+	/**
+	 * Constructor.
+	 */
 	public WeaponHandler() {
-		gun = new Gun(
-				0, 
-				0
-				);
+		gun = new Gun(0, 0);
 	}
 
 	/**

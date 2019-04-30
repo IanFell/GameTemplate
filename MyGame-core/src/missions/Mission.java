@@ -16,10 +16,10 @@ import screens.GameScreen;
  */
 public class Mission {
 
-	protected static boolean missionComplete;
-
-	private int timer;
 	private final int MISSION_COMPLETE_DISPLAY_TIME_VALUE = 350;
+
+	protected static boolean missionComplete;
+	private int timer;
 
 	/**
 	 * Consructor.
@@ -41,12 +41,13 @@ public class Mission {
 			timer++;
 		}
 		int missionCompleteSize = 10;
+		int half                = 2;
 		GameObject player       = PlayerController.getCurrentPlayer(myGame);
 		if (timer < MISSION_COMPLETE_DISPLAY_TIME_VALUE) {
 			batch.draw(
 					imageLoader.missionComplete, 
-					player.getX() - GameScreen.cameraWidth / 2, 
-					player.getY() + GameScreen.cameraWidth / 2, 
+					player.getX() - GameScreen.cameraWidth / half, 
+					player.getY() + GameScreen.cameraWidth / half, 
 					missionCompleteSize, 
 					-missionCompleteSize
 					);

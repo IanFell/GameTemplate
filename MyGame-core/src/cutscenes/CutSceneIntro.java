@@ -5,32 +5,61 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import loaders.ImageLoader;
 
+/**
+ * 
+ * @author Fabulous Fellini
+ *
+ */
 public class CutSceneIntro extends CutScene {
-	
-	private int dialogueLength = 200;
-	private int dialogueOffset = 50;
+
+	private int dialogueLength;
+	private int dialogueOffset;
 	private int startXPosition;
 	private int startYPosition;
-	private int width = 7;
-	private int height = 3;
-	private float boatSpeed = 0.0075f;
+	private int width;
+	private int height;
+	private float boatSpeed;
 	private float boatStartXPosition;
 
+	/**
+	 * Constructor.
+	 * 
+	 * @param String name
+	 */
 	public CutSceneIntro(String name) {
 		super(name);
-		startXPosition = 90;
-		startYPosition = 10;
+		dialogueLength     = 200;
+		dialogueOffset     = 50;
+		startXPosition     = 90;
+		startYPosition     = 10;
+		width              = 7;
+		height             = 3;
+		boatSpeed          = 0.0075f;
 		boatStartXPosition = startXPosition - 2;
 	}
-	
+
+	/**
+	 * 
+	 * @return int
+	 */
 	public int getStartXPosition() {
 		return startXPosition;
 	}
 
+	/**
+	 * 
+	 * @return int
+	 */
 	public int getStartYPosition() {
 		return startYPosition;
 	}
 
+	/**
+	 * 
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shaperender
+	 * @param ImageLoader   imageLoader
+	 */
 	@Override
 	public void renderCutScene(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		batch.draw(
@@ -128,7 +157,7 @@ public class CutSceneIntro extends CutScene {
 			}
 		}
 	}
-	
+
 	@Override
 	public void updateCutScene() {
 		super.updateCutScene();
