@@ -13,20 +13,22 @@ import loaders.GameObjectLoader;
  */
 public class EnemyLoader {
 
-	public static Enemy enemy;
+	public Enemy enemy;
 
 	/**
 	 * 
 	 * @param MyGame myGame
 	 */
-	public void loadEnemy(MyGame myGame) {
+	public Enemy loadEnemy(MyGame myGame, float x, float y, int direction) {
 		enemy = new Enemy(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 45, 
-				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10,
+				x, 
+				y,
 				1,
 				1,
-				myGame.imageLoader.enemy
+				myGame.imageLoader.enemy,
+				direction
 				);
-		GameObjectLoader.gameObjectList.add(enemy);
+		//GameObjectLoader.gameObjectList.add(enemy);
+		return enemy;
 	}
 }

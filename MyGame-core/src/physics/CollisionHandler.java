@@ -54,6 +54,38 @@ public class CollisionHandler {
 			}
 		}
 	}
+	
+	public static void checkIfNPCHasCollidedWithSolidTile(Enemy enemy, MapHandler mapHandler, Tile tile) {
+		if (tile.isSolid()) {
+			if (tile.getBoundingRectangle().overlaps(enemy.rectangle)) {
+				System.out.println("NPC collided with solid tile!");
+				enemy.stopPlayer();
+				// Move NPC so he is not longer overlapping tile bounds.
+				switch (enemy.getEnemyDirection()) {
+				case Enemy.DIRECTION_LEFT:
+					enemy.setX(enemy.getX() + Player.PLAYER_SPEED * 2);
+					enemy.setEnemyDirection(Enemy.DIRECTION_RIGHT);
+					enemy.enemySpeedX = -enemy.enemySpeedX;
+					break;
+				case Enemy.DIRECTION_RIGHT:
+					enemy.setX(enemy.getX() - Player.PLAYER_SPEED * 2);
+					enemy.setEnemyDirection(Enemy.DIRECTION_LEFT);
+					enemy.enemySpeedX = -enemy.enemySpeedX;
+					break;
+				case Enemy.DIRECTION_UP:
+					enemy.setY(enemy.getY() + Player.PLAYER_SPEED * 2);
+					enemy.setEnemyDirection(Enemy.DIRECTION_DOWN);
+					enemy.enemySpeedY = -enemy.enemySpeedY;
+					break;
+				case Enemy.DIRECTION_DOWN:
+					enemy.setY(enemy.getY() - Player.PLAYER_SPEED * 2);
+					enemy.setEnemyDirection(Enemy.DIRECTION_UP);
+					enemy.enemySpeedY = -enemy.enemySpeedY;
+					break;
+				}
+			}
+		}
+	}
 
 	/**
 	 * 
@@ -69,6 +101,44 @@ public class CollisionHandler {
 			} else {
 				System.out.println("Player collided with sand tile!");
 				Player.isInWater = false;
+			} 
+		}
+	}
+	
+	/**
+	 * 
+	 * @param GameObject player
+	 * @param MapHandler mapHandler
+	 * @param Tile       tile
+	 */
+	public static void checkIfNPCHasCollidedWithSandOrWaterTile(Enemy enemy, MapHandler mapHandler, Tile tile) {
+		if (tile.getBoundingRectangle().overlaps(enemy.rectangle)) {
+			if (tile.isWater()) {
+				System.out.println("NPC collided with water tile!");
+				switch(enemy.getEnemyDirection()) {
+				case Enemy.DIRECTION_LEFT:
+					enemy.setX(enemy.getX() + Player.PLAYER_SPEED);
+					enemy.setEnemyDirection(Enemy.DIRECTION_RIGHT);
+					enemy.enemySpeedX = -enemy.enemySpeedX;
+					break;
+				case Enemy.DIRECTION_RIGHT:
+					enemy.setX(enemy.getX() - Player.PLAYER_SPEED);
+					enemy.setEnemyDirection(Enemy.DIRECTION_LEFT);
+					enemy.enemySpeedX = -enemy.enemySpeedX;
+					break;
+				case Enemy.DIRECTION_UP:
+					enemy.setY(enemy.getY() + Player.PLAYER_SPEED * 2);
+					enemy.setEnemyDirection(Enemy.DIRECTION_DOWN);
+					enemy.enemySpeedY = -enemy.enemySpeedY;
+					break;
+				case Enemy.DIRECTION_DOWN:
+					enemy.setY(enemy.getY() - Player.PLAYER_SPEED * 2);
+					enemy.setEnemyDirection(Enemy.DIRECTION_UP);
+					enemy.enemySpeedY = -enemy.enemySpeedY;
+					break;
+				}
+			} else {
+				System.out.println("NPC collided with sand tile!");
 			} 
 		}
 	}
@@ -179,12 +249,12 @@ public class CollisionHandler {
 	 * @param GameObject object
 	 * @param GameObject weapon
 	 */
-	public static void checkIfWeaponHasCollidedWithEnemy(GameObject object, Weapon weapon) {
-		if (object.rectangle.overlaps(weapon.rectangle)) {
+	public static void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
+		if (enemy.rectangle.overlaps(weapon.rectangle)) {
 			if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
 				System.out.println("Weapon has collided with Object!");
-				Enemy.dead = true;
-				Enemy.playSound = true;
+				enemy.dead = true;
+				enemy.playSound = true;
 			}
 		}
 	}

@@ -5,6 +5,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import maps.mapchunks.MapChunk;
 import physics.CollisionHandler;
+import spawners.EnemySpawner;
 import tiles.Tile;
 
 /**
@@ -59,10 +60,6 @@ public class MapRenderer {
 	 * @param MapHandler mapHandler
 	 */
 	public void renderMapOfChunks(MyGame myGame, MapHandler mapHandler) { 
-		timer++;
-		if (timer > 60) {
-			timer = 0;
-		}
 		//GameObject player = PlayerController.getCurrentPlayer(myGame);
 		for (int i = 0; i < totalChunkCount; i++) {
 			for(int z = 0; z < chunkHeight; z++) {
@@ -88,6 +85,24 @@ public class MapRenderer {
 								mapHandler, 
 								MapHandler.mapChunks.get(i).tileMap[x][z]
 								);
+
+						if (myGame.gameScreen.enemySpawner.enemies != null) {
+							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawner.enemies.size(); enemy++) {
+								CollisionHandler.checkIfNPCHasCollidedWithSandOrWaterTile(
+										myGame.gameScreen.enemySpawner.enemies.get(enemy), 
+										mapHandler, 
+										MapHandler.mapChunks.get(i).tileMap[x][z]
+										);
+								/*
+								CollisionHandler.checkIfNPCHasCollidedWithSolidTile(
+										myGame.gameScreen.enemySpawner.enemies.get(enemy), 
+										mapHandler, 
+										MapHandler.mapChunks.get(i).tileMap[x][z]
+										);
+										*/
+
+							}
+						}
 					}
 				}
 			}

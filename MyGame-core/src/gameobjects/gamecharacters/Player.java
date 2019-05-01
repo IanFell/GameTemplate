@@ -121,8 +121,8 @@ public class Player extends GameObject {
 	 * @param MyGame myGame
 	 */
 	public Player(String name, MyGame myGame) {
-		this.x                   = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 40;
-		this.y                   = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 7;
+		this.x                   = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 43;
+		this.y                   = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10;
 		this.width               = characterSize;
 		this.height              = characterSize;
 		rectangle.width          = characterSize;
@@ -156,6 +156,7 @@ public class Player extends GameObject {
 	}
 
 	/**
+	 * Collisions with tiles are located in the MapRenderer class.
 	 * 
 	 * @param MyGame     myGame
 	 * @param MapHandler mapHandler

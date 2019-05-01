@@ -11,6 +11,9 @@ import loaders.ImageLoader;
  *
  */
 public class CutScene {
+	
+	// Change this value to render cutscene intro or not.
+	private boolean cutSceneShouldRender;
 
 	protected String name;
 	protected boolean cutSceneConcluded;
@@ -24,9 +27,23 @@ public class CutScene {
 	 */
 	public CutScene(String name) {
 		this.name            = name;
-		cutSceneConcluded    = false;
-		cutSceneIsInProgress = true;
 		timer                = 0;
+		cutSceneShouldRender = false;
+		if (cutSceneShouldRender) {
+			setCutSceneValues(false, true);
+		} else {
+			setCutSceneValues(true, false);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param boolean isConcluded
+	 * @param boolean isInProgress
+	 */
+	private void setCutSceneValues(boolean isConcluded, boolean isInProgress) {
+		cutSceneConcluded    = isConcluded;
+		cutSceneIsInProgress = isInProgress;
 	}
 
 	/**

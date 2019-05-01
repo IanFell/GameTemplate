@@ -12,6 +12,7 @@ import loaders.ImageLoader;
 import loaders.enemyloader.EnemyLoader;
 import maps.MapHandler;
 import physics.CollisionHandler;
+import spawners.EnemySpawner;
 
 /**
  * 
@@ -137,8 +138,13 @@ public class LegendSword extends Weapon {
 			height = 2;
 			setRotationAngleDependingOnPlayerDirection();
 			updateHitBox();
-			// This will be changed to all enemies eventually.  For now, just check chests.
-			CollisionHandler.checkIfWeaponHasCollidedWithEnemy(EnemyLoader.enemy, this);
+			
+			
+			if (myGame.gameScreen.enemySpawner.enemies != null) {
+				for (int i = 0; i < myGame.gameScreen.enemySpawner.enemies.size(); i++) {
+					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawner.enemies.get(i), this);
+				}
+			}
 		}
 	}
 

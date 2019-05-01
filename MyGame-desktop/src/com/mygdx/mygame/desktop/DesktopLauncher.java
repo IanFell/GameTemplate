@@ -16,7 +16,7 @@ import helpers.GameAttributeHelper;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.addIcon("WaterOne.png", FileType.Internal);
+		config.addIcon("GoldenAgeIcon.png", FileType.Internal);
 		config.title         = "The Golden Age";
 		config.foregroundFPS = GameAttributeHelper.FRAMES_PER_SECOND;
 		

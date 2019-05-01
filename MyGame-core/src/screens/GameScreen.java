@@ -22,6 +22,7 @@ import maps.MapRenderer;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
+import spawners.EnemySpawner;
 
 /**
  * Screen of the game while in play.
@@ -30,6 +31,8 @@ import physics.Weather.WeatherHandler;
  *
  */
 public class GameScreen extends Screens {
+	
+	public EnemySpawner enemySpawner;
 
 	public static int cameraWidth = 10;
 
@@ -145,6 +148,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_TWO).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
+		enemySpawner = new EnemySpawner(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12.5f, null);
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
@@ -197,6 +201,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_TWO).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_THREE).updateObject(myGame, mapHandler);
+		enemySpawner.updateEnemies(myGame, mapHandler);
 		GameWorld.updateGameWorld(myGame, mapHandler);
 
 		// If it is night time, give the screen a dark transparent screen shader.
@@ -206,7 +211,7 @@ public class GameScreen extends Screens {
 		if (cutSceneIntro.isCutSceneConcluded()) {
 			screenShaderPostIntro.updateObject();
 		}
-		
+
 		// Start missions after intro cutscene.
 		if (cutSceneIntro.isCutSceneConcluded()) {
 			missionHandler.handleMissions(myGame, mapHandler);

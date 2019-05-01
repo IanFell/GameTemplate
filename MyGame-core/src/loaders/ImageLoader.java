@@ -16,6 +16,8 @@ public class ImageLoader {
 	 */
 	public Texture testImage;
 
+	public Texture icon;
+
 	public Texture[] cutSceneDialogueOne = new Texture[9];
 
 	public Texture enemy;
@@ -115,6 +117,7 @@ public class ImageLoader {
 	public Texture inventoryLabel;
 
 	public void init() {
+		icon                                   = new Texture(Gdx.files.internal("GoldenAgeIcon.png"));
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("LegendOfTheSevenSwords.png"));
 		boat    					           = new Texture(Gdx.files.internal("BOAT_NEW.png"));
 		enemy    					           = new Texture(Gdx.files.internal("Enemy.png"));
@@ -201,6 +204,7 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		icon.dispose();
 		legendOfTheSevenSwordsBeginMissionText.dispose();
 		boat.dispose();
 		enemy.dispose();

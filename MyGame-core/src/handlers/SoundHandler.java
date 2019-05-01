@@ -39,6 +39,7 @@ public class SoundHandler {
 				soundLoader.sound.play(0.5f);
 				Inventory.playClickSound = false;
 			}
+			
 			if (Enemy.playSound) {
 				soundLoader.sound.play(0.5f);
 				Enemy.playSound = false;

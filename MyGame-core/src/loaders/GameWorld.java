@@ -2,6 +2,7 @@ package loaders;
 
 import com.mygdx.mygame.MyGame;
 
+import helpers.GameAttributeHelper;
 import loaders.chestloader.ChestLoader;
 import loaders.enemyloader.EnemyLoader;
 import loaders.fireloader.FireLoader;
@@ -13,6 +14,7 @@ import loaders.teepeeloader.TeePeeLoader;
 import loaders.treeloaders.DrSuessTreeLoader;
 import loaders.treeloaders.TreeLoader;
 import maps.MapHandler;
+import spawners.EnemySpawner;
 
 /**
  * 
@@ -30,7 +32,9 @@ public class GameWorld {
 	private LightHouseLoader lightHouseLoader;
 	private FireLoader fireLoader;
 	private PigglyWigglyLoader pigglyWigglyLoader;
-	private EnemyLoader enemyLoader;
+	//private EnemyLoader enemyLoader;
+	//private static EnemySpawner enemySpawner;
+	//private EnemySpawner enemySpawner;
 
 	/**
 	 * Constructor.
@@ -47,7 +51,8 @@ public class GameWorld {
 		lightHouseLoader   = new LightHouseLoader();
 		fireLoader         = new FireLoader();
 		pigglyWigglyLoader = new PigglyWigglyLoader();
-		enemyLoader        = new EnemyLoader();
+		//enemyLoader        = new EnemyLoader();
+		//enemySpawner = new EnemySpawner(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12.5f, null);
 		loadGameWorld(myGame);
 	}
 
@@ -65,7 +70,7 @@ public class GameWorld {
 		lightHouseLoader.loadLightHouse(myGame);
 		fireLoader.loadFire();
 		pigglyWigglyLoader.loadPigglyWiggly(myGame);
-		enemyLoader.loadEnemy(myGame);
+		//enemyLoader.loadEnemies(myGame);
 	}
 
 	/**
@@ -74,6 +79,9 @@ public class GameWorld {
 	 * @param MapHandler mapHandler
 	 */
 	public static void updateGameWorld(MyGame myGame, MapHandler mapHandler) {
+		//for (int i = 0; i< EnemyLoader.enemies.length; i++) {
+		//	EnemyLoader.enemies[i].updateObject(myGame, mapHandler);
+		//}
 		for (int i = 0; i< ChestLoader.chests.length; i++) {
 			ChestLoader.chests[i].updateObject(myGame, mapHandler);
 		}
@@ -85,6 +93,7 @@ public class GameWorld {
 		}
 		RawBarLoader.rawbar.updateObject(myGame, mapHandler);
 		PigglyWigglyLoader.pigglyWiggly.updateObject(myGame, mapHandler);
-		EnemyLoader.enemy.updateObject(myGame, mapHandler);
+		
+		//enemySpawner.updateEnemies(myGame, mapHandler);
 	}
 }
