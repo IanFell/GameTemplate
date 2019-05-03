@@ -25,7 +25,7 @@ import screens.Screens;
 public class Keyboard extends ComputerInput {
 
 	// Make sure inventory button if held down is not being hit infinite times.
-	private int inventoryClickTimer = 0;
+	private int inventoryClickTimer          = 0;
 	private boolean startInventoryClickTimer = false;
 
 	/**

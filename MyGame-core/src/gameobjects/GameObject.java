@@ -136,8 +136,6 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 */
 	public void stopScrolling(int direction) {}
 
-	public void stopPlayer() {}
-
 	/**
 	 * 
 	 * @return float
@@ -250,14 +248,16 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * @return boolean
 	 */
 	public boolean getPlaySound() {
-		return false;
+		return playSound;
 	}
 
 	/**
 	 * 
 	 * @param boolean playSound
 	 */
-	public void setPlaySound(boolean playSound) {}
+	public void setPlaySound(boolean playSound) {
+		this.playSound = playSound;
+	}
 
 	/**
 	 * 
@@ -269,7 +269,7 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * 
 	 * @return int
 	 */
-	public int getPlayerHealth() {
+	public int getHealth() {
 		return 0;
 	}
 }

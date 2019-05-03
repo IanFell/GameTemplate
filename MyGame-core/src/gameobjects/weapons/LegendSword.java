@@ -9,10 +9,8 @@ import controllers.PlayerController;
 import gameobjects.gamecharacters.Player;
 import inventory.Inventory;
 import loaders.ImageLoader;
-import loaders.enemyloader.EnemyLoader;
 import maps.MapHandler;
 import physics.CollisionHandler;
-import spawners.EnemySpawner;
 
 /**
  * 
@@ -49,7 +47,6 @@ public class LegendSword extends Weapon {
 		playSound                 = false;
 		this.textureRegionFull    = textureRegionFull;
 		this.textureRegionHalf    = textureRegionHalf;
-		this.damageInflicted      = Weapon.DAMAGE_INFLICTED_LEGEND_SWORD;
 	}
 
 	/**
@@ -99,6 +96,8 @@ public class LegendSword extends Weapon {
 					1, 
 					rotationAngle
 					); 
+			int plantSize = 1;
+			batch.draw(imageLoader.plant, x, y + 0.5f, plantSize, -plantSize);
 		}
 		//renderHitBox(batch, imageLoader);
 	}
@@ -138,8 +137,7 @@ public class LegendSword extends Weapon {
 			height = 2;
 			setRotationAngleDependingOnPlayerDirection();
 			updateHitBox();
-			
-			
+
 			if (myGame.gameScreen.enemySpawner.enemies != null) {
 				for (int i = 0; i < myGame.gameScreen.enemySpawner.enemies.size(); i++) {
 					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawner.enemies.get(i), this);

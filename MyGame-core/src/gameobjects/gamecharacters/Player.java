@@ -25,22 +25,9 @@ import maps.MapHandler;
  * @author Fabulous Fellini
  *
  */
-public class Player extends GameObject { 
+public class Player extends GameCharacter { 
 
 	private String name;
-
-	/**
-	 * Used for water animation.
-	 */
-	private int timer;
-
-	/**
-	 * Available directions player can travel.  
-	 */
-	public static final int DIRECTION_LEFT  = 0;
-	public static final int DIRECTION_RIGHT = 1;
-	public static final int DIRECTION_UP    = 2;
-	public static final int DIRECTION_DOWN  = 3;
 
 	public final static float PLAYER_SPEED = 0.10f;
 
@@ -108,8 +95,8 @@ public class Player extends GameObject {
 	private float characterSize = 0.5f;
 
 	protected int playerScore;
-
-	protected int playerHealth;
+	
+	protected int health;
 
 	private Torch torch;
 	public static boolean hasTorch;
@@ -136,12 +123,13 @@ public class Player extends GameObject {
 		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		walkRightAnimation       = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 		walkLeftAnimation        = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
-		playerHealth     	     = 100;
+		health            	     = 100;
 		this.name                = name;
 		torch                    = new Torch(0, 0);
 		hasTorch                 = false;
 		inventory                = new Inventory(myGame);
 		playerIsPerformingAttack = false;
+		health   			     = 100;
 	}
 
 	/**
@@ -179,6 +167,7 @@ public class Player extends GameObject {
 			torch.updateObject(myGame, mapHandler);
 		}
 
+		// Cannot perform attack too fast.
 		if (playerIsPerformingAttack) {
 			attackTimer++;
 			if (attackTimer > 5) {
@@ -186,6 +175,22 @@ public class Player extends GameObject {
 				playerIsPerformingAttack = false;
 			}
 		}
+	}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getHealth() {
+		return health;
+	}
+
+	/**
+	 * 
+	 * @param int health
+	 */
+	public void setHealth(int health) {
+		this.health = health;
 	}
 
 	/**
@@ -340,6 +345,7 @@ public class Player extends GameObject {
 	 * 
 	 * @param float speed
 	 */
+	@Override
 	public void moveRight(float speed) {
 		translateX(speed);
 		setDirection(Player.DIRECTION_RIGHT);
@@ -351,6 +357,7 @@ public class Player extends GameObject {
 	 * 
 	 * @param float speed
 	 */
+	@Override
 	public void moveLeft(float speed) {
 		translateX(-speed);
 		setDirection(Player.DIRECTION_LEFT);
@@ -362,6 +369,7 @@ public class Player extends GameObject {
 	 * 
 	 * @param float speed
 	 */
+	@Override
 	public void moveUp(float speed) {
 		translateY(-speed);
 		setDirection(Player.DIRECTION_UP);
@@ -373,16 +381,12 @@ public class Player extends GameObject {
 	 * 
 	 * @param float speed
 	 */
+	@Override
 	public void moveDown(float speed) {
 		translateY(speed);
 		setDirection(Player.DIRECTION_DOWN);
 		playerIsMoving = true;
 		System.out.println("Player is moving down");
-	}
-
-	public void stopPlayer() {
-		dx = 0;
-		dy = 0;
 	}
 
 	/**
@@ -414,7 +418,7 @@ public class Player extends GameObject {
 	 * @param int score
 	 */
 	public void updatePlayerScore(int score) {}
-
+	
 	/**
 	 * 
 	 * @return String
@@ -425,20 +429,11 @@ public class Player extends GameObject {
 
 	/**
 	 * 
-	 * @return int
-	 */
-	@Override
-	public int getPlayerHealth() {
-		return playerHealth;
-	}
-
-	/**
-	 * 
 	 * @param MyGame myGame
 	 * @return boolean
 	 */
 	protected boolean playerOneIsMovingAndNotDead(MyGame myGame) {
-		return Player.playerIsMoving && myGame.getGameObject(GameObject.PLAYER_ONE).getPlayerHealth() > 0;
+		return Player.playerIsMoving && myGame.getGameObject(GameObject.PLAYER_ONE).getHealth() > 0;
 	}
 
 	/**
@@ -448,7 +443,7 @@ public class Player extends GameObject {
 	 */
 	protected void simulateDeath(MyGame myGame, GameObject player) {
 		if (!GameObjectLoader.gameObjectList.contains(player)) {
-			playerHealth--;
+			health--;
 		}
 	}
 
@@ -458,7 +453,7 @@ public class Player extends GameObject {
 	 * @param GameObject currentPlayer
 	 */
 	protected void removeCurrentPlayerIfDead(GameObject previousPlayer, GameObject currentPlayer) {
-		if (playerHealth <= 0 && !GameObjectLoader.gameObjectList.contains(previousPlayer)) {
+		if (health <= 0 && !GameObjectLoader.gameObjectList.contains(previousPlayer)) {
 			GameObjectLoader.gameObjectList.remove(currentPlayer);
 		}
 	}

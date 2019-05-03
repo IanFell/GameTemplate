@@ -7,10 +7,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
-import gameobjects.GameObject;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import physics.CollisionHandler;
 import physics.Lighting.Fire;
 
 /**
@@ -18,27 +18,22 @@ import physics.Lighting.Fire;
  * @author Fabulous Fellini
  *
  */
-public class Enemy extends GameObject {
-	
-	public static final int DIRECTION_LEFT  = 0;
-	public static final int DIRECTION_RIGHT = 1;
-	public static final int DIRECTION_UP    = 2;
-	public static final int DIRECTION_DOWN  = 3;
-	
+public class Enemy extends GameCharacter {
+
 	public int direction;
-	
+
 	private Rectangle attackBoundary;
 
 	// How long fire animation plays after enemy has been killed.
-	private final int MAX_DEATH_ANIMATION_VALUE = 100;
+	public final static int MAX_DEATH_ANIMATION_VALUE = 100;
+	
+	public final static int DAMAGE_INFLICTED = -1;
 
 	private Texture texture;
-	private int timer;
 	private Fire fire;
-	public static  boolean playSound;
-	public  boolean dead;
-	public  float enemySpeedX;
-	public  float enemySpeedY;
+	private boolean dead;
+	private boolean willAttack;
+	private float speed;
 
 	/**
 	 * Constructor.
@@ -55,23 +50,107 @@ public class Enemy extends GameObject {
 		this.width       = width;
 		this.height      = height;
 		this.texture     = texture;
+		this.direction   = direction;
+		dx               = 0;
+		dy               = 0;
+		speed            = 0.05f;
 		rectangle.width  = width;
 		rectangle.height = height;
-		timer            = 0;
-		fire             = new Fire(0, 0, width, height, null, false);
 		playSound        = false;
 		dead             = false;
-		enemySpeedX       = 0.05f;
-		enemySpeedY = 0;
-		this.direction = direction;
 		// The height of the rectangle is to reflect attackBoundary if player is below enemy.
 		attackBoundary = new Rectangle(x, y, 3, 4);
+
+		// Enemy will either attack player, or get within attackBoundary and stop.
+		willAttack = false;
+		int randomAttackValue = RandomNumberGenerator.generateRandomInteger(2);
+		if (randomAttackValue < 1) {
+			willAttack = true;
+		}
+		
+		fire = new Fire(0, 0, width, height, null, false);
 	}
 	
+	@Override
+	public void moveRight(float speed) {
+		setX(getX() + speed);
+		setEnemyDirection(Enemy.DIRECTION_RIGHT);
+		setDx(-getDx());
+	}
+	
+	/**
+	 * 
+	 * @param float speed
+	 */
+	@Override
+	public void moveLeft(float speed) {
+		setX(getX() - speed);
+		setEnemyDirection(Enemy.DIRECTION_LEFT);
+		setDx(-getDx());
+	}
+	
+	/**
+	 * 
+	 * @param float speed
+	 */
+	@Override
+	public void moveDown(float speed) {
+		setY(getY() + speed * 2);
+		setEnemyDirection(Enemy.DIRECTION_DOWN);
+		setDy(-getDy());
+	}
+	
+	/**
+	 * 
+	 * @param float speed
+	 */
+	@Override
+	public void moveUp(float speed) {
+		setY(getY() - speed * 2);
+		setEnemyDirection(Enemy.DIRECTION_UP);
+		setDy(-getDy());
+	}
+	
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getTimer() {
+		return timer;
+	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	public boolean isDead() {
+		return dead;
+	}
+
+	/**
+	 * 
+	 * @param boolean dead
+	 */
+	public void setIsDead(boolean dead) {
+		this.dead = dead;
+	}
+
+	/**
+	 * Don't use GameObject.getDirection() because it is associated with the Player direction.  
+	 * Currently this is working, so don't change it.
+	 * 
+	 * @return direction
+	 */
 	public int getEnemyDirection() {
 		return direction;
 	}
 
+	/**
+	 * Don't use GameObject.getDirection() because it is associated with the Player direction.  
+	 * Currently this is working, so don't change it.
+	 * 
+	 * @param int direction
+	 */
 	public void setEnemyDirection(int direction) {
 		this.direction = direction;
 	}
@@ -86,6 +165,7 @@ public class Enemy extends GameObject {
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		if (!dead) {
 			batch.draw(texture, x, y, width, -height);
+			// Uncomment to debug attackBoundary.
 			//batch.draw(imageLoader.whiteSquare, attackBoundary.x, attackBoundary.y, attackBoundary.width, attackBoundary.height);
 		} else {
 			if (timer < MAX_DEATH_ANIMATION_VALUE) {
@@ -102,111 +182,102 @@ public class Enemy extends GameObject {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		rectangle.x = x;
-		rectangle.y = y;
+		rectangle.x      = x;
+		rectangle.y      = y;
+		// attackBoundary is a few pixels around enemy.
 		attackBoundary.x = x - 1;
 		attackBoundary.y = y - 2;
-		
+
 		// Make sure dead fire animation doesn't move around.
 		if (!dead) {
 			executeAI(myGame);
 		}
 		
+		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
+
 		fire.updateObject(myGame, mapHandler);
 		if (dead) {
-			//if (timer < MAX_DEATH_ANIMATION_VALUE) {
-				timer++;
-			//}
+			timer++;
 			fire.setX(x);
 			fire.setY(y);
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
 	private void executeAI(MyGame myGame) {
-		
-		
-		
+		pathFind(myGame);
 		if (attackBoundary.overlaps(PlayerController.getCurrentPlayer(myGame).rectangle)) {
-			attackPlayer(myGame);
-		} else {
-			pathFind(myGame);
-			if (enemySpeedX == 0 && enemySpeedY == 0) {
-				switch(direction) {
-				case DIRECTION_LEFT:
-					enemySpeedX = 0.05f;
-					enemySpeedY = 0;
-					direction = DIRECTION_RIGHT;
-				break;
-				case DIRECTION_RIGHT:
-					enemySpeedX = -0.05f;
-					enemySpeedY = 0;
-					direction = DIRECTION_LEFT;
-					break;
-				case DIRECTION_UP:
-					enemySpeedX = 0;
-					enemySpeedY = 0.05f;
-					direction = DIRECTION_DOWN;
-					break;
-				case DIRECTION_DOWN:
-					enemySpeedX = 0;
-					enemySpeedY = -0.05f;
-					direction = DIRECTION_DOWN;
-					break;
-				}
+			if (willAttack) {
+				attackPlayer(myGame);
+			} else {
+				dx = 0;
+				dy = 0;
 			}
 		}
 	}
-	
-	private void attackPlayer(MyGame myGame) {
-		float playerX = PlayerController.getCurrentPlayer(myGame).getX();
-		float playerY = PlayerController.getCurrentPlayer(myGame).getY();
-		//int attackBoundary = 1;
-		
-		
-			
-			enemySpeedX = 0;
-			enemySpeedY = 0;
-		
-		/*
-		if (playerX - x < attackBoundary //||
-				//x - playerX < attackBoundary
-				) {
-			enemySpeedX = 0;
-			enemySpeedY = 0;
-		}*/
-	}
-	
+
 	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void attackPlayer(MyGame myGame) {
+		if (willAttack) {
+			if (x < PlayerController.getCurrentPlayer(myGame).getX()) {
+				dx = speed;
+			} else if (x > PlayerController.getCurrentPlayer(myGame).getX()) {
+				dx = -speed;
+			}
+			if (y < PlayerController.getCurrentPlayer(myGame).getY()) {
+				dy = speed;
+			} else if (y > PlayerController.getCurrentPlayer(myGame).getY()) {
+				dy = -speed;
+			}
+		}
+	}
+
+	/**
+	 * This method just deals with direction.
 	 * Collisions with tiles are located in the MapRenderer class.
+	 * 
+	 * @param MyGame myGame
 	 */
 	private void pathFind(MyGame myGame) {
-		x += enemySpeedX;
-		y += enemySpeedY;
+		x += dx;
+		y += dy;
 		int changeDirection = RandomNumberGenerator.generateRandomInteger(100);
 		if (changeDirection > 90) {
 			changeDirection(myGame);
 		}
 	}
-	
+
+	/**
+	 * This behaves differently than the moveUp(), moveDown(), moveLeft(), and moveRight() methods.
+	 * Do not use those methods to move enemy within this method.
+	 * 
+	 * @param MyGame myGame
+	 */
 	private void changeDirection(MyGame myGame) {
 		if (direction == DIRECTION_LEFT || direction == DIRECTION_RIGHT) {
 			if (y < PlayerController.getCurrentPlayer(myGame).getY()) {
-				enemySpeedX = 0;
-				enemySpeedY = 0.05f;
+				dx = 0;
+				dy = speed;
 				direction = DIRECTION_DOWN;
 			} else {
-				enemySpeedX = 0;
-				enemySpeedY = -0.05f;
+				dx = 0;
+				dy = -speed;
 				direction = DIRECTION_UP;
 			}
 		} else {
 			if (x < PlayerController.getCurrentPlayer(myGame).getX()) {
-				enemySpeedX = 0.05f;
-				enemySpeedY = 0;
+				dx = speed;
+				dy = 0;
 				direction = DIRECTION_RIGHT;
 			} else {
-				enemySpeedX = -0.05f;
-				enemySpeedY = 0;
+				dx = -speed;
+				dy = 0;
 				direction = DIRECTION_LEFT;
 			}
 		}

@@ -26,6 +26,8 @@ import tiles.Tile;
 public class CollisionHandler {
 
 	/**
+	 * Only player can collide with solid tiles.
+	 * NPCs can walk through them.
 	 * 
 	 * @param GameObject player
 	 * @param MapHandler mapHandler
@@ -35,7 +37,6 @@ public class CollisionHandler {
 		if (tile.isSolid()) {
 			if (tile.getBoundingRectangle().overlaps(player.rectangle)) {
 				System.out.println("Player collided with solid tile!");
-				player.stopPlayer();
 				// Move player so he is not longer overlapping tile bounds.
 				switch (Player.direction) {
 				case Player.DIRECTION_LEFT:
@@ -49,38 +50,6 @@ public class CollisionHandler {
 					break;
 				case Player.DIRECTION_DOWN:
 					player.setY(player.getY() - Player.PLAYER_SPEED);
-					break;
-				}
-			}
-		}
-	}
-	
-	public static void checkIfNPCHasCollidedWithSolidTile(Enemy enemy, MapHandler mapHandler, Tile tile) {
-		if (tile.isSolid()) {
-			if (tile.getBoundingRectangle().overlaps(enemy.rectangle)) {
-				System.out.println("NPC collided with solid tile!");
-				enemy.stopPlayer();
-				// Move NPC so he is not longer overlapping tile bounds.
-				switch (enemy.getEnemyDirection()) {
-				case Enemy.DIRECTION_LEFT:
-					enemy.setX(enemy.getX() + Player.PLAYER_SPEED * 2);
-					enemy.setEnemyDirection(Enemy.DIRECTION_RIGHT);
-					enemy.enemySpeedX = -enemy.enemySpeedX;
-					break;
-				case Enemy.DIRECTION_RIGHT:
-					enemy.setX(enemy.getX() - Player.PLAYER_SPEED * 2);
-					enemy.setEnemyDirection(Enemy.DIRECTION_LEFT);
-					enemy.enemySpeedX = -enemy.enemySpeedX;
-					break;
-				case Enemy.DIRECTION_UP:
-					enemy.setY(enemy.getY() + Player.PLAYER_SPEED * 2);
-					enemy.setEnemyDirection(Enemy.DIRECTION_DOWN);
-					enemy.enemySpeedY = -enemy.enemySpeedY;
-					break;
-				case Enemy.DIRECTION_DOWN:
-					enemy.setY(enemy.getY() - Player.PLAYER_SPEED * 2);
-					enemy.setEnemyDirection(Enemy.DIRECTION_UP);
-					enemy.enemySpeedY = -enemy.enemySpeedY;
 					break;
 				}
 			}
@@ -104,7 +73,7 @@ public class CollisionHandler {
 			} 
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param GameObject player
@@ -117,24 +86,16 @@ public class CollisionHandler {
 				System.out.println("NPC collided with water tile!");
 				switch(enemy.getEnemyDirection()) {
 				case Enemy.DIRECTION_LEFT:
-					enemy.setX(enemy.getX() + Player.PLAYER_SPEED);
-					enemy.setEnemyDirection(Enemy.DIRECTION_RIGHT);
-					enemy.enemySpeedX = -enemy.enemySpeedX;
+					enemy.moveRight(Player.PLAYER_SPEED);
 					break;
 				case Enemy.DIRECTION_RIGHT:
-					enemy.setX(enemy.getX() - Player.PLAYER_SPEED);
-					enemy.setEnemyDirection(Enemy.DIRECTION_LEFT);
-					enemy.enemySpeedX = -enemy.enemySpeedX;
+					enemy.moveLeft(Player.PLAYER_SPEED);
 					break;
 				case Enemy.DIRECTION_UP:
-					enemy.setY(enemy.getY() + Player.PLAYER_SPEED * 2);
-					enemy.setEnemyDirection(Enemy.DIRECTION_DOWN);
-					enemy.enemySpeedY = -enemy.enemySpeedY;
+					enemy.moveDown(Player.PLAYER_SPEED);
 					break;
 				case Enemy.DIRECTION_DOWN:
-					enemy.setY(enemy.getY() - Player.PLAYER_SPEED * 2);
-					enemy.setEnemyDirection(Enemy.DIRECTION_UP);
-					enemy.enemySpeedY = -enemy.enemySpeedY;
+					enemy.moveUp(Player.PLAYER_SPEED);
 					break;
 				}
 			} else {
@@ -196,7 +157,6 @@ public class CollisionHandler {
 	public static void checkIfPlayerHasCollidedWithFire(GameObject player, GameObject fire) {
 		if (fire.rectangle.overlaps(player.rectangle)) {
 			System.out.println("Player has collided with fire!");
-			//System.exit(0);
 		}
 	}
 
@@ -246,16 +206,30 @@ public class CollisionHandler {
 
 	/**
 	 * 
-	 * @param GameObject object
+	 * @param Enemy      enemy
 	 * @param GameObject weapon
 	 */
 	public static void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
 		if (enemy.rectangle.overlaps(weapon.rectangle)) {
 			if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
 				System.out.println("Weapon has collided with Object!");
-				enemy.dead = true;
-				enemy.playSound = true;
+				enemy.setIsDead(true);
+				enemy.setPlaySound(true);
+				enemy.setIsDead(true);
 			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param Enemy  enemy
+	 * @param Player player
+	 */
+	public static void checkIfEnemyHasCollidedWithPlayer(Enemy enemy, Player player) {
+		if (enemy.rectangle.overlaps(player.rectangle)) {
+			System.out.println("Player is being attacked by enemy!");
+			// Comment this out to prevent death.
+			//player.setHealth(player.getHealth() + Enemy.DAMAGE_INFLICTED);
 		}
 	}
 }

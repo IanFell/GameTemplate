@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
 import loaders.bulletloader.BulletLoader;
 import maps.MapHandler;
@@ -16,13 +15,13 @@ import maps.MapHandler;
  */
 public class WeaponHandler {
 
-	public static Gun gun;
+	//public static Gun gun;
 
 	/**
 	 * Constructor.
 	 */
 	public WeaponHandler() {
-		gun = new Gun(0, 0);
+		//gun = new Gun(0, 0);
 	}
 
 	/**
@@ -32,8 +31,7 @@ public class WeaponHandler {
 	 */
 	public static void updateWeapons(MyGame myGame, MapHandler mapHandler) {
 		BulletLoader.updateBullets(myGame, mapHandler);
-		gun.updateObject(myGame, mapHandler);
-		System.out.println("Gun x: " + gun.getX());
+		//gun.updateObject(myGame, mapHandler);
 	}
 
 	/**
@@ -44,6 +42,6 @@ public class WeaponHandler {
 	 */
 	public static void renderWeapons(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {	
 		BulletLoader.renderBullets(batch, shapeRenderer, imageLoader);
-		gun.renderObject(batch, shapeRenderer, imageLoader);
+		//gun.renderObject(batch, shapeRenderer, imageLoader);
 	}
 }

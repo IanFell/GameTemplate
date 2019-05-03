@@ -6,7 +6,6 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
-import loaders.chestloader.ChestLoader;
 import maps.MapHandler;
 
 /**
@@ -24,7 +23,6 @@ public class Bullet extends Weapon {
 	 */
 	public Bullet(float x, float y) {
 		super(x, y);
-		this.damageInflicted = Weapon.DAMAGE_INFLICTED_BULLET;
 	}
 
 	/**

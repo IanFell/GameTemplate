@@ -31,7 +31,7 @@ import spawners.EnemySpawner;
  *
  */
 public class GameScreen extends Screens {
-	
+
 	public EnemySpawner enemySpawner;
 
 	public static int cameraWidth = 10;
@@ -78,6 +78,10 @@ public class GameScreen extends Screens {
 	 */
 	private MissionHandler missionHandler;
 
+	/**
+	 * We need this to instantiate weapons, however all other 
+	 * calls to the weapon handler will deal with static variables.
+	 */
 	private WeaponHandler weaponHandler = new WeaponHandler();
 
 	private CutSceneIntro cutSceneIntro;
@@ -148,7 +152,11 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_TWO).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
-		enemySpawner = new EnemySpawner(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12.5f, null);
+		enemySpawner = new EnemySpawner(
+				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, 
+				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12.5f, 
+				"Mexico Beach"
+				);
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);

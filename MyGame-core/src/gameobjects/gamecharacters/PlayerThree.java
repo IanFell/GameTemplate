@@ -44,8 +44,8 @@ public class PlayerThree extends Player {
 					);
 		} else if (
 				Player.playerIsMoving && 
-				myGame.getGameObject(GameObject.PLAYER_TWO).getPlayerHealth() > 0 && 
-				myGame.getGameObject(GameObject.PLAYER_ONE).getPlayerHealth() <= 0) {
+				myGame.getGameObject(GameObject.PLAYER_TWO).getHealth() > 0 && 
+				myGame.getGameObject(GameObject.PLAYER_ONE).getHealth() <= 0) {
 			handleWalking(
 					myGame, 
 					PlayerTwo.playerTwoXPositions.size(), 

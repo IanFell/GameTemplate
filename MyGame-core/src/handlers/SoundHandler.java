@@ -2,7 +2,6 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.gamecharacters.Enemy;
 import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
@@ -39,10 +38,11 @@ public class SoundHandler {
 				soundLoader.sound.play(0.5f);
 				Inventory.playClickSound = false;
 			}
-			
-			if (Enemy.playSound) {
-				soundLoader.sound.play(0.5f);
-				Enemy.playSound = false;
+			for (int i = 0; i < myGame.gameScreen.enemySpawner.enemies.size(); i++) {
+				if (myGame.gameScreen.enemySpawner.enemies.get(i).getPlaySound()) {
+					soundLoader.sound.play(0.5f);
+					myGame.gameScreen.enemySpawner.enemies.get(i).setPlaySound(false);
+				}
 			}
 		}
 	}

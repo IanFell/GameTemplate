@@ -11,11 +11,6 @@ import physics.CollisionHandler;
  */
 public class Weapon extends GameObject {
 
-	public static final int DAMAGE_INFLICTED_BULLET       = 10;
-	public static final int DAMAGE_INFLICTED_LEGEND_SWORD = 5;
-
-	protected int damageInflicted;
-
 	/**
 	 * Constructor.
 	 * 
@@ -33,13 +28,6 @@ public class Weapon extends GameObject {
 	 * @param Weapon       weapon
 	 */
 	protected void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
-		/*
-		for (int i = 0; i < objects.length; i++) {
-			CollisionHandler.checkIfWeaponHasCollidedWithObject(
-					objects[i],
-					weapon
-					);
-		}*/
 		CollisionHandler.checkIfWeaponHasCollidedWithEnemy(
 				enemy,
 				weapon

@@ -57,7 +57,7 @@ public class PlayerOne extends Player {
 		super.updateObject(myGame, mapHandler);
 		handleWalking(myGame);
 		handleJumping(myGame);
-		if (playerHealth <= 0) {
+		if (health <= 0) {
 			GameObjectLoader.gameObjectList.remove(this);
 		}
 		//simulateDeath(myGame, this);
@@ -82,7 +82,7 @@ public class PlayerOne extends Player {
 	 */
 	@Override
 	protected void simulateDeath(MyGame myGame, GameObject player) {
-		playerHealth--;
+		health--;
 	}
 
 	/**

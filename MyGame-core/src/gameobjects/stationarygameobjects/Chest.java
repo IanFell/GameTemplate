@@ -49,24 +49,6 @@ public class Chest extends GamePlayObject {
 
 	/**
 	 * 
-	 * @return boolean
-	 */
-	@Override
-	public boolean getPlaySound() {
-		return playSound;
-	}
-
-	/**
-	 * 
-	 * @param boolean playSoud
-	 */
-	@Override
-	public void setPlaySound(boolean playSound) {
-		this.playSound = playSound;
-	}
-
-	/**
-	 * 
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shaperender
 	 * @param ImageLoader   imageLoader
