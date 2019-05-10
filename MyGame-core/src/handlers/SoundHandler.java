@@ -35,7 +35,7 @@ public class SoundHandler {
 			}
 			// Click sound when choosing different inventory objects.
 			if (Inventory.playClickSound) {
-				soundLoader.sound.play(0.5f);
+				soundLoader.click.play(0.5f);
 				Inventory.playClickSound = false;
 			}
 			for (int i = 0; i < myGame.gameScreen.enemySpawner.enemies.size(); i++) {

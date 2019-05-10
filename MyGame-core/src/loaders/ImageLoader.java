@@ -115,8 +115,11 @@ public class ImageLoader {
 	public Texture legendSwordRainbow;
 
 	public Texture inventoryLabel;
+	
+	public Texture nightTimeShader;
 
 	public void init() {
+		nightTimeShader                        = new Texture(Gdx.files.internal("NightTimeShader.png"));
 		icon                                   = new Texture(Gdx.files.internal("GoldenAgeIcon.png"));
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("LegendOfTheSevenSwords.png"));
 		boat    					           = new Texture(Gdx.files.internal("BOAT_NEW.png"));
@@ -278,6 +281,7 @@ public class ImageLoader {
 		legendSwordPinkHalf.dispose();
 		legendSwordOrangeHalf.dispose();
 		pigglywiggly.dispose();
+		nightTimeShader.dispose();
 
 		for(int i = 0; i < cutSceneDialogueOne.length; i++) {
 			cutSceneDialogueOne[i].dispose();

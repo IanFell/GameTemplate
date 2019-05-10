@@ -18,8 +18,8 @@ public class Torch extends GameObject {
 
 	private Fire fire;
 
-	protected int width  = 1;
-	protected int height = 3;
+	protected float width  = 0.5f;
+	protected float height = 1.5f;
 
 	/**
 	 * 

@@ -17,8 +17,8 @@ public class FireLoader extends ClassObjectLoader {
 	private boolean hasLogs = true;
 
 	public void loadFire() {
-		int fireWidth  = 1;
-		int fireHeight = 2;
+		float fireWidth  = 0.5f;
+		float fireHeight = 1.5f;
 		fires[0] = new Fire(
 				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 51, 
 				6,

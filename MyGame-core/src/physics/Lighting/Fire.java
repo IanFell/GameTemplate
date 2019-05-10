@@ -21,7 +21,7 @@ public class Fire extends GameObject {
 
 	private boolean hasLogs;
 
-	public Fire(float x, float y, int width, int height, String location, boolean hasLogs) {
+	public Fire(float x, float y, float width, float height, String location, boolean hasLogs) {
 		this.x                = x;
 		this.y                = y;
 		this.width            = width;

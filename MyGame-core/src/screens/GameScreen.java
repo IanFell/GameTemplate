@@ -61,17 +61,21 @@ public class GameScreen extends Screens {
 	private WeatherHandler weatherHandler = new WeatherHandler();
 
 	/**
-	 * Used to shade the screen to simulate darkness.
+	 * Used for transparancy to render clouds.
 	 */
-	private ScreenShader screenShader          = new ScreenShader(myGame);
+	private ScreenShader screenShader = new ScreenShader(myGame);
+	
+	/**
+	 * When this screen fades, gameplay starts.
+	 */
 	private ScreenShader screenShaderPostIntro = new ScreenShader(myGame);
-
-	private GuiScreen guiScreen = new GuiScreen(myGame);
-
+	
 	/**
 	 *  Screen fades in during transitions.
 	 */
 	private TransitionScreen transitionScreen = new TransitionScreen(myGame);
+
+	private GuiScreen guiScreen = new GuiScreen(myGame);
 
 	/**
 	 * Handles all game missions.

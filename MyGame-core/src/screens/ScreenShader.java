@@ -46,6 +46,7 @@ public class ScreenShader extends Screens {
 		 * Use these variables because if we just use regular width and height,
 		 * the screen shader gets offset when player moves.
 		 */
+		/*
 		int xyOffset          = 1;
 		int widthHeightOffset = 2;
 		shapeRenderer.rect(
@@ -54,6 +55,7 @@ public class ScreenShader extends Screens {
 				camera.viewportWidth + widthHeightOffset, 
 				camera.viewportHeight + widthHeightOffset
 				);
+				*/
 	}
 
 	public void updateObject() {

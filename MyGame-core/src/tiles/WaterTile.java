@@ -2,6 +2,8 @@ package tiles;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import loaders.ImageLoader;
+
 
 /**
  * Water tile consists of a grid of 20 x 20 tiles.

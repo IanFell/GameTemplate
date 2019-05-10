@@ -40,16 +40,16 @@ public class CollisionHandler {
 				// Move player so he is not longer overlapping tile bounds.
 				switch (Player.direction) {
 				case Player.DIRECTION_LEFT:
-					player.setX(player.getX() + Player.PLAYER_SPEED);
+					//player.setX(player.getX() + Player.PLAYER_SPEED);
 					break;
 				case Player.DIRECTION_RIGHT:
-					player.setX(player.getX() - Player.PLAYER_SPEED);
+					//player.setX(player.getX() - Player.PLAYER_SPEED);
 					break;
 				case Player.DIRECTION_UP:
-					player.setY(player.getY() + Player.PLAYER_SPEED);
+					//player.setY(player.getY() + Player.PLAYER_SPEED);
 					break;
 				case Player.DIRECTION_DOWN:
-					player.setY(player.getY() - Player.PLAYER_SPEED);
+					//player.setY(player.getY() - Player.PLAYER_SPEED);
 					break;
 				}
 			}

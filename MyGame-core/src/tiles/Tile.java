@@ -5,6 +5,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
+import loaders.ImageLoader;
+import physics.Weather.NightAndDayCycle;
+import screens.GameScreen;
+
 /**
  * Tile objects.
  * 
@@ -27,6 +32,10 @@ public class Tile extends Sprite {
 	public static Texture sandTextureTopRightPath;
 	public static Texture sandTextureCrossPath;
 	public static Texture waterTextureOne;
+	
+	//private ImageLoader imageLoader;
+	
+	public static Texture nightTimeTexture;
 
 	protected static final int SolidTile              = 0;
 	protected static final int GrassTileOne           = 1;
@@ -77,6 +86,7 @@ public class Tile extends Sprite {
 		sandTextureVerticalPath   = myGame.imageLoader.sandTileVerticalPath;
 		sandTextureTopRightPath   = myGame.imageLoader.sandTileTopRightPath;
 		sandTextureCrossPath      = myGame.imageLoader.sandTileCrossPath;
+		nightTimeTexture          = myGame.imageLoader.nightTimeShader;
 	}
 
 	/**
@@ -102,5 +112,28 @@ public class Tile extends Sprite {
 	@Override
 	public void draw (Batch batch) {
 		super.draw(batch);
+		
+		if (!NightAndDayCycle.isDayTime()) {
+			if (isWithinScreenBounds()) {
+				batch.draw(nightTimeTexture, getX(), getY(), getWidth(), getHeight());
+			}
+		}
+	}
+	
+	private  boolean isWithinScreenBounds() {
+		float cameraXPosition = GameScreen.camera.position.x;
+		float cameraYPosition = GameScreen.camera.position.y;
+		float playerXPosition = getX();
+		float playerYPosition = getY();
+		int screenBoundOffset = 8;
+		if (
+				playerXPosition < cameraXPosition + screenBoundOffset &&
+				playerXPosition > cameraXPosition - screenBoundOffset &&
+				playerYPosition < cameraYPosition + screenBoundOffset &&
+				playerYPosition > cameraYPosition - screenBoundOffset
+				) {
+			return true;
+		}
+		return false;
 	}
 }

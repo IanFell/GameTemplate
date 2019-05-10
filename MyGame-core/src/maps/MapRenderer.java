@@ -5,6 +5,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import maps.mapchunks.MapChunk;
 import physics.CollisionHandler;
+import physics.Weather.NightAndDayCycle;
 import tiles.Tile;
 
 /**
@@ -18,7 +19,7 @@ public class MapRenderer {
 	/**
 	 * Used to determine which water tile to draw for animation.
 	 */
-	private int timer = 0;
+	private float timer = 0;
 
 	private int chunkWidth  = MapInformationHolder.CHUNK_WIDTH;
 	private int chunkHeight = MapInformationHolder.CHUNK_HEIGHT;
@@ -70,6 +71,7 @@ public class MapRenderer {
 							)
 							) {
 						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
+						//MapHandler.mapChunks.get(i).tileMap[x][z].drawNight(myGame.renderer.batch, myGame);
 						animateWaterTiles(i, myGame, x, z);
 						// Might need to make this method take a certain player, other wise its slow as shit.
 						//if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_ONE))) {
@@ -92,6 +94,9 @@ public class MapRenderer {
 										);
 							}
 						}
+						if (!NightAndDayCycle.isDayTime()) {
+							//MapHandler.mapChunks.get(i).tileMap[x][z].drawNightTile(i, myGame, x, z);
+						}
 					}
 				}
 			}
@@ -110,20 +115,24 @@ public class MapRenderer {
 	 * @param int    column
 	 */
 	private void animateWaterTiles(int tileNumber, MyGame myGame, int row, int column) {
+		timer += 0.05f;
+		if (timer > 50) {
+			timer = 0;
+		}
 		Tile tile = MapHandler.mapChunks.get(tileNumber).tileMap[row][column];
 		if (tile.getName().equals("Water")) {
 			if (
 					(timer > 0 && timer < 10) ||
 					(timer >= 30 && timer < 40)
 					) {
-				tile.setTexture(myGame.imageLoader.waterTileOne);
+				tile.setTexture(myGame.imageLoader.waterTileThree);
 			} else if (
 					(timer >= 10 && timer < 20) ||
 					(timer >= 40 && timer < 50)
 					) {
 				tile.setTexture(myGame.imageLoader.waterTileTwo);
 			} else {
-				tile.setTexture(myGame.imageLoader.waterTileThree);
+				tile.setTexture(myGame.imageLoader.waterTileOne);
 			}
 		}
 	}
