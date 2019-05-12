@@ -10,7 +10,7 @@ import gameobjects.gamecharacters.Player;
 import helpers.ColorHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
-import particles.Particle;
+import particles.CloudParticle;
 import screens.GameScreen;
 
 /**
@@ -20,7 +20,7 @@ import screens.GameScreen;
  */
 public class Cloud extends GameObject {
 
-	public Particle particle;
+	public CloudParticle particle;
 
 	/**
 	 * Constructor.
@@ -37,7 +37,7 @@ public class Cloud extends GameObject {
 		this.width    = width;
 		this.height   = height;
 		this.dx       = -.05f;
-		this.particle = new Particle(
+		this.particle = new CloudParticle(
 				x, 
 				y, 
 				width, 

@@ -1,4 +1,4 @@
-package particles;
+package particles.emitters;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,11 +21,11 @@ import physics.Lighting.LightHandler;
  * @author Fabulous Fellini
  *
  */
-public class ParticleEmitter extends GameObject {
+public class CloudParticleEmitter extends GameObject {
 
-	private Particle redParticles[]    = new Particle[2000];
-	private Particle yellowParticles[] = new Particle[350];
-	private Particle orangeParticles[] = new Particle[350];
+	private CloudParticle redParticles[]    = new CloudParticle[2000];
+	private CloudParticle yellowParticles[] = new CloudParticle[350];
+	private CloudParticle orangeParticles[] = new CloudParticle[350];
 
 	/**
 	 * Basically represents different colors.
@@ -41,7 +41,7 @@ public class ParticleEmitter extends GameObject {
 	 * @param String particleType
 	 * @param MyGame myGame
 	 */
-	public ParticleEmitter(float x, float y, float width, float height, String particleType, MyGame myGame) {
+	public CloudParticleEmitter(float x, float y, float width, float height, String particleType, MyGame myGame) {
 		this.x            = x;
 		this.y            = y;
 		this.width        = width;
@@ -59,7 +59,7 @@ public class ParticleEmitter extends GameObject {
 	 * @param int     size
 	 * @param MyGame  myGame
 	 */
-	private void createParticles(String particleType, Particle[] particles, int size, MyGame myGame) {
+	private void createParticles(String particleType, CloudParticle[] particles, int size, MyGame myGame) {
 		float emitterWidth  = x + width;
 		float emitterHeight = y + height;
 		float particleSize  = 0.04f;
@@ -78,7 +78,7 @@ public class ParticleEmitter extends GameObject {
 			} else if (particleType.equalsIgnoreCase("Orange")) {
 				color = ColorHelper.ORANGE;
 			}
-			particles[i] = new Particle(startX, startY, particleSize, particleSize, lifeSpan, color, myGame);
+			particles[i] = new CloudParticle(startX, startY, particleSize, particleSize, lifeSpan, color, myGame);
 		}
 	}
 
