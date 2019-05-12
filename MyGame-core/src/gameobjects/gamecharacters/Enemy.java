@@ -7,10 +7,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
+import handlers.CollisionHandler;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import maps.MapHandler;
-import physics.CollisionHandler;
 import physics.Lighting.Fire;
 
 /**

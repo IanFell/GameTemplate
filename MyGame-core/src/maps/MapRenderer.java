@@ -3,8 +3,8 @@ package maps;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import handlers.CollisionHandler;
 import maps.mapchunks.MapChunk;
-import physics.CollisionHandler;
 import tiles.Tile;
 
 /**

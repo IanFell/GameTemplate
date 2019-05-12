@@ -163,7 +163,7 @@ public class ImageLoader {
 		ui 							           = new Texture(Gdx.files.internal("UI.png"));
 		rawbar						           = new Texture(Gdx.files.internal("RawBar3d.png"));
 		lightHouse                             = new Texture(Gdx.files.internal("LightHouse.png"));
-		pigglywiggly                           = new Texture(Gdx.files.internal("PigglyWiggly.png"));
+		pigglywiggly                           = new Texture(Gdx.files.internal("PigglyWiggly3D.png"));
 
 		cutSceneDialogueOne[0] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_One.png"));
 		cutSceneDialogueOne[1] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Two.png"));

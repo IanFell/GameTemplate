@@ -108,8 +108,7 @@ public class Player extends GameCharacter {
 	 * @param MyGame myGame
 	 */
 	public Player(String name, MyGame myGame) {
-		this.x                   = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 43;
-		this.y                   = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10;
+		setPlayerStartingPosition("Mexico Beach");
 		this.width               = playerSize;
 		this.height              = playerSize;
 		rectangle.width          = playerSize;
@@ -130,6 +129,16 @@ public class Player extends GameCharacter {
 		inventory                = new Inventory(myGame);
 		playerIsPerformingAttack = false;
 		health   			     = 100;
+	}
+	
+	private void setPlayerStartingPosition(String city) {
+		if (city.equalsIgnoreCase("Mexico Beach")) {
+			this.x                   = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 43;
+			this.y                   = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10;
+		} else if (city.equalsIgnoreCase("Port St Joe")) {
+			this.x                   = GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 1;
+			this.y                   = GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 6;
+		}
 	}
 
 	/**

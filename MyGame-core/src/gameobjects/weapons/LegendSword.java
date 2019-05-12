@@ -7,10 +7,10 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.gamecharacters.Player;
+import handlers.CollisionHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
-import physics.CollisionHandler;
 
 /**
  * 

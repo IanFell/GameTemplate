@@ -7,9 +7,9 @@ import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
-import physics.CollisionHandler;
 
 /**
  * 

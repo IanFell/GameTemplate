@@ -2,7 +2,7 @@ package gameobjects.weapons;
 
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Enemy;
-import physics.CollisionHandler;
+import handlers.CollisionHandler;
 
 /**
  * 

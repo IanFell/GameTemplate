@@ -1,4 +1,4 @@
-package physics;
+package handlers;
 
 import com.mygdx.mygame.MyGame;
 
