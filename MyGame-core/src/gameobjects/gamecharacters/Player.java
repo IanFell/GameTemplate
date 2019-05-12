@@ -116,7 +116,7 @@ public class Player extends GameCharacter {
 		this.height              = playerSize;
 		rectangle.width          = playerSize;
 		rectangle.height         = playerSize;
-		walkDownTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteDown.atlas"));
+		walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDown.atlas"));
 		walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
 		walkRightTexture         = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
 		walkLeftTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteLeft.atlas"));
