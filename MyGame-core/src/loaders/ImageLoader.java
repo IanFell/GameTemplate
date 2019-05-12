@@ -155,7 +155,7 @@ public class ImageLoader {
 		palmTree					  	       = new Texture(Gdx.files.internal("PalmTreeNewOriginal3.png"));
 		plant                         	       = new Texture(Gdx.files.internal("PlantNewOriginal.png"));
 		drSuessTree                            = new Texture(Gdx.files.internal("DrSuessTree.png"));
-		teePee   					           = new Texture(Gdx.files.internal("TeePee.png"));
+		teePee   					           = new Texture(Gdx.files.internal("TeePee3D.png"));
 		playerHeadUp 				           = new Texture(Gdx.files.internal("PlayerHeadUp.png"));
 		playerHeadDown 				           = new Texture(Gdx.files.internal("PlayerHeadDown.png"));
 		playerHeadLeft 				           = new Texture(Gdx.files.internal("PlayerHeadLeft.png"));

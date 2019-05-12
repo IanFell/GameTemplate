@@ -69,7 +69,7 @@ public class Enemy extends GameCharacter {
 		if (randomAttackValue < 1) {
 			willAttack = true;
 		}
-		fire = new Fire(0, 0, width, height, "Enemy", false);
+		fire = new Fire(0, 0, 0.5f, 1.5f, "Enemy", false);
 	}
 
 	@Override
