@@ -18,7 +18,8 @@ import loaders.ImageLoader;
  */
 public class DustParticleEmitter extends GameObject {
 
-	private ArrayList <DustParticle> particles = new ArrayList<DustParticle>();
+	private ArrayList <DustParticle> particlesRight = new ArrayList<DustParticle>();
+	private ArrayList <DustParticle> particlesLeft  = new ArrayList<DustParticle>();
 
 	private int timer;
 	private int spawnParticleValue;
@@ -45,14 +46,17 @@ public class DustParticleEmitter extends GameObject {
 		timer++;
 		if (timer > spawnParticleValue) {
 			if (Player.playerIsMoving) {
-				particles.add(new DustParticle(0, 0, particleSize, particleSize, lifeSpan, myGame, dx, dy));
+				particlesRight.add(new DustParticle(0, 0, particleSize, particleSize, lifeSpan, myGame, dx, dy));
+				particlesLeft.add(new DustParticle(0, 0, particleSize, particleSize, lifeSpan, myGame, dx, -dy));
 			}
 		}
-		if (particles != null) {
-			for (int i = 0; i < particles.size(); i++) {
-				particles.get(i).updateParticle(myGame);
-				if (!particles.get(i).isAlive()) {
-					particles.remove(i);
+		if (particlesRight != null) {
+			for (int i = 0; i < particlesRight.size(); i++) {
+				particlesRight.get(i).updateParticle(myGame);
+				particlesLeft.get(i).updateParticle(myGame);
+				if (!particlesRight.get(i).isAlive()) {
+					particlesRight.remove(i);
+					particlesLeft.remove(i);
 				}
 			}
 		}
@@ -66,9 +70,11 @@ public class DustParticleEmitter extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		if (particles != null) {
-			for (int i = 0; i < particles.size(); i++) {
-				particles.get(i).renderObject(batch, shapeRenderer, imageLoader);
+		int direction = Player.direction;
+		if (particlesRight != null && direction == Player.DIRECTION_LEFT || direction == Player.DIRECTION_RIGHT) {
+			for (int i = 0; i < particlesRight.size(); i++) {
+				particlesRight.get(i).renderObject(batch, shapeRenderer, imageLoader);
+				particlesLeft.get(i).renderObject(batch, shapeRenderer, imageLoader);
 			}
 		}
 	}
