@@ -2,8 +2,6 @@ package tiles;
 
 import com.badlogic.gdx.graphics.Texture;
 
-import loaders.ImageLoader;
-
 /**
  * Sand tile consists of a grid of 20 x 20 tiles.
  * 

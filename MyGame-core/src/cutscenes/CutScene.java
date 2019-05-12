@@ -11,7 +11,7 @@ import loaders.ImageLoader;
  *
  */
 public class CutScene {
-	
+
 	// Change this value to render cutscene intro or not.
 	private boolean cutSceneShouldRender;
 
@@ -35,7 +35,7 @@ public class CutScene {
 			setCutSceneValues(true, false);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param boolean isConcluded

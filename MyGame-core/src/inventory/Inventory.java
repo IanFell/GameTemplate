@@ -23,7 +23,7 @@ import screens.Screens;
  *
  */
 public class Inventory extends Screens {
-	
+
 	public static boolean mouseIsClickingOnInventoryObject;
 	public static Rectangle rectangle;
 	public static boolean playClickSound;
@@ -32,7 +32,7 @@ public class Inventory extends Screens {
 	public static boolean inventoryIsEquipped;
 	public static boolean allInventoryShouldBeRendered;
 	public static int currentlySelectedInventoryObject;
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -46,11 +46,11 @@ public class Inventory extends Screens {
 		currentlySelectedInventoryObject = 0;
 		rectangle                        = new Rectangle(0, 0, 2, 2);
 		mouseIsClickingOnInventoryObject = false;
-		fire                             = new Fire(0, 0, 0, 0, "inventory", false);
+		fire                             = new Fire(0, 0, 0, 0, "Inventory", false);
 		playClickSound                   = false;
 		inventory.clear();
 	}
-	
+
 	/**
 	 * 
 	 * @param boolean shouldRenderAllInventory
@@ -212,7 +212,7 @@ public class Inventory extends Screens {
 					-camera.viewportHeight
 					);
 			renderInventoryDisplay(batch, shapeRenderer, imageLoader);
-			
+
 			int clickedObject = 0;
 			if (mouseIsClickingOnInventoryObject) {
 				for (int i = 0; i < Mouse.inventoryButtonIsPressed.length; i++) {
@@ -230,7 +230,7 @@ public class Inventory extends Screens {
 			fire.renderObject(batch, shapeRenderer, imageLoader);
 		}
 	}
-	
+
 	/**
 	 * Draws the white square that flashes when player clicks on an inventory square.
 	 * 
@@ -290,7 +290,7 @@ public class Inventory extends Screens {
 			rectangle.y = (camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight - 1.0f;
 			break;
 		}
-		
+
 		batch.draw(
 				imageLoader.whiteSquare,
 				rectangle.x,
@@ -319,7 +319,7 @@ public class Inventory extends Screens {
 				inventory.get(i).setY(y);
 				inventory.get(i).renderObject(batch, shapeRenderer, imageLoader);
 				x += 1.95f;
-				
+
 				if (i > 4 && resetX) {
 					x = xStartPosition;
 					y = yStartPosition + 2.4f;

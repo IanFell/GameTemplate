@@ -14,6 +14,7 @@ public class FireLoader extends ClassObjectLoader {
 
 	public static GameObject[] fires = new GameObject[7];
 
+	// Are there logs under the fire?
 	private boolean hasLogs = true;
 
 	public void loadFire() {

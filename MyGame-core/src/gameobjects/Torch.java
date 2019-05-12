@@ -18,18 +18,17 @@ public class Torch extends GameObject {
 
 	private Fire fire;
 
-	protected float width  = 0.5f;
-	protected float height = 1.5f;
-
 	/**
 	 * 
 	 * @param float x
 	 * @param float y
 	 */
 	public Torch(float x, float y) {
-		this.x = x;
-		this.y = y;
-		fire   = new Fire(x, y, width, height, "Player", false);
+		this.x      = x;
+		this.y      = y;
+		this.width  = 0.5f;
+		this.height = 1.5f;
+		fire        = new Fire(x, y, width, height, "Player", false);
 	}
 
 	/**

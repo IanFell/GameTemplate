@@ -13,7 +13,7 @@ public class SoundLoader {
 
 	// Debug explosion sound.
 	public Sound sound;
-	
+
 	/**
 	 * Game Sounds.
 	 */

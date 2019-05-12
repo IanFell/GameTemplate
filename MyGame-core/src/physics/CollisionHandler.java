@@ -29,6 +29,8 @@ public class CollisionHandler {
 	 * Only player can collide with solid tiles.
 	 * NPCs can walk through them.
 	 * 
+	 * Currently player is set to be able to walk through a solid tile.
+	 * 
 	 * @param GameObject player
 	 * @param MapHandler mapHandler
 	 * @param Tile       tile
@@ -215,7 +217,6 @@ public class CollisionHandler {
 				System.out.println("Weapon has collided with Object!");
 				enemy.setIsDead(true);
 				enemy.setPlaySound(true);
-				enemy.setIsDead(true);
 			}
 		}
 	}

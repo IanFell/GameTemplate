@@ -26,7 +26,7 @@ public class Enemy extends GameCharacter {
 
 	// How long fire animation plays after enemy has been killed.
 	public final static int MAX_DEATH_ANIMATION_VALUE = 100;
-	
+
 	public final static int DAMAGE_INFLICTED = -1;
 
 	private Texture texture;
@@ -34,6 +34,7 @@ public class Enemy extends GameCharacter {
 	private boolean dead;
 	private boolean willAttack;
 	private float speed;
+	private int stoppedValue = 0;
 
 	/**
 	 * Constructor.
@@ -43,6 +44,7 @@ public class Enemy extends GameCharacter {
 	 * @param int     width
 	 * @param int     height
 	 * @param Texture texture
+	 * @param int     direction
 	 */
 	public Enemy(float x, float y, int width, int height, Texture texture, int direction) {
 		this.x           = x;
@@ -51,8 +53,8 @@ public class Enemy extends GameCharacter {
 		this.height      = height;
 		this.texture     = texture;
 		this.direction   = direction;
-		dx               = 0;
-		dy               = 0;
+		dx               = stoppedValue;
+		dy               = stoppedValue;
 		speed            = 0.05f;
 		rectangle.width  = width;
 		rectangle.height = height;
@@ -67,17 +69,16 @@ public class Enemy extends GameCharacter {
 		if (randomAttackValue < 1) {
 			willAttack = true;
 		}
-		
-		fire = new Fire(0, 0, width, height, null, false);
+		fire = new Fire(0, 0, width, height, "Enemy", false);
 	}
-	
+
 	@Override
 	public void moveRight(float speed) {
 		setX(getX() + speed);
 		setEnemyDirection(Enemy.DIRECTION_RIGHT);
 		setDx(-getDx());
 	}
-	
+
 	/**
 	 * 
 	 * @param float speed
@@ -88,7 +89,7 @@ public class Enemy extends GameCharacter {
 		setEnemyDirection(Enemy.DIRECTION_LEFT);
 		setDx(-getDx());
 	}
-	
+
 	/**
 	 * 
 	 * @param float speed
@@ -99,7 +100,7 @@ public class Enemy extends GameCharacter {
 		setEnemyDirection(Enemy.DIRECTION_DOWN);
 		setDy(-getDy());
 	}
-	
+
 	/**
 	 * 
 	 * @param float speed
@@ -110,7 +111,7 @@ public class Enemy extends GameCharacter {
 		setEnemyDirection(Enemy.DIRECTION_UP);
 		setDy(-getDy());
 	}
-	
+
 	/**
 	 * 
 	 * @return int
@@ -192,7 +193,7 @@ public class Enemy extends GameCharacter {
 		if (!dead) {
 			executeAI(myGame);
 		}
-		
+
 		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
 
 		fire.updateObject(myGame, mapHandler);
@@ -213,8 +214,8 @@ public class Enemy extends GameCharacter {
 			if (willAttack) {
 				attackPlayer(myGame);
 			} else {
-				dx = 0;
-				dy = 0;
+				dx = stoppedValue;
+				dy = stoppedValue;
 			}
 		}
 	}
@@ -262,22 +263,22 @@ public class Enemy extends GameCharacter {
 	private void changeDirection(MyGame myGame) {
 		if (direction == DIRECTION_LEFT || direction == DIRECTION_RIGHT) {
 			if (y < PlayerController.getCurrentPlayer(myGame).getY()) {
-				dx = 0;
+				dx = stoppedValue;
 				dy = speed;
 				direction = DIRECTION_DOWN;
 			} else {
-				dx = 0;
+				dx = stoppedValue;
 				dy = -speed;
 				direction = DIRECTION_UP;
 			}
 		} else {
 			if (x < PlayerController.getCurrentPlayer(myGame).getX()) {
 				dx = speed;
-				dy = 0;
+				dy = stoppedValue;
 				direction = DIRECTION_RIGHT;
 			} else {
 				dx = -speed;
-				dy = 0;
+				dy = stoppedValue;
 				direction = DIRECTION_LEFT;
 			}
 		}

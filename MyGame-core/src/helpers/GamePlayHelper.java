@@ -35,14 +35,14 @@ public class GamePlayHelper  {
 	public static float setObjectYPositionInMiddleOfScreen(GameObject gameObject) {
 		return (GameAttributeHelper.SCREEN_HEIGHT / 2) - (gameObject.getHeight() / 2);	
 	}
-	
+
 	/**
 	 * Render objects based on their y-axis sort order to simulate depth.
 	 * 
-	 * @param ArrayList gameObjectList
-	 * @param SpriteBatch batch
+	 * @param ArrayList     gameObjectList
+	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
-	 * @param ImageLoader imageLoader
+	 * @param ImageLoader   imageLoader
 	 */
 	public static void sortAndRenderObjectsInYPositionOrder(
 			ArrayList<GameObject> gameObjectList,
@@ -57,7 +57,7 @@ public class GamePlayHelper  {
 			}
 		}
 	}
-	
+
 	/**
 	 * Determines if game object is rendering bounds.
 	 * 

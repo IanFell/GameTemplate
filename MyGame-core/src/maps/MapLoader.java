@@ -230,12 +230,12 @@ public class MapLoader {
 
 	/**
 	 * 
-	 * @param Tile tile
-	 * @param int  x
-	 * @param int  z
-	 * @param int  size
-	 * @param int  xPosition
-	 * @param int  zPosition
+	 * @param Tile[][] tile
+	 * @param int      x
+	 * @param int      z
+	 * @param int      size
+	 * @param int      xPosition
+	 * @param int      zPosition
 	 */
 	private void setTile(Tile[][] tile, int x, int z, int size, int xPosition, int zPosition) {
 		tile[x][z].setPosition(xPosition, zPosition);
@@ -256,7 +256,6 @@ public class MapLoader {
 		if (worldMap[z][x] == MapInformationHolder.WaterTileOne) {  
 			tileMap[x][z] = new Tile(Tile.waterTextureOne, !isSolid, "Water", true);
 		}
-		// Solid sand tile under transparent tree pngs.
 		if (worldMap[z][x] == MapInformationHolder.SolidTile) {  
 			tileMap[x][z] = new Tile(Tile.sandTexture, isSolid, "Solid", false);
 		}

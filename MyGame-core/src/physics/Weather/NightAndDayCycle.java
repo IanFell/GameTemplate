@@ -25,8 +25,9 @@ public class NightAndDayCycle extends GameObject {
 	/**
 	 * How fast day/night cycle happens.
 	 */
-	//private float dayNightCycleSpeedChange = 0.0002f;
-	private float dayNightCycleSpeedChange = 0.02f;
+	private float slowTransition           = 0.0002f;
+	private float fastTransition           = 0.02f;
+	private float dayNightCycleSpeedChange = fastTransition;
 
 	/**
 	 * Used as a sort of timer, to determine when to change from day to night and back.
@@ -47,7 +48,7 @@ public class NightAndDayCycle extends GameObject {
 		colorChangeIncrementValue++;
 		int colorChangeIncrementResetValue = 0;
 		if (isDayTime) {
-			if (dayNightCycleValue > 0) {
+			if (dayNightCycleValue > colorChangeIncrementResetValue) {
 				if (colorChangeIncrementValue >= duration) {
 					dayNightCycleValue -= dayNightCycleSpeedChange;
 					colorChangeIncrementValue = colorChangeIncrementResetValue;

@@ -11,30 +11,19 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public class ImageLoader {
 
-	/**
-	 * Image used to debug.
-	 */
-	public Texture testImage;
-
-	public Texture icon;
-
 	public Texture[] cutSceneDialogueOne = new Texture[9];
-
+	public Texture testImage;
+	public Texture icon;
 	public Texture enemy;
-
 	public Texture boat;
-
 	public Texture gunRight;
 	public Texture gunLeft;
 	public Texture gunUp;
 	public Texture gunDown;
-
 	public Texture splashScreenLogo;
 	public Texture titleScreenLogo;
-
 	public Texture inventoryScreen;
 	public Texture legendOfTheSevenSwordsBeginMissionText;
-
 	public Texture grassTileOne;
 	public Texture grassTileTwo;
 	public Texture solidTile;
@@ -47,43 +36,28 @@ public class ImageLoader {
 	public Texture waterTileOne;
 	public Texture waterTileTwo;
 	public Texture waterTileThree;
-
-
 	public Texture light;
 	public Texture shadow;
-
 	public Texture playerSprite;
-
 	public Texture playerHeadUp;
 	public Texture playerHeadDown;
 	public Texture playerHeadLeft;
 	public Texture playerHeadRight;
-
 	public Texture tree;
-
 	public Texture drSuessTree;
 	public Texture palmTree;
 	public Texture plant;
-
 	public Texture chestClosed;
 	public Texture chestOpen;
-
 	public Texture whiteSquare;
-
 	public Texture rain;
-
 	public Texture playerScore;
-
 	public Texture teePee;
 	public Texture rawbar;
-
 	public Texture ui;
-
 	public Texture missionComplete;
-
 	public Texture lightHouse;
 	public Texture pigglywiggly;
-
 	public Texture fireOne;
 	public Texture fireTwo;
 	public Texture fireThree;
@@ -95,9 +69,7 @@ public class ImageLoader {
 	public Texture fireNine;
 	public Texture fireTen;
 	public Texture logs;
-
 	public Texture sword;
-
 	public Texture legendSwordRed;
 	public Texture legendSwordBlue;
 	public Texture legendSwordGreen;
@@ -113,9 +85,7 @@ public class ImageLoader {
 	public Texture legendSwordPurpleHalf;
 	public Texture legendSwordPinkHalf;
 	public Texture legendSwordRainbow;
-
 	public Texture inventoryLabel;
-	
 	public Texture nightTimeShader;
 
 	public void init() {

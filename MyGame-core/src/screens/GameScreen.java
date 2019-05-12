@@ -64,12 +64,12 @@ public class GameScreen extends Screens {
 	 * Used for transparancy to render clouds.
 	 */
 	private ScreenShader screenShader = new ScreenShader(myGame);
-	
+
 	/**
 	 * When this screen fades, gameplay starts.
 	 */
 	private ScreenShader screenShaderPostIntro = new ScreenShader(myGame);
-	
+
 	/**
 	 *  Screen fades in during transitions.
 	 */
@@ -98,7 +98,7 @@ public class GameScreen extends Screens {
 		super(myGame);
 		GameAttributeHelper.gameState = Screens.GAME_SCREEN;
 		gameScreenHasBeenInitialized  = false;
-		cutSceneIntro = new CutSceneIntro("Intro");
+		cutSceneIntro                 = new CutSceneIntro("Intro");
 	}
 
 	/**
@@ -128,7 +128,6 @@ public class GameScreen extends Screens {
 			Gdx.gl.glEnable(GL20.GL_BLEND);
 			Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		} 
-
 		myGame.renderer.shapeRenderer.begin(ShapeType.Filled);
 		renderObjectsOnGameScreenThatUseShapeRenderer();
 		myGame.renderer.shapeRenderer.end();
@@ -216,7 +215,6 @@ public class GameScreen extends Screens {
 		enemySpawner.updateEnemies(myGame, mapHandler);
 		GameWorld.updateGameWorld(myGame, mapHandler);
 
-		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.updateObject();
 
 		// Fade into gameplay after intro cutscene.
@@ -295,7 +293,6 @@ public class GameScreen extends Screens {
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
-		// If it is night time, give the screen a dark transparent screen shader.
 		screenShader.renderObject(myGame.renderer.shapeRenderer);
 
 		// Fade screen in during transitions of screens.

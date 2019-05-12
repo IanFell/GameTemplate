@@ -92,10 +92,10 @@ public class Player extends GameCharacter {
 	/**
 	 * Character size is the same size as a tile.
 	 */
-	private float characterSize = 0.5f;
+	private float playerSize = 0.5f;
 
 	protected int playerScore;
-	
+
 	protected int health;
 
 	private Torch torch;
@@ -110,10 +110,10 @@ public class Player extends GameCharacter {
 	public Player(String name, MyGame myGame) {
 		this.x                   = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 43;
 		this.y                   = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10;
-		this.width               = characterSize;
-		this.height              = characterSize;
-		rectangle.width          = characterSize;
-		rectangle.height         = characterSize;
+		this.width               = playerSize;
+		this.height              = playerSize;
+		rectangle.width          = playerSize;
+		rectangle.height         = playerSize;
 		walkDownTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteDown.atlas"));
 		walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
 		walkRightTexture         = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
@@ -273,20 +273,20 @@ public class Player extends GameCharacter {
 			int resizedValue = 2;
 			switch (direction) {
 			case DIRECTION_LEFT:
-				batch.draw(imageLoader.playerHeadLeft, x, y + offset, characterSize, -characterSize * resizedValue);
+				batch.draw(imageLoader.playerHeadLeft, x, y + offset, playerSize, -playerSize * resizedValue);
 				break;
 			case DIRECTION_RIGHT:
-				batch.draw(imageLoader.playerHeadRight, x, y + offset, characterSize, -characterSize * resizedValue);
+				batch.draw(imageLoader.playerHeadRight, x, y + offset, playerSize, -playerSize * resizedValue);
 				break;
 			case DIRECTION_UP:
-				batch.draw(imageLoader.playerHeadUp, x, y + offset, characterSize, -characterSize * resizedValue);
+				batch.draw(imageLoader.playerHeadUp, x, y + offset, playerSize, -playerSize * resizedValue);
 				break;
 			case DIRECTION_DOWN:
-				batch.draw(imageLoader.playerHeadDown, x, y + offset, characterSize, -characterSize * resizedValue);
+				batch.draw(imageLoader.playerHeadDown, x, y + offset, playerSize, -playerSize * resizedValue);
 				break;
 			}
 		} else {
-			AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, characterSize);
+			AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, playerSize);
 		}
 
 		if (hasTorch) {	
@@ -418,7 +418,7 @@ public class Player extends GameCharacter {
 	 * @param int score
 	 */
 	public void updatePlayerScore(int score) {}
-	
+
 	/**
 	 * 
 	 * @return String

@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.GameObject;
-import loaders.ImageLoader;
 import physics.Weather.NightAndDayCycle;
 import screens.GameScreen;
 
@@ -17,6 +15,11 @@ import screens.GameScreen;
  *
  */
 public class Tile extends Sprite {
+
+	private static final int WORLD_SIZE = 21;
+
+	protected final static int WORLD_WIDTH  = WORLD_SIZE;
+	protected final static int WORLD_HEIGHT = WORLD_SIZE;
 
 	public boolean isSolid;
 	public boolean isWater;
@@ -32,9 +35,6 @@ public class Tile extends Sprite {
 	public static Texture sandTextureTopRightPath;
 	public static Texture sandTextureCrossPath;
 	public static Texture waterTextureOne;
-	
-	//private ImageLoader imageLoader;
-	
 	public static Texture nightTimeTexture;
 
 	protected static final int SolidTile              = 0;
@@ -46,9 +46,6 @@ public class Tile extends Sprite {
 	protected static final int SandTileVerticalPath   = 7;
 	protected static final int SandTileTopRightPath   = 8;
 	protected static final int SandTileCrossPath      = 9;
-
-	protected final static int WORLD_WIDTH  = 21;
-	protected final static int WORLD_HEIGHT = 21;
 
 	/**
 	 * 
@@ -112,14 +109,14 @@ public class Tile extends Sprite {
 	@Override
 	public void draw (Batch batch) {
 		super.draw(batch);
-		
+		// If it is night time, draw a transparant black shader over the tile.
 		if (!NightAndDayCycle.isDayTime()) {
 			if (isWithinScreenBounds()) {
 				batch.draw(nightTimeTexture, getX(), getY(), getWidth(), getHeight());
 			}
 		}
 	}
-	
+
 	private  boolean isWithinScreenBounds() {
 		float cameraXPosition = GameScreen.camera.position.x;
 		float cameraYPosition = GameScreen.camera.position.y;

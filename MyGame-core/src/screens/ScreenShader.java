@@ -45,6 +45,9 @@ public class ScreenShader extends Screens {
 		/**
 		 * Use these variables because if we just use regular width and height,
 		 * the screen shader gets offset when player moves.
+		 * 
+		 * This is now done with putting a shader on top of every tile when it's night time
+		 * so game objects are more visible.
 		 */
 		/*
 		int xyOffset          = 1;
@@ -55,7 +58,7 @@ public class ScreenShader extends Screens {
 				camera.viewportWidth + widthHeightOffset, 
 				camera.viewportHeight + widthHeightOffset
 				);
-				*/
+		 */
 	}
 
 	public void updateObject() {

@@ -5,7 +5,6 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import maps.mapchunks.MapChunk;
 import physics.CollisionHandler;
-import physics.Weather.NightAndDayCycle;
 import tiles.Tile;
 
 /**
@@ -71,10 +70,7 @@ public class MapRenderer {
 							)
 							) {
 						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
-						//MapHandler.mapChunks.get(i).tileMap[x][z].drawNight(myGame.renderer.batch, myGame);
 						animateWaterTiles(i, myGame, x, z);
-						// Might need to make this method take a certain player, other wise its slow as shit.
-						//if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_ONE))) {
 						CollisionHandler.checkIfPlayerHasCollidedWithSolidTile(
 								myGame.getGameObject(GameObject.PLAYER_ONE), 
 								mapHandler, 
@@ -93,9 +89,6 @@ public class MapRenderer {
 										MapHandler.mapChunks.get(i).tileMap[x][z]
 										);
 							}
-						}
-						if (!NightAndDayCycle.isDayTime()) {
-							//MapHandler.mapChunks.get(i).tileMap[x][z].drawNightTile(i, myGame, x, z);
 						}
 					}
 				}

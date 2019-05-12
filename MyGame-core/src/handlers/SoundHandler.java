@@ -17,30 +17,32 @@ import screens.Screens;
  */
 public class SoundHandler {
 
+	private float baseSoundVolumeValue = 0.5f;
+
 	/**
 	 * 
 	 * @param SoundLoader soundLoader
 	 */
 	public void handleSound(SoundLoader soundLoader, MyGame myGame) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
+			// Click sound when choosing different inventory objects.
+			if (Inventory.playClickSound) {
+				soundLoader.click.play(baseSoundVolumeValue);
+				Inventory.playClickSound = false;
+			}
 			for (int i = 0; i < ChestLoader.chests.length; i++) {
 				if (ChestLoader.chests[i].getPlaySound()) {
-					soundLoader.sound.play(0.5f);
+					soundLoader.sound.play(baseSoundVolumeValue);
 					ChestLoader.chests[i].setPlaySound(false);
 				}
 			}
 			if (LegendSword.playSound) {
-				soundLoader.sound.play(0.5f);
+				soundLoader.sound.play(baseSoundVolumeValue);
 				LegendSword.playSound = false;
-			}
-			// Click sound when choosing different inventory objects.
-			if (Inventory.playClickSound) {
-				soundLoader.click.play(0.5f);
-				Inventory.playClickSound = false;
 			}
 			for (int i = 0; i < myGame.gameScreen.enemySpawner.enemies.size(); i++) {
 				if (myGame.gameScreen.enemySpawner.enemies.get(i).getPlaySound()) {
-					soundLoader.sound.play(0.5f);
+					soundLoader.sound.play(baseSoundVolumeValue);
 					myGame.gameScreen.enemySpawner.enemies.get(i).setPlaySound(false);
 				}
 			}
