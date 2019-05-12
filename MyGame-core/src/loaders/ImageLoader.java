@@ -87,8 +87,14 @@ public class ImageLoader {
 	public Texture legendSwordRainbow;
 	public Texture inventoryLabel;
 	public Texture nightTimeShader;
+	public Texture dustParticleOne;
+	public Texture dustParticleTwo;
+	public Texture dustParticleThree;
 
 	public void init() {
+		dustParticleOne                        = new Texture(Gdx.files.internal("DustParticleOne.png"));
+		dustParticleTwo                        = new Texture(Gdx.files.internal("DustParticleTwo.png"));
+		dustParticleThree                      = new Texture(Gdx.files.internal("DustParticleThree.png"));
 		nightTimeShader                        = new Texture(Gdx.files.internal("NightTimeShader.png"));
 		icon                                   = new Texture(Gdx.files.internal("GoldenAgeIcon.png"));
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("LegendOfTheSevenSwords.png"));
@@ -177,6 +183,9 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		dustParticleOne.dispose();
+		dustParticleTwo.dispose();
+		dustParticleThree.dispose();
 		icon.dispose();
 		legendOfTheSevenSwordsBeginMissionText.dispose();
 		boat.dispose();

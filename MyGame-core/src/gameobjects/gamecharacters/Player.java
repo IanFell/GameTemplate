@@ -18,6 +18,8 @@ import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import particles.ParticleEmitterTwo;
+import particles.ParticleTwo;
 
 /**
  * Player object.
@@ -100,6 +102,8 @@ public class Player extends GameCharacter {
 
 	private Torch torch;
 	public static boolean hasTorch;
+	
+	private ParticleEmitterTwo dustEmitter;
 
 	/**
 	 * Constructor.
@@ -129,6 +133,7 @@ public class Player extends GameCharacter {
 		inventory                = new Inventory(myGame);
 		playerIsPerformingAttack = false;
 		health   			     = 100;
+		dustEmitter              = new ParticleEmitterTwo(myGame);
 	}
 	
 	private void setPlayerStartingPosition(String city) {
@@ -184,6 +189,8 @@ public class Player extends GameCharacter {
 				playerIsPerformingAttack = false;
 			}
 		}
+		
+		dustEmitter.updateParticles(myGame);
 	}
 
 	/**
@@ -295,6 +302,7 @@ public class Player extends GameCharacter {
 				break;
 			}
 		} else {
+			dustEmitter.renderObject(batch, shapeRenderer, imageLoader);
 			AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, playerSize);
 		}
 
