@@ -9,7 +9,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
-import gameobjects.gamecharacters.PlayerTwo;
+import gameobjects.gamecharacters.PlayerOne;
 import input.computer.Mouse;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -100,7 +100,7 @@ public class Inventory extends Screens {
 						break;
 					}
 				} else {
-					switch (PlayerTwo.playerDirections.get(PlayerTwo.playerTwoXPositions.size() - 5)) {
+					switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 					case Player.DIRECTION_RIGHT:
 						xPosition = x + 4;
 						yPosition = y - 1.5f;
@@ -120,14 +120,8 @@ public class Inventory extends Screens {
 					}
 				}
 			} else {
-				/**
-				 * I don't know why this works the best.  If we just switch based off
-				 * Player.direction, it takes the third player's direction, therefore the
-				 * weapon doesn't move until the third player's direction is set which looks weird
-				 * because it needs to move with the first player.
-				 */
 				if (Player.isInWater) {
-					switch (PlayerTwo.playerDirections.get(PlayerTwo.playerTwoXPositions.size() - 5)) {
+					switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 					case Player.DIRECTION_RIGHT:
 						xPosition = x + 3;
 						yPosition = y - 0.5f;
@@ -146,7 +140,7 @@ public class Inventory extends Screens {
 						break;
 					}
 				} else {
-					switch (PlayerTwo.playerDirections.get(PlayerTwo.playerTwoXPositions.size() - 5)) {
+					switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 					case Player.DIRECTION_RIGHT:
 						xPosition = x + 3;
 						yPosition = y - 1.5f;

@@ -86,15 +86,13 @@ public class PlayerOne extends Player {
 	}
 
 	/**
+	 * Only save player coordiantes if player is moving.  
+	 * This is so player two and three stop and move with player one.
 	 * 
 	 * @param MyGame myGame
 	 */
 	@Override
 	protected void handleWalking(MyGame myGame) {
-		/**
-		 * Only save player coordiantes if player is moving.  
-		 * This is so player two and three stop and move with player one.
-		 */
 		savePlayerCurrentPositionAndDirection(x, y, playerOneXPositions, playerOneYPositions, playerDirections);
 	}
 }

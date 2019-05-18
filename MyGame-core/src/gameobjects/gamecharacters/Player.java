@@ -90,10 +90,7 @@ public class Player extends GameCharacter {
 	 */
 	private float elapsedTime = 0;
 
-	/**
-	 * Character size is the same size as a tile.
-	 */
-	private float playerSize = 0.5f;
+	private float playerSize = 0.75f;
 
 	protected int playerScore;
 
@@ -117,9 +114,9 @@ public class Player extends GameCharacter {
 		rectangle.width          = playerSize;
 		rectangle.height         = playerSize;
 		walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDown.atlas"));
-		walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
-		walkRightTexture         = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
-		walkLeftTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteLeft.atlas"));
+		walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerUp.atlas"));
+		walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerRight.atlas"));
+		walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerLeft.atlas"));
 		float animationSpeed     = 7/15f;
 		walkDownAnimation        = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
 		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
@@ -168,7 +165,7 @@ public class Player extends GameCharacter {
 		x += dx;
 		y += dy;
 		rectangle.x = x;
-		rectangle.y = y;
+		rectangle.y = y - height;
 
 		// Timer for water animation.
 		timer++;
@@ -308,6 +305,17 @@ public class Player extends GameCharacter {
 		if (hasTorch) {	
 			torch.renderObject(batch, shapeRenderer, imageLoader);
 		}
+
+		//renderHitBox(batch, imageLoader);
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 */
+	private void renderHitBox(SpriteBatch batch, ImageLoader imageLoader) {
+		batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 	}
 
 	/**

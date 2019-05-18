@@ -21,7 +21,7 @@ public class Plant extends NatureObject {
 	 */
 	public Plant(int x, int y) {
 		super(x, y);
-		int size    = 1;
+		float size  = 1.5f;
 		this.width  = size;
 		this.height = size;
 	}

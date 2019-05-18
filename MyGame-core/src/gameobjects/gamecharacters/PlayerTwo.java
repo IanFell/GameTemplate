@@ -31,7 +31,7 @@ public class PlayerTwo extends Player {
 	 */
 	public PlayerTwo(String name, MyGame myGame) {
 		super(name, myGame);
-		playerOneFollowAndDirectionValueOffset = 7;
+		playerOneFollowAndDirectionValueOffset = 10;
 	}
 
 	/**

@@ -7,6 +7,7 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.gamecharacters.Player;
+import gameobjects.gamecharacters.PlayerOne;
 import handlers.CollisionHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
@@ -57,20 +58,7 @@ public class LegendSword extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		if (hasBeenCollected && Inventory.inventoryIsEquipped) {
-			batch.draw(
-					textureRegionFull, 
-					x, 
-					y, 
-					width / 2, 
-					height / 2, 
-					width, 
-					-height, 
-					1, 
-					1, 
-					rotationAngle
-					); 
-		} else if (Inventory.allInventoryShouldBeRendered) {
+		if (hasBeenCollected || Inventory.allInventoryShouldBeRendered) {
 			batch.draw(
 					textureRegionFull, 
 					x, 
@@ -147,7 +135,7 @@ public class LegendSword extends Weapon {
 	}
 
 	private void setRotationAngleDependingOnPlayerDirection() {
-		switch (Player.direction) {
+		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 		case Player.DIRECTION_RIGHT:
 			setRotationAngle(-90);
 			break;
@@ -168,29 +156,29 @@ public class LegendSword extends Weapon {
 	 */
 	private void updateHitBox() {
 		float offsetValue = 0.5f;
-		switch (Player.direction) {
+		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 		case Player.DIRECTION_RIGHT:
 			this.rectangle.x      = x - height - offsetValue;
-			this.rectangle.y      = y + offsetValue;
+			this.rectangle.y      = y + offsetValue + 0.2f;
 			this.rectangle.width  = height;
-			this.rectangle.height = width;
+			this.rectangle.height = width / 2;
 			break;
 		case Player.DIRECTION_LEFT:
 			this.rectangle.x      = x + height - offsetValue;
-			this.rectangle.y      = y + offsetValue;
+			this.rectangle.y      = y + offsetValue + 0.2f;
 			this.rectangle.width  = height;
-			this.rectangle.height = width;
+			this.rectangle.height = width / 2;
 			break;
 		case Player.DIRECTION_DOWN:
-			this.rectangle.x      = x;
+			this.rectangle.x      = x + 0.2f;
 			this.rectangle.y      = y - height;
-			this.rectangle.width  = width;
+			this.rectangle.width  = width / 2;
 			this.rectangle.height = height;
 			break;
 		case Player.DIRECTION_UP:
-			this.rectangle.x      = x;
+			this.rectangle.x      = x + 0.2f;
 			this.rectangle.y      = y + height;
-			this.rectangle.width  = width;
+			this.rectangle.width  = width / 2;
 			this.rectangle.height = height;
 			break;
 		}

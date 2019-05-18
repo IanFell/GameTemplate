@@ -12,11 +12,6 @@ import loaders.ImageLoader;
 import physics.Lighting.LightHandler;
 
 /**
- * Loads and draw particle effects.  
- * For instance, this class contains three sets of Particle arrays and draws fire:
- * 	-Particle array one   = red
- *  -Particle array two   = yellow
- *  -Particle array three = orange
  *  
  * @author Fabulous Fellini
  *

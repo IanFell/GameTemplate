@@ -23,7 +23,7 @@ public class PlayerThree extends Player {
 	 */
 	public PlayerThree(String name, MyGame myGame) {
 		super(name, myGame);
-		playerOneFollowAndDirectionValueOffset = 13;
+		playerOneFollowAndDirectionValueOffset = 20;
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class PlayerThree extends Player {
 		if (size > playerOneFollowAndDirectionValueOffset - 1) {
 			x = PlayerTwo.playerTwoXPositions.get(size - playerOneFollowAndDirectionValueOffset / half);
 			y = PlayerTwo.playerTwoYPositions.get(size - playerOneFollowAndDirectionValueOffset / half);
-			setDirection(PlayerTwo.playerDirections.get(size - playerOneFollowAndDirectionValueOffset / half));
+			setDirection(PlayerTwo.playerDirections.get(size - playerOneFollowAndDirectionValueOffset));
 		}
 	}
 }

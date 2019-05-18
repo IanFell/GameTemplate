@@ -14,6 +14,7 @@ import handlers.MissionHandler;
 import handlers.WeaponHandler;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
+import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.GameWorld;
 import maps.MapHandler;
@@ -244,12 +245,32 @@ public class GameScreen extends Screens {
 		weatherHandler.renderStormCycle(myGame, this);
 		lightingHandler.renderShadows(myGame);
 
+		/**
+		 * We are not displaying the "inventory screen" here.
+		 * This renderes weapons as player has them.
+		 */
+		myGame.getGameObject(Player.PLAYER_ONE).inventory.renderInventory(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
+
 		GamePlayHelper.sortAndRenderObjectsInYPositionOrder(
 				GameObjectLoader.gameObjectList, 
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
+		
+		// Here we render the inventory screen if needed.
+		
+		if (Inventory.allInventoryShouldBeRendered) {
+			myGame.getGameObject(Player.PLAYER_ONE).inventory.renderInventory(
+					myGame.renderer.batch, 
+					myGame.renderer.shapeRenderer, 
+					myGame.imageLoader
+					);
+		}
 
 		// Rain should be in front of all objects. 
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
@@ -277,11 +298,6 @@ public class GameScreen extends Screens {
 		if (!cutSceneIntro.isCutSceneIsInProgress()) {
 			guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
 		}
-		myGame.getGameObject(Player.PLAYER_ONE).inventory.renderInventory(
-				myGame.renderer.batch, 
-				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
-				);
 
 		if (cutSceneIntro.isCutSceneIsInProgress()) {
 			cutSceneIntro.renderCutScene(

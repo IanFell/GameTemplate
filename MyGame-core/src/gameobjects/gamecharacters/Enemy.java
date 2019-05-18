@@ -168,6 +168,8 @@ public class Enemy extends GameCharacter {
 			batch.draw(texture, x, y, width, -height);
 			// Uncomment to debug attackBoundary.
 			//batch.draw(imageLoader.whiteSquare, attackBoundary.x, attackBoundary.y, attackBoundary.width, attackBoundary.height);
+			// Uncomment to draw enemy hit box.
+			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 		} else {
 			if (timer < MAX_DEATH_ANIMATION_VALUE) {
 				fire.renderObject(batch, shapeRenderer, imageLoader);
@@ -184,7 +186,7 @@ public class Enemy extends GameCharacter {
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
 		rectangle.x      = x;
-		rectangle.y      = y;
+		rectangle.y      = y - height;
 		// attackBoundary is a few pixels around enemy.
 		attackBoundary.x = x - 1;
 		attackBoundary.y = y - 2;

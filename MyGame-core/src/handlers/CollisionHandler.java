@@ -173,6 +173,7 @@ public class CollisionHandler {
 			MissionLegendOfTheSevenSwords.swordsCollected++;
 			MissionLegendOfTheSevenSwords.legendSwordCollection.add(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword);
+
 			// Uncomment this to fill up inventory.
 			/*
 			((Player) player).getInventory().addObjectToInventory(legendSword);
@@ -212,8 +213,8 @@ public class CollisionHandler {
 	 * @param GameObject weapon
 	 */
 	public static void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
-		if (enemy.rectangle.overlaps(weapon.rectangle)) {
-			if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
+		if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
+			if (enemy.rectangle.overlaps(weapon.rectangle)) {
 				System.out.println("Weapon has collided with Object!");
 				enemy.setIsDead(true);
 				enemy.setPlaySound(true);
@@ -231,6 +232,12 @@ public class CollisionHandler {
 			System.out.println("Player is being attacked by enemy!");
 			// Comment this out to prevent death.
 			//player.setHealth(player.getHealth() + Enemy.DAMAGE_INFLICTED);
+
+			// Kill enemy if he is overlapping with player while player is performing attack.
+			if (Player.playerIsPerformingAttack) {
+				enemy.setIsDead(true);
+				enemy.setPlaySound(true);
+			}
 		}
 	}
 }
