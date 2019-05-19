@@ -37,10 +37,27 @@ public class Mouse extends ComputerInput {
 		for (int i = 0; i < inventoryButtons.length; i++) {
 			inventoryButtons[i] = new Rectangle(0, 0, 0, 0);
 			inventoryButtonIsPressed[i] = false;
-			inventoryButtons[i].width   = 90;
-			inventoryButtons[i].height  = 125;
+
+			// Full screen coordinates.
+			inventoryButtons[i].width   = 180;
+			inventoryButtons[i].height  = 185;
+			// Phone screen coordinates.
+			//inventoryButtons[i].width   = 90;
+			//inventoryButtons[i].height  = 125;
 		}
 
+		// Full screen button positions.
+		int yStartPositionTopRow      = 245;
+		int yStartPositionBottomRow   = 470;
+		int xStartPositionColumnOne   = 130;
+		int xStartPositionColumnTwo   = 330;
+		int xStartPositionColumnThree = 530;
+		int xStartPositionColumnFour  = 730;
+		int xStartPositionColumnFive  = 930;
+		int xStartPositionColumnSix   = 1130;
+
+		// Phone screen button positions.
+		/*
 		int yStartPositionTopRow      = 95;
 		int yStartPositionBottomRow   = 240;
 		int xStartPositionColumnOne   = 65;
@@ -48,7 +65,7 @@ public class Mouse extends ComputerInput {
 		int xStartPositionColumnThree = 250;
 		int xStartPositionColumnFour  = 350;
 		int xStartPositionColumnFive  = 440;
-		int xStartPositionColumnSix   = 530;
+		int xStartPositionColumnSix   = 530; */
 
 		inventoryButtons[0].x      = xStartPositionColumnOne;
 		inventoryButtons[0].y      = yStartPositionTopRow;
@@ -93,6 +110,10 @@ public class Mouse extends ComputerInput {
 	 */
 	@Override
 	public void handleInput(MyGame myGame) {
+
+		System.out.println("Mouse Coordinate X: " + Gdx.input.getX());
+		System.out.println("Mouse Coordinate Y: " + Gdx.input.getY());
+
 		GameObject player = PlayerController.getCurrentPlayer(myGame);
 		switch (GameAttributeHelper.gameState) {
 		case Screens.SPLASH_SCREEN:

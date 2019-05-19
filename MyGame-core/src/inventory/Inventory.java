@@ -217,9 +217,9 @@ public class Inventory extends Screens {
 				// White square that flashes when player clicks on an inventory square.
 				drawClickHover(batch, imageLoader, clickedObject);
 			}
-			fire.setX(rectangle.x);
+			fire.setX(rectangle.x + 1);
 			fire.setY(rectangle.y);
-			fire.setWidth(rectangle.getWidth());
+			fire.setWidth(rectangle.getWidth() / 5);
 			fire.setHeight(rectangle.getHeight());
 			fire.renderObject(batch, shapeRenderer, imageLoader);
 		}

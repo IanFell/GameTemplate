@@ -28,7 +28,7 @@ public class ShadowHandler extends AbstractLightingHandler {
 	@Override
 	public void renderLighting(SpriteBatch batch, ImageLoader imageLoader, GameObject player) {
 		if (!Player.isInWater) {
-			batch.draw(imageLoader.shadow, player.getX(), player.getY() + offset, width, height);
+			batch.draw(imageLoader.shadow, player.getX(), player.getY() + offset, width * 1.5f, height);
 			handleShadowSizeDuringPlayerJump((Player) player);
 		}
 	}

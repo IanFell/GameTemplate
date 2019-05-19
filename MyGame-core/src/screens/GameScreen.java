@@ -261,16 +261,6 @@ public class GameScreen extends Screens {
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
-		
-		// Here we render the inventory screen if needed.
-		
-		if (Inventory.allInventoryShouldBeRendered) {
-			myGame.getGameObject(Player.PLAYER_ONE).inventory.renderInventory(
-					myGame.renderer.batch, 
-					myGame.renderer.shapeRenderer, 
-					myGame.imageLoader
-					);
-		}
 
 		// Rain should be in front of all objects. 
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {
@@ -301,6 +291,15 @@ public class GameScreen extends Screens {
 
 		if (cutSceneIntro.isCutSceneIsInProgress()) {
 			cutSceneIntro.renderCutScene(
+					myGame.renderer.batch, 
+					myGame.renderer.shapeRenderer, 
+					myGame.imageLoader
+					);
+		}
+
+		// Here we render the inventory screen if needed.
+		if (Inventory.allInventoryShouldBeRendered) {
+			myGame.getGameObject(Player.PLAYER_ONE).inventory.renderInventory(
 					myGame.renderer.batch, 
 					myGame.renderer.shapeRenderer, 
 					myGame.imageLoader

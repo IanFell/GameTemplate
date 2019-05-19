@@ -31,34 +31,35 @@ public class GuiScreen extends Screens {
 		float xPosition = 0f;
 		float yPosition = 0f;
 		// offsetValue is different depending on player speed (land vs water).
-		float offsetValue = 0f;
+		float offsetMovementValue = 0f;
+		int offsetYValue          = 15;
 		if (Player.playerIsMoving) {
 			if (Player.isInWater) {
-				offsetValue = Player.PLAYER_SPEED - 0.05f;
+				offsetMovementValue = Player.PLAYER_SPEED - 0.05f;
 			} else {
-				offsetValue = Player.PLAYER_SPEED;
+				offsetMovementValue = Player.PLAYER_SPEED;
 			}
 			switch (Player.direction) {
 			case Player.DIRECTION_RIGHT:
-				xPosition = camera.position.x - getViewportWidth() / denominatorOffset - offsetValue;
-				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8;
+				xPosition = camera.position.x - getViewportWidth() / denominatorOffset - offsetMovementValue;
+				yPosition = camera.position.y - verticalHeight / denominatorOffset + offsetYValue;
 				break;
 			case Player.DIRECTION_LEFT:
-				xPosition = camera.position.x - getViewportWidth() / denominatorOffset + offsetValue;
-				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8;
+				xPosition = camera.position.x - getViewportWidth() / denominatorOffset + offsetMovementValue;
+				yPosition = camera.position.y - verticalHeight / denominatorOffset + offsetYValue;
 				break;
 			case Player.DIRECTION_UP:
 				xPosition = camera.position.x - getViewportWidth() / denominatorOffset;
-				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8 + offsetValue;
+				yPosition = camera.position.y - verticalHeight / denominatorOffset + offsetYValue + offsetMovementValue;
 				break;
 			case Player.DIRECTION_DOWN:
 				xPosition = camera.position.x - getViewportWidth() / denominatorOffset;
-				yPosition = camera.position.y - verticalHeight / denominatorOffset + 8 - offsetValue;
+				yPosition = camera.position.y - verticalHeight / denominatorOffset + offsetYValue - offsetMovementValue;
 				break;
 			}
 		} else {
 			xPosition = camera.position.x - getViewportWidth() / denominatorOffset;
-			yPosition = camera.position.y - verticalHeight / denominatorOffset + 8;
+			yPosition = camera.position.y - verticalHeight / denominatorOffset + offsetYValue;
 		}
 		batch.draw(
 				imageLoader.ui, 

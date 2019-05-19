@@ -19,14 +19,16 @@ public class DesktopLauncher {
 		config.addIcon("GoldenAgeIcon.png", FileType.Internal);
 		config.title         = "The Golden Age";
 		config.foregroundFPS = GameAttributeHelper.FRAMES_PER_SECOND;
-		
-		float f       = 0.5f;
+
+		// Full screen.
+		float f       = 1.0f;
+		// Phone screen.
+		//float f       = 0.5f;
+
 		float width   = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
 		float height  = LwjglApplicationConfiguration.getDesktopDisplayMode().height;
 		config.width  = (int)(width * f);
 		config.height = (int)(height * f);
-		//config.width  = LwjglApplicationConfiguration.getDesktopDisplayMode().width;
-		//config.height = LwjglApplicationConfiguration.getDesktopDisplayMode().height;
 		new LwjglApplication(new MyGame(), config);
 	}
 }

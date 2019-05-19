@@ -186,7 +186,8 @@ public class CollisionHandler {
 			((Player) player).getInventory().addObjectToInventory(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword);
-			((Player) player).getInventory().addObjectToInventory(legendSword);*/
+			((Player) player).getInventory().addObjectToInventory(legendSword); */
+
 			legendSword.hasBeenCollected = true;
 			LegendSword.playSound        = true;
 		}

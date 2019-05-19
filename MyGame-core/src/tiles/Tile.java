@@ -122,12 +122,13 @@ public class Tile extends Sprite {
 		float cameraYPosition = GameScreen.camera.position.y;
 		float playerXPosition = getX();
 		float playerYPosition = getY();
-		int screenBoundOffset = 8;
+		float screenOffset    = 0.5f;
+		int withinBoundsPerimeterOffset = 15;
 		if (
-				playerXPosition < cameraXPosition + screenBoundOffset &&
-				playerXPosition > cameraXPosition - screenBoundOffset &&
-				playerYPosition < cameraYPosition + screenBoundOffset &&
-				playerYPosition > cameraYPosition - screenBoundOffset
+				playerXPosition < cameraXPosition + withinBoundsPerimeterOffset - screenOffset &&
+				playerXPosition > cameraXPosition - withinBoundsPerimeterOffset + screenOffset &&
+				playerYPosition < cameraYPosition + withinBoundsPerimeterOffset / 1.5f - screenOffset &&
+				playerYPosition > cameraYPosition - withinBoundsPerimeterOffset / 1.5f + screenOffset
 				) {
 			return true;
 		}

@@ -36,7 +36,8 @@ public class Screens implements Screen {
 	 */
 	public static OrthographicCamera camera;
 	public ExtendViewport viewport;
-	protected float verticalHeight = 8.0f;
+	// Use this to set camera zoom.
+	protected float verticalHeight = 15.0f;
 	protected float aspectRatio    = (float)GameAttributeHelper.SCREEN_HEIGHT / (float)GameAttributeHelper.SCREEN_WIDTH;
 	protected float viewportWidth  = verticalHeight / aspectRatio;
 

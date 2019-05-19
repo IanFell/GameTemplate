@@ -39,7 +39,7 @@ public class MapRenderer {
 	private boolean playerIsWithinBoundsOfRenderingChunk(MyGame myGame, MapChunk mapChunk, int x, int z) {
 		float playerX        = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
 		float playerY        = myGame.getGameObject(GameObject.PLAYER_ONE).getY();
-		int chunkOuterBounds = 10;
+		int chunkOuterBounds = 13;
 		int arrayElement     = 0;
 		Tile chunkElement    = mapChunk.tileMap[arrayElement][arrayElement]; 
 		if (
