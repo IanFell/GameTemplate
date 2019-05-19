@@ -11,8 +11,6 @@ import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
-import loaders.GameObjectLoader;
-import screens.GameScreen;
 import screens.Screens;
 
 /**

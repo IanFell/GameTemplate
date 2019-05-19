@@ -11,8 +11,6 @@ import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
-import loaders.bulletloader.BulletLoader;
-import physics.Lighting.LightHandler;
 import screens.GameScreen;
 import screens.Screens;
 

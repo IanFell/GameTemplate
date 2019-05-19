@@ -68,10 +68,10 @@ public class Player extends GameCharacter {
 	/**
 	 * Textures to go with animations.
 	 */
-	private TextureAtlas walkDownTexture;
-	private TextureAtlas walkUpTexture;
-	private TextureAtlas walkRightTexture;
-	private TextureAtlas walkLeftTexture;
+	protected TextureAtlas walkDownTexture;
+	protected TextureAtlas walkUpTexture;
+	protected TextureAtlas walkRightTexture;
+	protected TextureAtlas walkLeftTexture;
 
 	/**
 	 * Available animations for player object.
@@ -101,23 +101,45 @@ public class Player extends GameCharacter {
 	public static boolean hasTorch;
 
 	private DustParticleEmitter dustEmitter;
+	
+	private int playerNumber;
 
 	/**
 	 * Constructor.
 	 * 
 	 * @param String name
 	 * @param MyGame myGame
+	 * @param int    playerNumber
 	 */
-	public Player(String name, MyGame myGame) {
+	public Player(String name, MyGame myGame, int playerNumber) {
 		setPlayerStartingPosition(Town.MEXICO_BEACH);
+		this.playerNumber        = playerNumber;
 		this.width               = playerSize;
 		this.height              = playerSize;
 		rectangle.width          = playerSize;
 		rectangle.height         = playerSize;
-		walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDownRed.atlas"));
-		walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerUpRed.atlas"));
-		walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerRightRed.atlas"));
-		walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerLeftRed.atlas"));
+		
+		switch (playerNumber) {
+		case Player.PLAYER_ONE:
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDownRed.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerUpRed.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerRightRed.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerLeftRed.atlas")); 
+			break;
+		case Player.PLAYER_TWO:
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteDown.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteLeft.atlas")); 
+			break;
+		case Player.PLAYER_THREE:
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDown.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerUp.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerRight.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerLeft.atlas")); 
+			break;
+		}
+		
 		float animationSpeed     = 7/15f;
 		walkDownAnimation        = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
 		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());

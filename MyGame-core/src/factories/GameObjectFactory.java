@@ -1,6 +1,7 @@
 package factories;
 
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
 import gameobjects.gamecharacters.PlayerThree;
 import gameobjects.gamecharacters.PlayerTwo;
@@ -32,13 +33,13 @@ public class GameObjectFactory {
 			return null;
 		}
 		if (objectType.equalsIgnoreCase("playerOne")) {
-			return new PlayerOne("Blackbeard", null);
+			return new PlayerOne("Jolly Roger", null, Player.PLAYER_ONE);
 		}
 		if (objectType.equalsIgnoreCase("playerTwo")) {
-			return new PlayerTwo("Jolly Roger", null);
+			return new PlayerTwo("Black Beard", null, Player.PLAYER_TWO);
 		}
 		if (objectType.equalsIgnoreCase("playerThree")) {
-			return new PlayerThree("Peg Leg", null);
+			return new PlayerThree("Peg Leg", null, Player.PLAYER_THREE);
 		}
 		if (objectType.equalsIgnoreCase("tree")) {
 			return new PalmTree(x, y);

@@ -28,9 +28,10 @@ public class PlayerTwo extends Player {
 	 * 
 	 * @param String name
 	 * @param MyGame myGame
+	 * @param int    playerNumber
 	 */
-	public PlayerTwo(String name, MyGame myGame) {
-		super(name, myGame);
+	public PlayerTwo(String name, MyGame myGame, int playerNumber) {
+		super(name, myGame, playerNumber);
 		playerOneFollowAndDirectionValueOffset = 10;
 	}
 

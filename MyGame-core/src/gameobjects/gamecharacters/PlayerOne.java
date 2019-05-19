@@ -32,9 +32,10 @@ public class PlayerOne extends Player {
 	 * 
 	 * @param String name
 	 * @param MyGame myGame
+	 * @param int    playerNumber
 	 */
-	public PlayerOne(String name, MyGame myGame) {
-		super(name, myGame);
+	public PlayerOne(String name, MyGame myGame, int playerNumber) {
+		super(name, myGame, playerNumber);
 		playerScore = 0;
 	}
 
