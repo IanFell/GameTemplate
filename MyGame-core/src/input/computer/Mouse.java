@@ -39,7 +39,7 @@ public class Mouse extends ComputerInput {
 			inventoryButtonIsPressed[i] = false;
 
 			// Full screen coordinates.
-			inventoryButtons[i].width   = 180;
+			inventoryButtons[i].width   = 200;
 			inventoryButtons[i].height  = 185;
 			// Phone screen coordinates.
 			//inventoryButtons[i].width   = 90;
@@ -49,12 +49,12 @@ public class Mouse extends ComputerInput {
 		// Full screen button positions.
 		int yStartPositionTopRow      = 245;
 		int yStartPositionBottomRow   = 470;
-		int xStartPositionColumnOne   = 130;
-		int xStartPositionColumnTwo   = 330;
-		int xStartPositionColumnThree = 530;
-		int xStartPositionColumnFour  = 730;
-		int xStartPositionColumnFive  = 930;
-		int xStartPositionColumnSix   = 1130;
+		int xStartPositionColumnOne   = 90;
+		int xStartPositionColumnTwo   = 305;
+		int xStartPositionColumnThree = 495;
+		int xStartPositionColumnFour  = 695;
+		int xStartPositionColumnFive  = 900;
+		int xStartPositionColumnSix   = 1095;
 
 		// Phone screen button positions.
 		/*
