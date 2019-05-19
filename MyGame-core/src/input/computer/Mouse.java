@@ -148,36 +148,11 @@ public class Mouse extends ComputerInput {
 					}
 				}
 			} else {
-				// If user presses the T button to use turbo.
-				int turboSpeed    = 3;
-				float playerSpeed = Player.PLAYER_SPEED;
-				if (Gdx.input.isKeyPressed(Input.Keys.T)) {
-					System.out.println("Player is using turbo!  Going fast!");
-					playerSpeed = Player.PLAYER_SPEED * turboSpeed;
+				if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+					Player.playerIsPerformingAttack = true;
+				} else {
+					Player.playerIsPerformingAttack = false;
 				}
-
-				if(GameObjectLoader.gameObjectList.contains(player)) {
-					System.out.println(Gdx.input.getX());
-					if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-						int mouseToWorldMiddleCoordinate = 260;
-						if (Gdx.input.getX() > GameScreen.cameraX + mouseToWorldMiddleCoordinate) {
-							((Player) player).moveRight(playerSpeed);
-						}  
-						else if (Gdx.input.getX() <= GameScreen.cameraX + mouseToWorldMiddleCoordinate) {
-							((Player) player).moveLeft(playerSpeed);
-						}
-					}
-					if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
-						int mouseToWorldMiddleCoordinate = 206;
-						if (Gdx.input.getY() > GameScreen.cameraY + mouseToWorldMiddleCoordinate) {
-							((Player) player).moveDown(playerSpeed);
-						}  
-						if (Gdx.input.getY() <= GameScreen.cameraY + mouseToWorldMiddleCoordinate) {
-							((Player) player).moveUp(playerSpeed);
-						}
-					}
-				}
-				break;
 			}
 		}
 	}

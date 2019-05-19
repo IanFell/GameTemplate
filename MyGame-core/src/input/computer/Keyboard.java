@@ -64,28 +64,30 @@ public class Keyboard extends ComputerInput {
 			break;
 
 		case Screens.GAME_SCREEN:	
-			handleKeyboardDirectionalButtons(myGame, "arrows", player);
-			//handleKeyboardDirectionalButtons(myGame, "wasd");
+			//handleKeyboardDirectionalButtons(myGame, "arrows", player);
+			handleKeyboardDirectionalButtons(myGame, "wasd", player);
 
 			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
 				Player.isJumping = true;
 			}
 
 			// Execute screenshake.
-			if (Gdx.input.isKeyPressed(Input.Keys.R)) { 
+			/*
+			if (Gdx.input.isKeyPressed(Input.Keys.Z)) { 
 				GameScreen.screenShake.shake(0.3f, 3);
-			}
+			} */
 
 			/**
 			 * Perform operations on lighting.  
 			 * This will make the light texture grow,
 			 * then shrink back to normal size when key is released.
 			 */
+			/*
 			if (Gdx.input.isKeyPressed(Input.Keys.L)) { 
 				LightHandler.isGrowing = true;
 			} else {
 				LightHandler.isGrowing = false;
-			}
+			} */
 
 			float cameraZoomAmount = 1.0f;
 			// Zoom camera out.
@@ -102,21 +104,23 @@ public class Keyboard extends ComputerInput {
 				Player.hasTorch = !Player.hasTorch;
 			}
 
+			/*
 			if (Gdx.input.isKeyPressed(Input.Keys.A)) {
 				Player.playerIsPerformingAttack = true;
 			} else {
 				Player.playerIsPerformingAttack = false;
-			}
+			} */
 
+			/*
 			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
 				if (!Inventory.allInventoryShouldBeRendered) {
 					((Player) player).getInventory().setInventoryIsEquipped(!((Player) player).getInventory().getInventoryIsEquipped());
 
 				}
-			}
+			} */
 
 			// Display all inventory.
-			if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
 				if (!startInventoryClickTimer) {
 					startInventoryClickTimer               = true;
 					Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
@@ -130,15 +134,17 @@ public class Keyboard extends ComputerInput {
 				}
 			} 
 
+			/*
 			if (Gdx.input.isKeyPressed(Input.Keys.P)) {
 				BulletLoader.createBullet(myGame);
-			}
+			} */
 
+			/*
 			if (Gdx.input.isKeyPressed(Input.Keys.G)) {
 				//Gun.playerIsEquippedWithGun = !Gun.playerIsEquippedWithGun;
-			}
+			} */
 
-			if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+			if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
 				System.exit(0);
 			}
 		}
