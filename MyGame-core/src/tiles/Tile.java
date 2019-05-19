@@ -123,12 +123,13 @@ public class Tile extends Sprite {
 		float playerXPosition = getX();
 		float playerYPosition = getY();
 		float screenOffset    = 0.5f;
+		float yPositionOffset = 1.5f;
 		int withinBoundsPerimeterOffset = 15;
 		if (
 				playerXPosition < cameraXPosition + withinBoundsPerimeterOffset - screenOffset &&
 				playerXPosition > cameraXPosition - withinBoundsPerimeterOffset + screenOffset &&
-				playerYPosition < cameraYPosition + withinBoundsPerimeterOffset / 1.5f - screenOffset &&
-				playerYPosition > cameraYPosition - withinBoundsPerimeterOffset / 1.5f + screenOffset
+				playerYPosition < cameraYPosition + withinBoundsPerimeterOffset / yPositionOffset - screenOffset &&
+				playerYPosition > cameraYPosition - withinBoundsPerimeterOffset / yPositionOffset + screenOffset
 				) {
 			return true;
 		}

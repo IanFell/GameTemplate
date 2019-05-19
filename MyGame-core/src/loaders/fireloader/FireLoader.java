@@ -69,7 +69,7 @@ public class FireLoader extends ClassObjectLoader {
 				hasLogs
 				);
 		fires[6] = new Fire(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 40.5f, 
+				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 40.8f, 
 				GameAttributeHelper.CHUNK_FIVE_Y_POSITION_START - 3.5f,
 				fireWidth,
 				fireHeight,

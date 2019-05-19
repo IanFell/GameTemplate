@@ -33,7 +33,13 @@ import spawners.EnemySpawner;
  */
 public class GameScreen extends Screens {
 
-	public EnemySpawner enemySpawner;
+	public EnemySpawner enemySpawnerMexicoBeach;
+	public EnemySpawner enemySpawnerPortStJoe;
+	public EnemySpawner enemySpawnerThePoint;
+	public EnemySpawner enemySpawnerWewa;
+	public EnemySpawner enemySpawnerApalachicola;
+	public EnemySpawner enemySpawnerStGeorge;
+	public EnemySpawner enemySpawnerCapeSanBlas;
 
 	public static int cameraWidth = 10;
 
@@ -156,10 +162,40 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_TWO).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
-		enemySpawner = new EnemySpawner(
+		enemySpawnerMexicoBeach = new EnemySpawner(
 				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, 
 				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12.5f, 
 				"Mexico Beach"
+				);
+		enemySpawnerPortStJoe = new EnemySpawner(
+				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 5, 
+				GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 5, 
+				"Port St Joe"
+				);
+		enemySpawnerThePoint = new EnemySpawner(
+				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 30, 
+				GameAttributeHelper.CHUNK_FIVE_Y_POSITION_START - 10, 
+				"The Point"
+				);
+		enemySpawnerWewa = new EnemySpawner(
+				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 50, 
+				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12, 
+				"Wewa"
+				);
+		enemySpawnerApalachicola = new EnemySpawner(
+				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 25, 
+				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 50, 
+				"Apalachicola"
+				);
+		enemySpawnerStGeorge = new EnemySpawner(
+				GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START + 15, 
+				GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START - 8, 
+				"St George"
+				);
+		enemySpawnerCapeSanBlas = new EnemySpawner(
+				GameAttributeHelper.CHUNK_THREE_X_POSITION_START - 3, 
+				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 12, 
+				"Cape San Blas"
 				);
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
@@ -213,7 +249,13 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_TWO).updateObject(myGame, mapHandler);
 		myGame.getGameObject(GameObject.PLAYER_THREE).updateObject(myGame, mapHandler);
-		enemySpawner.updateEnemies(myGame, mapHandler);
+		enemySpawnerMexicoBeach.updateEnemies(myGame, mapHandler);
+		enemySpawnerPortStJoe.updateEnemies(myGame, mapHandler);
+		enemySpawnerThePoint.updateEnemies(myGame, mapHandler);
+		enemySpawnerWewa.updateEnemies(myGame, mapHandler);
+		enemySpawnerApalachicola.updateEnemies(myGame, mapHandler);
+		enemySpawnerStGeorge.updateEnemies(myGame, mapHandler);
+		enemySpawnerCapeSanBlas.updateEnemies(myGame, mapHandler);
 		GameWorld.updateGameWorld(myGame, mapHandler);
 
 		screenShader.updateObject();

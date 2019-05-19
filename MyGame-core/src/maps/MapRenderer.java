@@ -81,10 +81,64 @@ public class MapRenderer {
 								mapHandler, 
 								MapHandler.mapChunks.get(i).tileMap[x][z]
 								);
-						if (myGame.gameScreen.enemySpawner.enemies != null) {
-							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawner.enemies.size(); enemy++) {
+						if (myGame.gameScreen.enemySpawnerMexicoBeach.enemies != null) {
+							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawnerMexicoBeach.enemies.size(); enemy++) {
 								CollisionHandler.checkIfNPCHasCollidedWithSandOrWaterTile(
-										myGame.gameScreen.enemySpawner.enemies.get(enemy), 
+										myGame.gameScreen.enemySpawnerMexicoBeach.enemies.get(enemy), 
+										mapHandler, 
+										MapHandler.mapChunks.get(i).tileMap[x][z]
+										);
+							}
+						}
+						if (myGame.gameScreen.enemySpawnerPortStJoe.enemies != null) {
+							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawnerPortStJoe.enemies.size(); enemy++) {
+								CollisionHandler.checkIfNPCHasCollidedWithSandOrWaterTile(
+										myGame.gameScreen.enemySpawnerPortStJoe.enemies.get(enemy), 
+										mapHandler, 
+										MapHandler.mapChunks.get(i).tileMap[x][z]
+										);
+							}
+						}
+						if (myGame.gameScreen.enemySpawnerThePoint.enemies != null) {
+							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawnerThePoint.enemies.size(); enemy++) {
+								CollisionHandler.checkIfNPCHasCollidedWithSandOrWaterTile(
+										myGame.gameScreen.enemySpawnerThePoint.enemies.get(enemy), 
+										mapHandler, 
+										MapHandler.mapChunks.get(i).tileMap[x][z]
+										);
+							}
+						}
+						if (myGame.gameScreen.enemySpawnerWewa.enemies != null) {
+							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawnerWewa.enemies.size(); enemy++) {
+								CollisionHandler.checkIfNPCHasCollidedWithSandOrWaterTile(
+										myGame.gameScreen.enemySpawnerWewa.enemies.get(enemy), 
+										mapHandler, 
+										MapHandler.mapChunks.get(i).tileMap[x][z]
+										);
+							}
+						}
+						if (myGame.gameScreen.enemySpawnerApalachicola.enemies != null) {
+							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawnerApalachicola.enemies.size(); enemy++) {
+								CollisionHandler.checkIfNPCHasCollidedWithSandOrWaterTile(
+										myGame.gameScreen.enemySpawnerApalachicola.enemies.get(enemy), 
+										mapHandler, 
+										MapHandler.mapChunks.get(i).tileMap[x][z]
+										);
+							}
+						}
+						if (myGame.gameScreen.enemySpawnerStGeorge.enemies != null) {
+							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawnerStGeorge.enemies.size(); enemy++) {
+								CollisionHandler.checkIfNPCHasCollidedWithSandOrWaterTile(
+										myGame.gameScreen.enemySpawnerStGeorge.enemies.get(enemy), 
+										mapHandler, 
+										MapHandler.mapChunks.get(i).tileMap[x][z]
+										);
+							}
+						}
+						if (myGame.gameScreen.enemySpawnerCapeSanBlas.enemies != null) {
+							for (int enemy = 0; enemy < myGame.gameScreen.enemySpawnerCapeSanBlas.enemies.size(); enemy++) {
+								CollisionHandler.checkIfNPCHasCollidedWithSandOrWaterTile(
+										myGame.gameScreen.enemySpawnerCapeSanBlas.enemies.get(enemy), 
 										mapHandler, 
 										MapHandler.mapChunks.get(i).tileMap[x][z]
 										);

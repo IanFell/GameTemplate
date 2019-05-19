@@ -19,6 +19,7 @@ import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import particles.DustParticleEmitter;
+import towns.Town;
 
 /**
  * Player object.
@@ -108,7 +109,7 @@ public class Player extends GameCharacter {
 	 * @param MyGame myGame
 	 */
 	public Player(String name, MyGame myGame) {
-		setPlayerStartingPosition("Mexico Beach");
+		setPlayerStartingPosition(Town.CAPE_SAN_BLAS);
 		this.width               = playerSize;
 		this.height              = playerSize;
 		rectangle.width          = playerSize;
@@ -132,13 +133,36 @@ public class Player extends GameCharacter {
 		dustEmitter              = new DustParticleEmitter();
 	}
 
-	private void setPlayerStartingPosition(String city) {
-		if (city.equalsIgnoreCase("Mexico Beach")) {
-			this.x                   = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 43;
-			this.y                   = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10;
-		} else if (city.equalsIgnoreCase("Port St Joe")) {
-			this.x                   = GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 1;
-			this.y                   = GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 6;
+	private void setPlayerStartingPosition(int town) {
+		switch (town) {
+		case Town.MEXICO_BEACH:
+			this.x = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 43;
+			this.y = GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10;
+			break;
+		case Town.PORT_ST_JOE:
+			this.x = GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 1;
+			this.y = GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 6;
+			break;
+		case Town.THE_POINT:
+			this.x = GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 39; 
+			this.y = GameAttributeHelper.CHUNK_FIVE_Y_POSITION_START + 9;
+			break;
+		case Town.WEWA:
+			this.x = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 60;
+			this.y = 3;
+			break;
+		case Town.APALACHICOLA:
+			this.x = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 35;
+			this.y = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 43;
+			break;
+		case Town.ST_GEORGE:
+			this.x = GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START + 5;
+			this.y = GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START + 3;
+			break;
+		case Town.CAPE_SAN_BLAS:
+			this.x = GameAttributeHelper.CHUNK_THREE_X_POSITION_START; 
+			this.y = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 12;
+			break;
 		}
 	}
 
