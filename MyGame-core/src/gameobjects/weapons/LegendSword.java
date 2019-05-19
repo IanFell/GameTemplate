@@ -125,42 +125,7 @@ public class LegendSword extends Weapon {
 			height = 2;
 			setRotationAngleDependingOnPlayerDirection();
 			updateHitBox();
-
-			if (myGame.gameScreen.enemySpawnerMexicoBeach.enemies != null) {
-				for (int i = 0; i < myGame.gameScreen.enemySpawnerMexicoBeach.enemies.size(); i++) {
-					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawnerMexicoBeach.enemies.get(i), this);
-				}
-			}
-			if (myGame.gameScreen.enemySpawnerPortStJoe.enemies != null) {
-				for (int i = 0; i < myGame.gameScreen.enemySpawnerPortStJoe.enemies.size(); i++) {
-					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawnerPortStJoe.enemies.get(i), this);
-				}
-			}
-			if (myGame.gameScreen.enemySpawnerThePoint.enemies != null) {
-				for (int i = 0; i < myGame.gameScreen.enemySpawnerThePoint.enemies.size(); i++) {
-					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawnerThePoint.enemies.get(i), this);
-				}
-			}
-			if (myGame.gameScreen.enemySpawnerWewa.enemies != null) {
-				for (int i = 0; i < myGame.gameScreen.enemySpawnerWewa.enemies.size(); i++) {
-					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawnerWewa.enemies.get(i), this);
-				}
-			}
-			if (myGame.gameScreen.enemySpawnerApalachicola.enemies != null) {
-				for (int i = 0; i < myGame.gameScreen.enemySpawnerApalachicola.enemies.size(); i++) {
-					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawnerApalachicola.enemies.get(i), this);
-				}
-			}
-			if (myGame.gameScreen.enemySpawnerStGeorge.enemies != null) {
-				for (int i = 0; i < myGame.gameScreen.enemySpawnerStGeorge.enemies.size(); i++) {
-					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawnerStGeorge.enemies.get(i), this);
-				}
-			}
-			if (myGame.gameScreen.enemySpawnerCapeSanBlas.enemies != null) {
-				for (int i = 0; i < myGame.gameScreen.enemySpawnerCapeSanBlas.enemies.size(); i++) {
-					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(myGame.gameScreen.enemySpawnerCapeSanBlas.enemies.get(i), this);
-				}
-			}
+			myGame.gameScreen.enemyHandler.checkWeaponCollision(myGame, this);
 		}
 	}
 

@@ -40,46 +40,12 @@ public class SoundHandler {
 				soundLoader.sound.play(baseSoundVolumeValue);
 				LegendSword.playSound = false;
 			}
-			for (int i = 0; i < myGame.gameScreen.enemySpawnerMexicoBeach.enemies.size(); i++) {
-				if (myGame.gameScreen.enemySpawnerMexicoBeach.enemies.get(i).getPlaySound()) {
-					soundLoader.sound.play(baseSoundVolumeValue);
-					myGame.gameScreen.enemySpawnerMexicoBeach.enemies.get(i).setPlaySound(false);
-				}
-			}
-			for (int i = 0; i < myGame.gameScreen.enemySpawnerPortStJoe.enemies.size(); i++) {
-				if (myGame.gameScreen.enemySpawnerPortStJoe.enemies.get(i).getPlaySound()) {
-					soundLoader.sound.play(baseSoundVolumeValue);
-					myGame.gameScreen.enemySpawnerPortStJoe.enemies.get(i).setPlaySound(false);
-				}
-			}
-			for (int i = 0; i < myGame.gameScreen.enemySpawnerThePoint.enemies.size(); i++) {
-				if (myGame.gameScreen.enemySpawnerThePoint.enemies.get(i).getPlaySound()) {
-					soundLoader.sound.play(baseSoundVolumeValue);
-					myGame.gameScreen.enemySpawnerThePoint.enemies.get(i).setPlaySound(false);
-				}
-			}
-			for (int i = 0; i < myGame.gameScreen.enemySpawnerWewa.enemies.size(); i++) {
-				if (myGame.gameScreen.enemySpawnerWewa.enemies.get(i).getPlaySound()) {
-					soundLoader.sound.play(baseSoundVolumeValue);
-					myGame.gameScreen.enemySpawnerWewa.enemies.get(i).setPlaySound(false);
-				}
-			}
-			for (int i = 0; i < myGame.gameScreen.enemySpawnerApalachicola.enemies.size(); i++) {
-				if (myGame.gameScreen.enemySpawnerApalachicola.enemies.get(i).getPlaySound()) {
-					soundLoader.sound.play(baseSoundVolumeValue);
-					myGame.gameScreen.enemySpawnerApalachicola.enemies.get(i).setPlaySound(false);
-				}
-			}
-			for (int i = 0; i < myGame.gameScreen.enemySpawnerStGeorge.enemies.size(); i++) {
-				if (myGame.gameScreen.enemySpawnerStGeorge.enemies.get(i).getPlaySound()) {
-					soundLoader.sound.play(baseSoundVolumeValue);
-					myGame.gameScreen.enemySpawnerStGeorge.enemies.get(i).setPlaySound(false);
-				}
-			}
-			for (int i = 0; i < myGame.gameScreen.enemySpawnerCapeSanBlas.enemies.size(); i++) {
-				if (myGame.gameScreen.enemySpawnerCapeSanBlas.enemies.get(i).getPlaySound()) {
-					soundLoader.sound.play(baseSoundVolumeValue);
-					myGame.gameScreen.enemySpawnerCapeSanBlas.enemies.get(i).setPlaySound(false);
+			for (int i = 0; i < myGame.gameScreen.enemyHandler.enemySpawner.length; i++) {
+				for (int k = 0; k < myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.size(); k++) {
+					if (myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).getPlaySound()) {
+						soundLoader.sound.play(baseSoundVolumeValue);
+						myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).setPlaySound(false);
+					}
 				}
 			}
 		}

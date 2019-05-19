@@ -109,7 +109,7 @@ public class Player extends GameCharacter {
 	 * @param MyGame myGame
 	 */
 	public Player(String name, MyGame myGame) {
-		setPlayerStartingPosition(Town.CAPE_SAN_BLAS);
+		setPlayerStartingPosition(Town.MEXICO_BEACH);
 		this.width               = playerSize;
 		this.height              = playerSize;
 		rectangle.width          = playerSize;
@@ -133,6 +133,10 @@ public class Player extends GameCharacter {
 		dustEmitter              = new DustParticleEmitter();
 	}
 
+	/**
+	 * 
+	 * @param int town
+	 */
 	private void setPlayerStartingPosition(int town) {
 		switch (town) {
 		case Town.MEXICO_BEACH:

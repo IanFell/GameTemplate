@@ -1,7 +1,12 @@
 package towns;
 
+/**
+ * 
+ * @author Fabulous Fellini
+ *
+ */
 public class Town {
-	
+
 	public static final int MEXICO_BEACH  = 0;
 	public static final int PORT_ST_JOE   = 1;
 	public static final int THE_POINT     = 2;
