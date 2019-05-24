@@ -14,6 +14,7 @@ public class ImageLoader {
 	public Texture[] cutSceneDialogueOne = new Texture[9];
 	public Texture testImage;
 	public Texture icon;
+	public Texture worldMapReal;
 	public Texture enemy;
 	public Texture boat;
 	public Texture gunRight;
@@ -92,6 +93,7 @@ public class ImageLoader {
 	public Texture dustParticleThree;
 
 	public void init() {
+		worldMapReal						   = new Texture(Gdx.files.internal("WorldMapReal.png"));
 		dustParticleOne                        = new Texture(Gdx.files.internal("DustParticleOne.png"));
 		dustParticleTwo                        = new Texture(Gdx.files.internal("DustParticleTwo.png"));
 		dustParticleThree                      = new Texture(Gdx.files.internal("DustParticleThree.png"));
@@ -183,6 +185,7 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		worldMapReal.dispose();
 		dustParticleOne.dispose();
 		dustParticleTwo.dispose();
 		dustParticleThree.dispose();

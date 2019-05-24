@@ -13,6 +13,7 @@ import inventory.Inventory;
 import loaders.GameObjectLoader;
 import screens.GameScreen;
 import screens.Screens;
+import worldmapui.MapUi;
 
 /**
  * Handles keyboard input.
@@ -131,6 +132,10 @@ public class Keyboard extends ComputerInput {
 					}
 				}
 			} 
+			
+			if (Gdx.input.isKeyPressed(Input.Keys.M)) {
+				MapUi.mapShouldBeRendered = !MapUi.mapShouldBeRendered;
+			}
 
 			/*
 			if (Gdx.input.isKeyPressed(Input.Keys.P)) {

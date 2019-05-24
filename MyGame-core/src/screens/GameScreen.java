@@ -25,6 +25,7 @@ import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
 import spawners.EnemySpawner;
+import worldmapui.MapUi;
 
 /**
  * Screen of the game while in play.
@@ -33,6 +34,8 @@ import spawners.EnemySpawner;
  *
  */
 public class GameScreen extends Screens {
+	
+	private MapUi mapUi;
 
 	public static int cameraWidth = 10;
 
@@ -161,6 +164,7 @@ public class GameScreen extends Screens {
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
+		mapUi = new MapUi(myGame);
 		/**
 		 * This overlays the game screen and fades out from black.
 		 * This makes the transition between screens much smoother.
@@ -302,6 +306,12 @@ public class GameScreen extends Screens {
 					myGame.imageLoader
 					);
 		}
+		
+		mapUi.renderWorldMap(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {
