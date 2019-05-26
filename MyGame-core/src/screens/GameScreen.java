@@ -12,6 +12,7 @@ import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import handlers.EnemyHandler;
 import handlers.MissionHandler;
+import handlers.TownHandler;
 import handlers.WeaponHandler;
 import helpers.GameAttributeHelper;
 import helpers.GamePlayHelper;
@@ -24,8 +25,6 @@ import maps.MapRenderer;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
-import towns.MexicoBeach;
-import towns.PortStJoe;
 import worldmapui.MapUi;
 
 /**
@@ -94,10 +93,9 @@ public class GameScreen extends Screens {
 
 	public EnemyHandler enemyHandler = new EnemyHandler();
 
+	public TownHandler townHandler = new TownHandler();
+
 	private CutSceneIntro cutSceneIntro;
-	
-	public MexicoBeach mexicoBeach;
-	public PortStJoe portStJoe;
 
 	/**
 	 * 
@@ -169,8 +167,7 @@ public class GameScreen extends Screens {
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
 		mapUi       = new MapUi(myGame);
-		mexicoBeach = new MexicoBeach();
-		portStJoe   = new PortStJoe();
+
 		/**
 		 * This overlays the game screen and fades out from black.
 		 * This makes the transition between screens much smoother.
@@ -223,8 +220,7 @@ public class GameScreen extends Screens {
 		enemyHandler.updateEnemies(myGame, mapHandler);
 		GameWorld.updateGameWorld(myGame, mapHandler);
 		mapUi.updateWorldMapUi();
-		mexicoBeach.updateTown(myGame);
-		portStJoe.updateTown(myGame);
+		townHandler.updateTowns(myGame);
 		screenShader.updateObject();
 
 		// Fade into gameplay after intro cutscene.
@@ -270,18 +266,9 @@ public class GameScreen extends Screens {
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
-		
-		/*
-		mexicoBeach.renderTownBorder(
-				myGame.renderer.batch, 
-				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
-				); */
-		portStJoe.renderTownBorder(
-				myGame.renderer.batch, 
-				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
-				);
+
+		// This shows the border of the towns strictly for debugging.
+		//townHandler.renderTownBorders(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 
 		// Rain should be in front of all objects. 
 		for (int i = 0; i < weatherHandler.rainHandler.length; i++) {

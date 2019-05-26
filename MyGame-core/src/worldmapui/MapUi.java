@@ -16,10 +16,10 @@ import screens.Screens;
 public class MapUi extends Screens {
 
 	public static boolean mapShouldBeRendered;
-	
+
 	// Use this to make player location icon flash.
 	private int timer = 0;
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -37,39 +37,48 @@ public class MapUi extends Screens {
 	public boolean isMapShouldBeRendered() {
 		return mapShouldBeRendered;
 	}
-	
+
 	public void updateWorldMapUi() {
 		timer++;
 		if (timer > 25) {
 			timer = 0;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
+	 * @param MyGame        myGame
 	 */
 	public void renderWorldMapUi(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
 		if (mapShouldBeRendered) {
 			int borderShrinkOffset = 1;
 			Texture texture = null;
-			
+
 			// Make map look like player location is flashing.
 			// This is the "unflashed" map.
 			if (timer < 12) {
 				texture = imageLoader.worldMapFake;
 			} else {
 				// This is the "flashed" map.
-				if (myGame.gameScreen.mexicoBeach.isInTown) {
+				if (myGame.gameScreen.townHandler.getMexicoBeach().isInTown()) {
 					texture = imageLoader.worldMapMexicoBeach;
-				} else if (myGame.gameScreen.portStJoe.isInTown) {
+				} else if (myGame.gameScreen.townHandler.getPortStJoe().isInTown()) {
 					texture = imageLoader.worldMapPortStJoe;
-				}
-				
-				
-				else {
+				} else if (myGame.gameScreen.townHandler.getWewa().isInTown()) {
+					texture = imageLoader.worldMapWewa;
+				} else if (myGame.gameScreen.townHandler.getApalachicola().isInTown()) {
+					texture = imageLoader.worldMapApalachicola;
+				} else if (myGame.gameScreen.townHandler.getStGeorge().isInTown()) {
+					texture = imageLoader.worldMapStGeorge;
+				} else if (myGame.gameScreen.townHandler.getThePoint().isInTown()) {
+					texture = imageLoader.worldMapThePoint;
+				} else if (myGame.gameScreen.townHandler.getCapeSanBlas().isInTown()) {
+					texture = imageLoader.worldMapCapeSanBlas;
+				} else {
+					// If player is not in town, just draw map with no icon for now.
 					texture = imageLoader.worldMapFake;
 				}
 			}

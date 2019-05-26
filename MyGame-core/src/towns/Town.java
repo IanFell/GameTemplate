@@ -48,6 +48,7 @@ public class Town {
 	}
 
 	/**
+	 * This is used strictly for debugging.
 	 * 
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
@@ -73,5 +74,13 @@ public class Town {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	public boolean isInTown() {
+		return isInTown;
 	}
 }
