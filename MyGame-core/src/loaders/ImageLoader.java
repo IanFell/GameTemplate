@@ -16,6 +16,13 @@ public class ImageLoader {
 	public Texture icon;
 	public Texture worldMapReal;
 	public Texture worldMapFake;
+	public Texture worldMapMexicoBeach;
+	public Texture worldMapApalachicola;
+	public Texture worldMapStGeorge;
+	public Texture worldMapPortStJoe;
+	public Texture worldMapCapeSanBlas;
+	public Texture worldMapThePoint;
+	public Texture worldMapWewa;
 	public Texture enemy;
 	public Texture boat;
 	public Texture gunRight;
@@ -94,6 +101,13 @@ public class ImageLoader {
 	public Texture dustParticleThree;
 
 	public void init() {
+		worldMapMexicoBeach					   = new Texture(Gdx.files.internal("WorldMapMexicoBeach.png"));
+		worldMapThePoint					   = new Texture(Gdx.files.internal("WorldMapThePoint.png"));
+		worldMapPortStJoe					   = new Texture(Gdx.files.internal("WorldMapPortStJoe.png"));
+		worldMapCapeSanBlas					   = new Texture(Gdx.files.internal("WorldMapCapeSanBlas.png"));
+		worldMapApalachicola				   = new Texture(Gdx.files.internal("WorldMapApalachicola.png"));
+		worldMapWewa      					   = new Texture(Gdx.files.internal("WorldMapWewa.png"));
+		worldMapStGeorge					   = new Texture(Gdx.files.internal("WorldMapStGeorge.png"));
 		worldMapFake						   = new Texture(Gdx.files.internal("WorldMapFake.png"));
 		worldMapReal						   = new Texture(Gdx.files.internal("WorldMapReal.png"));
 		dustParticleOne                        = new Texture(Gdx.files.internal("DustParticleOne.png"));
@@ -187,6 +201,13 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		worldMapMexicoBeach.dispose();
+		worldMapStGeorge.dispose();
+		worldMapApalachicola.dispose();
+		worldMapThePoint.dispose();
+		worldMapCapeSanBlas.dispose();
+		worldMapWewa.dispose();
+		worldMapPortStJoe.dispose();
 		worldMapFake.dispose();
 		worldMapReal.dispose();
 		dustParticleOne.dispose();

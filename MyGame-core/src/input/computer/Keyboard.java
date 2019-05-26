@@ -63,8 +63,11 @@ public class Keyboard extends ComputerInput {
 			break;
 
 		case Screens.GAME_SCREEN:	
-			//handleKeyboardDirectionalButtons(myGame, "arrows", player);
-			handleKeyboardDirectionalButtons(myGame, "wasd", player);
+			
+			if (!Inventory.allInventoryShouldBeRendered && !MapUi.mapShouldBeRendered) {
+				//handleKeyboardDirectionalButtons(myGame, "arrows", player);
+				handleKeyboardDirectionalButtons(myGame, "wasd", player);
+			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
 				Player.isJumping = true;

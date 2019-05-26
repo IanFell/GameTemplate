@@ -24,6 +24,8 @@ import maps.MapRenderer;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
+import towns.MexicoBeach;
+import towns.PortStJoe;
 import worldmapui.MapUi;
 
 /**
@@ -93,6 +95,9 @@ public class GameScreen extends Screens {
 	public EnemyHandler enemyHandler = new EnemyHandler();
 
 	private CutSceneIntro cutSceneIntro;
+	
+	public MexicoBeach mexicoBeach;
+	public PortStJoe portStJoe;
 
 	/**
 	 * 
@@ -163,7 +168,9 @@ public class GameScreen extends Screens {
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
-		mapUi = new MapUi(myGame);
+		mapUi       = new MapUi(myGame);
+		mexicoBeach = new MexicoBeach();
+		portStJoe   = new PortStJoe();
 		/**
 		 * This overlays the game screen and fades out from black.
 		 * This makes the transition between screens much smoother.
@@ -216,6 +223,8 @@ public class GameScreen extends Screens {
 		enemyHandler.updateEnemies(myGame, mapHandler);
 		GameWorld.updateGameWorld(myGame, mapHandler);
 		mapUi.updateWorldMapUi();
+		mexicoBeach.updateTown(myGame);
+		portStJoe.updateTown(myGame);
 		screenShader.updateObject();
 
 		// Fade into gameplay after intro cutscene.
@@ -257,6 +266,18 @@ public class GameScreen extends Screens {
 
 		GamePlayHelper.sortAndRenderObjectsInYPositionOrder(
 				GameObjectLoader.gameObjectList, 
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
+		
+		/*
+		mexicoBeach.renderTownBorder(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				); */
+		portStJoe.renderTownBorder(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
@@ -309,7 +330,8 @@ public class GameScreen extends Screens {
 		mapUi.renderWorldMapUi(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader
+				myGame.imageLoader,
+				myGame
 				);
 	}
 

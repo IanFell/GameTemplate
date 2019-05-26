@@ -1,10 +1,10 @@
 package worldmapui;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
-import controllers.PlayerController;
 import loaders.ImageLoader;
 import screens.Screens;
 
@@ -20,9 +20,6 @@ public class MapUi extends Screens {
 	// Use this to make player location icon flash.
 	private int timer = 0;
 	
-	private float playerX = 0;
-	private float playerY = 0;
-
 	/**
 	 * Constructor.
 	 * 
@@ -46,55 +43,43 @@ public class MapUi extends Screens {
 		if (timer > 25) {
 			timer = 0;
 		}
-		playerX = PlayerController.getCurrentPlayer(myGame).getX();
-		playerY = PlayerController.getCurrentPlayer(myGame).getY();
-		updatePlayerLocationIcon();
 	}
 	
-	private void updatePlayerLocationIcon() {
-		determineIfPlayerIsInTown();
-	}
-	
-	private void determineIfPlayerIsInTown() {
-		
-	}
-
 	/**
 	 * 
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderWorldMapUi(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderWorldMapUi(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
 		if (mapShouldBeRendered) {
 			int borderShrinkOffset = 1;
+			Texture texture = null;
+			
+			// Make map look like player location is flashing.
+			// This is the "unflashed" map.
+			if (timer < 12) {
+				texture = imageLoader.worldMapFake;
+			} else {
+				// This is the "flashed" map.
+				if (myGame.gameScreen.mexicoBeach.isInTown) {
+					texture = imageLoader.worldMapMexicoBeach;
+				} else if (myGame.gameScreen.portStJoe.isInTown) {
+					texture = imageLoader.worldMapPortStJoe;
+				}
+				
+				
+				else {
+					texture = imageLoader.worldMapFake;
+				}
+			}
 			batch.draw(
-					imageLoader.worldMapFake,
+					texture,
 					camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset,
 					(camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight,
 					camera.viewportWidth - borderShrinkOffset * 2, 
 					-camera.viewportHeight
 					);
-			// Make player location icon flash.
-			if (timer < 12) {
-				renderPlayerLocationOnMap(batch, shapeRenderer, imageLoader);
-			}
 		}
-	}
-	
-	/**
-	 * 
-	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
-	 * @param ImageLoader   imageLoader
-	 */
-	private void renderPlayerLocationOnMap(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		batch.draw(
-				imageLoader.whiteSquare,
-				playerX,
-				playerY,
-				1, 
-				1
-				);
 	}
 }
