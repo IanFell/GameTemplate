@@ -1,5 +1,7 @@
 package towns;
 
+import com.badlogic.gdx.math.Rectangle;
+
 /**
  * 
  * @author Fabulous Fellini
@@ -14,5 +16,7 @@ public class Town {
 	public static final int APALACHICOLA  = 4;
 	public static final int ST_GEORGE     = 5;
 	public static final int CAPE_SAN_BLAS = 6; 
+	
+	private Rectangle townBorder = new Rectangle();
 
 }

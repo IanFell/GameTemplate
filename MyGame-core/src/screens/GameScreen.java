@@ -24,7 +24,6 @@ import maps.MapRenderer;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
-import spawners.EnemySpawner;
 import worldmapui.MapUi;
 
 /**
@@ -34,7 +33,7 @@ import worldmapui.MapUi;
  *
  */
 public class GameScreen extends Screens {
-	
+
 	private MapUi mapUi;
 
 	public static int cameraWidth = 10;
@@ -216,7 +215,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_THREE).updateObject(myGame, mapHandler);
 		enemyHandler.updateEnemies(myGame, mapHandler);
 		GameWorld.updateGameWorld(myGame, mapHandler);
-
+		mapUi.updateWorldMapUi();
 		screenShader.updateObject();
 
 		// Fade into gameplay after intro cutscene.
@@ -306,8 +305,8 @@ public class GameScreen extends Screens {
 					myGame.imageLoader
 					);
 		}
-		
-		mapUi.renderWorldMap(
+
+		mapUi.renderWorldMapUi(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader

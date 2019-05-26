@@ -65,11 +65,11 @@ public class GamePlayHelper  {
 	 * @return boolean
 	 */
 	private static boolean gameObjectIsWithinScreenBounds(GameObject gameObject) {
-		float cameraXPosition = GameScreen.camera.position.x;
-		float cameraYPosition = GameScreen.camera.position.y;
-		float playerXPosition = gameObject.getX();
-		float playerYPosition = gameObject.getY();
-		int screenBoundOffset = 19;
+		float cameraXPosition   = GameScreen.camera.position.x;
+		float cameraYPosition   = GameScreen.camera.position.y;
+		float playerXPosition   = gameObject.getX();
+		float playerYPosition   = gameObject.getY();
+		float screenBoundOffset = 14.5f;
 		if (
 				playerXPosition < cameraXPosition + screenBoundOffset &&
 				playerXPosition > cameraXPosition - screenBoundOffset &&

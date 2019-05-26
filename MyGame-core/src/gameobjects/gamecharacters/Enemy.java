@@ -12,7 +12,6 @@ import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import physics.Lighting.Fire;
-import screens.GameScreen;
 
 /**
  * 
@@ -165,38 +164,17 @@ public class Enemy extends GameCharacter {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		if (isWithinScreenBounds()) {
-			if (!dead) {
-				batch.draw(texture, x, y, width, -height);
-				// Uncomment to debug attackBoundary.
-				//batch.draw(imageLoader.whiteSquare, attackBoundary.x, attackBoundary.y, attackBoundary.width, attackBoundary.height);
-				// Uncomment to draw enemy hit box.
-				//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-			} else {
-				if (timer < MAX_DEATH_ANIMATION_VALUE) {
-					fire.renderObject(batch, shapeRenderer, imageLoader);
-				}
+		if (!dead) {
+			batch.draw(texture, x, y, width, -height);
+			// Uncomment to debug attackBoundary.
+			//batch.draw(imageLoader.whiteSquare, attackBoundary.x, attackBoundary.y, attackBoundary.width, attackBoundary.height);
+			// Uncomment to draw enemy hit box.
+			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+		} else {
+			if (timer < MAX_DEATH_ANIMATION_VALUE) {
+				fire.renderObject(batch, shapeRenderer, imageLoader);
 			}
 		}
-	}
-
-	private  boolean isWithinScreenBounds() {
-		float cameraXPosition = GameScreen.camera.position.x;
-		float cameraYPosition = GameScreen.camera.position.y;
-		float playerXPosition = getX();
-		float playerYPosition = getY();
-		float screenOffset    = 0.5f;
-		float yPositionOffset = 1.5f;
-		int withinBoundsPerimeterOffset = 15;
-		if (
-				playerXPosition < cameraXPosition + withinBoundsPerimeterOffset - screenOffset &&
-				playerXPosition > cameraXPosition - withinBoundsPerimeterOffset + screenOffset &&
-				playerYPosition < cameraYPosition + withinBoundsPerimeterOffset / yPositionOffset - screenOffset &&
-				playerYPosition > cameraYPosition - withinBoundsPerimeterOffset / yPositionOffset + screenOffset
-				) {
-			return true;
-		}
-		return false;
 	}
 
 	/**

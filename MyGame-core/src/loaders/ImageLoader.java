@@ -15,6 +15,7 @@ public class ImageLoader {
 	public Texture testImage;
 	public Texture icon;
 	public Texture worldMapReal;
+	public Texture worldMapFake;
 	public Texture enemy;
 	public Texture boat;
 	public Texture gunRight;
@@ -93,6 +94,7 @@ public class ImageLoader {
 	public Texture dustParticleThree;
 
 	public void init() {
+		worldMapFake						   = new Texture(Gdx.files.internal("WorldMapFake.png"));
 		worldMapReal						   = new Texture(Gdx.files.internal("WorldMapReal.png"));
 		dustParticleOne                        = new Texture(Gdx.files.internal("DustParticleOne.png"));
 		dustParticleTwo                        = new Texture(Gdx.files.internal("DustParticleTwo.png"));
@@ -185,6 +187,7 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		worldMapFake.dispose();
 		worldMapReal.dispose();
 		dustParticleOne.dispose();
 		dustParticleTwo.dispose();
