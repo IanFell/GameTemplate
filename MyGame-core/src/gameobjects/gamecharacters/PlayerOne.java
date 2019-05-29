@@ -58,7 +58,6 @@ public class PlayerOne extends Player {
 		super.updateObject(myGame, mapHandler);
 		handleWalking(myGame);
 		handleJumping(myGame);
-		System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" + playerIsMoving);
 		if (health <= 0) {
 			GameObjectLoader.gameObjectList.remove(this);
 		}

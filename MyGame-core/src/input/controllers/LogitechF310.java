@@ -47,9 +47,7 @@ public class LogitechF310 extends ControllerInput
 		if(controller.getButton(BUTTON_RT)) {
 			System.out.print("RT button pressed \n");
 			Player.playerIsPerformingAttack = true;
-		} else {
-			//Player.playerIsPerformingAttack = false;
-		}
+		} 
 	}
 
 	/**

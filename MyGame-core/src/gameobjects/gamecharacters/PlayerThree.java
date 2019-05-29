@@ -24,7 +24,7 @@ public class PlayerThree extends Player {
 	 */
 	public PlayerThree(String name, MyGame myGame, int playerNumber) {
 		super(name, myGame, playerNumber);
-		playerOneFollowAndDirectionValueOffset = 20;
+		playerOneFollowAndDirectionValueOffset = 30;
 	}
 
 	/**

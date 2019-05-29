@@ -1,8 +1,6 @@
 package input.controllers;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.PovDirection;
@@ -22,8 +20,8 @@ import worldmapui.MapUi;
 public class ControllerInput extends ApplicationAdapter {
 
 	// Make sure inventory button if held down is not being hit infinite times.
-	private int inventoryClickTimer          = 0;
-	private boolean startInventoryClickTimer = false;
+	private int clickTimer          = 0;
+	private boolean startClickTimer = false;
 
 	protected Controller controller;
 
@@ -87,9 +85,12 @@ public class ControllerInput extends ApplicationAdapter {
 	/**
 	 * Handles controller input.
 	 * Polling is broken up into sections of buttons for better readability. 
+	 * 
+	 * @param GameObject player
 	 */
 	public void handleInput(GameObject player) {
 		if (hasControllers) {  
+			// Dont poll these if UI is open.
 			if (!Inventory.allInventoryShouldBeRendered && !MapUi.mapShouldBeRendered) {
 				pollSticks(player);
 				pollDPad(player);
@@ -118,7 +119,7 @@ public class ControllerInput extends ApplicationAdapter {
 		if(controller.getButton(BUTTON_LB)) {
 			System.out.print("LB button pressed \n");
 			if (MapUi.mapShouldBeRendered) {
-				MapUi.mapShouldBeRendered = !MapUi.mapShouldBeRendered;
+				MapUi.mapShouldBeRendered              = !MapUi.mapShouldBeRendered;
 				Inventory.allInventoryShouldBeRendered = true;
 			}
 		}
@@ -126,7 +127,7 @@ public class ControllerInput extends ApplicationAdapter {
 			System.out.print("RB button pressed \n");
 			if (Inventory.allInventoryShouldBeRendered) {
 				Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
-				MapUi.mapShouldBeRendered = true;
+				MapUi.mapShouldBeRendered              = true;
 			}
 		}
 	}
@@ -136,7 +137,6 @@ public class ControllerInput extends ApplicationAdapter {
 	 */
 	private void pollDPad(GameObject player) {
 		float playerSpeed = Player.PLAYER_SPEED;
-		// If user presses the T button to use turbo.
 		int turboSpeed    = 3;
 		if(controller.getButton(BUTTON_RB)) {
 			System.out.println("Player is using turbo!  Going fast!");
@@ -145,25 +145,22 @@ public class ControllerInput extends ApplicationAdapter {
 		if (controller.getPov(0) == BUTTON_DPAD_UP) {
 			System.out.print("DPAD UP button pressed \n");
 			((Player) player).moveUp(playerSpeed);
-		}
-		else if (controller.getPov(0) == BUTTON_DPAD_DOWN) {
+		} else if (controller.getPov(0) == BUTTON_DPAD_DOWN) {
 			System.out.print("DPAD DOWN button pressed \n");
 			((Player) player).moveDown(playerSpeed);
-		}
-		else if (controller.getPov(0) == BUTTON_DPAD_LEFT) {
+		} else if (controller.getPov(0) == BUTTON_DPAD_LEFT) {
 			System.out.print("DPAD LEFT button pressed \n");
 			((Player) player).moveLeft(playerSpeed);
-		}
-		else if (controller.getPov(0) == BUTTON_DPAD_RIGHT) {
+		} else if (controller.getPov(0) == BUTTON_DPAD_RIGHT) {
 			System.out.print("DPAD RIGHT button pressed \n");
 			((Player) player).moveRight(playerSpeed);
-		} else {
-			//Player.playerIsMoving = false;
 		}
 	}
 
 	/**
 	 * Polls controller for analog sticks.
+	 * 
+	 * @param GameObject player
 	 */
 	protected void pollSticks(GameObject player) {
 		float playerSpeed = Player.PLAYER_SPEED;
@@ -178,23 +175,17 @@ public class ControllerInput extends ApplicationAdapter {
 			System.out.print("LEFT STICK X pressed \n");
 			if (controller.getAxis(AXIS_LEFT_X) < 0) {
 				((Player) player).moveLeft(playerSpeed);
-			} 
-			else if (controller.getAxis(AXIS_LEFT_X) > 0) {
+			} else if (controller.getAxis(AXIS_LEFT_X) > 0) {
 				((Player) player).moveRight(playerSpeed);
-			} else {
-				Player.playerIsMoving = false;
-			}
+			} 
 		}
 		if (stickIsMoved(AXIS_LEFT_Y)) {
 			System.out.print("LEFT STICK Y pressed \n");
 			if (controller.getAxis(AXIS_LEFT_Y) < deadZone) {
 				((Player) player).moveUp(playerSpeed);
-			}
-			else if (controller.getAxis(AXIS_LEFT_Y) > deadZone) {
+			} else if (controller.getAxis(AXIS_LEFT_Y) > deadZone) {
 				((Player) player).moveDown(playerSpeed);
-			} else {
-				//Player.playerIsMoving = false;
-			}
+			} 
 		}
 
 		// Right stick.
@@ -218,23 +209,23 @@ public class ControllerInput extends ApplicationAdapter {
 		}
 		if(controller.getButton(BUTTON_START)) {
 			System.out.print("START button pressed \n");
-			if (!startInventoryClickTimer) {
+			if (!startClickTimer) {
 				// If we press start and UI is open, close it.
 				if (Inventory.allInventoryShouldBeRendered || MapUi.mapShouldBeRendered) {
 					Inventory.allInventoryShouldBeRendered = false;
-					MapUi.mapShouldBeRendered = false;
+					MapUi.mapShouldBeRendered              = false;
 				} else {
 					// If we press start and UI is not open, open inventory screen.
 					// We can navigate through inventory screen by pressing RB.
-					startInventoryClickTimer               = true;
+					startClickTimer                        = true;
 					Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
 				}
 			} else {
 				// Make sure inventory button is only hit once.
-				inventoryClickTimer++;
-				if (inventoryClickTimer > 1) {
-					inventoryClickTimer      = 0;
-					startInventoryClickTimer = false;
+				clickTimer++;
+				if (clickTimer > 1) {
+					clickTimer      = 0;
+					startClickTimer = false;
 				}
 			}
 		}

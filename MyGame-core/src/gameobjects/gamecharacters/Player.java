@@ -548,7 +548,6 @@ public class Player extends GameCharacter {
 			ArrayList<Integer> directions
 			) {
 		if (playerIsMoving) {
-			System.out.println("77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777");
 			xPositions.add(x);
 			yPositions.add(y);
 			directions.add(direction);
