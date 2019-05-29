@@ -2,6 +2,7 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
 import helpers.ControllerInputHelper;
 import input.computer.Keyboard;
 import input.computer.Mouse;
@@ -64,9 +65,9 @@ public class InputHandler {
 	public void handleInput(MyGame myGame) {
 		// Handle controller input if controller exists.
 		if (controllerInput != null) {
-			controllerInput.handleInput();
+			controllerInput.handleInput(PlayerController.getCurrentPlayer(myGame));
 		}
-		keyboard.handleInput(myGame);
-		mouse.handleInput(myGame);
+		//keyboard.handleInput(myGame);
+		//mouse.handleInput(myGame);
 	}
 }

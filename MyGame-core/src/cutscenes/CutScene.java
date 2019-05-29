@@ -28,6 +28,7 @@ public class CutScene {
 	public CutScene(String name) {
 		this.name            = name;
 		timer                = 0;
+		// Change this to render cutscene or not.
 		cutSceneShouldRender = false;
 		if (cutSceneShouldRender) {
 			setCutSceneValues(false, true);

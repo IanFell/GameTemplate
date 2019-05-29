@@ -91,7 +91,7 @@ public class Player extends GameCharacter {
 	 */
 	private float elapsedTime = 0;
 
-	private float playerSize = 0.75f;
+	private float playerSize = 1f;
 
 	protected int playerScore;
 
@@ -112,7 +112,7 @@ public class Player extends GameCharacter {
 	 * @param int    playerNumber
 	 */
 	public Player(String name, MyGame myGame, int playerNumber) {
-		setPlayerStartingPosition(Town.CAPE_SAN_BLAS);
+		setPlayerStartingPosition(Town.MEXICO_BEACH);
 		this.playerNumber        = playerNumber;
 		this.width               = playerSize;
 		this.height              = playerSize;
@@ -127,10 +127,10 @@ public class Player extends GameCharacter {
 			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerLeftRed.atlas")); 
 			break;
 		case Player.PLAYER_TWO:
-			walkDownTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteDown.atlas"));
-			walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerSpriteUp.atlas"));
-			walkRightTexture         = new TextureAtlas(Gdx.files.internal("PlayerSpriteRight.atlas"));
-			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("PlayerSpriteLeft.atlas")); 
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerTwo.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal("playerTwoUp.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerTwoRight.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerTwoLeft.atlas")); 
 			break;
 		case Player.PLAYER_THREE:
 			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDown.atlas"));
@@ -548,6 +548,7 @@ public class Player extends GameCharacter {
 			ArrayList<Integer> directions
 			) {
 		if (playerIsMoving) {
+			System.out.println("77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777");
 			xPositions.add(x);
 			yPositions.add(y);
 			directions.add(direction);

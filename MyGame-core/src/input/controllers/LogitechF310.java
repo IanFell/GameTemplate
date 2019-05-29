@@ -1,5 +1,7 @@
 package input.controllers;
 
+import gameobjects.gamecharacters.Player;
+
 /**
  * Logitech F310 GamePad.
  * 
@@ -40,10 +42,13 @@ public class LogitechF310 extends ControllerInput
 	protected void pollTriggers() {
 		super.pollTriggers();
 		if(controller.getButton(BUTTON_LT)) {
-			System.out.print("LT button pressed \n");
-		}
+			System.out.print("LT button pressed \n");	
+		} 
 		if(controller.getButton(BUTTON_RT)) {
 			System.out.print("RT button pressed \n");
+			Player.playerIsPerformingAttack = true;
+		} else {
+			//Player.playerIsPerformingAttack = false;
 		}
 	}
 
@@ -58,6 +63,7 @@ public class LogitechF310 extends ControllerInput
 		}
 		if(controller.getButton(BUTTON_A)) {
 			System.out.print("A button pressed \n");
+			Player.isJumping = true;
 		}
 		if(controller.getButton(BUTTON_B)) {
 			System.out.print("B button pressed \n");
