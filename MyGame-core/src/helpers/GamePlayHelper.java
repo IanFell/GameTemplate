@@ -69,7 +69,7 @@ public class GamePlayHelper  {
 		float cameraYPosition   = GameScreen.camera.position.y;
 		float playerXPosition   = gameObject.getX();
 		float playerYPosition   = gameObject.getY();
-		float screenBoundOffset = 14.5f;
+		float screenBoundOffset = 15.5f;
 		if (
 				playerXPosition < cameraXPosition + screenBoundOffset &&
 				playerXPosition > cameraXPosition - screenBoundOffset &&

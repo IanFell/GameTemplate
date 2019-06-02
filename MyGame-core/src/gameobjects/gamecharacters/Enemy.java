@@ -1,12 +1,16 @@
 package gameobjects.gamecharacters;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
+import handlers.AnimationHandler;
 import handlers.CollisionHandler;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
@@ -29,7 +33,6 @@ public class Enemy extends GameCharacter {
 
 	public final static int DAMAGE_INFLICTED = -1;
 
-	private Texture texture;
 	private Fire fire;
 	private boolean dead;
 	private boolean willAttack;
@@ -43,15 +46,13 @@ public class Enemy extends GameCharacter {
 	 * @param float   y
 	 * @param int     width
 	 * @param int     height
-	 * @param Texture texture
 	 * @param int     direction
 	 */
-	public Enemy(float x, float y, int width, int height, Texture texture, int direction) {
+	public Enemy(float x, float y, int width, int height, int direction) {
 		this.x           = x;
 		this.y           = y;
 		this.width       = width;
 		this.height      = height;
-		this.texture     = texture;
 		this.direction   = direction;
 		dx               = stoppedValue;
 		dy               = stoppedValue;
@@ -70,6 +71,17 @@ public class Enemy extends GameCharacter {
 			willAttack = true;
 		}
 		fire = new Fire(0, 0, 0.5f, 1.5f, "Enemy", false);
+
+		walkDownTexture          = new TextureAtlas(Gdx.files.internal("enemyDown.atlas"));
+		walkUpTexture            = new TextureAtlas(Gdx.files.internal("enemyUp.atlas"));
+		walkRightTexture         = new TextureAtlas(Gdx.files.internal("enemyRight.atlas"));
+		walkLeftTexture          = new TextureAtlas(Gdx.files.internal("enemyLeft.atlas"));
+
+		float animationSpeed     = 7/15f;
+		walkDownAnimation        = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
+		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
+		walkRightAnimation       = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
+		walkLeftAnimation        = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
 	}
 
 	@Override
@@ -164,8 +176,11 @@ public class Enemy extends GameCharacter {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+		elapsedTime += Gdx.graphics.getDeltaTime();
+		int playerSize = 1;
 		if (!dead) {
-			batch.draw(texture, x, y, width, -height);
+			//batch.draw(texture, x, y, width, -height);
+			AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, playerSize);
 			// Uncomment to debug attackBoundary.
 			//batch.draw(imageLoader.whiteSquare, attackBoundary.x, attackBoundary.y, attackBoundary.width, attackBoundary.height);
 			// Uncomment to draw enemy hit box.

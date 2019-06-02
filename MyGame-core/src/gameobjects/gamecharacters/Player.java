@@ -65,32 +65,6 @@ public class Player extends GameCharacter {
 	 */
 	protected int playerOneFollowAndDirectionValueOffset;
 
-	/**
-	 * Textures to go with animations.
-	 */
-	protected TextureAtlas walkDownTexture;
-	protected TextureAtlas walkUpTexture;
-	protected TextureAtlas walkRightTexture;
-	protected TextureAtlas walkLeftTexture;
-
-	/**
-	 * Available animations for player object.
-	 */
-	private Animation <TextureRegion> walkDownAnimation;
-	private Animation <TextureRegion> walkUpAnimation;
-	private Animation <TextureRegion> walkRightAnimation;
-	private Animation <TextureRegion> walkLeftAnimation;
-
-	/**
-	 * Current animation being used in game.
-	 */
-	private Animation <TextureRegion> currentAnimation;
-
-	/**
-	 * Used for animation speed.
-	 */
-	private float elapsedTime = 0;
-
 	private float playerSize = 1f;
 
 	protected int playerScore;
@@ -366,29 +340,6 @@ public class Player extends GameCharacter {
 	 */
 	private void renderHitBox(SpriteBatch batch, ImageLoader imageLoader) {
 		batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-	}
-
-	/**
-	 * Returns current animation depending on which direction player is facing.
-	 * 
-	 * @return Animation <TextureRegion>
-	 */
-	private Animation <TextureRegion> getCurrentAnimation() {
-		switch (direction) {
-		case Player.DIRECTION_LEFT:
-			currentAnimation = walkLeftAnimation;
-			break;
-		case Player.DIRECTION_RIGHT:
-			currentAnimation = walkRightAnimation;
-			break;
-		case Player.DIRECTION_UP:
-			currentAnimation = walkUpAnimation;
-			break;
-		case Player.DIRECTION_DOWN:
-			currentAnimation = walkDownAnimation;
-			break;
-		}
-		return currentAnimation;
 	}
 
 	/**

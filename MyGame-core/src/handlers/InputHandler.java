@@ -63,11 +63,27 @@ public class InputHandler {
 	 * @param MyGame myGame
 	 */
 	public void handleInput(MyGame myGame) {
+		handleControllerInput(myGame);
+		handleKeyboardAndMouse(myGame);
+	}
+
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void handleKeyboardAndMouse(MyGame myGame) {
+		keyboard.handleInput(myGame);
+		mouse.handleInput(myGame);
+	}
+
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void handleControllerInput(MyGame myGame) {
 		// Handle controller input if controller exists.
 		if (controllerInput != null) {
 			controllerInput.handleInput(PlayerController.getCurrentPlayer(myGame));
 		}
-		//keyboard.handleInput(myGame);
-		//mouse.handleInput(myGame);
 	}
 }

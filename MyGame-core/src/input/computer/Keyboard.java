@@ -23,9 +23,9 @@ import worldmapui.MapUi;
  */
 public class Keyboard extends ComputerInput {
 
-	// Make sure inventory button if held down is not being hit infinite times.
-	private int inventoryClickTimer          = 0;
-	private boolean startInventoryClickTimer = false;
+	// Make sure button if held down is not being hit infinite times.
+	private int inventoryTimer          = 0;
+	private boolean startClickTimer = false;
 
 	/**
 	 * 
@@ -123,21 +123,29 @@ public class Keyboard extends ComputerInput {
 
 			// Display all inventory.
 			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
-				if (!startInventoryClickTimer) {
-					startInventoryClickTimer               = true;
+				if (!startClickTimer) {
+					startClickTimer               = true;
 					Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
 				} else {
 					// Make sure inventory button is only hit once.
-					inventoryClickTimer++;
-					if (inventoryClickTimer > 1) {
-						inventoryClickTimer      = 0;
-						startInventoryClickTimer = false;
+					inventoryTimer++;
+					if (inventoryTimer > 1) {
+						resetClickTimer();
 					}
 				}
 			} 
 			
 			if (Gdx.input.isKeyPressed(Input.Keys.M)) {
-				MapUi.mapShouldBeRendered = !MapUi.mapShouldBeRendered;
+				if (!startClickTimer) {
+					startClickTimer               = true;
+					MapUi.mapShouldBeRendered = !MapUi.mapShouldBeRendered;
+				} else {
+					// Make sure inventory button is only hit once.
+					inventoryTimer++;
+					if (inventoryTimer > 1) {
+						resetClickTimer();
+					}
+				}
 			}
 
 			/*
@@ -154,6 +162,11 @@ public class Keyboard extends ComputerInput {
 				System.exit(0);
 			}
 		}
+	}
+	
+	private void resetClickTimer() {
+		inventoryTimer  = 0;
+		startClickTimer = false;
 	}
 
 	/**

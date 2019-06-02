@@ -99,8 +99,12 @@ public class ImageLoader {
 	public Texture dustParticleOne;
 	public Texture dustParticleTwo;
 	public Texture dustParticleThree;
+	public Texture palmTreeThree;
+	public Texture slaveHut;
 
 	public void init() {
+		slaveHut                               = new Texture(Gdx.files.internal("SlaveHut.png"));
+		palmTreeThree                          = new Texture(Gdx.files.internal("PalmTreeNewOriginalAlternate.png"));
 		worldMapMexicoBeach					   = new Texture(Gdx.files.internal("WorldMapMexicoBeach.png"));
 		worldMapThePoint					   = new Texture(Gdx.files.internal("WorldMapThePoint.png"));
 		worldMapPortStJoe					   = new Texture(Gdx.files.internal("WorldMapPortStJoe.png"));
@@ -201,6 +205,8 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		slaveHut.dispose();
+		palmTreeThree.dispose();
 		worldMapMexicoBeach.dispose();
 		worldMapStGeorge.dispose();
 		worldMapApalachicola.dispose();

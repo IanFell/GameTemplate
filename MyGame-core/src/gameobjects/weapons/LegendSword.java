@@ -144,6 +144,10 @@ public class LegendSword extends Weapon {
 			setRotationAngle(180);
 			break;
 		}
+		/*
+		if (!Player.playerIsPerformingAttack) {
+			setRotationAngle(180);
+		} */
 	}
 
 	/**

@@ -266,6 +266,10 @@ public class GameScreen extends Screens {
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
+		
+		enemyHandler.renderEnemyHut(myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader);
 
 		// This shows the border of the towns strictly for debugging.
 		//townHandler.renderTownBorders(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);

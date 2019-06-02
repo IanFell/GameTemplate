@@ -1,9 +1,12 @@
 package handlers;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
+import loaders.ImageLoader;
 import maps.MapHandler;
 import spawners.EnemySpawner;
 import towns.Town;
@@ -63,6 +66,12 @@ public class EnemyHandler {
 	public void updateEnemies(MyGame myGame, MapHandler mapHandler) {
 		for (int i = 0; i < enemySpawner.length; i++) {
 			enemySpawner[i].updateEnemies(myGame, mapHandler);
+		}
+	}
+	
+	public void renderEnemyHut(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+		for (int i = 0; i < enemySpawner.length; i++) {
+			batch.draw(imageLoader.slaveHut, GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12.5f, 4, -4);
 		}
 	}
 

@@ -63,7 +63,7 @@ public class WeatherHandler {
 	 * @param MapHandler mapHandler
 	 */
 	public void update(MyGame myGame, GameScreen gameScreen, MapHandler mapHandler) {
-		nightAndDayCycle.performDayAndNightCycle();
+		//nightAndDayCycle.performDayAndNightCycle();
 		updateStormCycle(myGame, gameScreen, mapHandler);
 		updateClouds(myGame, gameScreen);
 	}
@@ -168,12 +168,12 @@ public class WeatherHandler {
 					myGame.imageLoader,
 					gameScreen
 					);
-			if (NightAndDayCycle.isDayTime()) {
+			//if (NightAndDayCycle.isDayTime()) {
 				// Do not just constantly flash lightning the whole time.
 				if (lightningHandler.getCurrentNumberOfFlashes() == 2) {
 					LightningBoltHandler.drawLightningBolt(myGame);
 				}
-			}
+			//}
 		}
 	}
 	

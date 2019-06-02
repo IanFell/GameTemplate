@@ -56,7 +56,6 @@ public class EnemySpawner {
 					y,
 					enemySize,
 					enemySize,
-					myGame.imageLoader.enemy,
 					Enemy.DIRECTION_UP
 					);
 			enemies.add(enemy);

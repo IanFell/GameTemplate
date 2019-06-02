@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import gameobjects.stationarygameobjects.NatureObject;
+import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 
 /**
@@ -12,6 +13,8 @@ import loaders.ImageLoader;
  *
  */
 public class PalmTree extends NatureObject {
+	
+	private int randomTree;
 
 	/**
 	 * Constructor.
@@ -24,6 +27,7 @@ public class PalmTree extends NatureObject {
 		this.width  = 2;
 		this.height = 4;
 		this.x      = x - 0.5f;
+		randomTree  = RandomNumberGenerator.generateRandomInteger(2);
 	}
 
 	/**
@@ -34,6 +38,10 @@ public class PalmTree extends NatureObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		batch.draw(imageLoader.palmTree, x, y - 0.5f, width, -height);
+		if (randomTree < 1) {
+			batch.draw(imageLoader.palmTree, x, y - 0.5f, width, -height);
+		} else {
+			batch.draw(imageLoader.palmTreeThree, x, y - 0.5f, width / 2 + 0.3f, -height);
+		}
 	}
 }
