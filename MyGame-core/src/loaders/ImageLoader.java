@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.Texture;
 public class ImageLoader {
 
 	public Texture[] cutSceneDialogueOne = new Texture[9];
+	public Texture inventoryNavigationBar;
+	public Texture mapNavigationBar;
 	public Texture testImage;
 	public Texture icon;
 	public Texture worldMapReal;
@@ -103,6 +105,8 @@ public class ImageLoader {
 	public Texture slaveHut;
 
 	public void init() {
+		mapNavigationBar                       = new Texture(Gdx.files.internal("UiMap.png"));
+		inventoryNavigationBar                 = new Texture(Gdx.files.internal("UiInventory.png"));
 		slaveHut                               = new Texture(Gdx.files.internal("SlaveHut.png"));
 		palmTreeThree                          = new Texture(Gdx.files.internal("PalmTreeNewOriginalAlternate.png"));
 		worldMapMexicoBeach					   = new Texture(Gdx.files.internal("WorldMapMexicoBeach.png"));
@@ -205,6 +209,8 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
+		mapNavigationBar.dispose();
+		inventoryNavigationBar.dispose();
 		slaveHut.dispose();
 		palmTreeThree.dispose();
 		worldMapMexicoBeach.dispose();

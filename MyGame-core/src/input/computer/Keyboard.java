@@ -63,7 +63,7 @@ public class Keyboard extends ComputerInput {
 			break;
 
 		case Screens.GAME_SCREEN:	
-			
+
 			if (!Inventory.allInventoryShouldBeRendered && !MapUi.mapShouldBeRendered) {
 				//handleKeyboardDirectionalButtons(myGame, "arrows", player);
 				handleKeyboardDirectionalButtons(myGame, "wasd", player);
@@ -124,8 +124,9 @@ public class Keyboard extends ComputerInput {
 			// Display all inventory.
 			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
 				if (!startClickTimer) {
-					startClickTimer               = true;
+					startClickTimer                        = true;
 					Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
+					MapUi.mapShouldBeRendered              = false;
 				} else {
 					// Make sure inventory button is only hit once.
 					inventoryTimer++;
@@ -134,11 +135,12 @@ public class Keyboard extends ComputerInput {
 					}
 				}
 			} 
-			
+
 			if (Gdx.input.isKeyPressed(Input.Keys.M)) {
 				if (!startClickTimer) {
-					startClickTimer               = true;
-					MapUi.mapShouldBeRendered = !MapUi.mapShouldBeRendered;
+					startClickTimer                        = true;
+					MapUi.mapShouldBeRendered              = !MapUi.mapShouldBeRendered;
+					Inventory.allInventoryShouldBeRendered = false;
 				} else {
 					// Make sure inventory button is only hit once.
 					inventoryTimer++;
@@ -163,7 +165,7 @@ public class Keyboard extends ComputerInput {
 			}
 		}
 	}
-	
+
 	private void resetClickTimer() {
 		inventoryTimer  = 0;
 		startClickTimer = false;

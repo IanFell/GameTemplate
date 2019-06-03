@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.mygdx.mygame.MyGame;
 
@@ -57,6 +59,8 @@ public class Screens implements Screen {
 	protected int denominatorOffset = 2;
 
 	public static ScreenShake screenShake = new ScreenShake();
+
+	protected int borderShrinkOffset = 1;
 
 	/**
 	 * 
@@ -166,5 +170,20 @@ public class Screens implements Screen {
 	 */
 	public int getDenominatorOffset() {
 		return denominatorOffset;
+	}
+
+	/**
+	 * 
+	 * @param Texture       texture
+	 * @param SpriteBatch   batch
+	 */
+	protected void renderUiNavigationBar(Texture texture, SpriteBatch batch) {
+		batch.draw(
+				texture,
+				camera.position.x - getViewportWidth() / denominatorOffset,
+				(camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight / 2,
+				camera.viewportWidth - borderShrinkOffset * 2 + 2, 
+				-camera.viewportHeight / 2
+				);
 	}
 }

@@ -1,11 +1,11 @@
 package handlers;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.stationarygameobjects.buildings.EnemyHut;
 import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
+import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import spawners.EnemySpawner;
@@ -20,7 +20,10 @@ public class EnemyHandler {
 
 	public EnemySpawner[] enemySpawner = new EnemySpawner[7];
 
-	public void init() {
+	// Use enemy huts to mask enemy spawning.
+	public EnemyHut[] enemyHut = new EnemyHut[7];
+
+	public void init(ImageLoader imageLoader) {
 		enemySpawner[Town.MEXICO_BEACH] = new EnemySpawner(
 				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, 
 				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12.5f, 
@@ -56,6 +59,26 @@ public class EnemyHandler {
 				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 12, 
 				"Cape San Blas"
 				);
+
+		for (int i = 0; i < enemyHut.length; i++) {
+			enemyHut[i]= new EnemyHut(0, 0, 4, 4, imageLoader.slaveHut);
+			GameObjectLoader.gameObjectList.add(enemyHut[i]);
+		}
+
+		enemyHut[Town.MEXICO_BEACH].setX(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 47);
+		enemyHut[Town.MEXICO_BEACH].setY(GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 13);
+		enemyHut[Town.PORT_ST_JOE].setX(GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 2.5f);
+		enemyHut[Town.PORT_ST_JOE].setY(GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 3);
+		enemyHut[Town.THE_POINT].setX(GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 30);
+		enemyHut[Town.THE_POINT].setY(GameAttributeHelper.CHUNK_FIVE_Y_POSITION_START - 10);
+		enemyHut[Town.WEWA].setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 50);
+		enemyHut[Town.WEWA].setY(GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 13);
+		enemyHut[Town.APALACHICOLA].setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 24);
+		enemyHut[Town.APALACHICOLA].setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 50);
+		enemyHut[Town.ST_GEORGE].setX(GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START + 15);
+		enemyHut[Town.ST_GEORGE].setY(GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START - 8);
+		enemyHut[Town.CAPE_SAN_BLAS].setX(GameAttributeHelper.CHUNK_THREE_X_POSITION_START - 3);
+		enemyHut[Town.CAPE_SAN_BLAS].setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 12);
 	}
 
 	/**
@@ -66,12 +89,6 @@ public class EnemyHandler {
 	public void updateEnemies(MyGame myGame, MapHandler mapHandler) {
 		for (int i = 0; i < enemySpawner.length; i++) {
 			enemySpawner[i].updateEnemies(myGame, mapHandler);
-		}
-	}
-	
-	public void renderEnemyHut(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		for (int i = 0; i < enemySpawner.length; i++) {
-			batch.draw(imageLoader.slaveHut, GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 12.5f, 4, -4);
 		}
 	}
 

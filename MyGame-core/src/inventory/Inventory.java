@@ -222,6 +222,8 @@ public class Inventory extends Screens {
 			fire.setWidth(rectangle.getWidth() / 6.5f);
 			fire.setHeight(rectangle.getHeight() / 2);
 			fire.renderObject(batch, shapeRenderer, imageLoader);
+			
+			renderUiNavigationBar(imageLoader.inventoryNavigationBar, batch);
 		}
 	}
 

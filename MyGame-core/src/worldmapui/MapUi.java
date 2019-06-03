@@ -54,7 +54,6 @@ public class MapUi extends Screens {
 	 */
 	public void renderWorldMapUi(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
 		if (mapShouldBeRendered) {
-			int borderShrinkOffset = 1;
 			Texture texture = null;
 
 			// Make map look like player location is flashing.
@@ -85,10 +84,11 @@ public class MapUi extends Screens {
 			batch.draw(
 					texture,
 					camera.position.x - getViewportWidth() / denominatorOffset + borderShrinkOffset,
-					(camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight,
+					(camera.position.y - verticalHeight / denominatorOffset) + camera.viewportHeight + 0.5f,
 					camera.viewportWidth - borderShrinkOffset * 2, 
 					-camera.viewportHeight
 					);
+			renderUiNavigationBar(imageLoader.mapNavigationBar, batch);
 		}
 	}
 }

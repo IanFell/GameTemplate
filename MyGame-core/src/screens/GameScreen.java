@@ -78,7 +78,7 @@ public class GameScreen extends Screens {
 	 */
 	private TransitionScreen transitionScreen = new TransitionScreen(myGame);
 
-	private GuiScreen guiScreen = new GuiScreen(myGame);
+	//private GuiScreen guiScreen = new GuiScreen(myGame);
 
 	/**
 	 * Handles all game missions.
@@ -162,7 +162,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_ONE).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_TWO).init(myGame);
 		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
-		enemyHandler.init();
+		enemyHandler.init(myGame.imageLoader);
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
@@ -266,10 +266,6 @@ public class GameScreen extends Screens {
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader
 				);
-		
-		enemyHandler.renderEnemyHut(myGame.renderer.batch, 
-				myGame.renderer.shapeRenderer, 
-				myGame.imageLoader);
 
 		// This shows the border of the towns strictly for debugging.
 		//townHandler.renderTownBorders(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
@@ -297,9 +293,10 @@ public class GameScreen extends Screens {
 				myGame.imageLoader, 
 				myGame
 				);
+		/*
 		if (!cutSceneIntro.isCutSceneIsInProgress()) {
 			guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
-		}
+		} */
 
 		if (cutSceneIntro.isCutSceneIsInProgress()) {
 			cutSceneIntro.renderCutScene(
