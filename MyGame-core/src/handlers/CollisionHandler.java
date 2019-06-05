@@ -26,6 +26,9 @@ import tiles.Tile;
  */
 public class CollisionHandler {
 
+	// Keep track of enemy collision timing for player health.
+	private static int timer = 0;
+
 	/**
 	 * Only player can collide with solid tiles.
 	 * NPCs can walk through them.
@@ -231,9 +234,16 @@ public class CollisionHandler {
 	 */
 	public static void checkIfEnemyHasCollidedWithPlayer(Enemy enemy, Player player) {
 		if (enemy.rectangle.overlaps(player.rectangle)) {
+			// Use this so enemies don't drain player really quick.
+			timer++;
+			if (timer > 50) {
+				timer = 0;
+			}
 			System.out.println("Player is being attacked by enemy!");
 			// Comment this out to prevent death.
-			//player.setHealth(player.getHealth() + Enemy.DAMAGE_INFLICTED);
+			if (timer > 49) {
+				player.setHealth(player.getHealth() - 1);
+			}
 
 			// Kill enemy if he is overlapping with player while player is performing attack.
 			if (Player.playerIsPerformingAttack) {

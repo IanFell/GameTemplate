@@ -9,7 +9,7 @@ import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.ControllerInputHelper;
 import inventory.Inventory;
-import worldmapui.MapUi;
+import ui.MapUi;
 
 /**
  * Parent class for all GamePads.

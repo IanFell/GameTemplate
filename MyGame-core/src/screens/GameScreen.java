@@ -26,7 +26,8 @@ import maps.MapRenderer;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
-import worldmapui.MapUi;
+import ui.HealthUi;
+import ui.MapUi;
 
 /**
  * Screen of the game while in play.
@@ -37,6 +38,7 @@ import worldmapui.MapUi;
 public class GameScreen extends Screens {
 
 	private MapUi mapUi;
+	private HealthUi healthUi;
 
 	private HeartHandler heartHandler = new HeartHandler();
 
@@ -169,7 +171,8 @@ public class GameScreen extends Screens {
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
-		mapUi       = new MapUi(myGame);
+		mapUi          = new MapUi(myGame);
+		healthUi       = new HealthUi();
 		heartHandler.init();
 
 		/**
@@ -318,6 +321,13 @@ public class GameScreen extends Screens {
 					myGame.imageLoader
 					);
 		}
+		
+		healthUi.renderHealthUi(
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader,
+				myGame
+				);
 
 		// Here we render the inventory screen if needed.
 		if (Inventory.allInventoryShouldBeRendered) {

@@ -307,9 +307,10 @@ public class Inventory extends Screens {
 	 */
 	public void renderInventoryDisplay(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		float xStartPosition = GameScreen.camera.position.x - GameScreen.cameraWidth / 2 - 5.5f;
-		float yStartPosition = GameScreen.camera.position.y + 0.25f;
+		float offset         = 0.25f;
+		float yStartPosition = GameScreen.camera.position.y + offset;
 		float x              = xStartPosition;
-		float y              = GameScreen.camera.position.y + 0.25f;
+		float y              = GameScreen.camera.position.y + offset;
 		boolean resetX       = true;
 		if (inventory.size() > 0) {
 			for (int i = 0; i < inventory.size(); i++) {

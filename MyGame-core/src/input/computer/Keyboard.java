@@ -13,7 +13,7 @@ import inventory.Inventory;
 import loaders.GameObjectLoader;
 import screens.GameScreen;
 import screens.Screens;
-import worldmapui.MapUi;
+import ui.MapUi;
 
 /**
  * Handles keyboard input.
