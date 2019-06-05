@@ -119,13 +119,12 @@ public class Player extends GameCharacter {
 		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		walkRightAnimation       = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 		walkLeftAnimation        = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
-		health            	     = 100;
+		health            	     = 10;
 		this.name                = name;
 		torch                    = new Torch(0, 0);
 		hasTorch                 = false;
 		inventory                = new Inventory(myGame);
 		playerIsPerformingAttack = false;
-		health   			     = 100;
 		dustEmitter              = new DustParticleEmitter();
 	}
 
@@ -186,6 +185,7 @@ public class Player extends GameCharacter {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		System.out.println("Player Inventory includes: " + inventory);
+		System.out.println(health);
 		x += dx;
 		y += dy;
 		rectangle.x = x;

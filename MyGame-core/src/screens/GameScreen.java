@@ -11,6 +11,7 @@ import cutscenes.CutSceneIntro;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import handlers.EnemyHandler;
+import handlers.HeartHandler;
 import handlers.MissionHandler;
 import handlers.TownHandler;
 import handlers.WeaponHandler;
@@ -36,6 +37,8 @@ import worldmapui.MapUi;
 public class GameScreen extends Screens {
 
 	private MapUi mapUi;
+
+	private HeartHandler heartHandler = new HeartHandler();
 
 	public static int cameraWidth = 10;
 
@@ -167,6 +170,7 @@ public class GameScreen extends Screens {
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
 		mapUi       = new MapUi(myGame);
+		heartHandler.init();
 
 		/**
 		 * This overlays the game screen and fades out from black.
@@ -238,6 +242,8 @@ public class GameScreen extends Screens {
 		if (cutSceneIntro.isCutSceneIsInProgress()) {
 			cutSceneIntro.updateCutScene();
 		}
+
+		heartHandler.updateHearts(myGame, mapHandler);
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -262,6 +268,13 @@ public class GameScreen extends Screens {
 
 		GamePlayHelper.sortAndRenderObjectsInYPositionOrder(
 				GameObjectLoader.gameObjectList, 
+				myGame.renderer.batch, 
+				myGame.renderer.shapeRenderer, 
+				myGame.imageLoader
+				);
+
+		// These are not rendered in the game object list so they're not accidently rendered behind other objects.
+		heartHandler.renderHearts(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 
 				myGame.imageLoader

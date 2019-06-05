@@ -3,6 +3,7 @@ package handlers;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import gameobjects.Heart;
 import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
@@ -116,7 +117,7 @@ public class CollisionHandler {
 		if (chest.rectangle.overlaps(player.rectangle)) {
 			if (chest.isClosed()) {
 				chest.setChestValuesAfterCollisionWithPlayer();
-				((Player) player).updatePlayerScore(5);
+				//((Player) player).updatePlayerScore(5);
 				System.out.println("Player collided with chest!");
 
 				// Testing mission.  Later, this will be controlled.  Right now, it is always on.
@@ -239,6 +240,18 @@ public class CollisionHandler {
 				enemy.setIsDead(true);
 				enemy.setPlaySound(true);
 			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param GameObject player
+	 * @param Heart      heart
+	 */
+	public static void checkIfPlayerCollidedWithHeart(GameObject player, Heart heart) {
+		if (player.rectangle.overlaps(heart.rectangle)) {
+			heart.setHasBeenCollected(true);
+			((Player) player).setHealth(player.getHealth() + Heart.HEALTH);
 		}
 	}
 }
