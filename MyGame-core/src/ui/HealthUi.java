@@ -28,7 +28,7 @@ public class HealthUi {
 		int xIncrement       = 0;
 		int yIncrement       = 0;
 		GameObject player    = PlayerController.getCurrentPlayer(myGame);
-		int size             = 1;
+		float size           = 0.8f;
 		int topRightCorner   = 26;
 		int bottomRightCorer = 40;
 		int bottomLeftCorner = 66;
@@ -36,7 +36,10 @@ public class HealthUi {
 		// Render the hearts in a square around the perimeter of the screen, starting from the top left.
 		for (int i = 0; i < player.getHealth(); i++) {
 			if (i < topRightCorner) {
-				xIncrement++;
+				// Make sure we start at the top right corner, not one slot to the right.
+				if (i > 0) {
+					xIncrement++;
+				}
 			} else if (i < bottomRightCorer) {
 				yIncrement++;
 			} else if (i < bottomLeftCorner)  {
