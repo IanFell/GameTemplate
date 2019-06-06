@@ -184,8 +184,6 @@ public class Player extends GameCharacter {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		System.out.println("Player Inventory includes: " + inventory);
-		System.out.println(health);
 		x += dx;
 		y += dy;
 		rectangle.x = x;
@@ -235,7 +233,6 @@ public class Player extends GameCharacter {
 	 */
 	protected void handleJumping(MyGame myGame) {
 		if (isJumping) {
-			System.out.println("Player is jumping");
 			jumpCount++;
 			if (jumpCount >= JUMP_COUNT_MAX) {
 				// Reset jump variables and get ready to jump again.
@@ -245,11 +242,9 @@ public class Player extends GameCharacter {
 			// If player is still jumping up.
 			if (playerIsBelowPeakJump()) {
 				jumpingAction = ASCENDING_JUMP;
-				System.out.println("Player is ascending during jumping");
 			} else {
 				// If player has reached jumping peak and is falling back to the ground.
 				jumpingAction = DESCENDING_JUMP;
-				System.out.println("Player is descending during jumping");
 			}
 
 			switch (jumpingAction) {
@@ -375,7 +370,6 @@ public class Player extends GameCharacter {
 		translateX(speed);
 		setDirection(Player.DIRECTION_RIGHT);
 		playerIsMoving = true;
-		System.out.println("Player is moving right");
 	}
 
 	/**
@@ -387,7 +381,6 @@ public class Player extends GameCharacter {
 		translateX(-speed);
 		setDirection(Player.DIRECTION_LEFT);
 		playerIsMoving = true;
-		System.out.println("Player is moving left");
 	}
 
 	/**
@@ -399,7 +392,6 @@ public class Player extends GameCharacter {
 		translateY(-speed);
 		setDirection(Player.DIRECTION_UP);
 		playerIsMoving = true;
-		System.out.println("Player is moving up");
 	}
 
 	/**
@@ -411,7 +403,6 @@ public class Player extends GameCharacter {
 		translateY(speed);
 		setDirection(Player.DIRECTION_DOWN);
 		playerIsMoving = true;
-		System.out.println("Player is moving down");
 	}
 
 	/**

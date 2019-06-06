@@ -24,8 +24,7 @@ import input.controllers.XBox360Pad;
 public class InputHandler {
 
 	private Keyboard keyboard = new Keyboard();
-
-	private Mouse mouse = new Mouse();
+	private Mouse mouse       = new Mouse();
 
 	/**
 	 * GamePads.  This can be any gamepad, as it will

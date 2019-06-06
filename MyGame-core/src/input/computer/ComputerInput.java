@@ -3,13 +3,15 @@ package input.computer;
 import com.badlogic.gdx.ApplicationListener;
 import com.mygdx.mygame.MyGame;
 
+import input.Input;
+
 /**
  * Parent class to handle keyboard and mouse input.
  * 
  * @author Fabulous Fellini
  *
  */
-abstract public class ComputerInput implements ApplicationListener {
+abstract public class ComputerInput extends Input implements ApplicationListener {
 
 	/**
 	 * Abstract method to handle computer input.  This method is overriden

@@ -190,8 +190,6 @@ public class Inventory extends Screens {
 	 * @param ImageLoader   imageLoader
 	 */
 	public void renderInventory(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		System.out.println("Inventory size: " + inventory.size());
-		System.out.println("Currently Selected Inventory: " + Inventory.currentlySelectedInventoryObject);
 		inventoryUi.renderInventoryUi(
 				batch, 
 				shapeRenderer, 

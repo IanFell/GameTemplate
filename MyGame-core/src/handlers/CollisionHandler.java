@@ -42,7 +42,6 @@ public class CollisionHandler {
 	public static void checkIfPlayerHasCollidedWithSolidTile(GameObject player, MapHandler mapHandler, Tile tile) {
 		if (tile.isSolid()) {
 			if (tile.getBoundingRectangle().overlaps(player.rectangle)) {
-				System.out.println("Player collided with solid tile!");
 				// Move player so he is not longer overlapping tile bounds.
 				switch (Player.direction) {
 				case Player.DIRECTION_LEFT:
@@ -71,10 +70,8 @@ public class CollisionHandler {
 	public static void checkIfPlayerHasCollidedWithSandOrWaterTile(GameObject player, MapHandler mapHandler, Tile tile) {
 		if (tile.getBoundingRectangle().overlaps(player.rectangle)) {
 			if (tile.isWater()) {
-				System.out.println("Player collided with water tile!");
 				Player.isInWater = true;
 			} else {
-				System.out.println("Player collided with sand tile!");
 				Player.isInWater = false;
 			} 
 		}
@@ -89,7 +86,6 @@ public class CollisionHandler {
 	public static void checkIfNPCHasCollidedWithSandOrWaterTile(Enemy enemy, MapHandler mapHandler, Tile tile) {
 		if (tile.getBoundingRectangle().overlaps(enemy.rectangle)) {
 			if (tile.isWater()) {
-				System.out.println("NPC collided with water tile!");
 				switch(enemy.getEnemyDirection()) {
 				case Enemy.DIRECTION_LEFT:
 					enemy.moveRight(Player.PLAYER_SPEED);
@@ -104,8 +100,6 @@ public class CollisionHandler {
 					enemy.moveUp(Player.PLAYER_SPEED);
 					break;
 				}
-			} else {
-				System.out.println("NPC collided with sand tile!");
 			} 
 		}
 	}
@@ -121,7 +115,6 @@ public class CollisionHandler {
 			if (chest.isClosed()) {
 				chest.setChestValuesAfterCollisionWithPlayer();
 				//((Player) player).updatePlayerScore(5);
-				System.out.println("Player collided with chest!");
 
 				// Testing mission.  Later, this will be controlled.  Right now, it is always on.
 				if (MissionChests.executeMission) {
@@ -145,7 +138,6 @@ public class CollisionHandler {
 			MyGame myGame
 			) {
 		if (structure.rectangle.overlaps(player.rectangle)) {
-			System.out.println("Player has collided with " + structureName + "!");
 			if (structureName.equalsIgnoreCase("Raw Bar")) {
 				new RawBarScreen(myGame);
 			}
@@ -161,9 +153,7 @@ public class CollisionHandler {
 	 * @param GameObject fire
 	 */
 	public static void checkIfPlayerHasCollidedWithFire(GameObject player, GameObject fire) {
-		if (fire.rectangle.overlaps(player.rectangle)) {
-			System.out.println("Player has collided with fire!");
-		}
+		if (fire.rectangle.overlaps(player.rectangle)) {}
 	}
 
 	/**
@@ -173,7 +163,6 @@ public class CollisionHandler {
 	 */
 	public static void checkIfPlayerHasCollidedWithLegendSword(GameObject player, GameObject legendSword) {
 		if (legendSword.rectangle.overlaps(player.rectangle)) {
-			System.out.println("Player has collided with Legend Sword!");
 			MissionLegendOfTheSevenSwords.swordsCollected++;
 			MissionLegendOfTheSevenSwords.legendSwordCollection.add(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword);
@@ -205,7 +194,6 @@ public class CollisionHandler {
 	public static void checkIfPlayerHasCollidedWithGun(GameObject player, GameObject gun) {
 		if (!Gun.hasBeenCollected) {
 			if (gun.rectangle.overlaps(player.rectangle)) {
-				System.out.println("Player has collided with Gun!");
 				((Player) player).getInventory().addObjectToInventory(gun);
 				Gun.hasBeenCollected = true;
 			}
@@ -220,7 +208,6 @@ public class CollisionHandler {
 	public static void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
 		if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
 			if (enemy.rectangle.overlaps(weapon.rectangle)) {
-				System.out.println("Weapon has collided with Object!");
 				enemy.setIsDead(true);
 				enemy.setPlaySound(true);
 			}
@@ -239,7 +226,6 @@ public class CollisionHandler {
 			if (timer > 50) {
 				timer = 0;
 			}
-			System.out.println("Player is being attacked by enemy!");
 			// Comment this out to prevent death.
 			if (timer > 49) {
 				player.setHealth(player.getHealth() - 1);
