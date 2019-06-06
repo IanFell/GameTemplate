@@ -4,6 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.PovDirection;
+import com.badlogic.gdx.math.Rectangle;
+import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
@@ -18,6 +20,10 @@ import ui.MapUi;
  *
  */
 public class ControllerInput extends ApplicationAdapter {
+	
+	private static int maxNumberOfInventoryObjects   = 12;
+	private Rectangle[] inventoryButtons             = new Rectangle[maxNumberOfInventoryObjects];
+	public static boolean[] inventoryButtonIsPressed = new boolean[maxNumberOfInventoryObjects];
 
 	// Make sure inventory button if held down is not being hit infinite times.
 	private int clickTimer          = 0;
@@ -69,6 +75,77 @@ public class ControllerInput extends ApplicationAdapter {
 	protected int AXIS_LEFT_Y;  // -1 is up | +1 is down
 	protected int AXIS_RIGHT_X; // -1 is left | +1 is right
 	protected int AXIS_RIGHT_Y; // -1 is up | +1 is down
+	
+	public ControllerInput() {
+		for (int i = 0; i < inventoryButtons.length; i++) {
+			inventoryButtons[i] = new Rectangle(0, 0, 0, 0);
+			inventoryButtonIsPressed[i] = false;
+
+			// Full screen coordinates.
+			inventoryButtons[i].width   = 200;
+			inventoryButtons[i].height  = 185;
+			// Phone screen coordinates.
+			//inventoryButtons[i].width   = 90;
+			//inventoryButtons[i].height  = 125;
+		}
+
+		// Full screen button positions.
+		int yStartPositionTopRow      = 245;
+		int yStartPositionBottomRow   = 470;
+		int xStartPositionColumnOne   = 90;
+		int xStartPositionColumnTwo   = 305;
+		int xStartPositionColumnThree = 495;
+		int xStartPositionColumnFour  = 695;
+		int xStartPositionColumnFive  = 900;
+		int xStartPositionColumnSix   = 1095;
+
+		// Phone screen button positions.
+		/*
+		int yStartPositionTopRow      = 95;
+		int yStartPositionBottomRow   = 240;
+		int xStartPositionColumnOne   = 65;
+		int xStartPositionColumnTwo   = 165;
+		int xStartPositionColumnThree = 250;
+		int xStartPositionColumnFour  = 350;
+		int xStartPositionColumnFive  = 440;
+		int xStartPositionColumnSix   = 530; */
+
+		inventoryButtons[0].x      = xStartPositionColumnOne;
+		inventoryButtons[0].y      = yStartPositionTopRow;
+
+		inventoryButtons[1].x      = xStartPositionColumnTwo;
+		inventoryButtons[1].y      = yStartPositionTopRow;
+
+		inventoryButtons[2].x      = xStartPositionColumnThree;
+		inventoryButtons[2].y      = yStartPositionTopRow;
+
+		inventoryButtons[3].x      = xStartPositionColumnFour;
+		inventoryButtons[3].y      = yStartPositionTopRow;
+
+		inventoryButtons[4].x      = xStartPositionColumnFive;
+		inventoryButtons[4].y      = yStartPositionTopRow;
+
+		inventoryButtons[5].x      = xStartPositionColumnSix;
+		inventoryButtons[5].y      = yStartPositionTopRow;
+
+		inventoryButtons[6].x      = xStartPositionColumnOne;
+		inventoryButtons[6].y      = yStartPositionBottomRow;
+
+		inventoryButtons[7].x      = xStartPositionColumnTwo;
+		inventoryButtons[7].y      = yStartPositionBottomRow;
+
+		inventoryButtons[8].x      = xStartPositionColumnThree;
+		inventoryButtons[8].y      = yStartPositionBottomRow;
+
+		inventoryButtons[9].x      = xStartPositionColumnFour;
+		inventoryButtons[9].y      = yStartPositionBottomRow;
+
+		inventoryButtons[10].x      = xStartPositionColumnFive;
+		inventoryButtons[10].y      = yStartPositionBottomRow;
+
+		inventoryButtons[11].x      = xStartPositionColumnSix;
+		inventoryButtons[11].y      = yStartPositionBottomRow;
+	}
 
 	/**
 	 * If a controller is found, set the name.
@@ -93,9 +170,9 @@ public class ControllerInput extends ApplicationAdapter {
 			// Dont poll these if UI is open.
 			if (!Inventory.allInventoryShouldBeRendered && !MapUi.mapShouldBeRendered) {
 				pollSticks(player);
-				pollDPad(player);
-				pollMainFourButtons();
 			}
+			pollMainFourButtons(player);
+			pollDPad(player);
 			pollTriggers();
 			pollStartSection();
 		}
@@ -104,7 +181,7 @@ public class ControllerInput extends ApplicationAdapter {
 	/**
 	 * Polls controller for A, B, X, and Y.
 	 */
-	protected void pollMainFourButtons() {
+	protected void pollMainFourButtons(GameObject player) {
 		if(controller.getButton(BUTTON_X)) {
 			System.out.print("X button pressed \n");
 		}
@@ -131,11 +208,17 @@ public class ControllerInput extends ApplicationAdapter {
 			}
 		}
 	}
+	
+	int timer = 0;
 
 	/**
 	 * Polls controller for DPad.
 	 */
 	private void pollDPad(GameObject player) {
+		timer++;
+		if (timer > 9) {
+			timer = 0;
+		}
 		float playerSpeed = Player.PLAYER_SPEED;
 		int turboSpeed    = 3;
 		if(controller.getButton(BUTTON_RB)) {
@@ -154,6 +237,24 @@ public class ControllerInput extends ApplicationAdapter {
 		} else if (controller.getPov(0) == BUTTON_DPAD_RIGHT) {
 			System.out.print("DPAD RIGHT button pressed \n");
 			((Player) player).moveRight(playerSpeed);
+			/*if (Inventory.allInventoryShouldBeRendered) {
+				if (timer > 8) {
+				//for (int i = 0; i < ((Player) player).getInventory().inventory.size(); i++) {
+				//if (Inventory.currentlySelectedInventoryObject < 11) {
+					if (player.getInventory().inventory.size() < 12) {
+				inventoryButtonIsPressed[Inventory.currentlySelectedInventoryObject]                = false;
+				inventoryButtonIsPressed[Inventory.currentlySelectedInventoryObject + 1]                = true;
+				Inventory.mouseIsClickingOnInventoryObject = true;
+				Inventory.currentlySelectedInventoryObject = Inventory.currentlySelectedInventoryObject + 1;
+				((Player) player).getInventory().setInventoryIsEquipped(true);
+				Inventory.playClickSound                   = true;
+				//System.out.println("Inventory Button " + Inventory.currentlySelectedInventoryObject + 1 + "pressed");
+				}
+				}
+				//}
+			} else {
+				((Player) player).moveRight(playerSpeed);
+			}*/
 		}
 	}
 

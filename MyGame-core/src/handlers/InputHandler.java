@@ -63,8 +63,11 @@ public class InputHandler {
 	 * @param MyGame myGame
 	 */
 	public void handleInput(MyGame myGame) {
-		handleControllerInput(myGame);
-		handleKeyboardAndMouse(myGame);
+		if (controllerInput != null) {
+			handleControllerInput(myGame);
+		} else {
+			handleKeyboardAndMouse(myGame);
+		}
 	}
 
 	/**

@@ -321,7 +321,7 @@ public class GameScreen extends Screens {
 					myGame.imageLoader
 					);
 		}
-		
+
 		healthUi.renderHealthUi(
 				myGame.renderer.batch, 
 				myGame.renderer.shapeRenderer, 

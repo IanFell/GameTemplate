@@ -9,6 +9,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import input.computer.Mouse;
+import input.controllers.LogitechF310;
 import loaders.ImageLoader;
 import physics.Lighting.Fire;
 import screens.GameScreen;
@@ -75,7 +76,7 @@ public class InventoryUi extends Screens {
 			int clickedObject = 0;
 			if (mouseIsClickingOnInventoryObject) {
 				for (int i = 0; i < Mouse.inventoryButtonIsPressed.length; i++) {
-					if (Mouse.inventoryButtonIsPressed[i]) {
+					if (Mouse.inventoryButtonIsPressed[i] || LogitechF310.inventoryButtonIsPressed[i]) {
 						clickedObject = i;
 					}
 				}

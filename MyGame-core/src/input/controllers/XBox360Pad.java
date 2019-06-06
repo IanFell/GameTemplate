@@ -1,5 +1,7 @@
 package input.controllers;
 
+import gameobjects.GameObject;
+
 /**
  * XBox 360 GamePad.
  * 
@@ -55,10 +57,12 @@ public class XBox360Pad extends ControllerInput
 
 	/**
 	 * Polls controller for A, B, X, and Y.
+	 * 
+	 * @param GameObject player
 	 */
 	@Override
-	protected void pollMainFourButtons() {
-		super.pollMainFourButtons();
+	protected void pollMainFourButtons(GameObject player) {
+		super.pollMainFourButtons(player);
 		if(controller.getButton(BUTTON_Y)) {
 			System.out.print("Y button pressed \n");
 		}

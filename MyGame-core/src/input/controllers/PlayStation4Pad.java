@@ -1,5 +1,7 @@
 package input.controllers;
 
+import gameobjects.GameObject;
+
 /**
  * PlayStation4 GamePad.
  * 
@@ -61,10 +63,12 @@ public class PlayStation4Pad extends ControllerInput {
 
 	/**
 	 * Polls controller for X, Square, Triangle, and Circle.
+	 * 
+	 * @param GameObject player
 	 */
 	@Override
-	protected void pollMainFourButtons() {
-		super.pollMainFourButtons();
+	protected void pollMainFourButtons(GameObject player) {
+		super.pollMainFourButtons(player);
 		if(controller.getButton(BUTTON_TRIANGLE)) {
 			System.out.print("Triangle button pressed \n");
 		}
