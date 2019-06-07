@@ -13,6 +13,7 @@ import loaders.SoundLoader;
  */
 public class AudioHandler {
 	
+	public final static float TEMP_VOLUME  = .25f;
 	public final static float MAX_VOLUME    = 1.0f;
 	public final static float MEDIAN_VOLUME = 0.5f;
 

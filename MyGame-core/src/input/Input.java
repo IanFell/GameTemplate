@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import inventory.Inventory;
+import physics.Lighting.Fire;
 
 /**
  * 
@@ -115,5 +116,6 @@ public class Input extends ApplicationAdapter {
 		Inventory.currentlySelectedInventoryObject = element;
 		((Player) player).getInventory().setInventoryIsEquipped(true);
 		Inventory.playClickSound                   = true;
+		Fire.playSound                             = true;;
 	}
 }

@@ -8,7 +8,6 @@ import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.weapons.Gun;
-import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.Weapon;
 import inventory.Inventory;
 import maps.MapHandler;
@@ -168,7 +167,7 @@ public class CollisionHandler {
 			((Player) player).getInventory().addObjectToInventory(legendSword);
 
 			// Uncomment this to fill up inventory.
-			
+
 			((Player) player).getInventory().addObjectToInventory(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword);
@@ -182,7 +181,7 @@ public class CollisionHandler {
 			((Player) player).getInventory().addObjectToInventory(legendSword); 
 
 			legendSword.hasBeenCollected = true;
-			LegendSword.playSound        = true;
+			//LegendSword.playSound        = true;
 		}
 	}
 
