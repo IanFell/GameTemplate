@@ -18,6 +18,8 @@ public class Heart extends GameObject {
 	
 	public static final int HEALTH = 1;
 	
+	public static boolean playSound = false;
+	
 	/**
 	 * Constructor.
 	 * 

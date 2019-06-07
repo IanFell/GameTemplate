@@ -17,6 +17,8 @@ public class MusicLoader {
 
 	public Music rainAndThunder;
 	
+	public Music fire;
+	
 	/**
 	 * This is currently a music type because it is a long file of footsteps.
 	 * (It's not just one footstep sound).
@@ -24,10 +26,12 @@ public class MusicLoader {
 	public Music footsteps;
 
 	public void init() {
-		dayTimeAmbientNoise   = Gdx.audio.newMusic(Gdx.files.internal("DayTimeAmbientNoise.wav"));
+		dayTimeAmbientNoise   = Gdx.audio.newMusic(Gdx.files.internal("audio/DayTimeAmbience.wav"));
+		footsteps             = Gdx.audio.newMusic(Gdx.files.internal("audio/FootstepsMusic.wav"));
+		rainAndThunder        = Gdx.audio.newMusic(Gdx.files.internal("audio/Rain.wav"));
+		fire                  = Gdx.audio.newMusic(Gdx.files.internal("audio/Fire.wav"));
 		nightTimeAmbientNoise = Gdx.audio.newMusic(Gdx.files.internal("NightTimeAmbientNoise.wav"));
-		rainAndThunder        = Gdx.audio.newMusic(Gdx.files.internal("RainAndThunder.wav"));
-		footsteps             = Gdx.audio.newMusic(Gdx.files.internal("FootstepsMusic.wav"));
+		
 	}
 
 	public void dispose() {
@@ -35,5 +39,6 @@ public class MusicLoader {
 		nightTimeAmbientNoise.dispose();
 		rainAndThunder.dispose();
 		footsteps.dispose();
+		fire.dispose();
 	}
 }

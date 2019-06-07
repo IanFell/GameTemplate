@@ -248,6 +248,7 @@ public class CollisionHandler {
 		if (player.rectangle.overlaps(heart.rectangle)) {
 			heart.setHasBeenCollected(true);
 			((Player) player).setHealth(player.getHealth() + Heart.HEALTH);
+			Heart.playSound = true;
 		}
 	}
 }

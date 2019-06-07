@@ -2,6 +2,7 @@ package handlers;
 
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
+import inventory.Inventory;
 import loaders.MusicLoader;
 import physics.Weather.NightAndDayCycle;
 import physics.Weather.WeatherHandler;
@@ -21,20 +22,12 @@ public class MusicHandler {
 	 */
 	public void handleMusic(MusicLoader musicLoader) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
-			
-			if (Player.playerIsMoving) {
-				musicLoader.footsteps.setVolume(1.0f);
-				musicLoader.footsteps.play();
-			} else {
-				musicLoader.footsteps.stop();
-			}
-			
 			if (NightAndDayCycle.isDayTime()) {
-				musicLoader.dayTimeAmbientNoise.setVolume(1.0f);
-				musicLoader.dayTimeAmbientNoise.play();
+				musicLoader.dayTimeAmbientNoise.setVolume(AudioHandler.MAX_VOLUME);
+				//musicLoader.dayTimeAmbientNoise.play();
 
 				if (WeatherHandler.isStorming()) {
-					musicLoader.rainAndThunder.setVolume(1.0f);
+					musicLoader.rainAndThunder.setVolume(AudioHandler.MAX_VOLUME);
 					musicLoader.rainAndThunder.play();
 					musicLoader.dayTimeAmbientNoise.stop();
 				} else {
@@ -47,7 +40,7 @@ public class MusicHandler {
 					musicLoader.nightTimeAmbientNoise.stop();
 				}
 			} else {
-				musicLoader.nightTimeAmbientNoise.setVolume(1.0f);
+				musicLoader.nightTimeAmbientNoise.setVolume(AudioHandler.MAX_VOLUME);
 				musicLoader.nightTimeAmbientNoise.play();
 
 				if (musicLoader.dayTimeAmbientNoise.isPlaying()) {
@@ -57,6 +50,21 @@ public class MusicHandler {
 				if (musicLoader.rainAndThunder.isPlaying()) {
 					musicLoader.rainAndThunder.stop();
 				}
+			}
+			if (Player.playerIsMoving) {
+				musicLoader.footsteps.setVolume(AudioHandler.MEDIAN_VOLUME);
+				musicLoader.footsteps.play();
+			} else {
+				musicLoader.footsteps.stop();
+			}
+
+			if (Inventory.allInventoryShouldBeRendered) {
+				//if (Inventory.playClickSound) {
+					musicLoader.fire.setVolume(AudioHandler.MEDIAN_VOLUME);
+					musicLoader.fire.play();
+				//}
+			} else {
+				musicLoader.fire.stop();
 			}
 		}
 	}

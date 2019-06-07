@@ -2,6 +2,8 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.Heart;
+import gameobjects.gamecharacters.Player;
 import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
@@ -19,23 +21,15 @@ public class SoundHandler {
 
 	private float baseSoundVolumeValue = 0.5f;
 
+	private int attackTimer = 0;
+	private int inventoryTimer = 0;
+
 	/**
 	 * 
 	 * @param SoundLoader soundLoader
 	 */
 	public void handleSound(SoundLoader soundLoader, MyGame myGame) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
-			// Click sound when choosing different inventory objects.
-			if (Inventory.playClickSound) {
-				soundLoader.click.play(baseSoundVolumeValue);
-				Inventory.playClickSound = false;
-			}
-			for (int i = 0; i < ChestLoader.chests.length; i++) {
-				if (ChestLoader.chests[i].getPlaySound()) {
-					soundLoader.sound.play(baseSoundVolumeValue);
-					ChestLoader.chests[i].setPlaySound(false);
-				}
-			}
 			if (LegendSword.playSound) {
 				soundLoader.sound.play(baseSoundVolumeValue);
 				LegendSword.playSound = false;
@@ -46,6 +40,40 @@ public class SoundHandler {
 						soundLoader.sound.play(baseSoundVolumeValue);
 						myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).setPlaySound(false);
 					}
+				}
+			}
+
+			attackTimer++;
+			if (attackTimer > 2) {
+				attackTimer = 0;
+			}
+			if (Player.playerIsPerformingAttack) {
+				if (attackTimer > 1) {
+					soundLoader.swordSound.play(AudioHandler.MAX_VOLUME);
+				}
+			}
+
+			// Collectibles.
+			if (Heart.playSound) {
+				soundLoader.heartSound.play(AudioHandler.MAX_VOLUME);
+				Heart.playSound = false;
+			}
+			for (int i = 0; i < ChestLoader.chests.length; i++) {
+				if (ChestLoader.chests[i].getPlaySound()) {
+					soundLoader.chestSound.play(AudioHandler.MAX_VOLUME);
+					ChestLoader.chests[i].setPlaySound(false);
+				}
+			}
+
+			// Click sound when choosing different inventory objects.
+			inventoryTimer++;
+			if (inventoryTimer > 2) {
+				inventoryTimer = 0;
+			}
+			if (Inventory.playClickSound) {
+				if (inventoryTimer > 1) {
+					soundLoader.clickSound.play(AudioHandler.MAX_VOLUME);
+					Inventory.playClickSound = false;
 				}
 			}
 		}
