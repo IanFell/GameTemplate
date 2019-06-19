@@ -29,7 +29,7 @@ public class SoundHandler {
 	public void handleSound(SoundLoader soundLoader, MyGame myGame) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
 			if (LegendSword.playSound) {
-				soundLoader.heartSound.play(AudioHandler.MAX_VOLUME);
+				soundLoader.pickUpSwordSound.play(AudioHandler.PICK_UP_SWORD_VOLUME);
 				LegendSword.playSound = false;
 			}
 

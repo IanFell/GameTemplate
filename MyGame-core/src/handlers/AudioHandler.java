@@ -22,6 +22,8 @@ public class AudioHandler {
 	public final static float DAY_TIME_AMBIENT_VOLUME = .25f;
 	
 	public final static float CHEST_VOLUME = .25f;
+	
+	public final static float PICK_UP_SWORD_VOLUME = 0.1f;
 
 	/**
 	 * Loads sounds.
