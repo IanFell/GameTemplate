@@ -164,7 +164,9 @@ public class Inventory extends Screens {
 			inventory.get(i).setX(xPosition);
 			inventory.get(i).setY(yPosition);
 		}
-		fire.updateObject(myGame, mapHandler);
+		if (Inventory.allInventoryShouldBeRendered) {
+			fire.updateObject(myGame, mapHandler);
+		}
 	}
 
 	/**

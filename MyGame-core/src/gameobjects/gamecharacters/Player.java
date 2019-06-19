@@ -19,6 +19,7 @@ import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import particles.DustParticleEmitter;
+import physics.Lighting.Fire;
 import towns.Town;
 
 /**
@@ -197,6 +198,7 @@ public class Player extends GameCharacter {
 
 		if (hasTorch) {	
 			torch.updateObject(myGame, mapHandler);
+			Fire.playSound = true;
 		}
 
 		// Cannot perform attack too fast.

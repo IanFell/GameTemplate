@@ -8,6 +8,7 @@ import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.weapons.Gun;
+import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.Weapon;
 import inventory.Inventory;
 import maps.MapHandler;
@@ -181,7 +182,7 @@ public class CollisionHandler {
 			((Player) player).getInventory().addObjectToInventory(legendSword); 
 
 			legendSword.hasBeenCollected = true;
-			//LegendSword.playSound        = true;
+			LegendSword.playSound        = true;
 		}
 	}
 
@@ -206,9 +207,9 @@ public class CollisionHandler {
 	 */
 	public static void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
 		if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
-			if (enemy.rectangle.overlaps(weapon.rectangle)) {
-				enemy.setIsDead(true);
-				enemy.setPlaySound(true);
+			// Checking if dead is false keeps the sound from playing repeatedly.
+			if (enemy.rectangle.overlaps(weapon.rectangle) && !enemy.isDead()) {
+				handleEnemyDeath(enemy);
 			}
 		}
 	}
@@ -232,10 +233,18 @@ public class CollisionHandler {
 
 			// Kill enemy if he is overlapping with player while player is performing attack.
 			if (Player.playerIsPerformingAttack) {
-				enemy.setIsDead(true);
-				enemy.setPlaySound(true);
+				handleEnemyDeath(enemy);
 			}
 		}
+	}
+
+	/**
+	 * 
+	 * @param Enemy enemy
+	 */
+	private static void handleEnemyDeath(Enemy enemy) {
+		enemy.setIsDead(true);
+		enemy.setPlaySound(true);
 	}
 
 	/**

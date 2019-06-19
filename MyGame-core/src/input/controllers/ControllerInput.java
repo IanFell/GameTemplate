@@ -143,6 +143,7 @@ public class ControllerInput extends Input {
 		}
 
 		if (controller.getPov(0) == BUTTON_DPAD_UP) {
+			Player.hasTorch = !Player.hasTorch;
 		} else if (controller.getPov(0) == BUTTON_DPAD_DOWN) {
 		} else if (controller.getPov(0) == BUTTON_DPAD_LEFT) {
 			if (Inventory.currentlySelectedInventoryObject > 0) {
@@ -194,6 +195,7 @@ public class ControllerInput extends Input {
 			System.out.println("Player is using turbo!  Going fast!");
 			playerSpeed = Player.PLAYER_SPEED * turboSpeed;
 		}
+		Player.playerIsMoving = false;
 		// Left stick.
 		if (stickIsMoved(AXIS_LEFT_X)) {
 			System.out.print("LEFT STICK X pressed \n");
@@ -202,7 +204,7 @@ public class ControllerInput extends Input {
 			} else if (controller.getAxis(AXIS_LEFT_X) > 0) {
 				((Player) player).moveRight(playerSpeed);
 			} 
-		}
+		} 
 		if (stickIsMoved(AXIS_LEFT_Y)) {
 			System.out.print("LEFT STICK Y pressed \n");
 			if (controller.getAxis(AXIS_LEFT_Y) < deadZone) {
@@ -210,7 +212,7 @@ public class ControllerInput extends Input {
 			} else if (controller.getAxis(AXIS_LEFT_Y) > deadZone) {
 				((Player) player).moveDown(playerSpeed);
 			} 
-		}
+		} 
 
 		// Right stick.
 		if (stickIsMoved(AXIS_RIGHT_X)) {

@@ -19,9 +19,7 @@ import screens.Screens;
  */
 public class SoundHandler {
 
-	private float baseSoundVolumeValue = 0.5f;
-
-	private int attackTimer = 0;
+	private int attackTimer    = 0;
 	private int inventoryTimer = 0;
 
 	/**
@@ -31,13 +29,14 @@ public class SoundHandler {
 	public void handleSound(SoundLoader soundLoader, MyGame myGame) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
 			if (LegendSword.playSound) {
-				soundLoader.sound.play(AudioHandler.TEMP_VOLUME);
+				soundLoader.heartSound.play(AudioHandler.MAX_VOLUME);
 				LegendSword.playSound = false;
 			}
+
 			for (int i = 0; i < myGame.gameScreen.enemyHandler.enemySpawner.length; i++) {
 				for (int k = 0; k < myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.size(); k++) {
 					if (myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).getPlaySound()) {
-						soundLoader.sound.play(baseSoundVolumeValue);
+						soundLoader.enemyDeathSound.play(AudioHandler.MAX_VOLUME);
 						myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).setPlaySound(false);
 					}
 				}
@@ -49,18 +48,18 @@ public class SoundHandler {
 			}
 			if (Player.playerIsPerformingAttack) {
 				if (attackTimer > 1) {
-					soundLoader.swordSound.play(AudioHandler.TEMP_VOLUME);
+					soundLoader.swordSound.play(AudioHandler.MEDIAN_VOLUME);
 				}
 			}
 
 			// Collectibles.
 			if (Heart.playSound) {
-				soundLoader.heartSound.play(AudioHandler.TEMP_VOLUME);
+				soundLoader.heartSound.play(AudioHandler.MAX_VOLUME);
 				Heart.playSound = false;
 			}
 			for (int i = 0; i < ChestLoader.chests.length; i++) {
 				if (ChestLoader.chests[i].getPlaySound()) {
-					soundLoader.chestSound.play(AudioHandler.TEMP_VOLUME);
+					soundLoader.chestSound.play(AudioHandler.CHEST_VOLUME);
 					ChestLoader.chests[i].setPlaySound(false);
 				}
 			}

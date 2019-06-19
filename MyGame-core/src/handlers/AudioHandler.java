@@ -13,9 +13,15 @@ import loaders.SoundLoader;
  */
 public class AudioHandler {
 	
-	public final static float TEMP_VOLUME  = .25f;
-	public final static float MAX_VOLUME    = 1.0f;
-	public final static float MEDIAN_VOLUME = 0.5f;
+	public final static float MINIMUM_VOLUME = 0f;
+	public final static float MEDIAN_VOLUME  = 0.5f;
+	public final static float MAX_VOLUME     = 1.0f;
+	
+	public final static float FOOTSTEPS_VOLUME = 0.15f;
+
+	public final static float DAY_TIME_AMBIENT_VOLUME = .25f;
+	
+	public final static float CHEST_VOLUME = .25f;
 
 	/**
 	 * Loads sounds.

@@ -2,9 +2,12 @@ package physics.Lighting;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
 import gameobjects.GameObject;
+import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -23,17 +26,35 @@ public class Fire extends GameObject {
 
 	public static boolean playSound = false;
 
+	private Rectangle boundingAudibleRectangle = new Rectangle();
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param float   x
+	 * @param float   y
+	 * @param float   width
+	 * @param float   height
+	 * @param String  location
+	 * @param boolean hasLogs
+	 */
 	public Fire(float x, float y, float width, float height, String location, boolean hasLogs) {
-		this.x                = x;
-		this.y                = y;
-		this.width            = width;
-		this.height           = height;
-		this.location         = location;
-		this.hasLogs          = hasLogs;
-		this.rectangle.x      = x;
-		this.rectangle.y      = y;
-		this.rectangle.width  = width;
-		this.rectangle.height = height;
+		this.x                           = x;
+		this.y                           = y;
+		this.width                       = width;
+		this.height                      = height;
+		this.location                    = location;
+		this.hasLogs                     = hasLogs;
+		this.rectangle.x                 = x;
+		this.rectangle.y                 = y;
+		this.rectangle.width             = width;
+		this.rectangle.height            = height;
+		int boundingAudibleXYOffset      = 5;
+		boundingAudibleRectangle.x       = x - boundingAudibleXYOffset;
+		boundingAudibleRectangle.y       = y - boundingAudibleXYOffset;
+		int boundingAudibleRectangleSize = 10;
+		boundingAudibleRectangle.width   = boundingAudibleRectangleSize;
+		boundingAudibleRectangle.height  = boundingAudibleRectangleSize;
 	}
 
 	/**
@@ -53,6 +74,17 @@ public class Fire extends GameObject {
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this
 				);*/
+		/*
+		 * Play sound if all inventory is being rendered.  
+		 * If not, just play it when player overlaps with bounding rectangle.
+		 */
+		if (!Inventory.allInventoryShouldBeRendered) {
+			if (boundingAudibleRectangle.overlaps(PlayerController.getCurrentPlayer(myGame).rectangle)) {
+				playSound = true;
+			} 
+		} else {
+			playSound = true;
+		}
 	}
 
 	/**
@@ -96,5 +128,15 @@ public class Fire extends GameObject {
 		if (hasLogs) {
 			batch.draw(imageLoader.logs, x, y, width, -height / 2);
 		}
+
+		// Draw bounding audio square.  If player is within this square, he will hear fire audio.
+		/*
+		batch.draw(
+				imageLoader.whiteSquare, 
+				boundingAudibleRectangle.x, 
+				boundingAudibleRectangle.y, 
+				boundingAudibleRectangle.width, 
+				boundingAudibleRectangle.height
+				); */
 	}
 }

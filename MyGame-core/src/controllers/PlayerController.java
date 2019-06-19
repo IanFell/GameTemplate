@@ -17,7 +17,7 @@ public class PlayerController {
 	 * Returns player the user is currently controlling.
 	 * 
 	 * @param MyGame myGame
-	 * @return
+	 * @return GameObject
 	 */
 	public static GameObject getCurrentPlayer(MyGame myGame) {
 		if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_ONE))) {

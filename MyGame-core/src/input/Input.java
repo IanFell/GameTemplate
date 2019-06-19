@@ -116,6 +116,6 @@ public class Input extends ApplicationAdapter {
 		Inventory.currentlySelectedInventoryObject = element;
 		((Player) player).getInventory().setInventoryIsEquipped(true);
 		Inventory.playClickSound                   = true;
-		Fire.playSound                             = true;;
+		Fire.playSound                             = true;
 	}
 }

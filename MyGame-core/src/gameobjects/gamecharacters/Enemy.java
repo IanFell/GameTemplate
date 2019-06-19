@@ -38,6 +38,8 @@ public class Enemy extends GameCharacter {
 	private boolean willAttack;
 	private float speed;
 	private int stoppedValue = 0;
+	
+	public static boolean playDeathSound = false;
 
 	/**
 	 * Constructor.
