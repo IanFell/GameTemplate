@@ -17,9 +17,10 @@ import screens.Screens;
  *
  */
 public class MusicHandler {
-	
+
 	private boolean startDayTimeAmbientAudio = true;
 	private boolean startFootstepsAudio      = true;
+	private boolean startOceanAudio          = true;
 
 	/**
 	 * 
@@ -62,16 +63,9 @@ public class MusicHandler {
 					musicLoader.rainAndThunder.stop();
 				}*/
 			}
-
-			handleFootsteps(musicLoader);
-
-			if (Fire.playSound) {
-				musicLoader.fire.setVolume(AudioHandler.MAX_VOLUME);
-				musicLoader.fire.play();
-				Fire.playSound = false;
-			} else {
-				musicLoader.fire.stop();
-			}
+			handleFootstepsAudio(musicLoader);
+			handleFireAudio(musicLoader);
+			handleOceanAudio(musicLoader);
 		} 
 	}
 
@@ -79,38 +73,49 @@ public class MusicHandler {
 	 * 
 	 * @param MusicLoader musicLoader
 	 */
-	private void handleFootsteps(MusicLoader musicLoader) {
-		
+	private void handleFireAudio(MusicLoader musicLoader) {
+		if (Fire.playSound) {
+			musicLoader.fire.setVolume(AudioHandler.MAX_VOLUME);
+			musicLoader.fire.play();
+			Fire.playSound = false;
+		} else {
+			musicLoader.fire.stop();
+		}
+	}
+
+	/**
+	 * 
+	 * @param MusicLoader musicLoader
+	 */
+	private void handleOceanAudio(MusicLoader musicLoader) {
+		if (Player.isInWater) {
+			startOceanAudio = true;
+		} else {
+			musicLoader.ocean.stop();
+		}
+		if (startOceanAudio) {
+			musicLoader.ocean.setVolume(AudioHandler.MAX_VOLUME);
+			musicLoader.ocean.setLooping(true);
+			musicLoader.ocean.play();
+			startOceanAudio = false;
+		}
+	}
+
+	/**
+	 * 
+	 * @param MusicLoader musicLoader
+	 */
+	private void handleFootstepsAudio(MusicLoader musicLoader) {
 		if (Player.playerIsMoving) {
 			startFootstepsAudio = true;
 		} else {
 			musicLoader.footsteps.stop();
 		}
-		
 		if (startFootstepsAudio) {
 			musicLoader.footsteps.setVolume(AudioHandler.FOOTSTEPS_VOLUME);
 			musicLoader.footsteps.setLooping(true);
 			musicLoader.footsteps.play();
 			startFootstepsAudio = false;
 		}
-		
-		
-		
-		/*
-		if (Player.playerIsMoving) {
-			//musicLoader.footsteps.setVolume(AudioHandler.MEDIAN_VOLUME);
-			//musicLoader.footsteps.play();
-			if (startFootstepsAudio) {
-				musicLoader.footsteps.setVolume(AudioHandler.MEDIAN_VOLUME);
-				musicLoader.footsteps.setLooping(true);
-				if (Player.playerIsMoving) {
-				musicLoader.footsteps.play();
-				}
-				startFootstepsAudio = false;
-			}
-		} else {
-			musicLoader.footsteps.stop();
-			//startFootstepsAudio = true;
-		}*/
 	}
 }

@@ -81,7 +81,6 @@ public class MapRenderer {
 								myGame.getGameObject(GameObject.PLAYER_ONE), 
 								mapHandler, 
 								MapHandler.mapChunks.get(i).tileMap[x][z]
-						
 								);
 						/**
 						 * This slows the game down.  Maybe we don't need it as enemies will always follow player anyway.
