@@ -19,6 +19,8 @@ import screens.Screens;
  */
 public class SoundHandler {
 
+	private boolean startLandingAudio = false;
+
 	private int attackTimer    = 0;
 	private int inventoryTimer = 0;
 
@@ -75,6 +77,24 @@ public class SoundHandler {
 					Inventory.playClickSound = false;
 				}
 			}
+
+			handleLandingAudio(soundLoader);
+		}
+	}
+
+	/**
+	 * 
+	 * @param SoundLoader soundLoader
+	 */
+	private void handleLandingAudio(SoundLoader soundLoader) {
+		int soundId = 0;
+		if (startLandingAudio && Player.jumpingAction == Player.ON_GROUND) {
+			soundLoader.swordSound.setVolume(soundId, AudioHandler.MAX_VOLUME);
+			soundLoader.swordSound.play();
+			startLandingAudio = false;
+		}
+		if (Player.isJumping) {
+			startLandingAudio = true;
 		}
 	}
 }

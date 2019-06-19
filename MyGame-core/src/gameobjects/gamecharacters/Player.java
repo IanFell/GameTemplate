@@ -51,7 +51,7 @@ public class Player extends GameCharacter {
 	private float jumpSpeed;
 	private float jumpingSpeedValue = 0.05f;
 
-	private static final int ON_GROUND      = 0;
+	public static final int ON_GROUND       = 0;
 	public static final int ASCENDING_JUMP  = 1;
 	public static final int DESCENDING_JUMP = 2;
 

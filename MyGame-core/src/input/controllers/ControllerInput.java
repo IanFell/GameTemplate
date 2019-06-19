@@ -20,7 +20,7 @@ import ui.MapUi;
 public class ControllerInput extends Input {
 
 	// Make sure inventory button if held down is not being hit infinite times.
-	private int clickUiTimer          = 0;
+	private float clickUiTimer        = 0;
 	private boolean startClickUiTimer = false;
 
 	private int inventoryClickTimer = 0;
@@ -234,7 +234,6 @@ public class ControllerInput extends Input {
 			System.out.print("BACK button pressed \n");
 		}
 		if(controller.getButton(BUTTON_START)) {
-			System.out.print("START button pressed \n");
 			if (!startClickUiTimer) {
 				// If we press start and UI is open, close it.
 				if (Inventory.allInventoryShouldBeRendered || MapUi.mapShouldBeRendered) {
@@ -248,8 +247,8 @@ public class ControllerInput extends Input {
 				}
 			} else {
 				// Make sure inventory button is only hit once.
-				clickUiTimer++;
-				if (clickUiTimer > 1) {
+				clickUiTimer += 0.5;
+				if (clickUiTimer > 2f) {
 					clickUiTimer      = 0;
 					startClickUiTimer = false;
 				}
