@@ -108,10 +108,10 @@ public class Player extends GameCharacter {
 			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerTwoLeft.atlas")); 
 			break;
 		case Player.PLAYER_THREE:
-			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDown.atlas"));
-			walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerUp.atlas"));
-			walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerRight.atlas"));
-			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerLeft.atlas")); 
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerThreeDown.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerThreeUp.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerThreeRight.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerThreeLeft.atlas")); 
 			break;
 		}
 		

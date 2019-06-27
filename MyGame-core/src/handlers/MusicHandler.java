@@ -106,7 +106,7 @@ public class MusicHandler {
 	 * @param MusicLoader musicLoader
 	 */
 	private void handleFootstepsAudio(MusicLoader musicLoader) {
-		if (Player.playerIsMoving && Player.jumpingAction == Player.ON_GROUND) {
+		if (Player.playerIsMoving && Player.jumpingAction == Player.ON_GROUND && !Player.isInWater) {
 			startFootstepsAudio = true;
 		} else {
 			musicLoader.footsteps.stop();
