@@ -18,14 +18,13 @@ import screens.Screens;
  *
  */
 public class SoundHandler {
-	
-	private int soundId = 0; 
 
 	private boolean startLandingAudio = false;
 
-	private int attackTimer    = 0;
-	private int inventoryTimer = 0;
-	private int jumpTimer      = 0;
+	private final int TIMER_START_VALUE = 0;
+	private int attackTimer             = TIMER_START_VALUE;
+	private int inventoryTimer          = TIMER_START_VALUE;
+	private int jumpTimer               = TIMER_START_VALUE;
 
 	/**
 	 * 
@@ -49,11 +48,11 @@ public class SoundHandler {
 
 			attackTimer++;
 			if (attackTimer > 2) {
-				attackTimer = 0;
+				attackTimer = TIMER_START_VALUE;
 			}
 			if (Player.playerIsPerformingAttack) {
 				if (attackTimer > 1) {
-					soundLoader.swordSound.play(AudioHandler.MEDIAN_VOLUME);
+					soundLoader.swordSound.play(AudioHandler.MAX_VOLUME);
 				}
 			}
 
@@ -72,7 +71,7 @@ public class SoundHandler {
 			// Click sound when choosing different inventory objects.
 			inventoryTimer++;
 			if (inventoryTimer > 2) {
-				inventoryTimer = 0;
+				inventoryTimer = TIMER_START_VALUE;
 			}
 			if (Inventory.playClickSound) {
 				if (inventoryTimer > 1) {
@@ -84,7 +83,7 @@ public class SoundHandler {
 			handleLandingAudio(soundLoader);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param SoundLoader soundLoader
@@ -92,12 +91,14 @@ public class SoundHandler {
 	private void handleJumpingAudio(SoundLoader soundLoader) {
 		if (Player.isJumping) {
 			if (jumpTimer < 1) {
-				soundLoader.swordSound.setVolume(soundId, AudioHandler.MAX_VOLUME);
-				soundLoader.swordSound.play();
+				soundLoader.jumpSound.play(AudioHandler.JUMP_VOLUME);
 			}
 			jumpTimer++;
+			if (jumpTimer > 50) {
+				jumpTimer = TIMER_START_VALUE;
+			}
 		} else {
-			jumpTimer = 0;
+			jumpTimer = TIMER_START_VALUE;
 		}
 	}
 
@@ -107,8 +108,7 @@ public class SoundHandler {
 	 */
 	private void handleLandingAudio(SoundLoader soundLoader) {
 		if (startLandingAudio && Player.jumpingAction == Player.ON_GROUND) {
-			soundLoader.swordSound.setVolume(soundId, AudioHandler.MAX_VOLUME);
-			soundLoader.swordSound.play();
+			soundLoader.landSound.play(AudioHandler.LAND_VOLUME);
 			startLandingAudio = false;
 		}
 		if (Player.isJumping) {

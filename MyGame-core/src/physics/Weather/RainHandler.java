@@ -40,7 +40,7 @@ public class RainHandler extends GameObject {
 	public RainHandler(GameScreen gameScreen) {
 		this.x      = RandomNumberGenerator.generateRandomInteger((int)gameScreen.getViewportWidth());
 		this.y      = startingRainDropYPosition;
-		float size  = 0.02f;
+		float size  = 0.05f;
 		this.width  = size;
 		this.height = size * 5;
 		this.dy     = (float) RandomNumberGenerator.generateRandomDouble(minDy, maxDy);

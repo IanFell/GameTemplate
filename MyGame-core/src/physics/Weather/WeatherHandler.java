@@ -23,13 +23,13 @@ public class WeatherHandler {
 	public LightningHandler lightningHandler;
 
 	public NightAndDayCycle nightAndDayCycle;
-	
+
 	private int randomNumberToDetermineIfStormCycleShouldBegin = 0;
-	
+
 	private int maxLimitToDetermineIfStormCycleShouldBegin = 100000;
-	
+
 	private static boolean isStorming = false;
-	
+
 	public Cloud[] cloud  = new Cloud[250];
 	public Cloud[] cloud2 = new Cloud[250];
 	public Cloud[] cloud3 = new Cloud[250];
@@ -43,7 +43,7 @@ public class WeatherHandler {
 		lightningHandler = new LightningHandler();
 		nightAndDayCycle = new NightAndDayCycle();
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame     myGame
@@ -55,7 +55,7 @@ public class WeatherHandler {
 		}
 		initializeClouds(myGame);
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame     myGame
@@ -63,11 +63,11 @@ public class WeatherHandler {
 	 * @param MapHandler mapHandler
 	 */
 	public void update(MyGame myGame, GameScreen gameScreen, MapHandler mapHandler) {
-		//nightAndDayCycle.performDayAndNightCycle();
+		nightAndDayCycle.performDayAndNightCycle();
 		updateStormCycle(myGame, gameScreen, mapHandler);
 		updateClouds(myGame, gameScreen);
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame     myGame
@@ -81,7 +81,7 @@ public class WeatherHandler {
 			cloud4[i].updateObject(myGame, gameScreen);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame
@@ -94,7 +94,7 @@ public class WeatherHandler {
 			cloud4[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame myGame
@@ -113,7 +113,7 @@ public class WeatherHandler {
 					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.2f)
 					);
 		}
-		
+
 		// Clouds 2 and 3 are together.
 		for (int i = 0; i < cloud2.length; i++) {
 			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
@@ -127,7 +127,7 @@ public class WeatherHandler {
 					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.2f)
 					);
 		}
-		
+
 		for (int i = 0; i < cloud3.length; i++) {
 			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
 			double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
@@ -140,7 +140,7 @@ public class WeatherHandler {
 					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.5f)
 					);
 		}
-		
+
 		for (int i = 0; i < cloud4.length; i++) {
 			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
 			double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
@@ -154,7 +154,7 @@ public class WeatherHandler {
 					);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame     myGame
@@ -169,14 +169,14 @@ public class WeatherHandler {
 					gameScreen
 					);
 			//if (NightAndDayCycle.isDayTime()) {
-				// Do not just constantly flash lightning the whole time.
-				if (lightningHandler.getCurrentNumberOfFlashes() == 2) {
-					LightningBoltHandler.drawLightningBolt(myGame);
-				}
+			// Do not just constantly flash lightning the whole time.
+			if (lightningHandler.getCurrentNumberOfFlashes() == 2) {
+				LightningBoltHandler.drawLightningBolt(myGame);
+			}
 			//}
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame     myGame
@@ -191,7 +191,7 @@ public class WeatherHandler {
 		if (randomNumberToDetermineIfStormCycleShouldBegin == maxLimitToDetermineIfStormCycleShouldBegin / 2) {
 			isStorming = true;
 		}
-		
+
 		// If it is day time, and isStorming is true, start raining.  Stop raining during night time.
 		if (isStorming) {
 			if (NightAndDayCycle.isDayTime()) {

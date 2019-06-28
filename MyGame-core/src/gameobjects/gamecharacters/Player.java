@@ -76,7 +76,7 @@ public class Player extends GameCharacter {
 	public static boolean hasTorch;
 
 	private DustParticleEmitter dustEmitter;
-	
+
 	private int playerNumber;
 
 	/**
@@ -93,7 +93,7 @@ public class Player extends GameCharacter {
 		this.height              = playerSize;
 		rectangle.width          = playerSize;
 		rectangle.height         = playerSize;
-		
+
 		switch (playerNumber) {
 		case Player.PLAYER_ONE:
 			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDownRed.atlas"));
@@ -114,7 +114,7 @@ public class Player extends GameCharacter {
 			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerThreeLeft.atlas")); 
 			break;
 		}
-		
+
 		float animationSpeed     = 7/15f;
 		walkDownAnimation        = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
 		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
@@ -298,30 +298,17 @@ public class Player extends GameCharacter {
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		elapsedTime += Gdx.graphics.getDeltaTime();
-		if (isInWater) {
-			float offset = 1.0f;
-			if (timer < 10) {
-				offset = 1.1f;
-			}
-			int resizedValue = 2;
-			switch (direction) {
-			case DIRECTION_LEFT:
-				batch.draw(imageLoader.playerHeadLeft, x, y + offset, playerSize, -playerSize * resizedValue);
-				break;
-			case DIRECTION_RIGHT:
-				batch.draw(imageLoader.playerHeadRight, x, y + offset, playerSize, -playerSize * resizedValue);
-				break;
-			case DIRECTION_UP:
-				batch.draw(imageLoader.playerHeadUp, x, y + offset, playerSize, -playerSize * resizedValue);
-				break;
-			case DIRECTION_DOWN:
-				batch.draw(imageLoader.playerHeadDown, x, y + offset, playerSize, -playerSize * resizedValue);
-				break;
-			}
-		} else {
-			dustEmitter.renderObject(batch, shapeRenderer, imageLoader);
-			AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, playerSize);
-		}
+		dustEmitter.renderObject(batch, shapeRenderer, imageLoader);
+		AnimationHandler.renderAnimation(
+				batch, 
+				elapsedTime, 
+				getCurrentAnimation(), 
+				x, 
+				y, 
+				playerSize, 
+				imageLoader, 
+				AnimationHandler.OBJECT_TYPE_PLAYER
+				);
 
 		if (hasTorch) {	
 			torch.renderObject(batch, shapeRenderer, imageLoader);

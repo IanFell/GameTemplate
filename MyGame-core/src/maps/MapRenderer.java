@@ -85,7 +85,6 @@ public class MapRenderer {
 						/**
 						 * This slows the game down.  Maybe we don't need it as enemies will always follow player anyway.
 						 */
-						/*
 						for (int k = 0; k < myGame.gameScreen.enemyHandler.enemySpawner.length; k++) {
 							if (myGame.gameScreen.enemyHandler.enemySpawner[k].enemies != null) {
 								for (int enemy = 0; enemy < myGame.gameScreen.enemyHandler.enemySpawner[k].enemies.size(); enemy++) {
@@ -98,7 +97,7 @@ public class MapRenderer {
 									}
 								}
 							}
-						} */
+						} 
 					}
 				}
 			}

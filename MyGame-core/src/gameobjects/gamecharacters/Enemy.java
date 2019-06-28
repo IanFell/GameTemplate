@@ -38,7 +38,7 @@ public class Enemy extends GameCharacter {
 	private boolean willAttack;
 	private float speed;
 	private int stoppedValue = 0;
-	
+
 	public static boolean playDeathSound = false;
 
 	/**
@@ -182,7 +182,16 @@ public class Enemy extends GameCharacter {
 		int playerSize = 1;
 		if (!dead) {
 			//batch.draw(texture, x, y, width, -height);
-			AnimationHandler.renderAnimation(batch, elapsedTime, getCurrentAnimation(), x, y, playerSize);
+			AnimationHandler.renderAnimation(
+					batch, 
+					elapsedTime, 
+					getCurrentAnimation(), 
+					x, 
+					y, 
+					playerSize, 
+					imageLoader, 
+					AnimationHandler.OBJECT_TYPE_ENEMY
+					);
 			// Uncomment to debug attackBoundary.
 			//batch.draw(imageLoader.whiteSquare, attackBoundary.x, attackBoundary.y, attackBoundary.width, attackBoundary.height);
 			// Uncomment to draw enemy hit box.

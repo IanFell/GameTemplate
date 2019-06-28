@@ -12,13 +12,9 @@ import com.badlogic.gdx.audio.Music;
 public class MusicLoader {
 
 	public Music dayTimeAmbientNoise;
-
 	public Music nightTimeAmbientNoise;
-
 	public Music rainAndThunder;
-
 	public Music fire;
-
 	public Music ocean;
 
 	/**
@@ -33,7 +29,7 @@ public class MusicLoader {
 		footsteps             = Gdx.audio.newMusic(Gdx.files.internal("audio/FootstepsMusic.wav"));
 		rainAndThunder        = Gdx.audio.newMusic(Gdx.files.internal("audio/Rain.wav"));
 		fire                  = Gdx.audio.newMusic(Gdx.files.internal("audio/Fire.wav"));
-		nightTimeAmbientNoise = Gdx.audio.newMusic(Gdx.files.internal("NightTimeAmbientNoise.wav"));
+		nightTimeAmbientNoise = Gdx.audio.newMusic(Gdx.files.internal("audio/NightTimeAmbience.wav"));
 	}
 
 	public void dispose() {

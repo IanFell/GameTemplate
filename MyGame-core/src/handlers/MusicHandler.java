@@ -2,9 +2,7 @@ package handlers;
 
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
-import inventory.Inventory;
 import loaders.MusicLoader;
-import loaders.fireloader.FireLoader;
 import physics.Lighting.Fire;
 import physics.Weather.NightAndDayCycle;
 import physics.Weather.WeatherHandler;
@@ -18,9 +16,11 @@ import screens.Screens;
  */
 public class MusicHandler {
 
-	private boolean startDayTimeAmbientAudio = true;
-	private boolean startFootstepsAudio      = true;
-	private boolean startOceanAudio          = true;
+	private boolean startDayTimeAmbientAudio   = true;
+	private boolean startNightTimeAmbientAudio = true;
+	private boolean startStormAudio            = true;
+	private boolean startFootstepsAudio        = true;
+	private boolean startOceanAudio            = true;
 
 	/**
 	 * 
@@ -29,44 +29,69 @@ public class MusicHandler {
 	public void handleMusic(MusicLoader musicLoader) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
 			if (NightAndDayCycle.isDayTime()) {
-				if (startDayTimeAmbientAudio) {
-					musicLoader.dayTimeAmbientNoise.setVolume(AudioHandler.DAY_TIME_AMBIENT_VOLUME);
-					musicLoader.dayTimeAmbientNoise.setLooping(true);
-					musicLoader.dayTimeAmbientNoise.play();
-					startDayTimeAmbientAudio = false;
-				}
-
-				/*
-				if (WeatherHandler.isStorming()) {
-					musicLoader.rainAndThunder.setVolume(AudioHandler.TEMP_VOLUME);
-					musicLoader.rainAndThunder.play();
-					musicLoader.dayTimeAmbientNoise.stop();
-				} else {
-					if (musicLoader.rainAndThunder.isPlaying()) {
-						musicLoader.rainAndThunder.stop();
-					}
-				}
-
-				if (musicLoader.nightTimeAmbientNoise.isPlaying()) {
-					musicLoader.nightTimeAmbientNoise.stop();
-				}*/
+				handleDayTimeAudio(musicLoader);
 			} else {
-				/*
-				musicLoader.nightTimeAmbientNoise.setVolume(AudioHandler.DAY_TIME_AMBIENT_VOLUME);
-				musicLoader.nightTimeAmbientNoise.play();
-
-				if (musicLoader.dayTimeAmbientNoise.isPlaying()) {
-					musicLoader.dayTimeAmbientNoise.stop();
-				}
-
-				if (musicLoader.rainAndThunder.isPlaying()) {
-					musicLoader.rainAndThunder.stop();
-				}*/
+				handleNightTimeAudio(musicLoader);
 			}
 			handleFootstepsAudio(musicLoader);
 			handleFireAudio(musicLoader);
 			handleOceanAudio(musicLoader);
 		} 
+	}
+
+	/**
+	 * 
+	 * @param MusicLoader musicLoader
+	 */
+	private void handleDayTimeAudio(MusicLoader musicLoader) {
+		if (musicLoader.nightTimeAmbientNoise.isPlaying()) {
+			musicLoader.nightTimeAmbientNoise.stop();
+			startNightTimeAmbientAudio = true;
+		}
+		if (startDayTimeAmbientAudio) {
+			musicLoader.dayTimeAmbientNoise.setVolume(AudioHandler.DAY_TIME_AMBIENT_VOLUME);
+			musicLoader.dayTimeAmbientNoise.setLooping(true);
+			musicLoader.dayTimeAmbientNoise.play();
+			startDayTimeAmbientAudio = false;
+		}
+		handleStormAudio(musicLoader);
+	}
+
+	/**
+	 * 
+	 * @param MusicLoader musicLoader
+	 */
+	private void handleStormAudio(MusicLoader musicLoader) {
+		if (WeatherHandler.isStorming() && startStormAudio) {
+			musicLoader.rainAndThunder.setVolume(AudioHandler.MAX_VOLUME);
+			musicLoader.rainAndThunder.setLooping(true);
+			musicLoader.rainAndThunder.play();
+			musicLoader.dayTimeAmbientNoise.stop();
+			startStormAudio = false;
+		} else if (!WeatherHandler.isStorming()) {
+			if (musicLoader.rainAndThunder.isPlaying()) {
+				musicLoader.rainAndThunder.stop();
+				startStormAudio = true;
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param MusicLoader musicLoader
+	 */
+	private void handleNightTimeAudio(MusicLoader musicLoader) {
+		if (startNightTimeAmbientAudio) {
+			musicLoader.nightTimeAmbientNoise.setVolume(AudioHandler.NIGHT_TIME_AMBIENT_VOLUME);
+			musicLoader.nightTimeAmbientNoise.setLooping(true);
+			musicLoader.nightTimeAmbientNoise.play();
+			startNightTimeAmbientAudio = false;
+
+			if (musicLoader.dayTimeAmbientNoise.isPlaying()) {
+				musicLoader.dayTimeAmbientNoise.stop();
+				startDayTimeAmbientAudio = true;
+			}
+		}
 	}
 
 	/**

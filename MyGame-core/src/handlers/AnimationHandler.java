@@ -4,6 +4,11 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import gameobjects.gamecharacters.Player;
+import loaders.ImageLoader;
+import physics.Weather.NightAndDayCycle;
+import tiles.Tile;
+
 /**
  * Handles sprite animations.
  * 
@@ -11,6 +16,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  *
  */
 public class AnimationHandler {
+
+	public final static int OBJECT_TYPE_PLAYER = 0;
+	public final static int OBJECT_TYPE_ENEMY  = 1;
 
 	/**
 	 * y + 1 is used because we need to flip the sprite batch vertically.  
@@ -30,7 +38,9 @@ public class AnimationHandler {
 			Animation <TextureRegion> animation, 
 			float x, 
 			float y, 
-			float size
+			float size,
+			ImageLoader imageLoader,
+			int objectType
 			) {
 		batch.draw( 
 				animation.getKeyFrame(elapsedTime, true),  
@@ -39,5 +49,17 @@ public class AnimationHandler {
 				size, 
 				-size * 2
 				);
+
+
+		if (objectType == OBJECT_TYPE_PLAYER) {
+			// If player is swimming, mask him with a water tile below his head.
+			if (Player.isInWater) {
+				batch.draw(imageLoader.waterTileOne, x, y, size, -size);
+				// If it is night time, draw a transparant black shader over the tile.
+				if (!NightAndDayCycle.isDayTime()) {
+					batch.draw(Tile.nightTimeTexture, x, y, size, -size);
+				}
+			}
+		}
 	}
 }
