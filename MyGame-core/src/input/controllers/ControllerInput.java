@@ -7,6 +7,7 @@ import com.badlogic.gdx.controllers.PovDirection;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.ControllerInputHelper;
+import helpers.GameAttributeHelper;
 import input.Input;
 import inventory.Inventory;
 import ui.MapUi;
@@ -20,10 +21,8 @@ import ui.MapUi;
 public class ControllerInput extends Input {
 
 	// Make sure inventory button if held down is not being hit infinite times.
-	private float clickUiTimer        = 0;
-	private boolean startClickUiTimer = false;
-
-	private int inventoryClickTimer = 0;
+	private float clickUiTimer      = GameAttributeHelper.TIMER_START_VALUE;
+	private int inventoryClickTimer = GameAttributeHelper.TIMER_START_VALUE;
 
 	protected Controller controller;
 
@@ -139,7 +138,7 @@ public class ControllerInput extends Input {
 		// Use timer so we can't change between inventory objects too quickly.
 		inventoryClickTimer++;
 		if (inventoryClickTimer > 9) {
-			inventoryClickTimer = 0;
+			inventoryClickTimer = GameAttributeHelper.TIMER_START_VALUE;
 		}
 
 		if (controller.getPov(0) == BUTTON_DPAD_UP) {
@@ -234,24 +233,21 @@ public class ControllerInput extends Input {
 			System.out.print("BACK button pressed \n");
 		}
 		if(controller.getButton(BUTTON_START)) {
-			if (!startClickUiTimer) {
-				// If we press start and UI is open, close it.
+			// If we press start and UI is open, close it.
+			if (clickUiTimer < 1) {
+				Inventory.playClickSound = true;
 				if (Inventory.allInventoryShouldBeRendered || MapUi.mapShouldBeRendered) {
 					Inventory.allInventoryShouldBeRendered = false;
 					MapUi.mapShouldBeRendered              = false;
 				} else {
 					// If we press start and UI is not open, open inventory screen.
 					// We can navigate through inventory screen by pressing RB.
-					startClickUiTimer                        = true;
 					Inventory.allInventoryShouldBeRendered = !Inventory.allInventoryShouldBeRendered;
 				}
-			} else {
-				// Make sure inventory button is only hit once.
-				clickUiTimer += 0.5;
-				if (clickUiTimer > 2f) {
-					clickUiTimer      = 0;
-					startClickUiTimer = false;
-				}
+			}
+			clickUiTimer++;
+			if (clickUiTimer > 10) {
+				clickUiTimer = GameAttributeHelper.TIMER_START_VALUE;
 			}
 		}
 	}

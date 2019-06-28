@@ -17,6 +17,8 @@ public final class GameAttributeHelper {
 	
 	public final static int FRAMES_PER_SECOND = 30;
 	
+	public final static int TIMER_START_VALUE = 0;
+	
 	/**
 	 * Game world has 68 chunks, a grid of 8 x 8.
 	 */

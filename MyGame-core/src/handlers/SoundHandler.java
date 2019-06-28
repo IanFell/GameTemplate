@@ -21,10 +21,9 @@ public class SoundHandler {
 
 	private boolean startLandingAudio = false;
 
-	private final int TIMER_START_VALUE = 0;
-	private int attackTimer             = TIMER_START_VALUE;
-	private int inventoryTimer          = TIMER_START_VALUE;
-	private int jumpTimer               = TIMER_START_VALUE;
+	private int attackTimer    = GameAttributeHelper.TIMER_START_VALUE;
+	private int inventoryTimer = GameAttributeHelper.TIMER_START_VALUE;
+	private int jumpTimer      = GameAttributeHelper.TIMER_START_VALUE;
 
 	/**
 	 * 
@@ -48,7 +47,7 @@ public class SoundHandler {
 
 			attackTimer++;
 			if (attackTimer > 2) {
-				attackTimer = TIMER_START_VALUE;
+				attackTimer = GameAttributeHelper.TIMER_START_VALUE;
 			}
 			if (Player.playerIsPerformingAttack) {
 				if (attackTimer > 1) {
@@ -71,12 +70,13 @@ public class SoundHandler {
 			// Click sound when choosing different inventory objects.
 			inventoryTimer++;
 			if (inventoryTimer > 2) {
-				inventoryTimer = TIMER_START_VALUE;
+				inventoryTimer = GameAttributeHelper.TIMER_START_VALUE;
 			}
 			if (Inventory.playClickSound) {
-				if (inventoryTimer > 1) {
+				if (inventoryTimer < 1) {
 					soundLoader.clickSound.play(AudioHandler.MAX_VOLUME);
 					Inventory.playClickSound = false;
+					inventoryTimer           = GameAttributeHelper.TIMER_START_VALUE;
 				}
 			}
 			handleJumpingAudio(soundLoader);
@@ -95,10 +95,10 @@ public class SoundHandler {
 			}
 			jumpTimer++;
 			if (jumpTimer > 50) {
-				jumpTimer = TIMER_START_VALUE;
+				jumpTimer = GameAttributeHelper.TIMER_START_VALUE;
 			}
 		} else {
-			jumpTimer = TIMER_START_VALUE;
+			jumpTimer = GameAttributeHelper.TIMER_START_VALUE;
 		}
 	}
 
