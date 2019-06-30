@@ -15,6 +15,7 @@ import loaders.ImageLoader;
 public class PalmTree extends NatureObject {
 	
 	private int randomTree;
+	private float randomHeight;
 
 	/**
 	 * Constructor.
@@ -24,10 +25,11 @@ public class PalmTree extends NatureObject {
 	 */
 	public PalmTree(int x, int y) {
 		super(x, y);
-		this.width  = 2;
-		this.height = 4;
-		this.x      = x - 0.5f;
-		randomTree  = RandomNumberGenerator.generateRandomInteger(2);
+		this.width   = 2;
+		this.height  = 4;
+		this.x       = x - 0.5f;
+		randomTree   = RandomNumberGenerator.generateRandomInteger(2);
+		randomHeight = (float) RandomNumberGenerator.generateRandomDouble(2, height + 3);
 	}
 
 	/**
@@ -41,7 +43,7 @@ public class PalmTree extends NatureObject {
 		if (randomTree < 1) {
 			batch.draw(imageLoader.palmTree, x, y - 0.5f, width, -height);
 		} else {
-			batch.draw(imageLoader.palmTreeThree, x, y - 0.5f, width / 2 + 0.3f, -height);
+			batch.draw(imageLoader.palmTreeThree, x + 1.5f, y - 0.5f, width / 2 + 0.7f, -randomHeight);
 		}
 	}
 }

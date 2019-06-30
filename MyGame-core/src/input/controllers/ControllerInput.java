@@ -246,7 +246,7 @@ public class ControllerInput extends Input {
 				}
 			}
 			clickUiTimer++;
-			if (clickUiTimer > 10) {
+			if (clickUiTimer > 5) {
 				clickUiTimer = GameAttributeHelper.TIMER_START_VALUE;
 			}
 		}
