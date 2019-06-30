@@ -3,6 +3,7 @@ package physics.Lighting;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
 import loaders.GameObjectLoader;
 
 /**
@@ -38,19 +39,23 @@ public class LightingHandler {
 					myGame.getGameObject(GameObject.PLAYER_ONE)
 					);
 		}
-		if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_TWO))) {
-			shadowHandler.renderLighting(
-					myGame.renderer.batch, 
-					myGame.imageLoader, 
-					myGame.getGameObject(GameObject.PLAYER_TWO)
-					);
+		if (Player.lifeState == Player.LIFE_STATE_ONE || Player.lifeState == Player.LIFE_STATE_TWO) {
+			if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_TWO))) {
+				shadowHandler.renderLighting(
+						myGame.renderer.batch, 
+						myGame.imageLoader, 
+						myGame.getGameObject(GameObject.PLAYER_TWO)
+						);
+			}
 		}
-		if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_THREE))) {
-			shadowHandler.renderLighting(
-					myGame.renderer.batch, 
-					myGame.imageLoader, 
-					myGame.getGameObject(GameObject.PLAYER_THREE)
-					);
+		if (Player.lifeState == Player.LIFE_STATE_ONE) {
+			if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_THREE))) {
+				shadowHandler.renderLighting(
+						myGame.renderer.batch, 
+						myGame.imageLoader, 
+						myGame.getGameObject(GameObject.PLAYER_THREE)
+						);
+			}
 		}
 		//}
 	}

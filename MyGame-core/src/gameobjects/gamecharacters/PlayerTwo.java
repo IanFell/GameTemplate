@@ -2,9 +2,12 @@ package gameobjects.gamecharacters;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.GameObject;
+import handlers.AnimationHandler;
+import loaders.ImageLoader;
 import maps.MapHandler;
 
 /**
@@ -43,12 +46,39 @@ public class PlayerTwo extends Player {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		if (playerOneIsMovingAndNotDead(myGame)) {
-			handleWalking(myGame);
-		}
-		removeCurrentPlayerIfDead(myGame.getGameObject(GameObject.PLAYER_ONE), this);
+		handleWalking(myGame);
 		savePlayerCurrentPositionAndDirection(x, y, playerTwoXPositions, playerTwoYPositions, playerDirections);
-		simulateDeath(myGame, myGame.getGameObject(GameObject.PLAYER_ONE));
+		//simulateDeath(myGame, myGame.getGameObject(GameObject.PLAYER_ONE));
+
+		if (myGame.getGameObject(Player.PLAYER_ONE).getHealth() <= 0) {
+			setLifeState(myGame, PLAYER_TWO);
+		}
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
+	 */
+	@Override
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+		super.renderObject(batch, shapeRenderer, imageLoader);
+
+		if (lifeState == LIFE_STATE_ONE || lifeState == LIFE_STATE_TWO) {
+			AnimationHandler.renderAnimation(
+					batch, 
+					elapsedTime, 
+					getCurrentAnimation(), 
+					x, 
+					y, 
+					playerSize, 
+					imageLoader, 
+					AnimationHandler.OBJECT_TYPE_PLAYER
+					);
+		}
+
+		//renderHitBox(batch, imageLoader);
 	}
 
 	/**

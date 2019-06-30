@@ -11,19 +11,22 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import gameobjects.Torch;
-import handlers.AnimationHandler;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import particles.DustParticleEmitter;
-import physics.Lighting.Fire;
 import towns.Town;
 
 /**
  * Player object.
+ * 
+ * Although there are three starting players, all info is held within Player One.
+ * For example, when player one dies, he is reset, and redrawn to look like player two.
+ * If player one dies, player three will cease to be rendered and player two will now
+ * be rendered as player three.  This will make it easier when it comes to health, not 
+ * having to transfer inventory, etc.
  * 
  * @author Fabulous Fellini
  *
@@ -55,6 +58,12 @@ public class Player extends GameCharacter {
 	public static final int ASCENDING_JUMP  = 1;
 	public static final int DESCENDING_JUMP = 2;
 
+	public static final int LIFE_STATE_ONE   = 1;
+	public static final int LIFE_STATE_TWO   = 2;
+	public static final int LIFE_STATE_THREE = 3;
+
+	public static int lifeState;
+
 	/**
 	 * Used to determine whether footsteps sound effect should play.
 	 */
@@ -66,18 +75,21 @@ public class Player extends GameCharacter {
 	 */
 	protected int playerOneFollowAndDirectionValueOffset;
 
-	private float playerSize = 1f;
+	protected float playerSize = 1f;
 
 	protected int playerScore;
 
 	protected int health;
 
-	private Torch torch;
+	private final int STARTING_HEALTH = 10;;
+
 	public static boolean hasTorch;
 
 	private DustParticleEmitter dustEmitter;
 
 	private int playerNumber;
+
+	protected float animationSpeed = 7/15f;
 
 	/**
 	 * Constructor.
@@ -93,6 +105,7 @@ public class Player extends GameCharacter {
 		this.height              = playerSize;
 		rectangle.width          = playerSize;
 		rectangle.height         = playerSize;
+		lifeState                = LIFE_STATE_ONE;
 
 		switch (playerNumber) {
 		case Player.PLAYER_ONE:
@@ -115,14 +128,12 @@ public class Player extends GameCharacter {
 			break;
 		}
 
-		float animationSpeed     = 7/15f;
 		walkDownAnimation        = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
 		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		walkRightAnimation       = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 		walkLeftAnimation        = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
-		health            	     = 10;
+		health            	     = STARTING_HEALTH;
 		this.name                = name;
-		torch                    = new Torch(0, 0);
 		hasTorch                 = false;
 		inventory                = new Inventory(myGame);
 		playerIsPerformingAttack = false;
@@ -178,6 +189,63 @@ public class Player extends GameCharacter {
 	}
 
 	/**
+	 * 
+	 * @param MyGame myGame
+	 * @param int    playerNumber
+	 */
+	protected void setLifeState(MyGame myGame, int playerNumber) {
+		if (lifeState == LIFE_STATE_ONE) {
+			setUpLifeState(myGame, playerNumber);
+		}
+		else if (lifeState == LIFE_STATE_TWO) {
+			setUpLifeState(myGame, playerNumber);
+		}
+	}
+
+	/**
+	 * Handles life state of player if it needs to change due to death.
+	 * 
+	 * @param MyGame myGame
+	 * @param int    playerNumber
+	 */
+	protected void setUpLifeState(MyGame myGame, int playerNumber) {
+		switch (lifeState) {
+		case LIFE_STATE_ONE:
+			if (playerNumber == PLAYER_ONE) {
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerTwo.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal("playerTwoUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerTwoRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerTwoLeft.atlas")); 
+			}
+			if (playerNumber == PLAYER_TWO) {
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerThreeDown.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerThreeUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerThreeRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerThreeLeft.atlas"));
+				lifeState                = LIFE_STATE_TWO;
+				myGame.getGameObject(Player.PLAYER_ONE).setHealth(STARTING_HEALTH);
+			}
+			break;
+		case LIFE_STATE_TWO:
+			if (playerNumber == PLAYER_ONE) {
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerThreeDown.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerThreeUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerThreeRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerThreeLeft.atlas")); 
+			}
+			if (playerNumber == PLAYER_TWO) {
+				lifeState = LIFE_STATE_THREE;
+				myGame.getGameObject(Player.PLAYER_ONE).setHealth(STARTING_HEALTH);
+			}
+			break;
+		}
+		walkDownAnimation  = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
+		walkUpAnimation    = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
+		walkRightAnimation = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
+		walkLeftAnimation  = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+	}
+
+	/**
 	 * Collisions with tiles are located in the MapRenderer class.
 	 * 
 	 * @param MyGame     myGame
@@ -193,23 +261,17 @@ public class Player extends GameCharacter {
 		// Timer for water animation.
 		timer++;
 		if (timer > 20) {
-			timer = 0;
-		}
-
-		if (hasTorch) {	
-			torch.updateObject(myGame, mapHandler);
-			Fire.playSound = true;
+			timer = GameAttributeHelper.TIMER_START_VALUE;
 		}
 
 		// Cannot perform attack too fast.
 		if (playerIsPerformingAttack) {
 			attackTimer++;
 			if (attackTimer > 5) {
-				attackTimer              = 0;
+				attackTimer              = GameAttributeHelper.TIMER_START_VALUE;
 				playerIsPerformingAttack = false;
 			}
 		}
-
 		dustEmitter.updateParticles(myGame);
 	}
 
@@ -299,22 +361,6 @@ public class Player extends GameCharacter {
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		elapsedTime += Gdx.graphics.getDeltaTime();
 		dustEmitter.renderObject(batch, shapeRenderer, imageLoader);
-		AnimationHandler.renderAnimation(
-				batch, 
-				elapsedTime, 
-				getCurrentAnimation(), 
-				x, 
-				y, 
-				playerSize, 
-				imageLoader, 
-				AnimationHandler.OBJECT_TYPE_PLAYER
-				);
-
-		if (hasTorch) {	
-			torch.renderObject(batch, shapeRenderer, imageLoader);
-		}
-
-		//renderHitBox(batch, imageLoader);
 	}
 
 	/**
@@ -434,32 +480,12 @@ public class Player extends GameCharacter {
 
 	/**
 	 * 
-	 * @param MyGame myGame
-	 * @return boolean
-	 */
-	protected boolean playerOneIsMovingAndNotDead(MyGame myGame) {
-		return Player.playerIsMoving && myGame.getGameObject(GameObject.PLAYER_ONE).getHealth() > 0;
-	}
-
-	/**
-	 * 
 	 * @param MyGame     myGame
 	 * @param GameObject player
 	 */
 	protected void simulateDeath(MyGame myGame, GameObject player) {
 		if (!GameObjectLoader.gameObjectList.contains(player)) {
 			health--;
-		}
-	}
-
-	/**
-	 * 
-	 * @param GameObject previousPlayer
-	 * @param GameObject currentPlayer
-	 */
-	protected void removeCurrentPlayerIfDead(GameObject previousPlayer, GameObject currentPlayer) {
-		if (health <= 0 && !GameObjectLoader.gameObjectList.contains(previousPlayer)) {
-			GameObjectLoader.gameObjectList.remove(currentPlayer);
 		}
 	}
 

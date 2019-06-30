@@ -7,9 +7,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import loaders.GameObjectLoader;
+import gameobjects.Torch;
+import handlers.AnimationHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import physics.Lighting.Fire;
 
 /**
  * Jolly Roger.
@@ -18,6 +20,8 @@ import maps.MapHandler;
  *
  */
 public class PlayerOne extends Player {
+
+	private Torch torch;
 
 	/**
 	 * Keeps a list of player one's coordinates and direction.  
@@ -37,6 +41,7 @@ public class PlayerOne extends Player {
 	public PlayerOne(String name, MyGame myGame, int playerNumber) {
 		super(name, myGame, playerNumber);
 		playerScore = 0;
+		torch                    = new Torch(0, 0);
 	}
 
 	/**
@@ -58,9 +63,17 @@ public class PlayerOne extends Player {
 		super.updateObject(myGame, mapHandler);
 		handleWalking(myGame);
 		handleJumping(myGame);
-		if (health <= 0) {
-			GameObjectLoader.gameObjectList.remove(this);
+
+		if (getHealth() <= 0) {
+			setLifeState(myGame, PLAYER_ONE);
 		}
+
+		if (hasTorch) {	
+			torch.updateObject(myGame, mapHandler);
+			Fire.playSound = true;
+		}
+
+
 		//simulateDeath(myGame, this);
 		inventory.updateInventory(x, y, mapHandler);
 	}
@@ -74,6 +87,22 @@ public class PlayerOne extends Player {
 	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		super.renderObject(batch, shapeRenderer, imageLoader);
+		AnimationHandler.renderAnimation(
+				batch, 
+				elapsedTime, 
+				getCurrentAnimation(), 
+				x, 
+				y, 
+				playerSize, 
+				imageLoader, 
+				AnimationHandler.OBJECT_TYPE_PLAYER
+				);
+
+		if (hasTorch) {	
+			torch.renderObject(batch, shapeRenderer, imageLoader);
+		}
+
+		//renderHitBox(batch, imageLoader);
 	}
 
 	/**

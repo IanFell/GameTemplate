@@ -272,4 +272,6 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	public int getHealth() {
 		return 0;
 	}
+
+	public void setHealth(int i) {}
 }

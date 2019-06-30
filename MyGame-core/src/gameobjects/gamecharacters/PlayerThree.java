@@ -2,9 +2,12 @@ package gameobjects.gamecharacters;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.GameObject;
+import handlers.AnimationHandler;
+import loaders.ImageLoader;
 import maps.MapHandler;
 
 /**
@@ -35,29 +38,46 @@ public class PlayerThree extends Player {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
+		handleWalking(
+				myGame, 
+				PlayerOne.playerOneXPositions.size(), 
+				PlayerOne.playerOneXPositions, 
+				PlayerOne.playerOneYPositions
+				);
 
-		if (playerOneIsMovingAndNotDead(myGame)) {
-			handleWalking(
-					myGame, 
-					PlayerOne.playerOneXPositions.size(), 
-					PlayerOne.playerOneXPositions, 
-					PlayerOne.playerOneYPositions
-					);
-		} else if (
-				Player.playerIsMoving && 
-				myGame.getGameObject(GameObject.PLAYER_TWO).getHealth() > 0 && 
-				myGame.getGameObject(GameObject.PLAYER_ONE).getHealth() <= 0) {
-			handleWalking(
-					myGame, 
-					PlayerTwo.playerTwoXPositions.size(), 
-					PlayerTwo.playerTwoXPositions, 
-					PlayerTwo.playerTwoXPositions
-					);
-		}
-
-		removeCurrentPlayerIfDead(myGame.getGameObject(GameObject.PLAYER_TWO), this);
 		//simulateDeath(myGame, myGame.getGameObject(GameObject.PLAYER_TWO));
 	}
+
+	/**
+	 * 
+	 * @param SpriteBatch   batch
+	 * @param ShapeRenderer shapeRenderer
+	 * @param ImageLoader   imageLoader
+	 */
+	@Override
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+		super.renderObject(batch, shapeRenderer, imageLoader);
+
+		/**
+		 * Only draw player three if we are in life state one.
+		 * If we are in life state 2 or 3, player will still be there, but not render.
+		 */
+		if (lifeState == LIFE_STATE_ONE) {
+			AnimationHandler.renderAnimation(
+					batch, 
+					elapsedTime, 
+					getCurrentAnimation(), 
+					x, 
+					y, 
+					playerSize, 
+					imageLoader, 
+					AnimationHandler.OBJECT_TYPE_PLAYER
+					);
+		} 
+
+		//renderHitBox(batch, imageLoader);
+	}
+
 
 	/**
 	 * This method is not overridden.
