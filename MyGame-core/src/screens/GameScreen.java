@@ -10,6 +10,7 @@ import controllers.PlayerController;
 import cutscenes.CutSceneIntro;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.Gun;
 import handlers.EnemyHandler;
 import handlers.HeartHandler;
 import handlers.MissionHandler;
@@ -95,6 +96,8 @@ public class GameScreen extends Screens {
 	 * calls to the weapon handler will deal with static variables.
 	 */
 	private WeaponHandler weaponHandler = new WeaponHandler();
+	
+	public Gun gun;
 
 	public EnemyHandler enemyHandler = new EnemyHandler();
 
@@ -173,6 +176,7 @@ public class GameScreen extends Screens {
 		missionHandler = new MissionHandler(myGame);
 		mapUi          = new MapUi(myGame);
 		healthUi       = new HealthUi();
+		gun = new Gun(110, 5, myGame.imageLoader);
 		heartHandler.init();
 
 		/**
@@ -247,6 +251,8 @@ public class GameScreen extends Screens {
 		}
 
 		heartHandler.updateHearts(myGame, mapHandler);
+		
+		gun.updateObject(myGame, mapHandler);
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -344,6 +350,8 @@ public class GameScreen extends Screens {
 				myGame.imageLoader,
 				myGame
 				);
+		
+		gun.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, myGame);
 	}
 
 	private void renderObjectsOnGameScreenThatUseShapeRenderer() {

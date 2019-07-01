@@ -183,6 +183,7 @@ public class CollisionHandler {
 
 			legendSword.hasBeenCollected = true;
 			LegendSword.playSound        = true;
+			Inventory.inventoryHasStartedCollection = true;
 		}
 	}
 
@@ -195,6 +196,7 @@ public class CollisionHandler {
 		if (!Gun.hasBeenCollected) {
 			if (gun.rectangle.overlaps(player.rectangle)) {
 				((Player) player).getInventory().addObjectToInventory(gun);
+				Inventory.inventoryHasStartedCollection = true;
 				Gun.hasBeenCollected = true;
 			}
 		}

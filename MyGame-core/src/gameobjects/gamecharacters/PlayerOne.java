@@ -8,7 +8,9 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import gameobjects.Torch;
+import gameobjects.weapons.Gun;
 import handlers.AnimationHandler;
+import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import physics.Lighting.Fire;
@@ -22,6 +24,8 @@ import physics.Lighting.Fire;
 public class PlayerOne extends Player {
 
 	private Torch torch;
+	
+	int timer = 0;
 
 	/**
 	 * Keeps a list of player one's coordinates and direction.  
@@ -59,7 +63,6 @@ public class PlayerOne extends Player {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		System.out.println("Player Score: " + playerScore);
 		super.updateObject(myGame, mapHandler);
 		handleWalking(myGame);
 		handleJumping(myGame);
@@ -75,7 +78,13 @@ public class PlayerOne extends Player {
 
 
 		//simulateDeath(myGame, this);
+		//if (getInventory().inventory.get(1) != null)
+		
+		//if (getInventory() != null)
+		
+		if (Inventory.inventoryHasStartedCollection) {
 		inventory.updateInventory(x, y, mapHandler);
+		}
 	}
 
 	/**

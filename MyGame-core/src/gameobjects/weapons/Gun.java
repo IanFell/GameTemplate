@@ -2,11 +2,14 @@ package gameobjects.weapons;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
+import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.gamecharacters.PlayerOne;
 import handlers.CollisionHandler;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
@@ -27,15 +30,19 @@ public class Gun extends Weapon {
 	private boolean playerHasBeenGivenGunToStartGameWith;
 
 	private int timer;
-	
+
 	public static boolean shouldNotRender = true;
+
+	private int rotationAngle;
+	
+	TextureRegion textureRegion;
 
 	/**
 	 * 
 	 * @param float x
 	 * @param float y
 	 */
-	public Gun(float x, float y) {
+	public Gun(float x, float y, ImageLoader imageLoader) {
 		super(x, y);
 		this.width            = 2.0f;
 		this.height           = 1.0f;
@@ -44,6 +51,16 @@ public class Gun extends Weapon {
 		hasBeenCollected = false;
 		playerHasBeenGivenGunToStartGameWith = false;
 		timer = 0;
+		this.rotationAngle        = 0;
+		textureRegion = new TextureRegion(imageLoader.gunDown);
+	}
+
+	/**
+	 * 
+	 * @param int rotationAngle
+	 */
+	public void setRotationAngle(int rotationAngle) {
+		this.rotationAngle = rotationAngle;
 	}
 
 	/**
@@ -55,6 +72,20 @@ public class Gun extends Weapon {
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 
 		super.updateObject(myGame, mapHandler);
+		if (!hasBeenCollected) {
+			CollisionHandler.checkIfPlayerHasCollidedWithGun(
+					PlayerController.getCurrentPlayer(myGame),
+					this
+					);
+		} else {
+			setRotationAngleDependingOnPlayerDirection();
+		}
+		this.rectangle.x = x;
+		this.rectangle.y = y;
+		
+		if (Player.playerIsPerformingAttack) {
+			BulletLoader.createBullet(myGame);
+		}
 		/*
 		if (playerIsEquippedWithGun) {
 			float leftRightOffset = 0.5f;
@@ -92,6 +123,7 @@ public class Gun extends Weapon {
 					);*/
 		//}
 
+		/*
 		if (hasBeenCollected && !Inventory.allInventoryShouldBeRendered) { 
 			float leftRightOffset = 0.5f;
 			switch (Player.direction) {
@@ -132,7 +164,7 @@ public class Gun extends Weapon {
 					PlayerController.getCurrentPlayer(myGame),
 					this
 					);
-		}
+		}*/
 		/*
 		if (timer < 10) {
 			timer++;
@@ -154,13 +186,119 @@ public class Gun extends Weapon {
 		}*/
 	}
 
+	private void setRotationAngleDependingOnPlayerDirection() {
+		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
+		case Player.DIRECTION_RIGHT:
+			setRotationAngle(-90);
+			break;
+		case Player.DIRECTION_LEFT:
+			setRotationAngle(90);
+			break;
+		case Player.DIRECTION_DOWN:
+			setRotationAngle(0);
+			break;
+		case Player.DIRECTION_UP:
+			setRotationAngle(180);
+			break;
+		}
+		/*
+		if (!Player.playerIsPerformingAttack) {
+			setRotationAngle(180);
+		} */
+	}
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
 	 * @param ShapeRenderer shaperender
 	 * @param ImageLoader   imageLoader
+	 * @param MyGame        myGame
 	 */
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
+		
+		if (!hasBeenCollected || Inventory.allInventoryShouldBeRendered) {
+			if (Inventory.allInventoryShouldBeRendered) {
+				rotationAngle = 0;
+			}
+			batch.draw(
+					textureRegion, 
+					x, 
+					y, 
+					width, 
+					height, 
+					width, 
+					-height, 
+					1, 
+					1, 
+					rotationAngle
+					); 
+		} else if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) == this) {
+			batch.draw(
+					textureRegion, 
+					x, 
+					y, 
+					width, 
+					height, 
+					width, 
+					-height, 
+					1, 
+					1, 
+					rotationAngle
+					); 
+		}
+		
+		/*
+		if (hasBeenCollected || Inventory.allInventoryShouldBeRendered) {
+			if (Inventory.allInventoryShouldBeRendered) {
+				rotationAngle = 0;
+				batch.draw(
+						new TextureRegion(imageLoader.gunDown), 
+						x, 
+						y, 
+						width / 2, 
+						height / 2, 
+						width, 
+						-height, 
+						1, 
+						1, 
+						rotationAngle
+						); 
+			}
+			
+			else if (myGame.getGameObject(GameObject.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) == this) {
+				batch.draw(
+						new TextureRegion(imageLoader.gunDown), 
+						x, 
+						y, 
+						width / 2, 
+						height / 2, 
+						width, 
+						-height, 
+						1, 
+						1, 
+						rotationAngle
+						); 
+			}
+
+
+
+
+
+	} else {
+		batch.draw(
+				new TextureRegion(imageLoader.gunDown), 
+				x, 
+				y, 
+				width / 2, 
+				height / 2, 
+				width, 
+				-height, 
+				1, 
+				1, 
+				0
+				); 
+	}*/
+	/*
 		if (hasBeenCollected && Inventory.inventoryIsEquipped) {
 			Texture texture = null;
 			switch (Player.direction) {
@@ -202,6 +340,6 @@ public class Gun extends Weapon {
 					width,
 					-height
 					);
-		}
-	}
+		}*/
+}
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.Player;
+import gameobjects.gamecharacters.PlayerOne;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -40,7 +41,7 @@ public class Bullet extends Weapon {
 		float bulletSpeed     = 1;
 		float bulletSizeLong  = 0.5f;
 		float bulletSizeShort = 0.2f;
-		switch (Player.direction) {
+		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 		case Player.DIRECTION_LEFT:
 			dx          = -bulletSpeed;
 			dy          = 0;

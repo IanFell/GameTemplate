@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
 import loaders.bulletloader.BulletLoader;
 import maps.MapHandler;
@@ -14,6 +15,9 @@ import maps.MapHandler;
  *
  */
 public class WeaponHandler {
+	
+	public static int WEAPON_SWORD = 0;
+	public static int WEAPON_GUN = 1;
 
 	//public static Gun gun;
 

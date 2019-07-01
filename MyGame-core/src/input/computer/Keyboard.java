@@ -11,6 +11,7 @@ import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
+import loaders.bulletloader.BulletLoader;
 import screens.GameScreen;
 import screens.Screens;
 import ui.MapUi;
@@ -24,7 +25,7 @@ import ui.MapUi;
 public class Keyboard extends ComputerInput {
 
 	// Make sure button if held down is not being hit infinite times.
-	private int inventoryTimer          = 0;
+	private int inventoryTimer      = 0;
 	private boolean startClickTimer = false;
 
 	/**
@@ -113,14 +114,6 @@ public class Keyboard extends ComputerInput {
 				Player.playerIsPerformingAttack = false;
 			} */
 
-			/*
-			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
-				if (!Inventory.allInventoryShouldBeRendered) {
-					((Player) player).getInventory().setInventoryIsEquipped(!((Player) player).getInventory().getInventoryIsEquipped());
-
-				}
-			} */
-
 			// Display all inventory.
 			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
 				if (!startClickTimer) {
@@ -150,10 +143,10 @@ public class Keyboard extends ComputerInput {
 				}
 			}
 
-			/*
+			
 			if (Gdx.input.isKeyPressed(Input.Keys.P)) {
 				BulletLoader.createBullet(myGame);
-			} */
+			} 
 
 			/*
 			if (Gdx.input.isKeyPressed(Input.Keys.G)) {
