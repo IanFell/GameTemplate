@@ -27,10 +27,11 @@ public class Weapon extends GameObject {
 	 * @param GameObject   object
 	 * @param Weapon       weapon
 	 */
+	/*
 	protected void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
 		CollisionHandler.checkIfWeaponHasCollidedWithEnemy(
 				enemy,
 				weapon
 				);
-	}
+	}*/
 }

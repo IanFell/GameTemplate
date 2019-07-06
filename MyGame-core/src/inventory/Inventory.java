@@ -81,7 +81,6 @@ public class Inventory extends Screens {
 		float xPosition = 0;
 		float yPosition = 0;
 		int objectType = 0;
-		//System.out.println(myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.size());
 		if (inventory.get(currentlySelectedInventoryObject) instanceof LegendSword) {
 			objectType = 0;
 		} else {
@@ -102,12 +101,18 @@ public class Inventory extends Screens {
 				}
 			}
 		}
-		System.out.println(inventory.get(currentlySelectedInventoryObject) instanceof LegendSword);
 	}
 
+	/**
+	 * 
+	 * @param int   selectedInventory
+	 * @param float xPosition
+	 * @param float yPosition
+	 * @param float x
+	 * @param float y
+	 */
 	private void updateGun(int selectedInventory, float xPosition, float yPosition, float x, float y) {
 		float inventoryHeight = inventory.get(selectedInventory).getHeight();
-		
 				switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 				case Player.DIRECTION_RIGHT:
 					xPosition = x + 1;
@@ -125,8 +130,7 @@ public class Inventory extends Screens {
 					xPosition = x - 2f;
 					yPosition = y - inventoryHeight - 4;
 					break;
-				}
-			
+				}	
 		inventory.get(selectedInventory).setX(xPosition);
 		inventory.get(selectedInventory).setY(yPosition);
 	}

@@ -4,6 +4,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.Heart;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
@@ -35,6 +36,10 @@ public class SoundHandler {
 				soundLoader.pickUpSwordSound.play(AudioHandler.PICK_UP_SWORD_VOLUME);
 				LegendSword.playSound = false;
 			}
+			if (Gun.playCollectionSound) {
+				soundLoader.pickUpGunSound.play(AudioHandler.MAX_VOLUME);
+				Gun.playCollectionSound = false;
+			}
 
 			for (int i = 0; i < myGame.gameScreen.enemyHandler.enemySpawner.length; i++) {
 				for (int k = 0; k < myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.size(); k++) {
@@ -51,7 +56,11 @@ public class SoundHandler {
 			}
 			if (Player.playerIsPerformingAttack) {
 				if (attackTimer > 1) {
-					soundLoader.swordSound.play(AudioHandler.MAX_VOLUME);
+					if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof LegendSword) {
+						soundLoader.swordSound.play(AudioHandler.MAX_VOLUME);
+					} else {
+						soundLoader.pistolSound.play(AudioHandler.MEDIAN_VOLUME);
+					}
 				}
 			}
 

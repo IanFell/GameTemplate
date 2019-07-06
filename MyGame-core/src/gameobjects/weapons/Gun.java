@@ -36,6 +36,8 @@ public class Gun extends Weapon {
 	private int rotationAngle;
 	
 	TextureRegion textureRegion;
+	
+	public static boolean playCollectionSound = false;
 
 	/**
 	 * 
@@ -83,7 +85,7 @@ public class Gun extends Weapon {
 		this.rectangle.x = x;
 		this.rectangle.y = y;
 		
-		if (Player.playerIsPerformingAttack) {
+		if (Player.playerIsPerformingAttack && myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof Gun) {
 			BulletLoader.createBullet(myGame);
 		}
 		/*

@@ -181,8 +181,8 @@ public class CollisionHandler {
 			((Player) player).getInventory().addObjectToInventory(legendSword);
 			((Player) player).getInventory().addObjectToInventory(legendSword); */
 
-			legendSword.hasBeenCollected = true;
-			LegendSword.playSound        = true;
+			legendSword.hasBeenCollected            = true;
+			LegendSword.playSound                   = true;
 			Inventory.inventoryHasStartedCollection = true;
 		}
 	}
@@ -198,6 +198,7 @@ public class CollisionHandler {
 				((Player) player).getInventory().addObjectToInventory(gun);
 				Inventory.inventoryHasStartedCollection = true;
 				Gun.hasBeenCollected = true;
+				Gun.playCollectionSound                   = true;
 			}
 		}
 	}
@@ -205,15 +206,17 @@ public class CollisionHandler {
 	/**
 	 * 
 	 * @param Enemy      enemy
-	 * @param GameObject weapon
+	 * @param Weapon weapon
 	 */
 	public static void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
-		if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
-			// Checking if dead is false keeps the sound from playing repeatedly.
-			if (enemy.rectangle.overlaps(weapon.rectangle) && !enemy.isDead()) {
-				handleEnemyDeath(enemy);
+		if (weapon instanceof LegendSword) {
+			if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
+				// Checking if dead is false keeps the sound from playing repeatedly.
+					if (enemy.rectangle.overlaps(weapon.rectangle) && !enemy.isDead()) {
+						handleEnemyDeath(enemy);
+					}
+				}
 			}
-		}
 	}
 
 	/**
