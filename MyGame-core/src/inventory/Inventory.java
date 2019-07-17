@@ -80,7 +80,7 @@ public class Inventory extends Screens {
 		// Set all inventory to follow player.
 		float xPosition = 0;
 		float yPosition = 0;
-		int objectType = 0;
+		int objectType  = 0;
 		if (inventory.get(currentlySelectedInventoryObject) instanceof LegendSword) {
 			objectType = 0;
 		} else {

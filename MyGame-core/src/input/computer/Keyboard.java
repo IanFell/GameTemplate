@@ -107,13 +107,6 @@ public class Keyboard extends ComputerInput {
 				Player.hasTorch = !Player.hasTorch;
 			}
 
-			/*
-			if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-				Player.playerIsPerformingAttack = true;
-			} else {
-				Player.playerIsPerformingAttack = false;
-			} */
-
 			// Display all inventory.
 			if (Gdx.input.isKeyPressed(Input.Keys.I)) {
 				if (!startClickTimer) {
@@ -143,15 +136,9 @@ public class Keyboard extends ComputerInput {
 				}
 			}
 
-			
 			if (Gdx.input.isKeyPressed(Input.Keys.P)) {
 				BulletLoader.createBullet(myGame);
 			} 
-
-			/*
-			if (Gdx.input.isKeyPressed(Input.Keys.G)) {
-				//Gun.playerIsEquippedWithGun = !Gun.playerIsEquippedWithGun;
-			} */
 
 			if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
 				System.exit(0);

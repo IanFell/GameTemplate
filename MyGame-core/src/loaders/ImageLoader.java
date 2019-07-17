@@ -131,7 +131,7 @@ public class ImageLoader {
 		inventoryScreen                        = new Texture(Gdx.files.internal("InventoryScreen.png"));
 		inventoryLabel                         = new Texture(Gdx.files.internal("InventoryLabel.png"));
 		gunRight   					           = new Texture(Gdx.files.internal("GunRight.png"));
-		gunLeft                                = new Texture(Gdx.files.internal("GunLeft.png"));
+		gunLeft                                = new Texture(Gdx.files.internal("Left.png"));
 		gunUp  					               = new Texture(Gdx.files.internal("GunUp.png"));
 		gunDown                                = new Texture(Gdx.files.internal("GunDown.png"));
 		legendSwordRedHalf                     = new Texture(Gdx.files.internal("LegendSwordRedHalf.png"));

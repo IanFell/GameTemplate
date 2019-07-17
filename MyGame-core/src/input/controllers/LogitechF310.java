@@ -68,7 +68,10 @@ public class LogitechF310 extends ControllerInput {
 			 * Player can cycle through inventory after this using D-Pad.
 			 */
 			if (Inventory.allInventoryShouldBeRendered) {
-				selectAlternateInventoryObject(0, player);
+				selectAlternateInventoryObject(
+						Inventory.currentlySelectedInventoryObject, 
+						player
+						);
 			} else {
 				// Only allow player to jump if UI is not open.
 				Player.isJumping = true;

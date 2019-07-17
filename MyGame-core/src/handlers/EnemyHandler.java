@@ -2,7 +2,9 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
 import gameobjects.stationarygameobjects.buildings.EnemyHut;
+import gameobjects.weapons.Bullet;
 import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
 import loaders.GameObjectLoader;
@@ -102,6 +104,18 @@ public class EnemyHandler {
 			if (enemySpawner[i].enemies != null) {
 				for (int k = 0; k < enemySpawner[i].enemies.size(); k++) {
 					CollisionHandler.checkIfWeaponHasCollidedWithEnemy(enemySpawner[i].enemies.get(k), legendSword);
+					// loop through all enemies here and check collision
+				}
+			}
+		}
+	}
+	
+	public void checkBulletCollision(MyGame myGame, Bullet bullet) {
+		for (int i = 0; i < enemySpawner.length; i++) {
+			if (enemySpawner[i].enemies != null) {
+				for (int k = 0; k < enemySpawner[i].enemies.size(); k++) {
+					CollisionHandler.checkIfBulletHasCollidedWithEnemy(enemySpawner[i].enemies.get(k), bullet);
+					
 				}
 			}
 		}
