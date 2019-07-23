@@ -162,7 +162,7 @@ public class Keyboard extends ComputerInput {
 		// If user presses the T button to use turbo.
 		int turboSpeed    = 3;
 		float playerSpeed = Player.PLAYER_SPEED;
-		if (Gdx.input.isKeyPressed(Input.Keys.T)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
 			playerSpeed = Player.PLAYER_SPEED * turboSpeed;
 		}
 

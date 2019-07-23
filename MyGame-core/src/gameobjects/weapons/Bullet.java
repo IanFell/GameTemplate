@@ -4,11 +4,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
-import controllers.PlayerController;
 import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
-import handlers.CollisionHandler;
-import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -73,7 +70,6 @@ public class Bullet extends Weapon {
 		x += dx;
 		y += dy;
 
-		//checkIfWeaponHasCollidedWithObject(ChestLoader.chests, this);
 		myGame.gameScreen.enemyHandler.checkBulletCollision(myGame, this);
 	}
 

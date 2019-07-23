@@ -12,6 +12,7 @@ import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.Weapon;
 import inventory.Inventory;
+import loaders.GameObjectLoader;
 import maps.MapHandler;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
@@ -198,8 +199,9 @@ public class CollisionHandler {
 			if (gun.rectangle.overlaps(player.rectangle)) {
 				((Player) player).getInventory().addObjectToInventory(gun);
 				Inventory.inventoryHasStartedCollection = true;
-				Gun.hasBeenCollected = true;
-				Gun.playCollectionSound                   = true;
+				Gun.hasBeenCollected                    = true;
+				Gun.playCollectionSound                 = true;
+				GameObjectLoader.gameObjectList.add(gun);
 			}
 		}
 	}
@@ -213,21 +215,21 @@ public class CollisionHandler {
 		if (weapon instanceof LegendSword) {
 			if (Player.playerIsPerformingAttack && Inventory.inventoryIsEquipped) {
 				// Checking if dead is false keeps the sound from playing repeatedly.
-					if (enemy.rectangle.overlaps(weapon.rectangle) && !enemy.isDead()) {
-						handleEnemyDeath(enemy);
-					}
+				if (enemy.rectangle.overlaps(weapon.rectangle) && !enemy.isDead()) {
+					handleEnemyDeath(enemy);
 				}
 			}
+		}
 	}
-	
+
 	public static void checkIfBulletHasCollidedWithEnemy(Enemy enemy, Bullet bullet) {
 		//if (bullet instanceof Bullet) {
-			if (Inventory.inventoryIsEquipped) {
-				// Checking if dead is false keeps the sound from playing repeatedly.
-					if (enemy.rectangle.overlaps(bullet.rectangle) && !enemy.isDead()) {
-						handleEnemyDeath(enemy);
-					}
-				}
+		if (Inventory.inventoryIsEquipped) {
+			// Checking if dead is false keeps the sound from playing repeatedly.
+			if (enemy.rectangle.overlaps(bullet.rectangle) && !enemy.isDead()) {
+				handleEnemyDeath(enemy);
+			}
+		}
 		//	}
 	}
 

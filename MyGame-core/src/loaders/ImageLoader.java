@@ -81,7 +81,6 @@ public class ImageLoader {
 	public Texture fireNine;
 	public Texture fireTen;
 	public Texture logs;
-	public Texture sword;
 	public Texture legendSwordRed;
 	public Texture legendSwordBlue;
 	public Texture legendSwordGreen;
@@ -130,7 +129,7 @@ public class ImageLoader {
 		enemy    					           = new Texture(Gdx.files.internal("Enemy.png"));
 		inventoryScreen                        = new Texture(Gdx.files.internal("InventoryScreen.png"));
 		inventoryLabel                         = new Texture(Gdx.files.internal("InventoryLabel.png"));
-		gunRight   					           = new Texture(Gdx.files.internal("GunRight.png"));
+		gunRight   					           = new Texture(Gdx.files.internal("Right.png"));
 		gunLeft                                = new Texture(Gdx.files.internal("Left.png"));
 		gunUp  					               = new Texture(Gdx.files.internal("GunUp.png"));
 		gunDown                                = new Texture(Gdx.files.internal("GunDown.png"));
@@ -150,7 +149,6 @@ public class ImageLoader {
 		legendSwordOrange                      = new Texture(Gdx.files.internal("SwordOrange.png"));
 		legendSwordPurple                      = new Texture(Gdx.files.internal("SwordPurple.png"));
 		legendSwordPink                        = new Texture(Gdx.files.internal("SwordPink.png"));
-		sword                                  = new Texture(Gdx.files.internal("Sword.png"));
 		logs                                   = new Texture(Gdx.files.internal("Logs.png"));
 		fireOne                                = new Texture(Gdx.files.internal("Fire1.png"));
 		fireTwo                                = new Texture(Gdx.files.internal("Fire2.png"));
@@ -285,7 +283,6 @@ public class ImageLoader {
 		fireTen.dispose();
 		logs.dispose();
 		drSuessTree.dispose();
-		sword.dispose();
 		legendSwordRed.dispose();
 		legendSwordBlue.dispose();
 		legendSwordGreen.dispose();

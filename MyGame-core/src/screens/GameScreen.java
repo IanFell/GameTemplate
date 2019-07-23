@@ -40,6 +40,7 @@ public class GameScreen extends Screens {
 
 	private MapUi mapUi;
 	private HealthUi healthUi;
+	//private GuiScreen guiScreen = new GuiScreen(myGame);
 
 	private HeartHandler heartHandler = new HeartHandler();
 
@@ -83,8 +84,6 @@ public class GameScreen extends Screens {
 	 *  Screen fades in during transitions.
 	 */
 	private TransitionScreen transitionScreen = new TransitionScreen(myGame);
-
-	//private GuiScreen guiScreen = new GuiScreen(myGame);
 
 	/**
 	 * Handles all game missions.
@@ -176,7 +175,7 @@ public class GameScreen extends Screens {
 		missionHandler = new MissionHandler(myGame);
 		mapUi          = new MapUi(myGame);
 		healthUi       = new HealthUi();
-		gun = new Gun(110, 5, myGame.imageLoader);
+		gun            = new Gun(110, 5, myGame.imageLoader);
 		heartHandler.init();
 
 		/**

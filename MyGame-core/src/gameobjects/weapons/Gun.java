@@ -22,9 +22,7 @@ import maps.MapHandler;
 public class Gun extends Weapon {
 
 	public static boolean hasBeenCollected;
-
-	private int timer;
-
+	
 	public static boolean shouldNotRender = true;
 
 	private int rotationAngle;
@@ -47,7 +45,6 @@ public class Gun extends Weapon {
 		this.rectangle.width  = width;
 		this.rectangle.height = height;
 		hasBeenCollected      = false;
-		timer                 = 0;
 		this.rotationAngle    = 0;
 		textureRegion         = new TextureRegion(imageLoader.gunLeft);
 	}
@@ -74,7 +71,7 @@ public class Gun extends Weapon {
 					this
 					);
 		} else {
-			setRotationAngleDependingOnPlayerDirection();
+			setRotationAngleDependingOnPlayerDirection(myGame.imageLoader);
 		}
 		this.rectangle.x = x;
 		this.rectangle.y = y;
@@ -84,19 +81,29 @@ public class Gun extends Weapon {
 		}
 	}
 
-	private void setRotationAngleDependingOnPlayerDirection() {
+	/**
+	 * 
+	 * @param ImageLoader imageLoader
+	 */
+	private void setRotationAngleDependingOnPlayerDirection(ImageLoader imageLoader) {
+		int rotationAngle90Degrees = 90;
+		int rotationAngle0Degrees  = 0;
 		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 		case Player.DIRECTION_RIGHT:
-			setRotationAngle(-90);
+			setRotationAngle(rotationAngle0Degrees);
+			textureRegion = new TextureRegion(imageLoader.gunRight);
 			break;
 		case Player.DIRECTION_LEFT:
-			setRotationAngle(90);
+			setRotationAngle(rotationAngle0Degrees);
+			textureRegion = new TextureRegion(imageLoader.gunLeft);
 			break;
 		case Player.DIRECTION_DOWN:
-			setRotationAngle(0);
+			setRotationAngle(rotationAngle90Degrees);
+			textureRegion = new TextureRegion(imageLoader.gunRight);
 			break;
 		case Player.DIRECTION_UP:
-			setRotationAngle(180);
+			setRotationAngle(-rotationAngle90Degrees);
+			textureRegion = new TextureRegion(imageLoader.gunRight);
 			break;
 		}
 	}

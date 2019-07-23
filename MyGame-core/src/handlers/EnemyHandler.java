@@ -2,7 +2,6 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
-import controllers.PlayerController;
 import gameobjects.stationarygameobjects.buildings.EnemyHut;
 import gameobjects.weapons.Bullet;
 import gameobjects.weapons.LegendSword;

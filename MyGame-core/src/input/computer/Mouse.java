@@ -66,7 +66,10 @@ public class Mouse extends ComputerInput {
 				}
 			} else {
 				if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-					Player.playerIsPerformingAttack = true;
+					// Dont throw exception if inventory is not equipped.
+					if (Inventory.inventoryIsEquipped) {
+						Player.playerIsPerformingAttack = true;
+					}
 				} else {
 					Player.playerIsPerformingAttack = false;
 				}

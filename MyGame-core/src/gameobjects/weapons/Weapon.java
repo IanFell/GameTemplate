@@ -1,8 +1,6 @@
 package gameobjects.weapons;
 
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Enemy;
-import handlers.CollisionHandler;
 
 /**
  * 
@@ -10,6 +8,9 @@ import handlers.CollisionHandler;
  *
  */
 public class Weapon extends GameObject {
+
+	public static int WEAPON_TYPE_SWORD = 0;
+	public static int WEAPON_TYPE_GUN   = 1;
 
 	/**
 	 * Constructor.
@@ -24,8 +25,8 @@ public class Weapon extends GameObject {
 
 	/**
 	 * 
-	 * @param GameObject   object
-	 * @param Weapon       weapon
+	 * @param Enemy  enemy
+	 * @param Weapon weapon
 	 */
 	/*
 	protected void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {

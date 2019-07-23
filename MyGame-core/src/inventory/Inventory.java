@@ -11,6 +11,7 @@ import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
 import gameobjects.weapons.LegendSword;
+import gameobjects.weapons.Weapon;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import physics.Lighting.Fire;
@@ -80,17 +81,17 @@ public class Inventory extends Screens {
 		// Set all inventory to follow player.
 		float xPosition = 0;
 		float yPosition = 0;
-		int objectType  = 0;
+		int objectType  = Weapon.WEAPON_TYPE_SWORD;
 		if (inventory.get(currentlySelectedInventoryObject) instanceof LegendSword) {
-			objectType = 0;
+			objectType = Weapon.WEAPON_TYPE_SWORD;
 		} else {
-			objectType = 1;
+			objectType = Weapon.WEAPON_TYPE_GUN;
 		}
 		if (inventory.size() >= 0) {
 			for (int i = 0; i < inventory.size(); i++) {
 
 				//if (object instanceof LegendSword) {
-				if (objectType == 0) {
+				if (objectType == Weapon.WEAPON_TYPE_SWORD) {
 					updateSword(i, xPosition, yPosition, x, y);
 				}
 				else {
@@ -119,22 +120,30 @@ public class Inventory extends Screens {
 					yPosition = y - 1f;
 					break;
 				case Player.DIRECTION_LEFT:
-					xPosition = x - 4.0f;
-					yPosition = y - 1f;
+					xPosition = x - 2.0f;
+					yPosition = y - 1.0f;
 					break;
 				case Player.DIRECTION_DOWN:
-					xPosition = x - 1f;
+					xPosition = x - 3.0f;
 					yPosition = y + inventoryHeight;
 					break;
 				case Player.DIRECTION_UP:
-					xPosition = x - 2f;
-					yPosition = y - inventoryHeight - 4;
+					xPosition = x;
+					yPosition = y - inventoryHeight - 3;
 					break;
 				}	
 		inventory.get(selectedInventory).setX(xPosition);
 		inventory.get(selectedInventory).setY(yPosition);
 	}
 
+	/**
+	 * 
+	 * @param int   selectedInventory
+	 * @param float xPosition
+	 * @param float yPosition
+	 * @param float x
+	 * @param float y
+	 */
 	private void updateSword(int selectedInventory, float xPosition, float yPosition, float x, float y) {
 		float inventoryHeight = inventory.get(selectedInventory).getHeight();
 		if (Player.playerIsPerformingAttack) {
