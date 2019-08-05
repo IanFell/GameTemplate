@@ -104,6 +104,8 @@ public class ControllerInput extends Input {
 
 	/**
 	 * Polls controller for A, B, X, and Y.
+	 * 
+	 * @param GameObject player
 	 */
 	protected void pollMainFourButtons(GameObject player) {
 		if(controller.getButton(BUTTON_X)) {}
@@ -213,7 +215,10 @@ public class ControllerInput extends Input {
 			} 
 		} 
 
-		// Right stick.
+		/**
+		 * We don't use the right stick yet, so don't even check it.
+		 */
+		/*
 		if (stickIsMoved(AXIS_RIGHT_X)) {
 			System.out.print("RIGHT STICK X pressed \n");
 		}
@@ -222,7 +227,8 @@ public class ControllerInput extends Input {
 		}
 		if(controller.getButton(BUTTON_R3)) {
 			System.out.print("R3 button pressed \n");
-		}
+		} 
+		 */
 	}
 
 	/**

@@ -95,7 +95,7 @@ public class GameScreen extends Screens {
 	 * calls to the weapon handler will deal with static variables.
 	 */
 	private WeaponHandler weaponHandler = new WeaponHandler();
-	
+
 	public Gun gun;
 
 	public EnemyHandler enemyHandler = new EnemyHandler();
@@ -250,7 +250,7 @@ public class GameScreen extends Screens {
 		}
 
 		heartHandler.updateHearts(myGame, mapHandler);
-		
+
 		gun.updateObject(myGame, mapHandler);
 	}
 
@@ -349,7 +349,7 @@ public class GameScreen extends Screens {
 				myGame.imageLoader,
 				myGame
 				);
-		
+
 		gun.renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, myGame);
 	}
 

@@ -22,7 +22,7 @@ import maps.MapHandler;
 public class Gun extends Weapon {
 
 	public static boolean hasBeenCollected;
-	
+
 	public static boolean shouldNotRender = true;
 
 	private int rotationAngle;
@@ -133,8 +133,7 @@ public class Gun extends Weapon {
 					value, 
 					rotationAngle
 					); 
-		} else if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) == this &&
-				Inventory.inventoryIsEquipped) {
+		} else if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) == this && Inventory.inventoryIsEquipped) {
 			batch.draw(
 					textureRegion, 
 					x, 

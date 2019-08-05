@@ -13,6 +13,7 @@ public class ImageLoader {
 
 	public Texture[] cutSceneDialogueOne = new Texture[9];
 	public Texture heart;
+	public Texture rock;
 	public Texture inventoryNavigationBar;
 	public Texture mapNavigationBar;
 	public Texture testImage;
@@ -106,6 +107,7 @@ public class ImageLoader {
 
 	public void init() {
 		heart    						       = new Texture(Gdx.files.internal("Heart.png"));
+		rock 								   = new Texture(Gdx.files.internal("Rock.png"));
 		mapNavigationBar                       = new Texture(Gdx.files.internal("UiMap.png"));
 		inventoryNavigationBar                 = new Texture(Gdx.files.internal("UiInventory.png"));
 		slaveHut                               = new Texture(Gdx.files.internal("SlaveHut.png"));
@@ -230,6 +232,7 @@ public class ImageLoader {
 		legendOfTheSevenSwordsBeginMissionText.dispose();
 		boat.dispose();
 		enemy.dispose();
+		rock.dispose();
 		inventoryScreen.dispose();
 		inventoryLabel.dispose();
 		gunUp.dispose();

@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
 import loaders.bulletloader.BulletLoader;
 import maps.MapHandler;
@@ -15,18 +14,14 @@ import maps.MapHandler;
  *
  */
 public class WeaponHandler {
-	
-	public static int WEAPON_SWORD = 0;
-	public static int WEAPON_GUN = 1;
 
-	//public static Gun gun;
+	public static int WEAPON_SWORD = 0;
+	public static int WEAPON_GUN   = 1;
 
 	/**
 	 * Constructor.
 	 */
-	public WeaponHandler() {
-		//gun = new Gun(0, 0);
-	}
+	public WeaponHandler() {}
 
 	/**
 	 * 
@@ -35,7 +30,6 @@ public class WeaponHandler {
 	 */
 	public static void updateWeapons(MyGame myGame, MapHandler mapHandler) {
 		BulletLoader.updateBullets(myGame, mapHandler);
-		//gun.updateObject(myGame, mapHandler);
 	}
 
 	/**
@@ -46,6 +40,5 @@ public class WeaponHandler {
 	 */
 	public static void renderWeapons(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {	
 		BulletLoader.renderBullets(batch, shapeRenderer, imageLoader);
-		//gun.renderObject(batch, shapeRenderer, imageLoader);
 	}
 }

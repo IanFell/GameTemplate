@@ -8,6 +8,7 @@ import loaders.lighthouseloader.LightHouseLoader;
 import loaders.pigglywigglyloader.PigglyWigglyLoader;
 import loaders.plantloaders.PlantLoader;
 import loaders.rawbarloader.RawBarLoader;
+import loaders.rockloader.RockLoader;
 import loaders.teepeeloader.TeePeeLoader;
 import loaders.treeloaders.DrSuessTreeLoader;
 import loaders.treeloaders.TreeLoader;
@@ -29,6 +30,7 @@ public class GameWorld {
 	private LightHouseLoader lightHouseLoader;
 	private FireLoader fireLoader;
 	private PigglyWigglyLoader pigglyWigglyLoader;
+	private RockLoader rockLoader;
 
 	/**
 	 * Constructor.
@@ -45,6 +47,7 @@ public class GameWorld {
 		lightHouseLoader   = new LightHouseLoader();
 		fireLoader         = new FireLoader();
 		pigglyWigglyLoader = new PigglyWigglyLoader();
+		rockLoader         = new RockLoader();
 		loadGameWorld(myGame);
 	}
 
@@ -56,6 +59,7 @@ public class GameWorld {
 		treeLoader.loadTrees();
 		drSuessTreeLoader.loadTrees();
 		plantLoader.loadPlants();
+		rockLoader.loadRocks();
 		chestLoader.loadChests();
 		teePeeLoader.loadTeePees(myGame);
 		rawBarLoader.loadRawBar(myGame);
@@ -75,6 +79,9 @@ public class GameWorld {
 		}
 		for (int i = 0; i< TeePeeLoader.teePees.length; i++) {
 			TeePeeLoader.teePees[i].updateObject(myGame, mapHandler);
+		}
+		for (int i = 0; i< FireLoader.fires.length; i++) {
+			FireLoader.fires[i].updateObject(myGame, mapHandler);
 		}
 		for (int i = 0; i< FireLoader.fires.length; i++) {
 			FireLoader.fires[i].updateObject(myGame, mapHandler);

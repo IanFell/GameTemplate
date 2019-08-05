@@ -108,13 +108,18 @@ public class EnemyHandler {
 			}
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @param MyGame myGame
+	 * @param Bullet bullet
+	 */
 	public void checkBulletCollision(MyGame myGame, Bullet bullet) {
 		for (int i = 0; i < enemySpawner.length; i++) {
 			if (enemySpawner[i].enemies != null) {
 				for (int k = 0; k < enemySpawner[i].enemies.size(); k++) {
 					CollisionHandler.checkIfBulletHasCollidedWithEnemy(enemySpawner[i].enemies.get(k), bullet);
-					
+
 				}
 			}
 		}

@@ -17,6 +17,8 @@ import maps.MapHandler;
  *
  */
 public class Chest extends GamePlayObject {
+	
+	protected float objectSize = 1.5f;
 
 	/**
 	 * Signifies whether chest is closed or not.
@@ -45,6 +47,8 @@ public class Chest extends GamePlayObject {
 	public Chest(int x, int y) {
 		super(x, y);
 		setChestToOriginalValues();
+		this.width  = objectSize;
+		this.height = objectSize;
 	}
 
 	/**
@@ -72,7 +76,6 @@ public class Chest extends GamePlayObject {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		//rectangle.y = y - height;
 		CollisionHandler.checkIfPlayerHasCollidedWithChest(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this

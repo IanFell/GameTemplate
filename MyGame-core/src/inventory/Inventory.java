@@ -89,8 +89,6 @@ public class Inventory extends Screens {
 		}
 		if (inventory.size() >= 0) {
 			for (int i = 0; i < inventory.size(); i++) {
-
-				//if (object instanceof LegendSword) {
 				if (objectType == Weapon.WEAPON_TYPE_SWORD) {
 					updateSword(i, xPosition, yPosition, x, y);
 				}
@@ -114,24 +112,24 @@ public class Inventory extends Screens {
 	 */
 	private void updateGun(int selectedInventory, float xPosition, float yPosition, float x, float y) {
 		float inventoryHeight = inventory.get(selectedInventory).getHeight();
-				switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
-				case Player.DIRECTION_RIGHT:
-					xPosition = x + 1;
-					yPosition = y - 1f;
-					break;
-				case Player.DIRECTION_LEFT:
-					xPosition = x - 2.0f;
-					yPosition = y - 1.0f;
-					break;
-				case Player.DIRECTION_DOWN:
-					xPosition = x - 3.0f;
-					yPosition = y + inventoryHeight;
-					break;
-				case Player.DIRECTION_UP:
-					xPosition = x;
-					yPosition = y - inventoryHeight - 3;
-					break;
-				}	
+		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
+		case Player.DIRECTION_RIGHT:
+			xPosition = x + 1;
+			yPosition = y - 1f;
+			break;
+		case Player.DIRECTION_LEFT:
+			xPosition = x - 2.0f;
+			yPosition = y - 1.0f;
+			break;
+		case Player.DIRECTION_DOWN:
+			xPosition = x - 3.0f;
+			yPosition = y + inventoryHeight;
+			break;
+		case Player.DIRECTION_UP:
+			xPosition = x;
+			yPosition = y - inventoryHeight - 3;
+			break;
+		}	
 		inventory.get(selectedInventory).setX(xPosition);
 		inventory.get(selectedInventory).setY(yPosition);
 	}

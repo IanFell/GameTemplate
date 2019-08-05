@@ -86,6 +86,10 @@ public class Enemy extends GameCharacter {
 		walkLeftAnimation        = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
 	}
 
+	/**
+	 * 
+	 * @param float speed
+	 */
 	@Override
 	public void moveRight(float speed) {
 		setX(getX() + speed);
@@ -181,7 +185,6 @@ public class Enemy extends GameCharacter {
 		elapsedTime += Gdx.graphics.getDeltaTime();
 		int playerSize = 1;
 		if (!dead) {
-			//batch.draw(texture, x, y, width, -height);
 			AnimationHandler.renderAnimation(
 					batch, 
 					elapsedTime, 
@@ -253,15 +256,17 @@ public class Enemy extends GameCharacter {
 	 * @param MyGame myGame
 	 */
 	private void attackPlayer(MyGame myGame) {
+		float playerX = PlayerController.getCurrentPlayer(myGame).getX();
+		float playerY = PlayerController.getCurrentPlayer(myGame).getY();
 		if (willAttack) {
-			if (x < PlayerController.getCurrentPlayer(myGame).getX()) {
+			if (x < playerX) {
 				dx = speed;
-			} else if (x > PlayerController.getCurrentPlayer(myGame).getX()) {
+			} else if (x > playerX) {
 				dx = -speed;
 			}
-			if (y < PlayerController.getCurrentPlayer(myGame).getY()) {
+			if (y < playerY) {
 				dy = speed;
-			} else if (y > PlayerController.getCurrentPlayer(myGame).getY()) {
+			} else if (y > playerY) {
 				dy = -speed;
 			}
 		}

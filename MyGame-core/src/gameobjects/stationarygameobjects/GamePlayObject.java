@@ -14,7 +14,7 @@ import maps.MapHandler;
  */
 public class GamePlayObject extends GameObject {
 
-	private int objectSize = 1;
+	protected int objectSize = 1;
 
 	/**
 	 * Constructor.

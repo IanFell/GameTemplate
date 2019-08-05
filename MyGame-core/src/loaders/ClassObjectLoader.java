@@ -1,5 +1,7 @@
 package loaders;
 
+import java.util.ArrayList;
+
 import gameobjects.GameObject;
 
 /**
@@ -8,7 +10,7 @@ import gameobjects.GameObject;
  *
  */
 public class ClassObjectLoader {
-	
+
 	/**
 	 * 
 	 * @param GameObject[] object
@@ -16,6 +18,16 @@ public class ClassObjectLoader {
 	protected void addGameObjectsToGameObjectArrayList(GameObject[] object) {
 		for (int i = 0; i < object.length; i++) {
 			GameObjectLoader.gameObjectList.add(object[i]);
+		}
+	}
+
+	/**
+	 * 
+	 * @param ArrayList <GameObject> object
+	 */
+	protected void addGameObjectsToGameObjectArrayList(ArrayList <GameObject> object) {
+		for (int i = 0; i < object.size(); i++) {
+			GameObjectLoader.gameObjectList.add((GameObject) object.get(i));
 		}
 	}
 }

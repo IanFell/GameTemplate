@@ -90,13 +90,18 @@ public class Heart extends GameObject {
 	}
 	
 	private void grow() {
-		float growValue = 0.2f;
+		int doubleGrowth = 2;
+		float growValue  = 0.2f;
 		x -= growValue;
 		y -= growValue;
-		width += growValue * 2;
-		height += growValue * 2;
+		width  += growValue * doubleGrowth;
+		height += growValue * doubleGrowth;
 	}
 
+	/**
+	 * 
+	 * @param boolean hasBeenCollected
+	 */
 	public void setHasBeenCollected(boolean hasBeenCollected) {
 		this.hasBeenCollected = hasBeenCollected;
 	}
