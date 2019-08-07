@@ -6,6 +6,7 @@ import gameobjects.stationarygameobjects.buildings.EnemyHut;
 import gameobjects.weapons.Bullet;
 import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
+import helpers.GamePlayHelper;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;

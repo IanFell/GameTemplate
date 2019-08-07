@@ -40,7 +40,7 @@ public class Gun extends Weapon {
 	 */
 	public Gun(float x, float y, ImageLoader imageLoader) {
 		super(x, y);
-		this.width            = 2.0f;
+		this.width            = 1.0f;
 		this.height           = 1.0f;
 		this.rectangle.width  = width;
 		this.rectangle.height = height;

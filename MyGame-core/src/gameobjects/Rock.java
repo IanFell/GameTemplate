@@ -21,7 +21,7 @@ public class Rock extends GameObject {
 	public Rock(int x, int y) {
 		this.x           = x;
 		this.y           = y;
-		float size       = 1.5f;
+		float size       = 1.0f;
 		this.width       = size;
 		this.height      = size;
 		rectangle.x      = x;

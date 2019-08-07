@@ -121,11 +121,11 @@ public class ImageLoader {
 		worldMapStGeorge					   = new Texture(Gdx.files.internal("WorldMapStGeorge.png"));
 		worldMapFake						   = new Texture(Gdx.files.internal("WorldMapFake.png"));
 		worldMapReal						   = new Texture(Gdx.files.internal("WorldMapReal.png"));
-		dustParticleOne                        = new Texture(Gdx.files.internal("DustParticleOne.png"));
-		dustParticleTwo                        = new Texture(Gdx.files.internal("DustParticleTwo.png"));
-		dustParticleThree                      = new Texture(Gdx.files.internal("DustParticleThree.png"));
+		dustParticleOne                        = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleOne.png"));
+		dustParticleTwo                        = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleTwo.png"));
+		dustParticleThree                      = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleThree.png"));
 		nightTimeShader                        = new Texture(Gdx.files.internal("NightTimeShader.png"));
-		icon                                   = new Texture(Gdx.files.internal("GoldenAgeIcon.png"));
+		icon                                   = new Texture(Gdx.files.internal("artwork/GoldenAgeIcon.png"));
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("LegendOfTheSevenSwords.png"));
 		boat    					           = new Texture(Gdx.files.internal("BOAT_NEW.png"));
 		enemy    					           = new Texture(Gdx.files.internal("Enemy.png"));
@@ -152,16 +152,16 @@ public class ImageLoader {
 		legendSwordPurple                      = new Texture(Gdx.files.internal("SwordPurple.png"));
 		legendSwordPink                        = new Texture(Gdx.files.internal("SwordPink.png"));
 		logs                                   = new Texture(Gdx.files.internal("Logs.png"));
-		fireOne                                = new Texture(Gdx.files.internal("Fire1.png"));
-		fireTwo                                = new Texture(Gdx.files.internal("Fire2.png"));
-		fireThree                              = new Texture(Gdx.files.internal("Fire3.png"));
-		fireFour                               = new Texture(Gdx.files.internal("Fire4.png"));
-		fireFive                               = new Texture(Gdx.files.internal("Fire5.png"));
-		fireSix                                = new Texture(Gdx.files.internal("Fire6.png"));
-		fireSeven                              = new Texture(Gdx.files.internal("Fire7.png"));
-		fireEight                              = new Texture(Gdx.files.internal("Fire8.png"));
-		fireNine	                           = new Texture(Gdx.files.internal("Fire9.png"));
-		fireTen                                = new Texture(Gdx.files.internal("Fire10.png"));
+		fireOne                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire1.png"));
+		fireTwo                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire2.png"));
+		fireThree                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire3.png"));
+		fireFour                               = new Texture(Gdx.files.internal("artwork/effects/fire/Fire4.png"));
+		fireFive                               = new Texture(Gdx.files.internal("artwork/effects/fire/Fire5.png"));
+		fireSix                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire6.png"));
+		fireSeven                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire7.png"));
+		fireEight                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire8.png"));
+		fireNine	                           = new Texture(Gdx.files.internal("artwork/effects/fire/Fire9.png"));
+		fireTen                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire10.png"));
 		splashScreenLogo                       = new Texture(Gdx.files.internal("logo_ffg.png"));
 		titleScreenLogo                        = new Texture(Gdx.files.internal("GoldenAgeLogo.png"));
 		testImage                              = new Texture(Gdx.files.internal("badlogic.jpg"));
@@ -181,8 +181,8 @@ public class ImageLoader {
 		shadow                                 = new Texture(Gdx.files.internal("Shadow.png"));
 		playerSprite                           = new Texture(Gdx.files.internal("PlayerSprite.png"));
 		tree                                   = new Texture(Gdx.files.internal("SampleTree.png"));
-		chestClosed                            = new Texture(Gdx.files.internal("Chest.png"));
-		chestOpen					           = new Texture(Gdx.files.internal("ChestOpen.png"));
+		chestClosed                            = new Texture(Gdx.files.internal("artwork/Chest.png"));
+		chestOpen					           = new Texture(Gdx.files.internal("artwork/ChestOpen.png"));
 		whiteSquare                            = new Texture(Gdx.files.internal("WhiteSquare.png"));
 		playerScore                            = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
 		rain 						           = new Texture(Gdx.files.internal("Rain.png"));
@@ -199,15 +199,15 @@ public class ImageLoader {
 		lightHouse                             = new Texture(Gdx.files.internal("LightHouse.png"));
 		pigglywiggly                           = new Texture(Gdx.files.internal("PigglyWiggly3D.png"));
 
-		cutSceneDialogueOne[0] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_One.png"));
-		cutSceneDialogueOne[1] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Two.png"));
-		cutSceneDialogueOne[2] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Three.png"));
-		cutSceneDialogueOne[3] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Four.png"));
-		cutSceneDialogueOne[4] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Five.png"));
-		cutSceneDialogueOne[5] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Six.png"));
-		cutSceneDialogueOne[6] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Seven.png"));
-		cutSceneDialogueOne[7] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Eight.png"));
-		cutSceneDialogueOne[8] = new Texture(Gdx.files.internal("Cutscene_One_Dialogue_Nine.png"));
+		cutSceneDialogueOne[0] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_One.png"));
+		cutSceneDialogueOne[1] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Two.png"));
+		cutSceneDialogueOne[2] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Three.png"));
+		cutSceneDialogueOne[3] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Four.png"));
+		cutSceneDialogueOne[4] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Five.png"));
+		cutSceneDialogueOne[5] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Six.png"));
+		cutSceneDialogueOne[6] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Seven.png"));
+		cutSceneDialogueOne[7] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Eight.png"));
+		cutSceneDialogueOne[8] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Nine.png"));
 	}
 
 	public void dispose() {
