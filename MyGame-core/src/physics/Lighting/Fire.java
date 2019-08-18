@@ -1,7 +1,6 @@
 package physics.Lighting;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
@@ -90,11 +89,10 @@ public class Fire extends GameObject {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shaperender
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		if (timer > 0) {
 			batch.draw(imageLoader.fireOne, x, y, width, -height);
 		}

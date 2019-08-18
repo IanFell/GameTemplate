@@ -10,13 +10,62 @@ import com.badlogic.gdx.graphics.Texture;
  *
  */
 public class ImageLoader {
-
+	
+	// Nature Objects.
+	public Texture rock;
+	public Texture drSuessTree;
+	public Texture palmTree;
+	public Texture palmTreeThree;
+	public Texture plant;
+	public Texture logs;
+	public Texture light;
+	public Texture rain;
+	public Texture shadow;
+	
+	// Weapon Objects.
+	public Texture gunRight;
+	public Texture gunLeft;
+	public Texture legendSwordRed;
+	public Texture legendSwordBlue;
+	public Texture legendSwordGreen;
+	public Texture legendSwordYellow;
+	public Texture legendSwordOrange;
+	public Texture legendSwordPurple;
+	public Texture legendSwordPink;
+	public Texture legendSwordRedHalf;
+	public Texture legendSwordBlueHalf;
+	public Texture legendSwordGreenHalf;
+	public Texture legendSwordYellowHalf;
+	public Texture legendSwordOrangeHalf;
+	public Texture legendSwordPurpleHalf;
+	public Texture legendSwordPinkHalf;
+	public Texture legendSwordRainbow;
+	
+	// Structure Objects.
+	public Texture teePee;
+	public Texture rawbar;
+	public Texture lightHouse;
+	public Texture pigglywiggly;
+	public Texture slaveHut;
+	
+	// Effects Objects.
+	public Texture fireOne;
+	public Texture fireTwo;
+	public Texture fireThree;
+	public Texture fireFour;
+	public Texture fireFive;
+	public Texture fireSix;
+	public Texture fireSeven;
+	public Texture fireEight;
+	public Texture fireNine;
+	public Texture fireTen;
+	
+	
 	public Texture[] cutSceneDialogueOne = new Texture[9];
 	public Texture heart;
-	public Texture rock;
 	public Texture inventoryNavigationBar;
 	public Texture mapNavigationBar;
-	public Texture testImage;
+	//public Texture testImage;
 	public Texture icon;
 	public Texture worldMapReal;
 	public Texture worldMapFake;
@@ -27,12 +76,10 @@ public class ImageLoader {
 	public Texture worldMapCapeSanBlas;
 	public Texture worldMapThePoint;
 	public Texture worldMapWewa;
-	public Texture enemy;
+	//public Texture enemy;
 	public Texture boat;
-	public Texture gunRight;
-	public Texture gunLeft;
-	public Texture gunUp;
-	public Texture gunDown;
+	//public Texture gunUp;
+	//public Texture gunDown;
 	public Texture splashScreenLogo;
 	public Texture titleScreenLogo;
 	public Texture inventoryScreen;
@@ -49,69 +96,88 @@ public class ImageLoader {
 	public Texture waterTileOne;
 	public Texture waterTileTwo;
 	public Texture waterTileThree;
-	public Texture light;
-	public Texture shadow;
-	public Texture playerSprite;
+	
+	
+	//public Texture playerSprite;
 	public Texture playerHeadUp;
 	public Texture playerHeadDown;
 	public Texture playerHeadLeft;
 	public Texture playerHeadRight;
-	public Texture tree;
-	public Texture drSuessTree;
-	public Texture palmTree;
-	public Texture plant;
+	//public Texture tree;
 	public Texture chestClosed;
 	public Texture chestOpen;
 	public Texture whiteSquare;
-	public Texture rain;
+	
 	public Texture playerScore;
-	public Texture teePee;
-	public Texture rawbar;
 	public Texture ui;
 	public Texture missionComplete;
-	public Texture lightHouse;
-	public Texture pigglywiggly;
-	public Texture fireOne;
-	public Texture fireTwo;
-	public Texture fireThree;
-	public Texture fireFour;
-	public Texture fireFive;
-	public Texture fireSix;
-	public Texture fireSeven;
-	public Texture fireEight;
-	public Texture fireNine;
-	public Texture fireTen;
-	public Texture logs;
-	public Texture legendSwordRed;
-	public Texture legendSwordBlue;
-	public Texture legendSwordGreen;
-	public Texture legendSwordYellow;
-	public Texture legendSwordOrange;
-	public Texture legendSwordPurple;
-	public Texture legendSwordPink;
-	public Texture legendSwordRedHalf;
-	public Texture legendSwordBlueHalf;
-	public Texture legendSwordGreenHalf;
-	public Texture legendSwordYellowHalf;
-	public Texture legendSwordOrangeHalf;
-	public Texture legendSwordPurpleHalf;
-	public Texture legendSwordPinkHalf;
-	public Texture legendSwordRainbow;
 	public Texture inventoryLabel;
 	public Texture nightTimeShader;
 	public Texture dustParticleOne;
 	public Texture dustParticleTwo;
 	public Texture dustParticleThree;
-	public Texture palmTreeThree;
-	public Texture slaveHut;
+	
+	
 
 	public void init() {
+		// Nature Objects.
+		rock 								   = new Texture(Gdx.files.internal("artwork/nature/Rock.png"));
+		logs                                   = new Texture(Gdx.files.internal("artwork/nature/Logs.png"));
+		palmTreeThree                          = new Texture(Gdx.files.internal("artwork/nature/PalmTreeNewOriginalAlternate.png"));
+		palmTree					  	       = new Texture(Gdx.files.internal("artwork/nature/PalmTreeNewOriginal3.png"));
+		plant                         	       = new Texture(Gdx.files.internal("artwork/nature/PlantNewOriginal.png"));
+		drSuessTree                            = new Texture(Gdx.files.internal("artwork/nature/DrSuessTree.png"));
+		light                                  = new Texture(Gdx.files.internal("artwork/nature/Lighting.png"));
+		rain 						           = new Texture(Gdx.files.internal("artwork/nature/Rain.png"));
+		shadow                                 = new Texture(Gdx.files.internal("artwork/nature/Shadow.png"));
+		
+		// Weapon Objects.
+		gunRight   					           = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
+		gunLeft                                = new Texture(Gdx.files.internal("artwork/weapons/gun/Left.png"));
+		legendSwordRedHalf                     = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordRedHalf.png"));
+		legendSwordBlueHalf                    = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordBlueHalf.png"));
+		legendSwordGreenHalf                   = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordGreenHalf.png"));
+		legendSwordYellowHalf                  = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordYellowHalf.png"));
+		legendSwordOrangeHalf                  = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordOrangeHalf.png"));
+		legendSwordPurpleHalf                  = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordPurpleHalf.png"));
+		legendSwordPinkHalf                    = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordPinkHalf.png"));
+		legendSwordRainbow                     = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordRainbow.png"));
+		legendSwordRed                         = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordRed.png"));
+		legendSwordBlue                        = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordBlue.png"));
+		legendSwordGreen                       = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordGreen.png"));
+		legendSwordYellow                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordYellow.png"));
+		legendSwordOrange                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordOrange.png"));
+		legendSwordPurple                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPurple.png"));
+		legendSwordPink                        = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPink.png"));
+		
+		// Structure Objects.
+		slaveHut                               = new Texture(Gdx.files.internal("artwork/structures/SlaveHut.png"));
+		rawbar						           = new Texture(Gdx.files.internal("artwork/structures/RawBar3d.png"));
+		lightHouse                             = new Texture(Gdx.files.internal("artwork/structures/LightHouse.png"));
+		pigglywiggly                           = new Texture(Gdx.files.internal("artwork/structures/PigglyWiggly3D.png"));
+		teePee   					           = new Texture(Gdx.files.internal("artwork/structures/TeePee3D.png"));
+		
+		// Effects Objects.
+		fireOne                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire1.png"));
+		fireTwo                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire2.png"));
+		fireThree                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire3.png"));
+		fireFour                               = new Texture(Gdx.files.internal("artwork/effects/fire/Fire4.png"));
+		fireFive                               = new Texture(Gdx.files.internal("artwork/effects/fire/Fire5.png"));
+		fireSix                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire6.png"));
+		fireSeven                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire7.png"));
+		fireEight                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire8.png"));
+		fireNine	                           = new Texture(Gdx.files.internal("artwork/effects/fire/Fire9.png"));
+		fireTen                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire10.png"));
+		
+		
+		
 		heart    						       = new Texture(Gdx.files.internal("Heart.png"));
-		rock 								   = new Texture(Gdx.files.internal("Rock.png"));
+		
+		
 		mapNavigationBar                       = new Texture(Gdx.files.internal("UiMap.png"));
 		inventoryNavigationBar                 = new Texture(Gdx.files.internal("UiInventory.png"));
-		slaveHut                               = new Texture(Gdx.files.internal("SlaveHut.png"));
-		palmTreeThree                          = new Texture(Gdx.files.internal("PalmTreeNewOriginalAlternate.png"));
+		
+		
 		worldMapMexicoBeach					   = new Texture(Gdx.files.internal("WorldMapMexicoBeach.png"));
 		worldMapThePoint					   = new Texture(Gdx.files.internal("WorldMapThePoint.png"));
 		worldMapPortStJoe					   = new Texture(Gdx.files.internal("WorldMapPortStJoe.png"));
@@ -128,43 +194,19 @@ public class ImageLoader {
 		icon                                   = new Texture(Gdx.files.internal("artwork/GoldenAgeIcon.png"));
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("LegendOfTheSevenSwords.png"));
 		boat    					           = new Texture(Gdx.files.internal("BOAT_NEW.png"));
-		enemy    					           = new Texture(Gdx.files.internal("Enemy.png"));
+		//enemy    					           = new Texture(Gdx.files.internal("Enemy.png"));
 		inventoryScreen                        = new Texture(Gdx.files.internal("InventoryScreen.png"));
 		inventoryLabel                         = new Texture(Gdx.files.internal("InventoryLabel.png"));
-		gunRight   					           = new Texture(Gdx.files.internal("Right.png"));
-		gunLeft                                = new Texture(Gdx.files.internal("Left.png"));
-		gunUp  					               = new Texture(Gdx.files.internal("GunUp.png"));
-		gunDown                                = new Texture(Gdx.files.internal("GunDown.png"));
-		legendSwordRedHalf                     = new Texture(Gdx.files.internal("LegendSwordRedHalf.png"));
-		legendSwordBlueHalf                    = new Texture(Gdx.files.internal("LegendSwordBlueHalf.png"));
-		legendSwordGreenHalf                   = new Texture(Gdx.files.internal("LegendSwordGreenHalf.png"));
-		legendSwordYellowHalf                  = new Texture(Gdx.files.internal("LegendSwordYellowHalf.png"));
-		legendSwordOrangeHalf                  = new Texture(Gdx.files.internal("LegendSwordOrangeHalf.png"));
-		legendSwordPurpleHalf                  = new Texture(Gdx.files.internal("LegendSwordPurpleHalf.png"));
-		legendSwordPinkHalf                    = new Texture(Gdx.files.internal("LegendSwordPinkHalf.png"));
+		
+		//gunUp  					               = new Texture(Gdx.files.internal("GunUp.png"));
+		//gunDown                                = new Texture(Gdx.files.internal("GunDown.png"));
+		
 		missionComplete                        = new Texture(Gdx.files.internal("MissionComplete.png"));
-		legendSwordRainbow                     = new Texture(Gdx.files.internal("SwordRainbow.png"));
-		legendSwordRed                         = new Texture(Gdx.files.internal("SwordRed.png"));
-		legendSwordBlue                        = new Texture(Gdx.files.internal("SwordBlue.png"));
-		legendSwordGreen                       = new Texture(Gdx.files.internal("SwordGreen.png"));
-		legendSwordYellow                      = new Texture(Gdx.files.internal("SwordYellow.png"));
-		legendSwordOrange                      = new Texture(Gdx.files.internal("SwordOrange.png"));
-		legendSwordPurple                      = new Texture(Gdx.files.internal("SwordPurple.png"));
-		legendSwordPink                        = new Texture(Gdx.files.internal("SwordPink.png"));
-		logs                                   = new Texture(Gdx.files.internal("Logs.png"));
-		fireOne                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire1.png"));
-		fireTwo                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire2.png"));
-		fireThree                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire3.png"));
-		fireFour                               = new Texture(Gdx.files.internal("artwork/effects/fire/Fire4.png"));
-		fireFive                               = new Texture(Gdx.files.internal("artwork/effects/fire/Fire5.png"));
-		fireSix                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire6.png"));
-		fireSeven                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire7.png"));
-		fireEight                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire8.png"));
-		fireNine	                           = new Texture(Gdx.files.internal("artwork/effects/fire/Fire9.png"));
-		fireTen                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire10.png"));
+		
+		
 		splashScreenLogo                       = new Texture(Gdx.files.internal("logo_ffg.png"));
 		titleScreenLogo                        = new Texture(Gdx.files.internal("GoldenAgeLogo.png"));
-		testImage                              = new Texture(Gdx.files.internal("badlogic.jpg"));
+		//testImage                              = new Texture(Gdx.files.internal("badlogic.jpg"));
 		grassTileOne     			           = new Texture(Gdx.files.internal("GrassTileOne.png"));
 		grassTileTwo                           = new Texture(Gdx.files.internal("GrassTileTwo.png"));
 		waterTileOne                           = new Texture(Gdx.files.internal("WaterOne.png"));
@@ -177,28 +219,22 @@ public class ImageLoader {
 		sandTileTopRightPath	               = new Texture(Gdx.files.internal("SandTileTopRightPath.png"));
 		sandTileCrossPath                      = new Texture(Gdx.files.internal("SandTileCrossPath.png"));
 		solidTile                              = new Texture(Gdx.files.internal("FakeTile.png"));
-		light                                  = new Texture(Gdx.files.internal("Lighting.png"));
-		shadow                                 = new Texture(Gdx.files.internal("Shadow.png"));
-		playerSprite                           = new Texture(Gdx.files.internal("PlayerSprite.png"));
-		tree                                   = new Texture(Gdx.files.internal("SampleTree.png"));
+		
+		//playerSprite                           = new Texture(Gdx.files.internal("PlayerSprite.png"));
+		//tree                                   = new Texture(Gdx.files.internal("SampleTree.png"));
 		chestClosed                            = new Texture(Gdx.files.internal("artwork/Chest.png"));
 		chestOpen					           = new Texture(Gdx.files.internal("artwork/ChestOpen.png"));
 		whiteSquare                            = new Texture(Gdx.files.internal("WhiteSquare.png"));
 		playerScore                            = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
-		rain 						           = new Texture(Gdx.files.internal("Rain.png"));
-		palmTree					  	       = new Texture(Gdx.files.internal("PalmTreeNewOriginal3.png"));
-		plant                         	       = new Texture(Gdx.files.internal("PlantNewOriginal.png"));
-		drSuessTree                            = new Texture(Gdx.files.internal("DrSuessTree.png"));
-		teePee   					           = new Texture(Gdx.files.internal("TeePee3D.png"));
+		
+		
+		
 		playerHeadUp 				           = new Texture(Gdx.files.internal("PlayerHeadUp.png"));
 		playerHeadDown 				           = new Texture(Gdx.files.internal("PlayerHeadDown.png"));
 		playerHeadLeft 				           = new Texture(Gdx.files.internal("PlayerHeadLeft.png"));
 		playerHeadRight 			           = new Texture(Gdx.files.internal("PlayerHeadRight.png"));
 		ui 							           = new Texture(Gdx.files.internal("UI.png"));
-		rawbar						           = new Texture(Gdx.files.internal("RawBar3d.png"));
-		lightHouse                             = new Texture(Gdx.files.internal("LightHouse.png"));
-		pigglywiggly                           = new Texture(Gdx.files.internal("PigglyWiggly3D.png"));
-
+		
 		cutSceneDialogueOne[0] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_One.png"));
 		cutSceneDialogueOne[1] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Two.png"));
 		cutSceneDialogueOne[2] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Three.png"));
@@ -211,81 +247,21 @@ public class ImageLoader {
 	}
 
 	public void dispose() {
-		heart.dispose();
-		mapNavigationBar.dispose();
-		inventoryNavigationBar.dispose();
-		slaveHut.dispose();
-		palmTreeThree.dispose();
-		worldMapMexicoBeach.dispose();
-		worldMapStGeorge.dispose();
-		worldMapApalachicola.dispose();
-		worldMapThePoint.dispose();
-		worldMapCapeSanBlas.dispose();
-		worldMapWewa.dispose();
-		worldMapPortStJoe.dispose();
-		worldMapFake.dispose();
-		worldMapReal.dispose();
-		dustParticleOne.dispose();
-		dustParticleTwo.dispose();
-		dustParticleThree.dispose();
-		icon.dispose();
-		legendOfTheSevenSwordsBeginMissionText.dispose();
-		boat.dispose();
-		enemy.dispose();
+		
+		// Nature Objects.
 		rock.dispose();
-		inventoryScreen.dispose();
-		inventoryLabel.dispose();
-		gunUp.dispose();
-		gunDown.dispose();
-		gunRight.dispose();
-		gunLeft.dispose();
-		missionComplete.dispose();
-		splashScreenLogo.dispose();
-		titleScreenLogo.dispose();
-		testImage.dispose();
-		grassTileOne.dispose();
-		grassTileTwo.dispose();
-		waterTileOne.dispose();
-		waterTileTwo.dispose();
-		waterTileThree.dispose();
-		solidTile.dispose();
-		sandTile.dispose();
-		sandTileHorizontalPath.dispose();
-		sandTileLeftDownPath.dispose();
-		sandTileVerticalPath.dispose();
-		sandTileTopRightPath.dispose();
-		sandTileCrossPath.dispose();
-		light.dispose();
-		shadow.dispose();
-		playerSprite.dispose();
-		tree.dispose();
-		chestClosed.dispose();
-		chestOpen.dispose();
-		whiteSquare.dispose();
-		playerScore.dispose();
-		rain.dispose();
+		logs.dispose();
+		palmTreeThree.dispose();
 		palmTree.dispose();
 		plant.dispose();
-		teePee.dispose();
-		playerHeadUp.dispose();
-		playerHeadDown.dispose();
-		playerHeadLeft.dispose();
-		playerHeadRight.dispose();
-		ui.dispose();
-		rawbar.dispose();
-		lightHouse.dispose();
-		fireOne.dispose();
-		fireTwo.dispose();
-		fireThree.dispose();
-		fireFour.dispose();
-		fireFive.dispose();
-		fireSix.dispose();
-		fireSeven.dispose();
-		fireEight.dispose();
-		fireNine.dispose();
-		fireTen.dispose();
-		logs.dispose();
 		drSuessTree.dispose();
+		light.dispose();
+		rain.dispose();
+		shadow.dispose();
+		
+		// Weapon Objects.
+		gunRight.dispose();
+		gunLeft.dispose();
 		legendSwordRed.dispose();
 		legendSwordBlue.dispose();
 		legendSwordGreen.dispose();
@@ -301,7 +277,86 @@ public class ImageLoader {
 		legendSwordPurpleHalf.dispose();
 		legendSwordPinkHalf.dispose();
 		legendSwordOrangeHalf.dispose();
+		
+		// Structure objects.
+		slaveHut.dispose();
+		teePee.dispose();
+		rawbar.dispose();
+		lightHouse.dispose();
 		pigglywiggly.dispose();
+		
+		// Effects Objects.
+		fireOne.dispose();
+		fireTwo.dispose();
+		fireThree.dispose();
+		fireFour.dispose();
+		fireFive.dispose();
+		fireSix.dispose();
+		fireSeven.dispose();
+		fireEight.dispose();
+		fireNine.dispose();
+		fireTen.dispose();
+		
+		heart.dispose();
+		mapNavigationBar.dispose();
+		inventoryNavigationBar.dispose();
+		
+		
+		worldMapMexicoBeach.dispose();
+		worldMapStGeorge.dispose();
+		worldMapApalachicola.dispose();
+		worldMapThePoint.dispose();
+		worldMapCapeSanBlas.dispose();
+		worldMapWewa.dispose();
+		worldMapPortStJoe.dispose();
+		worldMapFake.dispose();
+		worldMapReal.dispose();
+		dustParticleOne.dispose();
+		dustParticleTwo.dispose();
+		dustParticleThree.dispose();
+		icon.dispose();
+		legendOfTheSevenSwordsBeginMissionText.dispose();
+		boat.dispose();
+		//enemy.dispose();
+		
+		inventoryScreen.dispose();
+		inventoryLabel.dispose();
+		//gunUp.dispose();
+		//gunDown.dispose();
+		
+		missionComplete.dispose();
+		splashScreenLogo.dispose();
+		titleScreenLogo.dispose();
+		//testImage.dispose();
+		grassTileOne.dispose();
+		grassTileTwo.dispose();
+		waterTileOne.dispose();
+		waterTileTwo.dispose();
+		waterTileThree.dispose();
+		solidTile.dispose();
+		sandTile.dispose();
+		sandTileHorizontalPath.dispose();
+		sandTileLeftDownPath.dispose();
+		sandTileVerticalPath.dispose();
+		sandTileTopRightPath.dispose();
+		sandTileCrossPath.dispose();
+		
+		
+		//playerSprite.dispose();
+		//tree.dispose();
+		chestClosed.dispose();
+		chestOpen.dispose();
+		whiteSquare.dispose();
+		playerScore.dispose();
+		
+		
+		
+		playerHeadUp.dispose();
+		playerHeadDown.dispose();
+		playerHeadLeft.dispose();
+		playerHeadRight.dispose();
+		ui.dispose();
+		
 		nightTimeShader.dispose();
 
 		for(int i = 0; i < cutSceneDialogueOne.length; i++) {

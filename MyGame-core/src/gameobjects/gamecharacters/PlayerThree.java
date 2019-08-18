@@ -3,7 +3,6 @@ package gameobjects.gamecharacters;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import handlers.AnimationHandler;
@@ -51,12 +50,11 @@ public class PlayerThree extends Player {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		super.renderObject(batch, shapeRenderer, imageLoader);
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
+		super.renderObject(batch, imageLoader);
 
 		/**
 		 * Only draw player three if we are in life state one.

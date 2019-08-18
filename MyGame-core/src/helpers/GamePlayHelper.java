@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import gameobjects.GameObject;
 import loaders.ImageLoader;
@@ -41,19 +40,17 @@ public class GamePlayHelper  {
 	 * 
 	 * @param ArrayList     gameObjectList
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
 	public static void sortAndRenderObjectsInYPositionOrder(
 			ArrayList<GameObject> gameObjectList,
 			SpriteBatch batch,
-			ShapeRenderer shapeRenderer,
 			ImageLoader imageLoader
 			) {
 		Collections.sort(gameObjectList);
 		for (int i = 0; i < gameObjectList.size(); i++) {
 			if (gameObjectIsWithinScreenBounds(gameObjectList.get(i))) {
-				gameObjectList.get(i).renderObject(batch, shapeRenderer, imageLoader);
+				gameObjectList.get(i).renderObject(batch, imageLoader);
 			}
 		}
 	}

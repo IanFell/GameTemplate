@@ -45,7 +45,6 @@ public class CloudParticle extends Particle {
 	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	@Override
 	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
 		if (isAlive) {
 			shapeRenderer.setColor(this.color);

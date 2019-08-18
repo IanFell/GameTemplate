@@ -3,7 +3,6 @@ package particles;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
@@ -65,16 +64,15 @@ public class DustParticleEmitter extends GameObject {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		int direction = Player.direction;
 		if (particlesRight != null && direction == Player.DIRECTION_LEFT || direction == Player.DIRECTION_RIGHT) {
 			for (int i = 0; i < particlesRight.size(); i++) {
-				particlesRight.get(i).renderObject(batch, shapeRenderer, imageLoader);
-				particlesLeft.get(i).renderObject(batch, shapeRenderer, imageLoader);
+				particlesRight.get(i).renderObject(batch, imageLoader);
+				particlesLeft.get(i).renderObject(batch, imageLoader);
 			}
 		}
 	}

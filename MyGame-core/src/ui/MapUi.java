@@ -2,7 +2,6 @@ package ui;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import loaders.ImageLoader;
@@ -48,11 +47,10 @@ public class MapUi extends Screens {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 * @param MyGame        myGame
 	 */
-	public void renderWorldMapUi(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
+	public void renderWorldMapUi(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (mapShouldBeRendered) {
 			Texture texture = null;
 

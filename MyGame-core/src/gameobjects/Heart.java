@@ -42,11 +42,10 @@ public class Heart extends GameObject {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 			batch.draw(
 					imageLoader.heart,
 					x,

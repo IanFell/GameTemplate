@@ -1,7 +1,6 @@
 package handlers;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import loaders.ImageLoader;
@@ -35,10 +34,9 @@ public class WeaponHandler {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public static void renderWeapons(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {	
-		BulletLoader.renderBullets(batch, shapeRenderer, imageLoader);
+	public static void renderWeapons(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {	
+		BulletLoader.renderBullets(batch, imageLoader);
 	}
 }

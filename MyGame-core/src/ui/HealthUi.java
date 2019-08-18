@@ -1,7 +1,6 @@
 package ui;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
@@ -20,11 +19,10 @@ public class HealthUi {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 * @param MyGame        myGame
 	 */
-	public void renderHealthUi(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
+	public void renderHealthUi(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		int xIncrement       = 0;
 		int yIncrement       = 0;
 		GameObject player    = PlayerController.getCurrentPlayer(myGame);

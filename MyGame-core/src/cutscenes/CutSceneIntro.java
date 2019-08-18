@@ -1,7 +1,6 @@
 package cutscenes;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import loaders.ImageLoader;
 
@@ -57,11 +56,10 @@ public class CutSceneIntro extends CutScene {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shaperender
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderCutScene(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderCutScene(SpriteBatch batch, ImageLoader imageLoader) {
 		batch.draw(
 				imageLoader.boat,
 				boatStartXPosition, 

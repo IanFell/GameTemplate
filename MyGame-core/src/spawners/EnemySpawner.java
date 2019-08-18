@@ -3,7 +3,6 @@ package spawners;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.Enemy;
@@ -90,13 +89,12 @@ public class EnemySpawner {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderEnemies(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderEnemies(SpriteBatch batch, ImageLoader imageLoader) {
 		if (enemies != null) {
 			for (int i = 0; i < enemies.size(); i++) {
-				enemies.get(i).renderObject(batch, shapeRenderer, imageLoader);
+				enemies.get(i).renderObject(batch, imageLoader);
 			}
 		}
 	}

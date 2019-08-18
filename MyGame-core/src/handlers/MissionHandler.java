@@ -1,7 +1,6 @@
 package handlers;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
@@ -43,12 +42,11 @@ public class MissionHandler {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 * @param MyGame        myGame
 	 */
-	public void renderMissions(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
-		missionChests.renderMission(batch, shapeRenderer, imageLoader, myGame);
-		missionLegendOfTheSevenSwords.renderMission(batch, shapeRenderer, imageLoader, myGame);
+	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
+		missionChests.renderMission(batch, imageLoader, myGame);
+		missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 	}
 }

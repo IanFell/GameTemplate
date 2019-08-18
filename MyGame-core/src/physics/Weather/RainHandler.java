@@ -1,7 +1,6 @@
 package physics.Weather;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
@@ -49,13 +48,11 @@ public class RainHandler extends GameObject {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 * @param GameScreen    gameScreen
 	 */
 	public void renderObject(
 			SpriteBatch batch, 
-			ShapeRenderer shapeRenderer, 
 			ImageLoader imageLoader, 
 			GameScreen gameScreen
 			) {

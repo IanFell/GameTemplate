@@ -2,7 +2,6 @@ package gameobjects;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
@@ -117,10 +116,9 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {}
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {}
 
 	/**
 	 * 

@@ -1,7 +1,6 @@
 package gameobjects.stationarygameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.mygame.MyGame;
@@ -54,11 +53,10 @@ public class Chest extends GamePlayObject {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shaperender
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		if (isClosed) {
 			batch.draw(imageLoader.chestClosed, x, y - height, width, -height);
 			// Uncomment this to draw hit box.

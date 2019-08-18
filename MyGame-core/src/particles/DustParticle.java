@@ -2,7 +2,6 @@ package particles;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
@@ -46,11 +45,10 @@ public class DustParticle extends Particle {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		if (isAlive) {
 			int imageChooser = RandomNumberGenerator.generateRandomInteger(3);
 			Texture texture = null;

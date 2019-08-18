@@ -1,7 +1,6 @@
 package towns;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
@@ -51,10 +50,9 @@ public class Town {
 	 * This is used strictly for debugging.
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderTownBorder(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderTownBorder(SpriteBatch batch, ImageLoader imageLoader) {
 		batch.draw(
 				imageLoader.whiteSquare,
 				townBorder.x,

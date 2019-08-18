@@ -1,7 +1,6 @@
 package missions;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.Player;
@@ -66,15 +65,14 @@ public class MissionChests extends Mission {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 * @param MyGame        myGame
 	 */
 	@Override
-	public void renderMission(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
+	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		// If mission is complete, render "Mission Complete" message for a little while.
 		if (missionComplete) {
-			renderMissionCompleteMessage(batch, shapeRenderer, imageLoader, myGame);
+			renderMissionCompleteMessage(batch, imageLoader, myGame);
 		}
 	}
 }

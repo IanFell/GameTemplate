@@ -1,7 +1,6 @@
 package handlers;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import loaders.ImageLoader;
@@ -58,45 +57,16 @@ public class TownHandler {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderTownBorders(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		mexicoBeach.renderTownBorder(
-				batch, 
-				shapeRenderer, 
-				imageLoader
-				);
-		portStJoe.renderTownBorder(
-				batch, 
-				shapeRenderer, 
-				imageLoader
-				);
-		wewa.renderTownBorder(
-				batch, 
-				shapeRenderer, 
-				imageLoader
-				);
-		apalachicola.renderTownBorder(
-				batch, 
-				shapeRenderer, 
-				imageLoader
-				);
-		stGeorge.renderTownBorder(
-				batch, 
-				shapeRenderer, 
-				imageLoader
-				);
-		thePoint.renderTownBorder(
-				batch, 
-				shapeRenderer, 
-				imageLoader
-				);
-		capeSanBlas.renderTownBorder(
-				batch, 
-				shapeRenderer, 
-				imageLoader
-				);
+	public void renderTownBorders(SpriteBatch batch, ImageLoader imageLoader) {
+		mexicoBeach.renderTownBorder(batch, imageLoader);
+		portStJoe.renderTownBorder(batch, imageLoader);
+		wewa.renderTownBorder(batch, imageLoader);
+		apalachicola.renderTownBorder(batch, imageLoader);
+		stGeorge.renderTownBorder(batch, imageLoader);
+		thePoint.renderTownBorder(batch, imageLoader);
+		capeSanBlas.renderTownBorder(batch, imageLoader);
 	}
 
 	/**

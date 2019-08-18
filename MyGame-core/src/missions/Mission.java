@@ -1,7 +1,6 @@
 package missions;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
@@ -32,11 +31,10 @@ public class Mission {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 * @param MyGame        myGame
 	 */
-	protected void renderMissionCompleteMessage(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {
+	protected void renderMissionCompleteMessage(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (timer < MISSION_COMPLETE_DISPLAY_TIME_VALUE) {
 			timer++;
 		}
@@ -57,9 +55,8 @@ public class Mission {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 * @param MyGame        myGame
 	 */
-	public void renderMission(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, MyGame myGame) {}
+	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {}
 }

@@ -3,7 +3,6 @@ package handlers;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.Heart;
@@ -58,12 +57,11 @@ public class HeartHandler {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderHearts(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderHearts(SpriteBatch batch, ImageLoader imageLoader) {
 		for (int i = 0; i < hearts.size(); i++) {
-			hearts.get(i).renderObject(batch, shapeRenderer, imageLoader);
+			hearts.get(i).renderObject(batch, imageLoader);
 		}
 	}
 }

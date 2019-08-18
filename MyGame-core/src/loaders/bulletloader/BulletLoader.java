@@ -3,7 +3,6 @@ package loaders.bulletloader;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
@@ -44,13 +43,12 @@ public class BulletLoader {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public static void renderBullets(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public static void renderBullets(SpriteBatch batch, ImageLoader imageLoader) {
 		if (bullets.size() > 0) {
 			for (int i = 0; i < bullets.size(); i++) {
-				bullets.get(i).renderObject(batch, shapeRenderer, imageLoader);
+				bullets.get(i).renderObject(batch, imageLoader);
 			}
 		}
 	}

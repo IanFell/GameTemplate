@@ -1,7 +1,6 @@
 package cutscenes;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import loaders.ImageLoader;
 
@@ -62,10 +61,9 @@ public class CutScene {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
-	public void renderCutScene(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {}
+	public void renderCutScene(SpriteBatch batch, ImageLoader imageLoader) {}
 
 	/**
 	 * 

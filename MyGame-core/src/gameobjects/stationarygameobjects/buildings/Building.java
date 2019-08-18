@@ -2,7 +2,6 @@ package gameobjects.stationarygameobjects.buildings;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import gameobjects.stationarygameobjects.GamePlayObject;
 import loaders.ImageLoader;
@@ -37,11 +36,10 @@ public class Building extends GamePlayObject {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shaperender
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		batch.draw(texture, x, y, width, -height);
 	}
 }

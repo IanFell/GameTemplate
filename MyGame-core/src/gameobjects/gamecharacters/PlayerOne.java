@@ -3,12 +3,10 @@ package gameobjects.gamecharacters;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import gameobjects.Torch;
-import gameobjects.weapons.Gun;
 import handlers.AnimationHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
@@ -90,12 +88,11 @@ public class PlayerOne extends Player {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		super.renderObject(batch, shapeRenderer, imageLoader);
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
+		super.renderObject(batch, imageLoader);
 		AnimationHandler.renderAnimation(
 				batch, 
 				elapsedTime, 
@@ -108,7 +105,7 @@ public class PlayerOne extends Player {
 				);
 
 		if (hasTorch) {	
-			torch.renderObject(batch, shapeRenderer, imageLoader);
+			torch.renderObject(batch, imageLoader);
 		}
 
 		//renderHitBox(batch, imageLoader);

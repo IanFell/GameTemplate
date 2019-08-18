@@ -1,7 +1,6 @@
 package gameobjects.stationarygameobjects.treeobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import gameobjects.stationarygameobjects.NatureObject;
 import loaders.ImageLoader;
@@ -28,11 +27,10 @@ public class DrSuessTree extends NatureObject {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		batch.draw(imageLoader.drSuessTree, x, y, width, -height);
 	}
 }

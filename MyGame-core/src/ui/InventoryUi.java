@@ -3,7 +3,6 @@ package ui;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
@@ -35,7 +34,6 @@ public class InventoryUi extends Screens {
 	/**
 	 * 
 	 * @param SpriteBatch            batch
-	 * @param ShapeRenderer          shapeRenderer
 	 * @param ImageLoader            imageLoader
 	 * @param ArrayList <GameObject> inventory
 	 * @param boolean                inventoryIsEquipped
@@ -47,7 +45,6 @@ public class InventoryUi extends Screens {
 	 */
 	public void renderInventoryUi(
 			SpriteBatch batch, 
-			ShapeRenderer shapeRenderer, 
 			ImageLoader imageLoader, 
 			ArrayList <GameObject> inventory,
 			boolean inventoryIsEquipped,
@@ -59,7 +56,7 @@ public class InventoryUi extends Screens {
 			) {
 		if (inventory.size() > 0) {
 			if (inventoryIsEquipped) {
-				inventory.get(currentlySelectedInventoryObject).renderObject(batch, shapeRenderer, imageLoader);
+				inventory.get(currentlySelectedInventoryObject).renderObject(batch, imageLoader);
 			}
 		}
 		if (allInventoryShouldBeRendered) {
@@ -71,7 +68,7 @@ public class InventoryUi extends Screens {
 					camera.viewportWidth - borderShrinkOffset * 2, 
 					-camera.viewportHeight
 					);
-			renderInventoryDisplay(batch, shapeRenderer, imageLoader, inventory);
+			renderInventoryDisplay(batch, imageLoader, inventory);
 
 			int clickedObject = 0;
 			if (mouseIsClickingOnInventoryObject) {
@@ -87,7 +84,7 @@ public class InventoryUi extends Screens {
 			fire.setY(rectangle.y);
 			fire.setWidth(rectangle.getWidth() / 6.5f);
 			fire.setHeight(rectangle.getHeight() / 2);
-			fire.renderObject(batch, shapeRenderer, imageLoader);
+			fire.renderObject(batch, imageLoader);
 
 			renderUiNavigationBar(imageLoader.inventoryNavigationBar, batch);
 		}
@@ -169,11 +166,10 @@ public class InventoryUi extends Screens {
 	 * Renders the inventory objects over their inventory sqaures.
 	 * 
 	 * @param SpriteBatch            batch
-	 * @param ShapeRenderer          shapeRenderer
 	 * @param ImageLoader            imageLoader
 	 * @param ArrayList <GameObject> inventory
 	 */
-	public void renderInventoryDisplay(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader, ArrayList <GameObject> inventory) {
+	public void renderInventoryDisplay(SpriteBatch batch, ImageLoader imageLoader, ArrayList <GameObject> inventory) {
 		float xStartPosition = GameScreen.camera.position.x - GameScreen.cameraWidth / 2 - 5.5f;
 		float offset         = 0.25f;
 		float yStartPosition = GameScreen.camera.position.y + offset;
@@ -184,7 +180,7 @@ public class InventoryUi extends Screens {
 			for (int i = 0; i < inventory.size(); i++) {
 				inventory.get(i).setX(x);
 				inventory.get(i).setY(y);
-				inventory.get(i).renderObject(batch, shapeRenderer, imageLoader);
+				inventory.get(i).renderObject(batch, imageLoader);
 				x += 4f;
 
 				if (i > 4 && resetX) {

@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
@@ -177,11 +176,10 @@ public class Enemy extends GameCharacter {
 	/**
 	 * 
 	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shaperender
 	 * @param ImageLoader   imageLoader
 	 */
 	@Override
-	public void renderObject(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		elapsedTime += Gdx.graphics.getDeltaTime();
 		int playerSize = 1;
 		if (!dead) {
@@ -201,7 +199,7 @@ public class Enemy extends GameCharacter {
 			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 		} else {
 			if (timer < MAX_DEATH_ANIMATION_VALUE) {
-				fire.renderObject(batch, shapeRenderer, imageLoader);
+				fire.renderObject(batch, imageLoader);
 			}
 		}
 	}

@@ -86,6 +86,7 @@ public class WeatherHandler {
 	 * 
 	 * @param MyGame myGame
 	 */
+	/*
 	public void renderClouds(MyGame myGame) {
 		for (int i = 0; i < cloud.length; i++) {
 			cloud[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
@@ -93,7 +94,7 @@ public class WeatherHandler {
 			cloud3[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
 			cloud4[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
 		}
-	}
+	} */
 
 	/**
 	 * 
@@ -164,7 +165,6 @@ public class WeatherHandler {
 		if (isStorming) { 
 			lightningHandler.renderObject(
 					myGame.renderer.batch, 
-					myGame.renderer.shapeRenderer, 
 					myGame.imageLoader,
 					gameScreen
 					);
