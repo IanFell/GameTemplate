@@ -28,6 +28,7 @@ public class GuiScreen extends Screens {
 	 * @param ImageLoader imageLoader
 	 */
 	public void render(SpriteBatch batch, ImageLoader imageLoader) {
+		/*
 		float xPosition = 0f;
 		float yPosition = 0f;
 		// offsetValue is different depending on player speed (land vs water).
@@ -60,13 +61,14 @@ public class GuiScreen extends Screens {
 		} else {
 			xPosition = camera.position.x - getViewportWidth() / denominatorOffset;
 			yPosition = camera.position.y - verticalHeight / denominatorOffset + offsetYValue;
-		}
+		} */
+		/*
 		batch.draw(
 				imageLoader.ui, 
 				xPosition, 
 				yPosition, 
 				camera.viewportWidth, 
 				-camera.viewportHeight
-				);
+				); */
 	}
 }

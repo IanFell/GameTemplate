@@ -75,7 +75,6 @@ public class Tile extends Sprite {
 	 */
 	public static void initializeTileTextures(MyGame myGame) {
 		grassTextureOne           = myGame.imageLoader.grassTileOne;
-		buildingTexture           = myGame.imageLoader.solidTile;
 		sandTexture               = myGame.imageLoader.sandTile;
 		waterTextureOne           = myGame.imageLoader.waterTileOne;
 		sandTextureHorizontalPath = myGame.imageLoader.sandTileHorizontalPath;

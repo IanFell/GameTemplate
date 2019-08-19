@@ -38,7 +38,6 @@ public class InventoryScreen extends Screens {
 		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, null);
 		updateCamera();
 		myGame.renderer.batch.begin();
-		//myGame.getGameObject(Player.PLAYER_ONE).renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader);
 		myGame.renderer.batch.draw(
 				myGame.imageLoader.inventoryLabel, 
 				Screens.cameraX + Screens.camera.viewportWidth / 2 - 210, 

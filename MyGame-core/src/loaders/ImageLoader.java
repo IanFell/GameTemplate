@@ -11,6 +11,12 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public class ImageLoader {
 	
+	// Game objects.
+	public Texture chestClosed;
+	public Texture chestOpen;
+	public Texture heart;
+	public Texture boat;
+	
 	// Nature Objects.
 	public Texture rock;
 	public Texture drSuessTree;
@@ -59,14 +65,14 @@ public class ImageLoader {
 	public Texture fireEight;
 	public Texture fireNine;
 	public Texture fireTen;
+	public Texture dustParticleOne;
+	public Texture dustParticleTwo;
+	public Texture dustParticleThree;
 	
-	
+	// Cutscene objects.
 	public Texture[] cutSceneDialogueOne = new Texture[9];
-	public Texture heart;
-	public Texture inventoryNavigationBar;
-	public Texture mapNavigationBar;
-	//public Texture testImage;
-	public Texture icon;
+	
+	// Map objects.
 	public Texture worldMapReal;
 	public Texture worldMapFake;
 	public Texture worldMapMexicoBeach;
@@ -76,17 +82,13 @@ public class ImageLoader {
 	public Texture worldMapCapeSanBlas;
 	public Texture worldMapThePoint;
 	public Texture worldMapWewa;
-	//public Texture enemy;
-	public Texture boat;
-	//public Texture gunUp;
-	//public Texture gunDown;
-	public Texture splashScreenLogo;
-	public Texture titleScreenLogo;
-	public Texture inventoryScreen;
+	
+	// Mission objects.
 	public Texture legendOfTheSevenSwordsBeginMissionText;
+	public Texture missionComplete;
+	
+	// Tile objects.
 	public Texture grassTileOne;
-	public Texture grassTileTwo;
-	public Texture solidTile;
 	public Texture sandTile;
 	public Texture sandTileHorizontalPath;
 	public Texture sandTileLeftDownPath;
@@ -96,30 +98,37 @@ public class ImageLoader {
 	public Texture waterTileOne;
 	public Texture waterTileTwo;
 	public Texture waterTileThree;
+	public Texture nightTimeShader;
 	
+	// UI objects.
+	public Texture inventoryNavigationBar;
+	public Texture mapNavigationBar;
+	public Texture inventoryScreen;
+	public Texture inventoryLabel;
 	
-	//public Texture playerSprite;
+	// Logo objects.
+	public Texture splashScreenLogo;
+	public Texture titleScreenLogo;
+	public Texture icon;
+	
+	// Debugging Objects.
+	public Texture whiteSquare;
+	
+	// Game Characters.
+	// Player Objects.
 	public Texture playerHeadUp;
 	public Texture playerHeadDown;
 	public Texture playerHeadLeft;
 	public Texture playerHeadRight;
-	//public Texture tree;
-	public Texture chestClosed;
-	public Texture chestOpen;
-	public Texture whiteSquare;
 	
-	public Texture playerScore;
-	public Texture ui;
-	public Texture missionComplete;
-	public Texture inventoryLabel;
-	public Texture nightTimeShader;
-	public Texture dustParticleOne;
-	public Texture dustParticleTwo;
-	public Texture dustParticleThree;
-	
-	
-
 	public void init() {
+		
+		// Game objects.
+		chestClosed                            = new Texture(Gdx.files.internal("artwork/Chest.png"));
+		chestOpen					           = new Texture(Gdx.files.internal("artwork/ChestOpen.png"));
+		heart    						       = new Texture(Gdx.files.internal("artwork/Heart.png"));
+		boat    					           = new Texture(Gdx.files.internal("artwork/BOAT_NEW.png"));
+		
 		// Nature Objects.
 		rock 								   = new Texture(Gdx.files.internal("artwork/nature/Rock.png"));
 		logs                                   = new Texture(Gdx.files.internal("artwork/nature/Logs.png"));
@@ -168,73 +177,11 @@ public class ImageLoader {
 		fireEight                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire8.png"));
 		fireNine	                           = new Texture(Gdx.files.internal("artwork/effects/fire/Fire9.png"));
 		fireTen                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire10.png"));
-		
-		
-		
-		heart    						       = new Texture(Gdx.files.internal("Heart.png"));
-		
-		
-		mapNavigationBar                       = new Texture(Gdx.files.internal("UiMap.png"));
-		inventoryNavigationBar                 = new Texture(Gdx.files.internal("UiInventory.png"));
-		
-		
-		worldMapMexicoBeach					   = new Texture(Gdx.files.internal("WorldMapMexicoBeach.png"));
-		worldMapThePoint					   = new Texture(Gdx.files.internal("WorldMapThePoint.png"));
-		worldMapPortStJoe					   = new Texture(Gdx.files.internal("WorldMapPortStJoe.png"));
-		worldMapCapeSanBlas					   = new Texture(Gdx.files.internal("WorldMapCapeSanBlas.png"));
-		worldMapApalachicola				   = new Texture(Gdx.files.internal("WorldMapApalachicola.png"));
-		worldMapWewa      					   = new Texture(Gdx.files.internal("WorldMapWewa.png"));
-		worldMapStGeorge					   = new Texture(Gdx.files.internal("WorldMapStGeorge.png"));
-		worldMapFake						   = new Texture(Gdx.files.internal("WorldMapFake.png"));
-		worldMapReal						   = new Texture(Gdx.files.internal("WorldMapReal.png"));
 		dustParticleOne                        = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleOne.png"));
 		dustParticleTwo                        = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleTwo.png"));
 		dustParticleThree                      = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleThree.png"));
-		nightTimeShader                        = new Texture(Gdx.files.internal("NightTimeShader.png"));
-		icon                                   = new Texture(Gdx.files.internal("artwork/GoldenAgeIcon.png"));
-		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("LegendOfTheSevenSwords.png"));
-		boat    					           = new Texture(Gdx.files.internal("BOAT_NEW.png"));
-		//enemy    					           = new Texture(Gdx.files.internal("Enemy.png"));
-		inventoryScreen                        = new Texture(Gdx.files.internal("InventoryScreen.png"));
-		inventoryLabel                         = new Texture(Gdx.files.internal("InventoryLabel.png"));
 		
-		//gunUp  					               = new Texture(Gdx.files.internal("GunUp.png"));
-		//gunDown                                = new Texture(Gdx.files.internal("GunDown.png"));
-		
-		missionComplete                        = new Texture(Gdx.files.internal("MissionComplete.png"));
-		
-		
-		splashScreenLogo                       = new Texture(Gdx.files.internal("logo_ffg.png"));
-		titleScreenLogo                        = new Texture(Gdx.files.internal("GoldenAgeLogo.png"));
-		//testImage                              = new Texture(Gdx.files.internal("badlogic.jpg"));
-		grassTileOne     			           = new Texture(Gdx.files.internal("GrassTileOne.png"));
-		grassTileTwo                           = new Texture(Gdx.files.internal("GrassTileTwo.png"));
-		waterTileOne                           = new Texture(Gdx.files.internal("WaterOne.png"));
-		waterTileTwo                           = new Texture(Gdx.files.internal("WaterTwo.png"));
-		waterTileThree				           = new Texture(Gdx.files.internal("WaterThree.png"));
-		sandTile                               = new Texture(Gdx.files.internal("SandTile2.png"));
-		sandTileHorizontalPath                 = new Texture(Gdx.files.internal("SandTileHorizontalPath.png"));
-		sandTileLeftDownPath                   = new Texture(Gdx.files.internal("SandTileLeftDownPath.png"));
-		sandTileVerticalPath		           = new Texture(Gdx.files.internal("SandTileVerticalPath.png"));
-		sandTileTopRightPath	               = new Texture(Gdx.files.internal("SandTileTopRightPath.png"));
-		sandTileCrossPath                      = new Texture(Gdx.files.internal("SandTileCrossPath.png"));
-		solidTile                              = new Texture(Gdx.files.internal("FakeTile.png"));
-		
-		//playerSprite                           = new Texture(Gdx.files.internal("PlayerSprite.png"));
-		//tree                                   = new Texture(Gdx.files.internal("SampleTree.png"));
-		chestClosed                            = new Texture(Gdx.files.internal("artwork/Chest.png"));
-		chestOpen					           = new Texture(Gdx.files.internal("artwork/ChestOpen.png"));
-		whiteSquare                            = new Texture(Gdx.files.internal("WhiteSquare.png"));
-		playerScore                            = new Texture(Gdx.files.internal("PlayerScoreGui.png"));
-		
-		
-		
-		playerHeadUp 				           = new Texture(Gdx.files.internal("PlayerHeadUp.png"));
-		playerHeadDown 				           = new Texture(Gdx.files.internal("PlayerHeadDown.png"));
-		playerHeadLeft 				           = new Texture(Gdx.files.internal("PlayerHeadLeft.png"));
-		playerHeadRight 			           = new Texture(Gdx.files.internal("PlayerHeadRight.png"));
-		ui 							           = new Texture(Gdx.files.internal("UI.png"));
-		
+		// Cutscene objects.
 		cutSceneDialogueOne[0] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_One.png"));
 		cutSceneDialogueOne[1] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Two.png"));
 		cutSceneDialogueOne[2] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Three.png"));
@@ -244,9 +191,64 @@ public class ImageLoader {
 		cutSceneDialogueOne[6] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Seven.png"));
 		cutSceneDialogueOne[7] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Eight.png"));
 		cutSceneDialogueOne[8] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Nine.png"));
+		
+		// Map objects.
+		worldMapMexicoBeach					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapMexicoBeach.png"));
+		worldMapThePoint					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapThePoint.png"));
+		worldMapPortStJoe					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapPortStJoe.png"));
+		worldMapCapeSanBlas					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapCapeSanBlas.png"));
+		worldMapApalachicola				   = new Texture(Gdx.files.internal("artwork/maps/WorldMapApalachicola.png"));
+		worldMapWewa      					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapWewa.png"));
+		worldMapStGeorge					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapStGeorge.png"));
+		worldMapFake						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapFake.png"));
+		worldMapReal						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapReal.png"));
+		
+		// Mission objects.
+		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("artwork/missions/LegendOfTheSevenSwords.png"));
+		missionComplete                        = new Texture(Gdx.files.internal("artwork/missions/MissionComplete.png"));
+		
+		// Tile objects.
+		grassTileOne     			           = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
+		sandTile                               = new Texture(Gdx.files.internal("artwork/tiles/SandTile2.png"));
+		sandTileHorizontalPath                 = new Texture(Gdx.files.internal("artwork/tiles/SandTileHorizontalPath.png"));
+		sandTileLeftDownPath                   = new Texture(Gdx.files.internal("artwork/tiles/SandTileLeftDownPath.png"));
+		sandTileVerticalPath		           = new Texture(Gdx.files.internal("artwork/tiles/SandTileVerticalPath.png"));
+		sandTileTopRightPath	               = new Texture(Gdx.files.internal("artwork/tiles/SandTileTopRightPath.png"));
+		sandTileCrossPath                      = new Texture(Gdx.files.internal("artwork/tiles/SandTileCrossPath.png"));
+		waterTileOne                           = new Texture(Gdx.files.internal("artwork/tiles/WaterOne.png"));
+		waterTileTwo                           = new Texture(Gdx.files.internal("artwork/tiles/WaterTwo.png"));
+		waterTileThree				           = new Texture(Gdx.files.internal("artwork/tiles/WaterThree.png"));
+		nightTimeShader                        = new Texture(Gdx.files.internal("artwork/tiles/NightTimeShader.png"));
+		
+		// UI objects.
+		mapNavigationBar                       = new Texture(Gdx.files.internal("artwork/ui/UiMap.png"));
+		inventoryNavigationBar                 = new Texture(Gdx.files.internal("artwork/ui/UiInventory.png"));
+		inventoryScreen                        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
+		inventoryLabel                         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
+		
+		// Logo objects.
+		splashScreenLogo                       = new Texture(Gdx.files.internal("artwork/logos/logo_ffg.png"));
+		titleScreenLogo                        = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeLogo.png"));
+		icon                                   = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeIcon.png"));
+		
+		// Debugging objects.
+		whiteSquare                            = new Texture(Gdx.files.internal("artwork/debugging/WhiteSquare.png"));
+	
+		// Character Objects.
+		// Player Objects.
+		playerHeadUp 				           = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerHeadUp.png"));
+		playerHeadDown 				           = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerHeadDown.png"));
+		playerHeadLeft 				           = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerHeadLeft.png"));
+		playerHeadRight 			           = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerHeadRight.png"));
 	}
 
 	public void dispose() {
+		
+		// Game objects.
+		chestClosed.dispose();
+		chestOpen.dispose();
+		heart.dispose();
+		boat.dispose();
 		
 		// Nature Objects.
 		rock.dispose();
@@ -296,12 +298,16 @@ public class ImageLoader {
 		fireEight.dispose();
 		fireNine.dispose();
 		fireTen.dispose();
+		dustParticleOne.dispose();
+		dustParticleTwo.dispose();
+		dustParticleThree.dispose();
 		
-		heart.dispose();
-		mapNavigationBar.dispose();
-		inventoryNavigationBar.dispose();
+		// Cutscene objects.
+		for(int i = 0; i < cutSceneDialogueOne.length; i++) {
+			cutSceneDialogueOne[i].dispose();
+		}
 		
-		
+		// Map objects.
 		worldMapMexicoBeach.dispose();
 		worldMapStGeorge.dispose();
 		worldMapApalachicola.dispose();
@@ -311,56 +317,43 @@ public class ImageLoader {
 		worldMapPortStJoe.dispose();
 		worldMapFake.dispose();
 		worldMapReal.dispose();
-		dustParticleOne.dispose();
-		dustParticleTwo.dispose();
-		dustParticleThree.dispose();
-		icon.dispose();
+		
+		// Mission objects.
 		legendOfTheSevenSwordsBeginMissionText.dispose();
-		boat.dispose();
-		//enemy.dispose();
-		
-		inventoryScreen.dispose();
-		inventoryLabel.dispose();
-		//gunUp.dispose();
-		//gunDown.dispose();
-		
 		missionComplete.dispose();
-		splashScreenLogo.dispose();
-		titleScreenLogo.dispose();
-		//testImage.dispose();
+		
+		// Tile objects.
 		grassTileOne.dispose();
-		grassTileTwo.dispose();
-		waterTileOne.dispose();
-		waterTileTwo.dispose();
-		waterTileThree.dispose();
-		solidTile.dispose();
 		sandTile.dispose();
 		sandTileHorizontalPath.dispose();
 		sandTileLeftDownPath.dispose();
 		sandTileVerticalPath.dispose();
 		sandTileTopRightPath.dispose();
 		sandTileCrossPath.dispose();
+		waterTileOne.dispose();
+		waterTileTwo.dispose();
+		waterTileThree.dispose();
+		nightTimeShader.dispose();
 		
+		// UI objects.
+		mapNavigationBar.dispose();
+		inventoryNavigationBar.dispose();
+		inventoryScreen.dispose();
+		inventoryLabel.dispose();
 		
-		//playerSprite.dispose();
-		//tree.dispose();
-		chestClosed.dispose();
-		chestOpen.dispose();
+		// Logo objects.
+		splashScreenLogo.dispose();
+		titleScreenLogo.dispose();
+		icon.dispose();
+		
+		// Debugging objects.
 		whiteSquare.dispose();
-		playerScore.dispose();
 		
-		
-		
+		// Game Characters.
+		// Player Objects.
 		playerHeadUp.dispose();
 		playerHeadDown.dispose();
 		playerHeadLeft.dispose();
 		playerHeadRight.dispose();
-		ui.dispose();
-		
-		nightTimeShader.dispose();
-
-		for(int i = 0; i < cutSceneDialogueOne.length; i++) {
-			cutSceneDialogueOne[i].dispose();
-		}
 	}
 }
