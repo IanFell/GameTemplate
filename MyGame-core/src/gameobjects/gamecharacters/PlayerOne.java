@@ -74,15 +74,12 @@ public class PlayerOne extends Player {
 			Fire.playSound = true;
 		}
 
-
 		//simulateDeath(myGame, this);
-		//if (getInventory().inventory.get(1) != null)
-		
-		//if (getInventory() != null)
 		
 		if (Inventory.inventoryHasStartedCollection) {
-		inventory.updateInventory(x, y, mapHandler);
+			inventory.updateInventory(x, y, mapHandler);
 		}
+		//System.out.println(playerOneXPositions.size());
 	}
 
 	/**

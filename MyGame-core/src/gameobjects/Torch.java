@@ -37,7 +37,7 @@ public class Torch extends GameObject {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		fire.setX(PlayerController.getCurrentPlayer(myGame).getX() + 1);
+		fire.setX(PlayerController.getCurrentPlayer(myGame).getX());
 		fire.setY(PlayerController.getCurrentPlayer(myGame).getY() - 1);
 		fire.updateObject(myGame, mapHandler);
 	}

@@ -114,13 +114,6 @@ public class ImageLoader {
 	// Debugging Objects.
 	public Texture whiteSquare;
 	
-	// Game Characters.
-	// Player Objects.
-	public Texture playerHeadUp;
-	public Texture playerHeadDown;
-	public Texture playerHeadLeft;
-	public Texture playerHeadRight;
-	
 	public void init() {
 		
 		// Game objects.
@@ -233,13 +226,6 @@ public class ImageLoader {
 		
 		// Debugging objects.
 		whiteSquare                            = new Texture(Gdx.files.internal("artwork/debugging/WhiteSquare.png"));
-	
-		// Character Objects.
-		// Player Objects.
-		playerHeadUp 				           = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerHeadUp.png"));
-		playerHeadDown 				           = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerHeadDown.png"));
-		playerHeadLeft 				           = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerHeadLeft.png"));
-		playerHeadRight 			           = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerHeadRight.png"));
 	}
 
 	public void dispose() {
@@ -348,12 +334,5 @@ public class ImageLoader {
 		
 		// Debugging objects.
 		whiteSquare.dispose();
-		
-		// Game Characters.
-		// Player Objects.
-		playerHeadUp.dispose();
-		playerHeadDown.dispose();
-		playerHeadLeft.dispose();
-		playerHeadRight.dispose();
 	}
 }

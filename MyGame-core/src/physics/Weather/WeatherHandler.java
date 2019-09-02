@@ -57,13 +57,14 @@ public class WeatherHandler {
 	}
 
 	/**
+	 * Don't perform night cycle yet.  It makes the game to slow.
 	 * 
 	 * @param MyGame     myGame
 	 * @param GameScreen gameScreen
 	 * @param MapHandler mapHandler
 	 */
 	public void update(MyGame myGame, GameScreen gameScreen, MapHandler mapHandler) {
-		nightAndDayCycle.performDayAndNightCycle();
+		//nightAndDayCycle.performDayAndNightCycle();
 		updateStormCycle(myGame, gameScreen, mapHandler);
 		updateClouds(myGame, gameScreen);
 	}

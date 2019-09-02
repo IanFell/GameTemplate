@@ -117,15 +117,15 @@ public class Inventory extends Screens {
 			yPosition = y - 1f;
 			break;
 		case Player.DIRECTION_LEFT:
-			xPosition = x - 2.0f;
+			xPosition = x - 1.0f;
 			yPosition = y - 1.0f;
 			break;
 		case Player.DIRECTION_DOWN:
-			xPosition = x - 3.0f;
-			yPosition = y + inventoryHeight;
+			xPosition = x - 2.0f;
+			yPosition = y;
 			break;
 		case Player.DIRECTION_UP:
-			xPosition = x;
+			xPosition = x + 1.0f;
 			yPosition = y - inventoryHeight - 3;
 			break;
 		}	
