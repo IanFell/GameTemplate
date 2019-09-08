@@ -2,11 +2,16 @@ package gameobjects.gamecharacters;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import gameobjects.Torch;
+import gameobjects.weapons.Gun;
 import handlers.AnimationHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
@@ -22,7 +27,7 @@ import physics.Lighting.Fire;
 public class PlayerOne extends Player {
 
 	private Torch torch;
-	
+
 	int timer = 0;
 
 	/**
@@ -75,11 +80,25 @@ public class PlayerOne extends Player {
 		}
 
 		//simulateDeath(myGame, this);
-		
+
 		if (Inventory.inventoryHasStartedCollection) {
 			inventory.updateInventory(x, y, mapHandler);
 		}
-		//System.out.println(playerOneXPositions.size());
+
+		if (Inventory.inventoryIsEquipped) {
+			walkRightTexture = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerRightGun.atlas"));
+			walkLeftTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerLeftGun.atlas")); 
+			walkDownTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerDownGun.atlas")); 
+
+			walkRightAnimation = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
+			walkLeftAnimation  = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+			walkDownAnimation  = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
+		} else {
+			walkRightTexture   = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerRightRed.atlas"));
+			walkLeftTexture    = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerLeftRed.atlas")); 
+			walkRightAnimation = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
+			walkLeftAnimation  = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+		}
 	}
 
 	/**

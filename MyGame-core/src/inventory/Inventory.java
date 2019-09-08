@@ -9,6 +9,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
+import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.Weapon;
 import loaders.ImageLoader;
@@ -34,6 +35,7 @@ public class Inventory extends Screens {
 	public static int currentlySelectedInventoryObject;
 	private static InventoryUi inventoryUi;
 	public static boolean inventoryHasStartedCollection = false;
+	public static boolean inventoryObjectHasBeenCollected = false;
 
 	/**
 	 * Constructor.
@@ -83,7 +85,7 @@ public class Inventory extends Screens {
 		int objectType  = Weapon.WEAPON_TYPE_SWORD;
 		if (inventory.get(currentlySelectedInventoryObject) instanceof LegendSword) {
 			objectType = Weapon.WEAPON_TYPE_SWORD;
-		} else {
+		} else if (inventory.get(currentlySelectedInventoryObject) instanceof Gun) {
 			objectType = Weapon.WEAPON_TYPE_GUN;
 		}
 		if (inventory.size() >= 0) {
@@ -114,15 +116,15 @@ public class Inventory extends Screens {
 		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 		case Player.DIRECTION_RIGHT:
 			xPosition = x + 1;
-			yPosition = y - 1f;
+			yPosition = y;
 			break;
 		case Player.DIRECTION_LEFT:
 			xPosition = x - 1.0f;
-			yPosition = y - 1.0f;
+			yPosition = y;
 			break;
 		case Player.DIRECTION_DOWN:
 			xPosition = x - 2.0f;
-			yPosition = y;
+			yPosition = y - 0.5f;
 			break;
 		case Player.DIRECTION_UP:
 			xPosition = x + 1.0f;

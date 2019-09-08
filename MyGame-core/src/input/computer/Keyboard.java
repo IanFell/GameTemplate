@@ -121,6 +121,10 @@ public class Keyboard extends ComputerInput {
 					}
 				}
 			} 
+			
+			if (Gdx.input.isKeyPressed(Input.Keys.B)) {
+				Inventory.inventoryIsEquipped = false;
+			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.M)) {
 				if (!startClickTimer) {

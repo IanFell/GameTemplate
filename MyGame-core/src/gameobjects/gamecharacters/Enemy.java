@@ -73,16 +73,16 @@ public class Enemy extends GameCharacter {
 		}
 		fire = new Fire(0, 0, 0.5f, 1.5f, "Enemy", false);
 
-		walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyDown.atlas"));
-		walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyUp.atlas"));
-		walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyRight.atlas"));
-		walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyLeft.atlas"));
+		walkDownTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyDown.atlas"));
+		walkUpTexture    = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyUp.atlas"));
+		walkRightTexture = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyRight.atlas"));
+		walkLeftTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyLeft.atlas"));
 
-		float animationSpeed     = 7/15f;
-		walkDownAnimation        = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
-		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
-		walkRightAnimation       = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
-		walkLeftAnimation        = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+		float animationSpeed = 7/15f;
+		walkDownAnimation    = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
+		walkUpAnimation      = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
+		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
+		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
 	}
 
 	/**

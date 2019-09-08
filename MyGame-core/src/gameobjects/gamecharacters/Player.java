@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import gameobjects.weapons.Gun;
+import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
@@ -108,22 +110,22 @@ public class Player extends GameCharacter {
 
 		switch (playerNumber) {
 		case Player.PLAYER_ONE:
-			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerDownRed.atlas"));
-			walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerUpRed.atlas"));
-			walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerRightRed.atlas"));
-			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerLeftRed.atlas")); 
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerDownRed.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/PlayerUpRed.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerRightRed.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerLeftRed.atlas")); 
 			break;
 		case Player.PLAYER_TWO:
-			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerTwo.atlas"));
-			walkUpTexture            = new TextureAtlas(Gdx.files.internal("playerTwoUp.atlas"));
-			walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerTwoRight.atlas"));
-			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerTwoLeft.atlas")); 
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwo.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoUp.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoRight.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoLeft.atlas")); 
 			break;
 		case Player.PLAYER_THREE:
-			walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerThreeDown.atlas"));
-			walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerThreeUp.atlas"));
-			walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerThreeRight.atlas"));
-			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerThreeLeft.atlas")); 
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeDown.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/PlayerThreeUp.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeRight.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeLeft.atlas")); 
 			break;
 		}
 
@@ -211,26 +213,26 @@ public class Player extends GameCharacter {
 		switch (lifeState) {
 		case LIFE_STATE_ONE:
 			if (playerNumber == PLAYER_ONE) {
-				walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerTwo.atlas"));
-				walkUpTexture            = new TextureAtlas(Gdx.files.internal("playerTwoUp.atlas"));
-				walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerTwoRight.atlas"));
-				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerTwoLeft.atlas")); 
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwo.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoLeft.atlas")); 
 			}
 			if (playerNumber == PLAYER_TWO) {
-				walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerThreeDown.atlas"));
-				walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerThreeUp.atlas"));
-				walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerThreeRight.atlas"));
-				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerThreeLeft.atlas"));
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeDown.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/PlayerThreeUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeLeft.atlas"));
 				lifeState                = LIFE_STATE_TWO;
 				myGame.getGameObject(Player.PLAYER_ONE).setHealth(STARTING_HEALTH);
 			}
 			break;
 		case LIFE_STATE_TWO:
 			if (playerNumber == PLAYER_ONE) {
-				walkDownTexture          = new TextureAtlas(Gdx.files.internal("playerThreeDown.atlas"));
-				walkUpTexture            = new TextureAtlas(Gdx.files.internal("PlayerThreeUp.atlas"));
-				walkRightTexture         = new TextureAtlas(Gdx.files.internal("playerThreeRight.atlas"));
-				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("playerThreeLeft.atlas")); 
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeDown.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/PlayerThreeUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeLeft.atlas")); 
 			}
 			if (playerNumber == PLAYER_TWO) {
 				lifeState = LIFE_STATE_THREE;

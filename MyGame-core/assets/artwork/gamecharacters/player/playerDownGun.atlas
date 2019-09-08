@@ -1,24 +1,24 @@
 
-playerUp.png
+playerDownGun.png
 size: 128,64
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-04
+JR_01_Red_Gun
   rotate: false
   xy: 2, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-05
+JR_02_Red_Gun
   rotate: false
   xy: 36, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-06
+JR_03_Red_Gun
   rotate: false
   xy: 70, 2
   size: 32, 32
