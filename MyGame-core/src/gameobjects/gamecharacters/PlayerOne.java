@@ -89,10 +89,12 @@ public class PlayerOne extends Player {
 			walkRightTexture = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerRightGun.atlas"));
 			walkLeftTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerLeftGun.atlas")); 
 			walkDownTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerDownGun.atlas")); 
+			walkUpTexture    = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerUpGun.atlas")); 
 
 			walkRightAnimation = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 			walkLeftAnimation  = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
 			walkDownAnimation  = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
+			walkUpAnimation    = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		} else {
 			walkRightTexture   = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerRightRed.atlas"));
 			walkLeftTexture    = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerLeftRed.atlas")); 
