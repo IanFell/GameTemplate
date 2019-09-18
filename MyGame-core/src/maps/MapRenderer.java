@@ -5,6 +5,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import handlers.CollisionHandler;
 import maps.mapchunks.MapChunk;
+import screens.GameScreen;
 import tiles.Tile;
 
 /**
@@ -69,8 +70,10 @@ public class MapRenderer {
 							z
 							)
 							) {
-						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
-						animateWaterTiles(i, myGame, x, z);
+						if (gameObjectIsWithinScreenBounds(MapHandler.mapChunks.get(i).tileMap[x][z])) {
+							MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
+							animateWaterTiles(i, myGame, x, z);
+						}
 						/*
 						CollisionHandler.checkIfPlayerHasCollidedWithSolidTile(
 								myGame.getGameObject(GameObject.PLAYER_ONE), 
@@ -84,7 +87,10 @@ public class MapRenderer {
 								);
 						/**
 						 * This slows the game down.  Maybe we don't need it as enemies will always follow player anyway.
+						 * 
+						 * Take this out for now and make enemies swim after player.
 						 */
+						/*
 						for (int k = 0; k < myGame.gameScreen.enemyHandler.enemySpawner.length; k++) {
 							if (myGame.gameScreen.enemyHandler.enemySpawner[k].enemies != null) {
 								for (int enemy = 0; enemy < myGame.gameScreen.enemyHandler.enemySpawner[k].enemies.size(); enemy++) {
@@ -97,7 +103,7 @@ public class MapRenderer {
 									}
 								}
 							}
-						} 
+						} */
 					}
 				}
 			}
@@ -136,5 +142,28 @@ public class MapRenderer {
 				tile.setTexture(myGame.imageLoader.waterTileOne);
 			}
 		}
+	}
+
+	/**
+	 * Determines if game object is rendering bounds.
+	 * 
+	 * @param GameObject gameObject
+	 * @return boolean
+	 */
+	public static boolean gameObjectIsWithinScreenBounds(Tile gameObject) {
+		float cameraXPosition   = GameScreen.camera.position.x;
+		float cameraYPosition   = GameScreen.camera.position.y;
+		float playerXPosition   = gameObject.getX();
+		float playerYPosition   = gameObject.getY();
+		float screenBoundOffset = 15.0f;
+		if (
+				playerXPosition < cameraXPosition + screenBoundOffset &&
+				playerXPosition > cameraXPosition - screenBoundOffset &&
+				playerYPosition < cameraYPosition + screenBoundOffset &&
+				playerYPosition > cameraYPosition - screenBoundOffset
+				) {
+			return true;
+		}
+		return false;
 	}
 }

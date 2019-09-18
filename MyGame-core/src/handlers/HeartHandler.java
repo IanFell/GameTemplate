@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import gameobjects.Heart;
 import helpers.GameAttributeHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import screens.GameScreen;
 
 /**
  * 
@@ -61,7 +63,32 @@ public class HeartHandler {
 	 */
 	public void renderHearts(SpriteBatch batch, ImageLoader imageLoader) {
 		for (int i = 0; i < hearts.size(); i++) {
-			hearts.get(i).renderObject(batch, imageLoader);
+			if (gameObjectIsWithinScreenBounds(hearts.get(i))) {
+				hearts.get(i).renderObject(batch, imageLoader);
+			}
 		}
+	}
+
+	/**
+	 * Determines if game object is rendering bounds.
+	 * 
+	 * @param GameObject gameObject
+	 * @return boolean
+	 */
+	public static boolean gameObjectIsWithinScreenBounds(GameObject gameObject) {
+		float cameraXPosition   = GameScreen.camera.position.x;
+		float cameraYPosition   = GameScreen.camera.position.y;
+		float playerXPosition   = gameObject.getX();
+		float playerYPosition   = gameObject.getY();
+		float screenBoundOffset = 17.0f;
+		if (
+				playerXPosition < cameraXPosition + screenBoundOffset &&
+				playerXPosition > cameraXPosition - screenBoundOffset &&
+				playerYPosition < cameraYPosition + screenBoundOffset &&
+				playerYPosition > cameraYPosition - screenBoundOffset
+				) {
+			return true;
+		}
+		return false;
 	}
 }

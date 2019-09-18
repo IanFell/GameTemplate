@@ -35,6 +35,8 @@ import towns.Town;
 public class Player extends GameCharacter { 
 
 	private String name;
+	
+	protected String playerRenderingPrefix = "artwork/gamecharacters/player/";
 
 	public final static float PLAYER_SPEED = 0.10f;
 
@@ -110,22 +112,22 @@ public class Player extends GameCharacter {
 
 		switch (playerNumber) {
 		case Player.PLAYER_ONE:
-			walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerDownRed.atlas"));
-			walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/PlayerUpRed.atlas"));
-			walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerRightRed.atlas"));
-			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerLeftRed.atlas")); 
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownRed.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "PlayerUpRed.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightRed.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftRed.atlas")); 
 			break;
 		case Player.PLAYER_TWO:
-			walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwo.atlas"));
-			walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoUp.atlas"));
-			walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoRight.atlas"));
-			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoLeft.atlas")); 
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwo.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoUp.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoRight.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoLeft.atlas")); 
 			break;
 		case Player.PLAYER_THREE:
-			walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeDown.atlas"));
-			walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/PlayerThreeUp.atlas"));
-			walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeRight.atlas"));
-			walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeLeft.atlas")); 
+			walkDownTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeDown.atlas"));
+			walkUpTexture            = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "PlayerThreeUp.atlas"));
+			walkRightTexture         = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeRight.atlas"));
+			walkLeftTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeLeft.atlas")); 
 			break;
 		}
 
@@ -213,26 +215,26 @@ public class Player extends GameCharacter {
 		switch (lifeState) {
 		case LIFE_STATE_ONE:
 			if (playerNumber == PLAYER_ONE) {
-				walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwo.atlas"));
-				walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoUp.atlas"));
-				walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoRight.atlas"));
-				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerTwoLeft.atlas")); 
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwo.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoLeft.atlas")); 
 			}
 			if (playerNumber == PLAYER_TWO) {
-				walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeDown.atlas"));
-				walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/PlayerThreeUp.atlas"));
-				walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeRight.atlas"));
-				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeLeft.atlas"));
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeDown.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "PlayerThreeUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeLeft.atlas"));
 				lifeState                = LIFE_STATE_TWO;
 				myGame.getGameObject(Player.PLAYER_ONE).setHealth(STARTING_HEALTH);
 			}
 			break;
 		case LIFE_STATE_TWO:
 			if (playerNumber == PLAYER_ONE) {
-				walkDownTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeDown.atlas"));
-				walkUpTexture            = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/PlayerThreeUp.atlas"));
-				walkRightTexture         = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeRight.atlas"));
-				walkLeftTexture          = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerThreeLeft.atlas")); 
+				walkDownTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeDown.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "PlayerThreeUp.atlas"));
+				walkRightTexture         = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeRight.atlas"));
+				walkLeftTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeLeft.atlas")); 
 			}
 			if (playerNumber == PLAYER_TWO) {
 				lifeState = LIFE_STATE_THREE;

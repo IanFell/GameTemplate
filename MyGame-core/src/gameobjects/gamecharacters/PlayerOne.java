@@ -3,6 +3,7 @@ package gameobjects.gamecharacters;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -11,7 +12,6 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import gameobjects.Torch;
-import gameobjects.weapons.Gun;
 import handlers.AnimationHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
@@ -86,21 +86,38 @@ public class PlayerOne extends Player {
 		}
 
 		if (Inventory.inventoryIsEquipped) {
-			walkRightTexture = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerRightGun.atlas"));
-			walkLeftTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerLeftGun.atlas")); 
-			walkDownTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerDownGun.atlas")); 
-			walkUpTexture    = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerUpGun.atlas")); 
-
-			walkRightAnimation = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
-			walkLeftAnimation  = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
-			walkDownAnimation  = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
-			walkUpAnimation    = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
+			setAnimations(
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightGun.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftGun.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerUpGun.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownGun.atlas"))
+					);
 		} else {
-			walkRightTexture   = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerRightRed.atlas"));
-			walkLeftTexture    = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/player/playerLeftRed.atlas")); 
-			walkRightAnimation = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
-			walkLeftAnimation  = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+			setAnimations(
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightRed.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftRed.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerUpRed.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownRed.atlas"))
+					);
 		}
+	}
+
+	/**
+	 * 
+	 * @param TextureAtlas walkRight
+	 * @param TextureAtlas walkLeft
+	 * @param TextureAtlas walkUp
+	 * @param TextureAtlas walkDown
+	 */
+	private void setAnimations(TextureAtlas walkRight, TextureAtlas walkLeft, TextureAtlas walkUp, TextureAtlas walkDown) {
+		walkRightTexture   = walkRight;
+		walkLeftTexture    = walkLeft;
+		walkDownTexture    = walkDown;
+		walkUpTexture      = walkUp;
+		walkRightAnimation = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
+		walkLeftAnimation  = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+		walkDownAnimation  = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
+		walkUpAnimation    = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 	}
 
 	/**
@@ -125,7 +142,6 @@ public class PlayerOne extends Player {
 		if (hasTorch) {	
 			torch.renderObject(batch, imageLoader);
 		}
-
 		//renderHitBox(batch, imageLoader);
 	}
 

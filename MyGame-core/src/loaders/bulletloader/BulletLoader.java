@@ -7,6 +7,7 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.gamecharacters.Player;
+import gameobjects.gamecharacters.PlayerOne;
 import gameobjects.weapons.Bullet;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -62,7 +63,7 @@ public class BulletLoader {
 		if (bullets.size() < 1) {
 			float xPosition = 0;
 			float yPosition = 0;
-			switch (Player.direction) {
+			switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 			case Player.DIRECTION_LEFT:
 				xPosition = PlayerController.getCurrentPlayer(myGame).getX() - 1f;
 				yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 0.9f;
@@ -72,7 +73,7 @@ public class BulletLoader {
 				yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 0.7f;
 				break;
 			case Player.DIRECTION_UP:
-				xPosition = PlayerController.getCurrentPlayer(myGame).getX() + 0.7f;
+				xPosition = PlayerController.getCurrentPlayer(myGame).getX();
 				yPosition = PlayerController.getCurrentPlayer(myGame).getY() - 2.5f;
 				break;
 			case Player.DIRECTION_DOWN:

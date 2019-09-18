@@ -5,12 +5,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
+import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
 import handlers.CollisionHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import screens.GameScreen;
 
 /**
  * 
@@ -56,36 +58,61 @@ public class LegendSword extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		if (hasBeenCollected || Inventory.allInventoryShouldBeRendered) {
-			batch.draw(
-					textureRegionFull, 
-					x, 
-					y, 
-					width / 2, 
-					height / 2, 
-					width, 
-					-height, 
-					1, 
-					1, 
-					rotationAngle
-					); 
-		} else {
-			batch.draw(
-					textureRegionHalf, 
-					x, 
-					y, 
-					width / 2, 
-					height / 2, 
-					width, 
-					-height, 
-					1, 
-					1, 
-					rotationAngle
-					); 
-			int plantSize = 1;
-			batch.draw(imageLoader.plant, x, y + 0.5f, plantSize, -plantSize);
+		if (gameObjectIsWithinScreenBounds(this)) {
+			if (hasBeenCollected || Inventory.allInventoryShouldBeRendered) {
+				batch.draw(
+						textureRegionFull, 
+						x, 
+						y, 
+						width / 2, 
+						height / 2, 
+						width, 
+						-height, 
+						1, 
+						1, 
+						rotationAngle
+						); 
+			} else {
+				batch.draw(
+						textureRegionHalf, 
+						x, 
+						y, 
+						width / 2, 
+						height / 2, 
+						width, 
+						-height, 
+						1, 
+						1, 
+						rotationAngle
+						); 
+				int plantSize = 1;
+				batch.draw(imageLoader.plant, x, y + 0.5f, plantSize, -plantSize);
+			}
 		}
 		//renderHitBox(batch, imageLoader);
+	}
+
+	/**
+	 * Determines if game object is rendering bounds.
+	 * 
+	 * @param GameObject gameObject
+	 * @return boolean
+	 */
+	public static boolean gameObjectIsWithinScreenBounds(GameObject gameObject) {
+		float cameraXPosition   = GameScreen.camera.position.x;
+		float cameraYPosition   = GameScreen.camera.position.y;
+		float playerXPosition   = gameObject.getX();
+		float playerYPosition   = gameObject.getY();
+		float screenBoundOffset = 17.0f;
+		if (
+				playerXPosition < cameraXPosition + screenBoundOffset &&
+				playerXPosition > cameraXPosition - screenBoundOffset &&
+				playerYPosition < cameraYPosition + screenBoundOffset &&
+				playerYPosition > cameraYPosition - screenBoundOffset
+				) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

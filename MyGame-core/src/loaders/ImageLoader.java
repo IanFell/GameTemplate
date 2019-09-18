@@ -10,13 +10,13 @@ import com.badlogic.gdx.graphics.Texture;
  *
  */
 public class ImageLoader {
-	
+
 	// Game objects.
 	public Texture chestClosed;
 	public Texture chestOpen;
 	public Texture heart;
 	public Texture boat;
-	
+
 	// Nature Objects.
 	public Texture rock;
 	public Texture drSuessTree;
@@ -27,10 +27,12 @@ public class ImageLoader {
 	public Texture light;
 	public Texture rain;
 	public Texture shadow;
-	
+
 	// Weapon Objects.
 	public Texture gunRight;
 	public Texture gunLeft;
+	public Texture gunUp;
+	public Texture gunDown;
 	public Texture legendSwordRed;
 	public Texture legendSwordBlue;
 	public Texture legendSwordGreen;
@@ -46,14 +48,14 @@ public class ImageLoader {
 	public Texture legendSwordPurpleHalf;
 	public Texture legendSwordPinkHalf;
 	public Texture legendSwordRainbow;
-	
+
 	// Structure Objects.
 	public Texture teePee;
 	public Texture rawbar;
 	public Texture lightHouse;
 	public Texture pigglywiggly;
 	public Texture slaveHut;
-	
+
 	// Effects Objects.
 	public Texture fireOne;
 	public Texture fireTwo;
@@ -68,10 +70,10 @@ public class ImageLoader {
 	public Texture dustParticleOne;
 	public Texture dustParticleTwo;
 	public Texture dustParticleThree;
-	
+
 	// Cutscene objects.
 	public Texture[] cutSceneDialogueOne = new Texture[9];
-	
+
 	// Map objects.
 	public Texture worldMapReal;
 	public Texture worldMapFake;
@@ -82,11 +84,11 @@ public class ImageLoader {
 	public Texture worldMapCapeSanBlas;
 	public Texture worldMapThePoint;
 	public Texture worldMapWewa;
-	
+
 	// Mission objects.
 	public Texture legendOfTheSevenSwordsBeginMissionText;
 	public Texture missionComplete;
-	
+
 	// Tile objects.
 	public Texture grassTileOne;
 	public Texture sandTile;
@@ -99,29 +101,29 @@ public class ImageLoader {
 	public Texture waterTileTwo;
 	public Texture waterTileThree;
 	public Texture nightTimeShader;
-	
+
 	// UI objects.
 	public Texture inventoryNavigationBar;
 	public Texture mapNavigationBar;
 	public Texture inventoryScreen;
 	public Texture inventoryLabel;
-	
+
 	// Logo objects.
 	public Texture splashScreenLogo;
 	public Texture titleScreenLogo;
 	public Texture icon;
-	
+
 	// Debugging Objects.
 	public Texture whiteSquare;
-	
+
 	public void init() {
-		
+
 		// Game objects.
 		chestClosed                            = new Texture(Gdx.files.internal("artwork/Chest.png"));
 		chestOpen					           = new Texture(Gdx.files.internal("artwork/ChestOpen.png"));
 		heart    						       = new Texture(Gdx.files.internal("artwork/Heart.png"));
 		boat    					           = new Texture(Gdx.files.internal("artwork/BOAT_NEW.png"));
-		
+
 		// Nature Objects.
 		rock 								   = new Texture(Gdx.files.internal("artwork/nature/Rock.png"));
 		logs                                   = new Texture(Gdx.files.internal("artwork/nature/Logs.png"));
@@ -132,10 +134,12 @@ public class ImageLoader {
 		light                                  = new Texture(Gdx.files.internal("artwork/nature/Lighting.png"));
 		rain 						           = new Texture(Gdx.files.internal("artwork/nature/Rain.png"));
 		shadow                                 = new Texture(Gdx.files.internal("artwork/nature/Shadow.png"));
-		
+
 		// Weapon Objects.
 		gunRight   					           = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
 		gunLeft                                = new Texture(Gdx.files.internal("artwork/weapons/gun/Left.png"));
+		gunUp                                  = new Texture(Gdx.files.internal("artwork/weapons/gun/Up.png"));
+		gunDown                                = new Texture(Gdx.files.internal("artwork/weapons/gun/Down.png"));
 		legendSwordRedHalf                     = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordRedHalf.png"));
 		legendSwordBlueHalf                    = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordBlueHalf.png"));
 		legendSwordGreenHalf                   = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordGreenHalf.png"));
@@ -151,14 +155,14 @@ public class ImageLoader {
 		legendSwordOrange                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordOrange.png"));
 		legendSwordPurple                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPurple.png"));
 		legendSwordPink                        = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPink.png"));
-		
+
 		// Structure Objects.
 		slaveHut                               = new Texture(Gdx.files.internal("artwork/structures/SlaveHut.png"));
 		rawbar						           = new Texture(Gdx.files.internal("artwork/structures/RawBar3d.png"));
 		lightHouse                             = new Texture(Gdx.files.internal("artwork/structures/LightHouse.png"));
 		pigglywiggly                           = new Texture(Gdx.files.internal("artwork/structures/PigglyWiggly3D.png"));
 		teePee   					           = new Texture(Gdx.files.internal("artwork/structures/TeePee3D.png"));
-		
+
 		// Effects Objects.
 		fireOne                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire1.png"));
 		fireTwo                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire2.png"));
@@ -173,7 +177,7 @@ public class ImageLoader {
 		dustParticleOne                        = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleOne.png"));
 		dustParticleTwo                        = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleTwo.png"));
 		dustParticleThree                      = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleThree.png"));
-		
+
 		// Cutscene objects.
 		cutSceneDialogueOne[0] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_One.png"));
 		cutSceneDialogueOne[1] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Two.png"));
@@ -184,7 +188,7 @@ public class ImageLoader {
 		cutSceneDialogueOne[6] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Seven.png"));
 		cutSceneDialogueOne[7] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Eight.png"));
 		cutSceneDialogueOne[8] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Nine.png"));
-		
+
 		// Map objects.
 		worldMapMexicoBeach					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapMexicoBeach.png"));
 		worldMapThePoint					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapThePoint.png"));
@@ -195,11 +199,11 @@ public class ImageLoader {
 		worldMapStGeorge					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapStGeorge.png"));
 		worldMapFake						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapFake.png"));
 		worldMapReal						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapReal.png"));
-		
+
 		// Mission objects.
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("artwork/missions/LegendOfTheSevenSwords.png"));
 		missionComplete                        = new Texture(Gdx.files.internal("artwork/missions/MissionComplete.png"));
-		
+
 		// Tile objects.
 		grassTileOne     			           = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
 		sandTile                               = new Texture(Gdx.files.internal("artwork/tiles/SandTile2.png"));
@@ -212,30 +216,30 @@ public class ImageLoader {
 		waterTileTwo                           = new Texture(Gdx.files.internal("artwork/tiles/WaterTwo.png"));
 		waterTileThree				           = new Texture(Gdx.files.internal("artwork/tiles/WaterThree.png"));
 		nightTimeShader                        = new Texture(Gdx.files.internal("artwork/tiles/NightTimeShader.png"));
-		
+
 		// UI objects.
 		mapNavigationBar                       = new Texture(Gdx.files.internal("artwork/ui/UiMap.png"));
 		inventoryNavigationBar                 = new Texture(Gdx.files.internal("artwork/ui/UiInventory.png"));
 		inventoryScreen                        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
 		inventoryLabel                         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
-		
+
 		// Logo objects.
 		splashScreenLogo                       = new Texture(Gdx.files.internal("artwork/logos/logo_ffg.png"));
 		titleScreenLogo                        = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeLogo.png"));
 		icon                                   = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeIcon.png"));
-		
+
 		// Debugging objects.
 		whiteSquare                            = new Texture(Gdx.files.internal("artwork/debugging/WhiteSquare.png"));
 	}
 
 	public void dispose() {
-		
+
 		// Game objects.
 		chestClosed.dispose();
 		chestOpen.dispose();
 		heart.dispose();
 		boat.dispose();
-		
+
 		// Nature Objects.
 		rock.dispose();
 		logs.dispose();
@@ -246,10 +250,12 @@ public class ImageLoader {
 		light.dispose();
 		rain.dispose();
 		shadow.dispose();
-		
+
 		// Weapon Objects.
 		gunRight.dispose();
 		gunLeft.dispose();
+		gunUp.dispose();
+		gunDown.dispose();
 		legendSwordRed.dispose();
 		legendSwordBlue.dispose();
 		legendSwordGreen.dispose();
@@ -265,14 +271,14 @@ public class ImageLoader {
 		legendSwordPurpleHalf.dispose();
 		legendSwordPinkHalf.dispose();
 		legendSwordOrangeHalf.dispose();
-		
+
 		// Structure objects.
 		slaveHut.dispose();
 		teePee.dispose();
 		rawbar.dispose();
 		lightHouse.dispose();
 		pigglywiggly.dispose();
-		
+
 		// Effects Objects.
 		fireOne.dispose();
 		fireTwo.dispose();
@@ -287,12 +293,12 @@ public class ImageLoader {
 		dustParticleOne.dispose();
 		dustParticleTwo.dispose();
 		dustParticleThree.dispose();
-		
+
 		// Cutscene objects.
 		for(int i = 0; i < cutSceneDialogueOne.length; i++) {
 			cutSceneDialogueOne[i].dispose();
 		}
-		
+
 		// Map objects.
 		worldMapMexicoBeach.dispose();
 		worldMapStGeorge.dispose();
@@ -303,11 +309,11 @@ public class ImageLoader {
 		worldMapPortStJoe.dispose();
 		worldMapFake.dispose();
 		worldMapReal.dispose();
-		
+
 		// Mission objects.
 		legendOfTheSevenSwordsBeginMissionText.dispose();
 		missionComplete.dispose();
-		
+
 		// Tile objects.
 		grassTileOne.dispose();
 		sandTile.dispose();
@@ -320,18 +326,18 @@ public class ImageLoader {
 		waterTileTwo.dispose();
 		waterTileThree.dispose();
 		nightTimeShader.dispose();
-		
+
 		// UI objects.
 		mapNavigationBar.dispose();
 		inventoryNavigationBar.dispose();
 		inventoryScreen.dispose();
 		inventoryLabel.dispose();
-		
+
 		// Logo objects.
 		splashScreenLogo.dispose();
 		titleScreenLogo.dispose();
 		icon.dispose();
-		
+
 		// Debugging objects.
 		whiteSquare.dispose();
 	}

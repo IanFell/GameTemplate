@@ -92,8 +92,7 @@ public class Inventory extends Screens {
 			for (int i = 0; i < inventory.size(); i++) {
 				if (objectType == Weapon.WEAPON_TYPE_SWORD) {
 					updateSword(i, xPosition, yPosition, x, y);
-				}
-				else {
+				} else {
 					updateGun(i, xPosition, yPosition, x, y);
 				}
 				if (Inventory.allInventoryShouldBeRendered) {
@@ -123,12 +122,12 @@ public class Inventory extends Screens {
 			yPosition = y;
 			break;
 		case Player.DIRECTION_DOWN:
-			xPosition = x - 2.0f;
-			yPosition = y - 0.5f;
+			xPosition = x;
+			yPosition = y + 1.0f;
 			break;
 		case Player.DIRECTION_UP:
-			xPosition = x + 1.0f;
-			yPosition = y - inventoryHeight - 3;
+			xPosition = x;
+			yPosition = y - inventoryHeight - 0.5f;
 			break;
 		}	
 		inventory.get(selectedInventory).setX(xPosition);
