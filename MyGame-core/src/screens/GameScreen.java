@@ -39,8 +39,6 @@ public class GameScreen extends Screens {
 	private HealthUi healthUi;
 	//private GuiScreen guiScreen = new GuiScreen(myGame);
 
-	private HeartHandler heartHandler = new HeartHandler();
-
 	public static int cameraWidth = 10;
 
 	/**
@@ -70,12 +68,12 @@ public class GameScreen extends Screens {
 	/**
 	 * Used for transparancy to render clouds.
 	 */
-	private ScreenShader screenShader = new ScreenShader(myGame);
+	//private ScreenShader screenShader = new ScreenShader(myGame);
 
 	/**
 	 * When this screen fades, gameplay starts.
 	 */
-	private ScreenShader screenShaderPostIntro = new ScreenShader(myGame);
+	//private ScreenShader screenShaderPostIntro = new ScreenShader(myGame);
 
 	/**
 	 *  Screen fades in during transitions.
@@ -98,6 +96,8 @@ public class GameScreen extends Screens {
 	public EnemyHandler enemyHandler = new EnemyHandler();
 
 	public TownHandler townHandler = new TownHandler();
+	
+	private HeartHandler heartHandler = new HeartHandler();
 
 	private CutSceneIntro cutSceneIntro;
 
@@ -230,12 +230,13 @@ public class GameScreen extends Screens {
 		GameWorld.updateGameWorld(myGame, mapHandler);
 		mapUi.updateWorldMapUi();
 		townHandler.updateTowns(myGame);
-		screenShader.updateObject();
+		//screenShader.updateObject();
 
 		// Fade into gameplay after intro cutscene.
+		/*
 		if (cutSceneIntro.isCutSceneConcluded()) {
 			screenShaderPostIntro.updateObject();
-		}
+		} */
 
 		// Start missions after intro cutscene.
 		if (cutSceneIntro.isCutSceneConcluded()) {

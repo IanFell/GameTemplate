@@ -3,7 +3,6 @@ package gameobjects.gamecharacters;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -16,6 +15,7 @@ import handlers.AnimationHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import maps.MapLocationFinder;
 import physics.Lighting.Fire;
 
 /**
@@ -100,6 +100,8 @@ public class PlayerOne extends Player {
 					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownRed.atlas"))
 					);
 		}
+		
+		//System.out.println(MapLocationFinder.getPlayerLocationOnMap(this));
 	}
 
 	/**

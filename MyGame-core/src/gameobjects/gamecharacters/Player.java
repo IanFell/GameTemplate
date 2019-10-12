@@ -17,6 +17,7 @@ import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import maps.MapLocationFinder;
 import particles.DustParticleEmitter;
 import towns.Town;
 
@@ -38,7 +39,7 @@ public class Player extends GameCharacter {
 	
 	protected String playerRenderingPrefix = "artwork/gamecharacters/player/";
 
-	public final static float PLAYER_SPEED = 0.10f;
+	public final static float PLAYER_SPEED = 0.3f;
 
 	public static boolean isInWater = false;
 

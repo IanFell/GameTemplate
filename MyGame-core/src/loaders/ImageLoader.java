@@ -107,6 +107,7 @@ public class ImageLoader {
 	public Texture mapNavigationBar;
 	public Texture inventoryScreen;
 	public Texture inventoryLabel;
+	public Texture locationSkull;
 
 	// Logo objects.
 	public Texture splashScreenLogo;
@@ -127,7 +128,7 @@ public class ImageLoader {
 		// Nature Objects.
 		rock 								   = new Texture(Gdx.files.internal("artwork/nature/Rock.png"));
 		logs                                   = new Texture(Gdx.files.internal("artwork/nature/Logs.png"));
-		palmTreeThree                          = new Texture(Gdx.files.internal("artwork/nature/PalmTreeNewOriginalAlternate.png"));
+		palmTreeThree                          = new Texture(Gdx.files.internal("artwork/nature/PalmTreeNewOriginal3_02.png"));
 		palmTree					  	       = new Texture(Gdx.files.internal("artwork/nature/PalmTreeNewOriginal3.png"));
 		plant                         	       = new Texture(Gdx.files.internal("artwork/nature/PlantNewOriginal.png"));
 		drSuessTree                            = new Texture(Gdx.files.internal("artwork/nature/DrSuessTree.png"));
@@ -222,7 +223,8 @@ public class ImageLoader {
 		inventoryNavigationBar                 = new Texture(Gdx.files.internal("artwork/ui/UiInventory.png"));
 		inventoryScreen                        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
 		inventoryLabel                         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
-
+		locationSkull                          = new Texture(Gdx.files.internal("artwork/ui/Skull.png"));
+		
 		// Logo objects.
 		splashScreenLogo                       = new Texture(Gdx.files.internal("artwork/logos/logo_ffg.png"));
 		titleScreenLogo                        = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeLogo.png"));
@@ -332,6 +334,7 @@ public class ImageLoader {
 		inventoryNavigationBar.dispose();
 		inventoryScreen.dispose();
 		inventoryLabel.dispose();
+		locationSkull.dispose();
 
 		// Logo objects.
 		splashScreenLogo.dispose();

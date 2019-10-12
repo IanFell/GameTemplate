@@ -147,7 +147,7 @@ public class MapRenderer {
 	/**
 	 * Determines if game object is rendering bounds.
 	 * 
-	 * @param GameObject gameObject
+	 * @param Tile gameObject
 	 * @return boolean
 	 */
 	public static boolean gameObjectIsWithinScreenBounds(Tile gameObject) {
