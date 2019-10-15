@@ -15,7 +15,6 @@ import handlers.AnimationHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
-import maps.MapLocationFinder;
 import physics.Lighting.Fire;
 
 /**
@@ -48,7 +47,7 @@ public class PlayerOne extends Player {
 	public PlayerOne(String name, MyGame myGame, int playerNumber) {
 		super(name, myGame, playerNumber);
 		playerScore = 0;
-		torch                    = new Torch(0, 0);
+		torch       = new Torch(0, 0);
 	}
 
 	/**
@@ -100,8 +99,6 @@ public class PlayerOne extends Player {
 					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownRed.atlas"))
 					);
 		}
-		
-		//System.out.println(MapLocationFinder.getPlayerLocationOnMap(this));
 	}
 
 	/**
@@ -124,8 +121,8 @@ public class PlayerOne extends Player {
 
 	/**
 	 * 
-	 * @param SpriteBatch   batch
-	 * @param ImageLoader   imageLoader
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {

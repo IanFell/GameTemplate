@@ -13,12 +13,11 @@ import helpers.GameAttributeHelper;
  */
 public class MapLocationFinder {
 
-	static float x = 0;
-	static float y = 0;
-	static float xChunk = 0;
-	static float yChunk = 0;
-	
-	static Point playerLocation = new Point(0, 0);
+	private static float x              = 0;
+	private static float y              = 0;
+	private static float xChunk         = 0;
+	private static float yChunk         = 0;
+	private static Point playerLocation = new Point(0, 0);
 
 	/**
 	 * This method will take the player and find his coordinates in order to tranfer
@@ -27,18 +26,21 @@ public class MapLocationFinder {
 	 * @param Player player
 	 */
 	public static Point getPlayerLocationOnMap(Player player) {
-
 		playerLocation.x = (int) getPlayerChunkPositionX(player);
 		playerLocation.y = (int) getPlayerChunkPositionY(player);
-
 		//System.out.println("Player position:" + x + ", " + y);
 		return playerLocation;
 
 	}
 
+	/**
+	 * 
+	 * @param Player player
+	 * @return player
+	 */
 	private static float getPlayerChunkPositionX(Player player) {
-		x = player.getX();
 		// Find player x position.
+		x = player.getX();
 		if (x > GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START) {
 			xChunk = 8;
 		} else if (x > GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START) {
@@ -59,9 +61,14 @@ public class MapLocationFinder {
 		return xChunk;
 	}
 
+	/**
+	 * 
+	 * @param Player player
+	 * @return player
+	 */
 	private static float getPlayerChunkPositionY(Player player) {
-		y = player.getY();
 		// Find player x position.
+		y = player.getY();
 		if (y > GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START) {
 			yChunk = 8;
 		} else if (y > GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START) {
@@ -81,5 +88,4 @@ public class MapLocationFinder {
 		}
 		return yChunk;
 	}
-
 }

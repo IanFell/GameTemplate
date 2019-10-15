@@ -12,6 +12,7 @@ import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.bulletloader.BulletLoader;
+import missions.MissionRawBar;
 import screens.GameScreen;
 import screens.Screens;
 import ui.MapUi;
@@ -121,7 +122,7 @@ public class Keyboard extends ComputerInput {
 					}
 				}
 			} 
-			
+
 			if (Gdx.input.isKeyPressed(Input.Keys.B)) {
 				Inventory.inventoryIsEquipped = false;
 			}
@@ -188,20 +189,39 @@ public class Keyboard extends ComputerInput {
 		}
 
 		if(GameObjectLoader.gameObjectList.contains(player)) {
-			if (Gdx.input.isKeyPressed(left)) {
-				((Player) player).moveLeft(playerSpeed);
-			}
-			else if (Gdx.input.isKeyPressed(right)) {
-				((Player) player).moveRight(playerSpeed);
-			}
-			else if (Gdx.input.isKeyPressed(up)) {
-				((Player) player).moveUp(playerSpeed);
-			}
-			else if (Gdx.input.isKeyPressed(down)) {
-				((Player) player).moveDown(playerSpeed);
-			}
-			else {
-				Player.playerIsMoving = false;
+			// RawBar Mission uses a different player than normal since it's kind of like a mini game.
+			if (MissionRawBar.missionIsActive) {
+				float rawBarPlayerSpeed = 0.3f;
+				if (Gdx.input.isKeyPressed(left)) {
+					MissionRawBar.playerX -= rawBarPlayerSpeed;
+				}
+				else if (Gdx.input.isKeyPressed(right)) {
+					MissionRawBar.playerX += rawBarPlayerSpeed;
+				}
+				else if (Gdx.input.isKeyPressed(up)) {
+					MissionRawBar.playerY -= rawBarPlayerSpeed;
+				}
+				else if (Gdx.input.isKeyPressed(down)) {
+					MissionRawBar.playerY += rawBarPlayerSpeed;
+				}
+			} else {
+				// Use normal player.
+				if (Gdx.input.isKeyPressed(left)) {
+					((Player) player).moveLeft(playerSpeed);
+				}
+				else if (Gdx.input.isKeyPressed(right)) {
+					((Player) player).moveRight(playerSpeed);
+				}
+				else if (Gdx.input.isKeyPressed(up)) {
+					((Player) player).moveUp(playerSpeed);
+				}
+				else if (Gdx.input.isKeyPressed(down)) {
+					((Player) player).moveDown(playerSpeed);
+				}
+				else {
+					Player.playerIsMoving = false;
+				}
+
 			}
 		}
 	}

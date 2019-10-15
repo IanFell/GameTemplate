@@ -24,7 +24,7 @@ public class Mission {
 	 * Consructor.
 	 */
 	public Mission() {
-		missionComplete = false;
+		missionComplete = false; 
 		timer           = 0;
 	}
 

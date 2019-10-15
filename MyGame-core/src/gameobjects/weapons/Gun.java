@@ -14,6 +14,7 @@ import loaders.ImageLoader;
 import loaders.bulletloader.BulletLoader;
 import maps.MapHandler;
 import screens.GameScreen;
+import ui.MapUi;
 
 /**
  * 
@@ -140,36 +141,39 @@ public class Gun extends Weapon {
 	 */
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		int value = 1;
+		if (Inventory.allInventoryShouldBeRendered) {
+			rotationAngle = 0;
+		}
+		
 		if (gameObjectIsWithinScreenBounds(this)) {
-			if (!hasBeenCollected || Inventory.allInventoryShouldBeRendered) {
-				if (Inventory.allInventoryShouldBeRendered) {
-					rotationAngle = 0;
+			if (!hasBeenCollected) {
+				if (!MapUi.mapShouldBeRendered) {
+					batch.draw(
+							textureRegion, 
+							x, 
+							y, 
+							width, 
+							height, 
+							width, 
+							-height, 
+							value, 
+							value, 
+							rotationAngle
+							);
 				}
-				batch.draw(
-						textureRegion, 
-						x, 
-						y, 
-						width, 
-						height, 
-						width, 
-						-height, 
-						value, 
-						value, 
-						rotationAngle
-						); 
 			} else if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) == this && Inventory.inventoryIsEquipped) {
-				batch.draw(
-						textureRegion, 
-						x, 
-						y, 
-						width, 
-						height, 
-						width, 
-						-height, 
-						value, 
-						value, 
-						rotationAngle
-						); 
+					batch.draw(
+							textureRegion, 
+							x, 
+							y, 
+							width, 
+							height, 
+							width, 
+							-height, 
+							value, 
+							value, 
+							rotationAngle
+							);
 			}
 		}
 	}

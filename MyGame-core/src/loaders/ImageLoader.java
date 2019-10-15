@@ -224,7 +224,7 @@ public class ImageLoader {
 		inventoryScreen                        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
 		inventoryLabel                         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
 		locationSkull                          = new Texture(Gdx.files.internal("artwork/ui/Skull.png"));
-		
+
 		// Logo objects.
 		splashScreenLogo                       = new Texture(Gdx.files.internal("artwork/logos/logo_ffg.png"));
 		titleScreenLogo                        = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeLogo.png"));

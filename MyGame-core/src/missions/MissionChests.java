@@ -57,7 +57,7 @@ public class MissionChests extends Mission {
 			System.out.println("CHEST MISSION COMPLETE!");
 		} else if (countDownTimer >= maxMissionCount) {
 			executeMission   = false;
-			missionComplete  = false;
+			missionComplete = false;
 			System.out.println("CHEST MISSION FAILED!");
 		}
 	}
