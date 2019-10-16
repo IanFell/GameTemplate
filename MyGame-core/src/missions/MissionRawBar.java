@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
+import gameobjects.GameObject;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import screens.GameScreen;
@@ -41,11 +43,17 @@ public class MissionRawBar extends Mission {
 	// This will be assigned to one of the above values.
 	private int numberOfOystersNeededToWin;
 
-	public static boolean missionIsActive = true;
+	public static boolean phaseIsActive = true;
 
 	private boolean initializeMission = true;
 
 	private boolean phaseComplete = false;
+
+	/**
+	 * Timer to display to user how many oysters to collect.  
+	 * This message only appears for a few seconds at the start of the phase.
+	 */
+	private int collectOysterMessageTimer = 0;
 
 	// Oysters will have a random x, y, and size.
 	private double[] oysterX                   = new double[MAX_OYSTERS_SPAWNED];
@@ -122,6 +130,11 @@ public class MissionRawBar extends Mission {
 		checkForMissionComplete();
 
 		System.out.println("Oysters Collected: " + oystersCollected);
+
+		// Only display how many oysters to collect for a few seconds.
+		if (collectOysterMessageTimer < 50) {
+			collectOysterMessageTimer++;
+		}
 	}
 
 	/**
@@ -152,9 +165,9 @@ public class MissionRawBar extends Mission {
 
 	/**
 	 * 
-	 * @param SpriteBatch   batch
-	 * @param ImageLoader   imageLoader
-	 * @param MyGame        myGame
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param MyGame      myGame
 	 */
 	@Override
 	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
@@ -190,8 +203,37 @@ public class MissionRawBar extends Mission {
 				-playerSize
 				);
 
+		/**
+		 * Alert player how many oysters to collect.  
+		 * This message appears for a few seconds at the start of the phase.
+		 */
+		renderCollectOysterMessage(batch, imageLoader, myGame);
+
 		if (missionComplete) {
-			renderMissionCompleteMessage(batch, imageLoader, myGame);
+			//renderMissionCompleteMessage(batch, imageLoader, myGame);
+		}
+	}
+
+	/**
+	 * Alerts player how many oysters to collect.  
+	 * This message appears for a few seconds at the start of the phase.
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param MyGame      myGame
+	 */
+	protected void renderCollectOysterMessage(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
+		int missionCompleteSize = 10;
+		int half                = 2;
+		GameObject player       = PlayerController.getCurrentPlayer(myGame);
+		if (collectOysterMessageTimer < 50) {
+			batch.draw(
+					imageLoader.missionComplete, 
+					player.getX() - GameScreen.cameraWidth / half, 
+					player.getY() + GameScreen.cameraWidth / half, 
+					missionCompleteSize, 
+					-missionCompleteSize
+					);
 		}
 	}
 }

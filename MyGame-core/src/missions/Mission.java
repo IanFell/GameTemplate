@@ -15,10 +15,10 @@ import screens.GameScreen;
  */
 public class Mission {
 
-	private final int MISSION_COMPLETE_DISPLAY_TIME_VALUE = 350;
+	protected final int MISSION_COMPLETE_DISPLAY_TIME_VALUE = 350;
 
 	protected static boolean missionComplete;
-	private int timer;
+	protected int timer;
 
 	/**
 	 * Consructor.
