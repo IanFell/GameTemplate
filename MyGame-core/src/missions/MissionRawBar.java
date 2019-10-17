@@ -118,6 +118,10 @@ public class MissionRawBar extends Mission {
 		playerY = startPhasesLocator.y;
 	}
 
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
 	private void initializeMission(MyGame myGame) {
 		int cameraOffset = 10;
 		for (int i = 0 ; i < MAX_OYSTERS_SPAWNED; i++) {
@@ -282,7 +286,7 @@ public class MissionRawBar extends Mission {
 			// Draw intro screen until INTRO_TIME_LIMIT runs out.
 			if (!introHasCompleted) {
 				batch.draw(
-						imageLoader.whiteSquare, 
+						imageLoader.missionRawBarInside, 
 						GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
 						GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2,
 						GameScreen.camera.viewportWidth, 

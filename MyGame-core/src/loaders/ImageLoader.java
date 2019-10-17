@@ -88,6 +88,7 @@ public class ImageLoader {
 	// Mission objects.
 	public Texture legendOfTheSevenSwordsBeginMissionText;
 	public Texture missionComplete;
+	public Texture missionRawBarInside;
 
 	// Tile objects.
 	public Texture grassTileOne;
@@ -204,6 +205,7 @@ public class ImageLoader {
 		// Mission objects.
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("artwork/missions/LegendOfTheSevenSwords.png"));
 		missionComplete                        = new Texture(Gdx.files.internal("artwork/missions/MissionComplete.png"));
+		missionRawBarInside                    = new Texture(Gdx.files.internal("artwork/missions/RawBarMissionInside.png"));
 
 		// Tile objects.
 		grassTileOne     			           = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
@@ -315,6 +317,7 @@ public class ImageLoader {
 		// Mission objects.
 		legendOfTheSevenSwordsBeginMissionText.dispose();
 		missionComplete.dispose();
+		missionRawBarInside.dispose();
 
 		// Tile objects.
 		grassTileOne.dispose();

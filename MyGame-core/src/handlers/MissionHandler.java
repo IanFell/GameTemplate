@@ -61,10 +61,12 @@ public class MissionHandler {
 	 */
 	private void handleRawBarMission(MyGame myGame) {
 		if (missionRawBarPhaseThree.isPhaseComplete()) {
-			MissionRawBar.phasesAreInProgress = false;
+			// Entire mission is complete now.
+			MissionRawBar.phasesAreInProgress   = false;
 			MissionRawBar.rawBarMissionComplete = true;
 		}
 		
+		// Mission is the phases.
 		if (missionRawBarPhaseTwo.isPhaseComplete()) {
 			missionRawBarPhaseThree.updateMission(myGame);
 		} else if (missionRawBarPhaseOne.isPhaseComplete()) {
