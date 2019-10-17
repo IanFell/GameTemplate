@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.Enemy;
-import helpers.GamePlayHelper;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -71,14 +70,14 @@ public class EnemySpawner {
 	public void updateEnemies(MyGame myGame, MapHandler mapHandler) {
 		if (enemies != null) {
 			for (int i = 0; i < enemies.size(); i++) {
-				if (GamePlayHelper.gameObjectIsWithinScreenBounds(enemies.get(i))) {
+				//if (GamePlayHelper.gameObjectIsWithinScreenBounds(enemies.get(i))) {
 					enemies.get(i).updateObject(myGame, mapHandler);
 					// If enemy is dead and his dead fire animation has ended.
 					if (enemies.get(i).isDead() && enemies.get(i).getTimer() >= Enemy.MAX_DEATH_ANIMATION_VALUE) {
 						GameObjectLoader.gameObjectList.remove(enemies.get(i));
 						enemies.remove(i);
 					}
-				}
+				//}
 			}
 		}
 		if (enemies.size() < MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE) {

@@ -21,6 +21,8 @@ public class MissionHandler {
 	private MissionRawBar missionRawBarPhaseOne;
 	private MissionRawBar missionRawBarPhaseTwo;
 	private MissionRawBar missionRawBarPhaseThree;
+	
+	//int i = 0;
 
 	/**
 	 * Constructor.
@@ -46,8 +48,11 @@ public class MissionHandler {
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		//missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame));
-		//missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
-		handleRawBarMission(myGame);
+		missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
+		
+		if (MissionRawBar.missionIsActive) {
+			handleRawBarMission(myGame);
+		}
 	}
 
 	/**
@@ -55,6 +60,11 @@ public class MissionHandler {
 	 * @param MyGame myGame
 	 */
 	private void handleRawBarMission(MyGame myGame) {
+		if (missionRawBarPhaseThree.isPhaseComplete()) {
+			MissionRawBar.phasesAreInProgress = false;
+			MissionRawBar.rawBarMissionComplete = true;
+		}
+		
 		if (missionRawBarPhaseTwo.isPhaseComplete()) {
 			missionRawBarPhaseThree.updateMission(myGame);
 		} else if (missionRawBarPhaseOne.isPhaseComplete()) {
@@ -72,8 +82,11 @@ public class MissionHandler {
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		//missionChests.renderMission(batch, imageLoader, myGame);
-		//missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
-		renderRawBarMission(batch, imageLoader, myGame);
+		missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
+		
+		if (MissionRawBar.missionIsActive) {
+			renderRawBarMission(batch, imageLoader, myGame);
+		}
 
 	}
 

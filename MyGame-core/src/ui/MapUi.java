@@ -83,7 +83,7 @@ public class MapUi extends Screens {
 
 		// Width and heighth of a chunk represented via UI map.
 		int resizeChunkValue  = 8;
-		float chunkWidthOnUi  = 25.3f / resizeChunkValue;
+		float chunkWidthOnUi  = 23.3f / resizeChunkValue;
 		float chunkHeightOnUi = 13.5f / resizeChunkValue;
 
 		float cameraWidthSize = camera.position.x - getViewportWidth();

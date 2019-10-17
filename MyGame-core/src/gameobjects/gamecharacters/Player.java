@@ -103,7 +103,7 @@ public class Player extends GameCharacter {
 	 * @param int    playerNumber
 	 */
 	public Player(String name, MyGame myGame, int playerNumber) {
-		setPlayerStartingPosition(Town.APALACHICOLA);
+		setPlayerStartingPosition(Town.ST_GEORGE);
 		this.playerNumber        = playerNumber;
 		this.width               = playerSize;
 		this.height              = playerSize;

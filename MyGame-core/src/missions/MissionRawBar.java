@@ -35,24 +35,28 @@ public class MissionRawBar extends Mission {
 
 	// Time alloted for all phases of mission.
 	public static final float MAX_MISSION_TIME_PHASE_ONE   = 15f;
-	public static final float MAX_MISSION_TIME_PHASE_TWO   = 10f;
-	public static final float MAX_MISSION_TIME_PHASE_THREE = 2f;
+	public static final float MAX_MISSION_TIME_PHASE_TWO   = 15f;
+	public static final float MAX_MISSION_TIME_PHASE_THREE = 15f;
 
 	private final int MAX_OYSTERS_SPAWNED                        = 100;
-	public static final int NUMBER_OF_OYSTERS_NEEDED_PHASE_ONE   = 40;
-	public static final int NUMBER_OF_OYSTERS_NEEDED_PHASE_TWO   = 10;
-	public static final int NUMBER_OF_OYSTERS_NEEDED_PHASE_THREE = 25;
+	public static final int NUMBER_OF_OYSTERS_NEEDED_PHASE_ONE   = 20;
+	public static final int NUMBER_OF_OYSTERS_NEEDED_PHASE_TWO   = 15;
+	public static final int NUMBER_OF_OYSTERS_NEEDED_PHASE_THREE = 10;
 	// This will be assigned to one of the above values.
 	private int numberOfOystersNeededToWin;
 
+	// Represents if PHASES are active, not necessarily entire mission.
 	public static boolean phaseIsActive = true;
+	
+	// Represents ENTIRE mission, not just phases.
+	public static boolean missionIsActive = false;
 
 	private boolean initializeMission = true;
 
 	// Each instance of this class in MissionHandler has their own phaseComplete.
 	private boolean phaseComplete = false;
 
-	public static boolean phasesHaveStarted = false;
+	public static boolean phasesAreInProgress = false;
 
 	// Player has to collide with this locator to begin phases.
 	private Rectangle startPhasesLocator;
@@ -62,6 +66,8 @@ public class MissionRawBar extends Mission {
 	 * This message only appears for a few seconds at the start of the phase.
 	 */
 	private int collectOysterMessageTimer = 0;
+	
+	private int locationFlashTimer = 0;
 
 	// Oysters will have a random x, y, and size.
 	private double[] oysterX                   = new double[MAX_OYSTERS_SPAWNED];
@@ -85,6 +91,8 @@ public class MissionRawBar extends Mission {
 	private static final int INTRO_TIME_LIMIT = 100;
 	private static int introTimer             = 0;
 	private static boolean introHasCompleted  = false;
+	
+	public static boolean rawBarMissionComplete = false;
 
 	/**
 	 * Constructor.
@@ -111,14 +119,15 @@ public class MissionRawBar extends Mission {
 	}
 
 	private void initializeMission(MyGame myGame) {
+		int cameraOffset = 10;
 		for (int i = 0 ; i < MAX_OYSTERS_SPAWNED; i++) {
 			oysterX[i]             = RandomNumberGenerator.generateRandomDouble(
-					GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
-					GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2 + GameScreen.camera.viewportWidth
+					GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 40 - cameraOffset, 
+					GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 40 + cameraOffset
 					);
 			oysterY[i]             = RandomNumberGenerator.generateRandomDouble(
-					GameScreen.camera.position.y - GameScreen.camera.viewportHeight / 2, 
-					GameScreen.camera.position.y - GameScreen.camera.viewportHeight / 2 + GameScreen.camera.viewportHeight
+					GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45 - cameraOffset, 
+					GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45 + cameraOffset
 					);
 			oysterSize[i]          = RandomNumberGenerator.generateRandomDouble(0.2d, 0.8d);
 			oysterBounds[i].x      = (float) oysterX[i];
@@ -145,7 +154,7 @@ public class MissionRawBar extends Mission {
 			initializeMission = false;
 		}
 
-		if (MissionRawBar.phasesHaveStarted) {
+		if (MissionRawBar.phasesAreInProgress) {
 			updatePhases();
 		} else {
 			// Execute this before player begins phases.
@@ -157,8 +166,9 @@ public class MissionRawBar extends Mission {
 
 			// Next, handle interaction between player and phases locator.
 			if (introHasCompleted) {
-				if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator)) {
-					phasesHaveStarted = true;
+				locationFlashTimer++;
+				if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator) && !rawBarMissionComplete) {
+					phasesAreInProgress = true;
 				}
 			}
 		}
@@ -266,7 +276,7 @@ public class MissionRawBar extends Mission {
 	 */
 	@Override
 	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
-		if (MissionRawBar.phasesHaveStarted) {
+		if (MissionRawBar.phasesAreInProgress) {
 			renderPhases(batch, imageLoader, myGame);
 		} else {
 			// Draw intro screen until INTRO_TIME_LIMIT runs out.
@@ -280,18 +290,20 @@ public class MissionRawBar extends Mission {
 						);
 			} else {
 				// Draw locator.
-				batch.draw(
-						imageLoader.dustParticleOne, 
-						startPhasesLocator.x, 
-						startPhasesLocator.y,
-						startPhasesLocator.width, 
-						-startPhasesLocator.height
-						);
+				if (locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5 && !rawBarMissionComplete) {
+					batch.draw(
+							imageLoader.locationSkull, 
+							startPhasesLocator.x, 
+							startPhasesLocator.y,
+							startPhasesLocator.width, 
+							-startPhasesLocator.height
+							);
+				}
 			}
 		}
 
-		if (missionComplete) {
-			//renderMissionCompleteMessage(batch, imageLoader, myGame);
+		if (rawBarMissionComplete) {
+			renderMissionCompleteMessage(batch, imageLoader, myGame);
 		}
 	}
 

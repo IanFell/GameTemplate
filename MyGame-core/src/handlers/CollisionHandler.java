@@ -16,7 +16,7 @@ import loaders.GameObjectLoader;
 import maps.MapHandler;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
-import screens.RawBarScreen;
+import missions.MissionRawBar;
 import screens.TeePeeScreen;
 import tiles.Tile;
 
@@ -141,7 +141,8 @@ public class CollisionHandler {
 			) {
 		if (structure.rectangle.overlaps(player.rectangle)) {
 			if (structureName.equalsIgnoreCase("Raw Bar")) {
-				new RawBarScreen(myGame);
+				// Start the mission.
+				MissionRawBar.missionIsActive = true;
 			}
 			if (structureName.equalsIgnoreCase("Tee Pee")) {
 				new TeePeeScreen(myGame);
