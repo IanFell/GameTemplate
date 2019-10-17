@@ -82,6 +82,10 @@ public class MissionRawBar extends Mission {
 	private float timeSeconds = 0f;
 	private float phaseTimeLimit;
 
+	private static final int INTRO_TIME_LIMIT = 100;
+	private static int introTimer             = 0;
+	private static boolean introHasCompleted  = false;
+
 	/**
 	 * Constructor.
 	 * 
@@ -106,7 +110,7 @@ public class MissionRawBar extends Mission {
 		playerY = startPhasesLocator.y;
 	}
 
-	private void initializeMission() {
+	private void initializeMission(MyGame myGame) {
 		for (int i = 0 ; i < MAX_OYSTERS_SPAWNED; i++) {
 			oysterX[i]             = RandomNumberGenerator.generateRandomDouble(
 					GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
@@ -125,6 +129,10 @@ public class MissionRawBar extends Mission {
 		playerBounds.width  = playerSize;
 		playerBounds.height = playerSize;
 		missionComplete     = false;
+		
+		// Set actual player to begin mission directly outside the Raw Bar's door.
+		myGame.getGameObject(Player.PLAYER_ONE).setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 37);
+		myGame.getGameObject(Player.PLAYER_ONE).setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 38);
 	}
 
 	/**
@@ -133,7 +141,7 @@ public class MissionRawBar extends Mission {
 	 */
 	public void updateMission(MyGame myGame) {
 		if (initializeMission) {
-			initializeMission();
+			initializeMission(myGame);
 			initializeMission = false;
 		}
 
@@ -141,8 +149,17 @@ public class MissionRawBar extends Mission {
 			updatePhases();
 		} else {
 			// Execute this before player begins phases.
-			if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator)) {
-				phasesHaveStarted = true;
+			// First, handle the intro.
+			introTimer++;
+			if (introTimer > INTRO_TIME_LIMIT) {
+				introHasCompleted = true;
+			}
+
+			// Next, handle interaction between player and phases locator.
+			if (introHasCompleted) {
+				if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator)) {
+					phasesHaveStarted = true;
+				}
 			}
 		}
 	}
@@ -252,14 +269,25 @@ public class MissionRawBar extends Mission {
 		if (MissionRawBar.phasesHaveStarted) {
 			renderPhases(batch, imageLoader, myGame);
 		} else {
-			// Draw locator.
-			batch.draw(
-					imageLoader.dustParticleOne, 
-					startPhasesLocator.x, 
-					startPhasesLocator.y,
-					startPhasesLocator.width, 
-					-startPhasesLocator.height
-					);
+			// Draw intro screen until INTRO_TIME_LIMIT runs out.
+			if (!introHasCompleted) {
+				batch.draw(
+						imageLoader.whiteSquare, 
+						GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
+						GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2,
+						GameScreen.camera.viewportWidth, 
+						-GameScreen.camera.viewportHeight
+						);
+			} else {
+				// Draw locator.
+				batch.draw(
+						imageLoader.dustParticleOne, 
+						startPhasesLocator.x, 
+						startPhasesLocator.y,
+						startPhasesLocator.width, 
+						-startPhasesLocator.height
+						);
+			}
 		}
 
 		if (missionComplete) {
