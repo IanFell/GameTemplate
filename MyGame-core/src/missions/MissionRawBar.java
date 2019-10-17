@@ -9,6 +9,8 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
+import helpers.GameAttributeHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import screens.GameScreen;
@@ -47,7 +49,13 @@ public class MissionRawBar extends Mission {
 
 	private boolean initializeMission = true;
 
+	// Each instance of this class in MissionHandler has their own phaseComplete.
 	private boolean phaseComplete = false;
+
+	public static boolean phasesHaveStarted = false;
+
+	// Player has to collide with this locator to begin phases.
+	private Rectangle startPhasesLocator;
 
 	/**
 	 * Timer to display to user how many oysters to collect.  
@@ -62,9 +70,9 @@ public class MissionRawBar extends Mission {
 	private int oystersCollected               = 0;
 	private ArrayList<Boolean> collectedOyster = new ArrayList<Boolean>();
 
-	public static float playerX = 100f;
-	public static float playerY = 10f;
-	private float playerSize    = 1;
+	public static float playerX;
+	public static float playerY;
+	private float playerSize = 1;
 
 	// Hitboxes for collision detection.
 	private Rectangle[] oysterBounds = new Rectangle[MAX_OYSTERS_SPAWNED];
@@ -87,6 +95,15 @@ public class MissionRawBar extends Mission {
 			oysterBounds[i] = new Rectangle(0, 0, 0, 0);
 			collectedOyster.add(false);
 		}
+		int startPhaseLocatorSize = 1;
+		startPhasesLocator = new Rectangle(
+				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 40, 
+				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45, 
+				startPhaseLocatorSize, 
+				startPhaseLocatorSize
+				);
+		playerX = startPhasesLocator.x;
+		playerY = startPhasesLocator.y;
 	}
 
 	private void initializeMission() {
@@ -110,12 +127,27 @@ public class MissionRawBar extends Mission {
 		missionComplete     = false;
 	}
 
-	public void updateMission() {
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	public void updateMission(MyGame myGame) {
 		if (initializeMission) {
 			initializeMission();
 			initializeMission = false;
 		}
 
+		if (MissionRawBar.phasesHaveStarted) {
+			updatePhases();
+		} else {
+			// Execute this before player begins phases.
+			if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator)) {
+				phasesHaveStarted = true;
+			}
+		}
+	}
+
+	private void updatePhases() {
 		playerBounds.x = playerX;
 		playerBounds.y = playerY;
 
@@ -169,8 +201,7 @@ public class MissionRawBar extends Mission {
 	 * @param ImageLoader imageLoader
 	 * @param MyGame      myGame
 	 */
-	@Override
-	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
+	private void renderPhases(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		// Draw background.
 		batch.draw(
 				imageLoader.whiteSquare, 
@@ -208,6 +239,28 @@ public class MissionRawBar extends Mission {
 		 * This message appears for a few seconds at the start of the phase.
 		 */
 		renderCollectOysterMessage(batch, imageLoader, myGame);
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param MyGame      myGame
+	 */
+	@Override
+	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
+		if (MissionRawBar.phasesHaveStarted) {
+			renderPhases(batch, imageLoader, myGame);
+		} else {
+			// Draw locator.
+			batch.draw(
+					imageLoader.dustParticleOne, 
+					startPhasesLocator.x, 
+					startPhasesLocator.y,
+					startPhasesLocator.width, 
+					-startPhasesLocator.height
+					);
+		}
 
 		if (missionComplete) {
 			//renderMissionCompleteMessage(batch, imageLoader, myGame);
@@ -223,16 +276,16 @@ public class MissionRawBar extends Mission {
 	 * @param MyGame      myGame
 	 */
 	protected void renderCollectOysterMessage(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
-		int missionCompleteSize = 10;
-		int half                = 2;
-		GameObject player       = PlayerController.getCurrentPlayer(myGame);
+		int collectOysterMessageSize = 10;
+		int half                     = 2;
+		GameObject player            = PlayerController.getCurrentPlayer(myGame);
 		if (collectOysterMessageTimer < 50) {
 			batch.draw(
 					imageLoader.missionComplete, 
 					player.getX() - GameScreen.cameraWidth / half, 
 					player.getY() + GameScreen.cameraWidth / half, 
-					missionCompleteSize, 
-					-missionCompleteSize
+					collectOysterMessageSize, 
+					-collectOysterMessageSize
 					);
 		}
 	}

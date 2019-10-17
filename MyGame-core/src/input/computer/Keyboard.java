@@ -190,7 +190,7 @@ public class Keyboard extends ComputerInput {
 
 		if(GameObjectLoader.gameObjectList.contains(player)) {
 			// RawBar Mission uses a different player than normal since it's kind of like a mini game.
-			if (MissionRawBar.phaseIsActive) {
+			if (MissionRawBar.phasesHaveStarted) {
 				float rawBarPlayerSpeed = 0.3f;
 				if (Gdx.input.isKeyPressed(left)) {
 					MissionRawBar.playerX -= rawBarPlayerSpeed;

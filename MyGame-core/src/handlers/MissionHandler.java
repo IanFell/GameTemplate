@@ -47,16 +47,20 @@ public class MissionHandler {
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		//missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame));
 		//missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
-		handleRawBarMission();
+		handleRawBarMission(myGame);
 	}
 
-	private void handleRawBarMission() {
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void handleRawBarMission(MyGame myGame) {
 		if (missionRawBarPhaseTwo.isPhaseComplete()) {
-			missionRawBarPhaseThree.updateMission();
+			missionRawBarPhaseThree.updateMission(myGame);
 		} else if (missionRawBarPhaseOne.isPhaseComplete()) {
-			missionRawBarPhaseTwo.updateMission();
+			missionRawBarPhaseTwo.updateMission(myGame);
 		} else {
-			missionRawBarPhaseOne.updateMission();
+			missionRawBarPhaseOne.updateMission(myGame);
 		}
 	}
 
@@ -70,6 +74,7 @@ public class MissionHandler {
 		//missionChests.renderMission(batch, imageLoader, myGame);
 		//missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 		renderRawBarMission(batch, imageLoader, myGame);
+
 	}
 
 	/**
