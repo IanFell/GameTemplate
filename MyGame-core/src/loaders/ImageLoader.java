@@ -48,6 +48,7 @@ public class ImageLoader {
 	public Texture legendSwordPurpleHalf;
 	public Texture legendSwordPinkHalf;
 	public Texture legendSwordRainbow;
+	public Texture oyster;
 
 	// Structure Objects.
 	public Texture teePee;
@@ -89,6 +90,8 @@ public class ImageLoader {
 	public Texture legendOfTheSevenSwordsBeginMissionText;
 	public Texture missionComplete;
 	public Texture missionRawBarInside;
+	public Texture missionTransparentBlueSquare;
+	public Texture collectOysters;
 
 	// Tile objects.
 	public Texture grassTileOne;
@@ -157,6 +160,7 @@ public class ImageLoader {
 		legendSwordOrange                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordOrange.png"));
 		legendSwordPurple                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPurple.png"));
 		legendSwordPink                        = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPink.png"));
+		oyster                                 = new Texture(Gdx.files.internal("artwork/weapons/Oyster.png"));
 
 		// Structure Objects.
 		slaveHut                               = new Texture(Gdx.files.internal("artwork/structures/SlaveHut.png"));
@@ -206,6 +210,8 @@ public class ImageLoader {
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("artwork/missions/LegendOfTheSevenSwords.png"));
 		missionComplete                        = new Texture(Gdx.files.internal("artwork/missions/MissionComplete.png"));
 		missionRawBarInside                    = new Texture(Gdx.files.internal("artwork/missions/RawBarMissionInside.png"));
+		missionTransparentBlueSquare           = new Texture(Gdx.files.internal("artwork/missions/TransparentBlueSquare.png"));
+		collectOysters                         = new Texture(Gdx.files.internal("artwork/missions/CollectOysters.png"));
 
 		// Tile objects.
 		grassTileOne     			           = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
@@ -275,6 +281,7 @@ public class ImageLoader {
 		legendSwordPurpleHalf.dispose();
 		legendSwordPinkHalf.dispose();
 		legendSwordOrangeHalf.dispose();
+		oyster.dispose();
 
 		// Structure objects.
 		slaveHut.dispose();
@@ -318,6 +325,8 @@ public class ImageLoader {
 		legendOfTheSevenSwordsBeginMissionText.dispose();
 		missionComplete.dispose();
 		missionRawBarInside.dispose();
+		missionTransparentBlueSquare.dispose();
+		collectOysters.dispose();
 
 		// Tile objects.
 		grassTileOne.dispose();

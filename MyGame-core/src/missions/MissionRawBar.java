@@ -247,7 +247,7 @@ public class MissionRawBar extends Mission {
 			// Only draw oysters if they are alive.
 			if (collectedOyster.get(i).equals(false)) {
 				batch.draw(
-						imageLoader.chestClosed, 
+						imageLoader.oyster, 
 						(float) oysterX[i], 
 						(float) oysterY[i],
 						(float) oysterSize[i], 
@@ -270,6 +270,15 @@ public class MissionRawBar extends Mission {
 		 * This message appears for a few seconds at the start of the phase.
 		 */
 		renderCollectOysterMessage(batch, imageLoader, myGame);
+		
+		// Draw water.
+		batch.draw(
+				imageLoader.missionTransparentBlueSquare, 
+				GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
+				GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2,
+				GameScreen.camera.viewportWidth, 
+				-GameScreen.camera.viewportHeight
+				);
 	}
 
 	/**
@@ -325,7 +334,7 @@ public class MissionRawBar extends Mission {
 		GameObject player            = PlayerController.getCurrentPlayer(myGame);
 		if (collectOysterMessageTimer < 50) {
 			batch.draw(
-					imageLoader.missionComplete, 
+					imageLoader.collectOysters, 
 					player.getX() - GameScreen.cameraWidth / half, 
 					player.getY() + GameScreen.cameraWidth / half, 
 					collectOysterMessageSize, 
