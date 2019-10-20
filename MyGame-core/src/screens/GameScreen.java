@@ -8,6 +8,7 @@ import cutscenes.CutSceneIntro;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.weapons.Gun;
+import gameobjects.weapons.MagicPearl;
 import handlers.EnemyHandler;
 import handlers.HeartHandler;
 import handlers.MissionHandler;
@@ -92,6 +93,7 @@ public class GameScreen extends Screens {
 	private WeaponHandler weaponHandler = new WeaponHandler();
 
 	public Gun gun;
+	public MagicPearl magicPearl;
 
 	public EnemyHandler enemyHandler = new EnemyHandler();
 
@@ -175,6 +177,7 @@ public class GameScreen extends Screens {
 		mapUi          = new MapUi(myGame);
 		healthUi       = new HealthUi();
 		gun            = new Gun(110, 5, myGame.imageLoader);
+		magicPearl     = new MagicPearl(myGame.getGameObject(GameObject.PLAYER_ONE).getX() + 2, myGame.getGameObject(GameObject.PLAYER_ONE).getY());
 		heartHandler.init();
 
 		/**
@@ -252,6 +255,7 @@ public class GameScreen extends Screens {
 		heartHandler.updateHearts(myGame, mapHandler);
 
 		gun.updateObject(myGame, mapHandler);
+		magicPearl.updateObject(myGame, mapHandler);
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -337,6 +341,7 @@ public class GameScreen extends Screens {
 		mapUi.renderWorldMapUi(myGame.renderer.batch,  myGame.imageLoader, myGame);
 
 		gun.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
+		magicPearl.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 	}
 
 	/*

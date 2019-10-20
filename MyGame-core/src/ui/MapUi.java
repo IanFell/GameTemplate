@@ -145,7 +145,7 @@ public class MapUi extends Screens {
 			yChunkLocation = camera.position.y - verticalHeight / denominatorOffset + offsetForCamera + chunkHeightOnUi * 7;
 			break;
 		}
-
+		
 		if (timer < MAX_TIMER_VALUE / 2) {
 			int locationOffset = 2;
 			int resizeValue    = 2;

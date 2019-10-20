@@ -69,7 +69,7 @@ public class Bullet extends Weapon {
 		x += dx;
 		y += dy;
 
-		myGame.gameScreen.enemyHandler.checkBulletCollision(myGame, this);
+		myGame.gameScreen.enemyHandler.checkProjectileCollision(myGame, this);
 	}
 
 	/**

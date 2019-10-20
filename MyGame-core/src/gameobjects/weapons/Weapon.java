@@ -9,8 +9,9 @@ import gameobjects.GameObject;
  */
 public class Weapon extends GameObject {
 
-	public static int WEAPON_TYPE_SWORD = 0;
-	public static int WEAPON_TYPE_GUN   = 1;
+	public static int WEAPON_TYPE_SWORD       = 0;
+	public static int WEAPON_TYPE_GUN         = 1;
+	public static int WEAPON_TYPE_MAGIC_PEARL = 2;
 
 	/**
 	 * Constructor.
@@ -22,17 +23,4 @@ public class Weapon extends GameObject {
 		this.x = x;
 		this.y = y;
 	}
-
-	/**
-	 * 
-	 * @param Enemy  enemy
-	 * @param Weapon weapon
-	 */
-	/*
-	protected void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
-		CollisionHandler.checkIfWeaponHasCollidedWithEnemy(
-				enemy,
-				weapon
-				);
-	}*/
 }

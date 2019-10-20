@@ -8,6 +8,7 @@ import controllers.GameStateController;
 import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.MagicPearl;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import screens.Screens;
@@ -69,9 +70,21 @@ public class Mouse extends ComputerInput {
 					// Dont throw exception if inventory is not equipped.
 					if (Inventory.inventoryIsEquipped) {
 						Player.playerIsPerformingAttack = true;
+						if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof MagicPearl) {
+							MagicPearl.isAttacking     = true;
+							MagicPearl.isMovingForward = true;
+						}
 					}
 				} else {
 					Player.playerIsPerformingAttack = false;
+					// Dont throw exception if inventory is not equipped.
+					if (Inventory.inventoryIsEquipped) {
+						if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof MagicPearl) {
+							MagicPearl.hasReachedPeakDistance = true;
+							MagicPearl.isMovingForward        = false;
+							MagicPearl.isMovingBackward       = true;
+						}
+					}
 				}
 			}
 		}

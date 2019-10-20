@@ -7,7 +7,6 @@ import gameobjects.Heart;
 import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
-import gameobjects.weapons.Bullet;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.Weapon;
@@ -209,7 +208,24 @@ public class CollisionHandler {
 
 	/**
 	 * 
-	 * @param Enemy      enemy
+	 * @param GameObject player
+	 * @param GameObject gun
+	 */
+	public static void checkIfPlayerHasCollidedWithMagicPearl(GameObject player, GameObject pearl) {
+		//if (!pearl.hasBeenCollected) {
+		if (pearl.rectangle.overlaps(player.rectangle)) {
+			((Player) player).getInventory().addObjectToInventory(pearl);
+			Inventory.inventoryHasStartedCollection = true;
+			pearl.hasBeenCollected                    = true;
+			//Gun.playCollectionSound                 = true;
+			GameObjectLoader.gameObjectList.add(pearl);
+		}
+		//}
+	}
+
+	/**
+	 * 
+	 * @param Enemy  enemy
 	 * @param Weapon weapon
 	 */
 	public static void checkIfWeaponHasCollidedWithEnemy(Enemy enemy, Weapon weapon) {
@@ -223,15 +239,18 @@ public class CollisionHandler {
 		}
 	}
 
-	public static void checkIfBulletHasCollidedWithEnemy(Enemy enemy, Bullet bullet) {
-		//if (bullet instanceof Bullet) {
+	/**
+	 * 
+	 * @param Enemy  enemy
+	 * @param Weapon weapon
+	 */
+	public static void checkIfProjectileHasCollidedWithEnemy(Enemy enemy, Weapon weapon)  {
 		if (Inventory.inventoryIsEquipped) {
 			// Checking if dead is false keeps the sound from playing repeatedly.
-			if (enemy.rectangle.overlaps(bullet.rectangle) && !enemy.isDead()) {
+			if (enemy.rectangle.overlaps(weapon.rectangle) && !enemy.isDead()) {
 				handleEnemyDeath(enemy);
 			}
 		}
-		//	}
 	}
 
 	/**
