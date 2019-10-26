@@ -82,7 +82,7 @@ public class Gun extends Weapon {
 		if (Player.playerIsPerformingAttack && myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof Gun) {
 			BulletLoader.createBullet(myGame);
 		}
-		
+
 		if (Inventory.allInventoryShouldBeRendered) {
 			rotationAngle = 0;
 		}
@@ -162,18 +162,18 @@ public class Gun extends Weapon {
 							);
 				}
 			} else if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) == this && Inventory.inventoryIsEquipped && !Inventory.allInventoryShouldBeRendered) {
-					batch.draw(
-							textureRegion, 
-							x, 
-							y, 
-							width, 
-							height, 
-							width, 
-							-height, 
-							value, 
-							value, 
-							rotationAngle
-							);
+				batch.draw(
+						textureRegion, 
+						x, 
+						y, 
+						width, 
+						height, 
+						width, 
+						-height, 
+						value, 
+						value, 
+						rotationAngle
+						);
 			} else if (Inventory.allInventoryShouldBeRendered) {
 				textureRegion = new TextureRegion(imageLoader.gunRight);
 				batch.draw(

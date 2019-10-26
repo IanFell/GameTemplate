@@ -9,6 +9,7 @@ import loaders.pigglywigglyloader.PigglyWigglyLoader;
 import loaders.plantloaders.PlantLoader;
 import loaders.rawbarloader.RawBarLoader;
 import loaders.rockloader.RockLoader;
+import loaders.signloader.SignLoader;
 import loaders.teepeeloader.TeePeeLoader;
 import loaders.treeloaders.DrSuessTreeLoader;
 import loaders.treeloaders.TreeLoader;
@@ -31,6 +32,7 @@ public class GameWorld {
 	private FireLoader fireLoader;
 	private PigglyWigglyLoader pigglyWigglyLoader;
 	private RockLoader rockLoader;
+	private SignLoader signLoader;
 
 	/**
 	 * Constructor.
@@ -48,6 +50,7 @@ public class GameWorld {
 		fireLoader         = new FireLoader();
 		pigglyWigglyLoader = new PigglyWigglyLoader();
 		rockLoader         = new RockLoader();
+		signLoader         = new SignLoader();
 		loadGameWorld(myGame);
 	}
 
@@ -66,6 +69,7 @@ public class GameWorld {
 		lightHouseLoader.loadLightHouse(myGame);
 		fireLoader.loadFire();
 		pigglyWigglyLoader.loadPigglyWiggly(myGame);
+		signLoader.loadSigns();
 	}
 
 	/**

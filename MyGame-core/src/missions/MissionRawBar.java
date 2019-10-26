@@ -93,6 +93,19 @@ public class MissionRawBar extends Mission {
 	private static boolean introHasCompleted  = false;
 	
 	public static boolean rawBarMissionComplete = false;
+	
+	private Rectangle[] fish = new Rectangle[5];
+	
+	private float fishOneDx;
+	private float fishOneDy;
+	private float fishTwoDx;
+	private float fishTwoDy;
+	private float fishThreeDx;
+	private float fishThreeDy;
+	private float fishFourDx;
+	private float fishFourDy;
+	private float fishFiveDx;
+	private float fishFiveDy;
 
 	/**
 	 * Constructor.
@@ -116,6 +129,14 @@ public class MissionRawBar extends Mission {
 				);
 		playerX = startPhasesLocator.x;
 		playerY = startPhasesLocator.y;
+		
+		int startX = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 25;
+		int startY = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 43;
+		fish[0] = new Rectangle(startX, startY, 3, 3);
+		fish[1] = new Rectangle(startX + 7, startY, 3, 3);
+		fish[2] = new Rectangle(startX + 3, startY + 5, 3, 3);
+		fish[3] = new Rectangle(startX + 2, startY, 3, 3);
+		fish[4] = new Rectangle(startX + 15, startY + 5, 3, 3);
 	}
 
 	/**
@@ -146,6 +167,17 @@ public class MissionRawBar extends Mission {
 		// Set actual player to begin mission directly outside the Raw Bar's door.
 		myGame.getGameObject(Player.PLAYER_ONE).setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 37);
 		myGame.getGameObject(Player.PLAYER_ONE).setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 38);
+		
+		fishOneDx   = 1;
+		fishOneDy   = 0;
+		fishTwoDx   = 0;
+		fishTwoDy   = 1;
+		fishThreeDx = 1;
+		fishThreeDy = 0;
+		fishFourDx  = 1;
+		fishFourDy  = 1;
+		fishFiveDx  = 0;
+		fishFiveDy  = 1;
 	}
 
 	/**
@@ -159,7 +191,7 @@ public class MissionRawBar extends Mission {
 		}
 
 		if (MissionRawBar.phasesAreInProgress) {
-			updatePhases();
+			updatePhases(myGame);
 		} else {
 			// Execute this before player begins phases.
 			// First, handle the intro.
@@ -177,10 +209,57 @@ public class MissionRawBar extends Mission {
 			}
 		}
 	}
+	
+	private void updateFishPositions() {
+		fish[0].setX(fish[0].getX() + fishOneDx);
+		if (fish[0].getX() > playerX + 3) {
+			fishOneDx = -0.5f;
+		} 
+		if (fish[0].getX() < playerX - 3) {
+			fishOneDx = 0.5f;
+		}
+		
+		fish[1].setY(fish[1].getY() + fishTwoDy);
+		if (fish[1].getY() > playerY + 3) {
+			fishTwoDy = -0.5f;
+		} 
+		if (fish[1].getY() < playerY - 3) {
+			fishTwoDy = 0.5f;
+		}
+		
+		fish[2].setX(fish[2].getX() + fishThreeDx);
+		if (fish[2].getX() > playerX + 1) {
+			fishThreeDx = -0.5f;
+		} 
+		if (fish[2].getX() < playerX - 6) {
+			fishThreeDx = 0.5f;
+		}
+		
+		fish[3].setX(fish[3].getX() + fishFourDx);
+		fish[3].setY(fish[3].getY() + fishFourDy);
+		if (fish[3].getX() > playerX + 10) {
+			fishFourDx = -0.5f;
+			fishFourDy = -0.5f;
+		} 
+		if (fish[3].getX() < playerX - 10) {
+			fishFourDx = 0.5f;
+			fishFourDy = 0.5f;
+		}
+		
+		fish[4].setY(fish[4].getY() + fishFiveDy);
+		if (fish[4].getY() > playerY + 3) {
+			fishFiveDy = -0.5f;
+		} 
+		if (fish[4].getY() < playerY - 3) {
+			fishFiveDy = 0.5f;
+		}
+	}
 
-	private void updatePhases() {
+	private void updatePhases(MyGame myGame) {
 		playerBounds.x = playerX;
 		playerBounds.y = playerY;
+		
+		updateFishPositions();
 
 		for (int i = 0 ; i < MAX_OYSTERS_SPAWNED; i++) {
 			if (playerBounds.overlaps(oysterBounds[i]) && collectedOyster.get(i).equals(false)) {
@@ -197,6 +276,12 @@ public class MissionRawBar extends Mission {
 		// Only display how many oysters to collect for a few seconds.
 		if (collectOysterMessageTimer < 50) {
 			collectOysterMessageTimer++;
+		}
+		
+		for (int i = 0; i < fish.length; i++) {
+			if (fish[i].overlaps(playerBounds)) {
+				myGame.getGameObject(Player.PLAYER_ONE).setHealth(myGame.getGameObject(Player.PLAYER_ONE).getHealth() - 1);
+			}
 		}
 	}
 
@@ -254,6 +339,17 @@ public class MissionRawBar extends Mission {
 						(float) -oysterSize[i]
 						);
 			}
+		}
+		
+		// Draw fish.
+		for (int i = 0; i < fish.length; i++) {
+			batch.draw(
+					imageLoader.chestClosed, 
+					fish[i].getX(), 
+					fish[i].getY(),
+					fish[i].width, 
+					-fish[i].height
+					);
 		}
 
 		// Draw player.

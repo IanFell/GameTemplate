@@ -64,7 +64,7 @@ public class WeatherHandler {
 	 * @param MapHandler mapHandler
 	 */
 	public void update(MyGame myGame, GameScreen gameScreen, MapHandler mapHandler) {
-		//nightAndDayCycle.performDayAndNightCycle();
+		nightAndDayCycle.performDayAndNightCycle();
 		updateStormCycle(myGame, gameScreen, mapHandler);
 		updateClouds(myGame, gameScreen);
 	}
