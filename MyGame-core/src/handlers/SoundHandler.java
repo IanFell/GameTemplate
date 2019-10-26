@@ -6,10 +6,12 @@ import gameobjects.Heart;
 import gameobjects.gamecharacters.Player;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
+import gameobjects.weapons.MagicPearl;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.SoundLoader;
 import loaders.chestloader.ChestLoader;
+import missions.MissionRawBar;
 import screens.Screens;
 
 /**
@@ -29,6 +31,7 @@ public class SoundHandler {
 	/**
 	 * 
 	 * @param SoundLoader soundLoader
+	 * @param MyGame      myGame
 	 */
 	public void handleSound(SoundLoader soundLoader, MyGame myGame) {
 		if (GameAttributeHelper.gameState == Screens.GAME_SCREEN) {
@@ -39,6 +42,14 @@ public class SoundHandler {
 			if (Gun.playCollectionSound) {
 				soundLoader.pickUpGunSound.play(AudioHandler.MAX_VOLUME);
 				Gun.playCollectionSound = false;
+			}
+			if (MagicPearl.playCollectionSound) {
+				soundLoader.bubbleSound.play(AudioHandler.MAX_VOLUME);
+				MagicPearl.playCollectionSound = false;
+			}
+			if (MissionRawBar.playCollectionSound) {
+				soundLoader.bubbleSound.play(AudioHandler.MAX_VOLUME);
+				MissionRawBar.playCollectionSound = false;
 			}
 
 			for (int i = 0; i < myGame.gameScreen.enemyHandler.enemySpawner.length; i++) {

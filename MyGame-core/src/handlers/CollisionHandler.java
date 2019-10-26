@@ -9,6 +9,7 @@ import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
+import gameobjects.weapons.MagicPearl;
 import gameobjects.weapons.Weapon;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
@@ -216,8 +217,8 @@ public class CollisionHandler {
 		if (pearl.rectangle.overlaps(player.rectangle)) {
 			((Player) player).getInventory().addObjectToInventory(pearl);
 			Inventory.inventoryHasStartedCollection = true;
-			pearl.hasBeenCollected                    = true;
-			//Gun.playCollectionSound                 = true;
+			pearl.hasBeenCollected                  = true;
+			MagicPearl.playCollectionSound          = true;
 			GameObjectLoader.gameObjectList.add(pearl);
 		}
 		//}

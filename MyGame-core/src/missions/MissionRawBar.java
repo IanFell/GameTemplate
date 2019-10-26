@@ -97,15 +97,13 @@ public class MissionRawBar extends Mission {
 	private Rectangle[] fish = new Rectangle[5];
 	
 	private float fishOneDx;
-	private float fishOneDy;
-	private float fishTwoDx;
 	private float fishTwoDy;
 	private float fishThreeDx;
-	private float fishThreeDy;
 	private float fishFourDx;
 	private float fishFourDy;
-	private float fishFiveDx;
 	private float fishFiveDy;
+	
+	public static boolean playCollectionSound = false;
 
 	/**
 	 * Constructor.
@@ -169,14 +167,10 @@ public class MissionRawBar extends Mission {
 		myGame.getGameObject(Player.PLAYER_ONE).setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 38);
 		
 		fishOneDx   = 1;
-		fishOneDy   = 0;
-		fishTwoDx   = 0;
 		fishTwoDy   = 1;
 		fishThreeDx = 1;
-		fishThreeDy = 0;
 		fishFourDx  = 1;
 		fishFourDy  = 1;
-		fishFiveDx  = 0;
 		fishFiveDy  = 1;
 	}
 
@@ -265,6 +259,7 @@ public class MissionRawBar extends Mission {
 			if (playerBounds.overlaps(oysterBounds[i]) && collectedOyster.get(i).equals(false)) {
 				collectedOyster.set(i, true);
 				oystersCollected++;
+				playCollectionSound = true;
 			}
 		}
 

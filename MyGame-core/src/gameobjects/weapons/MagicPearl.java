@@ -29,6 +29,8 @@ public class MagicPearl extends Weapon {
 
 	// This hitbox is bigger than the object to ensure player catches it upon return.
 	private Rectangle collisionWithPlayerUponReturnHitbox;
+	
+	public static boolean playCollectionSound = false;
 
 	/**
 	 * Constructor.
