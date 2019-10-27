@@ -32,6 +32,6 @@ public class Plant extends NatureObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		batch.draw(imageLoader.plant, x, y + 1, width, -height);
+		batch.draw(imageLoader.plant, x, y, width, -height);
 	}
 }

@@ -39,9 +39,9 @@ public class PalmTree extends NatureObject {
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		if (randomTree < 1) {
-			batch.draw(imageLoader.palmTree, x, y - 0.5f, width, -height);
+			batch.draw(imageLoader.palmTree, x, y, width, -height);
 		} else {
-			batch.draw(imageLoader.palmTreeThree, x + 1.5f, y - 0.5f, width / 2 + 0.7f, -randomHeight);
+			batch.draw(imageLoader.palmTreeThree, x + 1.5f, y, width / 2 + 0.7f, -randomHeight);
 		}
 	}
 }

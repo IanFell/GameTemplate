@@ -58,11 +58,11 @@ public class Chest extends GamePlayObject {
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		if (isClosed) {
-			batch.draw(imageLoader.chestClosed, x, y - height, width, -height);
+			batch.draw(imageLoader.chestClosed, x, y, width, -height);
 			// Uncomment this to draw hit box.
 			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, -rectangle.height);
 		} else {
-			batch.draw(imageLoader.chestOpen, x, y - height, width, -height);
+			batch.draw(imageLoader.chestOpen, x, y, width, -height);
 		}
 	}
 
