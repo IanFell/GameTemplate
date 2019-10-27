@@ -194,15 +194,19 @@ public class Keyboard extends ComputerInput {
 				float rawBarPlayerSpeed = 0.3f;
 				if (Gdx.input.isKeyPressed(left)) {
 					MissionRawBar.playerX -= rawBarPlayerSpeed;
+					player.setDirection(Player.DIRECTION_LEFT);
 				}
 				else if (Gdx.input.isKeyPressed(right)) {
 					MissionRawBar.playerX += rawBarPlayerSpeed;
+					player.setDirection(Player.DIRECTION_RIGHT);
 				}
 				else if (Gdx.input.isKeyPressed(up)) {
 					MissionRawBar.playerY -= rawBarPlayerSpeed;
+					player.setDirection(Player.DIRECTION_UP);
 				}
 				else if (Gdx.input.isKeyPressed(down)) {
 					MissionRawBar.playerY += rawBarPlayerSpeed;
+					player.setDirection(Player.DIRECTION_DOWN);
 				}
 			} else {
 				// Use normal player.

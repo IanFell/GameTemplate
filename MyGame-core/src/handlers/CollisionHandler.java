@@ -213,7 +213,6 @@ public class CollisionHandler {
 	 * @param GameObject gun
 	 */
 	public static void checkIfPlayerHasCollidedWithMagicPearl(GameObject player, GameObject pearl) {
-		//if (!pearl.hasBeenCollected) {
 		if (pearl.rectangle.overlaps(player.rectangle)) {
 			((Player) player).getInventory().addObjectToInventory(pearl);
 			Inventory.inventoryHasStartedCollection = true;
@@ -221,7 +220,6 @@ public class CollisionHandler {
 			MagicPearl.playCollectionSound          = true;
 			GameObjectLoader.gameObjectList.add(pearl);
 		}
-		//}
 	}
 
 	/**

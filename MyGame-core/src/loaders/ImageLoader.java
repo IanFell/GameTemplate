@@ -93,6 +93,10 @@ public class ImageLoader {
 	public Texture missionRawBarInside;
 	public Texture missionTransparentBlueSquare;
 	public Texture collectOysters;
+	public Texture rightHand;
+	public Texture leftHand;
+	public Texture rightHandClosed;
+	public Texture leftHandClosed;
 
 	// Tile objects.
 	public Texture grassTileOne;
@@ -214,6 +218,10 @@ public class ImageLoader {
 		missionRawBarInside                    = new Texture(Gdx.files.internal("artwork/missions/RawBarMissionInside.png"));
 		missionTransparentBlueSquare           = new Texture(Gdx.files.internal("artwork/missions/TransparentBlueSquare.png"));
 		collectOysters                         = new Texture(Gdx.files.internal("artwork/missions/CollectOysters.png"));
+		rightHand      						   = new Texture(Gdx.files.internal("artwork/missions/HandOpenRight.png"));
+		leftHand      						   = new Texture(Gdx.files.internal("artwork/missions/HandOpenLeft.png"));
+		rightHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedRight.png"));
+		leftHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedLeft.png"));
 
 		// Tile objects.
 		grassTileOne     			           = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
@@ -330,6 +338,10 @@ public class ImageLoader {
 		missionRawBarInside.dispose();
 		missionTransparentBlueSquare.dispose();
 		collectOysters.dispose();
+		rightHand.dispose();
+		leftHand.dispose();
+		rightHandClosed.dispose();
+		leftHandClosed.dispose();
 
 		// Tile objects.
 		grassTileOne.dispose();

@@ -11,6 +11,7 @@ import gameobjects.gamecharacters.Player;
 import gameobjects.weapons.MagicPearl;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
+import missions.MissionRawBar;
 import screens.Screens;
 
 /**
@@ -67,6 +68,10 @@ public class Mouse extends ComputerInput {
 				}
 			} else {
 				if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+					// Skip the raw bar mission intro if we click on anywhere on the screen.
+					if (MissionRawBar.missionIsActive && !MissionRawBar.introHasCompleted) {
+						MissionRawBar.introHasCompleted = true;
+					}
 					// Dont throw exception if inventory is not equipped.
 					if (Inventory.inventoryIsEquipped) {
 						Player.playerIsPerformingAttack = true;
