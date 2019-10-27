@@ -85,7 +85,7 @@ public class Player extends GameCharacter {
 
 	protected int health;
 
-	private final int STARTING_HEALTH = 10;;
+	private final int STARTING_HEALTH = 10;
 
 	public static boolean hasTorch;
 
@@ -103,7 +103,7 @@ public class Player extends GameCharacter {
 	 * @param int    playerNumber
 	 */
 	public Player(String name, MyGame myGame, int playerNumber) {
-		setPlayerStartingPosition(Town.APALACHICOLA);
+		setPlayerStartingPosition(Town.MEXICO_BEACH);
 		this.playerNumber        = playerNumber;
 		this.width               = playerSize;
 		this.height              = playerSize;

@@ -209,7 +209,7 @@ public class ImageLoader {
 		worldMapApalachicola				   = new Texture(Gdx.files.internal("artwork/maps/WorldMapApalachicola.png"));
 		worldMapWewa      					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapWewa.png"));
 		worldMapStGeorge					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapStGeorge.png"));
-		worldMapFake						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapFake.png"));
+		worldMapFake						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapFake_02.png"));
 		worldMapReal						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapReal.png"));
 
 		// Mission objects.
