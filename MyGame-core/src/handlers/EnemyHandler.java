@@ -24,6 +24,10 @@ public class EnemyHandler {
 	// Use enemy huts to mask enemy spawning.
 	public EnemyHut[] enemyHut = new EnemyHut[7];
 
+	/**
+	 * 
+	 * @param ImageLoader imageLoader
+	 */
 	public void init(ImageLoader imageLoader) {
 		enemySpawner[Town.MEXICO_BEACH] = new EnemySpawner(
 				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 48, 

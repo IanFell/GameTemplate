@@ -57,6 +57,7 @@ public class ImageLoader {
 	public Texture lightHouse;
 	public Texture pigglywiggly;
 	public Texture slaveHut;
+	public Texture gruntHut;
 
 	// Effects Objects.
 	public Texture fireOne;
@@ -174,6 +175,7 @@ public class ImageLoader {
 		lightHouse                             = new Texture(Gdx.files.internal("artwork/structures/LightHouse.png"));
 		pigglywiggly                           = new Texture(Gdx.files.internal("artwork/structures/PigglyWiggly3D.png"));
 		teePee   					           = new Texture(Gdx.files.internal("artwork/structures/TeePee3D.png"));
+		gruntHut 							   = new Texture(Gdx.files.internal("artwork/structures/GruntHut.png"));
 
 		// Effects Objects.
 		fireOne                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire1.png"));
@@ -300,6 +302,7 @@ public class ImageLoader {
 		rawbar.dispose();
 		lightHouse.dispose();
 		pigglywiggly.dispose();
+		gruntHut.dispose();
 
 		// Effects Objects.
 		fireOne.dispose();

@@ -108,6 +108,8 @@ public class MissionRawBar extends Mission {
 	private int handOpenClosedTimer = 0;
 	
 	private static boolean setPlayer = true;
+	
+	private final int COLLECT_OYSTER_MESSAGE_MAX_TIME = 20;
 
 	/**
 	 * Constructor.
@@ -283,7 +285,7 @@ public class MissionRawBar extends Mission {
 		System.out.println("Oysters Collected: " + oystersCollected);
 
 		// Only display how many oysters to collect for a few seconds.
-		if (collectOysterMessageTimer < 50) {
+		if (collectOysterMessageTimer < COLLECT_OYSTER_MESSAGE_MAX_TIME) {
 			collectOysterMessageTimer++;
 		}
 		
@@ -487,7 +489,7 @@ public class MissionRawBar extends Mission {
 		int collectOysterMessageSize = 10;
 		int half                     = 2;
 		GameObject player            = PlayerController.getCurrentPlayer(myGame);
-		if (collectOysterMessageTimer < 50) {
+		if (collectOysterMessageTimer < COLLECT_OYSTER_MESSAGE_MAX_TIME) {
 			batch.draw(
 					imageLoader.collectOysters, 
 					player.getX() - GameScreen.cameraWidth / half, 

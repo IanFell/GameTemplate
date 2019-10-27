@@ -19,10 +19,10 @@ public class EnemySpawner {
 
 	private final int MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE = 3;
 
-	private float x;
-	private float y;
+	protected float x;
+	protected float y;
 	private String name;
-	private int timer;
+	protected int timer;
 	public ArrayList <Enemy> enemies = new ArrayList<Enemy>();
 
 	/**
@@ -70,14 +70,12 @@ public class EnemySpawner {
 	public void updateEnemies(MyGame myGame, MapHandler mapHandler) {
 		if (enemies != null) {
 			for (int i = 0; i < enemies.size(); i++) {
-				//if (GamePlayHelper.gameObjectIsWithinScreenBounds(enemies.get(i))) {
-					enemies.get(i).updateObject(myGame, mapHandler);
-					// If enemy is dead and his dead fire animation has ended.
-					if (enemies.get(i).isDead() && enemies.get(i).getTimer() >= Enemy.MAX_DEATH_ANIMATION_VALUE) {
-						GameObjectLoader.gameObjectList.remove(enemies.get(i));
-						enemies.remove(i);
-					}
-				//}
+				enemies.get(i).updateObject(myGame, mapHandler);
+				// If enemy is dead and his dead fire animation has ended.
+				if (enemies.get(i).isDead() && enemies.get(i).getTimer() >= Enemy.MAX_DEATH_ANIMATION_VALUE) {
+					GameObjectLoader.gameObjectList.remove(enemies.get(i));
+					enemies.remove(i);
+				}
 			}
 		}
 		if (enemies.size() < MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE) {

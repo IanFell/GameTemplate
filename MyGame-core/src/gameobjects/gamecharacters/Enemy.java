@@ -45,11 +45,11 @@ public class Enemy extends GameCharacter {
 	 * 
 	 * @param float   x
 	 * @param float   y
-	 * @param int     width
-	 * @param int     height
+	 * @param float   width
+	 * @param float   height
 	 * @param int     direction
 	 */
-	public Enemy(float x, float y, int width, int height, int direction) {
+	public Enemy(float x, float y, float width, float height, int direction) {
 		this.x           = x;
 		this.y           = y;
 		this.width       = width;
