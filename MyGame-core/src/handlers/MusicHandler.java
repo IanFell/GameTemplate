@@ -3,6 +3,7 @@ package handlers;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
 import loaders.MusicLoader;
+import missions.MissionRawBar;
 import physics.Lighting.Fire;
 import physics.Weather.NightAndDayCycle;
 import physics.Weather.WeatherHandler;
@@ -113,7 +114,8 @@ public class MusicHandler {
 	 * @param MusicLoader musicLoader
 	 */
 	private void handleOceanAudio(MusicLoader musicLoader) {
-		if (Player.isInWater) {
+		// Play this audio if player is in water.
+		if (Player.isInWater || MissionRawBar.phasesAreInProgress) {
 			startOceanAudio = true;
 		} else {
 			musicLoader.ocean.stop();
@@ -131,7 +133,12 @@ public class MusicHandler {
 	 * @param MusicLoader musicLoader
 	 */
 	private void handleFootstepsAudio(MusicLoader musicLoader) {
-		if (Player.playerIsMoving && Player.jumpingAction == Player.ON_GROUND && !Player.isInWater) {
+		if (
+				Player.playerIsMoving && 
+				Player.jumpingAction == Player.ON_GROUND && 
+				!Player.isInWater && 
+				!MissionRawBar.phasesAreInProgress
+				) {
 			startFootstepsAudio = true;
 		} else {
 			musicLoader.footsteps.stop();

@@ -69,8 +69,10 @@ public class SoundHandler {
 				if (attackTimer > 1) {
 					if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof LegendSword) {
 						soundLoader.swordSound.play(AudioHandler.MAX_VOLUME);
-					} else {
+					} else if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof Gun) {
 						soundLoader.pistolSound.play(AudioHandler.MEDIAN_VOLUME);
+					} else {
+						soundLoader.bubbleSound.play(AudioHandler.MAX_VOLUME);
 					}
 				}
 			}
