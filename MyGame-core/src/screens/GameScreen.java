@@ -100,7 +100,7 @@ public class GameScreen extends Screens {
 	public GruntHandler gruntHandler = new GruntHandler();
 
 	public TownHandler townHandler = new TownHandler();
-	
+
 	private HeartHandler heartHandler = new HeartHandler();
 
 	private CutSceneIntro cutSceneIntro;
@@ -179,7 +179,8 @@ public class GameScreen extends Screens {
 		missionHandler = new MissionHandler(myGame);
 		mapUi          = new MapUi(myGame);
 		healthUi       = new HealthUi();
-		gun            = new Gun(110, 5, myGame.imageLoader);
+		// Just spawn gun by player for now so it's always available.
+		gun            = new Gun(myGame.getGameObject(GameObject.PLAYER_ONE).getX() + 3, myGame.getGameObject(GameObject.PLAYER_ONE).getY() + 3, myGame.imageLoader);
 		magicPearl     = new MagicPearl(myGame.getGameObject(GameObject.PLAYER_ONE).getX() + 2, myGame.getGameObject(GameObject.PLAYER_ONE).getY());
 		heartHandler.init();
 

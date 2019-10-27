@@ -1,5 +1,6 @@
 package gameobjects.stationarygameobjects;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import gameobjects.GameObject;
@@ -17,7 +18,7 @@ public class Sign extends GameObject {
 
 	private String townName;
 
-	private float objectSize = 2;
+	private float objectSize = 3;
 
 	/**
 	 * Constructor.
@@ -28,10 +29,10 @@ public class Sign extends GameObject {
 	 */
 	public Sign(String townName, int x, int y) {
 		this.townName = townName;
-		this.x = x;
-		this.y = y;
-		this.width = objectSize;
-		this.height = objectSize;
+		this.x        = x;
+		this.y        = y;
+		this.width    = objectSize;
+		this.height   = objectSize;
 	}
 
 	/**
@@ -41,6 +42,22 @@ public class Sign extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		batch.draw(imageLoader.sign, x, y, width, -height);
+		Texture townSign = null;
+		if (townName.equalsIgnoreCase("Apalachicola")) {
+			townSign = imageLoader.townSigns[0];
+		} else if (townName.equalsIgnoreCase("Port St Joe")) {
+			townSign = imageLoader.townSigns[1];
+		} else if (townName.equalsIgnoreCase("Wewa")) {
+			townSign = imageLoader.townSigns[2];
+		} else if (townName.equalsIgnoreCase("Mexico Beach")) {
+			townSign = imageLoader.townSigns[3];
+		} else if (townName.equalsIgnoreCase("St George")) {
+			townSign = imageLoader.townSigns[4];
+		} else if (townName.equalsIgnoreCase("Cape San Blas")) {
+			townSign = imageLoader.townSigns[5];
+		} else if (townName.equalsIgnoreCase("The Point")) {
+			townSign = imageLoader.townSigns[6];
+		}
+		batch.draw(townSign, x, y, width, -height);
 	}
 }

@@ -56,7 +56,7 @@ public class Player extends GameCharacter {
 
 	public static int jumpingAction;
 	private float jumpSpeed;
-	private float jumpingSpeedValue = 0.05f;
+	private float jumpingSpeedValue = 0.1f;
 
 	public static final int ON_GROUND       = 0;
 	public static final int ASCENDING_JUMP  = 1;
@@ -103,7 +103,7 @@ public class Player extends GameCharacter {
 	 * @param int    playerNumber
 	 */
 	public Player(String name, MyGame myGame, int playerNumber) {
-		setPlayerStartingPosition(Town.APALACHICOLA);
+		setPlayerStartingPosition(Town.PORT_ST_JOE);
 		this.playerNumber        = playerNumber;
 		this.width               = playerSize;
 		this.height              = playerSize;

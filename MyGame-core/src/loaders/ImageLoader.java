@@ -16,7 +16,10 @@ public class ImageLoader {
 	public Texture chestOpen;
 	public Texture heart;
 	public Texture boat;
+
+	// Sign objects.
 	public Texture sign;
+	public Texture[] townSigns = new Texture[7];
 
 	// Nature Objects.
 	public Texture rock;
@@ -134,7 +137,6 @@ public class ImageLoader {
 		chestOpen					           = new Texture(Gdx.files.internal("artwork/ChestOpen.png"));
 		heart    						       = new Texture(Gdx.files.internal("artwork/Heart.png"));
 		boat    					           = new Texture(Gdx.files.internal("artwork/BOAT_NEW.png"));
-		sign                                   = new Texture(Gdx.files.internal("artwork/signs/Sign.png"));
 
 		// Nature Objects.
 		rock 								   = new Texture(Gdx.files.internal("artwork/nature/Rock.png"));
@@ -250,6 +252,16 @@ public class ImageLoader {
 		titleScreenLogo                        = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeLogo.png"));
 		icon                                   = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeIcon.png"));
 
+		// Sign objects.  sign can be removed.
+		sign         = new Texture(Gdx.files.internal("artwork/signs/Sign.png"));
+		townSigns[0] = new Texture(Gdx.files.internal("artwork/signs/Apalachicola.png"));
+		townSigns[1] = new Texture(Gdx.files.internal("artwork/signs/PortStJoe.png"));
+		townSigns[2] = new Texture(Gdx.files.internal("artwork/signs/Wewa.png"));
+		townSigns[3] = new Texture(Gdx.files.internal("artwork/signs/MexicoBeach.png"));
+		townSigns[4] = new Texture(Gdx.files.internal("artwork/signs/StGeorge.png"));
+		townSigns[5] = new Texture(Gdx.files.internal("artwork/signs/CapeSanBlas.png"));
+		townSigns[6] = new Texture(Gdx.files.internal("artwork/signs/ThePoint.png"));
+
 		// Debugging objects.
 		whiteSquare                            = new Texture(Gdx.files.internal("artwork/debugging/WhiteSquare.png"));
 	}
@@ -261,7 +273,12 @@ public class ImageLoader {
 		chestOpen.dispose();
 		heart.dispose();
 		boat.dispose();
+
+		// Sign objects.
 		sign.dispose();
+		for (int i = 0; i < townSigns.length; i++) {
+			townSigns[i].dispose();
+		}
 
 		// Nature Objects.
 		rock.dispose();
