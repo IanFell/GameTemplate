@@ -3,6 +3,7 @@ package loaders;
 import com.mygdx.mygame.MyGame;
 
 import loaders.chestloader.ChestLoader;
+import loaders.dockloader.DockLoader;
 import loaders.fireloader.FireLoader;
 import loaders.lighthouseloader.LightHouseLoader;
 import loaders.pigglywigglyloader.PigglyWigglyLoader;
@@ -33,6 +34,7 @@ public class GameWorld {
 	private PigglyWigglyLoader pigglyWigglyLoader;
 	private RockLoader rockLoader;
 	private SignLoader signLoader;
+	private DockLoader dockLoader;
 
 	/**
 	 * Constructor.
@@ -51,6 +53,7 @@ public class GameWorld {
 		pigglyWigglyLoader = new PigglyWigglyLoader();
 		rockLoader         = new RockLoader();
 		signLoader         = new SignLoader();
+		dockLoader         = new DockLoader();
 		loadGameWorld(myGame);
 	}
 
@@ -70,6 +73,7 @@ public class GameWorld {
 		fireLoader.loadFire();
 		pigglyWigglyLoader.loadPigglyWiggly(myGame);
 		signLoader.loadSigns();
+		dockLoader.loadDocks(myGame);
 	}
 
 	/**
