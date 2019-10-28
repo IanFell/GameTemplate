@@ -13,6 +13,7 @@ import loaders.ImageLoader;
 import maps.MapHandler;
 import missions.MissionRawBar;
 import screens.GameScreen;
+import ui.MapUi;
 
 /**
  * This weapon acts like a boomerang.
@@ -171,7 +172,7 @@ public class MagicPearl extends Weapon {
 	 */
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (MissionRawBar.rawBarMissionComplete && gameObjectIsWithinScreenBounds(this)) {
-			if (!hasBeenCollected) {
+			if (!hasBeenCollected && !MapUi.mapShouldBeRendered) {
 				batch.draw(
 						imageLoader.oyster, 
 						x, 

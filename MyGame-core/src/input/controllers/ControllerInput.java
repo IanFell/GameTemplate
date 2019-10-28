@@ -10,6 +10,7 @@ import helpers.ControllerInputHelper;
 import helpers.GameAttributeHelper;
 import input.Input;
 import inventory.Inventory;
+import missions.MissionRawBar;
 import ui.MapUi;
 
 /**
@@ -96,7 +97,7 @@ public class ControllerInput extends Input {
 				pollSticks(player);
 			}
 			pollMainFourButtons(player);
-			pollTriggers();
+			pollTriggers(player);
 			pollStartSection();
 			pollDPad(player);
 		}
@@ -115,8 +116,10 @@ public class ControllerInput extends Input {
 	 * Polls controller for LB, RB.  
 	 * This method is overridden differently for different 
 	 * controllers because the triggers are registered differently.
+	 * 
+	 * @param GameObject player
 	 */
-	protected void pollTriggers() {
+	protected void pollTriggers(GameObject player) {
 		if(controller.getButton(BUTTON_LB)) {
 			if (MapUi.mapShouldBeRendered) {
 				MapUi.mapShouldBeRendered              = !MapUi.mapShouldBeRendered;
@@ -197,23 +200,46 @@ public class ControllerInput extends Input {
 			playerSpeed = Player.PLAYER_SPEED * turboSpeed;
 		}
 		Player.playerIsMoving = false;
-		// Left stick.
-		if (stickIsMoved(AXIS_LEFT_X)) {
-			System.out.print("LEFT STICK X pressed \n");
-			if (controller.getAxis(AXIS_LEFT_X) < 0) {
-				((Player) player).moveLeft(playerSpeed);
-			} else if (controller.getAxis(AXIS_LEFT_X) > 0) {
-				((Player) player).moveRight(playerSpeed);
+
+		// RawBar Mission uses a different player than normal since it's kind of like a mini game.
+		if (MissionRawBar.phasesAreInProgress) {
+			if (stickIsMoved(AXIS_LEFT_X)) {
+				if (controller.getAxis(AXIS_LEFT_X) < 0) {
+					MissionRawBar.playerX -= MissionRawBar.MISSION_RAW_BAR_SPEED;
+					player.setDirection(Player.DIRECTION_LEFT);
+				} else if (controller.getAxis(AXIS_LEFT_X) > 0) {
+					MissionRawBar.playerX += MissionRawBar.MISSION_RAW_BAR_SPEED;
+					player.setDirection(Player.DIRECTION_RIGHT);
+				} 
 			} 
-		} 
-		if (stickIsMoved(AXIS_LEFT_Y)) {
-			System.out.print("LEFT STICK Y pressed \n");
-			if (controller.getAxis(AXIS_LEFT_Y) < deadZone) {
-				((Player) player).moveUp(playerSpeed);
-			} else if (controller.getAxis(AXIS_LEFT_Y) > deadZone) {
-				((Player) player).moveDown(playerSpeed);
+			if (stickIsMoved(AXIS_LEFT_Y)) {
+				if (controller.getAxis(AXIS_LEFT_Y) < deadZone) {
+					MissionRawBar.playerY -= MissionRawBar.MISSION_RAW_BAR_SPEED;
+					player.setDirection(Player.DIRECTION_UP);
+				} else if (controller.getAxis(AXIS_LEFT_Y) > deadZone) {
+					MissionRawBar.playerY += MissionRawBar.MISSION_RAW_BAR_SPEED;
+					player.setDirection(Player.DIRECTION_DOWN);
+				} 
+			}
+		} else {
+			// Left stick.
+			if (stickIsMoved(AXIS_LEFT_X)) {
+				System.out.print("LEFT STICK X pressed \n");
+				if (controller.getAxis(AXIS_LEFT_X) < 0) {
+					((Player) player).moveLeft(playerSpeed);
+				} else if (controller.getAxis(AXIS_LEFT_X) > 0) {
+					((Player) player).moveRight(playerSpeed);
+				} 
 			} 
-		} 
+			if (stickIsMoved(AXIS_LEFT_Y)) {
+				System.out.print("LEFT STICK Y pressed \n");
+				if (controller.getAxis(AXIS_LEFT_Y) < deadZone) {
+					((Player) player).moveUp(playerSpeed);
+				} else if (controller.getAxis(AXIS_LEFT_Y) > deadZone) {
+					((Player) player).moveDown(playerSpeed);
+				} 
+			} 
+		}
 
 		/**
 		 * We don't use the right stick yet, so don't even check it.

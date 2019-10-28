@@ -84,9 +84,11 @@ public class PlayStation4Pad extends ControllerInput {
 	 * Polls controller for L1, R1, L2, R2.  
 	 * This method is overridden differently for different 
 	 * controllers because the triggers are registered differently.
+	 * 
+	 * @param GameObject player
 	 */
 	@Override
-	protected void pollTriggers() {
+	protected void pollTriggers(GameObject player) {
 		if(controller.getButton(BUTTON_L1)) {
 			System.out.print("L1 button pressed \n");
 		}

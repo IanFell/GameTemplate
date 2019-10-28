@@ -2,7 +2,9 @@ package input.controllers;
 
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.MagicPearl;
 import inventory.Inventory;
+import missions.MissionRawBar;
 
 /**
  * Logitech F310 GamePad.
@@ -43,14 +45,29 @@ public class LogitechF310 extends ControllerInput {
 
 	/**
 	 * Polls controller for LB, RB, LT, RT.
+	 * 
+	 * @param GameObject player
 	 */
 	@Override
-	protected void pollTriggers() {
-		super.pollTriggers();
+	protected void pollTriggers(GameObject player) {
+		super.pollTriggers(player);
 		if(controller.getButton(BUTTON_LT)) {} 
 		if(controller.getButton(BUTTON_RT)) {
 			Player.playerIsPerformingAttack = true;
-		} 
+
+			if (player.getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof MagicPearl) {
+				MagicPearl.isAttacking     = true;
+				MagicPearl.isMovingForward = true;
+			}
+		} else {
+			if (Inventory.inventoryIsEquipped) {
+				if (player.getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof MagicPearl) {
+					MagicPearl.hasReachedPeakDistance = true;
+					MagicPearl.isMovingForward        = false;
+					MagicPearl.isMovingBackward       = true;
+				}
+			}
+		}
 	}
 
 	/**
@@ -73,8 +90,12 @@ public class LogitechF310 extends ControllerInput {
 						player
 						);
 			} else {
-				// Only allow player to jump if UI is not open.
-				Player.isJumping = true;
+				if (!MissionRawBar.introHasCompleted && MissionRawBar.missionIsActive) {
+					MissionRawBar.introHasCompleted = true;
+				} else {
+					// Only allow player to jump if UI is not open.
+					Player.isJumping = true;
+				}
 			}
 		} else {
 			if (Inventory.allInventoryShouldBeRendered) {

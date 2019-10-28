@@ -43,10 +43,12 @@ public class XBox360Pad extends ControllerInput
 
 	/**
 	 * Polls controller for LB, RB, LT, RT.
+	 * 
+	 * @param GameObject player
 	 */
 	@Override
-	protected void pollTriggers() {
-		super.pollTriggers();
+	protected void pollTriggers(GameObject player) {
+		super.pollTriggers(player);
 		if(controller.getAxis(AXIS_LEFT_TRIGGER) > triggerDeadZone) {
 			System.out.print("LEFT TRIGGER pressed \n");
 		}

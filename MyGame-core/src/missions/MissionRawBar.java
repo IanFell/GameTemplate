@@ -3,6 +3,7 @@ package missions;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
@@ -47,7 +48,7 @@ public class MissionRawBar extends Mission {
 
 	// Represents if PHASES are active, not necessarily entire mission.
 	public static boolean phaseIsActive = true;
-	
+
 	// Represents ENTIRE mission, not just phases.
 	public static boolean missionIsActive = false;
 
@@ -66,7 +67,7 @@ public class MissionRawBar extends Mission {
 	 * This message only appears for a few seconds at the start of the phase.
 	 */
 	private int collectOysterMessageTimer = 0;
-	
+
 	private int locationFlashTimer = 0;
 
 	// Oysters will have a random x, y, and size.
@@ -89,13 +90,16 @@ public class MissionRawBar extends Mission {
 	private float phaseTimeLimit;
 
 	private static final int INTRO_TIME_LIMIT = 100;
+
+	public static final float MISSION_RAW_BAR_SPEED = 0.3f;
+
 	private static int introTimer             = 0;
 	public static boolean introHasCompleted  = false;
-	
+
 	public static boolean rawBarMissionComplete = false;
-	
+
 	private Rectangle[] fish = new Rectangle[5];
-	
+
 	private float fishOneDx;
 	private float fishTwoDy;
 	private float fishThreeDx;
@@ -103,12 +107,14 @@ public class MissionRawBar extends Mission {
 	private float fishFourDy;
 	private float fishFiveDy;
 	
+	private int fishTurnTimer;
+
 	public static boolean playCollectionSound = false;
-	
+
 	private int handOpenClosedTimer = 0;
-	
+
 	private static boolean setPlayer = true;
-	
+
 	private final int COLLECT_OYSTER_MESSAGE_MAX_TIME = 20;
 
 	/**
@@ -131,14 +137,14 @@ public class MissionRawBar extends Mission {
 				startPhaseLocatorSize, 
 				startPhaseLocatorSize
 				);
-		
+
 		// Only set the player once.
 		if (setPlayer) {
 			playerX   = startPhasesLocator.x;
 			playerY   = startPhasesLocator.y;
 			setPlayer = false;
 		}
-		
+
 		int startX     = GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 25;
 		int startY     = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 43;
 		float fishSize = 1.5f;
@@ -147,6 +153,7 @@ public class MissionRawBar extends Mission {
 		fish[2] = new Rectangle(startX + 3, startY + 5, fishSize, fishSize);
 		fish[3] = new Rectangle(startX + 2, startY, fishSize, fishSize);
 		fish[4] = new Rectangle(startX + 15, startY + 5, fishSize, fishSize);
+		fishTurnTimer = 0;
 	}
 
 	/**
@@ -173,11 +180,11 @@ public class MissionRawBar extends Mission {
 		playerBounds.width  = playerSize;
 		playerBounds.height = playerSize;
 		missionComplete     = false;
-		
+
 		// Set actual player to begin mission directly outside the Raw Bar's door.
 		myGame.getGameObject(Player.PLAYER_ONE).setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 37);
 		myGame.getGameObject(Player.PLAYER_ONE).setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 38);
-		
+
 		fishOneDx   = 1;
 		fishTwoDy   = 1;
 		fishThreeDx = 1;
@@ -215,7 +222,7 @@ public class MissionRawBar extends Mission {
 			}
 		}
 	}
-	
+
 	private void updateFishPositions() {
 		fish[0].setX(fish[0].getX() + fishOneDx);
 		if (fish[0].getX() > playerX + 3) {
@@ -224,7 +231,7 @@ public class MissionRawBar extends Mission {
 		if (fish[0].getX() < playerX - 3) {
 			fishOneDx = 0.5f;
 		}
-		
+
 		fish[1].setY(fish[1].getY() + fishTwoDy);
 		if (fish[1].getY() > playerY + 3) {
 			fishTwoDy = -0.5f;
@@ -232,7 +239,7 @@ public class MissionRawBar extends Mission {
 		if (fish[1].getY() < playerY - 3) {
 			fishTwoDy = 0.5f;
 		}
-		
+
 		fish[2].setX(fish[2].getX() + fishThreeDx);
 		if (fish[2].getX() > playerX + 1) {
 			fishThreeDx = -0.5f;
@@ -240,7 +247,7 @@ public class MissionRawBar extends Mission {
 		if (fish[2].getX() < playerX - 6) {
 			fishThreeDx = 0.5f;
 		}
-		
+
 		fish[3].setX(fish[3].getX() + fishFourDx);
 		fish[3].setY(fish[3].getY() + fishFourDy);
 		if (fish[3].getX() > playerX + 10) {
@@ -251,7 +258,7 @@ public class MissionRawBar extends Mission {
 			fishFourDx = 0.5f;
 			fishFourDy = 0.5f;
 		}
-		
+
 		fish[4].setY(fish[4].getY() + fishFiveDy);
 		if (fish[4].getY() > playerY + 3) {
 			fishFiveDy = -0.5f;
@@ -269,6 +276,8 @@ public class MissionRawBar extends Mission {
 		playerBounds.x = playerX;
 		playerBounds.y = playerY;
 		
+		fishTurnTimer++;
+
 		updateFishPositions();
 
 		for (int i = 0 ; i < MAX_OYSTERS_SPAWNED; i++) {
@@ -288,12 +297,12 @@ public class MissionRawBar extends Mission {
 		if (collectOysterMessageTimer < COLLECT_OYSTER_MESSAGE_MAX_TIME) {
 			collectOysterMessageTimer++;
 		}
-		
+
 		handOpenClosedTimer++;
 		if (handOpenClosedTimer > 20) {
 			handOpenClosedTimer = 0;
 		}
-		
+
 		for (int i = 0; i < fish.length; i++) {
 			if (fish[i].overlaps(playerBounds)) {
 				switch (Player.direction) {
@@ -357,6 +366,12 @@ public class MissionRawBar extends Mission {
 				GameScreen.camera.viewportWidth, 
 				-GameScreen.camera.viewportHeight
 				);
+		
+		/**
+		 * Alert player how many oysters to collect.  
+		 * This message appears for a few seconds at the start of the phase.
+		 */
+		renderCollectOysterMessage(batch, imageLoader, myGame);
 
 		// Draw oysters.
 		for (int i = 0 ; i < MAX_OYSTERS_SPAWNED; i++) {
@@ -371,17 +386,15 @@ public class MissionRawBar extends Mission {
 						);
 			}
 		}
-		
-		/**
-		 * Alert player how many oysters to collect.  
-		 * This message appears for a few seconds at the start of the phase.
-		 */
-		renderCollectOysterMessage(batch, imageLoader, myGame);
-		
+
 		// Draw fish.
+		Texture fishTexture = imageLoader.fishRight;
+		if (fishTurnTimer % 10 < 5) {
+			fishTexture = imageLoader.fishLeft;
+		} 
 		for (int i = 0; i < fish.length; i++) {
 			batch.draw(
-					imageLoader.chestClosed, 
+					fishTexture, 
 					fish[i].getX(), 
 					fish[i].getY(),
 					fish[i].width, 
@@ -427,7 +440,7 @@ public class MissionRawBar extends Mission {
 						);
 			}
 		}
-		
+
 		// Draw water.
 		batch.draw(
 				imageLoader.missionTransparentBlueSquare, 

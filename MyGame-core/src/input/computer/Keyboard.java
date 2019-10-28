@@ -191,21 +191,20 @@ public class Keyboard extends ComputerInput {
 		if(GameObjectLoader.gameObjectList.contains(player)) {
 			// RawBar Mission uses a different player than normal since it's kind of like a mini game.
 			if (MissionRawBar.phasesAreInProgress) {
-				float rawBarPlayerSpeed = 0.3f;
 				if (Gdx.input.isKeyPressed(left)) {
-					MissionRawBar.playerX -= rawBarPlayerSpeed;
+					MissionRawBar.playerX -= MissionRawBar.MISSION_RAW_BAR_SPEED;
 					player.setDirection(Player.DIRECTION_LEFT);
 				}
 				else if (Gdx.input.isKeyPressed(right)) {
-					MissionRawBar.playerX += rawBarPlayerSpeed;
+					MissionRawBar.playerX += MissionRawBar.MISSION_RAW_BAR_SPEED;
 					player.setDirection(Player.DIRECTION_RIGHT);
 				}
 				else if (Gdx.input.isKeyPressed(up)) {
-					MissionRawBar.playerY -= rawBarPlayerSpeed;
+					MissionRawBar.playerY -= MissionRawBar.MISSION_RAW_BAR_SPEED;
 					player.setDirection(Player.DIRECTION_UP);
 				}
 				else if (Gdx.input.isKeyPressed(down)) {
-					MissionRawBar.playerY += rawBarPlayerSpeed;
+					MissionRawBar.playerY += MissionRawBar.MISSION_RAW_BAR_SPEED;
 					player.setDirection(Player.DIRECTION_DOWN);
 				}
 			} else {

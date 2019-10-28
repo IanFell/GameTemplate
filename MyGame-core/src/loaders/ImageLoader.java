@@ -104,6 +104,8 @@ public class ImageLoader {
 	public Texture leftHand;
 	public Texture rightHandClosed;
 	public Texture leftHandClosed;
+	public Texture fishLeft;
+	public Texture fishRight;
 
 	// Tile objects.
 	public Texture grassTileOne;
@@ -232,6 +234,8 @@ public class ImageLoader {
 		leftHand      						   = new Texture(Gdx.files.internal("artwork/missions/HandOpenLeft.png"));
 		rightHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedRight.png"));
 		leftHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedLeft.png"));
+		fishLeft                               = new Texture(Gdx.files.internal("artwork/missions/FishLeft.png"));
+		fishRight                              = new Texture(Gdx.files.internal("artwork/missions/FishRight.png"));
 
 		// Tile objects.
 		grassTileOne     			           = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
@@ -371,6 +375,8 @@ public class ImageLoader {
 		leftHand.dispose();
 		rightHandClosed.dispose();
 		leftHandClosed.dispose();
+		fishLeft.dispose();
+		fishRight.dispose();
 
 		// Tile objects.
 		grassTileOne.dispose();

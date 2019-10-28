@@ -180,8 +180,14 @@ public class GameScreen extends Screens {
 		mapUi          = new MapUi(myGame);
 		healthUi       = new HealthUi();
 		// Just spawn gun by player for now so it's always available.
-		gun            = new Gun(myGame.getGameObject(GameObject.PLAYER_ONE).getX() + 3, myGame.getGameObject(GameObject.PLAYER_ONE).getY() + 3, myGame.imageLoader);
-		magicPearl     = new MagicPearl(myGame.getGameObject(GameObject.PLAYER_ONE).getX() + 2, myGame.getGameObject(GameObject.PLAYER_ONE).getY());
+		gun            = new Gun(
+				myGame.getGameObject(GameObject.PLAYER_ONE).getX() + 3, 
+				myGame.getGameObject(GameObject.PLAYER_ONE).getY() + 3, myGame.imageLoader
+				);
+		magicPearl     = new MagicPearl(
+				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 35, 
+				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45
+				);
 		heartHandler.init();
 
 		/**

@@ -89,14 +89,26 @@ public class PlayerOne extends Player {
 
 	private void handleTextures() {
 		if (Inventory.inventoryIsEquipped) {
-			animationSpeed = 7/15f;
-			setAnimations(
-					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightGun.atlas")),
-					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftGun.atlas")),
-					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerUpGun.atlas")),
-					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownGun.atlas"))
-					);
+			// Make player spin if jumping.
+			if (jumpingAction == Player.DESCENDING_JUMP) {
+				animationSpeed = 1/15f;
+				setAnimations(
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpRight.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpLeft.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpUp.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpDown.atlas"))
+						);
+			} else {
+				animationSpeed = 7/15f;
+				setAnimations(
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightGun.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftGun.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerUpGun.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownGun.atlas"))
+						);
+			}
 		} else {
+			// Make player spin if jumping.
 			if (jumpingAction == Player.DESCENDING_JUMP) {
 				animationSpeed = 1/15f;
 				setAnimations(
