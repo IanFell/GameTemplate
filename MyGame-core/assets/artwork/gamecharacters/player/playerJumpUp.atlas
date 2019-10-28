@@ -1,0 +1,27 @@
+
+playerJumpUp.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+JR_04_Red_Jump
+  rotate: false
+  xy: 2, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+JR_05_Red_Jump
+  rotate: false
+  xy: 36, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+JR_06_Red_Jump
+  rotate: false
+  xy: 70, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1

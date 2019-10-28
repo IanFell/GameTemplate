@@ -84,7 +84,12 @@ public class PlayerOne extends Player {
 			inventory.updateInventory(x, y, mapHandler);
 		}
 
+		handleTextures();
+	}
+
+	private void handleTextures() {
 		if (Inventory.inventoryIsEquipped) {
+			animationSpeed = 7/15f;
 			setAnimations(
 					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightGun.atlas")),
 					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftGun.atlas")),
@@ -92,12 +97,23 @@ public class PlayerOne extends Player {
 					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownGun.atlas"))
 					);
 		} else {
-			setAnimations(
-					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightRed.atlas")),
-					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftRed.atlas")),
-					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerUpRed.atlas")),
-					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownRed.atlas"))
-					);
+			if (jumpingAction == Player.DESCENDING_JUMP) {
+				animationSpeed = 1/15f;
+				setAnimations(
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpRight.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpLeft.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpUp.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpDown.atlas"))
+						);
+			} else {
+				animationSpeed = 7/15f;
+				setAnimations(
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightRed.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftRed.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerUpRed.atlas")),
+						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerDownRed.atlas"))
+						);
+			}
 		}
 	}
 
@@ -163,5 +179,39 @@ public class PlayerOne extends Player {
 	@Override
 	protected void handleWalking(MyGame myGame) {
 		savePlayerCurrentPositionAndDirection(x, y, playerOneXPositions, playerOneYPositions, playerDirections);
+	}
+
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	@Override
+	protected void handleJumping(MyGame myGame) {
+		super.handleJumping(myGame);
+		if (jumpingAction == Player.DESCENDING_JUMP) {
+			switch (direction) {
+			case Player.DIRECTION_LEFT:
+				dx = -0.3f;
+				dy = 0.01f;
+				break;
+			case Player.DIRECTION_RIGHT:
+				dx = 0.3f;
+				dy = 0.01f;
+				break;
+			case Player.DIRECTION_UP:
+				dx = 0;
+				dy = -0.3f;
+				break;
+			case Player.DIRECTION_DOWN:
+				dx = 0;
+				dy = 0.3f;
+				break;
+			}
+			x += dx;
+			y += dy;
+		} else {
+			dx = 0;
+			dy = 0;
+		}
 	}
 }

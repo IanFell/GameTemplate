@@ -55,7 +55,7 @@ public class Player extends GameCharacter {
 	private static final int JUMP_COUNT_MAX = GameAttributeHelper.FRAMES_PER_SECOND;
 
 	public static int jumpingAction;
-	private float jumpSpeed;
+	protected float jumpSpeed;
 	private float jumpingSpeedValue = 0.1f;
 
 	public static final int ON_GROUND       = 0;
@@ -103,7 +103,7 @@ public class Player extends GameCharacter {
 	 * @param int    playerNumber
 	 */
 	public Player(String name, MyGame myGame, int playerNumber) {
-		setPlayerStartingPosition(Town.ST_GEORGE);
+		setPlayerStartingPosition(Town.APALACHICOLA);
 		this.playerNumber        = playerNumber;
 		this.width               = playerSize;
 		this.height              = playerSize;

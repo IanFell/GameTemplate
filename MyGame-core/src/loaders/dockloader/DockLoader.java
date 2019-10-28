@@ -24,7 +24,7 @@ public class DockLoader {
 	public void loadDocks(MyGame myGame) {
 		int dockSize = 5;
 		mexicoBeachDock = new Dock(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 32, 
+				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 31, 
 				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 5,
 				dockSize,
 				dockSize,
@@ -40,7 +40,7 @@ public class DockLoader {
 				);
 		
 		stGeorgeDock = new Dock(
-				GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START + 13, 
+				GameAttributeHelper.CHUNK_SEVEN_X_POSITION_START + 14, 
 				GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START + 2,
 				dockSize,
 				dockSize,

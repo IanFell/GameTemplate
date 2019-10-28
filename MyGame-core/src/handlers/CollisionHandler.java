@@ -270,7 +270,7 @@ public class CollisionHandler {
 			}
 
 			// Kill enemy if he is overlapping with player while player is performing attack.
-			if (Player.playerIsPerformingAttack) {
+			if (Player.playerIsPerformingAttack || Player.jumpingAction == Player.DESCENDING_JUMP) {
 				handleEnemyDeath(enemy);
 			}
 		}

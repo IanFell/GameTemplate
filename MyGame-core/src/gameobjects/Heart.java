@@ -15,11 +15,11 @@ import maps.MapHandler;
  *
  */
 public class Heart extends GameObject {
-	
+
 	public static final int HEALTH = 1;
-	
+
 	public static boolean playSound = false;
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -38,7 +38,7 @@ public class Heart extends GameObject {
 		rectangle.height = size;
 		hasBeenCollected = false;
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
@@ -46,16 +46,23 @@ public class Heart extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-			batch.draw(
-					imageLoader.heart,
-					x,
-					y,
-					width,
-					-height
-					);
+		batch.draw(
+				imageLoader.heartShadow,
+				x,
+				y + 0.5f,
+				width,
+				-height
+				);
+		batch.draw(
+				imageLoader.heart,
+				x,
+				y,
+				width,
+				-height
+				);
 		//renderHitBox(batch, shapeRenderer, imageLoader);
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch
@@ -71,7 +78,7 @@ public class Heart extends GameObject {
 				-rectangle.height
 				);
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame     myGame
@@ -87,7 +94,7 @@ public class Heart extends GameObject {
 			grow();
 		}
 	}
-	
+
 	private void grow() {
 		int doubleGrowth = 2;
 		float growValue  = 0.2f;
