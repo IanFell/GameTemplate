@@ -9,6 +9,7 @@ import helpers.GameAttributeHelper;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import physics.Lighting.Fire;
 import spawners.GruntSpawner;
 
 /**
@@ -21,7 +22,9 @@ public class GruntHandler {
 	public GruntSpawner[] gruntSpawner = new GruntSpawner[6];
 
 	// Use grunt huts to mask enemy spawning.
-	public GruntHut[] gruntHut = new GruntHut[6];
+	public static GruntHut[] gruntHut = new GruntHut[6];
+
+	private Fire[] fire = new Fire[6];
 
 	/**
 	 * 
@@ -61,8 +64,11 @@ public class GruntHandler {
 				);
 
 		for (int i = 0; i < gruntHut.length; i++) {
-			gruntHut[i]= new GruntHut(0, 0, 8, 8, imageLoader.gruntHut);
+			gruntHut[i] = new GruntHut(0, 0, 8, 8, imageLoader.gruntHut);
+			fire[i] = new Fire(0, 0, 1.0f, 2.0f, null, true);
+
 			GameObjectLoader.gameObjectList.add(gruntHut[i]);
+			GameObjectLoader.gameObjectList.add(fire[i]);
 		}
 
 		int xOffset = 3;
@@ -79,6 +85,11 @@ public class GruntHandler {
 		gruntHut[4].setY(GameAttributeHelper.CHUNK_EIGHT_Y_POSITION_START - 1 + yOffset);
 		gruntHut[5].setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 60 - xOffset);
 		gruntHut[5].setY(20 + yOffset);
+
+		for (int i = 0; i < fire.length; i++) {
+			fire[i].setX(gruntHut[i].getX() + 3.5f);
+			fire[i].setY(gruntHut[i].getY() - 2.0f);
+		}
 	}
 
 	/**
@@ -90,6 +101,7 @@ public class GruntHandler {
 		for (int i = 0; i < gruntSpawner.length; i++) {
 			gruntSpawner[i].updateGrunts(myGame, mapHandler);
 			gruntHut[i].updateObject(myGame, mapHandler);
+			fire[i].updateObject(myGame, mapHandler);
 		}
 	}
 

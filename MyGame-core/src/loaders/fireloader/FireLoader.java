@@ -76,6 +76,7 @@ public class FireLoader extends ClassObjectLoader {
 				"Light House",
 				!hasLogs
 				);
+
 		addGameObjectsToGameObjectArrayList(fires);
 	}
 }
