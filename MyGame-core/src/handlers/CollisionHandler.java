@@ -272,6 +272,30 @@ public class CollisionHandler {
 			// Kill enemy if he is overlapping with player while player is performing attack.
 			if (Player.playerIsPerformingAttack || Player.jumpingAction == Player.DESCENDING_JUMP) {
 				handleEnemyDeath(enemy);
+
+				/**
+				 * backLash is how much the player gets bounced back upon being hit by enemy.
+				 * Player should get bounced back if player is close to enemy and attacking and kills him.
+				 */
+				int backLash = 3;
+				switch (Player.direction) {
+				case Player.DIRECTION_RIGHT:
+					player.setDx(player.getDx() - backLash);
+					player.setDy(0);
+					break;
+				case Player.DIRECTION_LEFT:
+					player.setDx(player.getDx() * backLash);
+					player.setDy(0);
+					break;
+				case Player.DIRECTION_UP:
+					player.setDy(player.getDy() + backLash);
+					player.setDx(0);
+					break;
+				case Player.DIRECTION_DOWN:
+					player.setDy(player.getDy() - backLash);
+					player.setDx(0);
+					break;
+				}
 			}
 		}
 	}

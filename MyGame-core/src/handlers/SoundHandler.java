@@ -54,8 +54,9 @@ public class SoundHandler {
 
 			for (int i = 0; i < myGame.gameScreen.enemyHandler.enemySpawner.length; i++) {
 				for (int k = 0; k < myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.size(); k++) {
+					// For now make the same sound for every enemy killing.  The explosion sounds cool.
 					if (myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).getPlaySound()) {
-						soundLoader.enemyDeathSound.play(AudioHandler.MAX_VOLUME);
+						soundLoader.bombSound.play(AudioHandler.MEDIAN_VOLUME);
 						myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).setPlaySound(false);
 					}
 				}
