@@ -24,6 +24,12 @@ import physics.Lighting.Fire;
  *
  */
 public class PlayerOne extends Player {
+	
+	private final float BOUNCE_BACK_STARTING_VALUE = 10;
+	private float bounceBackValue =  BOUNCE_BACK_STARTING_VALUE;
+	private boolean isBouncingBack = false;
+	private float bounceBackIncrement = 0.06f;
+	
 
 	private Torch torch;
 
@@ -68,6 +74,7 @@ public class PlayerOne extends Player {
 		super.updateObject(myGame, mapHandler);
 		handleWalking(myGame);
 		handleJumping(myGame);
+		handleBounceBack();
 
 		if (getHealth() <= 0) {
 			setLifeState(myGame, PLAYER_ONE);
@@ -85,6 +92,49 @@ public class PlayerOne extends Player {
 		}
 
 		handleTextures();
+	}
+	
+	// If player bounces back onto the water or offscreen he will never stop because he never hits the ground.
+	private void handleBounceBack() {
+		if (isBouncingBack) {
+			switch (direction) {
+			case DIRECTION_LEFT:
+				x += bounceBackIncrement;
+				break;
+			case DIRECTION_RIGHT:
+				x -= bounceBackIncrement;
+				break;
+			case DIRECTION_UP:
+				y += bounceBackIncrement;
+				break;
+			case DIRECTION_DOWN:
+				y -= bounceBackIncrement;
+				break;
+			}
+			bounceBackIncrement *= 2;
+		} else {
+			bounceBackIncrement = 0.06f;
+			isBouncingBack = false;
+		}
+		/*
+		if (isBouncingBack) {
+			//bounceBackValue--;
+			//x += bounceBackValue;
+			x = x + bounceBackIncrement;
+			bounceBackIncrement *= 2;
+		} else {
+			//bounceBackValue = BOUNCE_BACK_STARTING_VALUE;
+			bounceBackIncrement = 0.06f;
+			isBouncingBack = false;
+		}
+		*/
+		if (jumpingAction == ON_GROUND) {
+			isBouncingBack = false;
+		}
+	}
+
+	public void setBouncingBack(boolean isBouncingBack) {
+		this.isBouncingBack = isBouncingBack;
 	}
 
 	private void handleTextures() {
@@ -225,5 +275,9 @@ public class PlayerOne extends Player {
 			dx = 0;
 			dy = 0;
 		}
+	}
+	
+	public void performBounceBack() {
+		
 	}
 }

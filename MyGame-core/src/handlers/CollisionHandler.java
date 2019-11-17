@@ -277,6 +277,13 @@ public class CollisionHandler {
 				 * backLash is how much the player gets bounced back upon being hit by enemy.
 				 * Player should get bounced back if player is close to enemy and attacking and kills him.
 				 */
+				
+				// Should make this value get bigger over time.   Start at 0 and increment so
+				// it actually looks like the player is "bouncing" back.
+				// maybe just make the value always be incrementing until like 3
+				// then get set back to 0 and dx or dy is always set to dy plus backLash.
+				player.setBouncingBack(true);
+				/*
 				int backLash = 3;
 				switch (Player.direction) {
 				case Player.DIRECTION_RIGHT:
@@ -284,7 +291,7 @@ public class CollisionHandler {
 					player.setDy(0);
 					break;
 				case Player.DIRECTION_LEFT:
-					player.setDx(player.getDx() * backLash);
+					player.setDx(player.getDx() + backLash);
 					player.setDy(0);
 					break;
 				case Player.DIRECTION_UP:
@@ -295,7 +302,7 @@ public class CollisionHandler {
 					player.setDy(player.getDy() - backLash);
 					player.setDx(0);
 					break;
-				}
+				}*/
 			}
 		}
 	}
