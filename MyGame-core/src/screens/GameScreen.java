@@ -26,8 +26,8 @@ import maps.MapRenderer;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
-import ui.HealthUi;
 import ui.MapUi;
+import ui.UserInterface;
 
 /**
  * Screen of the game while in play.
@@ -37,8 +37,14 @@ import ui.MapUi;
  */
 public class GameScreen extends Screens {
 
+	// Map when user pauses game.
 	private MapUi mapUi;
-	private HealthUi healthUi;
+
+	/**
+	 * User interface that is always on screen.
+	 * This includes, hearts, loot, etc.
+	 */
+	private UserInterface userInterface;
 	//private GuiScreen guiScreen = new GuiScreen(myGame);
 
 	public static int cameraWidth = 10;
@@ -178,7 +184,7 @@ public class GameScreen extends Screens {
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
 		mapUi          = new MapUi(myGame);
-		healthUi       = new HealthUi();
+		userInterface  = new UserInterface();
 		// Just spawn gun by player for now so it's always available.
 		gun            = new Gun(
 				myGame.getGameObject(GameObject.PLAYER_ONE).getX() + 3, 
@@ -335,7 +341,7 @@ public class GameScreen extends Screens {
 					);
 		}
 
-		healthUi.renderHealthUi(
+		userInterface.renderUserInterface(
 				myGame.renderer.batch,  
 				myGame.imageLoader,
 				myGame
