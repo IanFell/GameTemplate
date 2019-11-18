@@ -61,6 +61,14 @@ public class PlayerOne extends Player {
 	public void updatePlayerScore(int score) {
 		playerScore += score;
 	}
+	
+	/**
+	 * 
+	 * @param int playerScore
+	 */
+	public void setPlayerScore(int playerScore) {
+		this.playerScore = playerScore;
+	}
 
 	/**
 	 * 

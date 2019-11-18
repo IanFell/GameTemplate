@@ -454,14 +454,6 @@ public class Player extends GameCharacter {
 
 	/**
 	 * 
-	 * @return int
-	 */
-	public int getPlayerScore() {
-		return playerScore;
-	}
-
-	/**
-	 * 
 	 * @param int playerScore
 	 */
 	public void setPlayerScore(int playerScore) {
