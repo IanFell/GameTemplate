@@ -126,6 +126,7 @@ public class ImageLoader {
 	public Texture inventoryScreen;
 	public Texture inventoryLabel;
 	public Texture locationSkull;
+	public Texture loot;
 
 	// Logo objects.
 	public Texture splashScreenLogo;
@@ -256,6 +257,7 @@ public class ImageLoader {
 		inventoryScreen                        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
 		inventoryLabel                         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
 		locationSkull                          = new Texture(Gdx.files.internal("artwork/ui/Skull.png"));
+		loot                                   = new Texture(Gdx.files.internal("artwork/ui/Loot.png"));
 
 		// Logo objects.
 		splashScreenLogo                       = new Texture(Gdx.files.internal("artwork/logos/logo_ffg.png"));
@@ -397,6 +399,7 @@ public class ImageLoader {
 		inventoryScreen.dispose();
 		inventoryLabel.dispose();
 		locationSkull.dispose();
+		loot.dispose();
 
 		// Logo objects.
 		splashScreenLogo.dispose();

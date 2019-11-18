@@ -24,9 +24,9 @@ public class LootUi {
 		GameObject player = PlayerController.getCurrentPlayer(myGame);
 		int size          = 1;
 		batch.draw(
-				imageLoader.whiteSquare,
+				imageLoader.loot,
 				player.getX() - 12.5f,
-				player.getY() - 5.5f,
+				player.getY() - 5.0f,
 				size, 
 				-size
 				);
