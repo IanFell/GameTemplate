@@ -105,7 +105,7 @@ public class Player extends GameCharacter {
 		this.width               = playerSize;
 		this.height              = playerSize;
 		rectangle.width          = playerSize;
-		rectangle.height         = playerSize;
+		rectangle.height         = playerSize * 2;
 		lifeState                = LIFE_STATE_ONE;
 
 		switch (playerNumber) {
@@ -257,7 +257,7 @@ public class Player extends GameCharacter {
 		x += dx;
 		y += dy;
 		rectangle.x = x;
-		rectangle.y = y - height;
+		rectangle.y = y - height * 2;
 
 		// Timer for water animation.
 		timer++;
@@ -372,7 +372,7 @@ public class Player extends GameCharacter {
 	 * @param SpriteBatch batch
 	 * @param ImageLoader imageLoader
 	 */
-	private void renderHitBox(SpriteBatch batch, ImageLoader imageLoader) {
+	protected void renderHitBox(SpriteBatch batch, ImageLoader imageLoader) {
 		batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 	}
 

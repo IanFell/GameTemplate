@@ -27,6 +27,9 @@ import tiles.Tile;
  *
  */
 public class CollisionHandler {
+	
+	private static float playerX = 0;
+	private static float playerY = 0;
 
 	// Keep track of enemy collision timing for player health.
 	private static int timer = 0;
@@ -113,7 +116,23 @@ public class CollisionHandler {
 	 * @param Chest      chest
 	 */
 	public static void checkIfPlayerHasCollidedWithChest(GameObject player, Chest chest) {
+		System.out.println(playerX + ", " + playerY);
 		if (chest.rectangle.overlaps(player.rectangle)) {
+			float offset = 0.5f;
+			switch (Player.direction) {
+			case Player.DIRECTION_LEFT:
+				player.setX(player.getX() + Player.PLAYER_SPEED + offset);
+				break;
+			case Player.DIRECTION_RIGHT:
+				player.setX(player.getX() - Player.PLAYER_SPEED - offset);
+				break;
+			case Player.DIRECTION_UP:
+				player.setY(player.getY() + Player.PLAYER_SPEED + offset);
+				break;
+			case Player.DIRECTION_DOWN:
+				player.setY(player.getY() - Player.PLAYER_SPEED - offset);
+				break;
+			}
 			if (chest.isClosed()) {
 				chest.setChestValuesAfterCollisionWithPlayer();
 				((Player) player).updatePlayerLoot(Chest.LOOT_VALUE);
@@ -123,7 +142,7 @@ public class CollisionHandler {
 					MissionChests.increaseNumberOfChestsOpened();
 				}
 			}
-		}
+		} 
 	}
 
 	/**

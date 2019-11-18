@@ -51,6 +51,8 @@ public class Chest extends GamePlayObject {
 		setChestToOriginalValues();
 		this.width  = objectSize;
 		this.height = objectSize;
+		rectangle.width = width;
+		rectangle.height = height;
 	}
 
 	/**
@@ -77,6 +79,7 @@ public class Chest extends GamePlayObject {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
+		rectangle.y = y;
 		CollisionHandler.checkIfPlayerHasCollidedWithChest(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this
