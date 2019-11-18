@@ -19,7 +19,7 @@ import maps.MapHandler;
 public class GruntSpawner extends EnemySpawner {
 
 	public ArrayList <Grunt> grunts = new ArrayList<Grunt>();
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -53,7 +53,7 @@ public class GruntSpawner extends EnemySpawner {
 			GameObjectLoader.gameObjectList.add(grunt);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param MyGame    myGame
@@ -63,18 +63,18 @@ public class GruntSpawner extends EnemySpawner {
 		if (grunts != null) {
 			for (int i = 0; i < grunts.size(); i++) {
 				grunts.get(i).updateObject(myGame, mapHandler);
-					// If enemy is dead and his dead fire animation has ended.
-					if (grunts.get(i).isDead() && grunts.get(i).getTimer() >= Grunt.MAX_DEATH_ANIMATION_VALUE) {
-						GameObjectLoader.gameObjectList.remove(grunts.get(i));
-						grunts.remove(i);
-					}
+				// If enemy is dead and his dead fire animation has ended.
+				if (grunts.get(i).isDead() && grunts.get(i).getTimer() >= Grunt.MAX_DEATH_ANIMATION_VALUE) {
+					GameObjectLoader.gameObjectList.remove(grunts.get(i));
+					grunts.remove(i);
+				}
 			}
 		}
 		if (grunts.size() < Grunt.MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE) {
 			spawnGrunts(myGame, x, y);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param SpriteBatch   batch

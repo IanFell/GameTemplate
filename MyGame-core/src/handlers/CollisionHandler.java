@@ -259,7 +259,7 @@ public class CollisionHandler {
 	 */
 	public static void checkIfEnemyHasCollidedWithPlayer(Enemy enemy, Player player) {
 		if (enemy.rectangle.overlaps(player.rectangle)) {
-			// Use this so enemies don't drain player really quick.
+			// Use this so enemies don't drain player's health really quick.
 			timer++;
 			if (timer > 50) {
 				timer = 0;
@@ -272,37 +272,8 @@ public class CollisionHandler {
 			// Kill enemy if he is overlapping with player while player is performing attack.
 			if (Player.playerIsPerformingAttack || Player.jumpingAction == Player.DESCENDING_JUMP) {
 				handleEnemyDeath(enemy);
-
-				/**
-				 * backLash is how much the player gets bounced back upon being hit by enemy.
-				 * Player should get bounced back if player is close to enemy and attacking and kills him.
-				 */
-				
-				// Should make this value get bigger over time.   Start at 0 and increment so
-				// it actually looks like the player is "bouncing" back.
-				// maybe just make the value always be incrementing until like 3
-				// then get set back to 0 and dx or dy is always set to dy plus backLash.
+				// Player should bounce back upon attacking an enemy with a jump.
 				player.setBouncingBack(true);
-				/*
-				int backLash = 3;
-				switch (Player.direction) {
-				case Player.DIRECTION_RIGHT:
-					player.setDx(player.getDx() - backLash);
-					player.setDy(0);
-					break;
-				case Player.DIRECTION_LEFT:
-					player.setDx(player.getDx() + backLash);
-					player.setDy(0);
-					break;
-				case Player.DIRECTION_UP:
-					player.setDy(player.getDy() + backLash);
-					player.setDx(0);
-					break;
-				case Player.DIRECTION_DOWN:
-					player.setDy(player.getDy() - backLash);
-					player.setDx(0);
-					break;
-				}*/
 			}
 		}
 	}

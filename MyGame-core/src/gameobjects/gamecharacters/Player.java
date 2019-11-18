@@ -10,14 +10,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import gameobjects.weapons.Gun;
-import gameobjects.weapons.LegendSword;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
-import maps.MapLocationFinder;
 import particles.DustParticleEmitter;
 import towns.Town;
 
@@ -36,7 +33,7 @@ import towns.Town;
 public class Player extends GameCharacter { 
 
 	private String name;
-	
+
 	protected String playerRenderingPrefix = "artwork/gamecharacters/player/";
 
 	public final static float PLAYER_SPEED = 0.3f;
@@ -277,6 +274,10 @@ public class Player extends GameCharacter {
 			}
 		}
 		dustEmitter.updateParticles(myGame);
+
+		if (isInWater) {
+			jumpingAction = ON_GROUND;
+		}
 	}
 
 	/**

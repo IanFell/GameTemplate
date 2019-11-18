@@ -24,12 +24,10 @@ import physics.Lighting.Fire;
  *
  */
 public class PlayerOne extends Player {
-	
-	private final float BOUNCE_BACK_STARTING_VALUE = 10;
-	private float bounceBackValue =  BOUNCE_BACK_STARTING_VALUE;
-	private boolean isBouncingBack = false;
-	private float bounceBackIncrement = 0.06f;
-	
+
+	private final float BOUNCE_BACK_STARTING_VALUE = 0.06f;
+	private float bounceBackIncrement              = BOUNCE_BACK_STARTING_VALUE;
+	private boolean isBouncingBack                 = false;
 
 	private Torch torch;
 
@@ -93,8 +91,12 @@ public class PlayerOne extends Player {
 
 		handleTextures();
 	}
-	
-	// If player bounces back onto the water or offscreen he will never stop because he never hits the ground.
+
+	/**
+	 * This handles bouncing back of player after he collides and attacks and enemy.
+	 * 
+	 * If player bounces back offscreen he will never stop because he never hits the ground.
+	 */
 	private void handleBounceBack() {
 		if (isBouncingBack) {
 			switch (direction) {
@@ -111,23 +113,12 @@ public class PlayerOne extends Player {
 				y -= bounceBackIncrement;
 				break;
 			}
-			bounceBackIncrement *= 2;
+			bounceBackIncrement *= 1.7f;
 		} else {
-			bounceBackIncrement = 0.06f;
+			bounceBackIncrement = BOUNCE_BACK_STARTING_VALUE;
 			isBouncingBack = false;
 		}
-		/*
-		if (isBouncingBack) {
-			//bounceBackValue--;
-			//x += bounceBackValue;
-			x = x + bounceBackIncrement;
-			bounceBackIncrement *= 2;
-		} else {
-			//bounceBackValue = BOUNCE_BACK_STARTING_VALUE;
-			bounceBackIncrement = 0.06f;
-			isBouncingBack = false;
-		}
-		*/
+
 		if (jumpingAction == ON_GROUND) {
 			isBouncingBack = false;
 		}
@@ -275,9 +266,5 @@ public class PlayerOne extends Player {
 			dx = 0;
 			dy = 0;
 		}
-	}
-	
-	public void performBounceBack() {
-		
 	}
 }
