@@ -15,6 +15,9 @@ public class UserInterface {
 	private HealthUi healthUi;
 	private LootUi lootUi;
 
+	/**
+	 * Constructor.
+	 */
 	public UserInterface() {
 		healthUi = new HealthUi();
 		lootUi   = new LootUi();

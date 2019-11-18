@@ -276,4 +276,8 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * @param int health
 	 */
 	public void setHealth(int health) {}
+	
+	public String convertPlayerLootToString() {
+		return null;
+	}
 }

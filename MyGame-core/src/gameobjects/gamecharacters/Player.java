@@ -78,7 +78,7 @@ public class Player extends GameCharacter {
 
 	protected float playerSize = 1f;
 
-	protected int playerScore;
+	protected int playerLoot;
 
 	protected int health;
 
@@ -454,20 +454,6 @@ public class Player extends GameCharacter {
 
 	/**
 	 * 
-	 * @param int playerScore
-	 */
-	public void setPlayerScore(int playerScore) {
-		this.playerScore = playerScore;
-	}
-
-	/**
-	 * 
-	 * @param int score
-	 */
-	public void updatePlayerScore(int score) {}
-
-	/**
-	 * 
 	 * @return String
 	 */
 	public String getName() {
@@ -512,4 +498,10 @@ public class Player extends GameCharacter {
 	 * @param boolean isBouncingBack
 	 */
 	public void setBouncingBack(boolean isBouncingBack) {}
+
+	/**
+	 * 
+	 * @param int loot
+	 */
+	public void updatePlayerLoot(int loot) {}
 }

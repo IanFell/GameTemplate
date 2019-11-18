@@ -44,11 +44,11 @@ public class MissionChests extends Mission {
 			// If mission is complete:
 			if (numberOfChestsOpened >= AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION) {
 				// Give player bonus score.
-				player.updatePlayerScore(100);
+				//player.updatePlayerScore(100);
 				executeMission  = false;
 				missionComplete = true;
 			} else {
-				System.out.println("Number of chests opened for chest mission: " + numberOfChestsOpened);
+				//System.out.println("Number of chests opened for chest mission: " + numberOfChestsOpened);
 			}
 		}
 

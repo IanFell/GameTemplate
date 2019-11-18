@@ -16,7 +16,10 @@ import maps.MapHandler;
  *
  */
 public class Chest extends GamePlayObject {
-	
+
+	// How much loot player gets from opening chest.
+	public static final int LOOT_VALUE = 5;
+
 	protected float objectSize = 1.5f;
 
 	/**

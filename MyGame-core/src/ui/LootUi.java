@@ -1,5 +1,6 @@
 package ui;
 
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
@@ -15,13 +16,16 @@ import loaders.ImageLoader;
  *
  */
 public class LootUi {
-	
+
 	private BitmapFont font;
-	CharSequence str = "The Golden Age";
-	
+
+	/**
+	 * Constructor.
+	 */
 	public LootUi() {
 		// The true paramater signifies font is flipped.
 		font = new BitmapFont(true);
+		font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		float scale = 0.1f;
 		font.getData().setScale(scale, scale);
 	}
@@ -42,9 +46,10 @@ public class LootUi {
 				size, 
 				-size
 				);
+
 		font.draw(
 				batch, 
-				myGame.getGameObject(Player.PLAYER_ONE).getPlayerScore(), 
+				myGame.getGameObject(Player.PLAYER_ONE).convertPlayerLootToString(), 
 				player.getX() - 11.0f, 
 				player.getY() - 6.0f
 				);

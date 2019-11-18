@@ -116,7 +116,7 @@ public class CollisionHandler {
 		if (chest.rectangle.overlaps(player.rectangle)) {
 			if (chest.isClosed()) {
 				chest.setChestValuesAfterCollisionWithPlayer();
-				((Player) player).updatePlayerScore(5);
+				((Player) player).updatePlayerLoot(Chest.LOOT_VALUE);
 
 				// Testing mission.  Later, this will be controlled.  Right now, it is always on.
 				if (MissionChests.executeMission) {

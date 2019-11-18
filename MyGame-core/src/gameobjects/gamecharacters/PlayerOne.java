@@ -50,24 +50,24 @@ public class PlayerOne extends Player {
 	 */
 	public PlayerOne(String name, MyGame myGame, int playerNumber) {
 		super(name, myGame, playerNumber);
-		playerScore = 0;
-		torch       = new Torch(0, 0);
+		playerLoot = 0;
+		torch      = new Torch(0, 0);
 	}
 
 	/**
 	 * 
 	 * @param int score
 	 */
-	public void updatePlayerScore(int score) {
-		playerScore += score;
+	public void updatePlayerLoot(int loot) {
+		playerLoot += loot;
 	}
 	
 	/**
-	 * 
-	 * @param int playerScore
+	 * Convert the current amount of player loot into a string to display on screen.
 	 */
-	public void setPlayerScore(int playerScore) {
-		this.playerScore = playerScore;
+	@Override
+	public String convertPlayerLootToString() {
+		return Integer.toString(playerLoot);
 	}
 
 	/**
