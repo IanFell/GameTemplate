@@ -5,15 +5,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
-import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
 import handlers.CollisionHandler;
+import helpers.GamePlayHelper;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import loaders.bulletloader.BulletLoader;
 import maps.MapHandler;
-import screens.GameScreen;
 import ui.MapUi;
 
 /**
@@ -115,29 +114,6 @@ public class Gun extends Weapon {
 	}
 
 	/**
-	 * Determines if game object is rendering bounds.
-	 * 
-	 * @param GameObject gameObject
-	 * @return boolean
-	 */
-	public static boolean gameObjectIsWithinScreenBounds(GameObject gameObject) {
-		float cameraXPosition   = GameScreen.camera.position.x;
-		float cameraYPosition   = GameScreen.camera.position.y;
-		float playerXPosition   = gameObject.getX();
-		float playerYPosition   = gameObject.getY();
-		float screenBoundOffset = 17.0f;
-		if (
-				playerXPosition < cameraXPosition + screenBoundOffset &&
-				playerXPosition > cameraXPosition - screenBoundOffset &&
-				playerYPosition < cameraYPosition + screenBoundOffset &&
-				playerYPosition > cameraYPosition - screenBoundOffset
-				) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * 
 	 * @param SpriteBatch   batch
 	 * @param ImageLoader   imageLoader
@@ -145,7 +121,7 @@ public class Gun extends Weapon {
 	 */
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		int value = 1;
-		if (gameObjectIsWithinScreenBounds(this)) {
+		if (GamePlayHelper.gameObjectIsWithinScreenBounds(this)) {
 			if (!hasBeenCollected) {
 				if (!MapUi.mapShouldBeRendered && !Inventory.allInventoryShouldBeRendered) {
 					batch.draw(

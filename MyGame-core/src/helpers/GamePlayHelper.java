@@ -16,6 +16,8 @@ import screens.GameScreen;
  *
  */
 public class GamePlayHelper  {
+	
+	private final static float SCREEN_BOUND_OFFSET = 17.0f;
 
 	/**
 	 * 
@@ -66,12 +68,11 @@ public class GamePlayHelper  {
 		float cameraYPosition   = GameScreen.camera.position.y;
 		float playerXPosition   = gameObject.getX();
 		float playerYPosition   = gameObject.getY();
-		float screenBoundOffset = 17.0f;
 		if (
-				playerXPosition < cameraXPosition + screenBoundOffset &&
-				playerXPosition > cameraXPosition - screenBoundOffset &&
-				playerYPosition < cameraYPosition + screenBoundOffset &&
-				playerYPosition > cameraYPosition - screenBoundOffset
+				playerXPosition < cameraXPosition + SCREEN_BOUND_OFFSET &&
+				playerXPosition > cameraXPosition - SCREEN_BOUND_OFFSET &&
+				playerYPosition < cameraYPosition + SCREEN_BOUND_OFFSET &&
+				playerYPosition > cameraYPosition - SCREEN_BOUND_OFFSET
 				) {
 			return true;
 		}

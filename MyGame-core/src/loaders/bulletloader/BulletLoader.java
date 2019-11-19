@@ -19,6 +19,8 @@ import maps.MapHandler;
  */
 public class BulletLoader {
 
+	private static final int BULLET_LIFE_SPAN = 7;
+
 	private static ArrayList <Bullet> bullets = new ArrayList<Bullet>();
 
 	// Used to kill bullet once off screen.
@@ -33,7 +35,7 @@ public class BulletLoader {
 		if (bullets.size() > 0) {
 			for (int i = 0; i < bullets.size(); i++) {
 				bullets.get(i).updateObject(myGame, mapHandler);
-				if (timer > 5) {
+				if (timer > BULLET_LIFE_SPAN) {
 					bullets.remove(i);
 				}
 			}

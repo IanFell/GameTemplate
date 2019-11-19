@@ -4,15 +4,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
 import handlers.CollisionHandler;
+import helpers.GamePlayHelper;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import missions.MissionRawBar;
-import screens.GameScreen;
 import ui.MapUi;
 
 /**
@@ -30,7 +29,7 @@ public class MagicPearl extends Weapon {
 
 	// This hitbox is bigger than the object to ensure player catches it upon return.
 	private Rectangle collisionWithPlayerUponReturnHitbox;
-	
+
 	public static boolean playCollectionSound = false;
 
 	/**
@@ -140,29 +139,6 @@ public class MagicPearl extends Weapon {
 			}
 		}
 	}
-	
-	/**
-	 * Determines if game object is rendering bounds.
-	 * 
-	 * @param GameObject gameObject
-	 * @return boolean
-	 */
-	public static boolean gameObjectIsWithinScreenBounds(GameObject gameObject) {
-		float cameraXPosition   = GameScreen.camera.position.x;
-		float cameraYPosition   = GameScreen.camera.position.y;
-		float playerXPosition   = gameObject.getX();
-		float playerYPosition   = gameObject.getY();
-		float screenBoundOffset = 17.0f;
-		if (
-				playerXPosition < cameraXPosition + screenBoundOffset &&
-				playerXPosition > cameraXPosition - screenBoundOffset &&
-				playerYPosition < cameraYPosition + screenBoundOffset &&
-				playerYPosition > cameraYPosition - screenBoundOffset
-				) {
-			return true;
-		}
-		return false;
-	}
 
 	/**
 	 * 
@@ -171,7 +147,7 @@ public class MagicPearl extends Weapon {
 	 * @param MyGame       myGame
 	 */
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
-		if (MissionRawBar.rawBarMissionComplete && gameObjectIsWithinScreenBounds(this)) {
+		if (MissionRawBar.rawBarMissionComplete && GamePlayHelper.gameObjectIsWithinScreenBounds(this)) {
 			if (!hasBeenCollected && !MapUi.mapShouldBeRendered) {
 				batch.draw(
 						imageLoader.oyster, 

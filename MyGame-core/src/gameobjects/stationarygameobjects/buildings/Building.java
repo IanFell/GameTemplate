@@ -35,8 +35,8 @@ public class Building extends GamePlayObject {
 
 	/**
 	 * 
-	 * @param SpriteBatch   batch
-	 * @param ImageLoader   imageLoader
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {

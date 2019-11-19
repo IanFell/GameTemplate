@@ -1,7 +1,6 @@
 package gameobjects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import loaders.ImageLoader;
 
@@ -43,23 +42,6 @@ public class Rock extends GameObject {
 				y,
 				width,
 				-height
-				);
-		//renderHitBox(batch, shapeRenderer, imageLoader);
-	}
-
-	/**
-	 * 
-	 * @param SpriteBatch   batch
-	 * @param ShapeRenderer shapeRenderer
-	 * @param ImageLoader   imageLoader
-	 */
-	private void renderHitBox(SpriteBatch batch, ShapeRenderer shapeRenderer, ImageLoader imageLoader) {
-		batch.draw(
-				imageLoader.whiteSquare,
-				rectangle.x,
-				rectangle.y,
-				rectangle.width,
-				-rectangle.height
 				);
 	}
 }

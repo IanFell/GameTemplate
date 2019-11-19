@@ -61,7 +61,7 @@ public class PlayerOne extends Player {
 	public void updatePlayerLoot(int loot) {
 		playerLoot += loot;
 	}
-	
+
 	/**
 	 * Convert the current amount of player loot into a string to display on screen.
 	 */
@@ -132,6 +132,10 @@ public class PlayerOne extends Player {
 		}
 	}
 
+	/**
+	 * 
+	 * @param boolean isBouncingBack
+	 */
 	public void setBouncingBack(boolean isBouncingBack) {
 		this.isBouncingBack = isBouncingBack;
 	}

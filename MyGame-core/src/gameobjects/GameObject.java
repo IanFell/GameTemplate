@@ -280,4 +280,10 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	public String convertPlayerLootToString() {
 		return null;
 	}
+
+	/**
+	 * 
+	 * @param boolean bounceBackValue
+	 */
+	public void setBounceBack(boolean bounceBackValue) {}
 }

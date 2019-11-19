@@ -27,7 +27,7 @@ import tiles.Tile;
  *
  */
 public class CollisionHandler {
-	
+
 	private static float playerX = 0;
 	private static float playerY = 0;
 
@@ -132,7 +132,7 @@ public class CollisionHandler {
 			case Player.DIRECTION_DOWN:
 				player.setY(player.getY() - Player.PLAYER_SPEED - offset);
 				break;
-			}
+			} 
 			if (chest.isClosed()) {
 				chest.setChestValuesAfterCollisionWithPlayer();
 				((Player) player).updatePlayerLoot(Chest.LOOT_VALUE);
