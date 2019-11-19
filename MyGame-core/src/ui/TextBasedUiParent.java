@@ -1,5 +1,6 @@
 package ui;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
@@ -11,13 +12,20 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class LootUi extends TextBasedUiParent {
+public class TextBasedUiParent {
+
+	protected BitmapFont font;
 
 	/**
 	 * Constructor.
 	 */
-	public LootUi() {
-		super();
+	public TextBasedUiParent() {
+		// The true paramater signifies font is flipped.
+		font = new BitmapFont(true);
+		// Uncomment this to make text seem smoother.
+		//font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		float scale = 0.1f;
+		font.getData().setScale(scale, scale);
 	}
 
 	/**
@@ -30,16 +38,12 @@ public class LootUi extends TextBasedUiParent {
 	 * @param float       xOffset
 	 * @param float       yOffset
 	 */
-	@Override
 	public void renderUi(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame, String text, GameObject player, float xOffset, float yOffset) {
-		int size = 1;
-		batch.draw(
-				imageLoader.loot,
-				player.getX() - 12.5f,
-				player.getY() - 5.0f,
-				size, 
-				-size
+		font.draw(
+				batch, 
+				text, 
+				player.getX() - xOffset, 
+				player.getY() + yOffset
 				);
-		super.renderUi(batch, imageLoader, myGame, text, player, xOffset, yOffset);
 	}
 }
