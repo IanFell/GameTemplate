@@ -17,14 +17,16 @@ public class UserInterface {
 	private HealthUi healthUi;
 	private LootUi lootUi;
 	private PlayerNameUi playerNameUi;
+	private SelectedInventoryUi selectedInventoryUi;
 
 	/**
 	 * Constructor.
 	 */
 	public UserInterface() {
-		healthUi     = new HealthUi();
-		lootUi       = new LootUi();
-		playerNameUi = new PlayerNameUi();
+		healthUi            = new HealthUi();
+		lootUi              = new LootUi();
+		playerNameUi        = new PlayerNameUi();
+		selectedInventoryUi = new SelectedInventoryUi();
 	}
 
 	/**
@@ -37,6 +39,7 @@ public class UserInterface {
 		healthUi.renderHealthUi(batch, imageLoader, myGame);
 		GameObject player = PlayerController.getCurrentPlayer(myGame);
 		lootUi.renderUi(batch, imageLoader, myGame, player.convertPlayerLootToString(), player, 11.0f, -6.0f);
-		playerNameUi.renderUi(batch, imageLoader, myGame, "JOLLY ROGER", player, 11.0f, 5.0f);
+		playerNameUi.renderUi(batch, imageLoader, myGame, "JOLLY ROGER", player, 10.5f, 5.0f);
+		selectedInventoryUi.renderSelectedInventoryUi(batch, imageLoader, myGame, player);
 	}
 }

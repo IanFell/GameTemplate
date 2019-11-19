@@ -31,7 +31,15 @@ public class LootUi extends TextBasedUiParent {
 	 * @param float       yOffset
 	 */
 	@Override
-	public void renderUi(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame, String text, GameObject player, float xOffset, float yOffset) {
+	public void renderUi(
+			SpriteBatch batch, 
+			ImageLoader imageLoader, 
+			MyGame myGame, 
+			String text, 
+			GameObject player, 
+			float xOffset, 
+			float yOffset
+			) {
 		int size = 1;
 		batch.draw(
 				imageLoader.loot,

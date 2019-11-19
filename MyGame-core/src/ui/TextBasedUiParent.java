@@ -38,7 +38,15 @@ public class TextBasedUiParent {
 	 * @param float       xOffset
 	 * @param float       yOffset
 	 */
-	public void renderUi(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame, String text, GameObject player, float xOffset, float yOffset) {
+	public void renderUi(
+			SpriteBatch batch, 
+			ImageLoader imageLoader, 
+			MyGame myGame, 
+			String text, 
+			GameObject player, 
+			float xOffset, 
+			float yOffset
+			) {
 		font.draw(
 				batch, 
 				text, 
