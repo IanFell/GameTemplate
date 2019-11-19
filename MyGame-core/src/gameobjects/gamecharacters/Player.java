@@ -31,6 +31,10 @@ import towns.Town;
  *
  */
 public class Player extends GameCharacter { 
+	
+	public static final String JOLLY_ROGER = "JOLLY ROGER";
+	public static final String BLACK_BEARD = "BLACK BEARD";
+	public static final String PEG_LEG     = "PEG LEG";
 
 	private String name;
 

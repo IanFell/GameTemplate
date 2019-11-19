@@ -5,6 +5,7 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
 
 /**
@@ -39,7 +40,17 @@ public class UserInterface {
 		healthUi.renderHealthUi(batch, imageLoader, myGame);
 		GameObject player = PlayerController.getCurrentPlayer(myGame);
 		lootUi.renderUi(batch, imageLoader, myGame, player.convertPlayerLootToString(), player, 11.0f, -6.0f);
-		playerNameUi.renderUi(batch, imageLoader, myGame, "JOLLY ROGER", player, 10.5f, 5.0f);
+		playerNameUi.renderUi(batch, imageLoader, myGame, getCurrentPlayerNameToDisplayOnUi(), player, 10.5f, 5.0f);
 		selectedInventoryUi.renderSelectedInventoryUi(batch, imageLoader, myGame, player);
+	}
+	
+	private String getCurrentPlayerNameToDisplayOnUi() {
+		if (Player.lifeState == Player.LIFE_STATE_ONE) {
+			return Player.JOLLY_ROGER;
+		}
+		if (Player.lifeState == Player.LIFE_STATE_TWO) {
+			return Player.BLACK_BEARD;
+		}
+		return Player.PEG_LEG;
 	}
 }
