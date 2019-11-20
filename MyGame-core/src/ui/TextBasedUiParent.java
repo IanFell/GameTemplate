@@ -1,10 +1,12 @@
 package ui;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import helpers.ColorHelper;
 import loaders.ImageLoader;
 
 /**
@@ -26,6 +28,7 @@ public class TextBasedUiParent {
 		//font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		float scale = 0.1f;
 		font.getData().setScale(scale, scale);
+		font.setColor(Color.BLACK);
 	}
 
 	/**
