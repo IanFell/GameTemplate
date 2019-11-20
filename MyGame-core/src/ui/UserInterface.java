@@ -43,7 +43,7 @@ public class UserInterface {
 		playerNameUi.renderUi(batch, imageLoader, myGame, getCurrentPlayerNameToDisplayOnUi(), player, 10.5f, 5.0f);
 		selectedInventoryUi.renderSelectedInventoryUi(batch, imageLoader, myGame, player);
 	}
-	
+
 	private String getCurrentPlayerNameToDisplayOnUi() {
 		if (Player.lifeState == Player.LIFE_STATE_ONE) {
 			return Player.JOLLY_ROGER;

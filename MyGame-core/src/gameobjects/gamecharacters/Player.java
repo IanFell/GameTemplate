@@ -184,6 +184,15 @@ public class Player extends GameCharacter {
 
 	/**
 	 * 
+	 * @return int
+	 */
+	@Override
+	public int getPlayerLoot() {
+		return playerLoot;
+	}
+
+	/**
+	 * 
 	 * @param MyGame myGame
 	 * @param Player player
 	 */

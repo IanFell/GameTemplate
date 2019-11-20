@@ -56,8 +56,9 @@ public class PlayerOne extends Player {
 
 	/**
 	 * 
-	 * @param int score
+	 * @param int loot
 	 */
+	@Override
 	public void updatePlayerLoot(int loot) {
 		playerLoot += loot;
 	}

@@ -215,13 +215,16 @@ public class CollisionHandler {
 	 * @param GameObject gun
 	 */
 	public static void checkIfPlayerHasCollidedWithGun(GameObject player, GameObject gun) {
-		if (!Gun.hasBeenCollected) {
+		// Only collect gun if we have enough loot.
+		if (player.getPlayerLoot() >= Gun.LOOT_NEEDED_TO_BUY_GUN && MissionChests.missionComplete) {
 			if (gun.rectangle.overlaps(player.rectangle)) {
 				((Player) player).getInventory().addObjectToInventory(gun);
 				Inventory.inventoryHasStartedCollection = true;
 				Gun.hasBeenCollected                    = true;
 				Gun.playCollectionSound                 = true;
 				GameObjectLoader.gameObjectList.add(gun);
+				// Remove loot (player has bought gun).
+				player.updatePlayerLoot(-Gun.LOOT_NEEDED_TO_BUY_GUN);
 			}
 		}
 	}

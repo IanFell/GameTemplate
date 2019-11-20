@@ -3,8 +3,11 @@ package missions;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
+import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
+import screens.GameScreen;
 
 /**
  * Mission: Open a given amount of chests in a given amount of time, collecting loot.
@@ -15,10 +18,17 @@ import loaders.ImageLoader;
  */
 public class MissionChests extends Mission {
 
-	private static int numberOfChestsOpened                              = 0;
-	private static final int AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION = 3;
+	/**
+	 * Use these variables if player doesn't complete mission.  
+	 * If player doesn't complete mission, make him retry it.
+	 */
+	private boolean resetMission  = false;
+	private int resetMissionTimer = 0;
 
-	public static boolean executeMission  = true;
+	private static int numberOfChestsOpened                              = 0;
+	private static final int AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION = 5;
+
+	public static boolean executeMission = true;
 
 	private static int countDownTimer = 0;
 
@@ -38,27 +48,36 @@ public class MissionChests extends Mission {
 	 */
 	public void updateMission(Player player) {
 
+		// If player fails mission, use this to display "try again" message.
+		if (resetMission) {
+			resetMissionTimer++;
+			if (resetMissionTimer >= 30) {
+				resetMission = false;
+			}
+		}
+
 		if (executeMission) {
 			// Use this to time the mission.
 			countDownTimer++;
 			// If mission is complete:
 			if (numberOfChestsOpened >= AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION) {
-				// Give player bonus score.
-				//player.updatePlayerScore(100);
 				executeMission  = false;
 				missionComplete = true;
-			} else {
-				//System.out.println("Number of chests opened for chest mission: " + numberOfChestsOpened);
-			}
+			} 
 		}
 
 		if (missionComplete) {
 			executeMission = false;
-			System.out.println("CHEST MISSION COMPLETE!");
+			//System.out.println("CHEST MISSION COMPLETE!");
 		} else if (countDownTimer >= maxMissionCount) {
-			executeMission   = false;
-			missionComplete = false;
-			System.out.println("CHEST MISSION FAILED!");
+			// Reset mission if player fails.  Do this until player completes mission.
+			executeMission       = true;
+			missionComplete      = false;
+			resetMission         = true;
+			resetMissionTimer    = 0;
+			numberOfChestsOpened = 0;
+			countDownTimer       = 0;
+			//System.out.println("CHEST MISSION FAILED!");
 		}
 	}
 
@@ -73,6 +92,20 @@ public class MissionChests extends Mission {
 		// If mission is complete, render "Mission Complete" message for a little while.
 		if (missionComplete) {
 			renderMissionCompleteMessage(batch, imageLoader, myGame);
+		}
+
+		// Place holder "try again" message.
+		if (resetMission) {
+			int collectOysterMessageSize = 10;
+			int half                     = 2;
+			GameObject player            = PlayerController.getCurrentPlayer(myGame);
+			batch.draw(
+					imageLoader.collectOysters, 
+					player.getX() - GameScreen.cameraWidth / half, 
+					player.getY() + GameScreen.cameraWidth / half, 
+					collectOysterMessageSize, 
+					-collectOysterMessageSize
+					);
 		}
 	}
 }

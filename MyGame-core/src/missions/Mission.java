@@ -15,9 +15,9 @@ import screens.GameScreen;
  */
 public class Mission {
 
-	protected final int MISSION_COMPLETE_DISPLAY_TIME_VALUE = 350;
+	protected final int MISSION_COMPLETE_DISPLAY_TIME_VALUE = 250;
 
-	protected static boolean missionComplete;
+	public static boolean missionComplete;
 	protected int timer;
 
 	/**

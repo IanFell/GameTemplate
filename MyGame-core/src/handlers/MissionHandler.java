@@ -3,6 +3,8 @@ package handlers;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
+import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import missions.MissionChests;
@@ -47,8 +49,8 @@ public class MissionHandler {
 	 * @param MapHanlder mapHandler
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
-		//missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame));
-		missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
+		missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame));
+		//missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
 		if (MissionRawBar.missionIsActive) {
 			handleRawBarMission(myGame);
@@ -83,11 +85,11 @@ public class MissionHandler {
 	 * @param MyGame        myGame
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
-		//missionChests.renderMission(batch, imageLoader, myGame);
-		missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
+		missionChests.renderMission(batch, imageLoader, myGame);
+		//missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 
 		if (MissionRawBar.missionIsActive) {
-			renderRawBarMission(batch, imageLoader, myGame);
+			//renderRawBarMission(batch, imageLoader, myGame);
 		}
 
 	}

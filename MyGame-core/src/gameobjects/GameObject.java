@@ -276,7 +276,7 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * @param int health
 	 */
 	public void setHealth(int health) {}
-	
+
 	public String convertPlayerLootToString() {
 		return null;
 	}
@@ -286,4 +286,18 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * @param boolean bounceBackValue
 	 */
 	public void setBounceBack(boolean bounceBackValue) {}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getPlayerLoot() {
+		return 0;
+	}
+
+	/**
+	 * 
+	 * @param int loot
+	 */
+	public void updatePlayerLoot(int loot) {}
 }
