@@ -128,6 +128,11 @@ public class ImageLoader {
 	public Texture locationSkull;
 	public Texture loot;
 
+	// Player name UI labels.
+	public Texture jollyRogerUiNameLabel;
+	public Texture blackBeardUiNameLabel;
+	public Texture pegLegUiNameLabel;
+
 	// Logo objects.
 	public Texture splashScreenLogo;
 	public Texture titleScreenLogo;
@@ -258,6 +263,11 @@ public class ImageLoader {
 		inventoryLabel                         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
 		locationSkull                          = new Texture(Gdx.files.internal("artwork/ui/Skull.png"));
 		loot                                   = new Texture(Gdx.files.internal("artwork/ui/Loot.png"));
+
+		// Player name UI labels.
+		jollyRogerUiNameLabel = new Texture(Gdx.files.internal("artwork/ui/playernames/JollyRoger.png"));
+		blackBeardUiNameLabel = new Texture(Gdx.files.internal("artwork/ui/playernames/BlackBeard.png"));
+		pegLegUiNameLabel     = new Texture(Gdx.files.internal("artwork/ui/playernames/PegLeg.png"));
 
 		// Logo objects.
 		splashScreenLogo                       = new Texture(Gdx.files.internal("artwork/logos/logo_ffg.png"));
@@ -400,6 +410,11 @@ public class ImageLoader {
 		inventoryLabel.dispose();
 		locationSkull.dispose();
 		loot.dispose();
+
+		// Player name UI labels.
+		jollyRogerUiNameLabel.dispose();
+		blackBeardUiNameLabel.dispose();
+		pegLegUiNameLabel.dispose();
 
 		// Logo objects.
 		splashScreenLogo.dispose();
