@@ -162,10 +162,13 @@ public class CollisionHandler {
 			if (structureName.equalsIgnoreCase("Raw Bar")) {
 				// Start the mission.
 				MissionRawBar.missionIsActive = true;
+			} else if (structureName.equalsIgnoreCase("Trading Post")) {
+				System.exit(0);
 			}
+			/*
 			if (structureName.equalsIgnoreCase("Tee Pee")) {
 				new TeePeeScreen(myGame);
-			}
+			} */
 		}
 	}
 
