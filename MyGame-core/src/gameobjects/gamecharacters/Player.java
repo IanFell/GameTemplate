@@ -31,7 +31,7 @@ import towns.Town;
  *
  */
 public class Player extends GameCharacter { 
-	
+
 	public static final String JOLLY_ROGER = "JOLLY ROGER";
 	public static final String BLACK_BEARD = "BLACK BEARD";
 	public static final String PEG_LEG     = "PEG LEG";
@@ -94,8 +94,6 @@ public class Player extends GameCharacter {
 
 	private int playerNumber;
 
-	protected float animationSpeed = 7/15f;
-
 	/**
 	 * Constructor.
 	 * 
@@ -104,7 +102,7 @@ public class Player extends GameCharacter {
 	 * @param int    playerNumber
 	 */
 	public Player(String name, MyGame myGame, int playerNumber) {
-		setPlayerStartingPosition(Town.CAPE_SAN_BLAS);
+		setPlayerStartingPosition(Town.PORT_ST_JOE);
 		this.playerNumber        = playerNumber;
 		this.width               = playerSize;
 		this.height              = playerSize;

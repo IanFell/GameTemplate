@@ -50,6 +50,8 @@ public class GameCharacter extends GameObject {
 	// Generic timer used for various tasks depending on class.
 	protected int timer = 0;
 
+	protected float animationSpeed = 7/15f;
+
 	public void moveRight(float speed) {}
 	public void moveLeft(float speed) {}
 	public void moveUp(float speed) {}
