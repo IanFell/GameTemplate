@@ -14,6 +14,8 @@ import maps.MapHandler;
  */
 public class TradingPost extends Building {
 
+	public static boolean hasBeenEntered;
+
 	/**
 	 * Constructor.
 	 * 
@@ -27,6 +29,7 @@ public class TradingPost extends Building {
 		super(x, y, width, height, texture);
 		rectangle.width  = width;
 		rectangle.height = height;
+		hasBeenEntered   = false;
 	}
 
 	/**

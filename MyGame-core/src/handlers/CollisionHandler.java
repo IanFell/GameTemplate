@@ -7,6 +7,7 @@ import gameobjects.Heart;
 import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
+import gameobjects.stationarygameobjects.buildings.TradingPost;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.MagicPearl;
@@ -163,7 +164,7 @@ public class CollisionHandler {
 				// Start the mission.
 				MissionRawBar.missionIsActive = true;
 			} else if (structureName.equalsIgnoreCase("Trading Post")) {
-				System.exit(0);
+				TradingPost.hasBeenEntered = true;
 			}
 			/*
 			if (structureName.equalsIgnoreCase("Tee Pee")) {

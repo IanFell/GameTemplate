@@ -185,10 +185,10 @@ public class GameScreen extends Screens {
 		missionHandler = new MissionHandler(myGame);
 		mapUi          = new MapUi(myGame);
 		userInterface  = new UserInterface();
-		// Just spawn gun by player for now so it's always available.
 		gun            = new Gun(
-				myGame.getGameObject(GameObject.PLAYER_ONE).getX() + 3, 
-				myGame.getGameObject(GameObject.PLAYER_ONE).getY() + 3, myGame.imageLoader
+				GameAttributeHelper.CHUNK_THREE_X_POSITION_START - 48, 
+				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START - 63, 
+				myGame.imageLoader
 				);
 		magicPearl     = new MagicPearl(
 				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 35, 
