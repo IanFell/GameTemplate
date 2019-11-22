@@ -23,7 +23,7 @@ public class PlayerNameUi extends TextBasedUiParent {
 	public PlayerNameUi() {
 		super();
 	}
-	
+
 	/**
 	 * This method is overloaded.
 	 * We are using it to draw an image, not a string.
@@ -50,7 +50,13 @@ public class PlayerNameUi extends TextBasedUiParent {
 				-1
 				); 
 	}
-	
+
+	/**
+	 * 
+	 * @param String      name
+	 * @param ImageLoader imageLoader
+	 * @return Texture
+	 */
 	private Texture getCurrentPlayerNameImage(String name, ImageLoader imageLoader) {
 		if (name.equalsIgnoreCase(Player.JOLLY_ROGER)) {
 			return imageLoader.jollyRogerUiNameLabel;
@@ -60,10 +66,8 @@ public class PlayerNameUi extends TextBasedUiParent {
 		}
 		return imageLoader.pegLegUiNameLabel;
 	}
-	
+
 	/**
-	 * This method is currently not used. 
-	 * However, we may want it at some point so lets keep it for now.
 	 * 
 	 * @return String
 	 */

@@ -12,6 +12,7 @@ import loaders.rawbarloader.RawBarLoader;
 import loaders.rockloader.RockLoader;
 import loaders.signloader.SignLoader;
 import loaders.teepeeloader.TeePeeLoader;
+import loaders.tradingpostloader.TradingPostLoader;
 import loaders.treeloaders.DrSuessTreeLoader;
 import loaders.treeloaders.TreeLoader;
 import maps.MapHandler;
@@ -29,6 +30,7 @@ public class GameWorld {
 	private ChestLoader chestLoader;
 	private TeePeeLoader teePeeLoader;
 	private RawBarLoader rawBarLoader;
+	private TradingPostLoader tradingPostLoader;
 	private LightHouseLoader lightHouseLoader;
 	private FireLoader fireLoader;
 	private PigglyWigglyLoader pigglyWigglyLoader;
@@ -54,6 +56,7 @@ public class GameWorld {
 		rockLoader         = new RockLoader();
 		signLoader         = new SignLoader();
 		dockLoader         = new DockLoader();
+		tradingPostLoader  = new TradingPostLoader();
 		loadGameWorld(myGame);
 	}
 
@@ -74,6 +77,7 @@ public class GameWorld {
 		pigglyWigglyLoader.loadPigglyWiggly(myGame);
 		signLoader.loadSigns();
 		dockLoader.loadDocks(myGame);
+		tradingPostLoader.loadTradingPost(myGame);
 	}
 
 	/**
@@ -96,5 +100,6 @@ public class GameWorld {
 		}
 		RawBarLoader.rawbar.updateObject(myGame, mapHandler);
 		PigglyWigglyLoader.pigglyWiggly.updateObject(myGame, mapHandler);
+		TradingPostLoader.tradingPost.updateObject(myGame, mapHandler);
 	}
 }

@@ -12,7 +12,7 @@ import maps.MapHandler;
  * @author Fabulous Fellini
  *
  */
-public class RawBar extends Building {
+public class TradingPost extends Building {
 
 	/**
 	 * Constructor.
@@ -23,7 +23,7 @@ public class RawBar extends Building {
 	 * @param int     height
 	 * @param Texture texture
 	 */
-	public RawBar(int x, int y, int width, int height, Texture texture) {
+	public TradingPost(int x, int y, int width, int height, Texture texture) {
 		super(x, y, width, height, texture);
 		rectangle.width  = width;
 		rectangle.height = height;
@@ -39,7 +39,7 @@ public class RawBar extends Building {
 		CollisionHandler.checkIfPlayerHasCollidedWithStructure(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this,
-				"Raw Bar",
+				"Trading Post",
 				myGame
 				);
 	}

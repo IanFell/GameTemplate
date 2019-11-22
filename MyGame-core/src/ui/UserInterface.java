@@ -5,7 +5,6 @@ import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
 
 /**

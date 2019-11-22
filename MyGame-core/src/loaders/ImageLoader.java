@@ -64,6 +64,7 @@ public class ImageLoader {
 	public Texture gruntHut;
 	public Texture dockLeft;
 	public Texture dockRight;
+	public Texture tradingPost;
 
 	// Effects Objects.
 	public Texture fireOne;
@@ -140,6 +141,7 @@ public class ImageLoader {
 
 	// Debugging Objects.
 	public Texture whiteSquare;
+	public Texture blackSquare;
 
 	public void init() {
 
@@ -184,14 +186,15 @@ public class ImageLoader {
 		oyster                                 = new Texture(Gdx.files.internal("artwork/weapons/Oyster.png"));
 
 		// Structure Objects.
-		slaveHut                               = new Texture(Gdx.files.internal("artwork/structures/SlaveHut.png"));
-		rawbar						           = new Texture(Gdx.files.internal("artwork/structures/RawBar3d.png"));
-		lightHouse                             = new Texture(Gdx.files.internal("artwork/structures/LightHouse.png"));
-		pigglywiggly                           = new Texture(Gdx.files.internal("artwork/structures/PigglyWiggly3D.png"));
-		teePee   					           = new Texture(Gdx.files.internal("artwork/structures/TeePee3D.png"));
-		gruntHut 							   = new Texture(Gdx.files.internal("artwork/structures/GruntHut.png"));
-		dockLeft   							   = new Texture(Gdx.files.internal("artwork/structures/DockLeft.png"));
-		dockRight   						   = new Texture(Gdx.files.internal("artwork/structures/DockRight.png"));
+		slaveHut     = new Texture(Gdx.files.internal("artwork/structures/SlaveHut.png"));
+		rawbar		 = new Texture(Gdx.files.internal("artwork/structures/RawBar3d.png"));
+		lightHouse   = new Texture(Gdx.files.internal("artwork/structures/LightHouse.png"));
+		pigglywiggly = new Texture(Gdx.files.internal("artwork/structures/PigglyWiggly3D.png"));
+		teePee   	 = new Texture(Gdx.files.internal("artwork/structures/TeePee3D.png"));
+		gruntHut     = new Texture(Gdx.files.internal("artwork/structures/GruntHut.png"));
+		dockLeft   	 = new Texture(Gdx.files.internal("artwork/structures/DockLeft.png"));
+		dockRight    = new Texture(Gdx.files.internal("artwork/structures/DockRight.png"));
+		tradingPost  = new Texture(Gdx.files.internal("artwork/structures/TradinPost.png"));
 
 		// Effects Objects.
 		fireOne                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire1.png"));
@@ -285,7 +288,8 @@ public class ImageLoader {
 		townSigns[6] = new Texture(Gdx.files.internal("artwork/signs/ThePoint.png"));
 
 		// Debugging objects.
-		whiteSquare                            = new Texture(Gdx.files.internal("artwork/debugging/WhiteSquare.png"));
+		whiteSquare = new Texture(Gdx.files.internal("artwork/debugging/WhiteSquare.png"));
+		blackSquare = new Texture(Gdx.files.internal("artwork/debugging/BlackSquare.png"));
 	}
 
 	public void dispose() {
@@ -345,6 +349,7 @@ public class ImageLoader {
 		gruntHut.dispose();
 		dockRight.dispose();
 		dockLeft.dispose();
+		tradingPost.dispose();
 
 		// Effects Objects.
 		fireOne.dispose();
@@ -423,5 +428,6 @@ public class ImageLoader {
 
 		// Debugging objects.
 		whiteSquare.dispose();
+		blackSquare.dispose();
 	}
 }

@@ -28,7 +28,7 @@ public class SelectedInventoryUi {
 	public void renderSelectedInventoryUi(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame, GameObject player) {
 		int size = 1;
 		batch.draw(
-				imageLoader.whiteSquare,
+				imageLoader.blackSquare,
 				player.getX() - 12.0f,
 				player.getY() + 6.0f,
 				size, 
