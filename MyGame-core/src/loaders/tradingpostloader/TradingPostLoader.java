@@ -4,6 +4,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.stationarygameobjects.buildings.TradingPost;
 import helpers.GameAttributeHelper;
+import loaders.BuildingLoader;
 import loaders.GameObjectLoader;
 
 /**
@@ -11,7 +12,7 @@ import loaders.GameObjectLoader;
  * @author Fabulous Fellini
  *
  */
-public class TradingPostLoader {
+public class TradingPostLoader extends BuildingLoader {
 
 	public static TradingPost tradingPost;
 
@@ -24,8 +25,8 @@ public class TradingPostLoader {
 		tradingPost = new TradingPost(
 				GameAttributeHelper.CHUNK_THREE_X_POSITION_START - 48, 
 				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START - 65,
-				7,
-				6,
+				BUILDING_WIDTH,
+				BUILDING_HEIGHT,
 				myGame.imageLoader.tradingPost
 				);
 		GameObjectLoader.gameObjectList.add(tradingPost);
