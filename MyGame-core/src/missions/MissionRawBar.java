@@ -106,7 +106,7 @@ public class MissionRawBar extends Mission {
 	private float fishFourDx;
 	private float fishFourDy;
 	private float fishFiveDy;
-	
+
 	private int fishTurnTimer;
 
 	public static boolean playCollectionSound = false;
@@ -275,7 +275,7 @@ public class MissionRawBar extends Mission {
 	private void updatePhases(MyGame myGame) {
 		playerBounds.x = playerX;
 		playerBounds.y = playerY;
-		
+
 		fishTurnTimer++;
 
 		updateFishPositions();
@@ -366,7 +366,7 @@ public class MissionRawBar extends Mission {
 				GameScreen.camera.viewportWidth, 
 				-GameScreen.camera.viewportHeight
 				);
-		
+
 		/**
 		 * Alert player how many oysters to collect.  
 		 * This message appears for a few seconds at the start of the phase.
@@ -486,7 +486,7 @@ public class MissionRawBar extends Mission {
 		}
 
 		if (rawBarMissionComplete) {
-			renderMissionCompleteMessage(batch, imageLoader, myGame);
+			renderMissionMessage(batch, myGame, imageLoader.missionComplete);
 		}
 	}
 

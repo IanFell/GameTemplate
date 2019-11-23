@@ -49,7 +49,7 @@ public class MissionHandler {
 	 * @param MapHanlder mapHandler
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
-		missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame));
+		missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
 		//missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
 		if (MissionRawBar.missionIsActive) {

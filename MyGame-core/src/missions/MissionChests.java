@@ -7,6 +7,7 @@ import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
+import maps.MapHandler;
 import screens.GameScreen;
 
 /**
@@ -46,7 +47,9 @@ public class MissionChests extends Mission {
 	 * 
 	 * @param Player player
 	 */
-	public void updateMission(Player player) {
+	public void updateMission(Player player, MyGame myGame, MapHandler mapHandler) {
+		
+		super.updateMission(myGame, mapHandler);
 
 		// If player fails mission, use this to display "try again" message.
 		if (resetMission) {
@@ -91,7 +94,8 @@ public class MissionChests extends Mission {
 	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		// If mission is complete, render "Mission Complete" message for a little while.
 		if (missionComplete) {
-			renderMissionCompleteMessage(batch, imageLoader, myGame);
+			renderMissionMessage(batch, myGame, imageLoader.goToTradingPost);
+			//renderGoToTradingPostMessage(batch, imageLoader, myGame);
 		}
 
 		// Place holder "try again" message.
@@ -107,5 +111,7 @@ public class MissionChests extends Mission {
 					-collectOysterMessageSize
 					);
 		}
+		
+		renderMissionStartMessage(batch, myGame, imageLoader.collectLoot);
 	}
 }

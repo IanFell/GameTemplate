@@ -14,7 +14,6 @@ import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
-import screens.GameScreen;
 
 /**
  * 
@@ -42,9 +41,6 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 	 * Collection of swords player currently obtains.
 	 */
 	public static ArrayList<GameObject> legendSwordCollection = new ArrayList<GameObject>(); 
-
-	private int missionBeginTextTimer;
-	private final int MISSION_BEGIN_TEXT_MAX_TIME = 250;
 
 	/**
 	 * Constructor.
@@ -81,20 +77,10 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 
 		// If mission is complete, render "Mission Complete" message for a little while.
 		if (missionComplete) {
-			renderMissionCompleteMessage(batch, imageLoader, myGame);
+			renderMissionMessage(batch, myGame, imageLoader.missionComplete);
 		}
 
-		if (missionBeginTextTimer < MISSION_BEGIN_TEXT_MAX_TIME) {
-			int missionCompleteSize = 10;
-			GameObject player       = PlayerController.getCurrentPlayer(myGame);
-			batch.draw(
-					imageLoader.legendOfTheSevenSwordsBeginMissionText, 
-					player.getX() - GameScreen.cameraWidth / 2, 
-					player.getY() + GameScreen.cameraWidth / 2, 
-					missionCompleteSize, 
-					-missionCompleteSize
-					);
-		}
+		renderMissionStartMessage(batch, myGame, imageLoader.legendOfTheSevenSwordsBeginMissionText);
 	}
 
 	/**
@@ -102,7 +88,9 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 	 * @param MyGame     myGame
 	 * @param MapHandler mapHandler
 	 */
+	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
+		super.updateMission(myGame, mapHandler);
 		System.out.println("Legend Of The Seven Swords:  Number of Swords Collected: " + swordsCollected);
 		System.out.println("Legend Of The Seven Swords:  Which Swords Collected: " + legendSwordCollection);
 		for (int i = 0 ; i < AMOUNT_OF_SWORDS_NEEDED_TO_COMPLETE_MISSION; i++) {
@@ -116,17 +104,12 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 			missionComplete = true;
 			//clearSevenSwordsFromInventory(myGame);
 		}
-
-		if (missionBeginTextTimer < MISSION_BEGIN_TEXT_MAX_TIME) {
-			missionBeginTextTimer++;
-		}
 	}
 
 	/**
 	 * 
 	 * @param MyGame myGame
 	 */
-
 	private void clearSevenSwordsFromInventory(MyGame myGame) {
 		Player player = (Player) PlayerController.getCurrentPlayer(myGame);
 		for (int i = 0; i < player.getInventory().inventory.size(); i++) {
