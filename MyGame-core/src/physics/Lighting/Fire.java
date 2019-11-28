@@ -1,11 +1,16 @@
 package physics.Lighting;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
 import gameobjects.GameObject;
+import handlers.AnimationHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -17,7 +22,7 @@ import maps.MapHandler;
  */
 public class Fire extends GameObject {
 
-	private int timer = 0;
+	private float fireSize = 0.6f;
 
 	private String location;
 
@@ -54,6 +59,8 @@ public class Fire extends GameObject {
 		int boundingAudibleRectangleSize = 10;
 		boundingAudibleRectangle.width   = boundingAudibleRectangleSize;
 		boundingAudibleRectangle.height  = boundingAudibleRectangleSize;
+		textureAtlas                     = new TextureAtlas(Gdx.files.internal("artwork/effects/fire/fire.atlas"));
+		animation                        = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_FIRE, textureAtlas.getRegions());
 	}
 
 	/**
@@ -64,10 +71,6 @@ public class Fire extends GameObject {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		timer++;
-		if (timer > 20) {
-			timer = 1;
-		}
 		/*
 		CollisionHandler.checkIfPlayerHasCollidedWithFire(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
@@ -93,39 +96,20 @@ public class Fire extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		if (timer > 0) {
-			batch.draw(imageLoader.fireOne, x, y, width, -height);
-		}
-		if (timer > 2) {
-			batch.draw(imageLoader.fireTwo, x, y, width, -height);
-		}
-		if (timer > 4) {
-			batch.draw(imageLoader.fireThree, x, y, width, -height);
-		}
-		if (timer > 6) {
-			batch.draw(imageLoader.fireFour, x, y, width, -height);
-		}
-		if (timer > 8) {
-			batch.draw(imageLoader.fireFive, x, y, width, -height);
-		}
-		if (timer > 10) {
-			batch.draw(imageLoader.fireSix, x, y, width, -height);
-		}
-		if (timer > 12) {
-			batch.draw(imageLoader.fireSeven, x, y, width, -height);
-		}
-		if (timer > 14) {
-			batch.draw(imageLoader.fireEight, x, y, width, -height);
-		}
-		if (timer > 16) {
-			batch.draw(imageLoader.fireNine, x, y, width, -height);
-		}
-		if (timer > 18) {
-			batch.draw(imageLoader.fireTen, x, y, width, -height);
-		}
+		elapsedTime += Gdx.graphics.getDeltaTime();
+		AnimationHandler.renderAnimation(
+				batch, 
+				elapsedTime, 
+				animation, 
+				x, 
+				y, 
+				fireSize, 
+				imageLoader, 
+				AnimationHandler.OBJECT_TYPE_FIRE
+				);
 		if (hasLogs) {
 			batch.draw(imageLoader.logs, x, y, width, -height / 2);
-		}
+		} 
 
 		// Draw bounding audio square.  If player is within this square, he will hear fire audio.
 		/*

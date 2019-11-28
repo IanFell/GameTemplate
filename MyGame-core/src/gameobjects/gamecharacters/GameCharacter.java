@@ -37,20 +37,8 @@ public class GameCharacter extends GameObject {
 	protected Animation <TextureRegion> walkRightAnimation;
 	protected Animation <TextureRegion> walkLeftAnimation;
 
-	/**
-	 * Current animation being used in game.
-	 */
-	protected Animation <TextureRegion> currentAnimation;
-
-	/**
-	 * Used for animation speed.
-	 */
-	protected float elapsedTime = 0;
-
 	// Generic timer used for various tasks depending on class.
 	protected int timer = 0;
-
-	protected float animationSpeed = 7/15f;
 
 	public void moveRight(float speed) {}
 	public void moveLeft(float speed) {}
@@ -65,18 +53,18 @@ public class GameCharacter extends GameObject {
 	protected Animation <TextureRegion> getCurrentAnimation() {
 		switch (direction) {
 		case Player.DIRECTION_LEFT:
-			currentAnimation = walkLeftAnimation;
+			animation = walkLeftAnimation;
 			break;
 		case Player.DIRECTION_RIGHT:
-			currentAnimation = walkRightAnimation;
+			animation = walkRightAnimation;
 			break;
 		case Player.DIRECTION_UP:
-			currentAnimation = walkUpAnimation;
+			animation = walkUpAnimation;
 			break;
 		case Player.DIRECTION_DOWN:
-			currentAnimation = walkDownAnimation;
+			animation = walkDownAnimation;
 			break;
 		}
-		return currentAnimation;
+		return animation;
 	}
 }

@@ -25,6 +25,8 @@ import physics.Lighting.Fire;
  */
 public class PlayerOne extends Player {
 
+	private float animationSpeed;
+
 	private final float BOUNCE_BACK_STARTING_VALUE = 0.06f;
 	private float bounceBackIncrement              = BOUNCE_BACK_STARTING_VALUE;
 	private boolean isBouncingBack                 = false;
@@ -145,7 +147,7 @@ public class PlayerOne extends Player {
 		if (Inventory.inventoryIsEquipped) {
 			// Make player spin if jumping.
 			if (jumpingAction == Player.DESCENDING_JUMP) {
-				animationSpeed = 1/15f;
+				animationSpeed = AnimationHandler.ANIMATION_SPEED_PLAYER_DESCEND_JUMP;
 				setAnimations(
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpRight.atlas")),
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpLeft.atlas")),
@@ -153,7 +155,7 @@ public class PlayerOne extends Player {
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpDown.atlas"))
 						);
 			} else {
-				animationSpeed = 7/15f;
+				animationSpeed = AnimationHandler.ANIMATION_SPEED_PLAYER;
 				setAnimations(
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightGun.atlas")),
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftGun.atlas")),
@@ -164,7 +166,7 @@ public class PlayerOne extends Player {
 		} else {
 			// Make player spin if jumping.
 			if (jumpingAction == Player.DESCENDING_JUMP) {
-				animationSpeed = 1/15f;
+				animationSpeed = AnimationHandler.ANIMATION_SPEED_PLAYER_DESCEND_JUMP;
 				setAnimations(
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpRight.atlas")),
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpLeft.atlas")),
@@ -172,7 +174,7 @@ public class PlayerOne extends Player {
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerJumpDown.atlas"))
 						);
 			} else {
-				animationSpeed = 7/15f;
+				animationSpeed = AnimationHandler.ANIMATION_SPEED_PLAYER;
 				setAnimations(
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerRightRed.atlas")),
 						new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerLeftRed.atlas")),

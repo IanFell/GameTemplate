@@ -1,7 +1,10 @@
 package gameobjects;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
@@ -33,6 +36,13 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	protected float y;
 	protected float width;
 	protected float height;
+
+	/**
+	 * Animation variables.
+	 */
+	protected TextureAtlas textureAtlas;
+	protected Animation <TextureRegion> animation;
+	protected float elapsedTime = 0;
 
 	/**
 	 * Rectangle to deal with collisions.

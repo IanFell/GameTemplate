@@ -84,10 +84,10 @@ public class Enemy extends GameCharacter {
 		walkRightTexture = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyRight.atlas"));
 		walkLeftTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyLeft.atlas"));
 
-		walkDownAnimation    = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
-		walkUpAnimation      = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
-		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
-		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+		walkDownAnimation    = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_ENEMY, walkDownTexture.getRegions());
+		walkUpAnimation      = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_ENEMY, walkUpTexture.getRegions());
+		walkRightAnimation   = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_ENEMY, walkRightTexture.getRegions());
+		walkLeftAnimation    = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_ENEMY, walkLeftTexture.getRegions());
 	}
 
 	/**

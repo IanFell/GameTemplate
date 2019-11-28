@@ -20,11 +20,16 @@ public class AnimationHandler {
 	public final static int OBJECT_TYPE_PLAYER    = 0;
 	public final static int OBJECT_TYPE_ENEMY     = 1;
 	public final static int OBJECT_TYPE_EXPLOSION = 2;
+	public final static int OBJECT_TYPE_FIRE      = 3;
+
+	public final static float ANIMATION_SPEED_PLAYER              = 7/15f;
+	public final static float ANIMATION_SPEED_PLAYER_DESCEND_JUMP = 1/15f;
+	public final static float ANIMATION_SPEED_ENEMY               = 7/15f;
+	public final static float ANIMATION_SPEED_EXPLOSIOIN          = 1/15f;
+	public final static float ANIMATION_SPEED_FIRE                = 1/15f;
+
 
 	/**
-	 * y + 1 is used because we need to flip the sprite batch vertically.  
-	 * When we do this, player is offset by 1 on the y axis so we need to compensate.
-	 * We flip the y axis by making the height negative.
 	 * 
 	 * @param SpriteBatch               batch
 	 * @param flat                      elapsedTime

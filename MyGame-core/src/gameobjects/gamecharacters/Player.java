@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import handlers.AnimationHandler;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
@@ -131,10 +132,10 @@ public class Player extends GameCharacter {
 			break;
 		}
 
-		walkDownAnimation        = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
-		walkUpAnimation          = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
-		walkRightAnimation       = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
-		walkLeftAnimation        = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+		walkDownAnimation        = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkDownTexture.getRegions());
+		walkUpAnimation          = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkUpTexture.getRegions());
+		walkRightAnimation       = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkRightTexture.getRegions());
+		walkLeftAnimation        = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkLeftTexture.getRegions());
 		health            	     = STARTING_HEALTH;
 		this.name                = name;
 		hasTorch                 = false;
@@ -251,10 +252,10 @@ public class Player extends GameCharacter {
 			}
 			break;
 		}
-		walkDownAnimation  = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
-		walkUpAnimation    = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
-		walkRightAnimation = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
-		walkLeftAnimation  = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+		walkDownAnimation  = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkDownTexture.getRegions());
+		walkUpAnimation    = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkUpTexture.getRegions());
+		walkRightAnimation = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkRightTexture.getRegions());
+		walkLeftAnimation  = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkLeftTexture.getRegions());
 	}
 
 	/**

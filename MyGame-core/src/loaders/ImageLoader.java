@@ -67,16 +67,6 @@ public class ImageLoader {
 	public Texture tradingPost;
 
 	// Effects Objects.
-	public Texture fireOne;
-	public Texture fireTwo;
-	public Texture fireThree;
-	public Texture fireFour;
-	public Texture fireFive;
-	public Texture fireSix;
-	public Texture fireSeven;
-	public Texture fireEight;
-	public Texture fireNine;
-	public Texture fireTen;
 	public Texture dustParticleOne;
 	public Texture dustParticleTwo;
 	public Texture dustParticleThree;
@@ -199,19 +189,9 @@ public class ImageLoader {
 		tradingPost  = new Texture(Gdx.files.internal("artwork/structures/TradinPost.png"));
 
 		// Effects Objects.
-		fireOne                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire1.png"));
-		fireTwo                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire2.png"));
-		fireThree                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire3.png"));
-		fireFour                               = new Texture(Gdx.files.internal("artwork/effects/fire/Fire4.png"));
-		fireFive                               = new Texture(Gdx.files.internal("artwork/effects/fire/Fire5.png"));
-		fireSix                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire6.png"));
-		fireSeven                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire7.png"));
-		fireEight                              = new Texture(Gdx.files.internal("artwork/effects/fire/Fire8.png"));
-		fireNine	                           = new Texture(Gdx.files.internal("artwork/effects/fire/Fire9.png"));
-		fireTen                                = new Texture(Gdx.files.internal("artwork/effects/fire/Fire10.png"));
-		dustParticleOne                        = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleOne.png"));
-		dustParticleTwo                        = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleTwo.png"));
-		dustParticleThree                      = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleThree.png"));
+		dustParticleOne   = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleOne.png"));
+		dustParticleTwo   = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleTwo.png"));
+		dustParticleThree = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleThree.png"));
 
 		// Cutscene objects.
 		cutSceneDialogueOne[0] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_One.png"));
@@ -356,16 +336,6 @@ public class ImageLoader {
 		tradingPost.dispose();
 
 		// Effects Objects.
-		fireOne.dispose();
-		fireTwo.dispose();
-		fireThree.dispose();
-		fireFour.dispose();
-		fireFive.dispose();
-		fireSix.dispose();
-		fireSeven.dispose();
-		fireEight.dispose();
-		fireNine.dispose();
-		fireTen.dispose();
 		dustParticleOne.dispose();
 		dustParticleTwo.dispose();
 		dustParticleThree.dispose();

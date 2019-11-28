@@ -20,17 +20,6 @@ public class Explosion extends GameObject {
 
 	private int explosionSize = 2;
 
-	private TextureAtlas textureAtlas;
-
-	private Animation <TextureRegion> animation;
-
-	/**
-	 * Used for animation speed.
-	 */
-	private float elapsedTime = 0;
-
-	private float animationSpeed = 1/15f;
-
 	/**
 	 * Constructor.
 	 * 
@@ -41,15 +30,7 @@ public class Explosion extends GameObject {
 		this.x       = x;
 		this.y       = y;
 		textureAtlas = new TextureAtlas(Gdx.files.internal("artwork/effects/explosion/explosion.atlas"));
-		animation    = new Animation <TextureRegion> (animationSpeed, textureAtlas.getRegions());
-	}
-
-	/**
-	 * 
-	 * @return Animation<TextureRegion>
-	 */
-	public Animation<TextureRegion> getAnimation() {
-		return animation;
+		animation    = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_EXPLOSIOIN, textureAtlas.getRegions());
 	}
 
 	/**
