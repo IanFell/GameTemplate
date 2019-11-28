@@ -15,7 +15,6 @@ import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import physics.Lighting.Explosion;
-import physics.Lighting.Fire;
 
 /**
  * 
@@ -28,12 +27,14 @@ public class Enemy extends GameCharacter {
 
 	private Rectangle attackBoundary;
 
-	// How long fire animation plays after enemy has been killed.
-	public final static int MAX_DEATH_ANIMATION_VALUE = 100;
+	/**
+	 * How long explosion animation plays after enemy has been killed.
+	 * This is so it wont loop.
+	 */
+	public final static int MAX_DEATH_ANIMATION_VALUE = 15;
 
 	public final static int DAMAGE_INFLICTED = -1;
 
-	//private Fire fire;
 	private Explosion explosion;
 	private boolean dead;
 	private boolean willAttack;
@@ -41,7 +42,8 @@ public class Enemy extends GameCharacter {
 	private int stoppedValue = 0;
 
 	public static boolean playDeathSound = false;
-	
+
+	// Death explosion variable.
 	private boolean explosionShouldBeCreated;
 
 	/**
@@ -54,21 +56,21 @@ public class Enemy extends GameCharacter {
 	 * @param int     direction
 	 */
 	public Enemy(float x, float y, float width, float height, int direction) {
-		this.x           = x;
-		this.y           = y;
-		this.width       = width;
-		this.height      = height;
-		this.direction   = direction;
-		dx               = stoppedValue;
-		dy               = stoppedValue;
-		speed            = 0.05f;
-		rectangle.width  = width;
-		rectangle.height = height;
-		playSound        = false;
-		dead             = false;
+		this.x                   = x;
+		this.y                   = y;
+		this.width               = width;
+		this.height              = height;
+		this.direction           = direction;
+		dx                       = stoppedValue;
+		dy                       = stoppedValue;
+		speed                    = 0.05f;
+		rectangle.width          = width;
+		rectangle.height         = height;
+		playSound                = false;
+		dead                     = false;
 		explosionShouldBeCreated = true;
 		// The height of the rectangle is to reflect attackBoundary if player is below enemy.
-		attackBoundary = new Rectangle(x, y, 3, 4);
+		attackBoundary           = new Rectangle(x, y, 3, 4);
 
 		// Enemy will either attack player, or get within attackBoundary and stop.
 		willAttack = false;
@@ -76,8 +78,6 @@ public class Enemy extends GameCharacter {
 		if (randomAttackValue < 1) {
 			willAttack = true;
 		}
-		//fire = new Fire(0, 0, 0.5f, 1.5f, "Enemy", false);
-		//explosion = new Explosion(0, 0);
 
 		walkDownTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyDown.atlas"));
 		walkUpTexture    = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyUp.atlas"));
@@ -162,7 +162,7 @@ public class Enemy extends GameCharacter {
 	 * Don't use GameObject.getDirection() because it is associated with the Player direction.  
 	 * Currently this is working, so don't change it.
 	 * 
-	 * @return direction
+	 * @return int
 	 */
 	public int getEnemyDirection() {
 		return direction;
@@ -203,12 +203,11 @@ public class Enemy extends GameCharacter {
 			// Uncomment to draw enemy hit box.
 			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 		} else {
-			//if (timer < MAX_DEATH_ANIMATION_VALUE) {
-				//fire.renderObject(batch, imageLoader);
 			if (explosion != null) {
-				explosion.renderExplosion(batch, imageLoader);
+				if (timer < MAX_DEATH_ANIMATION_VALUE) {
+					explosion.renderExplosion(batch, imageLoader);
+				}
 			}
-			//}
 		}
 	}
 
@@ -233,13 +232,13 @@ public class Enemy extends GameCharacter {
 
 		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
 
-		//fire.updateObject(myGame, mapHandler);
-		if (dead && explosionShouldBeCreated) {
-			//timer++;
-			//fire.setX(x);
-			//fire.setY(y);
-			explosion = new Explosion(x, y);
-			explosionShouldBeCreated = false;
+		// If enemy is dead, create explosion and start explosion timer.
+		if (dead) {
+			timer++;
+			if (explosionShouldBeCreated) {
+				explosion                = new Explosion(x, y);
+				explosionShouldBeCreated = false;
+			}
 		}
 	}
 
