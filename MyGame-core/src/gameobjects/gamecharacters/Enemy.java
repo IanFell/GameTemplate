@@ -14,6 +14,7 @@ import handlers.CollisionHandler;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import physics.Lighting.Explosion;
 import physics.Lighting.Fire;
 
 /**
@@ -32,13 +33,16 @@ public class Enemy extends GameCharacter {
 
 	public final static int DAMAGE_INFLICTED = -1;
 
-	private Fire fire;
+	//private Fire fire;
+	private Explosion explosion;
 	private boolean dead;
 	private boolean willAttack;
 	private float speed;
 	private int stoppedValue = 0;
 
 	public static boolean playDeathSound = false;
+	
+	private boolean explosionShouldBeCreated;
 
 	/**
 	 * Constructor.
@@ -62,6 +66,7 @@ public class Enemy extends GameCharacter {
 		rectangle.height = height;
 		playSound        = false;
 		dead             = false;
+		explosionShouldBeCreated = true;
 		// The height of the rectangle is to reflect attackBoundary if player is below enemy.
 		attackBoundary = new Rectangle(x, y, 3, 4);
 
@@ -71,7 +76,8 @@ public class Enemy extends GameCharacter {
 		if (randomAttackValue < 1) {
 			willAttack = true;
 		}
-		fire = new Fire(0, 0, 0.5f, 1.5f, "Enemy", false);
+		//fire = new Fire(0, 0, 0.5f, 1.5f, "Enemy", false);
+		//explosion = new Explosion(0, 0);
 
 		walkDownTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyDown.atlas"));
 		walkUpTexture    = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/enemy/enemyUp.atlas"));
@@ -197,9 +203,12 @@ public class Enemy extends GameCharacter {
 			// Uncomment to draw enemy hit box.
 			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 		} else {
-			if (timer < MAX_DEATH_ANIMATION_VALUE) {
-				fire.renderObject(batch, imageLoader);
+			//if (timer < MAX_DEATH_ANIMATION_VALUE) {
+				//fire.renderObject(batch, imageLoader);
+			if (explosion != null) {
+				explosion.renderExplosion(batch, imageLoader);
 			}
+			//}
 		}
 	}
 
@@ -224,11 +233,13 @@ public class Enemy extends GameCharacter {
 
 		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
 
-		fire.updateObject(myGame, mapHandler);
-		if (dead) {
-			timer++;
-			fire.setX(x);
-			fire.setY(y);
+		//fire.updateObject(myGame, mapHandler);
+		if (dead && explosionShouldBeCreated) {
+			//timer++;
+			//fire.setX(x);
+			//fire.setY(y);
+			explosion = new Explosion(x, y);
+			explosionShouldBeCreated = false;
 		}
 	}
 

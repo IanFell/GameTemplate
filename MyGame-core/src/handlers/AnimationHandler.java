@@ -17,8 +17,9 @@ import tiles.Tile;
  */
 public class AnimationHandler {
 
-	public final static int OBJECT_TYPE_PLAYER = 0;
-	public final static int OBJECT_TYPE_ENEMY  = 1;
+	public final static int OBJECT_TYPE_PLAYER    = 0;
+	public final static int OBJECT_TYPE_ENEMY     = 1;
+	public final static int OBJECT_TYPE_EXPLOSION = 2;
 
 	/**
 	 * y + 1 is used because we need to flip the sprite batch vertically.  

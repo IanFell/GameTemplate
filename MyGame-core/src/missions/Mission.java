@@ -78,9 +78,9 @@ public class Mission {
 
 	/**
 	 * 
-	 * @param SpriteBatch   batch
-	 * @param ImageLoader   imageLoader
-	 * @param MyGame        myGame
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param MyGame      myGame
 	 */
 	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {}
 

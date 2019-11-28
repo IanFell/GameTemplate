@@ -50,7 +50,7 @@ public class MissionHandler {
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
-		//missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
+		missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
 		if (MissionRawBar.missionIsActive) {
 			handleRawBarMission(myGame);
@@ -86,7 +86,7 @@ public class MissionHandler {
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		missionChests.renderMission(batch, imageLoader, myGame);
-		//missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
+		missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 
 		if (MissionRawBar.missionIsActive) {
 			//renderRawBarMission(batch, imageLoader, myGame);

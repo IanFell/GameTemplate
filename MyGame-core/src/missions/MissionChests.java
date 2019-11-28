@@ -48,7 +48,7 @@ public class MissionChests extends Mission {
 	 * @param Player player
 	 */
 	public void updateMission(Player player, MyGame myGame, MapHandler mapHandler) {
-		
+
 		super.updateMission(myGame, mapHandler);
 
 		// If player fails mission, use this to display "try again" message.
@@ -111,7 +111,7 @@ public class MissionChests extends Mission {
 					-collectOysterMessageSize
 					);
 		}
-		
+
 		renderMissionStartMessage(batch, myGame, imageLoader.collectLoot);
 	}
 }

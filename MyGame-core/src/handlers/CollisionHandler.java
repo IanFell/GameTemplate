@@ -18,7 +18,6 @@ import maps.MapHandler;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
 import missions.MissionRawBar;
-import screens.TeePeeScreen;
 import tiles.Tile;
 
 /**
@@ -28,9 +27,6 @@ import tiles.Tile;
  *
  */
 public class CollisionHandler {
-
-	private static float playerX = 0;
-	private static float playerY = 0;
 
 	// Keep track of enemy collision timing for player health.
 	private static int timer = 0;
@@ -117,7 +113,6 @@ public class CollisionHandler {
 	 * @param Chest      chest
 	 */
 	public static void checkIfPlayerHasCollidedWithChest(GameObject player, Chest chest) {
-		System.out.println(playerX + ", " + playerY);
 		if (chest.rectangle.overlaps(player.rectangle)) {
 			float offset = 0.5f;
 			switch (Player.direction) {
