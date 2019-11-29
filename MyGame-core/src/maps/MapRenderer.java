@@ -122,7 +122,7 @@ public class MapRenderer {
 	 * @param int    column
 	 */
 	private void animateWaterTiles(int tileNumber, MyGame myGame, int row, int column) {
-		timer += 0.05f;
+		timer += 0.005f;
 		if (timer > 50) {
 			timer = 0;
 		}

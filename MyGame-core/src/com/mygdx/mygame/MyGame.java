@@ -55,6 +55,10 @@ public class MyGame extends Game {
 
 	public GameScreen gameScreen;
 
+	/**
+	 * 
+	 * @return GameScreen
+	 */
 	public GameScreen getGameScreen() {
 		return gameScreen;
 	}

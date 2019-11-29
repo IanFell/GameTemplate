@@ -29,7 +29,11 @@ public class CutScene {
 	public CutScene(String name) {
 		this.name               = name;
 		timer                   = 0;
-		anyCutSceneIsInProgress = true;
+		/**
+		 * This has to be false to just start the game with no intro.
+		 * It must be true if you start the game with intro.
+		 */
+		anyCutSceneIsInProgress = false;
 		// Change this to render cutscene or not.
 		cutSceneShouldRender = false;
 		if (cutSceneShouldRender) {
