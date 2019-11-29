@@ -16,8 +16,10 @@ public class CutScene {
 
 	protected String name;
 	protected boolean cutSceneConcluded;
-	protected boolean cutSceneIsInProgress;
+	protected boolean selectedCutSceneIsInProgress;
 	protected int timer;
+
+	public static boolean anyCutSceneIsInProgress = false;
 
 	/**
 	 * Constructor.
@@ -25,8 +27,9 @@ public class CutScene {
 	 * @param String name
 	 */
 	public CutScene(String name) {
-		this.name            = name;
-		timer                = 0;
+		this.name               = name;
+		timer                   = 0;
+		anyCutSceneIsInProgress = true;
 		// Change this to render cutscene or not.
 		cutSceneShouldRender = false;
 		if (cutSceneShouldRender) {
@@ -42,8 +45,8 @@ public class CutScene {
 	 * @param boolean isInProgress
 	 */
 	private void setCutSceneValues(boolean isConcluded, boolean isInProgress) {
-		cutSceneConcluded    = isConcluded;
-		cutSceneIsInProgress = isInProgress;
+		cutSceneConcluded            = isConcluded;
+		selectedCutSceneIsInProgress = isInProgress;
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class CutScene {
 	 * 
 	 * @return boolean
 	 */
-	public boolean isCutSceneIsInProgress() {
-		return cutSceneIsInProgress;
+	public boolean isSelectedCutSceneInProgress() {
+		return selectedCutSceneIsInProgress;
 	}
 }

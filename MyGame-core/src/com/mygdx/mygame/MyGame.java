@@ -69,7 +69,7 @@ public class MyGame extends Game {
 		audioHandler.init();
 		inputHandler.init();
 		gameAttributeHelper = new GameAttributeHelper();
-		gameScreen = new GameScreen(this);
+		gameScreen          = new GameScreen(this);
 		this.setScreen(gameScreen);
 	}
 
@@ -77,7 +77,7 @@ public class MyGame extends Game {
 	public void render () {
 		super.render();
 		gameLoop();
-		System.out.println("Game State: " + GameAttributeHelper.gameState);
+		//System.out.println("Game State: " + GameAttributeHelper.gameState);
 	}
 
 	@Override
@@ -91,13 +91,12 @@ public class MyGame extends Game {
 	 * 30 FPS.
 	 */
 	private void gameLoop() {
-		audioHandler.handleAudio(this);
 		inputHandler.handleInput(this);
-		System.out.println("Frames Per Second: " + Gdx.graphics.getFramesPerSecond());
+		audioHandler.handleAudio(this);
+		//System.out.println("Frames Per Second: " + Gdx.graphics.getFramesPerSecond());
 	}
 
 	/**
-	 * This method should be moved to the GameObject class.
 	 * 
 	 * @param int object
 	 * @return GameObject

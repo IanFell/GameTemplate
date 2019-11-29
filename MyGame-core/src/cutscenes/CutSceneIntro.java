@@ -150,8 +150,9 @@ public class CutSceneIntro extends CutScene {
 						);
 			}
 			if (timer > dialogueLength * 9) {
-				cutSceneConcluded    = true;
-				cutSceneIsInProgress = false;
+				cutSceneConcluded            = true;
+				selectedCutSceneIsInProgress = false;
+				anyCutSceneIsInProgress      = false;
 			}
 		}
 	}

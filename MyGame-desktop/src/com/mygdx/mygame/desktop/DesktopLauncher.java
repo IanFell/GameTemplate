@@ -17,7 +17,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.addIcon("artwork/logos/GoldenAgeIcon.png", FileType.Internal);
-		config.title         = "The Golden Age";
+		config.title         = "The Golden Age: Legend of the Seven Swords";
 		config.foregroundFPS = GameAttributeHelper.FRAMES_PER_SECOND;
 
 		// Full screen.

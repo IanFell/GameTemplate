@@ -2,6 +2,7 @@ package physics.Weather;
 
 import com.mygdx.mygame.MyGame;
 
+import cutscenes.CutScene;
 import gameobjects.GameObject;
 import helpers.RandomNumberGenerator;
 import maps.MapHandler;
@@ -64,9 +65,11 @@ public class WeatherHandler {
 	 * @param MapHandler mapHandler
 	 */
 	public void update(MyGame myGame, GameScreen gameScreen, MapHandler mapHandler) {
-		nightAndDayCycle.performDayAndNightCycle();
 		updateStormCycle(myGame, gameScreen, mapHandler);
 		updateClouds(myGame, gameScreen);
+		if (!CutScene.anyCutSceneIsInProgress) {
+			nightAndDayCycle.performDayAndNightCycle();
+		}
 	}
 
 	/**

@@ -212,7 +212,7 @@ public class GameScreen extends Screens {
 		myGame.renderer.batch.setProjectionMatrix(camera.combined);
 		//myGame.renderer.shapeRenderer.setProjectionMatrix(camera.combined);
 		if (!ScreenShake.screenIsShaking) {
-			if (cutSceneIntro.isCutSceneIsInProgress()) {
+			if (cutSceneIntro.isSelectedCutSceneInProgress()) {
 				camera.position.x = cutSceneIntro.getStartXPosition() + 5;
 				camera.position.y = cutSceneIntro.getStartYPosition() + 1;
 			} else {
@@ -265,7 +265,7 @@ public class GameScreen extends Screens {
 
 		WeaponHandler.updateWeapons(myGame, mapHandler);
 
-		if (cutSceneIntro.isCutSceneIsInProgress()) {
+		if (cutSceneIntro.isSelectedCutSceneInProgress()) {
 			cutSceneIntro.updateCutScene();
 		}
 
@@ -334,7 +334,7 @@ public class GameScreen extends Screens {
 			guiScreen.render(myGame.renderer.batch, myGame.imageLoader);
 		} */
 
-		if (cutSceneIntro.isCutSceneIsInProgress()) {
+		if (cutSceneIntro.isSelectedCutSceneInProgress()) {
 			cutSceneIntro.renderCutScene(
 					myGame.renderer.batch,  
 					myGame.imageLoader
