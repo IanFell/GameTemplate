@@ -120,7 +120,6 @@ public class ImageLoader {
 	public Texture inventoryScreen;
 	public Texture inventoryLabel;
 	public Texture locationSkull;
-	public Texture loot;
 
 	// Player name UI labels.
 	public Texture jollyRogerUiNameLabel;
@@ -227,8 +226,8 @@ public class ImageLoader {
 		leftHand      						   = new Texture(Gdx.files.internal("artwork/missions/HandOpenLeft.png"));
 		rightHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedRight.png"));
 		leftHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedLeft.png"));
-		fishLeft                               = new Texture(Gdx.files.internal("artwork/missions/FishLeft.png"));
-		fishRight                              = new Texture(Gdx.files.internal("artwork/missions/FishRight.png"));
+		fishLeft                               = new Texture(Gdx.files.internal("artwork/missions/fishLeft.png"));
+		fishRight                              = new Texture(Gdx.files.internal("artwork/missions/fishRight.png"));
 		goToTradingPost                        = new Texture(Gdx.files.internal("artwork/missions/GoToTradingPost.png"));
 		collectLoot                            = new Texture(Gdx.files.internal("artwork/missions/CollectLoot.png"));
 
@@ -251,7 +250,6 @@ public class ImageLoader {
 		inventoryScreen                        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
 		inventoryLabel                         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
 		locationSkull                          = new Texture(Gdx.files.internal("artwork/ui/Skull.png"));
-		loot                                   = new Texture(Gdx.files.internal("artwork/ui/Loot.png"));
 
 		// Player name UI labels.
 		jollyRogerUiNameLabel = new Texture(Gdx.files.internal("artwork/ui/playernames/JollyRoger.png"));
@@ -393,7 +391,6 @@ public class ImageLoader {
 		inventoryScreen.dispose();
 		inventoryLabel.dispose();
 		locationSkull.dispose();
-		loot.dispose();
 
 		// Player name UI labels.
 		jollyRogerUiNameLabel.dispose();
