@@ -1,7 +1,7 @@
 package loaders.plantloaders;
 
 import gameobjects.GameObject;
-import gameobjects.stationarygameobjects.treeobjects.Plant;
+import gameobjects.nature.trees.Plant;
 import loaders.ClassObjectLoader;
 import maps.MapInformationHolder;
 

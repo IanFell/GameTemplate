@@ -1,6 +1,6 @@
 package loaders.plantloaders;
 
-import gameobjects.stationarygameobjects.treeobjects.Plant;
+import gameobjects.nature.trees.Plant;
 import helpers.GameAttributeHelper;
 
 /**

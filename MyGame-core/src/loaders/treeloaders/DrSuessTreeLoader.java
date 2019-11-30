@@ -1,7 +1,7 @@
 package loaders.treeloaders;
 
 import gameobjects.GameObject;
-import gameobjects.stationarygameobjects.treeobjects.DrSuessTree;
+import gameobjects.nature.trees.DrSuessTree;
 import helpers.GameAttributeHelper;
 import loaders.ClassObjectLoader;
 

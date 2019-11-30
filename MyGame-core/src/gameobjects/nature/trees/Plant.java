@@ -1,8 +1,8 @@
-package gameobjects.stationarygameobjects.treeobjects;
+package gameobjects.nature.trees;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import gameobjects.stationarygameobjects.NatureObject;
+import gameobjects.nature.NatureObject;
 import loaders.ImageLoader;
 
 /**
@@ -10,7 +10,7 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class DrSuessTree extends NatureObject {
+public class Plant extends NatureObject {
 
 	/**
 	 * Constructor.
@@ -18,10 +18,11 @@ public class DrSuessTree extends NatureObject {
 	 * @param int x
 	 * @param int y
 	 */
-	public DrSuessTree(int x, int y) {
+	public Plant(int x, int y) {
 		super(x, y);
-		this.width  = 2;
-		this.height = 8;
+		float size  = 1.5f;
+		this.width  = size;
+		this.height = size;
 	}
 
 	/**
@@ -31,6 +32,6 @@ public class DrSuessTree extends NatureObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		batch.draw(imageLoader.drSuessTree, x, y, width, -height);
+		renderNatureObject(batch, imageLoader.plant);
 	}
 }

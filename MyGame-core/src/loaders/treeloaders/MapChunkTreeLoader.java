@@ -1,7 +1,7 @@
 package loaders.treeloaders;
 
 import gameobjects.GameObject;
-import gameobjects.stationarygameobjects.treeobjects.PalmTree;
+import gameobjects.nature.trees.PalmTree;
 import loaders.ClassObjectLoader;
 import maps.MapInformationHolder;
 

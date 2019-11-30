@@ -1,8 +1,8 @@
-package gameobjects.stationarygameobjects.treeobjects;
+package gameobjects.nature.trees;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import gameobjects.stationarygameobjects.NatureObject;
+import gameobjects.nature.NatureObject;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 
@@ -12,7 +12,7 @@ import loaders.ImageLoader;
  *
  */
 public class PalmTree extends NatureObject {
-	
+
 	private int randomTree;
 	private float randomHeight;
 

@@ -12,8 +12,6 @@ import gameobjects.GameObject;
  */
 public class NatureObject extends GameObject {
 
-	protected float size = 1.0f;
-
 	/**
 	 * Constructor.
 	 * 
@@ -23,8 +21,6 @@ public class NatureObject extends GameObject {
 	public NatureObject(int x, int y) {
 		this.x      = x;
 		this.y      = y;
-		this.width  = size;
-		this.height = size;
 	}
 
 	/**
@@ -33,12 +29,6 @@ public class NatureObject extends GameObject {
 	 * @param Texture     texture
 	 */
 	protected void renderNatureObject(SpriteBatch batch, Texture texture) {
-		batch.draw(
-				texture,
-				x,
-				y,
-				width,
-				-height
-				);
+		batch.draw(texture, x, y, width, -height);
 	}
 }

@@ -10,9 +10,9 @@ import gameobjects.stationarygameobjects.buildings.LightHouse;
 import gameobjects.stationarygameobjects.buildings.PigglyWiggly;
 import gameobjects.stationarygameobjects.buildings.RawBar;
 import gameobjects.stationarygameobjects.buildings.TeePee;
-import gameobjects.stationarygameobjects.treeobjects.DrSuessTree;
-import gameobjects.stationarygameobjects.treeobjects.PalmTree;
-import gameobjects.stationarygameobjects.treeobjects.Plant;
+import gameobjects.nature.trees.DrSuessTree;
+import gameobjects.nature.trees.PalmTree;
+import gameobjects.nature.trees.Plant;
 
 /**
  * Factory to create our game objects.

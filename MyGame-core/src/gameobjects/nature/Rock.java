@@ -19,6 +19,9 @@ public class Rock extends NatureObject {
 	 */
 	public Rock(int x, int y) {
 		super(x, y);
+		float size  = 1.0f;
+		this.width  = size;
+		this.height = size;
 	}
 
 	/**

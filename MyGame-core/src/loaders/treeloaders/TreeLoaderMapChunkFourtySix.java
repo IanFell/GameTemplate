@@ -1,7 +1,6 @@
 package loaders.treeloaders;
 
-import gameobjects.stationarygameobjects.treeobjects.PalmTree;
-import helpers.GameAttributeHelper;
+import gameobjects.nature.trees.PalmTree;import helpers.GameAttributeHelper;
 
 /**
  * 

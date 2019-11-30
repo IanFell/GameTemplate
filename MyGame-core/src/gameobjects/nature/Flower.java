@@ -19,6 +19,9 @@ public class Flower extends NatureObject {
 	 */
 	public Flower(int x, int y) {
 		super(x, y);
+		float size  = 1.0f;
+		this.width  = size;
+		this.height = size;
 	}
 
 	/**
