@@ -185,8 +185,7 @@ public class Enemy extends GameCharacter {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		elapsedTime += Gdx.graphics.getDeltaTime();
-		int playerSize = 1;
+		updateElapsedTime();
 		if (!dead) {
 			AnimationHandler.renderAnimation(
 					batch, 
@@ -194,7 +193,8 @@ public class Enemy extends GameCharacter {
 					getCurrentAnimation(), 
 					x, 
 					y, 
-					playerSize, 
+					width,
+					height,
 					imageLoader, 
 					AnimationHandler.OBJECT_TYPE_ENEMY
 					);

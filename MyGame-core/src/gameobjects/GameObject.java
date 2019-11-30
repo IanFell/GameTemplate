@@ -1,5 +1,6 @@
 package gameobjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -78,6 +79,10 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * Constructor.
 	 */
 	public GameObject() {}
+
+	public void updateElapsedTime() {
+		elapsedTime += Gdx.graphics.getDeltaTime();
+	}
 
 	/**
 	 * 

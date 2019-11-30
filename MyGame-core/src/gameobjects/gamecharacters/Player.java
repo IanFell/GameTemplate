@@ -375,7 +375,7 @@ public class Player extends GameCharacter {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		elapsedTime += Gdx.graphics.getDeltaTime();
+		updateElapsedTime();
 		dustEmitter.renderObject(batch, imageLoader);
 	}
 

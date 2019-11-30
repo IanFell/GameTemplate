@@ -22,8 +22,6 @@ import maps.MapHandler;
  */
 public class Fire extends GameObject {
 
-	private float fireSize = 0.6f;
-
 	private String location;
 
 	private boolean hasLogs;
@@ -96,14 +94,15 @@ public class Fire extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		elapsedTime += Gdx.graphics.getDeltaTime();
+		updateElapsedTime();
 		AnimationHandler.renderAnimation(
 				batch, 
 				elapsedTime, 
 				animation, 
 				x, 
 				y, 
-				fireSize, 
+				width, 
+				height,
 				imageLoader, 
 				AnimationHandler.OBJECT_TYPE_FIRE
 				);

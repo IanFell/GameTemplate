@@ -67,7 +67,8 @@ public class PlayerThree extends Player {
 					getCurrentAnimation(), 
 					x, 
 					y, 
-					playerSize, 
+					width,
+					height,
 					imageLoader, 
 					AnimationHandler.OBJECT_TYPE_PLAYER
 					);

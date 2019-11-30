@@ -1,9 +1,14 @@
 package ui;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import handlers.AnimationHandler;
 import loaders.ImageLoader;
 
 /**
@@ -18,6 +23,11 @@ public class LootUi extends TextBasedUiParent {
 	 */
 	public LootUi() {
 		super();
+		int size     = 1;
+		this.width   = size;
+		this.height  = size;
+		textureAtlas = new TextureAtlas(Gdx.files.internal("artwork/ui/loot.atlas"));
+		animation    = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_LOOT, textureAtlas.getRegions());
 	}
 
 	/**
@@ -40,13 +50,17 @@ public class LootUi extends TextBasedUiParent {
 			float xOffset, 
 			float yOffset
 			) {
-		int size = 1;
-		batch.draw(
-				imageLoader.loot,
-				player.getX() - 12.5f,
-				player.getY() - 5.0f,
-				size, 
-				-size
+		updateElapsedTime();
+		AnimationHandler.renderAnimation(
+				batch, 
+				elapsedTime, 
+				animation, 
+				player.getX() - 12.5f, 
+				player.getY() - 5.0f, 
+				width,
+				height,
+				imageLoader, 
+				AnimationHandler.OBJECT_TYPE_LOOT
 				);
 		super.renderUi(batch, imageLoader, myGame, text, player, xOffset, yOffset);
 	}

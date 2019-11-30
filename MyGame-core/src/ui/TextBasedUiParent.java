@@ -9,11 +9,12 @@ import gameobjects.GameObject;
 import loaders.ImageLoader;
 
 /**
+ * Extend GameObject to use animation variables.
  * 
  * @author Fabulous Fellini
  *
  */
-public class TextBasedUiParent {
+public class TextBasedUiParent extends GameObject {
 
 	protected BitmapFont font;
 

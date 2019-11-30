@@ -21,12 +21,14 @@ public class AnimationHandler {
 	public final static int OBJECT_TYPE_ENEMY     = 1;
 	public final static int OBJECT_TYPE_EXPLOSION = 2;
 	public final static int OBJECT_TYPE_FIRE      = 3;
+	public final static int OBJECT_TYPE_LOOT      = 4;
 
 	public final static float ANIMATION_SPEED_PLAYER              = 7/15f;
 	public final static float ANIMATION_SPEED_PLAYER_DESCEND_JUMP = 1/15f;
 	public final static float ANIMATION_SPEED_ENEMY               = 7/15f;
 	public final static float ANIMATION_SPEED_EXPLOSIOIN          = 1/15f;
 	public final static float ANIMATION_SPEED_FIRE                = 1/15f;
+	public final static float ANIMATION_SPEED_LOOT                = 4/15f;
 
 
 	/**
@@ -36,7 +38,10 @@ public class AnimationHandler {
 	 * @param Animation <TextureRegion> animation
 	 * @param float					    x
 	 * @param float 					y
-	 * @param float   					size
+	 * @param float   					width
+	 * @param float                     height
+	 * @param ImageLoader               imageLoader
+	 * @param int                       objectType
 	 */
 	public static void renderAnimation(
 			SpriteBatch batch, 
@@ -44,7 +49,8 @@ public class AnimationHandler {
 			Animation <TextureRegion> animation, 
 			float x, 
 			float y, 
-			float size,
+			float width,
+			float height,
 			ImageLoader imageLoader,
 			int objectType
 			) {
@@ -52,18 +58,21 @@ public class AnimationHandler {
 				animation.getKeyFrame(elapsedTime, true),  
 				x,  
 				y, 
-				size, 
-				-size * 2
+				width, 
+				-height
 				);
 
 
 		if (objectType == OBJECT_TYPE_PLAYER) {
 			// If player is swimming, mask him with a water tile below his head.
 			if (Player.isInWater) {
-				batch.draw(imageLoader.waterTileOne, x, y, size, -size);
-				// If it is night time, draw a transparant black shader over the tile.
+				batch.draw(imageLoader.waterTileOne, x, y, width, -height / 2);
+				/**
+				 * If it is night time, draw a transparant black shader over the tile.
+				 * If we don't do this, the overlapping water tile will not be tinted.
+				 */
 				if (!NightAndDayCycle.isDayTime()) {
-					batch.draw(Tile.nightTimeTexture, x, y, size, -size);
+					batch.draw(Tile.nightTimeTexture, x, y, width, -height);
 				}
 			}
 		}
