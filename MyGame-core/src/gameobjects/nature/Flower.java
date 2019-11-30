@@ -20,7 +20,7 @@ public class Flower extends NatureObject {
 	public Flower(int x, int y) {
 		super(x, y);
 		float size  = 1.0f;
-		this.width  = size;
+		this.width  = size * 2;
 		this.height = size;
 	}
 
@@ -31,6 +31,6 @@ public class Flower extends NatureObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		renderNatureObject(batch, imageLoader.whiteSquare);
+		renderNatureObject(batch, imageLoader.flower);
 	}
 }
