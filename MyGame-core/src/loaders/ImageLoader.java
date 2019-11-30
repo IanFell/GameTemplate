@@ -32,7 +32,6 @@ public class ImageLoader {
 	public Texture light;
 	public Texture rain;
 	public Texture shadow;
-	public Texture flower;
 
 	// Weapon Objects.
 	public Texture gunRight;
@@ -154,7 +153,6 @@ public class ImageLoader {
 		light         = new Texture(Gdx.files.internal("artwork/nature/Lighting.png"));
 		rain 		  = new Texture(Gdx.files.internal("artwork/nature/Rain.png"));
 		shadow        = new Texture(Gdx.files.internal("artwork/nature/Shadow.png"));
-		flower        = new Texture(Gdx.files.internal("artwork/nature/Flower.png"));
 
 		// Weapon Objects.
 		gunRight   					           = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
@@ -301,7 +299,6 @@ public class ImageLoader {
 		light.dispose();
 		rain.dispose();
 		shadow.dispose();
-		flower.dispose();
 
 		// Weapon Objects.
 		gunRight.dispose();

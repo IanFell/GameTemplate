@@ -22,6 +22,7 @@ public class AnimationHandler {
 	public final static int OBJECT_TYPE_EXPLOSION = 2;
 	public final static int OBJECT_TYPE_FIRE      = 3;
 	public final static int OBJECT_TYPE_LOOT      = 4;
+	public static final int OBJECT_TYPE_FLOWER    = 5;
 
 	public final static float ANIMATION_SPEED_PLAYER              = 7/15f;
 	public final static float ANIMATION_SPEED_PLAYER_DESCEND_JUMP = 1/15f;
@@ -29,6 +30,7 @@ public class AnimationHandler {
 	public final static float ANIMATION_SPEED_EXPLOSIOIN          = 1/15f;
 	public final static float ANIMATION_SPEED_FIRE                = 1/15f;
 	public final static float ANIMATION_SPEED_LOOT                = 4/15f;
+	public final static float ANIMATION_SPEED_FLOWER              = 5/15f;
 
 
 	/**

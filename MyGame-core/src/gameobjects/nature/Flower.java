@@ -1,7 +1,12 @@
 package gameobjects.nature;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import handlers.AnimationHandler;
 import loaders.ImageLoader;
 
 /**
@@ -19,9 +24,10 @@ public class Flower extends NatureObject {
 	 */
 	public Flower(int x, int y) {
 		super(x, y);
-		float size  = 1.0f;
-		this.width  = size * 2;
-		this.height = size;
+		this.width   = 2;
+		this.height  = 1;
+		textureAtlas = new TextureAtlas(Gdx.files.internal("artwork/nature/flowers.atlas"));
+		animation    = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_FLOWER, textureAtlas.getRegions());
 	}
 
 	/**
@@ -31,6 +37,17 @@ public class Flower extends NatureObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		renderNatureObject(batch, imageLoader.flower);
+		updateElapsedTime();
+		AnimationHandler.renderAnimation(
+				batch, 
+				elapsedTime, 
+				animation, 
+				x, 
+				y, 
+				width, 
+				height,
+				imageLoader, 
+				AnimationHandler.OBJECT_TYPE_FLOWER
+				);
 	}
 }
