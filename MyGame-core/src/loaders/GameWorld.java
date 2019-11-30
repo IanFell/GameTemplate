@@ -2,6 +2,7 @@ package loaders;
 
 import com.mygdx.mygame.MyGame;
 
+import loaders.cannonloader.CannonLoader;
 import loaders.chestloader.ChestLoader;
 import loaders.dockloader.DockLoader;
 import loaders.fireloader.FireLoader;
@@ -39,6 +40,7 @@ public class GameWorld {
 	private FlowerLoader flowerLoader;
 	private SignLoader signLoader;
 	private DockLoader dockLoader;
+	private CannonLoader cannonLoader;
 
 	/**
 	 * Constructor.
@@ -60,6 +62,7 @@ public class GameWorld {
 		signLoader         = new SignLoader();
 		dockLoader         = new DockLoader();
 		tradingPostLoader  = new TradingPostLoader();
+		cannonLoader       = new CannonLoader();
 		loadGameWorld(myGame);
 	}
 
@@ -82,6 +85,7 @@ public class GameWorld {
 		signLoader.loadSigns();
 		dockLoader.loadDocks(myGame);
 		tradingPostLoader.loadTradingPost(myGame);
+		cannonLoader.loadCannons(myGame);
 	}
 
 	/**
@@ -105,5 +109,6 @@ public class GameWorld {
 		RawBarLoader.rawbar.updateObject(myGame, mapHandler);
 		PigglyWigglyLoader.pigglyWiggly.updateObject(myGame, mapHandler);
 		TradingPostLoader.tradingPost.updateObject(myGame, mapHandler);
+		CannonLoader.cannon.updateObject(myGame, mapHandler);
 	}
 }

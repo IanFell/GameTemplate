@@ -5,6 +5,7 @@ import com.mygdx.mygame.MyGame;
 
 import loaders.ImageLoader;
 import loaders.bulletloader.BulletLoader;
+import loaders.cannonballloader.CannonBallLoader;
 import maps.MapHandler;
 
 /**
@@ -29,6 +30,7 @@ public class WeaponHandler {
 	 */
 	public static void updateWeapons(MyGame myGame, MapHandler mapHandler) {
 		BulletLoader.updateBullets(myGame, mapHandler);
+		CannonBallLoader.updateCannonBalls(myGame, mapHandler);
 	}
 
 	/**
@@ -38,5 +40,6 @@ public class WeaponHandler {
 	 */
 	public static void renderWeapons(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {	
 		BulletLoader.renderBullets(batch, imageLoader);
+		CannonBallLoader.renderCannonBalls(batch, imageLoader);
 	}
 }
