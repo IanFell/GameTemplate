@@ -1,4 +1,4 @@
-package gameobjects;
+package gameobjects.nature;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -9,7 +9,7 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class Rock extends GameObject {
+public class Rock extends NatureObject {
 
 	/**
 	 * Constructor.
@@ -18,15 +18,7 @@ public class Rock extends GameObject {
 	 * @param int y
 	 */
 	public Rock(int x, int y) {
-		this.x           = x;
-		this.y           = y;
-		float size       = 1.0f;
-		this.width       = size;
-		this.height      = size;
-		rectangle.x      = x;
-		rectangle.y      = y;
-		rectangle.width  = size;
-		rectangle.height = size;
+		super(x, y);
 	}
 
 	/**
@@ -36,12 +28,6 @@ public class Rock extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		batch.draw(
-				imageLoader.rock,
-				x,
-				y,
-				width,
-				-height
-				);
+		renderNatureObject(batch, imageLoader.rock);
 	}
 }

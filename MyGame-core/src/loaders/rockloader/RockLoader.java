@@ -3,7 +3,7 @@ package loaders.rockloader;
 import java.util.ArrayList;
 
 import gameobjects.GameObject;
-import gameobjects.Rock;
+import gameobjects.nature.Rock;
 import helpers.GameAttributeHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ClassObjectLoader;
@@ -24,7 +24,6 @@ public class RockLoader extends ClassObjectLoader {
 			addRandomlyPlacedRock();
 		}
 		addGameObjectsToGameObjectArrayList(rocks);
-
 	}
 
 	private void addRandomlyPlacedRock() {

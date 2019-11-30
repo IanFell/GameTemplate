@@ -32,9 +32,13 @@ public class Debugger {
 		for (int i = 0; i < totalChunkCount; i++) {
 			for(int z = 0; z < chunkHeight; z++) {
 				for(int x = 0; x < chunkWidth; x++) {
-						MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
+					MapHandler.mapChunks.get(i).tileMap[x][z].draw(myGame.renderer.batch);
 				}
 			}
 		}
+	}
+
+	public static void printGettingHereStatement() {
+		System.out.print("GETTING HERE");
 	}
 }
