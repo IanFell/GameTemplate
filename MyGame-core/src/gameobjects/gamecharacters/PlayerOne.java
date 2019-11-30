@@ -101,6 +101,30 @@ public class PlayerOne extends Player {
 		}
 
 		handleTextures();
+		setPlayerAnimations();
+	}
+
+	/**
+	 * Handles player animations, depending on the life state.
+	 * Each life state will draw a different player.
+	 */
+	private void setPlayerAnimations() {
+		if (lifeState == LIFE_STATE_TWO) {
+			setAnimations(
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoRight.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoLeft.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwoUp.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerTwo.atlas"))	
+					);
+		} 
+		if (lifeState == LIFE_STATE_THREE) {
+			setAnimations(
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeRight.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeLeft.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeUp.atlas")),
+					new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeDown.atlas"))	
+					);
+		} 
 	}
 
 	/**
