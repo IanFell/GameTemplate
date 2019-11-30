@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import handlers.AnimationHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -47,7 +48,7 @@ public class PlayerTwo extends Player {
 		super.updateObject(myGame, mapHandler);
 		handleWalking(myGame);
 		savePlayerCurrentPositionAndDirection(x, y, playerTwoXPositions, playerTwoYPositions, playerDirections);
-		//simulateDeath(myGame, myGame.getGameObject(GameObject.PLAYER_ONE));
+		simulateDeath(myGame, myGame.getGameObject(GameObject.PLAYER_ONE));
 
 		if (myGame.getGameObject(Player.PLAYER_ONE).getHealth() <= 0) {
 			setLifeState(myGame, PLAYER_TWO);

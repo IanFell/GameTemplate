@@ -3,8 +3,11 @@ package gameobjects.weapons;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.gamecharacters.Player;
+import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import physics.Lighting.Explosion;
 
 /**
  * 
@@ -13,9 +16,17 @@ import maps.MapHandler;
  */
 public class CannonBall extends Weapon {
 
-	private int timer = 0;
+	public static final int CANNONBALL_MAX_EXPLOSION_VALUE = 10;
+
+	private int shootingTimer  = 0;
+
+	public static int explosionTimer;
 
 	private int size = 1;
+
+	private Explosion explosion;
+	
+	private boolean cannonBallHasHitPlayer = false;
 
 	/**
 	 * Constructor.
@@ -25,8 +36,29 @@ public class CannonBall extends Weapon {
 	 */
 	public CannonBall(float x, float y) {
 		super(x, y);
-		dx = 1;
-		dy = -0.5f;
+		dx               = 1;
+		dy               = -0.5f;
+		explosionTimer   = 0;
+		this.width = size;
+		this.height = size;
+		rectangle.width  = width;
+		rectangle.height = height;
+	}
+
+	/**
+	 * 
+	 * @param boolean cannonBallHasHitPlayer
+	 */
+	public void setCannonBallHasHitPlayer(boolean cannonBallHasHitPlayer) {
+		this.cannonBallHasHitPlayer = cannonBallHasHitPlayer;
+	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	public boolean isCannonBallHasHitPlayer() {
+		return cannonBallHasHitPlayer;
 	}
 
 	/**
@@ -39,14 +71,37 @@ public class CannonBall extends Weapon {
 		super.updateObject(myGame, mapHandler);
 		x += dx;
 		y += dy;
-		timer++;
+		rectangle.x = x;
+		rectangle.y = y;
+		shootingTimer++;
 		handleCannonBallPhysics();
+        CollisionHandler.checkIfCannonBallHasCollidedWithPlayer(
+        		(Player) myGame.getGameObject(Player.PLAYER_ONE), 
+        		this
+        		);
+		handleExplosion(myGame, mapHandler);
+	}
+
+	/**
+	 * 
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
+	 */
+	private void handleExplosion(MyGame myGame, MapHandler mapHandler) {
+		if (dx <= 0) {
+			if (explosion == null) {
+				explosion = new Explosion(x - 0.5f, y + 2);
+			} else {
+				explosion.updateObject(myGame, mapHandler);
+				explosionTimer++;
+			}
+		}
 	}
 
 	private void handleCannonBallPhysics() {
 		if (dx > 0) {
 			dx -= .04f;
-			if (timer < 2) {
+			if (shootingTimer < 2) {
 				dy -= .01f;
 			} else {
 				dy += .04f;
@@ -71,5 +126,8 @@ public class CannonBall extends Weapon {
 				size,
 				size
 				);
+		if (explosion != null) {
+			explosion.renderExplosion(batch, imageLoader);
+		}
 	}
 }

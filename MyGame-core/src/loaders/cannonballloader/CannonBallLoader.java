@@ -28,12 +28,11 @@ public class CannonBallLoader {
 		if (cannonballs.size() > 0) {
 			for (int i = 0; i < cannonballs.size(); i++) {
 				cannonballs.get(i).updateObject(myGame, mapHandler);
-				//if (timer > CANNONBALL_LIFE_SPAN) {
-				//	cannonballs.remove(i);
-				//}
+				if (CannonBall.explosionTimer > CannonBall.CANNONBALL_MAX_EXPLOSION_VALUE) {
+					cannonballs.remove(i);
+				}
 			}
 		}
-		//timer++;
 	}
 
 	/**

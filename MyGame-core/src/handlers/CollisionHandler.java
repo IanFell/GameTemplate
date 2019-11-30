@@ -8,6 +8,7 @@ import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.stationarygameobjects.buildings.TradingPost;
+import gameobjects.weapons.CannonBall;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.MagicPearl;
@@ -270,6 +271,18 @@ public class CollisionHandler {
 			if (enemy.rectangle.overlaps(weapon.rectangle) && !enemy.isDead()) {
 				handleEnemyDeath(enemy);
 			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param Player     player
+	 * @param CannonBall cannonBall
+	 */
+	public static void checkIfCannonBallHasCollidedWithPlayer(Player player, CannonBall cannonBall)  {
+		if (player.rectangle.overlaps(cannonBall.rectangle) && !cannonBall.isCannonBallHasHitPlayer()) {
+			player.setHealth(player.getHealth() - 1);
+			cannonBall.setCannonBallHasHitPlayer(true);
 		}
 	}
 
