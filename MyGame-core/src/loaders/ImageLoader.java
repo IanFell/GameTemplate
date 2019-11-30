@@ -54,6 +54,7 @@ public class ImageLoader {
 	public Texture legendSwordPinkHalf;
 	public Texture legendSwordRainbow;
 	public Texture oyster;
+	public Texture cannonBall;
 
 	// Structure Objects.
 	public Texture teePee;
@@ -175,6 +176,7 @@ public class ImageLoader {
 		legendSwordPurple                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPurple.png"));
 		legendSwordPink                        = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPink.png"));
 		oyster                                 = new Texture(Gdx.files.internal("artwork/weapons/Oyster.png"));
+		cannonBall                             = new Texture(Gdx.files.internal("artwork/weapons/CannonBall.png"));
 
 		// Structure Objects.
 		slaveHut     = new Texture(Gdx.files.internal("artwork/structures/SlaveHut.png"));
@@ -255,9 +257,9 @@ public class ImageLoader {
 		pegLegUiNameLabel     = new Texture(Gdx.files.internal("artwork/ui/playernames/PegLeg.png"));
 
 		// Logo objects.
-		splashScreenLogo                       = new Texture(Gdx.files.internal("artwork/logos/logo_ffg.png"));
-		titleScreenLogo                        = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeLogo.png"));
-		icon                                   = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeIcon.png"));
+		splashScreenLogo = new Texture(Gdx.files.internal("artwork/logos/logo_ffg.png"));
+		titleScreenLogo  = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeLogo.png"));
+		icon             = new Texture(Gdx.files.internal("artwork/logos/GoldenAgeIcon.png"));
 
 		// Sign objects.  sign can be removed.
 		sign         = new Texture(Gdx.files.internal("artwork/signs/Sign.png"));
@@ -321,6 +323,7 @@ public class ImageLoader {
 		legendSwordPinkHalf.dispose();
 		legendSwordOrangeHalf.dispose();
 		oyster.dispose();
+		cannonBall.dispose();
 
 		// Structure objects.
 		slaveHut.dispose();

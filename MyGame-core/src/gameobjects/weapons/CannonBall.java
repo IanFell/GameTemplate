@@ -39,8 +39,8 @@ public class CannonBall extends Weapon {
 		dx               = 1;
 		dy               = -0.5f;
 		explosionTimer   = 0;
-		this.width = size;
-		this.height = size;
+		this.width       = size;
+		this.height      = size;
 		rectangle.width  = width;
 		rectangle.height = height;
 	}
@@ -120,7 +120,7 @@ public class CannonBall extends Weapon {
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		batch.draw(
-				imageLoader.whiteSquare,
+				imageLoader.cannonBall,
 				x, 
 				y,
 				size,

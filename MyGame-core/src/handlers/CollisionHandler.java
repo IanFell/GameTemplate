@@ -283,6 +283,8 @@ public class CollisionHandler {
 		if (player.rectangle.overlaps(cannonBall.rectangle) && !cannonBall.isCannonBallHasHitPlayer()) {
 			player.setHealth(player.getHealth() - 1);
 			cannonBall.setCannonBallHasHitPlayer(true);
+			// Make cannonball stop and hit player and explode instead of going through him.
+			cannonBall.setDx(0);
 		}
 	}
 
