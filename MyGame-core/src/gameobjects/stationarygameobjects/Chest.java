@@ -49,10 +49,10 @@ public class Chest extends GamePlayObject {
 	public Chest(int x, int y) {
 		super(x, y);
 		setChestToOriginalValues();
-		this.width  = objectSize;
-		this.height = objectSize;
-		rectangle.width = width;
-		rectangle.height = height;
+		this.width       = objectSize;
+		this.height      = objectSize;
+		rectangle.width  = objectSize;
+		rectangle.height = objectSize / 2;
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class Chest extends GamePlayObject {
 		if (isClosed) {
 			batch.draw(imageLoader.chestClosed, x, y, width, -height);
 			// Uncomment this to draw hit box.
-			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, -rectangle.height);
+			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 		} else {
 			batch.draw(imageLoader.chestOpen, x, y, width, -height);
 		}
@@ -79,7 +79,7 @@ public class Chest extends GamePlayObject {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		rectangle.y = y;
+		rectangle.y = y - height;
 		CollisionHandler.checkIfPlayerHasCollidedWithChest(
 				myGame.getGameObject(GameObject.PLAYER_ONE),
 				this
