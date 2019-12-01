@@ -29,6 +29,9 @@ public class CannonBall extends Weapon {
 	public static int explosionLandTimer;
 	public static int explosionBlastTimer;
 
+	private float shadowX;
+	private float shadowY;
+
 	private int size = 1;
 
 	private Explosion explosionLand;
@@ -56,6 +59,8 @@ public class CannonBall extends Weapon {
 		rectangle.width     = width;
 		rectangle.height    = height;
 		this.direction      = direction;
+		shadowX             = x;
+		shadowY             = y - 1;
 	}
 
 	/**
@@ -105,6 +110,12 @@ public class CannonBall extends Weapon {
 
 		// When cannon ball lands on the ground.
 		handleExplosionLand(myGame, mapHandler);
+
+		/**
+		 * Update shadow to only follow the x-axis, because cannon balls are only shot horizontally.
+		 * Cannon balls shoot up and fall down, so keeping the shadow on the same x-axis looks real.
+		 */
+		shadowX = x;
 	}
 
 	/**
@@ -168,6 +179,13 @@ public class CannonBall extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
+		batch.draw(
+				imageLoader.shadow,
+				shadowX, 
+				shadowY,
+				size,
+				size
+				);
 		batch.draw(
 				imageLoader.cannonBall,
 				x, 
