@@ -55,6 +55,8 @@ public class ImageLoader {
 	public Texture legendSwordRainbow;
 	public Texture oyster;
 	public Texture cannonBall;
+	public Texture cannonLeft;
+	public Texture cannonRight;
 
 	// Structure Objects.
 	public Texture teePee;
@@ -156,27 +158,29 @@ public class ImageLoader {
 		shadow        = new Texture(Gdx.files.internal("artwork/nature/Shadow.png"));
 
 		// Weapon Objects.
-		gunRight   					           = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
-		gunLeft                                = new Texture(Gdx.files.internal("artwork/weapons/gun/Left.png"));
-		gunUp                                  = new Texture(Gdx.files.internal("artwork/weapons/gun/Up.png"));
-		gunDown                                = new Texture(Gdx.files.internal("artwork/weapons/gun/Down.png"));
-		legendSwordRedHalf                     = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordRedHalf.png"));
-		legendSwordBlueHalf                    = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordBlueHalf.png"));
-		legendSwordGreenHalf                   = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordGreenHalf.png"));
-		legendSwordYellowHalf                  = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordYellowHalf.png"));
-		legendSwordOrangeHalf                  = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordOrangeHalf.png"));
-		legendSwordPurpleHalf                  = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordPurpleHalf.png"));
-		legendSwordPinkHalf                    = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordPinkHalf.png"));
-		legendSwordRainbow                     = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordRainbow.png"));
-		legendSwordRed                         = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordRed.png"));
-		legendSwordBlue                        = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordBlue.png"));
-		legendSwordGreen                       = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordGreen.png"));
-		legendSwordYellow                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordYellow.png"));
-		legendSwordOrange                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordOrange.png"));
-		legendSwordPurple                      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPurple.png"));
-		legendSwordPink                        = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPink.png"));
-		oyster                                 = new Texture(Gdx.files.internal("artwork/weapons/Oyster.png"));
-		cannonBall                             = new Texture(Gdx.files.internal("artwork/weapons/CannonBall.png"));
+		gunRight   			  = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
+		gunLeft               = new Texture(Gdx.files.internal("artwork/weapons/gun/Left.png"));
+		gunUp                 = new Texture(Gdx.files.internal("artwork/weapons/gun/Up.png"));
+		gunDown               = new Texture(Gdx.files.internal("artwork/weapons/gun/Down.png"));
+		legendSwordRedHalf    = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordRedHalf.png"));
+		legendSwordBlueHalf   = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordBlueHalf.png"));
+		legendSwordGreenHalf  = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordGreenHalf.png"));
+		legendSwordYellowHalf = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordYellowHalf.png"));
+		legendSwordOrangeHalf = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordOrangeHalf.png"));
+		legendSwordPurpleHalf = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordPurpleHalf.png"));
+		legendSwordPinkHalf   = new Texture(Gdx.files.internal("artwork/weapons/sword/LegendSwordPinkHalf.png"));
+		legendSwordRainbow    = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordRainbow.png"));
+		legendSwordRed        = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordRed.png"));
+		legendSwordBlue       = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordBlue.png"));
+		legendSwordGreen      = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordGreen.png"));
+		legendSwordYellow     = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordYellow.png"));
+		legendSwordOrange     = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordOrange.png"));
+		legendSwordPurple     = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPurple.png"));
+		legendSwordPink       = new Texture(Gdx.files.internal("artwork/weapons/sword/SwordPink.png"));
+		oyster                = new Texture(Gdx.files.internal("artwork/weapons/Oyster.png"));
+		cannonBall            = new Texture(Gdx.files.internal("artwork/weapons/cannon/CannonBall.png"));
+		cannonLeft            = new Texture(Gdx.files.internal("artwork/weapons/cannon/CannonLeft.png"));
+		cannonRight           = new Texture(Gdx.files.internal("artwork/weapons/cannon/CannonRight.png"));
 
 		// Structure Objects.
 		slaveHut     = new Texture(Gdx.files.internal("artwork/structures/SlaveHut.png"));
@@ -324,6 +328,8 @@ public class ImageLoader {
 		legendSwordOrangeHalf.dispose();
 		oyster.dispose();
 		cannonBall.dispose();
+		cannonLeft.dispose();
+		cannonRight.dispose();
 
 		// Structure objects.
 		slaveHut.dispose();

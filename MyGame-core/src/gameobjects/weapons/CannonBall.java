@@ -27,6 +27,8 @@ public class CannonBall extends Weapon {
 	private Explosion explosion;
 	
 	private boolean cannonBallHasHitPlayer = false;
+	
+	private int direction;
 
 	/**
 	 * Constructor.
@@ -34,7 +36,7 @@ public class CannonBall extends Weapon {
 	 * @param float x
 	 * @param float y
 	 */
-	public CannonBall(float x, float y) {
+	public CannonBall(float x, float y, int direction) {
 		super(x, y);
 		dx               = 1;
 		dy               = -0.5f;
@@ -43,6 +45,7 @@ public class CannonBall extends Weapon {
 		this.height      = size;
 		rectangle.width  = width;
 		rectangle.height = height;
+		this.direction   = direction;
 	}
 
 	/**
@@ -69,7 +72,12 @@ public class CannonBall extends Weapon {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		x += dx;
+		// Ensure cannon ball shoots in the correct direction.
+		if (direction == Cannon.DIRECTION_LEFT) {
+			x -= dx;
+		} else {
+			x += dx;
+		}
 		y += dy;
 		rectangle.x = x;
 		rectangle.y = y;

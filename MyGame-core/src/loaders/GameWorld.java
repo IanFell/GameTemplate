@@ -2,6 +2,7 @@ package loaders;
 
 import com.mygdx.mygame.MyGame;
 
+import helpers.GamePlayHelper;
 import loaders.cannonloader.CannonLoader;
 import loaders.chestloader.ChestLoader;
 import loaders.dockloader.DockLoader;
@@ -94,21 +95,25 @@ public class GameWorld {
 	 * @param MapHandler mapHandler
 	 */
 	public static void updateGameWorld(MyGame myGame, MapHandler mapHandler) {
-		for (int i = 0; i< ChestLoader.chests.length; i++) {
+		for (int i = 0; i < ChestLoader.chests.length; i++) {
 			ChestLoader.chests[i].updateObject(myGame, mapHandler);
 		}
-		for (int i = 0; i< TeePeeLoader.teePees.length; i++) {
+		for (int i = 0; i < TeePeeLoader.teePees.length; i++) {
 			TeePeeLoader.teePees[i].updateObject(myGame, mapHandler);
 		}
-		for (int i = 0; i< FireLoader.fires.length; i++) {
+		for (int i = 0; i < FireLoader.fires.length; i++) {
 			FireLoader.fires[i].updateObject(myGame, mapHandler);
 		}
-		for (int i = 0; i< FireLoader.fires.length; i++) {
+		for (int i = 0; i < FireLoader.fires.length; i++) {
 			FireLoader.fires[i].updateObject(myGame, mapHandler);
+		}
+		for(int i = 0; i < CannonLoader.cannons.length; i++) {
+			//if (GamePlayHelper.gameObjectIsWithinScreenBounds(CannonLoader.cannons[i])) {
+				CannonLoader.cannons[i].updateObject(myGame, mapHandler);
+			//}
 		}
 		RawBarLoader.rawbar.updateObject(myGame, mapHandler);
 		PigglyWigglyLoader.pigglyWiggly.updateObject(myGame, mapHandler);
 		TradingPostLoader.tradingPost.updateObject(myGame, mapHandler);
-		CannonLoader.cannon.updateObject(myGame, mapHandler);
 	}
 }

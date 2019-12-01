@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.weapons.Cannon;
 import gameobjects.weapons.CannonBall;
-import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -50,14 +50,13 @@ public class CannonBallLoader {
 
 	/**
 	 * 
-	 * @param MyGame myGame
-	 */
-	public static void createCannonBall(MyGame myGame) {
-		cannonballs.add(new CannonBall(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 30, 
-				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10)
-				);
-		//timer = 0;
-
+	 * @param Cannon cannon
+	 */ 
+	public static void createCannonBall(Cannon cannon) {
+		if (cannon.getCannonDirection() == Cannon.DIRECTION_RIGHT) {
+			cannonballs.add(new CannonBall(cannon.getX() + 1, cannon.getY() - 2, Cannon.DIRECTION_RIGHT));
+		} else {
+			cannonballs.add(new CannonBall(cannon.getX() + 1, cannon.getY() - 2, Cannon.DIRECTION_LEFT));
+		}
 	}
 }

@@ -1,8 +1,11 @@
 package gameobjects.weapons;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
+import helpers.GamePlayHelper;
+import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import loaders.cannonballloader.CannonBallLoader;
 import maps.MapHandler;
@@ -13,8 +16,16 @@ import maps.MapHandler;
  *
  */
 public class Cannon extends Weapon {
+	
+	public static final int DIRECTION_LEFT  = 0;
+	public static final int DIRECTION_RIGHT = 1;
 
 	private int timer = 0;
+	
+	// When timer reaches above this value, cannon will fire.
+	private double timeToShoot = 50;
+	
+	private int direction;
 
 	/**
 	 * Constructor.
@@ -22,10 +33,13 @@ public class Cannon extends Weapon {
 	 * @param float x
 	 * @param float y
 	 */
-	public Cannon(float x, float y) {
+	public Cannon(float x, float y, int direction) {
 		super(x, y);
-		this.width = 3;
-		this.height = 1;
+		int size       = 3;
+		this.width     = size;
+		this.height    = size;
+		this.direction = direction;
+		//timeToShoot    = RandomNumberGenerator.generateRandomDouble(50, 100);
 	}
 
 	/**
@@ -36,8 +50,10 @@ public class Cannon extends Weapon {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		if (timer > 50) {
-			CannonBallLoader.createCannonBall(myGame);
+		if (timer > timeToShoot) {
+			if (GamePlayHelper.gameObjectIsWithinScreenBounds(this)) {
+				CannonBallLoader.createCannonBall(this);
+			}
 			timer = 0;
 		}
 		timer++;
@@ -50,12 +66,24 @@ public class Cannon extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
+		Texture texture = imageLoader.cannonLeft;
+		if (direction == DIRECTION_RIGHT) {
+			texture = imageLoader.cannonRight;
+		}
 		batch.draw(
-				imageLoader.blackSquare, 
+				texture, 
 				x, 
 				y, 
 				width, 
-				height
+				-height
 				);
+	}
+
+	/**
+	 * 
+	 * @return int
+	 */
+	public int getCannonDirection() {
+		return direction;
 	}
 }
