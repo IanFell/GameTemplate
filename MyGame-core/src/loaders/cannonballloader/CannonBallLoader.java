@@ -28,7 +28,7 @@ public class CannonBallLoader {
 		if (cannonballs.size() > 0) {
 			for (int i = 0; i < cannonballs.size(); i++) {
 				cannonballs.get(i).updateObject(myGame, mapHandler);
-				if (CannonBall.explosionTimer > CannonBall.CANNONBALL_MAX_EXPLOSION_VALUE) {
+				if (CannonBall.explosionLandTimer > CannonBall.MAX_EXPLOSION_VALUE) {
 					cannonballs.remove(i);
 				}
 			}
@@ -37,8 +37,8 @@ public class CannonBallLoader {
 
 	/**
 	 * 
-	 * @param SpriteBatch   batch
-	 * @param ImageLoader   imageLoader
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
 	 */
 	public static void renderCannonBalls(SpriteBatch batch, ImageLoader imageLoader) {
 		if (cannonballs.size() > 0) {

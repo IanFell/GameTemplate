@@ -16,7 +16,7 @@ import screens.GameScreen;
  *
  */
 public class GamePlayHelper  {
-	
+
 	private final static float SCREEN_BOUND_OFFSET = 17.0f;
 
 	/**

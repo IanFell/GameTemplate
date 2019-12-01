@@ -1,15 +1,11 @@
 package loaders.cannonloader;
 
-import java.util.ArrayList;
-
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.weapons.Bullet;
 import gameobjects.weapons.Cannon;
 import helpers.GameAttributeHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ClassObjectLoader;
-import loaders.GameObjectLoader;
 
 /**
  * 
@@ -26,7 +22,11 @@ public class CannonLoader extends ClassObjectLoader {
 	 */
 	public void loadCannons(MyGame myGame) {
 		for (int i = 0; i < cannons.length; i++) {
-			int random = RandomNumberGenerator.generateRandomInteger(100);
+			/**
+			 * Create a cannon facing a random direction, either left or right.
+			 * Place them randomly, as they can be on the ocean for now.
+			 */
+			int random    = RandomNumberGenerator.generateRandomInteger(100);
 			int direction = Cannon.DIRECTION_LEFT;
 			if (random < 50) {
 				direction = Cannon.DIRECTION_RIGHT;
@@ -37,48 +37,6 @@ public class CannonLoader extends ClassObjectLoader {
 					direction
 					);
 		}
-		/*
-		cannons[0] = new Cannon(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 65, 
-				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 7,
-				Cannon.DIRECTION_LEFT
-				);
-		cannons[1] = new Cannon(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 67, 
-				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10,
-				Cannon.DIRECTION_LEFT
-				);
-		cannons[2] = new Cannon(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 63, 
-				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 30,
-				Cannon.DIRECTION_RIGHT
-				);
-		cannons[3] = new Cannon(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 104, 
-				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 70,
-				Cannon.DIRECTION_RIGHT
-				);
-		cannons[4] = new Cannon(
-				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 20, 
-				GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 6,
-				Cannon.DIRECTION_LEFT
-				);
-		cannons[5] = new Cannon(
-				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 30, 
-				GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 15,
-				Cannon.DIRECTION_LEFT
-				);
-		cannons[6] = new Cannon(
-				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 100, 
-				GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 30,
-				Cannon.DIRECTION_RIGHT
-				);
-		cannons[7] = new Cannon(
-				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 60, 
-				GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 45,
-				Cannon.DIRECTION_LEFT
-				);
-				*/
 		addGameObjectsToGameObjectArrayList(cannons);
 	}
 }

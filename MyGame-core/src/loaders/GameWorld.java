@@ -2,7 +2,6 @@ package loaders;
 
 import com.mygdx.mygame.MyGame;
 
-import helpers.GamePlayHelper;
 import loaders.cannonloader.CannonLoader;
 import loaders.chestloader.ChestLoader;
 import loaders.dockloader.DockLoader;
@@ -107,10 +106,8 @@ public class GameWorld {
 		for (int i = 0; i < FireLoader.fires.length; i++) {
 			FireLoader.fires[i].updateObject(myGame, mapHandler);
 		}
-		for(int i = 0; i < CannonLoader.cannons.length; i++) {
-			//if (GamePlayHelper.gameObjectIsWithinScreenBounds(CannonLoader.cannons[i])) {
-				CannonLoader.cannons[i].updateObject(myGame, mapHandler);
-			//}
+		for(int i = 0; i < CannonLoader.cannons.length; i++) {	
+			CannonLoader.cannons[i].updateObject(myGame, mapHandler);
 		}
 		RawBarLoader.rawbar.updateObject(myGame, mapHandler);
 		PigglyWigglyLoader.pigglyWiggly.updateObject(myGame, mapHandler);
