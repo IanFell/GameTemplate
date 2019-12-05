@@ -488,6 +488,15 @@ public class MissionRawBar extends Mission {
 		if (rawBarMissionComplete) {
 			renderMissionMessage(batch, myGame, imageLoader.missionComplete);
 		}
+
+		// Render start message this long.
+		/*
+		if (timer < 100) {
+			renderMissionStartMessage(batch, myGame, imageLoader.collectLoot);
+		}
+		if (timer <= 100) {
+			timer++;
+		}*/
 	}
 
 	/**

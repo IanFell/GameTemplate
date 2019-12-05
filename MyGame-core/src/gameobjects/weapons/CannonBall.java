@@ -16,7 +16,7 @@ import physics.Lighting.Explosion;
  */
 public class CannonBall extends Weapon {
 
-	public static final int MAX_EXPLOSION_VALUE = 10;
+	public static final int MAX_EXPLOSION_VALUE = 20;
 
 	/**
 	 * Cannon ball shoots upwards, and shootingTimer starts.

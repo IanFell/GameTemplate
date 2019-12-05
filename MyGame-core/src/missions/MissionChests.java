@@ -112,6 +112,12 @@ public class MissionChests extends Mission {
 					);
 		}
 
-		renderMissionStartMessage(batch, myGame, imageLoader.collectLoot);
+		// Render start message this long.
+		if (timer < 100) {
+			renderMissionStartMessage(batch, myGame, imageLoader.collectLoot);
+		}
+		if (timer <= 100) {
+			timer++;
+		}
 	}
 }

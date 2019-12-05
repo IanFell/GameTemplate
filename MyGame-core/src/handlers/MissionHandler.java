@@ -6,6 +6,7 @@ import com.mygdx.mygame.MyGame;
 import controllers.PlayerController;
 import cutscenes.CutScene;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import missions.MissionChests;
@@ -18,6 +19,10 @@ import missions.MissionRawBar;
  *
  */
 public class MissionHandler {
+	
+	private final int MISSION_CHEST_START_TIME_VALUE = 250;
+	
+	private int timer = 0;
 
 	private MissionChests missionChests;
 	private MissionLegendOfTheSevenSwords missionLegendOfTheSevenSwords;
@@ -51,13 +56,21 @@ public class MissionHandler {
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		if (!CutScene.anyCutSceneIsInProgress) {
-			missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
+			if (timer > MISSION_CHEST_START_TIME_VALUE) {
+				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
+			}
 			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
-			if (MissionRawBar.missionIsActive) {
+			if (MissionRawBar.missionIsActive && MissionChests.missionComplete) {
 				handleRawBarMission(myGame);
 			}
+			timer++;
+			
+			if (Gun.hasBeenCollected) {
+				MissionRawBar.missionIsActive = true;
+			}
 		}
+		
 	}
 
 	/**
@@ -89,11 +102,14 @@ public class MissionHandler {
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (!CutScene.anyCutSceneIsInProgress) {
-			missionChests.renderMission(batch, imageLoader, myGame);
+			
+			if (timer > MISSION_CHEST_START_TIME_VALUE) {
+				missionChests.renderMission(batch, imageLoader, myGame);
+			}
 			missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 
 			if (MissionRawBar.missionIsActive) {
-				//renderRawBarMission(batch, imageLoader, myGame);
+				renderRawBarMission(batch, imageLoader, myGame);
 			}
 		}
 	}
