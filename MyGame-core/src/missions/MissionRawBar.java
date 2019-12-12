@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
+import debugging.Debugger;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;
@@ -33,6 +34,8 @@ import screens.GameScreen;
  *
  */
 public class MissionRawBar extends Mission {
+
+	//public static boolean startMission = false;
 
 	// Time alloted for all phases of mission.
 	public static final float MAX_MISSION_TIME_PHASE_ONE   = 15f;
@@ -182,8 +185,8 @@ public class MissionRawBar extends Mission {
 		missionComplete     = false;
 
 		// Set actual player to begin mission directly outside the Raw Bar's door.
-		myGame.getGameObject(Player.PLAYER_ONE).setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 37);
-		myGame.getGameObject(Player.PLAYER_ONE).setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 38);
+		//myGame.getGameObject(Player.PLAYER_ONE).setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 37);
+		//myGame.getGameObject(Player.PLAYER_ONE).setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 38);
 
 		fishOneDx   = 1;
 		fishTwoDy   = 1;
@@ -198,12 +201,13 @@ public class MissionRawBar extends Mission {
 	 * @param MyGame myGame
 	 */
 	public void updateMission(MyGame myGame) {
+		System.out.println(introHasCompleted);
 		if (initializeMission) {
 			initializeMission(myGame);
 			initializeMission = false;
 		}
 
-		if (MissionRawBar.phasesAreInProgress) {
+		if (phasesAreInProgress) {
 			updatePhases(myGame);
 		} else {
 			// Execute this before player begins phases.
@@ -215,9 +219,11 @@ public class MissionRawBar extends Mission {
 
 			// Next, handle interaction between player and phases locator.
 			if (introHasCompleted) {
+				//Debugger.printGettingHereStatement();
 				locationFlashTimer++;
 				if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator) && !rawBarMissionComplete) {
 					phasesAreInProgress = true;
+					//System.exit(0);
 				}
 			}
 		}
@@ -273,6 +279,13 @@ public class MissionRawBar extends Mission {
 	 * @param MyGame myGame
 	 */
 	private void updatePhases(MyGame myGame) {
+		//if (setPlayer) {
+		//playerX   = startPhasesLocator.x - 5;
+		//playerY   = startPhasesLocator.y;
+		//playerX   =  GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 40;
+		//		playerY   = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45;
+		//setPlayer = false;
+		//}
 		playerBounds.x = playerX;
 		playerBounds.y = playerY;
 
@@ -291,7 +304,8 @@ public class MissionRawBar extends Mission {
 		handleCountdownTimer();
 		checkForMissionComplete();
 
-		System.out.println("Oysters Collected: " + oystersCollected);
+		//System.out.println("Oysters Collected: " + oystersCollected);
+		//System.out.println(playerX + ", " + fish[0].getX());
 
 		// Only display how many oysters to collect for a few seconds.
 		if (collectOysterMessageTimer < COLLECT_OYSTER_MESSAGE_MAX_TIME) {
@@ -473,7 +487,7 @@ public class MissionRawBar extends Mission {
 						);
 			} else {
 				// Draw locator.
-				if (locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5 && !rawBarMissionComplete) {
+				if (/*locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5 &&*/ !rawBarMissionComplete) {
 					batch.draw(
 							imageLoader.locationSkull, 
 							startPhasesLocator.x, 
@@ -481,6 +495,14 @@ public class MissionRawBar extends Mission {
 							startPhasesLocator.width, 
 							-startPhasesLocator.height
 							);
+					/*
+					batch.draw(
+							imageLoader.whiteSquare, 
+							startPhasesLocator.x, 
+							startPhasesLocator.y,
+							startPhasesLocator.width, 
+							-startPhasesLocator.height
+							);*/
 				}
 			}
 		}

@@ -54,9 +54,9 @@ public class CannonBallLoader {
 	 */ 
 	public static void createCannonBall(Cannon cannon) {
 		if (cannon.getCannonDirection() == Cannon.DIRECTION_RIGHT) {
-			cannonballs.add(new CannonBall(cannon.getX() + 1, cannon.getY() - 2, Cannon.DIRECTION_RIGHT));
+			cannonballs.add(new CannonBall(cannon.getX() + 1, cannon.getY() - 3, Cannon.DIRECTION_RIGHT));
 		} else {
-			cannonballs.add(new CannonBall(cannon.getX() + 1, cannon.getY() - 2, Cannon.DIRECTION_LEFT));
+			cannonballs.add(new CannonBall(cannon.getX() + 1, cannon.getY() - 3, Cannon.DIRECTION_LEFT));
 		}
 	}
 }

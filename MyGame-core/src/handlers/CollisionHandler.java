@@ -2,6 +2,7 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
+import cutscenes.CutScene;
 import gameobjects.GameObject;
 import gameobjects.Heart;
 import gameobjects.gamecharacters.Enemy;
@@ -159,6 +160,7 @@ public class CollisionHandler {
 			if (structureName.equalsIgnoreCase("Raw Bar")) {
 				// Start the mission.
 				MissionRawBar.missionIsActive = true;
+				//MissionRawBar.startMission = true;
 			} else if (structureName.equalsIgnoreCase("Trading Post")) {
 				TradingPost.hasBeenEntered = true;
 			}
@@ -302,7 +304,10 @@ public class CollisionHandler {
 			}
 			// Comment this out to prevent death.
 			if (timer > 49) {
-				player.setHealth(player.getHealth() - 1);
+				// Put this here so player can't get hurt in cutscene.
+				if (!CutScene.anyCutSceneIsInProgress) {
+					player.setHealth(player.getHealth() - 1);
+				}
 			}
 
 			// Kill enemy if he is overlapping with player while player is performing attack.

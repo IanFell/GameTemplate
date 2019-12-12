@@ -101,6 +101,7 @@ public class ImageLoader {
 	public Texture fishLeft;
 	public Texture fishRight;
 	public Texture goToTradingPost;
+	public Texture goToTheRawBar;
 	public Texture collectLoot;
 
 	// Tile objects.
@@ -233,6 +234,7 @@ public class ImageLoader {
 		fishLeft                               = new Texture(Gdx.files.internal("artwork/missions/fishLeft.png"));
 		fishRight                              = new Texture(Gdx.files.internal("artwork/missions/fishRight.png"));
 		goToTradingPost                        = new Texture(Gdx.files.internal("artwork/missions/GoToTradingPost.png"));
+		goToTheRawBar                          = new Texture(Gdx.files.internal("artwork/missions/GoToTheRawBar.png"));
 		collectLoot                            = new Texture(Gdx.files.internal("artwork/missions/CollectLoot.png"));
 
 		// Tile objects.
@@ -377,6 +379,7 @@ public class ImageLoader {
 		fishRight.dispose();
 		goToTradingPost.dispose();
 		collectLoot.dispose();
+		goToTheRawBar.dispose();
 
 		// Tile objects.
 		grassTileOne.dispose();

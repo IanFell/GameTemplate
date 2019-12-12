@@ -27,14 +27,15 @@ public class CutSceneIntro extends CutScene {
 	 */
 	public CutSceneIntro(String name) {
 		super(name);
-		dialogueLength     = 200;
-		dialogueOffset     = 50;
-		startXPosition     = 90;
-		startYPosition     = 10;
-		width              = 7;
-		height             = 3;
-		boatSpeed          = 0.0075f;
-		boatStartXPosition = startXPosition - 2;
+		dialogueLength          = 200;
+		dialogueOffset          = 50;
+		startXPosition          = 90;
+		startYPosition          = 10;
+		width                   = 7;
+		height                  = 3;
+		boatSpeed               = 0.0075f;
+		boatStartXPosition      = startXPosition - 2;
+		anyCutSceneIsInProgress = true;
 	}
 
 	/**

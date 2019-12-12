@@ -7,6 +7,7 @@ import gameobjects.gamecharacters.Player;
 import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import missions.MissionRawBar;
 import physics.Lighting.Explosion;
 
 /**
@@ -179,25 +180,28 @@ public class CannonBall extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		batch.draw(
-				imageLoader.shadow,
-				shadowX, 
-				shadowY,
-				size,
-				size
-				);
-		batch.draw(
-				imageLoader.cannonBall,
-				x, 
-				y,
-				size,
-				size
-				);
-		if (explosionLand != null) {
-			explosionLand.renderExplosion(batch, imageLoader);
-		}
-		if (explosionBlast != null && explosionBlastTimer < MAX_EXPLOSION_VALUE) {
-			explosionBlast.renderExplosion(batch, imageLoader);
+		// Don't execute this is we are in the raw bar mission.
+		if (!MissionRawBar.missionIsActive) {
+			batch.draw(
+					imageLoader.shadow,
+					shadowX, 
+					shadowY,
+					size,
+					size
+					);
+			batch.draw(
+					imageLoader.cannonBall,
+					x, 
+					y,
+					size,
+					size
+					);
+			if (explosionLand != null) {
+				explosionLand.renderExplosion(batch, imageLoader);
+			}
+			if (explosionBlast != null && explosionBlastTimer < MAX_EXPLOSION_VALUE) {
+				explosionBlast.renderExplosion(batch, imageLoader);
+			}
 		}
 	}
 }

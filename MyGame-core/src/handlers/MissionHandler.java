@@ -19,9 +19,9 @@ import missions.MissionRawBar;
  *
  */
 public class MissionHandler {
-	
+
 	private final int MISSION_CHEST_START_TIME_VALUE = 250;
-	
+
 	private int timer = 0;
 
 	private MissionChests missionChests;
@@ -58,19 +58,20 @@ public class MissionHandler {
 		if (!CutScene.anyCutSceneIsInProgress) {
 			if (timer > MISSION_CHEST_START_TIME_VALUE) {
 				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
+			} else {
+				timer++;
 			}
 			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
 			if (MissionRawBar.missionIsActive && MissionChests.missionComplete) {
 				handleRawBarMission(myGame);
 			}
-			timer++;
-			
-			if (Gun.hasBeenCollected) {
+
+			if (Gun.hasBeenCollected) { //&& MissionRawBar.startMission) {
 				MissionRawBar.missionIsActive = true;
+				// If this happens, render the "go to raw bar image" should display for  a few seconds.
 			}
 		}
-		
 	}
 
 	/**
@@ -102,11 +103,15 @@ public class MissionHandler {
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (!CutScene.anyCutSceneIsInProgress) {
-			
+			/**
+			 * This mission runs throughout the whole entire game.  It will always be active.
+			 * The only way to beat the game is to collect all the seven swords.
+			 */
+			missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
+
 			if (timer > MISSION_CHEST_START_TIME_VALUE) {
 				missionChests.renderMission(batch, imageLoader, myGame);
 			}
-			missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 
 			if (MissionRawBar.missionIsActive) {
 				renderRawBarMission(batch, imageLoader, myGame);

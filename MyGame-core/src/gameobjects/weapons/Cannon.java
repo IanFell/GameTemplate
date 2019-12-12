@@ -40,7 +40,7 @@ public class Cannon extends Weapon {
 	 */
 	public Cannon(float x, float y, int direction) {
 		super(x, y);
-		int size              = 3;
+		int size              = 4;
 		this.width            = size;
 		this.height           = size;
 		this.direction        = direction; 
