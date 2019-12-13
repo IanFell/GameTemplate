@@ -37,6 +37,7 @@ public class UserInterface {
 	 * @param MyGame      myGame
 	 */
 	public void renderUserInterface(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
+		// Dont render this if a cutscene is in progress.
 		if (!CutScene.anyCutSceneIsInProgress) {
 			healthUi.renderHealthUi(batch, imageLoader, myGame);
 			GameObject player = PlayerController.getCurrentPlayer(myGame);

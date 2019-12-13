@@ -124,8 +124,8 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
 		super.updateMission(myGame, mapHandler);
-		System.out.println("Legend Of The Seven Swords:  Number of Swords Collected: " + swordsCollected);
-		System.out.println("Legend Of The Seven Swords:  Which Swords Collected: " + legendSwordCollection);
+		//System.out.println("Legend Of The Seven Swords:  Number of Swords Collected: " + swordsCollected);
+		//System.out.println("Legend Of The Seven Swords:  Which Swords Collected: " + legendSwordCollection);
 		for (int i = 0; i < AMOUNT_OF_SWORDS_NEEDED_TO_COMPLETE_MISSION; i++) {
 			legendSwords[i].updateObject(myGame, mapHandler);
 			if (Inventory.allInventoryShouldBeRendered) {
@@ -133,7 +133,7 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 			}
 		}
 		if (swordsCollected == AMOUNT_OF_SWORDS_NEEDED_TO_COMPLETE_MISSION) {
-			System.out.println("Player has completed Legend of the Seven Swords Mission!");
+			//System.out.println("Player has completed Legend of the Seven Swords Mission!");
 			missionComplete = true;
 			// clearSevenSwordsFromInventory(myGame);
 		}

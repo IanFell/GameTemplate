@@ -45,7 +45,9 @@ public class MissionChests extends Mission {
 
 	/**
 	 * 
-	 * @param Player player
+	 * @param Player     player
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
 	 */
 	public void updateMission(Player player, MyGame myGame, MapHandler mapHandler) {
 
@@ -86,16 +88,15 @@ public class MissionChests extends Mission {
 
 	/**
 	 * 
-	 * @param SpriteBatch   batch
-	 * @param ImageLoader   imageLoader
-	 * @param MyGame        myGame
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param MyGame      myGame
 	 */
 	@Override
 	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		// If mission is complete, render "Mission Complete" message for a little while.
 		if (missionComplete) {
 			renderMissionMessage(batch, myGame, imageLoader.goToTradingPost);
-			//renderGoToTradingPostMessage(batch, imageLoader, myGame);
 		}
 
 		// Place holder "try again" message.

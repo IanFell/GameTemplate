@@ -159,8 +159,7 @@ public class CollisionHandler {
 		if (structure.rectangle.overlaps(player.rectangle)) {
 			if (structureName.equalsIgnoreCase("Raw Bar")) {
 				// Start the mission.
-				MissionRawBar.missionIsActive = true;
-				//MissionRawBar.startMission = true;
+				MissionRawBar.startMission = true;
 			} else if (structureName.equalsIgnoreCase("Trading Post")) {
 				TradingPost.hasBeenEntered = true;
 			}

@@ -27,8 +27,8 @@ public class CutScene {
 	 * @param String name
 	 */
 	public CutScene(String name) {
-		this.name               = name;
-		timer                   = 0;
+		this.name = name;
+		timer     = 0;
 		/**
 		 * This has to be false to just start the game with no intro.
 		 * It must be true if you start the game with intro.

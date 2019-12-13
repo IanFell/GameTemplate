@@ -92,7 +92,7 @@ public class MissionRawBar extends Mission {
 	private float timeSeconds = 0f;
 	private float phaseTimeLimit;
 
-	private static final int INTRO_TIME_LIMIT = 100;
+	private static final int INTRO_TIME_LIMIT = 50;
 
 	public static final float MISSION_RAW_BAR_SPEED = 0.3f;
 
@@ -117,6 +117,9 @@ public class MissionRawBar extends Mission {
 	private int handOpenClosedTimer = 0;
 
 	private static boolean setPlayer = true;
+
+	// Used when player enters the raw bar to start the mission.
+	public static boolean startMission = false;
 
 	private final int COLLECT_OYSTER_MESSAGE_MAX_TIME = 20;
 
@@ -185,6 +188,7 @@ public class MissionRawBar extends Mission {
 		missionComplete     = false;
 
 		// Set actual player to begin mission directly outside the Raw Bar's door.
+		// TODO TEST THIS LATER, NOT SURE IF IT WORKS.
 		//myGame.getGameObject(Player.PLAYER_ONE).setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 37);
 		//myGame.getGameObject(Player.PLAYER_ONE).setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 38);
 
@@ -201,7 +205,6 @@ public class MissionRawBar extends Mission {
 	 * @param MyGame myGame
 	 */
 	public void updateMission(MyGame myGame) {
-		System.out.println(introHasCompleted);
 		if (initializeMission) {
 			initializeMission(myGame);
 			initializeMission = false;
@@ -219,11 +222,9 @@ public class MissionRawBar extends Mission {
 
 			// Next, handle interaction between player and phases locator.
 			if (introHasCompleted) {
-				//Debugger.printGettingHereStatement();
 				locationFlashTimer++;
-				if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator) && !rawBarMissionComplete) {
+				if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator)) {
 					phasesAreInProgress = true;
-					//System.exit(0);
 				}
 			}
 		}
@@ -279,13 +280,6 @@ public class MissionRawBar extends Mission {
 	 * @param MyGame myGame
 	 */
 	private void updatePhases(MyGame myGame) {
-		//if (setPlayer) {
-		//playerX   = startPhasesLocator.x - 5;
-		//playerY   = startPhasesLocator.y;
-		//playerX   =  GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 40;
-		//		playerY   = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45;
-		//setPlayer = false;
-		//}
 		playerBounds.x = playerX;
 		playerBounds.y = playerY;
 
@@ -305,7 +299,6 @@ public class MissionRawBar extends Mission {
 		checkForMissionComplete();
 
 		//System.out.println("Oysters Collected: " + oystersCollected);
-		//System.out.println(playerX + ", " + fish[0].getX());
 
 		// Only display how many oysters to collect for a few seconds.
 		if (collectOysterMessageTimer < COLLECT_OYSTER_MESSAGE_MAX_TIME) {
@@ -345,8 +338,7 @@ public class MissionRawBar extends Mission {
 	private void handleCountdownTimer() {
 		timeSeconds +=Gdx.graphics.getRawDeltaTime();
 		if(timeSeconds > phaseTimeLimit){    
-			//System.exit(0);
-			//new MissionRawBar(MissionRawBar.NUMBER_OF_OYSTERS_NEEDED_PHASE_ONE, MissionRawBar.MAX_MISSION_TIME_PHASE_ONE);
+			// TODO: PUT IN A MISSION FAILED PROMPT TO START OVER.
 		}
 	}
 
@@ -487,7 +479,7 @@ public class MissionRawBar extends Mission {
 						);
 			} else {
 				// Draw locator.
-				if (/*locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5 &&*/ !rawBarMissionComplete) {
+				if (locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5 && !rawBarMissionComplete) {
 					batch.draw(
 							imageLoader.locationSkull, 
 							startPhasesLocator.x, 
@@ -495,14 +487,6 @@ public class MissionRawBar extends Mission {
 							startPhasesLocator.width, 
 							-startPhasesLocator.height
 							);
-					/*
-					batch.draw(
-							imageLoader.whiteSquare, 
-							startPhasesLocator.x, 
-							startPhasesLocator.y,
-							startPhasesLocator.width, 
-							-startPhasesLocator.height
-							);*/
 				}
 			}
 		}
@@ -510,15 +494,6 @@ public class MissionRawBar extends Mission {
 		if (rawBarMissionComplete) {
 			renderMissionMessage(batch, myGame, imageLoader.missionComplete);
 		}
-
-		// Render start message this long.
-		/*
-		if (timer < 100) {
-			renderMissionStartMessage(batch, myGame, imageLoader.collectLoot);
-		}
-		if (timer <= 100) {
-			timer++;
-		}*/
 	}
 
 	/**

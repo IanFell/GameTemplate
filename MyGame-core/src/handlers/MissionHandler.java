@@ -9,6 +9,7 @@ import gameobjects.gamecharacters.Player;
 import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import missions.Mission;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
 import missions.MissionRawBar;
@@ -18,7 +19,7 @@ import missions.MissionRawBar;
  * @author Fabulous Fellini
  *
  */
-public class MissionHandler {
+public class MissionHandler extends Mission {
 
 	private final int MISSION_CHEST_START_TIME_VALUE = 250;
 
@@ -29,6 +30,16 @@ public class MissionHandler {
 	private MissionRawBar missionRawBarPhaseOne;
 	private MissionRawBar missionRawBarPhaseTwo;
 	private MissionRawBar missionRawBarPhaseThree;
+
+	/**
+	 * These variables control the timing and display of the "go to the raw bar 
+	 * for the magic pearl" message.
+	 */
+	private boolean setUpRawBarMission                      = true;
+	private boolean displayGoToRawBar                       = false;
+	private boolean rawBarMessageHasBeenDisplayed           = false;
+	private int goToRawBarDisplayTimer                      = 0;
+	private final int GO_TO_RAW_BAR_DISPLAY_TIMER_MAX_VALUE = 50;
 
 	//int i = 0;
 
@@ -56,20 +67,36 @@ public class MissionHandler {
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		if (!CutScene.anyCutSceneIsInProgress) {
+			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
+
 			if (timer > MISSION_CHEST_START_TIME_VALUE) {
 				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
 			} else {
 				timer++;
 			}
-			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
-			if (MissionRawBar.missionIsActive && MissionChests.missionComplete) {
+			handleGoToRawBarMessage();
+
+			if (MissionRawBar.missionIsActive) {
 				handleRawBarMission(myGame);
 			}
 
-			if (Gun.hasBeenCollected) { //&& MissionRawBar.startMission) {
+			if (MissionRawBar.startMission && setUpRawBarMission ) {
 				MissionRawBar.missionIsActive = true;
-				// If this happens, render the "go to raw bar image" should display for  a few seconds.
+				setUpRawBarMission            = false;
+			}
+		}
+	}
+
+	private void handleGoToRawBarMessage() {
+		if (Gun.hasBeenCollected && !rawBarMessageHasBeenDisplayed) {
+			displayGoToRawBar = true;
+		}
+		if (displayGoToRawBar) {
+			goToRawBarDisplayTimer++;
+			if (goToRawBarDisplayTimer > GO_TO_RAW_BAR_DISPLAY_TIMER_MAX_VALUE) {
+				displayGoToRawBar = false;
+				rawBarMessageHasBeenDisplayed = true;
 			}
 		}
 	}
@@ -97,9 +124,9 @@ public class MissionHandler {
 
 	/**
 	 * 
-	 * @param SpriteBatch   batch
-	 * @param ImageLoader   imageLoader
-	 * @param MyGame        myGame
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param MyGame      myGame
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (!CutScene.anyCutSceneIsInProgress) {
@@ -116,14 +143,18 @@ public class MissionHandler {
 			if (MissionRawBar.missionIsActive) {
 				renderRawBarMission(batch, imageLoader, myGame);
 			}
+
+			if (displayGoToRawBar) {
+				renderMissionStartMessage(batch, myGame, imageLoader.goToTheRawBar);
+			}
 		}
 	}
 
 	/**
 	 * 
-	 * @param SpriteBatch   batch
-	 * @param ImageLoader   imageLoader
-	 * @param MyGame        myGame
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param MyGame      myGame
 	 */
 	private void renderRawBarMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (missionRawBarPhaseTwo.isPhaseComplete()) {
