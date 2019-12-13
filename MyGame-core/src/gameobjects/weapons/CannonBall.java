@@ -41,6 +41,8 @@ public class CannonBall extends Weapon {
 	private boolean cannonBallHasHitPlayer = false;
 
 	private int direction;
+	
+	private boolean playLandSound;
 
 	/**
 	 * Constructor.
@@ -62,6 +64,23 @@ public class CannonBall extends Weapon {
 		this.direction      = direction;
 		shadowX             = x;
 		shadowY             = y - 1;
+		playLandSound       = false;
+	}
+	
+	/**
+	 * 
+	 * @return boolen
+	 */
+	public boolean isPlayLandSound() {
+		return playLandSound;
+	}
+
+	/**
+	 * 
+	 * @param boolean playLandSound
+	 */
+	public void setPlayLandSound(boolean playLandSound) {
+		this.playLandSound = playLandSound;
 	}
 
 	/**
@@ -149,6 +168,7 @@ public class CannonBall extends Weapon {
 		if (dx <= 0) {
 			if (explosionLand == null) {
 				explosionLand = new Explosion(x - 0.5f, y + 2);
+				playLandSound = true;
 			} else {
 				explosionLand.updateObject(myGame, mapHandler);
 				explosionLandTimer++;

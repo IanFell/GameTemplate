@@ -30,6 +30,8 @@ public class Cannon extends Weapon {
 
 	// Only fire cannon balls if player is within these bounds.
 	private Rectangle attackBoundary = new Rectangle();
+	
+	private boolean playBlastSound;
 
 	/**
 	 * Constructor.
@@ -48,6 +50,23 @@ public class Cannon extends Weapon {
 		attackBoundary.y      = y - 25;
 		attackBoundary.width  = 50;
 		attackBoundary.height = 50;
+		playBlastSound        = false;
+	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	public boolean isPlayBlastSound() {
+		return playBlastSound;
+	}
+
+	/**
+	 * 
+	 * @param boolean playBlastSound
+	 */
+	public void setPlayBlastSound(boolean playBlastSound) {
+		this.playBlastSound = playBlastSound;
 	}
 
 	/**
@@ -61,7 +80,8 @@ public class Cannon extends Weapon {
 		if (timer > timeToShoot) {
 			if (attackBoundary.overlaps(myGame.getGameObject(Player.PLAYER_ONE).rectangle)) {
 				CannonBallLoader.createCannonBall(this);
-				timer = 0;
+				timer          = 0;
+				playBlastSound = true;
 			}
 		}
 		timer++;

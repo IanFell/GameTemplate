@@ -8,8 +8,11 @@ import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.MagicPearl;
 import helpers.GameAttributeHelper;
+import helpers.GamePlayHelper;
 import inventory.Inventory;
 import loaders.SoundLoader;
+import loaders.cannonballloader.CannonBallLoader;
+import loaders.cannonloader.CannonLoader;
 import loaders.chestloader.ChestLoader;
 import missions.MissionRawBar;
 import screens.Screens;
@@ -59,6 +62,24 @@ public class SoundHandler {
 						soundLoader.bombSound.play(AudioHandler.MEDIAN_VOLUME);
 						myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).setPlaySound(false);
 					}
+				}
+			}
+			
+			for (int i = 0; i < CannonLoader.cannons.length; i++) {
+				if (CannonLoader.cannons[i].isPlayBlastSound()) {
+					//if (GamePlayHelper.gameObjectIsWithinScreenBounds(CannonLoader.cannons[i])) {
+					//	soundLoader.pistolSound.play(AudioHandler.MEDIAN_VOLUME);
+					//}
+					CannonLoader.cannons[i].setPlayBlastSound(false);
+				}
+			}
+			
+			for (int i = 0; i < CannonBallLoader.cannonballs.size(); i++) {
+				if (CannonBallLoader.cannonballs.get(i).isPlayLandSound()) {
+					//if (GamePlayHelper.gameObjectIsWithinScreenBounds(CannonBallLoader.cannonballs.get(i))) {
+					//	soundLoader.bombSound.play(AudioHandler.MEDIAN_VOLUME);
+					//}
+					CannonBallLoader.cannonballs.get(i).setPlayLandSound(false);
 				}
 			}
 

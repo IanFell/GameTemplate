@@ -469,9 +469,10 @@ public class MissionRawBar extends Mission {
 			renderPhases(batch, imageLoader, myGame);
 		} else {
 			// Draw intro screen until INTRO_TIME_LIMIT runs out.
+			// TODO PUT IN TIMER FOR THIS INSTEAD OF CLICKING ON IT.
 			if (!introHasCompleted) {
 				batch.draw(
-						imageLoader.missionRawBarInside, 
+						imageLoader.goSouthToTheSkull, 
 						GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
 						GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2,
 						GameScreen.camera.viewportWidth, 

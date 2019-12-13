@@ -17,7 +17,7 @@ import maps.MapHandler;
  */
 public class CannonBallLoader {
 
-	private static ArrayList <CannonBall> cannonballs = new ArrayList<CannonBall>();
+	public static ArrayList <CannonBall> cannonballs = new ArrayList<CannonBall>();
 
 	/**
 	 * 
