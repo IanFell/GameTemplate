@@ -33,6 +33,14 @@ public class Cannon extends Weapon {
 	
 	private boolean playBlastSound;
 
+	/*
+	 * 
+	 * @return Rectangle attackBoundary
+	 */
+	public Rectangle getAttackBoundary() {
+		return attackBoundary;
+	}
+
 	/**
 	 * Constructor.
 	 * 

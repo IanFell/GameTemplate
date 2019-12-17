@@ -7,6 +7,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.weapons.Cannon;
 import gameobjects.weapons.CannonBall;
+import loaders.ClassObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -15,7 +16,7 @@ import maps.MapHandler;
  * @author Fabulous Fellini
  *
  */
-public class CannonBallLoader {
+public class CannonBallLoader extends ClassObjectLoader {
 
 	public static ArrayList <CannonBall> cannonballs = new ArrayList<CannonBall>();
 

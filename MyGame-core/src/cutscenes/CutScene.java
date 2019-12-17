@@ -35,7 +35,7 @@ public class CutScene {
 		 */
 		anyCutSceneIsInProgress = false;
 		// Change this to render cutscene or not.
-		cutSceneShouldRender = true;
+		cutSceneShouldRender = false;
 		if (cutSceneShouldRender) {
 			setCutSceneValues(false, true);
 		} else {

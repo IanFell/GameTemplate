@@ -8,10 +8,8 @@ import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.MagicPearl;
 import helpers.GameAttributeHelper;
-import helpers.GamePlayHelper;
 import inventory.Inventory;
 import loaders.SoundLoader;
-import loaders.cannonballloader.CannonBallLoader;
 import loaders.cannonloader.CannonLoader;
 import loaders.chestloader.ChestLoader;
 import missions.MissionRawBar;
@@ -64,24 +62,38 @@ public class SoundHandler {
 					}
 				}
 			}
-			
+
 			for (int i = 0; i < CannonLoader.cannons.length; i++) {
 				if (CannonLoader.cannons[i].isPlayBlastSound()) {
-					//if (GamePlayHelper.gameObjectIsWithinScreenBounds(CannonLoader.cannons[i])) {
-					//	soundLoader.pistolSound.play(AudioHandler.MEDIAN_VOLUME);
-					//}
+					if (CannonLoader.cannons[i].getAttackBoundary().overlaps(myGame.getGameObject(Player.PLAYER_ONE).rectangle)) {
+						soundLoader.pistolSound.play(AudioHandler.QUARTER_VOLUME);
+					}
 					CannonLoader.cannons[i].setPlayBlastSound(false);
 				}
 			}
-			
-			for (int i = 0; i < CannonBallLoader.cannonballs.size(); i++) {
-				if (CannonBallLoader.cannonballs.get(i).isPlayLandSound()) {
-					//if (GamePlayHelper.gameObjectIsWithinScreenBounds(CannonBallLoader.cannonballs.get(i))) {
-					//	soundLoader.bombSound.play(AudioHandler.MEDIAN_VOLUME);
-					//}
-					CannonBallLoader.cannonballs.get(i).setPlayLandSound(false);
-				}
-			}
+
+			/**
+			 * This currently does not work.
+			 * I cannot get the cannon balls' audio to only fire when in 
+			 * the same location as the player.  Any option below will result
+			 * in every single cannon ball explosion sound firing every time, regardless
+			 * of where the player is vs the cannon ball.  This results in way too many explosion sounds
+			 * and becomes unbarable.  
+			 * 
+			 * Take it out for now.
+			 */
+			//for (int i = 0; i < CannonBallLoader.cannonballs.size(); i++) {
+			//if (CannonBallLoader.cannonballs.get(i).isPlayLandSound()) {
+			//if (
+			//myGame.getGameObject(Player.PLAYER_ONE).getX() < 500) {
+			//if (GamePlayHelper.gameObjectIsWithinScreenBounds(CannonBallLoader.cannonballs.get(i))) {
+			//if (CannonBallLoader.cannonballs.get(i).getAttackBoundary().overlaps(myGame.getGameObject(Player.PLAYER_ONE).rectangle)) {
+			//soundLoader.bombSound.play(AudioHandler.QUARTER_VOLUME);
+			//}
+			//}
+			//CannonBallLoader.cannonballs.get(i).setPlayLandSound(false);
+			//}
+			//}
 
 			attackTimer++;
 			if (attackTimer > 2) {

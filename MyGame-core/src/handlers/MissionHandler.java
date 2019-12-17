@@ -21,7 +21,12 @@ import missions.MissionRawBar;
  */
 public class MissionHandler extends Mission {
 
-	private final int MISSION_CHEST_START_TIME_VALUE = 250;
+	/**
+	 * Make this huge for now, because this is the only way I can get the mission 
+	 * to work.  If the time limit runs out, the rest of the missions get all 
+	 * fucked up.
+	 */
+	private final long MISSION_CHEST_START_TIME_VALUE = 1000000000L;
 
 	private int timer = 0;
 
@@ -69,11 +74,15 @@ public class MissionHandler extends Mission {
 		if (!CutScene.anyCutSceneIsInProgress) {
 			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
-			if (timer > MISSION_CHEST_START_TIME_VALUE) {
+			// For now, don't make this a timed mission.  Maybe later.
+			//if (timer > MISSION_CHEST_START_TIME_VALUE) {
+			if (!MissionChests.missionComplete) {
 				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
-			} else {
-				timer++;
 			}
+
+			//} else {
+			//timer++;
+			//}
 
 			handleGoToRawBarMessage();
 
