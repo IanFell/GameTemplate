@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.gamecharacters.Knight;
 import gameobjects.gamecharacters.Player;
 import loaders.ImageLoader;
 import loaders.cannonballloader.CannonBallLoader;
@@ -30,8 +31,10 @@ public class Cannon extends Weapon {
 
 	// Only fire cannon balls if player is within these bounds.
 	private Rectangle attackBoundary = new Rectangle();
-	
+
 	private boolean playBlastSound;
+
+	private Knight knight;
 
 	/*
 	 * 
@@ -59,6 +62,12 @@ public class Cannon extends Weapon {
 		attackBoundary.width  = 50;
 		attackBoundary.height = 50;
 		playBlastSound        = false;
+		int knightSize        = 1;
+		if (direction == DIRECTION_LEFT) {
+			knight    = new Knight(x + 2.5f, y - knightSize * 2, knightSize, knightSize, direction);
+		} else {
+			knight    = new Knight(x + 0.5f, y - knightSize * 2, knightSize, knightSize, direction);
+		}
 	}
 
 	/**
@@ -102,17 +111,18 @@ public class Cannon extends Weapon {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		Texture texture = imageLoader.cannonLeft;
+		Texture cannonTexture = imageLoader.cannonLeft;
 		if (direction == DIRECTION_RIGHT) {
-			texture = imageLoader.cannonRight;
+			cannonTexture = imageLoader.cannonRight;
 		}
 		batch.draw(
-				texture, 
+				cannonTexture, 
 				x, 
 				y, 
 				width, 
 				-height
 				);
+		knight.renderObject(batch, imageLoader);
 	}
 
 	/**

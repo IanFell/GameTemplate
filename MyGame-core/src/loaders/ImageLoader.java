@@ -135,9 +135,13 @@ public class ImageLoader {
 	public Texture titleScreenLogo;
 	public Texture icon;
 
-	// Debugging Objects.
+	// Debugging objects.
 	public Texture whiteSquare;
 	public Texture blackSquare;
+
+	// Character objects.
+	public Texture knightLeft;
+	public Texture knightRight;
 
 	public void init() {
 
@@ -282,6 +286,10 @@ public class ImageLoader {
 		// Debugging objects.
 		whiteSquare = new Texture(Gdx.files.internal("artwork/debugging/WhiteSquare.png"));
 		blackSquare = new Texture(Gdx.files.internal("artwork/debugging/BlackSquare.png"));
+
+		// Character objects.
+		knightLeft  = new Texture(Gdx.files.internal("artwork/gamecharacters/knight/KnightLeft.png"));
+		knightRight = new Texture(Gdx.files.internal("artwork/gamecharacters/knight/KnightRight.png"));
 	}
 
 	public void dispose() {
@@ -417,5 +425,9 @@ public class ImageLoader {
 		// Debugging objects.
 		whiteSquare.dispose();
 		blackSquare.dispose();
+
+		// Character objects.
+		knightLeft.dispose();
+		knightRight.dispose();
 	}
 }
