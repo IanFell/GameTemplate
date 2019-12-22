@@ -34,7 +34,7 @@ public class Cannon extends Weapon {
 
 	private boolean playBlastSound;
 
-	private Knight knight;
+	public Knight knight;
 
 	/*
 	 * 
@@ -102,6 +102,9 @@ public class Cannon extends Weapon {
 			}
 		}
 		timer++;
+
+		// Update knight for collisions with player.
+		knight.updateObject(myGame, mapHandler);
 	}
 
 	/**
@@ -122,7 +125,9 @@ public class Cannon extends Weapon {
 				width, 
 				-height
 				);
-		knight.renderObject(batch, imageLoader);
+		if (!knight.isDead()) {
+			knight.renderObject(batch, imageLoader);
+		}
 	}
 
 	/**

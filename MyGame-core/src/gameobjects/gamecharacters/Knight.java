@@ -1,9 +1,12 @@
 package gameobjects.gamecharacters;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.mygame.MyGame;
 
 import gameobjects.weapons.Cannon;
+import handlers.CollisionHandler;
 import loaders.ImageLoader;
+import maps.MapHandler;
 
 /**
  * This is the guy shooting the cannons.
@@ -12,6 +15,12 @@ import loaders.ImageLoader;
  *
  */
 public class Knight extends Enemy {
+
+	private final int RESPAWN_MAX_TIMER_VALUE = 100;
+
+	private int respawnTimer = 0;
+
+	public boolean soundHasBeenPlayed;
 
 	/**
 	 * Constructor.
@@ -24,6 +33,34 @@ public class Knight extends Enemy {
 	 */
 	public Knight(float x, float y, float width, float height, int direction) {
 		super(x, y, width, height, direction);
+		rectangle.x       = x;
+		rectangle.y       = y;
+		rectangle.width   = width;
+		rectangle.height  = height;
+		soundHasBeenPlayed = false;
+	}
+
+	/**
+	 * 
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
+	 */
+	@Override
+	public void updateObject(MyGame myGame, MapHandler mapHandler) {
+		if (isDead()) {
+			respawnTimer++;
+			if (!soundHasBeenPlayed) {
+				playSound          = true;
+				soundHasBeenPlayed = true;
+			}
+			if (respawnTimer > RESPAWN_MAX_TIMER_VALUE) {
+				setIsDead(false);
+				respawnTimer       = 0;
+				soundHasBeenPlayed = false;
+			}
+		} else {
+			CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) myGame.getGameObject(Player.PLAYER_ONE));
+		}
 	}
 
 	/**

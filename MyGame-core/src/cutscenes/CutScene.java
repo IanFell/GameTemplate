@@ -33,9 +33,9 @@ public class CutScene {
 		 * This has to be false to just start the game with no intro.
 		 * It must be true if you start the game with intro.
 		 */
-		anyCutSceneIsInProgress = false;
+		anyCutSceneIsInProgress = true;
 		// Change this to render cutscene or not.
-		cutSceneShouldRender = false;
+		cutSceneShouldRender = true;
 		if (cutSceneShouldRender) {
 			setCutSceneValues(false, true);
 		} else {

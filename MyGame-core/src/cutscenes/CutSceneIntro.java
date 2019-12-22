@@ -36,6 +36,12 @@ public class CutSceneIntro extends CutScene {
 		boatSpeed               = 0.0075f;
 		boatStartXPosition      = startXPosition - 2;
 		anyCutSceneIsInProgress = true;
+		
+		/**
+		 * Comment this out to play the fulllength cutscene.
+		 * Else start cutscene at very end so it also renders the UI.
+		 */
+		timer = dialogueLength * 9 - 2;
 	}
 
 	/**

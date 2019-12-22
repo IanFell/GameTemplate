@@ -69,6 +69,12 @@ public class SoundHandler {
 						soundLoader.pistolSound.play(AudioHandler.QUARTER_VOLUME);
 					}
 					CannonLoader.cannons[i].setPlayBlastSound(false);
+
+					// If the knight dies.
+					if (CannonLoader.cannons[i].knight.getPlaySound()) {
+						soundLoader.enemyDeathSound.play(AudioHandler.MEDIAN_VOLUME);
+						CannonLoader.cannons[i].knight.setPlaySound(false);
+					}
 				}
 			}
 
