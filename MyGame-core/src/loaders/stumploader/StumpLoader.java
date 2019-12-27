@@ -8,6 +8,7 @@ import helpers.GameAttributeHelper;
 import loaders.ClassObjectLoader;
 
 /**
+ * These stumps represent stumps outside of Stump Hole mission.
  * 
  * @author Fabulous Fellini
  *
@@ -15,7 +16,7 @@ import loaders.ClassObjectLoader;
 public class StumpLoader extends ClassObjectLoader {
 
 	private final int AMOUNT_OF_STUMPS = 20;
-	
+
 	private boolean newRowShouldBeCreated = true;
 
 	public static ArrayList <GameObject> stumps = new ArrayList <GameObject>();

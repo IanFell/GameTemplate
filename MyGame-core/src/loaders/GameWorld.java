@@ -113,6 +113,9 @@ public class GameWorld {
 		for(int i = 0; i < CannonLoader.cannons.length; i++) {	
 			CannonLoader.cannons[i].updateObject(myGame, mapHandler);
 		}
+		for(int i = 0; i < StumpLoader.stumps.size(); i++) {	
+			StumpLoader.stumps.get(i).updateObject(myGame, mapHandler);
+		}
 		RawBarLoader.rawbar.updateObject(myGame, mapHandler);
 		PigglyWigglyLoader.pigglyWiggly.updateObject(myGame, mapHandler);
 		TradingPostLoader.tradingPost.updateObject(myGame, mapHandler);

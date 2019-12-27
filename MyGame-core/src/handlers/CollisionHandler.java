@@ -7,6 +7,7 @@ import gameobjects.GameObject;
 import gameobjects.Heart;
 import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
+import gameobjects.nature.Stump;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.stationarygameobjects.buildings.TradingPost;
 import gameobjects.weapons.CannonBall;
@@ -20,6 +21,7 @@ import maps.MapHandler;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
 import missions.MissionRawBar;
+import missions.MissionStumpHole;
 import tiles.Tile;
 
 /**
@@ -337,6 +339,18 @@ public class CollisionHandler {
 			heart.setHasBeenCollected(true);
 			((Player) player).setHealth(player.getHealth() + Heart.HEALTH);
 			Heart.playSound = true;
+		}
+	}
+
+	/**
+	 * Collision with a stump starts the mission.
+	 * 
+	 * @param GameObject player
+	 * @param Stump      stump
+	 */
+	public static void checkIfPlayerCollidedWithStump(GameObject player, Stump stump) {
+		if (player.rectangle.overlaps(stump.rectangle)) {
+			MissionStumpHole.missionIsActive = true;
 		}
 	}
 }

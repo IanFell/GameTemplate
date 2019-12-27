@@ -41,5 +41,4 @@ public class Bird extends GameObject {
 				-height
 				);
 	}
-
 }
