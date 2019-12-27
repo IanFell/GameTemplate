@@ -47,14 +47,14 @@ public class Knight extends Enemy {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		if (isDead()) {
+		if (dead) {
 			respawnTimer++;
 			if (!soundHasBeenPlayed) {
 				playSound          = true;
 				soundHasBeenPlayed = true;
 			}
 			if (respawnTimer > RESPAWN_MAX_TIMER_VALUE) {
-				setIsDead(false);
+				dead               = false;
 				respawnTimer       = 0;
 				soundHasBeenPlayed = false;
 			}

@@ -32,6 +32,7 @@ public class ImageLoader {
 	public Texture light;
 	public Texture rain;
 	public Texture shadow;
+	public Texture cloud;
 
 	// Weapon Objects.
 	public Texture gunRight;
@@ -162,6 +163,7 @@ public class ImageLoader {
 		light         = new Texture(Gdx.files.internal("artwork/nature/Lighting.png"));
 		rain 		  = new Texture(Gdx.files.internal("artwork/nature/Rain.png"));
 		shadow        = new Texture(Gdx.files.internal("artwork/nature/Shadow.png"));
+		cloud         = new Texture(Gdx.files.internal("artwork/nature/Cloud.png"));
 
 		// Weapon Objects.
 		gunRight   			  = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
@@ -216,15 +218,15 @@ public class ImageLoader {
 		cutSceneDialogueOne[8] = new Texture(Gdx.files.internal("artwork/cutscenes/Cutscene_One_Dialogue_Nine.png"));
 
 		// Map objects.
-		worldMapMexicoBeach					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapMexicoBeach.png"));
-		worldMapThePoint					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapThePoint.png"));
-		worldMapPortStJoe					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapPortStJoe.png"));
-		worldMapCapeSanBlas					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapCapeSanBlas.png"));
-		worldMapApalachicola				   = new Texture(Gdx.files.internal("artwork/maps/WorldMapApalachicola.png"));
-		worldMapWewa      					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapWewa.png"));
-		worldMapStGeorge					   = new Texture(Gdx.files.internal("artwork/maps/WorldMapStGeorge.png"));
-		worldMapFake						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapFake_02.png"));
-		worldMapReal						   = new Texture(Gdx.files.internal("artwork/maps/WorldMapReal.png"));
+		worldMapMexicoBeach  = new Texture(Gdx.files.internal("artwork/maps/WorldMapMexicoBeach.png"));
+		worldMapThePoint	 = new Texture(Gdx.files.internal("artwork/maps/WorldMapThePoint.png"));
+		worldMapPortStJoe	 = new Texture(Gdx.files.internal("artwork/maps/WorldMapPortStJoe.png"));
+		worldMapCapeSanBlas	 = new Texture(Gdx.files.internal("artwork/maps/WorldMapCapeSanBlas.png"));
+		worldMapApalachicola = new Texture(Gdx.files.internal("artwork/maps/WorldMapApalachicola.png"));
+		worldMapWewa      	 = new Texture(Gdx.files.internal("artwork/maps/WorldMapWewa.png"));
+		worldMapStGeorge     = new Texture(Gdx.files.internal("artwork/maps/WorldMapStGeorge.png"));
+		worldMapFake		 = new Texture(Gdx.files.internal("artwork/maps/WorldMapFake_02.png"));
+		worldMapReal		 = new Texture(Gdx.files.internal("artwork/maps/WorldMapReal.png"));
 
 		// Mission objects.
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("artwork/missions/LegendOfTheSevenSwords.png"));
@@ -317,6 +319,7 @@ public class ImageLoader {
 		light.dispose();
 		rain.dispose();
 		shadow.dispose();
+		cloud.dispose();
 
 		// Weapon Objects.
 		gunRight.dispose();

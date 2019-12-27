@@ -31,10 +31,10 @@ public class WeatherHandler {
 
 	private static boolean isStorming = false;
 
-	public Cloud[] cloud  = new Cloud[250];
-	public Cloud[] cloud2 = new Cloud[250];
-	public Cloud[] cloud3 = new Cloud[250];
-	public Cloud[] cloud4 = new Cloud[250];
+	public Cloud[] cloud  = new Cloud[1];
+	public Cloud[] cloud2 = new Cloud[1];
+	public Cloud[] cloud3 = new Cloud[1];
+	public Cloud[] cloud4 = new Cloud[1];
 
 	/**
 	 * Constructor.
@@ -90,15 +90,18 @@ public class WeatherHandler {
 	 * 
 	 * @param MyGame myGame
 	 */
-	/*
 	public void renderClouds(MyGame myGame) {
 		for (int i = 0; i < cloud.length; i++) {
-			cloud[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
-			cloud2[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
-			cloud3[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
-			cloud4[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
+			cloud[i].renderObject(myGame.renderer.batch, myGame.imageLoader);
+			cloud2[i].renderObject(myGame.renderer.batch, myGame.imageLoader);
+			cloud3[i].renderObject(myGame.renderer.batch, myGame.imageLoader);
+			cloud4[i].renderObject(myGame.renderer.batch, myGame.imageLoader);
+			//cloud[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
+			//cloud2[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
+			//cloud3[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
+			//cloud4[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
 		}
-	} */
+	} 
 
 	/**
 	 * 
@@ -107,55 +110,61 @@ public class WeatherHandler {
 	private void initializeClouds(MyGame myGame) {
 		float playerXPosition = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
 		for (int i = 0; i < cloud.length; i++) {
-			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 7, playerXPosition + 7.5);
-			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 7.5, playerXPosition + 8);
+			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 17, playerXPosition + 22);
+			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 20, playerXPosition + 25);
 			double[] range = {min, max};
 			cloud[i]       = new Cloud(
 					myGame, 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),
-					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.2f),
-					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.2f)
+					(float) RandomNumberGenerator.generateRandomDouble(1, 5),
+					(float) RandomNumberGenerator.generateRandomDouble(1, 5)
 					);
 		}
 
 		// Clouds 2 and 3 are together.
 		for (int i = 0; i < cloud2.length; i++) {
-			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
-			double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
+			//double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
+			//double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
+			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 17, playerXPosition + 22);
+			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 20, playerXPosition + 25);
 			double[] range = {min, max};
 			cloud2[i] = new Cloud(
 					myGame, 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
-					(float) RandomNumberGenerator.generateRandomDouble(range[0] + 3, range[1] + 3),
-					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.5f),
-					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.2f)
+					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),
+					(float) RandomNumberGenerator.generateRandomDouble(1, 5),
+					(float) RandomNumberGenerator.generateRandomDouble(1, 5)
 					);
 		}
 
 		for (int i = 0; i < cloud3.length; i++) {
-			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
-			double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
+			//double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
+			//double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
+			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 17, playerXPosition + 22);
+			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 20, playerXPosition + 25);
 			double[] range = {min, max};
 			cloud3[i] = new Cloud(
 					myGame, 
-					(float) RandomNumberGenerator.generateRandomDouble(range[0] + .7f, range[1] + .7f), 
-					(float) RandomNumberGenerator.generateRandomDouble(range[0] + 3, range[1] + 3),
-					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.2f),
-					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.5f)
+					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
+					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),
+					(float) RandomNumberGenerator.generateRandomDouble(1, 5),
+					(float) RandomNumberGenerator.generateRandomDouble(1, 5)
 					);
 		}
 
 		for (int i = 0; i < cloud4.length; i++) {
-			double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
-			double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
+			//double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
+			//double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
+			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 17, playerXPosition + 22);
+			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 20, playerXPosition + 25);
 			double[] range = {min, max};
 			cloud4[i] = new Cloud(
 					myGame, 
-					(float) RandomNumberGenerator.generateRandomDouble(range[0] + 4, range[1] + 4), 
-					(float) RandomNumberGenerator.generateRandomDouble(range[0] + 5, range[1] + 5),
-					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.2f),
-					(float) RandomNumberGenerator.generateRandomDouble(.1, 0.5f)
+					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
+					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),
+					(float) RandomNumberGenerator.generateRandomDouble(1, 5),
+					(float) RandomNumberGenerator.generateRandomDouble(1, 5)
 					);
 		}
 	}

@@ -36,7 +36,7 @@ public class Enemy extends GameCharacter {
 	public final static int DAMAGE_INFLICTED = -1;
 
 	private Explosion explosion;
-	private boolean dead;
+	protected boolean dead;
 	private boolean willAttack;
 	private float speed;
 	private int stoppedValue = 0;

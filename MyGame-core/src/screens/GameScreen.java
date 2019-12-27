@@ -133,6 +133,8 @@ public class GameScreen extends Screens {
 			initializeGameScreen();
 			gameScreenHasBeenInitialized = !gameScreenHasBeenInitialized;
 		}
+
+		// TODO I dunno why I'm using the weatherHandler for this.
 		clearScreenAndSetScreenColor(GameAttributeHelper.gameState, weatherHandler);
 
 		// Screen only shakes when needed, but we must update it at all times just in case it needs to shake.
@@ -359,6 +361,8 @@ public class GameScreen extends Screens {
 
 		gun.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 		magicPearl.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
+
+		weatherHandler.renderClouds(myGame);
 	}
 
 	/*
