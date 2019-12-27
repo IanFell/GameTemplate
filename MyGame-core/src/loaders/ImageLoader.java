@@ -33,6 +33,7 @@ public class ImageLoader {
 	public Texture rain;
 	public Texture shadow;
 	public Texture cloud;
+	public Texture stump;
 
 	// Weapon Objects.
 	public Texture gunRight;
@@ -164,6 +165,7 @@ public class ImageLoader {
 		rain 		  = new Texture(Gdx.files.internal("artwork/nature/Rain.png"));
 		shadow        = new Texture(Gdx.files.internal("artwork/nature/Shadow.png"));
 		cloud         = new Texture(Gdx.files.internal("artwork/nature/Cloud.png"));
+		stump         = new Texture(Gdx.files.internal("artwork/nature/Stump.png"));
 
 		// Weapon Objects.
 		gunRight   			  = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
@@ -246,17 +248,17 @@ public class ImageLoader {
 		goSouthToTheSkull                      = new Texture(Gdx.files.internal("artwork/missions/GoSouthToTheSkull.png"));
 
 		// Tile objects.
-		grassTileOne     			           = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
-		sandTile                               = new Texture(Gdx.files.internal("artwork/tiles/SandTile2.png"));
-		sandTileHorizontalPath                 = new Texture(Gdx.files.internal("artwork/tiles/SandTileHorizontalPath.png"));
-		sandTileLeftDownPath                   = new Texture(Gdx.files.internal("artwork/tiles/SandTileLeftDownPath.png"));
-		sandTileVerticalPath		           = new Texture(Gdx.files.internal("artwork/tiles/SandTileVerticalPath.png"));
-		sandTileTopRightPath	               = new Texture(Gdx.files.internal("artwork/tiles/SandTileTopRightPath.png"));
-		sandTileCrossPath                      = new Texture(Gdx.files.internal("artwork/tiles/SandTileCrossPath.png"));
-		waterTileOne                           = new Texture(Gdx.files.internal("artwork/tiles/WaterOne.png"));
-		waterTileTwo                           = new Texture(Gdx.files.internal("artwork/tiles/WaterTwo.png"));
-		waterTileThree				           = new Texture(Gdx.files.internal("artwork/tiles/WaterThree.png"));
-		nightTimeShader                        = new Texture(Gdx.files.internal("artwork/tiles/NightTimeShader.png"));
+		grassTileOne     	   = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
+		sandTile               = new Texture(Gdx.files.internal("artwork/tiles/SandTile2.png"));
+		sandTileHorizontalPath = new Texture(Gdx.files.internal("artwork/tiles/SandTileHorizontalPath.png"));
+		sandTileLeftDownPath   = new Texture(Gdx.files.internal("artwork/tiles/SandTileLeftDownPath.png"));
+		sandTileVerticalPath   = new Texture(Gdx.files.internal("artwork/tiles/SandTileVerticalPath.png"));
+		sandTileTopRightPath   = new Texture(Gdx.files.internal("artwork/tiles/SandTileTopRightPath.png"));
+		sandTileCrossPath      = new Texture(Gdx.files.internal("artwork/tiles/SandTileCrossPath.png"));
+		waterTileOne           = new Texture(Gdx.files.internal("artwork/tiles/WaterOne.png"));
+		waterTileTwo           = new Texture(Gdx.files.internal("artwork/tiles/WaterTwo.png"));
+		waterTileThree		   = new Texture(Gdx.files.internal("artwork/tiles/WaterThree.png"));
+		nightTimeShader        = new Texture(Gdx.files.internal("artwork/tiles/NightTimeShader.png"));
 
 		// UI objects.
 		mapNavigationBar                       = new Texture(Gdx.files.internal("artwork/ui/UiMap.png"));
@@ -320,6 +322,7 @@ public class ImageLoader {
 		rain.dispose();
 		shadow.dispose();
 		cloud.dispose();
+		stump.dispose();
 
 		// Weapon Objects.
 		gunRight.dispose();
