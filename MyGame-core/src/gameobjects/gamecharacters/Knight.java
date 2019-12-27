@@ -33,10 +33,10 @@ public class Knight extends Enemy {
 	 */
 	public Knight(float x, float y, float width, float height, int direction) {
 		super(x, y, width, height, direction);
-		rectangle.x       = x;
-		rectangle.y       = y;
-		rectangle.width   = width;
-		rectangle.height  = height;
+		rectangle.x        = x;
+		rectangle.y        = y;
+		rectangle.width    = width;
+		rectangle.height   = height;
 		soundHasBeenPlayed = false;
 	}
 
