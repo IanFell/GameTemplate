@@ -16,6 +16,11 @@ import missions.MissionStumpHole;
  */
 public class Stump extends NatureObject {
 
+	// Values to set the starting movement direction for stumps during stump hole mission.
+	public static final int START_MOVING_DOWN = 0;
+	public static final int START_MOVING_UP   = 1;
+	private int startMovementDirection;
+
 	private float startY;
 	private float verticalMovementOffsetMin;
 	private float verticalMovementOffsetMax;
@@ -25,19 +30,26 @@ public class Stump extends NatureObject {
 	 * 
 	 * @param int x
 	 * @param int y
+	 * @param int startMovementDirection
 	 */
-	public Stump(int x, int y) {
+	public Stump(int x, int y, int startMovementDirection) {
 		super(x, y);
-		this.width                = 1;
-		this.height               = 3;
-		rectangle.x               = x;
-		rectangle.y               = y - height;
-		rectangle.width           = width;
-		rectangle.height          = height;
-		startY                    = y;
-		verticalMovementOffsetMin = startY - 3;
-		verticalMovementOffsetMax = startY + 3;
-		dy                        = 0.2f;
+		this.width                  = 1;
+		this.height                 = 3;
+		rectangle.x                 = x;
+		rectangle.y                 = y - height;
+		rectangle.width             = width;
+		rectangle.height            = height;
+		startY                      = y;
+		int movementOffsetValue     = 2;
+		verticalMovementOffsetMin   = startY - movementOffsetValue;
+		verticalMovementOffsetMax   = startY + movementOffsetValue;
+		this.startMovementDirection = startMovementDirection;
+		if (startMovementDirection == START_MOVING_DOWN) {
+			dy = 0.2f;
+		} else {
+			dy = -0.2f;
+		}
 	}
 
 	/**
@@ -64,12 +76,15 @@ public class Stump extends NatureObject {
 		}
 	}
 
+	/**
+	 * Moves stumps up and down.
+	 */
 	private void animateStumps() {
-		y += dy;
 		if (y < verticalMovementOffsetMin) {
 			dy = 0.5f;
 		} else if (y > verticalMovementOffsetMax) {
 			dy = -0.5f;
 		}
+		y += dy;
 	}
 }

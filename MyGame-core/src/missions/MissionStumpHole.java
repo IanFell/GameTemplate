@@ -44,7 +44,11 @@ public class MissionStumpHole extends Mission {
 		float startX = GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 24.5f;
 		int startY = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 45;
 		for (int i = 0; i < AMOUNT_OF_STUMPS; i++) {
-			stumps.add(new Stump((int) startX, startY));
+			if (i % 2 == 0) {
+				stumps.add(new Stump((int) startX, startY, Stump.START_MOVING_DOWN));
+			} else {
+				stumps.add(new Stump((int) startX, startY, Stump.START_MOVING_UP));
+			}
 			startX += 2;
 		}
 	}
