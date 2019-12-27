@@ -31,6 +31,10 @@ public class WeatherHandler {
 
 	private static boolean isStorming = false;
 
+	/**
+	 * Keep these as arrays for now because I might want to change this later 
+	 * to put in a lot more clouds.
+	 */
 	public Cloud[] cloud  = new Cloud[1];
 	public Cloud[] cloud2 = new Cloud[1];
 	public Cloud[] cloud3 = new Cloud[1];
@@ -58,7 +62,6 @@ public class WeatherHandler {
 	}
 
 	/**
-	 * Don't perform night cycle yet.  It makes the game to slow.
 	 * 
 	 * @param MyGame     myGame
 	 * @param GameScreen gameScreen
@@ -96,10 +99,6 @@ public class WeatherHandler {
 			cloud2[i].renderObject(myGame.renderer.batch, myGame.imageLoader);
 			cloud3[i].renderObject(myGame.renderer.batch, myGame.imageLoader);
 			cloud4[i].renderObject(myGame.renderer.batch, myGame.imageLoader);
-			//cloud[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
-			//cloud2[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
-			//cloud3[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
-			//cloud4[i].renderObject(myGame.renderer.batch, myGame.renderer.shapeRenderer, myGame.imageLoader, i);
 		}
 	} 
 
@@ -108,7 +107,11 @@ public class WeatherHandler {
 	 * @param MyGame myGame
 	 */
 	private void initializeClouds(MyGame myGame) {
+
 		float playerXPosition = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
+		float sizeMin         = 1.0f;
+		float sizeMax         = 5.0f;
+
 		for (int i = 0; i < cloud.length; i++) {
 			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 17, playerXPosition + 22);
 			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 20, playerXPosition + 25);
@@ -117,15 +120,12 @@ public class WeatherHandler {
 					myGame, 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),
-					(float) RandomNumberGenerator.generateRandomDouble(1, 5),
-					(float) RandomNumberGenerator.generateRandomDouble(1, 5)
+					(float) RandomNumberGenerator.generateRandomDouble(sizeMin, sizeMax),
+					(float) RandomNumberGenerator.generateRandomDouble(sizeMin, sizeMax)
 					);
 		}
 
-		// Clouds 2 and 3 are together.
 		for (int i = 0; i < cloud2.length; i++) {
-			//double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
-			//double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
 			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 17, playerXPosition + 22);
 			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 20, playerXPosition + 25);
 			double[] range = {min, max};
@@ -133,14 +133,12 @@ public class WeatherHandler {
 					myGame, 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),
-					(float) RandomNumberGenerator.generateRandomDouble(1, 5),
-					(float) RandomNumberGenerator.generateRandomDouble(1, 5)
+					(float) RandomNumberGenerator.generateRandomDouble(sizeMin, sizeMax),
+					(float) RandomNumberGenerator.generateRandomDouble(sizeMin, sizeMax)
 					);
 		}
 
 		for (int i = 0; i < cloud3.length; i++) {
-			//double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
-			//double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
 			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 17, playerXPosition + 22);
 			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 20, playerXPosition + 25);
 			double[] range = {min, max};
@@ -148,14 +146,12 @@ public class WeatherHandler {
 					myGame, 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),
-					(float) RandomNumberGenerator.generateRandomDouble(1, 5),
-					(float) RandomNumberGenerator.generateRandomDouble(1, 5)
+					(float) RandomNumberGenerator.generateRandomDouble(sizeMin, sizeMax),
+					(float) RandomNumberGenerator.generateRandomDouble(sizeMin, sizeMax)
 					);
 		}
 
 		for (int i = 0; i < cloud4.length; i++) {
-			//double min = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5, playerXPosition + 5.5);
-			//double max = RandomNumberGenerator.generateRandomDouble(playerXPosition + 5.5, playerXPosition + 6);
 			double min     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 17, playerXPosition + 22);
 			double max     = RandomNumberGenerator.generateRandomDouble(playerXPosition + 20, playerXPosition + 25);
 			double[] range = {min, max};
@@ -163,8 +159,8 @@ public class WeatherHandler {
 					myGame, 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]), 
 					(float) RandomNumberGenerator.generateRandomDouble(range[0], range[1]),
-					(float) RandomNumberGenerator.generateRandomDouble(1, 5),
-					(float) RandomNumberGenerator.generateRandomDouble(1, 5)
+					(float) RandomNumberGenerator.generateRandomDouble(sizeMin, sizeMax),
+					(float) RandomNumberGenerator.generateRandomDouble(sizeMin, sizeMax)
 					);
 		}
 	}
@@ -181,12 +177,9 @@ public class WeatherHandler {
 					myGame.imageLoader,
 					gameScreen
 					);
-			//if (NightAndDayCycle.isDayTime()) {
-			// Do not just constantly flash lightning the whole time.
 			if (lightningHandler.getCurrentNumberOfFlashes() == 2) {
 				LightningBoltHandler.drawLightningBolt(myGame);
 			}
-			//}
 		}
 	}
 
