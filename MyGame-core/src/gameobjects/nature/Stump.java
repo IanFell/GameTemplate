@@ -9,7 +9,7 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class Rock extends NatureObject {
+public class Stump extends NatureObject {
 
 	/**
 	 * Constructor.
@@ -17,11 +17,10 @@ public class Rock extends NatureObject {
 	 * @param int x
 	 * @param int y
 	 */
-	public Rock(int x, int y) {
+	public Stump(int x, int y) {
 		super(x, y);
-		float size  = 1.0f;
-		this.width  = size;
-		this.height = size;
+		this.width  = 1;
+		this.height = 3;
 	}
 
 	/**
@@ -31,6 +30,6 @@ public class Rock extends NatureObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		renderNatureObject(batch, imageLoader.rock);
+		renderNatureObject(batch, imageLoader.whiteSquare);
 	}
 }

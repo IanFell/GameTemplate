@@ -13,6 +13,7 @@ import loaders.plantloaders.PlantLoader;
 import loaders.rawbarloader.RawBarLoader;
 import loaders.rockloader.RockLoader;
 import loaders.signloader.SignLoader;
+import loaders.stumploader.StumpLoader;
 import loaders.teepeeloader.TeePeeLoader;
 import loaders.tradingpostloader.TradingPostLoader;
 import loaders.treeloaders.DrSuessTreeLoader;
@@ -41,6 +42,7 @@ public class GameWorld {
 	private SignLoader signLoader;
 	private DockLoader dockLoader;
 	private CannonLoader cannonLoader;
+	private StumpLoader stumpLoader;
 
 	/**
 	 * Constructor.
@@ -63,6 +65,7 @@ public class GameWorld {
 		dockLoader         = new DockLoader();
 		tradingPostLoader  = new TradingPostLoader();
 		cannonLoader       = new CannonLoader();
+		stumpLoader        = new StumpLoader();
 		loadGameWorld(myGame);
 	}
 
@@ -86,6 +89,7 @@ public class GameWorld {
 		dockLoader.loadDocks(myGame);
 		tradingPostLoader.loadTradingPost(myGame);
 		cannonLoader.loadCannons(myGame);
+		stumpLoader.loadStumps();
 	}
 
 	/**

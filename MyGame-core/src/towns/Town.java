@@ -21,6 +21,7 @@ public class Town {
 	public static final int APALACHICOLA  = 4;
 	public static final int ST_GEORGE     = 5;
 	public static final int CAPE_SAN_BLAS = 6; 
+	public static final int STUMP_HOLE    = 7;
 
 	public boolean isInTown;
 

@@ -72,17 +72,12 @@ public class MissionHandler extends Mission {
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		if (!CutScene.anyCutSceneIsInProgress) {
+			/*
 			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
-			// For now, don't make this a timed mission.  Maybe later.
-			//if (timer > MISSION_CHEST_START_TIME_VALUE) {
 			if (!MissionChests.missionComplete) {
 				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
 			}
-
-			//} else {
-			//timer++;
-			//}
 
 			handleGoToRawBarMessage();
 
@@ -93,7 +88,7 @@ public class MissionHandler extends Mission {
 			if (MissionRawBar.startMission && setUpRawBarMission ) {
 				MissionRawBar.missionIsActive = true;
 				setUpRawBarMission            = false;
-			}
+			} */
 		}
 	}
 
@@ -143,6 +138,7 @@ public class MissionHandler extends Mission {
 			 * This mission runs throughout the whole entire game.  It will always be active.
 			 * The only way to beat the game is to collect all the seven swords.
 			 */
+			/*
 			missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 
 			if (timer > MISSION_CHEST_START_TIME_VALUE) {
@@ -155,7 +151,7 @@ public class MissionHandler extends Mission {
 
 			if (displayGoToRawBar) {
 				renderMissionStartMessage(batch, myGame, imageLoader.goToTheRawBar);
-			}
+			} */
 		}
 	}
 

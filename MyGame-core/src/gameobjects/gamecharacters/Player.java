@@ -103,7 +103,7 @@ public class Player extends GameCharacter {
 	 * @param int    playerNumber
 	 */
 	public Player(String name, MyGame myGame, int playerNumber) {
-		setPlayerStartingPosition(Town.MEXICO_BEACH);
+		setPlayerStartingPosition(Town.STUMP_HOLE);
 		this.playerNumber        = playerNumber;
 		this.width               = playerSize;
 		this.height              = playerSize;
@@ -177,6 +177,10 @@ public class Player extends GameCharacter {
 		case Town.CAPE_SAN_BLAS:
 			this.x = GameAttributeHelper.CHUNK_THREE_X_POSITION_START - 30; 
 			this.y = GameAttributeHelper.CHUNK_SIX_Y_POSITION_START - 40;
+			break;
+		case Town.STUMP_HOLE:
+			this.x = GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 12; 
+			this.y = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 45;
 			break;
 		}
 	}
