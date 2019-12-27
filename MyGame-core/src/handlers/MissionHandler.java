@@ -13,6 +13,7 @@ import missions.Mission;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
 import missions.MissionRawBar;
+import missions.MissionStumpHole;
 
 /**
  * 
@@ -35,6 +36,7 @@ public class MissionHandler extends Mission {
 	private MissionRawBar missionRawBarPhaseOne;
 	private MissionRawBar missionRawBarPhaseTwo;
 	private MissionRawBar missionRawBarPhaseThree;
+	private MissionStumpHole missionStumpHole;
 
 	/**
 	 * These variables control the timing and display of the "go to the raw bar 
@@ -57,6 +59,7 @@ public class MissionHandler extends Mission {
 		missionChests                 = new MissionChests();
 		missionLegendOfTheSevenSwords = new MissionLegendOfTheSevenSwords(myGame);
 		initializeRawBarMission();
+		missionStumpHole              = new MissionStumpHole();
 	}
 
 	private void initializeRawBarMission() {
@@ -72,6 +75,7 @@ public class MissionHandler extends Mission {
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		if (!CutScene.anyCutSceneIsInProgress) {
+			missionStumpHole.updateMission(myGame, mapHandler);
 			/*
 			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
@@ -134,6 +138,7 @@ public class MissionHandler extends Mission {
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (!CutScene.anyCutSceneIsInProgress) {
+			missionStumpHole.renderMission(batch, imageLoader, myGame);
 			/**
 			 * This mission runs throughout the whole entire game.  It will always be active.
 			 * The only way to beat the game is to collect all the seven swords.
