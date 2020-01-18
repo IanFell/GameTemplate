@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
-import debugging.Debugger;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import helpers.GameAttributeHelper;

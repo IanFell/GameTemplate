@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
+import gameobjects.Bird;
 import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -24,6 +25,12 @@ public class Stump extends NatureObject {
 	private float startY;
 	private float verticalMovementOffsetMin;
 	private float verticalMovementOffsetMax;
+	
+	float movementDy;
+	
+	private Bird attackBird;
+	
+	public static boolean playerIsOnStump = false;
 
 	/**
 	 * Constructor.
@@ -41,14 +48,15 @@ public class Stump extends NatureObject {
 		rectangle.width             = width;
 		rectangle.height            = height;
 		startY                      = y;
-		int movementOffsetValue     = 2;
+		int movementOffsetValue     = 1;
 		verticalMovementOffsetMin   = startY - movementOffsetValue;
 		verticalMovementOffsetMax   = startY + movementOffsetValue;
 		this.startMovementDirection = startMovementDirection;
+		movementDy                  = 0.1f;
 		if (startMovementDirection == START_MOVING_DOWN) {
-			dy = 0.2f;
+			dy = movementDy;
 		} else {
-			dy = -0.2f;
+			dy = -movementDy;
 		}
 	}
 
@@ -69,10 +77,22 @@ public class Stump extends NatureObject {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
+		super.updateObject(myGame, mapHandler);
 		if (!MissionStumpHole.missionIsActive) {
 			CollisionHandler.checkIfPlayerCollidedWithStump(PlayerController.getCurrentPlayer(myGame), this);
 		} else {
 			animateStumps();
+			
+			if(MissionStumpHole.playerDy > 0){
+				if(MissionStumpHole.player.y + MissionStumpHole.player.height >= y - height && MissionStumpHole.player.y + MissionStumpHole.player.height < y + 1) {
+					if(MissionStumpHole.player.x + 1 > x && MissionStumpHole.player.x < x + width + 1) {
+						float newDY               = 0;
+						MissionStumpHole.player.y = y - height - MissionStumpHole.player.height;
+						MissionStumpHole.playerDy = newDY;
+						playerIsOnStump	          = true;
+					}
+				}
+			}
 		}
 	}
 
@@ -81,9 +101,9 @@ public class Stump extends NatureObject {
 	 */
 	private void animateStumps() {
 		if (y < verticalMovementOffsetMin) {
-			dy = 0.5f;
+			dy = movementDy;
 		} else if (y > verticalMovementOffsetMax) {
-			dy = -0.5f;
+			dy = -movementDy;
 		}
 		y += dy;
 	}

@@ -8,11 +8,13 @@ import controllers.GameStateController;
 import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.nature.Stump;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
 import loaders.bulletloader.BulletLoader;
 import missions.MissionRawBar;
+import missions.MissionStumpHole;
 import screens.GameScreen;
 import screens.Screens;
 import ui.MapUi;
@@ -72,7 +74,15 @@ public class Keyboard extends ComputerInput {
 			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-				Player.isJumping = true;
+				if (MissionStumpHole.missionIsActive) {
+					if (Stump.playerIsOnStump) {
+						Stump.playerIsOnStump = false;
+						//MissionStumpHole.playerDy = -1;
+						MissionStumpHole.playerIsJumping = true;
+					}
+				} else {
+					Player.isJumping = true;
+				}
 			}
 
 			// Execute screenshake.
@@ -207,6 +217,24 @@ public class Keyboard extends ComputerInput {
 					MissionRawBar.playerY += MissionRawBar.MISSION_RAW_BAR_SPEED;
 					player.setDirection(Player.DIRECTION_DOWN);
 				}
+			} else if (MissionStumpHole.missionIsActive) {
+				if (Gdx.input.isKeyPressed(left)) {
+					MissionStumpHole.player.setX(MissionStumpHole.player.getX() - MissionStumpHole.playerDx);
+					//player.setDirection(Player.DIRECTION_LEFT);
+				}
+				else if (Gdx.input.isKeyPressed(right)) {
+					MissionStumpHole.player.setX(MissionStumpHole.player.getX() + MissionStumpHole.playerDx);
+					//player.setDirection(Player.DIRECTION_RIGHT);
+				}
+				/*
+				else if (Gdx.input.isKeyPressed(up)) {
+					MissionRawBar.playerY -= MissionRawBar.MISSION_RAW_BAR_SPEED;
+					player.setDirection(Player.DIRECTION_UP);
+				}
+				else if (Gdx.input.isKeyPressed(down)) {
+					MissionRawBar.playerY += MissionRawBar.MISSION_RAW_BAR_SPEED;
+					player.setDirection(Player.DIRECTION_DOWN);
+				}*/
 			} else {
 				// Use normal player.
 				if (Gdx.input.isKeyPressed(left)) {

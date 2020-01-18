@@ -1,5 +1,6 @@
 package handlers;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import cutscenes.CutScene;
@@ -65,6 +66,13 @@ public class CollisionHandler {
 				}
 			}
 		}
+	}
+	
+	public static boolean playerHasCollidedWithStump(Rectangle player, GameObject stump) {
+		if (stump.rectangle.overlaps(player)) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
