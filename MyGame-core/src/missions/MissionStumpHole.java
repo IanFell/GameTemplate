@@ -23,6 +23,7 @@ import screens.GameScreen;
 public class MissionStumpHole extends Mission {
 
 	private Bird bird;
+	private Bird attackBird;
 
 	public static boolean missionIsActive = false;
 
@@ -61,20 +62,46 @@ public class MissionStumpHole extends Mission {
 
 	private final int MAX_ANIMATED_WATER_TIMER_VALUE = 10;
 
+	private float attackBirdOriginX;
+	private float attackBirdOriginY;
+	private float attackBirdAngle      = 0;
+	private float attackBirdDx         = 0.3f;
+	// Break in between attacks.
+	private float attackBirdBreakTimer     = 0;
+	private final float ATTACK_BREAK_VALUE = 50;
+
+	private final int WAVE_ONE                     = 1;
+	private final int WAVE_TWO                     = 2;
+	private final int WAVE_THREE                   = 3;
+	private int wave                               = WAVE_ONE;
+	private boolean birdIsSpinning                 = false;
+	private boolean birdHasBeganSpinning           = false;
+	// How long bird will go in a circle.
+	private final int CIRCULAR_ATTACK_MAX_VALUE    = 58;
+	private int circularAttackTimer                = 0;
+
+
 	/**
 	 * Constructor.
 	 */
 	public MissionStumpHole() {
+		loadStumps();
 		// Place bird on last stump of row one of stumps.
-		bird = new Bird(
+		bird            = new Bird(
 				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 5f, 
 				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 32.5f
 				);
-		loadStumps();
+		attackBird      = new Bird(
+				stumps.get(5).getX(), 
+				stumps.get(5).getY() - 3
+				);
 		player          = new Rectangle(stumps.get(0).getX(), stumps.get(0).getY() - 60, playerSize, playerSize);
 		playerDx        = 0.2f;
 		playerDy        = 0;
 		playerDirection = DIRECTION_RIGHT;
+
+		attackBirdOriginX = attackBird.getX();
+		attackBirdOriginY = attackBird.getY();
 	}
 
 	private void loadStumps() {
@@ -139,6 +166,7 @@ public class MissionStumpHole extends Mission {
 					secondRowOfWaterHasBeenSet = true;
 				}
 			}
+			attackBird.renderObject(batch, imageLoader);
 		} else {
 			bird.renderObject(batch, imageLoader);
 		}
@@ -181,6 +209,65 @@ public class MissionStumpHole extends Mission {
 			stumps.get(i).updateObject(myGame, mapHandler);
 		}
 		applyGravityToPlayer();
+
+		attackBirdBreakTimer++;
+		executeBirdAttackOne();
+	}
+
+	private void executeBirdAttackOne() {
+		if (wave == WAVE_ONE) {
+			if (attackBirdBreakTimer > ATTACK_BREAK_VALUE) {
+				moveAttackBirdLeft();
+			}
+		} else if (wave == WAVE_TWO) {
+			if (attackBirdBreakTimer > ATTACK_BREAK_VALUE) {
+				moveAttackBirdRight();
+			}
+		} else if (wave == WAVE_THREE) {
+			if (attackBirdBreakTimer > ATTACK_BREAK_VALUE) {
+				moveAttackBirdInCircularPath();
+			}
+		}
+	}
+
+	private void moveAttackBirdRight() {
+		attackBird.setX(attackBird.getX() + attackBirdDx);
+
+		if (attackBird.getX() > stumps.get(AMOUNT_OF_STUMPS - 1).getX() + 5) {
+			wave                 = WAVE_THREE;
+			attackBirdBreakTimer = 0;
+		}
+	}
+
+	private void moveAttackBirdLeft() {
+		attackBird.setX(attackBird.getX() - attackBirdDx);
+
+		if (attackBird.getX() < stumps.get(0).getX() - 5) {
+			wave                 = WAVE_TWO;
+			attackBirdBreakTimer = 0;
+		}
+	}
+
+	private void moveAttackBirdInCircularPath() {
+		if (birdIsSpinning) {
+			attackBirdAngle += 0.3f;
+			float attackBirdCircularPathRadius = 3;
+			attackBird.setX((float) (attackBirdOriginX - Math.cos(attackBirdAngle) * attackBirdCircularPathRadius)); 
+			attackBird.setY((float) (attackBirdOriginY + Math.sin(attackBirdAngle) * attackBirdCircularPathRadius)); 
+
+			// Make bird go in a circle for a specified amount of time.
+			circularAttackTimer++;
+			if (circularAttackTimer > CIRCULAR_ATTACK_MAX_VALUE) {
+				birdIsSpinning = false;
+			}
+		} else {
+			moveAttackBirdLeft();
+		}
+
+		if (attackBird.getX() < attackBirdOriginX && !birdHasBeganSpinning) {
+			birdIsSpinning       = true;
+			birdHasBeganSpinning = true;
+		} 
 	}
 
 	private void applyGravityToPlayer() {

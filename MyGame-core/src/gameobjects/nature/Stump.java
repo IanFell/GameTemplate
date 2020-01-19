@@ -87,7 +87,7 @@ public class Stump extends NatureObject {
 	private void checkStumpCollisionWithPlayer() {
 		if(MissionStumpHole.playerDy > 0){
 			if(MissionStumpHole.player.y + MissionStumpHole.player.height >= y - height && MissionStumpHole.player.y + MissionStumpHole.player.height < y + 1) {
-				if(MissionStumpHole.player.x + 1 > x && MissionStumpHole.player.x < x + width + 1) {
+				if(MissionStumpHole.player.x < x + width && MissionStumpHole.player.x + MissionStumpHole.player.width > x) {
 					float newDY               = 0;
 					MissionStumpHole.player.y = y - height - MissionStumpHole.player.height;
 					MissionStumpHole.playerDy = newDY;
