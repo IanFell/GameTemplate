@@ -2,15 +2,14 @@ package missions;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.Bird;
 import gameobjects.GameObject;
-import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Stump;
-import handlers.CollisionHandler;
 import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -30,26 +29,37 @@ public class MissionStumpHole extends Mission {
 	public static ArrayList <GameObject> stumps = new ArrayList <GameObject>();
 
 	private final int AMOUNT_OF_STUMPS = 13;
-	
+
 	public static Rectangle player;
-	
+
 	public static float playerDx;
 	public static float playerDy;
-	
-	private float playerSize = 1.0f;
-	
+
+	private float playerSize = 0.8f;
+
+	public static int playerDirection;
+
+	public static final int DIRECTION_LEFT  = 0;
+	public static final int DIRECTION_RIGHT = 1;
+
 	/**
 	 * Gravity variables.
 	 */
 	private double gravity = 0.6d;
-	private double dt      = 0.2d; 
-	
+	private double dt      = 0.4d; 
+
 	public static boolean playerIsJumping = false;
-	
+
 	private int jumpTimer = 0;
-	
-	private final float VERTICAL_ACCELERATION = 0.3f;
-	private final float PEAK_JUMP_VALUE       = 7.0f;
+
+	private final float VERTICAL_ACCELERATION = 0.8f;
+	private final float PEAK_JUMP_VALUE       = 3.0f;
+
+	private float waterTileHeight = 2.3f;
+
+	private int animatedWaterTimer = 0;
+
+	private final int MAX_ANIMATED_WATER_TIMER_VALUE = 10;
 
 	/**
 	 * Constructor.
@@ -61,14 +71,15 @@ public class MissionStumpHole extends Mission {
 				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 32.5f
 				);
 		loadStumps();
-		player   = new Rectangle(stumps.get(0).getX(), stumps.get(0).getY() - 15, playerSize, playerSize);
-		playerDx = 0.1f;
-		playerDy = 0;
+		player          = new Rectangle(stumps.get(0).getX(), stumps.get(0).getY() - 60, playerSize, playerSize);
+		playerDx        = 0.2f;
+		playerDy        = 0;
+		playerDirection = DIRECTION_RIGHT;
 	}
 
 	private void loadStumps() {
 		float startX = GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 24.5f;
-		int startY = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 45;
+		int startY   = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 45;
 		for (int i = 0; i < AMOUNT_OF_STUMPS; i++) {
 			if (i % 2 == 0) {
 				stumps.add(new Stump((int) startX, startY, Stump.START_MOVING_DOWN));
@@ -90,7 +101,7 @@ public class MissionStumpHole extends Mission {
 		if (missionIsActive) {
 			// Draw background.
 			batch.draw(
-					imageLoader.whiteSquare, 
+					imageLoader.sky, 
 					GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
 					GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2,
 					GameScreen.camera.viewportWidth, 
@@ -100,24 +111,55 @@ public class MissionStumpHole extends Mission {
 			for (int i = 0; i < stumps.size(); i++) {
 				stumps.get(i).renderObject(batch, imageLoader);
 			}
-			
+
 			// Draw player.
-			batch.draw(imageLoader.blackSquare, player.getX(), player.getY(), player.getWidth(), player.getHeight());
+			Texture playerTexture = imageLoader.playerRight;
+			if (playerDirection == DIRECTION_LEFT) {
+				playerTexture = imageLoader.playerLeft;
+			}
+			batch.draw(playerTexture, player.x, player.y + player.height, player.width, -player.height);
+
+			// Render water.
+			float originalX                    = GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2;
+			float originalY                    = GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2;
+			float startX                       = originalX;
+			float startY                       = originalY;
+			int rowLength                      = 28;
+			int numberOfRows                   = 2;
+			boolean secondRowOfWaterHasBeenSet = false;
+
+			for (int i = 0; i < rowLength * numberOfRows; i++) {
+				animateWaterTiles(batch, imageLoader, startX, startY);
+				startX++;
+
+				// Start new row.
+				if (i >= rowLength && !secondRowOfWaterHasBeenSet) {
+					startX = originalX;
+					startY = originalY - waterTileHeight;
+					secondRowOfWaterHasBeenSet = true;
+				}
+			}
 		} else {
 			bird.renderObject(batch, imageLoader);
 		}
 	}
-	
-	// TODO Make sure this comment is correct.
-	/**
-	 * So far this method handles player falling and landing on stump, and stump goes up and down.
-	 * @param stump
-	 */
-	private void applyPlayerVsStumpPhysics(GameObject stump) {
-		//playerDy = 0;
-		//player.y = stump.getY() - stump.getHeight() - player.height;
-		//player.y = player.y - playerDy;
-		//player.y = 
+
+	private void animateWaterTiles(SpriteBatch batch, ImageLoader imageLoader, float startX, float startY) {
+		animatedWaterTimer++;
+		if (animatedWaterTimer > MAX_ANIMATED_WATER_TIMER_VALUE) {
+			animatedWaterTimer = 0;
+		}
+		Texture texture = imageLoader.waterTileOne;
+		if (animatedWaterTimer < MAX_ANIMATED_WATER_TIMER_VALUE / 2) {
+			texture = imageLoader.waterTileTwo;
+		}
+		batch.draw(
+				texture, 
+				startX, 
+				startY,
+				1, 
+				-waterTileHeight
+				);
 	}
 
 	/**
@@ -127,30 +169,24 @@ public class MissionStumpHole extends Mission {
 	 */
 	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
-		if (Stump.playerIsOnStump) {
-			//playerIsJumping = false;
-		}
 		if (playerIsJumping) {
 			playerDy = playerDy - VERTICAL_ACCELERATION;
 			jumpTimer++;
 			if (jumpTimer > PEAK_JUMP_VALUE) {
 				playerIsJumping = false;
-				jumpTimer = 0;
+				jumpTimer       = 0;
 			}
 		}
-		//playerDy = 0.1f;
 		for (int i = 0; i < stumps.size(); i++) {
 			stumps.get(i).updateObject(myGame, mapHandler);
-			if (CollisionHandler.playerHasCollidedWithStump(player, stumps.get(i))) {
-				//applyPlayerVsStumpPhysics(stumps.get(i));
-			} 
-			
 		}
 		applyGravityToPlayer();
 	}
-	
+
 	private void applyGravityToPlayer() {
-		playerDy += gravity * dt; // Change in velocity.
-		player.y += playerDy * dt + .00005f * gravity * dt * dt; // Position formula.
+		// Change in velocity.
+		playerDy += gravity * dt; 
+		// Position formula.
+		player.y += playerDy * dt + .00005f * gravity * dt * dt; 
 	}
 }

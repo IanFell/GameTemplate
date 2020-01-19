@@ -34,6 +34,7 @@ public class ImageLoader {
 	public Texture shadow;
 	public Texture cloud;
 	public Texture stump;
+	public Texture sky;
 
 	// Weapon Objects.
 	public Texture gunRight;
@@ -106,6 +107,8 @@ public class ImageLoader {
 	public Texture goToTheRawBar;
 	public Texture collectLoot;
 	public Texture goSouthToTheSkull;
+	public Texture playerRight;
+	public Texture playerLeft;
 
 	// Tile objects.
 	public Texture grassTileOne;
@@ -166,6 +169,7 @@ public class ImageLoader {
 		shadow        = new Texture(Gdx.files.internal("artwork/nature/Shadow.png"));
 		cloud         = new Texture(Gdx.files.internal("artwork/nature/Cloud.png"));
 		stump         = new Texture(Gdx.files.internal("artwork/nature/Stump.png"));
+		sky           = new Texture(Gdx.files.internal("artwork/nature/Sky.png"));
 
 		// Weapon Objects.
 		gunRight   			  = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
@@ -246,6 +250,8 @@ public class ImageLoader {
 		goToTheRawBar                          = new Texture(Gdx.files.internal("artwork/missions/GoToTheRawBar.png"));
 		collectLoot                            = new Texture(Gdx.files.internal("artwork/missions/CollectLoot.png"));
 		goSouthToTheSkull                      = new Texture(Gdx.files.internal("artwork/missions/GoSouthToTheSkull.png"));
+		playerLeft                             = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerLeft.png"));
+		playerRight                            = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerRight.png"));
 
 		// Tile objects.
 		grassTileOne     	   = new Texture(Gdx.files.internal("artwork/tiles/GrassTileOne.png"));
@@ -261,11 +267,11 @@ public class ImageLoader {
 		nightTimeShader        = new Texture(Gdx.files.internal("artwork/tiles/NightTimeShader.png"));
 
 		// UI objects.
-		mapNavigationBar                       = new Texture(Gdx.files.internal("artwork/ui/UiMap.png"));
-		inventoryNavigationBar                 = new Texture(Gdx.files.internal("artwork/ui/UiInventory.png"));
-		inventoryScreen                        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
-		inventoryLabel                         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
-		locationSkull                          = new Texture(Gdx.files.internal("artwork/ui/Skull.png"));
+		mapNavigationBar       = new Texture(Gdx.files.internal("artwork/ui/UiMap.png"));
+		inventoryNavigationBar = new Texture(Gdx.files.internal("artwork/ui/UiInventory.png"));
+		inventoryScreen        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
+		inventoryLabel         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
+		locationSkull          = new Texture(Gdx.files.internal("artwork/ui/Skull.png"));
 
 		// Player name UI labels.
 		jollyRogerUiNameLabel = new Texture(Gdx.files.internal("artwork/ui/playernames/JollyRoger.png"));
@@ -323,6 +329,7 @@ public class ImageLoader {
 		shadow.dispose();
 		cloud.dispose();
 		stump.dispose();
+		sky.dispose();
 
 		// Weapon Objects.
 		gunRight.dispose();
@@ -397,6 +404,8 @@ public class ImageLoader {
 		collectLoot.dispose();
 		goToTheRawBar.dispose();
 		goSouthToTheSkull.dispose();
+		playerRight.dispose();
+		playerLeft.dispose();
 
 		// Tile objects.
 		grassTileOne.dispose();

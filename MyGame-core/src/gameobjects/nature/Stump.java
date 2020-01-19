@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
-import gameobjects.Bird;
 import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -25,11 +24,9 @@ public class Stump extends NatureObject {
 	private float startY;
 	private float verticalMovementOffsetMin;
 	private float verticalMovementOffsetMax;
-	
+
 	float movementDy;
-	
-	private Bird attackBird;
-	
+
 	public static boolean playerIsOnStump = false;
 
 	/**
@@ -43,9 +40,10 @@ public class Stump extends NatureObject {
 		super(x, y);
 		this.width                  = 1;
 		this.height                 = 3;
-		rectangle.x                 = x;
+		float hitboxOffset          = 0.3f;
+		rectangle.x                 = x + hitboxOffset;
 		rectangle.y                 = y - height;
-		rectangle.width             = width;
+		rectangle.width             = width - hitboxOffset;
 		rectangle.height            = height;
 		startY                      = y;
 		int movementOffsetValue     = 1;
@@ -82,15 +80,18 @@ public class Stump extends NatureObject {
 			CollisionHandler.checkIfPlayerCollidedWithStump(PlayerController.getCurrentPlayer(myGame), this);
 		} else {
 			animateStumps();
-			
-			if(MissionStumpHole.playerDy > 0){
-				if(MissionStumpHole.player.y + MissionStumpHole.player.height >= y - height && MissionStumpHole.player.y + MissionStumpHole.player.height < y + 1) {
-					if(MissionStumpHole.player.x + 1 > x && MissionStumpHole.player.x < x + width + 1) {
-						float newDY               = 0;
-						MissionStumpHole.player.y = y - height - MissionStumpHole.player.height;
-						MissionStumpHole.playerDy = newDY;
-						playerIsOnStump	          = true;
-					}
+			checkStumpCollisionWithPlayer();
+		}
+	}
+
+	private void checkStumpCollisionWithPlayer() {
+		if(MissionStumpHole.playerDy > 0){
+			if(MissionStumpHole.player.y + MissionStumpHole.player.height >= y - height && MissionStumpHole.player.y + MissionStumpHole.player.height < y + 1) {
+				if(MissionStumpHole.player.x + 1 > x && MissionStumpHole.player.x < x + width + 1) {
+					float newDY               = 0;
+					MissionStumpHole.player.y = y - height - MissionStumpHole.player.height;
+					MissionStumpHole.playerDy = newDY;
+					playerIsOnStump	          = true;
 				}
 			}
 		}

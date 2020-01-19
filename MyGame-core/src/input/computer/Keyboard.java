@@ -74,10 +74,10 @@ public class Keyboard extends ComputerInput {
 			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+				// Stump hole mission uses a different player than the game world player.
 				if (MissionStumpHole.missionIsActive) {
 					if (Stump.playerIsOnStump) {
-						Stump.playerIsOnStump = false;
-						//MissionStumpHole.playerDy = -1;
+						Stump.playerIsOnStump            = false;
 						MissionStumpHole.playerIsJumping = true;
 					}
 				} else {
@@ -218,23 +218,15 @@ public class Keyboard extends ComputerInput {
 					player.setDirection(Player.DIRECTION_DOWN);
 				}
 			} else if (MissionStumpHole.missionIsActive) {
+				// Stump Hole Mission uses a different player than normal since it's kind of like a mini game.
 				if (Gdx.input.isKeyPressed(left)) {
 					MissionStumpHole.player.setX(MissionStumpHole.player.getX() - MissionStumpHole.playerDx);
-					//player.setDirection(Player.DIRECTION_LEFT);
+					MissionStumpHole.playerDirection = MissionStumpHole.DIRECTION_LEFT;
 				}
 				else if (Gdx.input.isKeyPressed(right)) {
 					MissionStumpHole.player.setX(MissionStumpHole.player.getX() + MissionStumpHole.playerDx);
-					//player.setDirection(Player.DIRECTION_RIGHT);
+					MissionStumpHole.playerDirection = MissionStumpHole.DIRECTION_RIGHT;
 				}
-				/*
-				else if (Gdx.input.isKeyPressed(up)) {
-					MissionRawBar.playerY -= MissionRawBar.MISSION_RAW_BAR_SPEED;
-					player.setDirection(Player.DIRECTION_UP);
-				}
-				else if (Gdx.input.isKeyPressed(down)) {
-					MissionRawBar.playerY += MissionRawBar.MISSION_RAW_BAR_SPEED;
-					player.setDirection(Player.DIRECTION_DOWN);
-				}*/
 			} else {
 				// Use normal player.
 				if (Gdx.input.isKeyPressed(left)) {

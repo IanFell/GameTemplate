@@ -19,6 +19,7 @@ import loaders.tradingpostloader.TradingPostLoader;
 import loaders.treeloaders.DrSuessTreeLoader;
 import loaders.treeloaders.TreeLoader;
 import maps.MapHandler;
+import missions.MissionStumpHole;
 
 /**
  * 
@@ -113,8 +114,16 @@ public class GameWorld {
 		for(int i = 0; i < CannonLoader.cannons.length; i++) {	
 			CannonLoader.cannons[i].updateObject(myGame, mapHandler);
 		}
-		for(int i = 0; i < StumpLoader.stumps.size(); i++) {	
-			StumpLoader.stumps.get(i).updateObject(myGame, mapHandler);
+		/**
+		 * Since the stump hole mission is drawn directly over these game world stumps,
+		 * do not update game world stumps during stump hole mission.  
+		 * This is so stump hole player cannot get stuck on these stumps which will take them above the screen
+		 * and soft crash the game.
+		 */
+		for(int i = 0; i < StumpLoader.stumps.size(); i++) {
+			if (!MissionStumpHole.missionIsActive) {
+				StumpLoader.stumps.get(i).updateObject(myGame, mapHandler);
+			}
 		}
 		RawBarLoader.rawbar.updateObject(myGame, mapHandler);
 		PigglyWigglyLoader.pigglyWiggly.updateObject(myGame, mapHandler);
