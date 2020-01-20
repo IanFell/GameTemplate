@@ -22,64 +22,66 @@ import screens.GameScreen;
  */
 public class MissionStumpHole extends Mission {
 
-	private Bird bird;
-	private Bird attackBird;
-
 	public static boolean missionIsActive = false;
 
-	public static ArrayList <GameObject> stumps = new ArrayList <GameObject>();
+	private Bird bird;
+	private Bird attackBird;
+	private float attackBirdOriginX;
+	private float attackBirdOriginY;
+	private float attackBirdAngle               = 0;
+	private float attackBirdDx                  = 0.7f;
+	// Break in between attacks.
+	private float attackBirdBreakTimer          = 0;
+	private final float ATTACK_BREAK_VALUE      = 50;
+	private boolean birdIsSpinning              = false;
+	private boolean birdHasBeganSpinning        = false;
+	// How long bird will go in a circle.
+	private final int CIRCULAR_ATTACK_MAX_VALUE = 58;
+	private int circularAttackTimer             = 0;
 
-	private final int AMOUNT_OF_STUMPS = 13;
+	public static ArrayList <GameObject> stumps = new ArrayList <GameObject>();
+	private final int AMOUNT_OF_STUMPS          = 13;
 
 	public static Rectangle player;
-
 	public static float playerDx;
 	public static float playerDy;
-
 	private float playerSize = 0.8f;
-
 	public static int playerDirection;
 
 	public static final int DIRECTION_LEFT  = 0;
 	public static final int DIRECTION_RIGHT = 1;
 
 	/**
-	 * Gravity variables.
+	 * Gravity and jumping variables.
 	 */
-	private double gravity = 0.6d;
-	private double dt      = 0.4d; 
-
-	public static boolean playerIsJumping = false;
-
-	private int jumpTimer = 0;
-
+	private double gravity                    = 0.6d;
+	private double dt                         = 0.4d; 
+	public static boolean playerIsJumping     = false;
+	private int jumpTimer                     = 0;
 	private final float VERTICAL_ACCELERATION = 0.8f;
 	private final float PEAK_JUMP_VALUE       = 3.0f;
 
-	private float waterTileHeight = 2.3f;
-
-	private int animatedWaterTimer = 0;
-
+	private float waterTileHeight                    = 2.3f;
+	private int animatedWaterTimer                   = 0;
 	private final int MAX_ANIMATED_WATER_TIMER_VALUE = 10;
 
-	private float attackBirdOriginX;
-	private float attackBirdOriginY;
-	private float attackBirdAngle      = 0;
-	private float attackBirdDx         = 0.3f;
-	// Break in between attacks.
-	private float attackBirdBreakTimer     = 0;
-	private final float ATTACK_BREAK_VALUE = 50;
+	// Represents number of big attacks (each containing three waves) that repeat.
+	private final int ATTACK_ONE = 1;
+	private final int ATTACK_TWO = 2;
 
-	private final int WAVE_ONE                     = 1;
-	private final int WAVE_TWO                     = 2;
-	private final int WAVE_THREE                   = 3;
-	private int wave                               = WAVE_ONE;
-	private boolean birdIsSpinning                 = false;
-	private boolean birdHasBeganSpinning           = false;
-	// How long bird will go in a circle.
-	private final int CIRCULAR_ATTACK_MAX_VALUE    = 58;
-	private int circularAttackTimer                = 0;
+	// Waves represent three different little attacks within one bigger attack. 
+	private final int WAVE_ONE   = 1;
+	private final int WAVE_TWO   = 2;
+	private final int WAVE_THREE = 3;
+	private int wave             = WAVE_ONE;
 
+	private boolean firstAttackComplete = false;
+	private boolean secondAttackComplete = false;
+
+	private boolean reset = true;
+
+	private int breakTimer            = 0;
+	private final int MAX_BREAK_VALUE = 30;
 
 	/**
 	 * Constructor.
@@ -145,33 +147,46 @@ public class MissionStumpHole extends Mission {
 				playerTexture = imageLoader.playerLeft;
 			}
 			batch.draw(playerTexture, player.x, player.y + player.height, player.width, -player.height);
-
-			// Render water.
-			float originalX                    = GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2;
-			float originalY                    = GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2;
-			float startX                       = originalX;
-			float startY                       = originalY;
-			int rowLength                      = 28;
-			int numberOfRows                   = 2;
-			boolean secondRowOfWaterHasBeenSet = false;
-
-			for (int i = 0; i < rowLength * numberOfRows; i++) {
-				animateWaterTiles(batch, imageLoader, startX, startY);
-				startX++;
-
-				// Start new row.
-				if (i >= rowLength && !secondRowOfWaterHasBeenSet) {
-					startX = originalX;
-					startY = originalY - waterTileHeight;
-					secondRowOfWaterHasBeenSet = true;
-				}
-			}
+			renderWater(batch, imageLoader);
 			attackBird.renderObject(batch, imageLoader);
 		} else {
 			bird.renderObject(batch, imageLoader);
 		}
 	}
 
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 */
+	private void renderWater(SpriteBatch batch, ImageLoader imageLoader) {
+		float originalX                    = GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2;
+		float originalY                    = GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2;
+		float startX                       = originalX;
+		float startY                       = originalY;
+		int rowLength                      = 28;
+		int numberOfRows                   = 2;
+		boolean secondRowOfWaterHasBeenSet = false;
+
+		for (int i = 0; i < rowLength * numberOfRows; i++) {
+			animateWaterTiles(batch, imageLoader, startX, startY);
+			startX++;
+			// Start new row.
+			if (i >= rowLength && !secondRowOfWaterHasBeenSet) {
+				startX = originalX;
+				startY = originalY - waterTileHeight;
+				secondRowOfWaterHasBeenSet = true;
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param float       startX
+	 * @param float       startY
+	 */
 	private void animateWaterTiles(SpriteBatch batch, ImageLoader imageLoader, float startX, float startY) {
 		animatedWaterTimer++;
 		if (animatedWaterTimer > MAX_ANIMATED_WATER_TIMER_VALUE) {
@@ -198,8 +213,10 @@ public class MissionStumpHole extends Mission {
 	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
 		if (playerIsJumping) {
+			// Player goes up.
 			playerDy = playerDy - VERTICAL_ACCELERATION;
 			jumpTimer++;
+			// Player comes down.
 			if (jumpTimer > PEAK_JUMP_VALUE) {
 				playerIsJumping = false;
 				jumpTimer       = 0;
@@ -211,49 +228,148 @@ public class MissionStumpHole extends Mission {
 		applyGravityToPlayer();
 
 		attackBirdBreakTimer++;
-		executeBirdAttackOne();
+		// If we have not completed the mission yet:
+		if (!secondAttackComplete) {
+			// Execute first attack if it's not done.
+			if (!firstAttackComplete) {
+				executeBirdAttack(ATTACK_ONE);
+			} else {
+				// If the first attack is done, take a little break.
+				breakTimer++;
+				if (breakTimer < MAX_BREAK_VALUE) {
+					breakBetweenAttacks();
+				} else {
+					// If the break is done, reset values and execute second attack.
+					if (reset) {
+						resetAttackVariables();
+						reset = false;
+					}
+					executeBirdAttack(ATTACK_TWO);
+				}
+			}
+		}
 	}
 
-	private void executeBirdAttackOne() {
+	private void resetAttackVariables() {
+		attackBird.setX(stumps.get(0).getX() - 5);
+		attackBird.setY(stumps.get(0).getY() - 6);
+		attackBirdBreakTimer = 0;
+		wave                 = WAVE_ONE;
+		circularAttackTimer  = 0;
+		birdHasBeganSpinning = false;
+	}
+
+	private void breakBetweenAttacks() {
+		// TODO will put count down graphics during this part or something.
+	}
+
+	/**
+	 * 
+	 * @param int attack
+	 */
+	private void executeBirdAttack(int attack) {
 		if (wave == WAVE_ONE) {
 			if (attackBirdBreakTimer > ATTACK_BREAK_VALUE) {
-				moveAttackBirdLeft();
+				if (attack == ATTACK_ONE) {
+					moveAttackBirdLeft(ATTACK_ONE);
+				} else {
+					moveAttackBirdRight(ATTACK_TWO);
+				}
 			}
 		} else if (wave == WAVE_TWO) {
 			if (attackBirdBreakTimer > ATTACK_BREAK_VALUE) {
-				moveAttackBirdRight();
+				if (attack == ATTACK_ONE) {
+					moveAttackBirdRight(ATTACK_ONE);
+				} else {
+					moveAttackBirdLeft(ATTACK_TWO);
+				}
 			}
 		} else if (wave == WAVE_THREE) {
 			if (attackBirdBreakTimer > ATTACK_BREAK_VALUE) {
-				moveAttackBirdInCircularPath();
+				if (attack == ATTACK_ONE) {
+					moveAttackBirdInCircularPath(DIRECTION_LEFT);
+				} else {
+					moveAttackBirdInCircularPath(DIRECTION_RIGHT);
+				}
 			}
 		}
 	}
 
-	private void moveAttackBirdRight() {
+	/**
+	 * 
+	 * @param int attackNumber
+	 */
+	private void moveAttackBirdRight(int attackNumber) {
 		attackBird.setX(attackBird.getX() + attackBirdDx);
-
-		if (attackBird.getX() > stumps.get(AMOUNT_OF_STUMPS - 1).getX() + 5) {
-			wave                 = WAVE_THREE;
-			attackBirdBreakTimer = 0;
+		if (attackNumber == ATTACK_ONE) {
+			if (attackBirdHasReachedRightBoundary()) {
+				wave                 = WAVE_THREE;
+				attackBirdBreakTimer = 0;
+			}
+		} else {
+			if (attackBirdHasReachedRightBoundary()) {
+				wave                 = WAVE_TWO;
+				attackBirdBreakTimer = 0;
+			}
 		}
 	}
 
-	private void moveAttackBirdLeft() {
+	/**
+	 * 
+	 * @param int attackNumber
+	 */
+	private void moveAttackBirdLeft(int attackNumber) {
 		attackBird.setX(attackBird.getX() - attackBirdDx);
 
-		if (attackBird.getX() < stumps.get(0).getX() - 5) {
-			wave                 = WAVE_TWO;
-			attackBirdBreakTimer = 0;
+		if (attackNumber == ATTACK_ONE) {
+			if (attackBirdHasReachedLeftBoundary()) {
+				wave                 = WAVE_TWO;
+				attackBirdBreakTimer = 0;
+			}
+		} else {
+			if (attackBirdHasReachedLeftBoundary()) {
+				wave                 = WAVE_THREE;
+				attackBirdBreakTimer = 0;
+			}
 		}
 	}
 
-	private void moveAttackBirdInCircularPath() {
+	/**
+	 * 
+	 * @return boolean
+	 */
+	private boolean attackBirdHasReachedRightBoundary() {
+		return attackBird.getX() > stumps.get(AMOUNT_OF_STUMPS - 1).getX() + 5;
+	}
+
+	/**
+	 * 
+	 * @return boolean
+	 */
+	private boolean attackBirdHasReachedLeftBoundary() {
+		return attackBird.getX() < stumps.get(0).getX() - 5;
+	}
+
+	private void makeBirdMoveInCircle() {
+		float attackBirdCircularPathRadius = 3;
+		attackBird.setX((float) (attackBirdOriginX - Math.cos(attackBirdAngle) * attackBirdCircularPathRadius)); 
+		attackBird.setY((float) (attackBirdOriginY + Math.sin(attackBirdAngle) * attackBirdCircularPathRadius));
+	}
+
+	/**
+	 * 
+	 * @param int direction
+	 */
+	private void moveAttackBirdInCircularPath(int direction) {
+		// Bird is going in a circle.
 		if (birdIsSpinning) {
-			attackBirdAngle += 0.3f;
-			float attackBirdCircularPathRadius = 3;
-			attackBird.setX((float) (attackBirdOriginX - Math.cos(attackBirdAngle) * attackBirdCircularPathRadius)); 
-			attackBird.setY((float) (attackBirdOriginY + Math.sin(attackBirdAngle) * attackBirdCircularPathRadius)); 
+			float angleValue = 0.3f;
+			if (direction == DIRECTION_LEFT) {
+				attackBirdAngle += angleValue;
+			} else {
+				attackBirdAngle -= angleValue;
+			}
+			makeBirdMoveInCircle();
 
 			// Make bird go in a circle for a specified amount of time.
 			circularAttackTimer++;
@@ -261,13 +377,41 @@ public class MissionStumpHole extends Mission {
 				birdIsSpinning = false;
 			}
 		} else {
-			moveAttackBirdLeft();
+			/**
+			 * Bird will go in a different direction depending on which way it comes from,
+			 * as well as whether or not it is entering or leaving the viewport.
+			 */
+			if (direction == DIRECTION_LEFT) {
+				moveAttackBirdLeft(ATTACK_ONE);
+			} else {
+				moveAttackBirdRight(ATTACK_ONE);
+			}
 		}
 
-		if (attackBird.getX() < attackBirdOriginX && !birdHasBeganSpinning) {
-			birdIsSpinning       = true;
-			birdHasBeganSpinning = true;
-		} 
+		// Prepare bird to spin.  If it's position is smaller than "origin of spinning point", begin spinning. 
+		if (direction == DIRECTION_LEFT) {
+			if (attackBird.getX() < attackBirdOriginX && !birdHasBeganSpinning) {
+				prepareBirdToMoveInACircularPath();
+			}
+			// If bird makes it to this position, first attack is completed.
+			if (attackBirdHasReachedLeftBoundary()) {
+				firstAttackComplete = true;
+			}
+		} else {
+			// Prepare bird to spin.  If it's position is smaller than "origin of spinning point", begin spinning.
+			if (attackBird.getX() > attackBirdOriginX && !birdHasBeganSpinning) {
+				prepareBirdToMoveInACircularPath();
+			} 
+			// If bird makes it to this position, second attack is completed.
+			if (attackBirdHasReachedRightBoundary()) {
+				secondAttackComplete = true;
+			}
+		}
+	}
+
+	private void prepareBirdToMoveInACircularPath() {
+		birdIsSpinning       = true;
+		birdHasBeganSpinning = true;
 	}
 
 	private void applyGravityToPlayer() {
