@@ -1,5 +1,6 @@
 package handlers;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import cutscenes.CutScene;
@@ -7,6 +8,7 @@ import gameobjects.GameObject;
 import gameobjects.Heart;
 import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
+import gameobjects.nature.Feather;
 import gameobjects.nature.Stump;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.stationarygameobjects.buildings.TradingPost;
@@ -351,6 +353,19 @@ public class CollisionHandler {
 	public static void checkIfPlayerCollidedWithStump(GameObject player, Stump stump) {
 		if (player.rectangle.overlaps(stump.rectangle)) {
 			MissionStumpHole.missionIsActive = true;
+		}
+	}
+
+	/**
+	 * This method does not use the regular player.
+	 * Instead, it uses the unique rectangle (player) from MissionStumpHole.
+	 * 
+	 * @param Rectangle player
+	 * @param Feather   feather
+	 */
+	public static void checkIfPlayerHasCollidedWithFeather(Rectangle player, Feather feather) {
+		if (player.overlaps(feather.rectangle)) {
+			MissionStumpHole.featherValue++;
 		}
 	}
 }

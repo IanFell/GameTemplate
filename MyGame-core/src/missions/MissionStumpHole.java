@@ -9,6 +9,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.Bird;
 import gameobjects.GameObject;
+import gameobjects.nature.Feather;
 import gameobjects.nature.Stump;
 import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
@@ -22,6 +23,18 @@ import screens.GameScreen;
  */
 public class MissionStumpHole extends Mission {
 
+	private Feather featherOne;
+	private Feather featherTwo;
+	private Feather featherThree;
+
+	/**
+	 * This variable will not increase by 1 every time a feather is collected.
+	 * It will increase anywhere from 1-10 (based on time that player actually intersects with feather).
+	 * This makes it seem more random, since this mission is based on something like a health meter that
+	 * slowely rises, this seems like an okay thing to do so the mission is not the same every time.
+	 */
+	public static int featherValue = 0;
+
 	public static boolean missionIsActive = false;
 
 	private Bird bird;
@@ -32,7 +45,7 @@ public class MissionStumpHole extends Mission {
 	private float attackBirdDx                  = 0.7f;
 	// Break in between attacks.
 	private float attackBirdBreakTimer          = 0;
-	private final float ATTACK_BREAK_VALUE      = 50;
+	private final float ATTACK_BREAK_VALUE      = 25;
 	private boolean birdIsSpinning              = false;
 	private boolean birdHasBeganSpinning        = false;
 	// How long bird will go in a circle.
@@ -45,6 +58,7 @@ public class MissionStumpHole extends Mission {
 	public static Rectangle player;
 	public static float playerDx;
 	public static float playerDy;
+	// Make player smaller so he can fall between the stumps.  In the open world player is 1 x 1.
 	private float playerSize = 0.8f;
 	public static int playerDirection;
 
@@ -88,22 +102,24 @@ public class MissionStumpHole extends Mission {
 	 */
 	public MissionStumpHole() {
 		loadStumps();
-		// Place bird on last stump of row one of stumps.
+		// Place this bird on last stump of row one of stumps.
 		bird            = new Bird(
 				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 5f, 
 				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 32.5f
 				);
+
+		// This bird moves around.
 		attackBird      = new Bird(
 				stumps.get(5).getX(), 
 				stumps.get(5).getY() - 3
 				);
+		attackBirdOriginX = attackBird.getX();
+		attackBirdOriginY = attackBird.getY();
+
 		player          = new Rectangle(stumps.get(0).getX(), stumps.get(0).getY() - 60, playerSize, playerSize);
 		playerDx        = 0.2f;
 		playerDy        = 0;
 		playerDirection = DIRECTION_RIGHT;
-
-		attackBirdOriginX = attackBird.getX();
-		attackBirdOriginY = attackBird.getY();
 	}
 
 	private void loadStumps() {
@@ -128,7 +144,7 @@ public class MissionStumpHole extends Mission {
 	@Override
 	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (missionIsActive) {
-			// Draw background.
+			// Render background.
 			batch.draw(
 					imageLoader.sky, 
 					GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
@@ -141,7 +157,7 @@ public class MissionStumpHole extends Mission {
 				stumps.get(i).renderObject(batch, imageLoader);
 			}
 
-			// Draw player.
+			// Render player.
 			Texture playerTexture = imageLoader.playerRight;
 			if (playerDirection == DIRECTION_LEFT) {
 				playerTexture = imageLoader.playerLeft;
@@ -149,8 +165,27 @@ public class MissionStumpHole extends Mission {
 			batch.draw(playerTexture, player.x, player.y + player.height, player.width, -player.height);
 			renderWater(batch, imageLoader);
 			attackBird.renderObject(batch, imageLoader);
+			// Feathers only render when needed.
+			renderFeathers(batch, imageLoader);
 		} else {
 			bird.renderObject(batch, imageLoader);
+		}
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 */
+	private void renderFeathers(SpriteBatch batch, ImageLoader imageLoader) {
+		if (featherOne != null) {
+			featherOne.renderObject(batch, imageLoader);
+		}
+		if (featherTwo != null) {
+			featherTwo.renderObject(batch, imageLoader);
+		}
+		if (featherThree != null) {
+			featherThree.renderObject(batch, imageLoader);
 		}
 	}
 
@@ -248,6 +283,28 @@ public class MissionStumpHole extends Mission {
 				}
 			}
 		}
+		updateFeathers(myGame, mapHandler);
+
+		if (featherValue > 1)
+			System.exit(0);
+	}
+
+	/**
+	 * 
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
+	 */
+	private void updateFeathers(MyGame myGame, MapHandler mapHandler) {
+		if (featherOne != null) {
+			featherOne.updateObject(myGame, mapHandler);
+		}
+		if (featherTwo != null) {
+			featherTwo.updateObject(myGame, mapHandler);
+		}
+		if (featherThree != null) {
+			featherThree.updateObject(myGame, mapHandler);
+		}
+		System.out.println(featherValue);
 	}
 
 	private void resetAttackVariables() {
@@ -320,7 +377,6 @@ public class MissionStumpHole extends Mission {
 	 */
 	private void moveAttackBirdLeft(int attackNumber) {
 		attackBird.setX(attackBird.getX() - attackBirdDx);
-
 		if (attackNumber == ATTACK_ONE) {
 			if (attackBirdHasReachedLeftBoundary()) {
 				wave                 = WAVE_TWO;
@@ -357,6 +413,8 @@ public class MissionStumpHole extends Mission {
 	}
 
 	/**
+	 * This differs from makeBirdMoveInCircle() because this method takes into consideration
+	 * entering and leaving the viewport, as well as the spin.
 	 * 
 	 * @param int direction
 	 */
@@ -375,6 +433,11 @@ public class MissionStumpHole extends Mission {
 			circularAttackTimer++;
 			if (circularAttackTimer > CIRCULAR_ATTACK_MAX_VALUE) {
 				birdIsSpinning = false;
+				int x          = (int) attackBird.getX();
+				int y          = (int) attackBird.getY();
+				featherOne     = new Feather(x, y);
+				featherTwo     = new Feather(x, y);
+				featherThree   = new Feather(x, y);
 			}
 		} else {
 			/**
@@ -398,7 +461,7 @@ public class MissionStumpHole extends Mission {
 				firstAttackComplete = true;
 			}
 		} else {
-			// Prepare bird to spin.  If it's position is smaller than "origin of spinning point", begin spinning.
+			// Prepare bird to spin.  If it's position is greater than "origin of spinning point", begin spinning.
 			if (attackBird.getX() > attackBirdOriginX && !birdHasBeganSpinning) {
 				prepareBirdToMoveInACircularPath();
 			} 
