@@ -46,7 +46,7 @@ public class Feather extends NatureObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		renderNatureObject(batch, imageLoader.blackSquare);
+		renderNatureObject(batch, imageLoader.feather);
 	}
 
 	/**

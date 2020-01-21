@@ -304,7 +304,7 @@ public class MissionStumpHole extends Mission {
 		if (featherThree != null) {
 			featherThree.updateObject(myGame, mapHandler);
 		}
-		System.out.println(featherValue);
+		//System.out.println(featherValue);
 	}
 
 	private void resetAttackVariables() {
