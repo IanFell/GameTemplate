@@ -23,6 +23,7 @@ import loaders.GameWorld;
 import maps.MapHandler;
 import maps.MapLoader;
 import maps.MapRenderer;
+import missions.MissionStumpHole;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
@@ -362,7 +363,10 @@ public class GameScreen extends Screens {
 		gun.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 		magicPearl.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 
-		weatherHandler.renderClouds(myGame);
+		// Clouds look weird rendered over the Stump Hole mission.
+		if (MissionStumpHole.missionIsActive) {
+			weatherHandler.renderClouds(myGame);
+		}
 	}
 
 	/*

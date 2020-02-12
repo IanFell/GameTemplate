@@ -155,8 +155,17 @@ public class MissionStumpHole extends Mission {
 					-GameScreen.camera.viewportHeight
 					);
 
+			// Make attack bird fly in between stumps.
 			for (int i = 0; i < stumps.size(); i++) {
-				stumps.get(i).renderObject(batch, imageLoader);
+				if (i % 2 == 0) {
+					stumps.get(i).renderObject(batch, imageLoader);
+				}
+			}
+			attackBird.renderObject(batch, imageLoader);
+			for (int i = 0; i < stumps.size(); i++) {
+				if (i % 2 != 0) {
+					stumps.get(i).renderObject(batch, imageLoader);
+				}
 			}
 
 			// Render player.
@@ -166,7 +175,6 @@ public class MissionStumpHole extends Mission {
 			}
 			batch.draw(playerTexture, player.x, player.y + player.height, player.width, -player.height);
 			renderWater(batch, imageLoader);
-			attackBird.renderObject(batch, imageLoader);
 			// Feathers only render when needed.
 			renderFeathers(batch, imageLoader);
 			renderFeatherValueMeter(batch, imageLoader);
@@ -225,7 +233,7 @@ public class MissionStumpHole extends Mission {
 		float originalY                    = GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2;
 		float startX                       = originalX;
 		float startY                       = originalY;
-		int rowLength                      = 28;
+		int rowLength                      = 29;
 		int numberOfRows                   = 2;
 		boolean secondRowOfWaterHasBeenSet = false;
 
