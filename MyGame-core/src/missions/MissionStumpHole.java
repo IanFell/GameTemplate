@@ -97,6 +97,8 @@ public class MissionStumpHole extends Mission {
 	private int breakTimer            = 0;
 	private final int MAX_BREAK_VALUE = 30;
 
+	private final float FEATHER_VALUE_METER_MAX = 8.0f;
+
 	/**
 	 * Constructor.
 	 */
@@ -167,9 +169,33 @@ public class MissionStumpHole extends Mission {
 			attackBird.renderObject(batch, imageLoader);
 			// Feathers only render when needed.
 			renderFeathers(batch, imageLoader);
+			renderFeatherValueMeter(batch, imageLoader);
 		} else {
 			bird.renderObject(batch, imageLoader);
 		}
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 */
+	private void renderFeatherValueMeter(SpriteBatch batch, ImageLoader imageLoader) {
+		float height = 2.0f;
+		batch.draw(
+				imageLoader.blackSquare, 
+				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 7.5f, 
+				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 37.0f,
+				FEATHER_VALUE_METER_MAX, 
+				-height
+				);
+		batch.draw(
+				imageLoader.whiteSquare, 
+				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 7.5f, 
+				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 37.0f,
+				featherValue, 
+				-height
+				);
 	}
 
 	/**
@@ -263,6 +289,7 @@ public class MissionStumpHole extends Mission {
 		applyGravityToPlayer();
 
 		attackBirdBreakTimer++;
+
 		// If we have not completed the mission yet:
 		if (!secondAttackComplete) {
 			// Execute first attack if it's not done.
@@ -276,17 +303,43 @@ public class MissionStumpHole extends Mission {
 				} else {
 					// If the break is done, reset values and execute second attack.
 					if (reset) {
-						resetAttackVariables();
+						resetAttackVariables(stumps.get(0).getX() - 5, stumps.get(0).getY() - 6, false);
 						reset = false;
 					}
 					executeBirdAttack(ATTACK_TWO);
 				}
 			}
+		} else {
+			// Reset values and set them back to attack one.
+			resetAttackVariables(stumps.get(5).getX(), stumps.get(5).getY() - 3, true);
 		}
+
 		updateFeathers(myGame, mapHandler);
 
-		if (featherValue > 1)
+		if (featherValue >= FEATHER_VALUE_METER_MAX) {
 			System.exit(0);
+		}
+	}
+
+	/**
+	 * This method ensures bird attacks loop over and over.
+	 * 
+	 * @param float   x
+	 * @param float   y
+	 * @param boolean resetAttacks
+	 */
+	private void resetAttackVariables(float x, float y, boolean resetAttacks) {
+		attackBird.setX(x);
+		attackBird.setY(y);
+		attackBirdBreakTimer = 0;
+		circularAttackTimer  = 0;
+		wave                 = WAVE_ONE;
+		birdHasBeganSpinning = false;
+		reset                = true;
+		if (resetAttacks) {
+			secondAttackComplete = false;
+			firstAttackComplete  = false;
+		}
 	}
 
 	/**
@@ -305,15 +358,6 @@ public class MissionStumpHole extends Mission {
 			featherThree.updateObject(myGame, mapHandler);
 		}
 		//System.out.println(featherValue);
-	}
-
-	private void resetAttackVariables() {
-		attackBird.setX(stumps.get(0).getX() - 5);
-		attackBird.setY(stumps.get(0).getY() - 6);
-		attackBirdBreakTimer = 0;
-		wave                 = WAVE_ONE;
-		circularAttackTimer  = 0;
-		birdHasBeganSpinning = false;
 	}
 
 	private void breakBetweenAttacks() {

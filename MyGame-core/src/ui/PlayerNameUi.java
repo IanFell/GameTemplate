@@ -35,7 +35,8 @@ public class PlayerNameUi extends TextBasedUiParent {
 	 * @param float       xOffset
 	 * @param float       yOffset
 	 */
-	public void renderUi(SpriteBatch batch, 
+	public void renderUi(
+			SpriteBatch batch, 
 			ImageLoader imageLoader, 
 			MyGame myGame, 
 			GameObject player, 

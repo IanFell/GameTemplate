@@ -365,7 +365,7 @@ public class CollisionHandler {
 	 */
 	public static void checkIfPlayerHasCollidedWithFeather(Rectangle player, Feather feather) {
 		if (player.overlaps(feather.rectangle)) {
-			MissionStumpHole.featherValue++;
+			MissionStumpHole.featherValue += .01;
 		}
 	}
 }
