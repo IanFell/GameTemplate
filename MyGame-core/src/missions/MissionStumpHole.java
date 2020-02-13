@@ -75,6 +75,9 @@ public class MissionStumpHole extends Mission {
 	private final float VERTICAL_ACCELERATION = 0.8f;
 	private final float PEAK_JUMP_VALUE       = 3.0f;
 
+	// Player cannot fall past this barrier. 
+	private float gravityHaltBarrier;
+
 	private float waterTileHeight                    = 2.3f;
 	private int animatedWaterTimer                   = 0;
 	private final int MAX_ANIMATED_WATER_TIMER_VALUE = 10;
@@ -104,6 +107,7 @@ public class MissionStumpHole extends Mission {
 	 */
 	public MissionStumpHole() {
 		loadStumps();
+		gravityHaltBarrier = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 43;
 		// Place this bird on last stump of row one of stumps.
 		bird            = new Bird(
 				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 5f, 
@@ -281,6 +285,7 @@ public class MissionStumpHole extends Mission {
 	 */
 	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
+		applyPlayerPhysics();
 		if (playerIsJumping) {
 			// Player goes up.
 			playerDy = playerDy - VERTICAL_ACCELERATION;
@@ -291,10 +296,10 @@ public class MissionStumpHole extends Mission {
 				jumpTimer       = 0;
 			}
 		}
+
 		for (int i = 0; i < stumps.size(); i++) {
 			stumps.get(i).updateObject(myGame, mapHandler);
 		}
-		applyGravityToPlayer();
 
 		attackBirdBreakTimer++;
 
@@ -529,10 +534,16 @@ public class MissionStumpHole extends Mission {
 		birdHasBeganSpinning = true;
 	}
 
-	private void applyGravityToPlayer() {
-		// Change in velocity.
-		playerDy += gravity * dt; 
-		// Position formula.
-		player.y += playerDy * dt + .00005f * gravity * dt * dt; 
+	private void applyPlayerPhysics() {
+		// Apply gravity unless player has hit the barrier (water) for him to stop.
+		if (player.y <= gravityHaltBarrier) {
+			// Change in velocity.
+			playerDy += gravity * dt; 
+			// Position formula.
+			player.y += playerDy * dt + .00005f * gravity * dt * dt; 
+		} else {
+			// Make sure this is false so player can still move on top of stumps.
+			playerIsJumping = false;
+		}
 	}
 }
