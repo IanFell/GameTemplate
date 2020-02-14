@@ -111,9 +111,13 @@ public class GameWorld {
 		for (int i = 0; i < FireLoader.fires.length; i++) {
 			FireLoader.fires[i].updateObject(myGame, mapHandler);
 		}
-		for(int i = 0; i < CannonLoader.cannons.length; i++) {	
-			CannonLoader.cannons[i].updateObject(myGame, mapHandler);
+
+		if (!MissionStumpHole.missionIsActive) {
+			for(int i = 0; i < CannonLoader.cannons.length; i++) {	
+				CannonLoader.cannons[i].updateObject(myGame, mapHandler);
+			}
 		}
+		
 		/**
 		 * Since the stump hole mission is drawn directly over these game world stumps,
 		 * do not update game world stumps during stump hole mission.  
