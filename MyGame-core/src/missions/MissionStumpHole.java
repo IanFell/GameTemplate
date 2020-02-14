@@ -164,13 +164,15 @@ public class MissionStumpHole extends Mission {
 					-GameScreen.camera.viewportHeight
 					);
 
-			// Make attack bird fly in between stumps.
+			// Make attack bird fly in between stumps if he is not spinning.
 			for (int i = 0; i < stumps.size(); i++) {
 				if (i % 2 == 0) {
 					stumps.get(i).renderObject(batch, imageLoader);
 				}
 			}
-			attackBird.renderObject(batch, imageLoader);
+			if (!birdIsSpinning) {
+				attackBird.renderObject(batch, imageLoader);
+			}
 			for (int i = 0; i < stumps.size(); i++) {
 				if (i % 2 != 0) {
 					stumps.get(i).renderObject(batch, imageLoader);
@@ -187,6 +189,11 @@ public class MissionStumpHole extends Mission {
 			// Feathers only render when needed.
 			renderFeathers(batch, imageLoader);
 			renderFeatherValueMeter(batch, imageLoader);
+
+			// Render bird in front of water if he is spinning.
+			if (birdIsSpinning) {
+				attackBird.renderObject(batch, imageLoader);
+			}
 		} else {
 			bird.renderObject(batch, imageLoader);
 		}
