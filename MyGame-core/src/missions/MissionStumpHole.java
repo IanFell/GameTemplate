@@ -27,13 +27,16 @@ public class MissionStumpHole extends Mission {
 	private Feather featherTwo;
 	private Feather featherThree;
 
+	// Value each feather is worth when collected.
+	public static final float FEATHER_VALUE = 0.5f;
+
 	/**
 	 * This variable will not increase by 1 every time a feather is collected.
 	 * It will increase anywhere from 1-10 (based on time that player actually intersects with feather).
 	 * This makes it seem more random, since this mission is based on something like a health meter that
 	 * slowely rises, this seems like an okay thing to do so the mission is not the same every time.
 	 */
-	public static int featherValue = 0;
+	public static float playerFeatherScore;
 
 	public static boolean missionIsActive = false;
 
@@ -126,6 +129,8 @@ public class MissionStumpHole extends Mission {
 		playerDx        = 0.2f;
 		playerDy        = 0;
 		playerDirection = DIRECTION_RIGHT;
+
+		playerFeatherScore = 0;
 	}
 
 	private void loadStumps() {
@@ -205,7 +210,7 @@ public class MissionStumpHole extends Mission {
 				imageLoader.whiteSquare, 
 				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 7.5f, 
 				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 37.0f,
-				featherValue, 
+				playerFeatherScore, 
 				-height
 				);
 	}
@@ -217,13 +222,19 @@ public class MissionStumpHole extends Mission {
 	 */
 	private void renderFeathers(SpriteBatch batch, ImageLoader imageLoader) {
 		if (featherOne != null) {
-			featherOne.renderObject(batch, imageLoader);
+			if (!featherOne.hasBeenCollected) {
+				featherOne.renderObject(batch, imageLoader);
+			}
 		}
 		if (featherTwo != null) {
-			featherTwo.renderObject(batch, imageLoader);
+			if (!featherTwo.hasBeenCollected) {
+				featherTwo.renderObject(batch, imageLoader);
+			}
 		}
 		if (featherThree != null) {
-			featherThree.renderObject(batch, imageLoader);
+			if (!featherThree.hasBeenCollected) {
+				featherThree.renderObject(batch, imageLoader);
+			}
 		}
 	}
 
@@ -329,7 +340,7 @@ public class MissionStumpHole extends Mission {
 
 		updateFeathers(myGame, mapHandler);
 
-		if (featherValue >= FEATHER_VALUE_METER_MAX) {
+		if (playerFeatherScore >= FEATHER_VALUE_METER_MAX) {
 			System.exit(0);
 		}
 	}
