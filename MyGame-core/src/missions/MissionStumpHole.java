@@ -9,6 +9,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.Bird;
 import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
 import gameobjects.nature.Stump;
 import helpers.GameAttributeHelper;
@@ -122,8 +123,10 @@ public class MissionStumpHole extends Mission {
 				stumps.get(5).getX(), 
 				stumps.get(5).getY() - 3
 				);
-		attackBirdOriginX = attackBird.getX();
-		attackBirdOriginY = attackBird.getY();
+		attackBird.rectangle.width  = attackBird.getWidth();
+		attackBird.rectangle.height = attackBird.getHeight();
+		attackBirdOriginX           = attackBird.getX();
+		attackBirdOriginY           = attackBird.getY();
 
 		player          = new Rectangle(stumps.get(0).getX(), stumps.get(0).getY() - 60, playerSize, playerSize);
 		playerDx        = 0.2f;
@@ -303,7 +306,13 @@ public class MissionStumpHole extends Mission {
 	 */
 	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
+
 		applyPlayerPhysics();
+
+		attackBirdBreakTimer++;
+		attackBird.rectangle.x = attackBird.getX();
+		attackBird.rectangle.y = attackBird.getY();
+
 		if (playerIsJumping) {
 			// Player goes up.
 			playerDy = playerDy - VERTICAL_ACCELERATION;
@@ -318,8 +327,6 @@ public class MissionStumpHole extends Mission {
 		for (int i = 0; i < stumps.size(); i++) {
 			stumps.get(i).updateObject(myGame, mapHandler);
 		}
-
-		attackBirdBreakTimer++;
 
 		// If we have not completed the mission yet:
 		if (!secondAttackComplete) {
@@ -347,8 +354,16 @@ public class MissionStumpHole extends Mission {
 
 		updateFeathers(myGame, mapHandler);
 
+		// Player wins if he gets enough feathers.
 		if (playerFeatherScore >= FEATHER_VALUE_METER_MAX) {
-			System.exit(0);
+			missionIsActive = false;
+		}
+
+		// Player loses health if he gets hit by attack bird.
+		if (attackBird.rectangle.overlaps(player)) {
+			// Use actual game player variable to manipulate health.
+			GameObject realGamePlayer = myGame.getGameObject(Player.PLAYER_ONE);
+			realGamePlayer.setHealth(realGamePlayer.getHealth() - 1);
 		}
 	}
 

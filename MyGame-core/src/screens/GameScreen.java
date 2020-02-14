@@ -363,10 +363,7 @@ public class GameScreen extends Screens {
 		gun.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 		magicPearl.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 
-		// Clouds look weird rendered over the Stump Hole mission.
-		if (MissionStumpHole.missionIsActive) {
-			weatherHandler.renderClouds(myGame);
-		}
+		weatherHandler.renderClouds(myGame);
 	}
 
 	/*

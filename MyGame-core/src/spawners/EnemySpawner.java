@@ -9,6 +9,7 @@ import gameobjects.gamecharacters.Enemy;
 import loaders.GameObjectLoader;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import missions.MissionStumpHole;
 
 /**
  * 
@@ -68,18 +69,21 @@ public class EnemySpawner {
 	 * @param MapHandler mapHandler
 	 */
 	public void updateEnemies(MyGame myGame, MapHandler mapHandler) {
-		if (enemies != null) {
-			for (int i = 0; i < enemies.size(); i++) {
-				enemies.get(i).updateObject(myGame, mapHandler);
-				// If enemy is dead and his dead fire animation has ended.
-				if (enemies.get(i).isDead() && enemies.get(i).getTimer() >= Enemy.MAX_DEATH_ANIMATION_VALUE) {
-					GameObjectLoader.gameObjectList.remove(enemies.get(i));
-					enemies.remove(i);
+		// Ensure grunts dont kill player during a mission with a different screen.
+		if (!MissionStumpHole.missionIsActive) {
+			if (enemies != null) {
+				for (int i = 0; i < enemies.size(); i++) {
+					enemies.get(i).updateObject(myGame, mapHandler);
+					// If enemy is dead and his dead fire animation has ended.
+					if (enemies.get(i).isDead() && enemies.get(i).getTimer() >= Enemy.MAX_DEATH_ANIMATION_VALUE) {
+						GameObjectLoader.gameObjectList.remove(enemies.get(i));
+						enemies.remove(i);
+					}
 				}
 			}
-		}
-		if (enemies.size() < MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE) {
-			spawnEnemies(myGame, x, y);
+			if (enemies.size() < MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE) {
+				spawnEnemies(myGame, x, y);
+			}
 		}
 	}
 
