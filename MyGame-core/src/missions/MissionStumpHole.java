@@ -78,6 +78,8 @@ public class MissionStumpHole extends Mission {
 	private int jumpTimer                     = 0;
 	private final float VERTICAL_ACCELERATION = 0.8f;
 	private final float PEAK_JUMP_VALUE       = 3.0f;
+	// Use a different jumping variable than regular player so camera doesn't move everytime player jumps.
+	public static boolean jumpSoundShouldPlay = false;
 
 	// Player cannot fall past this barrier. 
 	private float gravityHaltBarrier;

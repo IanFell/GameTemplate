@@ -13,6 +13,7 @@ import loaders.SoundLoader;
 import loaders.cannonloader.CannonLoader;
 import loaders.chestloader.ChestLoader;
 import missions.MissionRawBar;
+import missions.MissionStumpHole;
 import screens.Screens;
 
 /**
@@ -147,11 +148,14 @@ public class SoundHandler {
 	}
 
 	/**
+	 * This also handles jumping audio in Stump Hole mission.
+	 * We use a different jumping variable in Stump Hole mission so the camera doesn't
+	 * move everytime the player jumps in that mission.
 	 * 
 	 * @param SoundLoader soundLoader
 	 */
 	private void handleJumpingAudio(SoundLoader soundLoader) {
-		if (Player.isJumping) {
+		if (Player.isJumping || MissionStumpHole.jumpSoundShouldPlay) {
 			if (jumpTimer < 1) {
 				soundLoader.jumpSound.play(AudioHandler.JUMP_VOLUME);
 			}
