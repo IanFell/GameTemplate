@@ -4,6 +4,7 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.Heart;
 import gameobjects.gamecharacters.Player;
+import gameobjects.nature.Feather;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.MagicPearl;
@@ -128,6 +129,10 @@ public class SoundHandler {
 					soundLoader.chestSound.play(AudioHandler.CHEST_VOLUME);
 					ChestLoader.chests[i].setPlaySound(false);
 				}
+			}
+			if (Feather.playSound) {
+				soundLoader.pickUpSwordSound.play(AudioHandler.MAX_VOLUME);
+				Feather.playSound = false;
 			}
 
 			// Click sound when choosing different inventory objects.
