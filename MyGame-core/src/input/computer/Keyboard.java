@@ -79,9 +79,15 @@ public class Keyboard extends ComputerInput {
 					if (Stump.playerIsOnStump) {
 						Stump.playerIsOnStump            = false;
 						MissionStumpHole.playerIsJumping = true;
+						Player.isJumping = true;
 					}
 				} else {
 					Player.isJumping = true;
+				}
+			} else {
+				// If we have released space bar.
+				if (MissionStumpHole.missionIsActive) {
+					Player.isJumping = false;
 				}
 			}
 
