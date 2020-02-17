@@ -98,6 +98,7 @@ public class ImageLoader {
 	public Texture missionRawBarInside;
 	public Texture missionTransparentBlueSquare;
 	public Texture collectOysters;
+	public Texture collectFeathers;
 	public Texture rightHand;
 	public Texture leftHand;
 	public Texture rightHandClosed;
@@ -242,6 +243,7 @@ public class ImageLoader {
 		missionRawBarInside                    = new Texture(Gdx.files.internal("artwork/missions/RawBarMissionInside.png"));
 		missionTransparentBlueSquare           = new Texture(Gdx.files.internal("artwork/missions/TransparentBlueSquare.png"));
 		collectOysters                         = new Texture(Gdx.files.internal("artwork/missions/CollectOysters.png"));
+		collectFeathers                        = new Texture(Gdx.files.internal("artwork/missions/CollectFeathers.png"));
 		rightHand      						   = new Texture(Gdx.files.internal("artwork/missions/HandOpenRight.png"));
 		leftHand      						   = new Texture(Gdx.files.internal("artwork/missions/HandOpenLeft.png"));
 		rightHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedRight.png"));
@@ -397,6 +399,7 @@ public class ImageLoader {
 		missionRawBarInside.dispose();
 		missionTransparentBlueSquare.dispose();
 		collectOysters.dispose();
+		collectFeathers.dispose();
 		rightHand.dispose();
 		leftHand.dispose();
 		rightHandClosed.dispose();

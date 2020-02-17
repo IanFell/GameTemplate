@@ -95,7 +95,7 @@ public class MissionRawBar extends Mission {
 
 	public static final float MISSION_RAW_BAR_SPEED = 0.3f;
 
-	private static int introTimer             = 0;
+	private static int introTimer            = 0;
 	public static boolean introHasCompleted  = false;
 
 	public static boolean rawBarMissionComplete = false;

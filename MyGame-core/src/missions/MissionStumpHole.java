@@ -31,6 +31,8 @@ public class MissionStumpHole extends Mission {
 	// Value each feather is worth when collected.
 	public static final float FEATHER_VALUE = 0.5f;
 
+	private final float FEATHER_VALUE_METER_MAX = 8.0f;
+
 	/**
 	 * This variable will not increase by 1 every time a feather is collected.
 	 * It will increase anywhere from 1-10 (based on time that player actually intersects with feather).
@@ -98,7 +100,7 @@ public class MissionStumpHole extends Mission {
 	private final int WAVE_THREE = 3;
 	private int wave             = WAVE_ONE;
 
-	private boolean firstAttackComplete = false;
+	private boolean firstAttackComplete  = false;
 	private boolean secondAttackComplete = false;
 
 	private boolean reset = true;
@@ -106,7 +108,8 @@ public class MissionStumpHole extends Mission {
 	private int breakTimer            = 0;
 	private final int MAX_BREAK_VALUE = 30;
 
-	private final float FEATHER_VALUE_METER_MAX = 8.0f;
+	private int collectFeathersUiTimer;
+	private final int COLLECT_FEATHERS_UI_TIMER_MAX = 50;
 
 	/**
 	 * Constructor.
@@ -136,6 +139,8 @@ public class MissionStumpHole extends Mission {
 		playerDirection = DIRECTION_RIGHT;
 
 		playerFeatherScore = 0;
+
+		collectFeathersUiTimer = 0;
 	}
 
 	private void loadStumps() {
@@ -198,6 +203,10 @@ public class MissionStumpHole extends Mission {
 			// Render bird in front of water if he is spinning.
 			if (birdIsSpinning) {
 				attackBird.renderObject(batch, imageLoader);
+			}
+
+			if (collectFeathersUiTimer < COLLECT_FEATHERS_UI_TIMER_MAX) {
+				renderMissionMessage(batch, myGame, imageLoader.collectFeathers);
 			}
 		} else {
 			bird.renderObject(batch, imageLoader);
@@ -355,6 +364,7 @@ public class MissionStumpHole extends Mission {
 		}
 
 		updateFeathers(myGame, mapHandler);
+		collectFeathersUiTimer++;
 
 		// Player wins if he gets enough feathers.
 		if (playerFeatherScore >= FEATHER_VALUE_METER_MAX) {
