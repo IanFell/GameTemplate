@@ -27,7 +27,7 @@ public class PlayerOne extends Player {
 
 	private float animationSpeed;
 
-	private final float BOUNCE_BACK_STARTING_VALUE = 0.06f;
+	private final float BOUNCE_BACK_STARTING_VALUE = 0.7f;
 	private float bounceBackIncrement              = BOUNCE_BACK_STARTING_VALUE;
 	private boolean isBouncingBack                 = false;
 
@@ -148,7 +148,6 @@ public class PlayerOne extends Player {
 				y -= bounceBackIncrement;
 				break;
 			}
-			bounceBackIncrement *= 1.7f;
 		} else {
 			bounceBackIncrement = BOUNCE_BACK_STARTING_VALUE;
 			isBouncingBack = false;
