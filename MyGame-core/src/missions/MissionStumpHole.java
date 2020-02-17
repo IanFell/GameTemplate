@@ -447,6 +447,7 @@ public class MissionStumpHole extends Mission {
 	 * @param int attackNumber
 	 */
 	private void moveAttackBirdRight(int attackNumber) {
+		attackBird.setDirection(DIRECTION_RIGHT);
 		attackBird.setX(attackBird.getX() + attackBirdDx);
 		if (attackNumber == ATTACK_ONE) {
 			if (attackBirdHasReachedRightBoundary()) {
@@ -466,6 +467,7 @@ public class MissionStumpHole extends Mission {
 	 * @param int attackNumber
 	 */
 	private void moveAttackBirdLeft(int attackNumber) {
+		attackBird.setDirection(DIRECTION_LEFT);
 		attackBird.setX(attackBird.getX() - attackBirdDx);
 		if (attackNumber == ATTACK_ONE) {
 			if (attackBirdHasReachedLeftBoundary()) {

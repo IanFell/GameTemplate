@@ -93,9 +93,9 @@ public class MissionHandler extends Mission {
 				handleRawBarMission(myGame);
 			}
 
-			if (MissionRawBar.missionComplete) {
+			//if (MissionRawBar.missionComplete) {
 				missionStumpHole.updateMission(myGame, mapHandler);
-			}
+			//}
 		}
 	}
 
@@ -161,9 +161,9 @@ public class MissionHandler extends Mission {
 				renderMissionStartMessage(batch, myGame, imageLoader.goToTheRawBar);
 			} 
 
-			if (MissionRawBar.missionComplete) {
+			//if (MissionRawBar.missionComplete) {
 				missionStumpHole.renderMission(batch, imageLoader, myGame);
-			}
+			//}
 		}
 	}
 

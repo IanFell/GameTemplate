@@ -351,7 +351,7 @@ public class CollisionHandler {
 	 * @param Stump      stump
 	 */
 	public static void checkIfPlayerCollidedWithStump(GameObject player, Stump stump) {
-		if (player.rectangle.overlaps(stump.rectangle) && MissionRawBar.rawBarMissionComplete) {
+		if (player.rectangle.overlaps(stump.rectangle) /*&& MissionRawBar.rawBarMissionComplete*/) {
 			MissionStumpHole.missionIsActive = true;
 		}
 	}
