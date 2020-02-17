@@ -38,10 +38,10 @@ public class CutSceneIntro extends CutScene {
 		anyCutSceneIsInProgress = true;
 		
 		/**
-		 * Comment this out to play the fulllength cutscene.
+		 * Comment this out to play the fullength cutscene.
 		 * Else start cutscene at very end so it also renders the UI.
 		 */
-		timer = dialogueLength * 9 - 2;
+		//timer = dialogueLength * 9 - 2;
 	}
 
 	/**

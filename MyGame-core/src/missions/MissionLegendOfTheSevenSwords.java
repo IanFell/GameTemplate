@@ -111,7 +111,8 @@ public class MissionLegendOfTheSevenSwords extends Mission {
 			//renderMissionMessage(batch, myGame, imageLoader.missionComplete);
 		}
 
-		renderMissionStartMessage(batch, myGame, imageLoader.legendOfTheSevenSwordsBeginMissionText);
+		// Remove this for now.
+		//renderMissionStartMessage(batch, myGame, imageLoader.legendOfTheSevenSwordsBeginMissionText);
 	}
 
 	/**

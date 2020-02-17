@@ -27,9 +27,9 @@ public class MissionHandler extends Mission {
 	 * to work.  If the time limit runs out, the rest of the missions get all 
 	 * fucked up.
 	 */
-	private final long MISSION_CHEST_START_TIME_VALUE = 1000000000L;
+	//private final long MISSION_CHEST_START_TIME_VALUE = 1000000000L;
 
-	private int timer = 0;
+	//private int timer = 0;
 
 	private MissionChests missionChests;
 	private MissionLegendOfTheSevenSwords missionLegendOfTheSevenSwords;
@@ -75,24 +75,27 @@ public class MissionHandler extends Mission {
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		if (!CutScene.anyCutSceneIsInProgress) {
-			missionStumpHole.updateMission(myGame, mapHandler);
-			/*
 			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
-			if (!MissionChests.missionComplete) {
-				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
-			}
+			//if (!MissionChests.missionComplete) {
+			missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
+			//timer++;
+			//}
 
 			handleGoToRawBarMessage();
+
+			if (MissionRawBar.startMission && setUpRawBarMission ) {
+				MissionRawBar.missionIsActive = true;
+				setUpRawBarMission            = false;
+			} 
 
 			if (MissionRawBar.missionIsActive) {
 				handleRawBarMission(myGame);
 			}
 
-			if (MissionRawBar.startMission && setUpRawBarMission ) {
-				MissionRawBar.missionIsActive = true;
-				setUpRawBarMission            = false;
-			} */
+			if (MissionRawBar.missionComplete) {
+				missionStumpHole.updateMission(myGame, mapHandler);
+			}
 		}
 	}
 
@@ -138,17 +141,17 @@ public class MissionHandler extends Mission {
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (!CutScene.anyCutSceneIsInProgress) {
-			missionStumpHole.renderMission(batch, imageLoader, myGame);
 			/**
 			 * This mission runs throughout the whole entire game.  It will always be active.
 			 * The only way to beat the game is to collect all the seven swords.
 			 */
-			/*
+
 			missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 
-			if (timer > MISSION_CHEST_START_TIME_VALUE) {
-				missionChests.renderMission(batch, imageLoader, myGame);
-			}
+			// For now just start mission after cutscene.
+			//if (timer > MISSION_CHEST_START_TIME_VALUE) {
+			missionChests.renderMission(batch, imageLoader, myGame);
+			//}
 
 			if (MissionRawBar.missionIsActive) {
 				renderRawBarMission(batch, imageLoader, myGame);
@@ -156,7 +159,11 @@ public class MissionHandler extends Mission {
 
 			if (displayGoToRawBar) {
 				renderMissionStartMessage(batch, myGame, imageLoader.goToTheRawBar);
-			} */
+			} 
+
+			if (MissionRawBar.missionComplete) {
+				missionStumpHole.renderMission(batch, imageLoader, myGame);
+			}
 		}
 	}
 
