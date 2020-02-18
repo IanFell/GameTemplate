@@ -52,7 +52,7 @@ public class SelectedInventoryUi {
 				image = imageLoader.legendSwordRainbow;
 			} else if (object instanceof BirdWeapon) {
 				// This doesn't actually do anything, but we need it so we don't throw a null pointer on the image variable.
-				image = imageLoader.whiteSquare;
+				image = imageLoader.attackBird;
 			}
 
 			// Lastly, draw correct inventory object.

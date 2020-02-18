@@ -131,6 +131,7 @@ public class ImageLoader {
 	public Texture inventoryScreen;
 	public Texture inventoryLabel;
 	public Texture locationSkull;
+	public Texture attackBird;
 
 	// Player name UI labels.
 	public Texture jollyRogerUiNameLabel;
@@ -276,6 +277,7 @@ public class ImageLoader {
 		inventoryScreen        = new Texture(Gdx.files.internal("artwork/ui/InventoryScreen.png"));
 		inventoryLabel         = new Texture(Gdx.files.internal("artwork/ui/InventoryLabel.png"));
 		locationSkull          = new Texture(Gdx.files.internal("artwork/ui/Skull.png"));
+		attackBird             = new Texture(Gdx.files.internal("artwork/ui/AttackBird.png"));
 
 		// Player name UI labels.
 		jollyRogerUiNameLabel = new Texture(Gdx.files.internal("artwork/ui/playernames/JollyRoger.png"));
@@ -432,6 +434,7 @@ public class ImageLoader {
 		inventoryScreen.dispose();
 		inventoryLabel.dispose();
 		locationSkull.dispose();
+		attackBird.dispose();
 
 		// Player name UI labels.
 		jollyRogerUiNameLabel.dispose();
