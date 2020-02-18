@@ -52,6 +52,7 @@ public class BirdWeapon extends Weapon {
 		direction         = Player.direction;
 		hasBeenCollected  = false;
 		dx                = 0;
+		dy                = 0;
 	}
 
 	/**
@@ -61,15 +62,29 @@ public class BirdWeapon extends Weapon {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		direction = Player.direction;
 		x += dx;
+		y += dy;
 		rectangle.x = x;
 		rectangle.y = y;
 
 		if (birdIsAttacking) {
-			dx += 1;
+			switch (Player.direction) {
+			case Player.DIRECTION_LEFT:
+				dx -= 1;
+				break;
+			case Player.DIRECTION_RIGHT:
+				dx += 1;
+				break;
+			case Player.DIRECTION_UP:
+				dy -= 1;
+				break;
+			case Player.DIRECTION_DOWN:
+				dy += 1;
+				break;
+			}
 		} else {
 			dx = 0;
+			dy = 0;
 		}
 
 		if (!hasBeenCollected) {
