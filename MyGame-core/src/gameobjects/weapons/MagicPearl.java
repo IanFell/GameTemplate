@@ -74,6 +74,7 @@ public class MagicPearl extends Weapon {
 				// Player has just thrown pearl.
 				if (isAttacking && isMovingForward) {
 					myGame.gameScreen.enemyHandler.checkProjectileCollision(myGame, this);
+					myGame.gameScreen.gruntHandler.checkProjectileCollision(myGame, this);
 					switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
 					case Player.DIRECTION_RIGHT:
 						dx = 1;

@@ -8,6 +8,7 @@ import controllers.GameStateController;
 import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.BirdWeapon;
 import gameobjects.weapons.MagicPearl;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
@@ -79,6 +80,9 @@ public class Mouse extends ComputerInput {
 							MagicPearl.isAttacking     = true;
 							MagicPearl.isMovingForward = true;
 						}
+						if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof BirdWeapon) {
+							BirdWeapon.birdIsAttacking = true;
+						}
 					}
 				} else {
 					Player.playerIsPerformingAttack = false;
@@ -88,6 +92,9 @@ public class Mouse extends ComputerInput {
 							MagicPearl.hasReachedPeakDistance = true;
 							MagicPearl.isMovingForward        = false;
 							MagicPearl.isMovingBackward       = true;
+						}
+						if (myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof BirdWeapon) {
+							BirdWeapon.birdIsAttacking = false;
 						}
 					}
 				}

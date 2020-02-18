@@ -7,6 +7,7 @@ import controllers.PlayerController;
 import cutscenes.CutSceneIntro;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.BirdWeapon;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.MagicPearl;
 import handlers.EnemyHandler;
@@ -102,6 +103,7 @@ public class GameScreen extends Screens {
 
 	public Gun gun;
 	public MagicPearl magicPearl;
+	public BirdWeapon birdWeapon;
 
 	public EnemyHandler enemyHandler = new EnemyHandler();
 	public GruntHandler gruntHandler = new GruntHandler();
@@ -197,6 +199,10 @@ public class GameScreen extends Screens {
 				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 35, 
 				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45
 				);
+		birdWeapon     = new BirdWeapon(
+				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 12, 
+				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 52
+				);
 		heartHandler.init();
 
 		/**
@@ -276,6 +282,7 @@ public class GameScreen extends Screens {
 
 		gun.updateObject(myGame, mapHandler);
 		magicPearl.updateObject(myGame, mapHandler);
+		birdWeapon.updateObject(myGame, mapHandler);
 	}
 
 	private void renderObjectsOnGameScreenThatUseSpriteBatch() {
@@ -362,6 +369,7 @@ public class GameScreen extends Screens {
 
 		gun.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 		magicPearl.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
+		birdWeapon.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 
 		weatherHandler.renderClouds(myGame);
 	}

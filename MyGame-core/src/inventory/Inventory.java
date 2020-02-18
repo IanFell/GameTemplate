@@ -9,6 +9,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
+import gameobjects.weapons.BirdWeapon;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.MagicPearl;
@@ -90,6 +91,8 @@ public class Inventory extends Screens {
 			objectType = Weapon.WEAPON_TYPE_GUN;
 		} else if (inventory.get(currentlySelectedInventoryObject) instanceof MagicPearl) {
 			objectType = Weapon.WEAPON_TYPE_MAGIC_PEARL;
+		} else if (inventory.get(currentlySelectedInventoryObject) instanceof BirdWeapon) {
+			objectType = Weapon.WEAPON_TYPE_BIRD;
 		}
 		if (inventory.size() >= 0) {
 			for (int i = 0; i < inventory.size(); i++) {
@@ -99,6 +102,8 @@ public class Inventory extends Screens {
 					updateGun(i, xPosition, yPosition, x, y);
 				} else if (objectType == Weapon.WEAPON_TYPE_MAGIC_PEARL) {
 					updateMagicPearl(i, xPosition, yPosition, x, y);
+				} else if (objectType == Weapon.WEAPON_TYPE_BIRD) {
+					updateBirdWeapon(i, xPosition, yPosition, x, y);
 				}
 				if (Inventory.allInventoryShouldBeRendered) {
 					fire.updateObject(myGame, mapHandler);
@@ -107,6 +112,47 @@ public class Inventory extends Screens {
 		}
 	}
 
+	/**
+	 * 
+	 * @param int   selectedInventory
+	 * @param float xPosition
+	 * @param float yPosition
+	 * @param float x
+	 * @param float y
+	 */
+	private void updateBirdWeapon(int selectedInventory, float xPosition, float yPosition, float x, float y) {
+		if (!MagicPearl.isAttacking) {
+			switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
+			case Player.DIRECTION_RIGHT:
+				xPosition = x;
+				yPosition = y - 1;
+				break;
+			case Player.DIRECTION_LEFT:
+				xPosition = x;
+				yPosition = y - 1;
+				break;
+			case Player.DIRECTION_DOWN:
+				xPosition = x - 1;
+				yPosition = y;
+				break;
+			case Player.DIRECTION_UP:
+				xPosition = x - 1;
+				yPosition = y - 1;
+				break;
+			}	
+			inventory.get(selectedInventory).setX(xPosition);
+			inventory.get(selectedInventory).setY(yPosition);
+		}
+	}
+
+	/**
+	 * 
+	 * @param int   selectedInventory
+	 * @param float xPosition
+	 * @param float yPosition
+	 * @param float x
+	 * @param float y
+	 */
 	private void updateMagicPearl(int selectedInventory, float xPosition, float yPosition, float x, float y) {
 		if (!MagicPearl.isAttacking) {
 			switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {

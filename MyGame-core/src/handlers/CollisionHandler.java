@@ -251,6 +251,21 @@ public class CollisionHandler {
 
 	/**
 	 * 
+	 * @param GameObject player
+	 * @param GameObject birdWeapon
+	 */
+	public static void checkIfPlayerHasCollidedWithBirdWeapon(GameObject player, GameObject birdWeapon) {
+		if (birdWeapon.rectangle.overlaps(player.rectangle)) {
+			((Player) player).getInventory().addObjectToInventory(birdWeapon);
+			Inventory.inventoryHasStartedCollection = true;
+			birdWeapon.hasBeenCollected             = true;
+			//MagicPearl.playCollectionSound        = true;
+			GameObjectLoader.gameObjectList.add(birdWeapon);
+		}
+	}
+
+	/**
+	 * 
 	 * @param Enemy  enemy
 	 * @param Weapon weapon
 	 */
@@ -271,9 +286,9 @@ public class CollisionHandler {
 	 * @param Weapon weapon
 	 */
 	public static void checkIfProjectileHasCollidedWithEnemy(Enemy enemy, Weapon weapon)  {
-		if (Inventory.inventoryIsEquipped) {
+		if (Inventory.inventoryIsEquipped) {  
 			// Checking if dead is false keeps the sound from playing repeatedly.
-			if (enemy.rectangle.overlaps(weapon.rectangle) && !enemy.isDead()) {
+			if (enemy.rectangle.overlaps(weapon.rectangle) /*&& !enemy.isDead()*/) {
 				handleEnemyDeath(enemy);
 			}
 		}
