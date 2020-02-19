@@ -315,4 +315,27 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	 * @param int loot
 	 */
 	public void updatePlayerLoot(int loot) {}
+
+	/**
+	 * 
+	 * @param boolean hasBeenCollected
+	 */
+	public void setHasBeenCollected(boolean hasBeenCollected) {
+		this.hasBeenCollected = hasBeenCollected;
+	}
+
+	/**
+	 * This method makes collectibles grow after they are collected.
+	 * Some collectibles include:
+	 *     - hearts
+	 *     - rum
+	 */
+	protected void grow() {
+		int doubleGrowth = 2;
+		float growValue  = 0.2f;
+		x -= growValue;
+		y -= growValue;
+		width  += growValue * doubleGrowth;
+		height += growValue * doubleGrowth;
+	}
 }

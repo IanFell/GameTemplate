@@ -19,6 +19,7 @@ public class UserInterface {
 	private LootUi lootUi;
 	private PlayerNameUi playerNameUi;
 	private SelectedInventoryUi selectedInventoryUi;
+	private RumUi rumUi;
 
 	/**
 	 * Constructor.
@@ -28,6 +29,7 @@ public class UserInterface {
 		lootUi              = new LootUi();
 		playerNameUi        = new PlayerNameUi();
 		selectedInventoryUi = new SelectedInventoryUi();
+		rumUi               = new RumUi();
 	}
 
 	/**
@@ -42,6 +44,7 @@ public class UserInterface {
 			healthUi.renderHealthUi(batch, imageLoader, myGame);
 			GameObject player = PlayerController.getCurrentPlayer(myGame);
 			lootUi.renderUi(batch, imageLoader, myGame, player.convertPlayerLootToString(), player, 11.0f, -6.0f);
+			rumUi.renderUi(batch, imageLoader, myGame, player, 13.0f, -2.0f);
 			playerNameUi.renderUi(batch, imageLoader, myGame, player, 10.5f, 6.0f);
 			selectedInventoryUi.renderSelectedInventoryUi(batch, imageLoader, myGame, player);
 		}

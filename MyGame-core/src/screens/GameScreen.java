@@ -14,6 +14,7 @@ import handlers.EnemyHandler;
 import handlers.GruntHandler;
 import handlers.HeartHandler;
 import handlers.MissionHandler;
+import handlers.RumHandler;
 import handlers.TownHandler;
 import handlers.WeaponHandler;
 import helpers.GameAttributeHelper;
@@ -112,6 +113,8 @@ public class GameScreen extends Screens {
 
 	private HeartHandler heartHandler = new HeartHandler();
 
+	private RumHandler rumHandler = new RumHandler();
+
 	private CutSceneIntro cutSceneIntro;
 
 	/**
@@ -204,6 +207,7 @@ public class GameScreen extends Screens {
 				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 46
 				);
 		heartHandler.init();
+		rumHandler.init();
 
 		/**
 		 * This overlays the game screen and fades out from black.
@@ -279,6 +283,7 @@ public class GameScreen extends Screens {
 		}
 
 		heartHandler.updateHearts(myGame, mapHandler);
+		rumHandler.updateRum(myGame, mapHandler);
 
 		gun.updateObject(myGame, mapHandler);
 		magicPearl.updateObject(myGame, mapHandler);
@@ -312,6 +317,12 @@ public class GameScreen extends Screens {
 
 		// These are not rendered in the game object list so they're not accidently rendered behind other objects.
 		heartHandler.renderHearts(
+				myGame.renderer.batch, 
+				myGame.imageLoader
+				);
+
+		// These are not rendered in the game object list so they're not accidently rendered behind other objects.
+		rumHandler.renderRum(
 				myGame.renderer.batch, 
 				myGame.imageLoader
 				);

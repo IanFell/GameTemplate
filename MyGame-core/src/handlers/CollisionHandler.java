@@ -6,6 +6,7 @@ import com.mygdx.mygame.MyGame;
 import cutscenes.CutScene;
 import gameobjects.GameObject;
 import gameobjects.Heart;
+import gameobjects.Rum;
 import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
@@ -359,6 +360,23 @@ public class CollisionHandler {
 	}
 
 	/**
+	 * TODO Change this sound and health.
+	 */
+	/**
+	 * 
+	 * @param GameObject player
+	 * @param Rum        rum
+	 */
+	public static void checkIfPlayerCollidedWithRum(GameObject player, Rum rum) {
+		if (player.rectangle.overlaps(rum.rectangle)) {
+			rum.setHasBeenCollected(true);
+			((Player) player).setHealth(player.getHealth() + Heart.HEALTH);
+			Heart.playSound = true;
+			RumHandler.rumCount++;
+		}
+	}
+
+	/**
 	 * Collision with a stump starts the mission.
 	 * 
 	 * @param GameObject player
@@ -401,6 +419,7 @@ public class CollisionHandler {
 	}
 
 	/**
+	 * Attack bird is in Stump Hole mission.
 	 * 
 	 * @param GameObject player
 	 * @param Rectangle  birdWeapon
