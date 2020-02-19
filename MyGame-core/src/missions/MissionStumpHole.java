@@ -27,6 +27,8 @@ public class MissionStumpHole extends Mission {
 
 	// When this is true, bird weapon will appear on screen.
 	public static boolean stumpHoleMissionComplete;
+	
+	private int renderMissionCompleteMessage;
 
 	private int locationFlashTimer = 0;
 
@@ -35,7 +37,7 @@ public class MissionStumpHole extends Mission {
 	private Feather featherThree;
 
 	// Value each feather is worth when collected.
-	public static final float FEATHER_VALUE = 1.0f;
+	public static final float FEATHER_VALUE = 8.0f;
 
 	private final float FEATHER_VALUE_METER_MAX = 8.0f;
 
@@ -124,7 +126,8 @@ public class MissionStumpHole extends Mission {
 	 * Constructor.
 	 */
 	public MissionStumpHole() {
-		stumpHoleMissionComplete = false;
+		stumpHoleMissionComplete     = false;
+		renderMissionCompleteMessage = 0;
 		loadStumps();
 		gravityHaltBarrier = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 43;
 		// Place this bird on last stump of row one of stumps.
@@ -229,7 +232,7 @@ public class MissionStumpHole extends Mission {
 		} else {
 			bird.renderObject(batch, imageLoader);
 			// Flash location icon so player knows where to go.
-			if (locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5) {
+			if (locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5 && !stumpHoleMissionComplete) {
 				batch.draw(
 						imageLoader.locationSkull, 
 						startMissionMarker.x, 
@@ -237,6 +240,12 @@ public class MissionStumpHole extends Mission {
 						startMissionMarker.width, 
 						-startMissionMarker.height
 						);
+			}
+		}
+		if (stumpHoleMissionComplete) {
+			renderMissionCompleteMessage++;
+			if (renderMissionCompleteMessage < 50) {
+				renderMissionMessage(batch, myGame, imageLoader.missionComplete);
 			}
 		}
 	}

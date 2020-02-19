@@ -201,7 +201,7 @@ public class GameScreen extends Screens {
 				);
 		birdWeapon     = new BirdWeapon(
 				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 12, 
-				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 52
+				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 46
 				);
 		heartHandler.init();
 
