@@ -13,6 +13,7 @@ import handlers.CollisionHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import missions.MissionStumpHole;
 
 /**
  * 
@@ -62,80 +63,62 @@ public class BirdWeapon extends Weapon {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		x += dx;
-		y += dy;
-		rectangle.x = x;
-		rectangle.y = y;
+		if (MissionStumpHole.stumpHoleMissionComplete) {
+			x += dx;
+			y += dy;
+			rectangle.x = x;
+			rectangle.y = y;
 
-		if (birdIsAttacking) {
-			switch (Player.direction) {
-			case Player.DIRECTION_LEFT:
-				dx -= 1;
-				break;
-			case Player.DIRECTION_RIGHT:
-				dx += 1;
-				break;
-			case Player.DIRECTION_UP:
-				dy -= 1;
-				break;
-			case Player.DIRECTION_DOWN:
-				dy += 1;
-				break;
+			if (birdIsAttacking) {
+				determineBirdDirection();
+			} else {
+				dx = 0;
+				dy = 0;
 			}
-		} else {
-			dx = 0;
-			dy = 0;
-		}
 
-		if (!hasBeenCollected) {
-			CollisionHandler.checkIfPlayerHasCollidedWithBirdWeapon(myGame.getGameObject(Player.PLAYER_ONE), this);
-		} else {
-			// Bird can kill enemies even if he is just sitting on the player's shoulder.
-			myGame.gameScreen.enemyHandler.checkProjectileCollision(myGame, this);
-			myGame.gameScreen.gruntHandler.checkProjectileCollision(myGame, this);
+			if (!hasBeenCollected) {
+				// Check if player has picked up bird weapon.
+				CollisionHandler.checkIfPlayerHasCollidedWithBirdWeapon(myGame.getGameObject(Player.PLAYER_ONE), this);
+			} else {
+				// Bird can kill enemies even if he is just sitting on the player's shoulder.
+				myGame.gameScreen.enemyHandler.checkProjectileCollision(myGame, this);
+				myGame.gameScreen.gruntHandler.checkProjectileCollision(myGame, this);
+			}
+		}
+	}
+
+	private void determineBirdDirection() {
+		switch (Player.direction) {
+		case Player.DIRECTION_LEFT:
+			dx -= 1;
+			break;
+		case Player.DIRECTION_RIGHT:
+			dx += 1;
+			break;
+		case Player.DIRECTION_UP:
+			dy -= 1;
+			break;
+		case Player.DIRECTION_DOWN:
+			dy += 1;
+			break;
 		}
 	}
 
 	/**
 	 * 
-	 * @param SpriteBatch  batch
-	 * @param ImageLoader  imageLoader
-	 * @param MyGame       myGame
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param MyGame      myGame
 	 */
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
-		updateElapsedTime();
-		Animation <TextureRegion> animation = animationLeft;
-		if (direction == Player.DIRECTION_RIGHT) {
-			animation = animationRight;
-		}
+		if (MissionStumpHole.stumpHoleMissionComplete) {
+			updateElapsedTime();
+			Animation <TextureRegion> animation = animationLeft;
+			if (direction == Player.DIRECTION_RIGHT) {
+				animation = animationRight;
+			}
 
-		if (!hasBeenCollected) {
-			AnimationHandler.renderAnimation(
-					batch, 
-					elapsedTime, 
-					animation, 
-					x, 
-					y, 
-					width, 
-					height,
-					imageLoader, 
-					AnimationHandler.OBJECT_TYPE_BIRD
-					);
-		} else if ((myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) == this && Inventory.inventoryIsEquipped) || Inventory.allInventoryShouldBeRendered) {
-			if (Inventory.allInventoryShouldBeRendered) {
-				// Force bird to face right if inventory is open.
-				AnimationHandler.renderAnimation(
-						batch, 
-						elapsedTime, 
-						animationRight, 
-						x, 
-						y, 
-						width, 
-						height,
-						imageLoader, 
-						AnimationHandler.OBJECT_TYPE_BIRD
-						);
-			} else {
+			if (!hasBeenCollected) {
 				AnimationHandler.renderAnimation(
 						batch, 
 						elapsedTime, 
@@ -147,8 +130,35 @@ public class BirdWeapon extends Weapon {
 						imageLoader, 
 						AnimationHandler.OBJECT_TYPE_BIRD
 						);
+			} else if ((myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) == this && Inventory.inventoryIsEquipped) || Inventory.allInventoryShouldBeRendered) {
+				if (Inventory.allInventoryShouldBeRendered) {
+					// Force bird to face right if inventory is open.
+					AnimationHandler.renderAnimation(
+							batch, 
+							elapsedTime, 
+							animationRight, 
+							x, 
+							y, 
+							width, 
+							height,
+							imageLoader, 
+							AnimationHandler.OBJECT_TYPE_BIRD
+							);
+				} else {
+					AnimationHandler.renderAnimation(
+							batch, 
+							elapsedTime, 
+							animation, 
+							x, 
+							y, 
+							width, 
+							height,
+							imageLoader, 
+							AnimationHandler.OBJECT_TYPE_BIRD
+							);
+				}
+				//renderHitBox(batch, imageLoader);
 			}
-			//renderHitBox(batch, imageLoader);
 		}
 	}
 

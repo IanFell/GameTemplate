@@ -3,8 +3,6 @@ package gameobjects.nature;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
-import controllers.PlayerController;
-import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import missions.MissionStumpHole;
@@ -77,7 +75,8 @@ public class Stump extends NatureObject {
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
 		if (!MissionStumpHole.missionIsActive) {
-			CollisionHandler.checkIfPlayerCollidedWithStump(PlayerController.getCurrentPlayer(myGame), this);
+			// This is now handled by an icon that player needs to touch.
+			//CollisionHandler.checkIfPlayerCollidedWithStump(PlayerController.getCurrentPlayer(myGame), this);
 		} else {
 			animateStumps();
 			checkStumpCollisionWithPlayer();

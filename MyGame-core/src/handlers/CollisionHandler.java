@@ -9,7 +9,6 @@ import gameobjects.Heart;
 import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
-import gameobjects.nature.Stump;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.stationarygameobjects.buildings.TradingPost;
 import gameobjects.weapons.CannonBall;
@@ -365,8 +364,21 @@ public class CollisionHandler {
 	 * @param GameObject player
 	 * @param Stump      stump
 	 */
+	/*
 	public static void checkIfPlayerCollidedWithStump(GameObject player, Stump stump) {
-		if (player.rectangle.overlaps(stump.rectangle) /*&& MissionRawBar.rawBarMissionComplete*/) {
+		if (player.rectangle.overlaps(stump.rectangle) && MissionRawBar.rawBarMissionComplete) {
+			MissionStumpHole.missionIsActive = true;
+		}
+	} */
+
+	/**
+	 * Alternative to collision with stumps in order to start Stump Hole mission.
+	 * 
+	 * @param GameObject player
+	 * @param Rectangle  startMissionMarker
+	 */
+	public static void checkIfPlayerHasCollidedWithMissionStumpHoleStartingIcon(GameObject player, Rectangle startMissionMarker) {
+		if (startMissionMarker.overlaps(player.rectangle)) {
 			MissionStumpHole.missionIsActive = true;
 		}
 	}
@@ -385,6 +397,17 @@ public class CollisionHandler {
 				feather.hasBeenCollected = true;
 				Feather.playSound        = true;
 			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param GameObject player
+	 * @param Rectangle  birdWeapon
+	 */
+	public static void checkIfPlayerHasCollidedWithAttackBird(GameObject player, Rectangle birdWeapon) {
+		if (birdWeapon.overlaps(player.rectangle)) {
+			player.setHealth(player.getHealth() - 1);
 		}
 	}
 }

@@ -12,6 +12,7 @@ import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
 import gameobjects.nature.Stump;
+import handlers.CollisionHandler;
 import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -24,12 +25,17 @@ import screens.GameScreen;
  */
 public class MissionStumpHole extends Mission {
 
+	// When this is true, bird weapon will appear on screen.
+	public static boolean stumpHoleMissionComplete;
+
+	private int locationFlashTimer = 0;
+
 	private Feather featherOne;
 	private Feather featherTwo;
 	private Feather featherThree;
 
 	// Value each feather is worth when collected.
-	public static final float FEATHER_VALUE = 0.5f;
+	public static final float FEATHER_VALUE = 1.0f;
 
 	private final float FEATHER_VALUE_METER_MAX = 8.0f;
 
@@ -111,10 +117,14 @@ public class MissionStumpHole extends Mission {
 	private int collectFeathersUiTimer;
 	private final int COLLECT_FEATHERS_UI_TIMER_MAX = 50;
 
+	// Flashing skull to let player know where to go to start mission.
+	private Rectangle startMissionMarker;
+
 	/**
 	 * Constructor.
 	 */
 	public MissionStumpHole() {
+		stumpHoleMissionComplete = false;
 		loadStumps();
 		gravityHaltBarrier = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 43;
 		// Place this bird on last stump of row one of stumps.
@@ -141,6 +151,14 @@ public class MissionStumpHole extends Mission {
 		playerFeatherScore = 0;
 
 		collectFeathersUiTimer = 0;
+
+		int missionMarkerSize = 1;
+		startMissionMarker    = new Rectangle(
+				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 12, 
+				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 38, 
+				missionMarkerSize, 
+				missionMarkerSize
+				);
 	}
 
 	private void loadStumps() {
@@ -210,6 +228,16 @@ public class MissionStumpHole extends Mission {
 			}
 		} else {
 			bird.renderObject(batch, imageLoader);
+			// Flash location icon so player knows where to go.
+			if (locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5) {
+				batch.draw(
+						imageLoader.locationSkull, 
+						startMissionMarker.x, 
+						startMissionMarker.y + 2,
+						startMissionMarker.width, 
+						-startMissionMarker.height
+						);
+			}
 		}
 	}
 
@@ -317,6 +345,13 @@ public class MissionStumpHole extends Mission {
 	 */
 	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
+		if (!missionIsActive) {
+			locationFlashTimer++;
+			CollisionHandler.checkIfPlayerHasCollidedWithMissionStumpHoleStartingIcon(
+					myGame.getGameObject(Player.PLAYER_ONE),
+					startMissionMarker
+					);
+		}
 
 		applyPlayerPhysics();
 
@@ -368,15 +403,15 @@ public class MissionStumpHole extends Mission {
 
 		// Player wins if he gets enough feathers.
 		if (playerFeatherScore >= FEATHER_VALUE_METER_MAX) {
-			missionIsActive = false;
+			missionIsActive          = false;
+			stumpHoleMissionComplete = true;
 		}
 
 		// Player loses health if he gets hit by attack bird.
-		if (attackBird.rectangle.overlaps(player)) {
-			// Use actual game player variable to manipulate health.
-			GameObject realGamePlayer = myGame.getGameObject(Player.PLAYER_ONE);
-			realGamePlayer.setHealth(realGamePlayer.getHealth() - 1);
-		}
+		CollisionHandler.checkIfPlayerHasCollidedWithAttackBird(
+				myGame.getGameObject(Player.PLAYER_ONE),
+				attackBird.rectangle
+				);
 	}
 
 	/**
