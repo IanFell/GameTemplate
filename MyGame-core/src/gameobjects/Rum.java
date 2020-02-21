@@ -14,6 +14,8 @@ import maps.MapHandler;
  *
  */
 public class Rum extends GameObject {
+	
+	public static boolean playSound;
 
 	/**
 	 * Constructor.
@@ -31,6 +33,7 @@ public class Rum extends GameObject {
 		rectangle.y      = y;
 		rectangle.width  = size;
 		rectangle.height = size;
+		playSound        = false;
 	}
 
 	/**

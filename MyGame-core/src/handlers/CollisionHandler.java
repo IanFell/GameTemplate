@@ -360,9 +360,6 @@ public class CollisionHandler {
 	}
 
 	/**
-	 * TODO Change this sound and health.
-	 */
-	/**
 	 * 
 	 * @param GameObject player
 	 * @param Rum        rum
@@ -370,8 +367,7 @@ public class CollisionHandler {
 	public static void checkIfPlayerCollidedWithRum(GameObject player, Rum rum) {
 		if (player.rectangle.overlaps(rum.rectangle)) {
 			rum.setHasBeenCollected(true);
-			((Player) player).setHealth(player.getHealth() + Heart.HEALTH);
-			Heart.playSound = true;
+			Rum.playSound = true;
 			RumHandler.rumCount++;
 		}
 	}

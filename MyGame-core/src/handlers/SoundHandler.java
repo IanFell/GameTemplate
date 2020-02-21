@@ -3,6 +3,7 @@ package handlers;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.Heart;
+import gameobjects.Rum;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
 import gameobjects.weapons.Gun;
@@ -123,6 +124,10 @@ public class SoundHandler {
 			if (Heart.playSound) {
 				soundLoader.heartSound.play(AudioHandler.MAX_VOLUME);
 				Heart.playSound = false;
+			}
+			if (Rum.playSound) {
+				soundLoader.rumSound.play(AudioHandler.MAX_VOLUME);
+				Rum.playSound = false;
 			}
 			for (int i = 0; i < ChestLoader.chests.length; i++) {
 				if (ChestLoader.chests[i].getPlaySound()) {
