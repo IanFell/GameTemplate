@@ -302,7 +302,9 @@ public class CollisionHandler {
 	 */
 	public static void checkIfCannonBallHasCollidedWithPlayer(Player player, CannonBall cannonBall)  {
 		if (player.rectangle.overlaps(cannonBall.rectangle) && !cannonBall.isCannonBallHasHitPlayer()) {
-			player.setHealth(player.getHealth() - 1);
+			if (!Player.isInvincible) {
+				player.setHealth(player.getHealth() - 1);
+			}
 			cannonBall.setCannonBallHasHitPlayer(true);
 			// Make cannonball stop and hit player and explode instead of going through him.
 			cannonBall.setDx(0);
@@ -325,7 +327,9 @@ public class CollisionHandler {
 			if (timer > 49) {
 				// Put this here so player can't get hurt in cutscene.
 				if (!CutScene.anyCutSceneIsInProgress) {
-					player.setHealth(player.getHealth() - 1);
+					if (!Player.isInvincible) {
+						player.setHealth(player.getHealth() - 1);
+					}
 				}
 			}
 
@@ -411,7 +415,9 @@ public class CollisionHandler {
 	 */
 	public static void checkIfPlayerHasCollidedWithAttackBird(GameObject player, Rectangle birdWeapon) {
 		if (birdWeapon.overlaps(player.rectangle)) {
-			player.setHealth(player.getHealth() - 1);
+			if (!Player.isInvincible) {
+				player.setHealth(player.getHealth() - 1);
+			}
 		}
 	}
 

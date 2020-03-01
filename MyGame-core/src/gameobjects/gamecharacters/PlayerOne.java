@@ -234,17 +234,34 @@ public class PlayerOne extends Player {
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		super.renderObject(batch, imageLoader);
-		AnimationHandler.renderAnimation(
-				batch, 
-				elapsedTime, 
-				getCurrentAnimation(), 
-				x, 
-				y, 
-				width,
-				height,
-				imageLoader, 
-				AnimationHandler.OBJECT_TYPE_PLAYER
-				);
+		if (!Player.isInvincible) {
+			AnimationHandler.renderAnimation(
+					batch, 
+					elapsedTime, 
+					getCurrentAnimation(), 
+					x, 
+					y, 
+					width,
+					height,
+					imageLoader, 
+					AnimationHandler.OBJECT_TYPE_PLAYER
+					);
+		} else {
+			if (Player.invincibilityTimer % 2 == 0) {
+				AnimationHandler.renderAnimation(
+						batch, 
+						elapsedTime, 
+						getCurrentAnimation(), 
+						x, 
+						y, 
+						width,
+						height,
+						imageLoader, 
+						AnimationHandler.OBJECT_TYPE_PLAYER
+						);
+			}
+		}
+
 
 		if (hasTorch) {	
 			torch.renderObject(batch, imageLoader);

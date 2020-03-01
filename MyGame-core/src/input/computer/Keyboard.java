@@ -9,6 +9,7 @@ import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Stump;
+import handlers.RumHandler;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.GameObjectLoader;
@@ -160,6 +161,15 @@ public class Keyboard extends ComputerInput {
 			if (Gdx.input.isKeyPressed(Input.Keys.P)) {
 				BulletLoader.createBullet(myGame);
 			} 
+
+			// If player has rum, decrease rum count and make player invinvible.
+			if (Gdx.input.isKeyPressed(Input.Keys.G)) {
+				if (RumHandler.rumCount > 0 && !Player.isInvincible) {
+					Player.isInvincible = true;
+					RumHandler.rumCount--;
+					Player.invincibilityTimer = 0;
+				}
+			}
 
 			if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
 				System.exit(0);

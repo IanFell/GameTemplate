@@ -95,6 +95,10 @@ public class Player extends GameCharacter {
 
 	private int playerNumber;
 
+	public static boolean isInvincible         = false;
+	public static int invincibilityTimer       = 0;
+	private final int INVINCIBILITY_TIME_LIMIT = 500;
+
 	/**
 	 * Constructor.
 	 * 
@@ -262,6 +266,21 @@ public class Player extends GameCharacter {
 		walkLeftAnimation  = new Animation <TextureRegion> (AnimationHandler.ANIMATION_SPEED_PLAYER, walkLeftTexture.getRegions());
 	}
 
+	private void handleInvincibility() {
+		width  = playerSize;
+		height = playerSize;
+		if (isInvincible) {
+			width  = playerSize * 2;
+			height = playerSize * 2;
+		}
+		if (invincibilityTimer > INVINCIBILITY_TIME_LIMIT) {
+			isInvincible = false;
+		}
+		if (isInvincible) {
+			invincibilityTimer++;
+		}
+	}
+
 	/**
 	 * Collisions with tiles are located in the MapRenderer class.
 	 * 
@@ -272,6 +291,9 @@ public class Player extends GameCharacter {
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		x += dx;
 		y += dy;
+
+		handleInvincibility();
+
 		rectangle.x = x;
 		rectangle.y = y - height * 2;
 

@@ -65,17 +65,33 @@ public class PlayerTwo extends Player {
 		super.renderObject(batch, imageLoader);
 
 		if (lifeState == LIFE_STATE_ONE || lifeState == LIFE_STATE_TWO) {
-			AnimationHandler.renderAnimation(
-					batch, 
-					elapsedTime, 
-					getCurrentAnimation(), 
-					x, 
-					y, 
-					width,
-					height, 
-					imageLoader, 
-					AnimationHandler.OBJECT_TYPE_PLAYER
-					);
+			if (!Player.isInvincible) {
+				AnimationHandler.renderAnimation(
+						batch, 
+						elapsedTime, 
+						getCurrentAnimation(), 
+						x, 
+						y, 
+						width,
+						height,
+						imageLoader, 
+						AnimationHandler.OBJECT_TYPE_PLAYER
+						);
+			} else {
+				if (Player.invincibilityTimer % 2 == 0) {
+					AnimationHandler.renderAnimation(
+							batch, 
+							elapsedTime, 
+							getCurrentAnimation(), 
+							x, 
+							y, 
+							width,
+							height,
+							imageLoader, 
+							AnimationHandler.OBJECT_TYPE_PLAYER
+							);
+				}
+			}
 		}
 
 		//renderHitBox(batch, imageLoader);

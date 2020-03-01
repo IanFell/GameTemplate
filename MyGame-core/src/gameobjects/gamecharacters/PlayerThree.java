@@ -61,17 +61,33 @@ public class PlayerThree extends Player {
 		 * If we are in life state 2 or 3, player will still be there, but not render.
 		 */
 		if (lifeState == LIFE_STATE_ONE) {
-			AnimationHandler.renderAnimation(
-					batch, 
-					elapsedTime, 
-					getCurrentAnimation(), 
-					x, 
-					y, 
-					width,
-					height,
-					imageLoader, 
-					AnimationHandler.OBJECT_TYPE_PLAYER
-					);
+			if (!Player.isInvincible) {
+				AnimationHandler.renderAnimation(
+						batch, 
+						elapsedTime, 
+						getCurrentAnimation(), 
+						x, 
+						y, 
+						width,
+						height,
+						imageLoader, 
+						AnimationHandler.OBJECT_TYPE_PLAYER
+						);
+			} else {
+				if (Player.invincibilityTimer % 2 == 0) {
+					AnimationHandler.renderAnimation(
+							batch, 
+							elapsedTime, 
+							getCurrentAnimation(), 
+							x, 
+							y, 
+							width,
+							height,
+							imageLoader, 
+							AnimationHandler.OBJECT_TYPE_PLAYER
+							);
+				}
+			}
 		} 
 
 		//renderHitBox(batch, imageLoader);
