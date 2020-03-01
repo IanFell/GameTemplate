@@ -9,6 +9,8 @@ import gameobjects.GameObject;
 import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
+import missions.MissionChests;
+import ui.LocationMarker;
 
 /**
  * 
@@ -16,6 +18,9 @@ import maps.MapHandler;
  *
  */
 public class Chest extends GamePlayObject {
+
+	// This is used to show the player where loot is when Mission Chests first begins.
+	private LocationMarker locationMarker;
 
 	// How much loot player gets from opening chest.
 	public static final int LOOT_VALUE = 5;
@@ -53,6 +58,7 @@ public class Chest extends GamePlayObject {
 		this.height      = objectSize;
 		rectangle.width  = objectSize;
 		rectangle.height = objectSize / 2;
+		locationMarker   = new LocationMarker(x + 0.25f, y);
 	}
 
 	/**
@@ -64,6 +70,11 @@ public class Chest extends GamePlayObject {
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		if (isClosed) {
 			batch.draw(imageLoader.chestClosed, x, y, width, -height);
+
+			// Show player where to get loot if Mission Chests is active.  After this, they should know.
+			if (locationMarker.timerValuesAreCorrectToFlash() && !MissionChests.missionComplete) {
+				locationMarker.renderObject(batch, imageLoader);
+			}
 			// Uncomment this to draw hit box.
 			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 		} else {
@@ -98,6 +109,10 @@ public class Chest extends GamePlayObject {
 				}
 			}, amountOfTimeUntilChestIsResetInSecondsAfterItIsOpened);
 		} 
+
+		if (!MissionChests.missionComplete) {
+			locationMarker.updateObject();
+		}
 	}
 
 	private void setChestToOriginalValues() {
