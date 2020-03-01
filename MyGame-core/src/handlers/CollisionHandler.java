@@ -313,6 +313,18 @@ public class CollisionHandler {
 
 	/**
 	 * 
+	 * @param Enemy  giant
+	 * @param Player player
+	 */
+	public static void checkIfGiantHasCollidedWithPlayer(Enemy giant, Player player) {
+		if (giant.rectangle.overlaps(player.rectangle)) {
+			player.setHealth(player.getHealth() - 1);
+			// TODO Make player bounce back.
+		}
+	}
+
+	/**
+	 * 
 	 * @param Enemy  enemy
 	 * @param Player player
 	 */

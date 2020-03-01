@@ -2,11 +2,15 @@ package gameobjects.gamecharacters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
+import controllers.PlayerController;
+import handlers.CollisionHandler;
 import helpers.GameAttributeHelper;
+import loaders.ImageLoader;
 import maps.MapHandler;
 
 /**
@@ -24,6 +28,8 @@ public class Giant extends Enemy {
 	private final float PEAK_JUMP_VALUE      = 37.5f;
 
 	private int jumpTimer;
+
+	private float shadowY;
 
 	/**
 	 * Constructor.
@@ -54,12 +60,19 @@ public class Giant extends Enemy {
 		dy = 0;
 
 		jumpTimer = 0;
+
+		rectangle.width  = width;
+		rectangle.height = height;
+
+		shadowY = y - 1.5f;
 	}
 
 	private void handleJumping() {
 		jumpTimer++;
 		if (jumpTimer > JUMP_TIMER_MAX_VALUE) {
 			jumpTimer = 0;
+			// Re-align shadow with giant after jump.
+			shadowY = y - 1.5f;
 		}
 		// Execute jump.
 		if (jumpTimer > EXECUTE_JUMP_VALUE) {
@@ -81,6 +94,9 @@ public class Giant extends Enemy {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
+		rectangle.x = x;
+		rectangle.y = y;
+
 		handleJumping();
 
 		// Handle direction change.
@@ -94,5 +110,18 @@ public class Giant extends Enemy {
 		if (dx < 0) {
 			direction = DIRECTION_LEFT;
 		}
+
+		CollisionHandler.checkIfGiantHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 */
+	@Override
+	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
+		batch.draw(imageLoader.shadow, x, shadowY, 5, 2);
+		super.renderObject(batch, imageLoader);
 	}
 }
