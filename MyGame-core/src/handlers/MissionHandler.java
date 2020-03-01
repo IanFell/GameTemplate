@@ -22,15 +22,6 @@ import missions.MissionStumpHole;
  */
 public class MissionHandler extends Mission {
 
-	/**
-	 * Make this huge for now, because this is the only way I can get the mission 
-	 * to work.  If the time limit runs out, the rest of the missions get all 
-	 * fucked up.
-	 */
-	//private final long MISSION_CHEST_START_TIME_VALUE = 1000000000L;
-
-	//private int timer = 0;
-
 	private MissionChests missionChests;
 	private MissionLegendOfTheSevenSwords missionLegendOfTheSevenSwords;
 	private MissionRawBar missionRawBarPhaseOne;
@@ -47,8 +38,6 @@ public class MissionHandler extends Mission {
 	private boolean rawBarMessageHasBeenDisplayed           = false;
 	private int goToRawBarDisplayTimer                      = 0;
 	private final int GO_TO_RAW_BAR_DISPLAY_TIMER_MAX_VALUE = 50;
-
-	//int i = 0;
 
 	/**
 	 * Constructor.
@@ -77,12 +66,13 @@ public class MissionHandler extends Mission {
 		if (!CutScene.anyCutSceneIsInProgress) {
 			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
-			//if (!MissionChests.missionComplete) {
-			missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
-			//timer++;
-			//}
+			if (!MissionChests.missionComplete) {
+				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
+			}
 
-			handleGoToRawBarMessage();
+			if (MissionChests.missionComplete) {
+				handleGoToRawBarMessage();
+			}
 
 			if (MissionRawBar.startMission && setUpRawBarMission ) {
 				MissionRawBar.missionIsActive = true;
@@ -93,9 +83,9 @@ public class MissionHandler extends Mission {
 				handleRawBarMission(myGame);
 			}
 
-			if (MissionRawBar.missionComplete) {
+			if (MissionRawBar.rawBarMissionComplete) {
 				missionStumpHole.updateMission(myGame, mapHandler);
-			}
+			} 
 		}
 	}
 
@@ -117,12 +107,6 @@ public class MissionHandler extends Mission {
 	 * @param MyGame myGame
 	 */
 	private void handleRawBarMission(MyGame myGame) {
-		if (missionRawBarPhaseThree.isPhaseComplete()) {
-			// Entire mission is complete now.
-			MissionRawBar.phasesAreInProgress   = false;
-			MissionRawBar.rawBarMissionComplete = true;
-		}
-
 		// Mission is the phases.
 		if (missionRawBarPhaseTwo.isPhaseComplete()) {
 			missionRawBarPhaseThree.updateMission(myGame);
@@ -130,6 +114,13 @@ public class MissionHandler extends Mission {
 			missionRawBarPhaseTwo.updateMission(myGame);
 		} else {
 			missionRawBarPhaseOne.updateMission(myGame);
+		}
+
+		// Entire mission is complete now.
+		if (missionRawBarPhaseThree.isPhaseComplete()) {
+			MissionRawBar.phasesAreInProgress   = false;
+			MissionRawBar.rawBarMissionComplete = true;
+			MissionRawBar.missionIsActive       = false;
 		}
 	}
 
@@ -141,17 +132,9 @@ public class MissionHandler extends Mission {
 	 */
 	public void renderMissions(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
 		if (!CutScene.anyCutSceneIsInProgress) {
-			/**
-			 * This mission runs throughout the whole entire game.  It will always be active.
-			 * The only way to beat the game is to collect all the seven swords.
-			 */
-
 			missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 
-			// For now just start mission after cutscene.
-			//if (timer > MISSION_CHEST_START_TIME_VALUE) {
 			missionChests.renderMission(batch, imageLoader, myGame);
-			//}
 
 			if (MissionRawBar.missionIsActive) {
 				renderRawBarMission(batch, imageLoader, myGame);
@@ -161,7 +144,7 @@ public class MissionHandler extends Mission {
 				renderMissionStartMessage(batch, myGame, imageLoader.goToTheRawBar);
 			} 
 
-			if (MissionRawBar.missionComplete) {
+			if (MissionRawBar.rawBarMissionComplete) {
 				missionStumpHole.renderMission(batch, imageLoader, myGame);
 			}
 		}

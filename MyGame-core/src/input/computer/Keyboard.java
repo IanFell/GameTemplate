@@ -216,7 +216,7 @@ public class Keyboard extends ComputerInput {
 
 		if(GameObjectLoader.gameObjectList.contains(player)) {
 			// RawBar Mission uses a different player than normal since it's kind of like a mini game.
-			if (MissionRawBar.phasesAreInProgress) {
+			if (MissionRawBar.phasesAreInProgress) { 
 				if (Gdx.input.isKeyPressed(left)) {
 					MissionRawBar.playerX -= MissionRawBar.MISSION_RAW_BAR_SPEED;
 					player.setDirection(Player.DIRECTION_LEFT);
@@ -233,7 +233,7 @@ public class Keyboard extends ComputerInput {
 					MissionRawBar.playerY += MissionRawBar.MISSION_RAW_BAR_SPEED;
 					player.setDirection(Player.DIRECTION_DOWN);
 				}
-			} else if (MissionStumpHole.missionIsActive) {
+			} else if (MissionStumpHole.missionIsActive) { 
 				// Stump Hole Mission uses a different player than normal since it's kind of like a mini game.
 				if (Gdx.input.isKeyPressed(left)) {
 					MissionStumpHole.player.setX(MissionStumpHole.player.getX() - MissionStumpHole.playerDx);
@@ -243,7 +243,7 @@ public class Keyboard extends ComputerInput {
 					MissionStumpHole.player.setX(MissionStumpHole.player.getX() + MissionStumpHole.playerDx);
 					MissionStumpHole.playerDirection = MissionStumpHole.DIRECTION_RIGHT;
 				}
-			} else {
+			} else { 
 				// Use normal player.
 				if (Gdx.input.isKeyPressed(left)) {
 					((Player) player).moveLeft(playerSpeed);

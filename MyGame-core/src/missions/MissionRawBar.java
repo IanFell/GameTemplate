@@ -181,17 +181,13 @@ public class MissionRawBar extends Mission {
 		playerBounds.height = playerSize;
 		missionComplete     = false;
 
-		// Set actual player to begin mission directly outside the Raw Bar's door.
-		// TODO TEST THIS LATER, NOT SURE IF IT WORKS.
-		//myGame.getGameObject(Player.PLAYER_ONE).setX(GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 37);
-		//myGame.getGameObject(Player.PLAYER_ONE).setY(GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 38);
-
-		fishOneDx   = 1;
-		fishTwoDy   = 1;
-		fishThreeDx = 1;
-		fishFourDx  = 1;
-		fishFourDy  = 1;
-		fishFiveDy  = 1;
+		int velocityValue = 1;
+		fishOneDx         = velocityValue;
+		fishTwoDy         = velocityValue;
+		fishThreeDx       = velocityValue;
+		fishFourDx        = velocityValue;
+		fishFourDy        = velocityValue;
+		fishFiveDy        = velocityValue;
 	}
 
 	/**
@@ -480,9 +476,10 @@ public class MissionRawBar extends Mission {
 			}
 		}
 
+		/*
 		if (rawBarMissionComplete) {
 			renderMissionMessage(batch, myGame, imageLoader.missionComplete);
-		}
+		} */
 	}
 
 	/**

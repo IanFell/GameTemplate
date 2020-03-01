@@ -75,13 +75,14 @@ public class MissionChests extends Mission {
 			executeMission = false;
 			//System.out.println("CHEST MISSION COMPLETE!");
 		} else if (countDownTimer >= maxMissionCount) {
+			/*
 			// Reset mission if player fails.  Do this until player completes mission.
 			executeMission       = true;
 			missionComplete      = false;
 			resetMission         = true;
 			resetMissionTimer    = 0;
 			numberOfChestsOpened = 0;
-			countDownTimer       = 0;
+			countDownTimer       = 0; */
 			//System.out.println("CHEST MISSION FAILED!");
 		}
 	}
@@ -101,6 +102,7 @@ public class MissionChests extends Mission {
 
 		// Place holder "try again" message.
 		if (resetMission) {
+			/*
 			int collectOysterMessageSize = 10;
 			int half                     = 2;
 			GameObject player            = PlayerController.getCurrentPlayer(myGame);
@@ -110,7 +112,7 @@ public class MissionChests extends Mission {
 					player.getY() + GameScreen.cameraWidth / half, 
 					collectOysterMessageSize, 
 					-collectOysterMessageSize
-					);
+					); */
 		}
 
 		// Render start message this long.
