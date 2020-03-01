@@ -25,6 +25,7 @@ import missions.MissionLegendOfTheSevenSwords;
 import missions.MissionRawBar;
 import missions.MissionStumpHole;
 import tiles.Tile;
+import ui.LocationMarker;
 
 /**
  * Handles collisions between game objects.
@@ -386,18 +387,6 @@ public class CollisionHandler {
 	} */
 
 	/**
-	 * Alternative to collision with stumps in order to start Stump Hole mission.
-	 * 
-	 * @param GameObject player
-	 * @param Rectangle  startMissionMarker
-	 */
-	public static void checkIfPlayerHasCollidedWithMissionStumpHoleStartingIcon(GameObject player, Rectangle startMissionMarker) {
-		if (startMissionMarker.overlaps(player.rectangle)) {
-			MissionStumpHole.missionIsActive = true;
-		}
-	}
-
-	/**
 	 * This method does not use the regular player.
 	 * Instead, it uses the unique rectangle (player) from MissionStumpHole.
 	 * 
@@ -424,5 +413,18 @@ public class CollisionHandler {
 		if (birdWeapon.overlaps(player.rectangle)) {
 			player.setHealth(player.getHealth() - 1);
 		}
+	}
+
+	/**
+	 * 
+	 * @param GameObject     player
+	 * @param LocationMarker locationMarker
+	 * @return boolean
+	 */
+	public static boolean playerHasCollidedWithLocationMarker(GameObject player, LocationMarker locationMarker) {
+		if (player.rectangle.overlaps(locationMarker.getLocator())) {
+			return true;
+		}
+		return false;
 	}
 }

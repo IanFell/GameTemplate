@@ -11,10 +11,12 @@ import com.mygdx.mygame.MyGame;
 import controllers.PlayerController;
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
+import handlers.CollisionHandler;
 import helpers.GameAttributeHelper;
 import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import screens.GameScreen;
+import ui.LocationMarker;
 
 /**
  * This mission will consist of three phases, where the player will have to collect a certain amount of 
@@ -33,8 +35,6 @@ import screens.GameScreen;
  *
  */
 public class MissionRawBar extends Mission {
-
-	//public static boolean startMission = false;
 
 	// Time alloted for all phases of mission.
 	public static final float MAX_MISSION_TIME_PHASE_ONE   = 15f;
@@ -61,16 +61,11 @@ public class MissionRawBar extends Mission {
 
 	public static boolean phasesAreInProgress = false;
 
-	// Player has to collide with this locator to begin phases.
-	private Rectangle startPhasesLocator;
-
 	/**
 	 * Timer to display to user how many oysters to collect.  
 	 * This message only appears for a few seconds at the start of the phase.
 	 */
 	private int collectOysterMessageTimer = 0;
-
-	private int locationFlashTimer = 0;
 
 	// Oysters will have a random x, y, and size.
 	private double[] oysterX                   = new double[MAX_OYSTERS_SPAWNED];
@@ -95,8 +90,8 @@ public class MissionRawBar extends Mission {
 
 	public static final float MISSION_RAW_BAR_SPEED = 0.3f;
 
-	private static int introTimer            = 0;
-	public static boolean introHasCompleted  = false;
+	private static int introTimer           = 0;
+	public static boolean introHasCompleted = false;
 
 	public static boolean rawBarMissionComplete = false;
 
@@ -122,6 +117,8 @@ public class MissionRawBar extends Mission {
 
 	private final int COLLECT_OYSTER_MESSAGE_MAX_TIME = 20;
 
+	private LocationMarker locationMarker;
+
 	/**
 	 * Constructor.
 	 * 
@@ -135,18 +132,16 @@ public class MissionRawBar extends Mission {
 			oysterBounds[i] = new Rectangle(0, 0, 0, 0);
 			collectedOyster.add(false);
 		}
-		int startPhaseLocatorSize = 1;
-		startPhasesLocator = new Rectangle(
+
+		locationMarker = new LocationMarker(
 				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 40, 
-				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45, 
-				startPhaseLocatorSize, 
-				startPhaseLocatorSize
+				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 45
 				);
 
 		// Only set the player once.
 		if (setPlayer) {
-			playerX   = startPhasesLocator.x;
-			playerY   = startPhasesLocator.y;
+			playerX   = locationMarker.getLocator().getX();
+			playerY   = locationMarker.getLocator().getY();
 			setPlayer = false;
 		}
 
@@ -221,8 +216,8 @@ public class MissionRawBar extends Mission {
 
 			// Next, handle interaction between player and phases locator.
 			if (introHasCompleted) {
-				locationFlashTimer++;
-				if (myGame.getGameObject(Player.PLAYER_ONE).rectangle.overlaps(startPhasesLocator)) {
+				locationMarker.updateObject();
+				if (CollisionHandler.playerHasCollidedWithLocationMarker(myGame.getGameObject(Player.PLAYER_ONE), locationMarker)) {
 					phasesAreInProgress = true;
 				}
 			}
@@ -479,14 +474,8 @@ public class MissionRawBar extends Mission {
 						);
 			} else {
 				// Draw locator.
-				if (locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5 && !rawBarMissionComplete) {
-					batch.draw(
-							imageLoader.locationSkull, 
-							startPhasesLocator.x, 
-							startPhasesLocator.y,
-							startPhasesLocator.width, 
-							-startPhasesLocator.height
-							);
+				if (locationMarker.timerValuesAreCorrectToFlash() && !rawBarMissionComplete) {
+					locationMarker.renderObject(batch, imageLoader);
 				}
 			}
 		}

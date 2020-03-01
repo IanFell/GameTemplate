@@ -17,6 +17,7 @@ import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import screens.GameScreen;
+import ui.LocationMarker;
 
 /**
  * 
@@ -27,10 +28,8 @@ public class MissionStumpHole extends Mission {
 
 	// When this is true, bird weapon will appear on screen.
 	public static boolean stumpHoleMissionComplete;
-	
-	private int renderMissionCompleteMessage;
 
-	private int locationFlashTimer = 0;
+	private int renderMissionCompleteMessage;
 
 	private Feather featherOne;
 	private Feather featherTwo;
@@ -119,8 +118,7 @@ public class MissionStumpHole extends Mission {
 	private int collectFeathersUiTimer;
 	private final int COLLECT_FEATHERS_UI_TIMER_MAX = 50;
 
-	// Flashing skull to let player know where to go to start mission.
-	private Rectangle startMissionMarker;
+	private LocationMarker locationMarker;
 
 	/**
 	 * Constructor.
@@ -155,12 +153,9 @@ public class MissionStumpHole extends Mission {
 
 		collectFeathersUiTimer = 0;
 
-		int missionMarkerSize = 1;
-		startMissionMarker    = new Rectangle(
+		locationMarker = new LocationMarker(
 				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 12, 
-				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 38, 
-				missionMarkerSize, 
-				missionMarkerSize
+				GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 40
 				);
 	}
 
@@ -232,14 +227,8 @@ public class MissionStumpHole extends Mission {
 		} else {
 			bird.renderObject(batch, imageLoader);
 			// Flash location icon so player knows where to go.
-			if (locationFlashTimer % 10 >= 0 && locationFlashTimer % 10 <= 5 && !stumpHoleMissionComplete) {
-				batch.draw(
-						imageLoader.locationSkull, 
-						startMissionMarker.x, 
-						startMissionMarker.y + 2,
-						startMissionMarker.width, 
-						-startMissionMarker.height
-						);
+			if (locationMarker.timerValuesAreCorrectToFlash() && !stumpHoleMissionComplete) {
+				locationMarker.renderObject(batch, imageLoader);
 			}
 		}
 		if (stumpHoleMissionComplete) {
@@ -355,11 +344,10 @@ public class MissionStumpHole extends Mission {
 	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
 		if (!missionIsActive) {
-			locationFlashTimer++;
-			CollisionHandler.checkIfPlayerHasCollidedWithMissionStumpHoleStartingIcon(
-					myGame.getGameObject(Player.PLAYER_ONE),
-					startMissionMarker
-					);
+			locationMarker.updateObject();
+			if (CollisionHandler.playerHasCollidedWithLocationMarker(myGame.getGameObject(Player.PLAYER_ONE), locationMarker)) {
+				missionIsActive = true;
+			}
 		}
 
 		applyPlayerPhysics();
