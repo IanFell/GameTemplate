@@ -33,6 +33,11 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	public static final int CHEST_OPEN   = 6;
 	public static final int CHEST_CLOSED = 7;
 
+	public static final int DIRECTION_LEFT  = 0;
+	public static final int DIRECTION_RIGHT = 1;
+	public static final int DIRECTION_UP    = 2;
+	public static final int DIRECTION_DOWN  = 3;
+
 	protected float x;
 	protected float y;
 	protected float width;

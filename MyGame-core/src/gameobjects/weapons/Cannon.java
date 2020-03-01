@@ -18,9 +18,6 @@ import maps.MapHandler;
  */
 public class Cannon extends Weapon {
 
-	public static final int DIRECTION_LEFT  = 0;
-	public static final int DIRECTION_RIGHT = 1;
-
 	// Used to determine when to shoot cannons.
 	private int timer = 0;
 

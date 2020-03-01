@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.Player;
+import gameobjects.gamecharacters.PlayerOne;
 import handlers.AnimationHandler;
 import handlers.CollisionHandler;
 import inventory.Inventory;
@@ -88,17 +89,17 @@ public class BirdWeapon extends Weapon {
 	}
 
 	private void determineBirdDirection() {
-		switch (Player.direction) {
-		case Player.DIRECTION_LEFT:
+		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
+		case DIRECTION_LEFT:
 			dx -= 1;
 			break;
-		case Player.DIRECTION_RIGHT:
+		case DIRECTION_RIGHT:
 			dx += 1;
 			break;
-		case Player.DIRECTION_UP:
+		case DIRECTION_UP:
 			dy -= 1;
 			break;
-		case Player.DIRECTION_DOWN:
+		case DIRECTION_DOWN:
 			dy += 1;
 			break;
 		}
@@ -114,7 +115,7 @@ public class BirdWeapon extends Weapon {
 		if (MissionStumpHole.stumpHoleMissionComplete) {
 			updateElapsedTime();
 			Animation <TextureRegion> animation = animationLeft;
-			if (direction == Player.DIRECTION_RIGHT) {
+			if (direction == DIRECTION_RIGHT) {
 				animation = animationRight;
 			}
 

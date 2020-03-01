@@ -3,7 +3,6 @@ package gameobjects.weapons;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -41,25 +40,25 @@ public class Bullet extends Weapon {
 		float bulletSizeLong  = 0.5f;
 		float bulletSizeShort = 0.2f;
 		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
-		case Player.DIRECTION_LEFT:
+		case DIRECTION_LEFT:
 			dx          = -bulletSpeed;
 			dy          = 0;
 			this.width  = bulletSizeLong;
 			this.height = bulletSizeShort;
 			break;
-		case Player.DIRECTION_RIGHT:
+		case DIRECTION_RIGHT:
 			dx          = bulletSpeed;
 			dy          = 0;
 			this.width  = bulletSizeLong;
 			this.height = bulletSizeShort;
 			break;
-		case Player.DIRECTION_UP:
+		case DIRECTION_UP:
 			dx          = 0;
 			dy          = -bulletSpeed;
 			this.width  = bulletSizeShort;
 			this.height = bulletSizeLong;
 			break;
-		case Player.DIRECTION_DOWN:
+		case DIRECTION_DOWN:
 			dx          = 0;
 			dy          = bulletSpeed;
 			this.width  = bulletSizeShort;

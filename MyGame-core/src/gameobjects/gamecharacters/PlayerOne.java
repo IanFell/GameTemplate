@@ -282,19 +282,19 @@ public class PlayerOne extends Player {
 		super.handleJumping(myGame);
 		if (jumpingAction == Player.DESCENDING_JUMP) {
 			switch (direction) {
-			case Player.DIRECTION_LEFT:
+			case DIRECTION_LEFT:
 				dx = -0.3f;
 				dy = 0.01f;
 				break;
-			case Player.DIRECTION_RIGHT:
+			case DIRECTION_RIGHT:
 				dx = 0.3f;
 				dy = 0.01f;
 				break;
-			case Player.DIRECTION_UP:
+			case DIRECTION_UP:
 				dx = 0;
 				dy = -0.3f;
 				break;
-			case Player.DIRECTION_DOWN:
+			case DIRECTION_DOWN:
 				dx = 0;
 				dy = 0.3f;
 				break;

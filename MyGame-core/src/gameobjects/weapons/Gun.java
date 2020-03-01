@@ -98,19 +98,19 @@ public class Gun extends Weapon {
 	private void setRotationAngleDependingOnPlayerDirection(ImageLoader imageLoader) {
 		int rotationAngle0Degrees  = 0;
 		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
-		case Player.DIRECTION_RIGHT:
+		case DIRECTION_RIGHT:
 			setRotationAngle(rotationAngle0Degrees);
 			textureRegion = new TextureRegion(imageLoader.gunRight);
 			break;
-		case Player.DIRECTION_LEFT:
+		case DIRECTION_LEFT:
 			setRotationAngle(rotationAngle0Degrees);
 			textureRegion = new TextureRegion(imageLoader.gunLeft);
 			break;
-		case Player.DIRECTION_DOWN:
+		case DIRECTION_DOWN:
 			setRotationAngle(rotationAngle0Degrees);
 			textureRegion = new TextureRegion(imageLoader.gunDown);
 			break;
-		case Player.DIRECTION_UP:
+		case DIRECTION_UP:
 			setRotationAngle(rotationAngle0Degrees);
 			textureRegion = new TextureRegion(imageLoader.gunUp);
 			break;

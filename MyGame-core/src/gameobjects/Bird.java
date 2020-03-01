@@ -24,9 +24,6 @@ public class Bird extends GameObject {
 	private Animation <TextureRegion> animationLeft;
 	private Animation <TextureRegion> animationRight;
 
-	private final static int DIRECTION_LEFT  = 0;
-	private final static int DIRECTION_RIGHT = 1;
-
 	private int direction;
 
 	/**

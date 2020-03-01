@@ -16,11 +16,6 @@ import gameobjects.GameObject;
  */
 public class GameCharacter extends GameObject {
 
-	public static final int DIRECTION_LEFT  = 0;
-	public static final int DIRECTION_RIGHT = 1;
-	public static final int DIRECTION_UP    = 2;
-	public static final int DIRECTION_DOWN  = 3;
-
 	/**
 	 * Textures to go with animations.
 	 */

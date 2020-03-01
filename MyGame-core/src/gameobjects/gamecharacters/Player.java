@@ -423,7 +423,7 @@ public class Player extends GameCharacter {
 	@Override
 	public void moveRight(float speed) {
 		translateX(speed);
-		setDirection(Player.DIRECTION_RIGHT);
+		setDirection(DIRECTION_RIGHT);
 		playerIsMoving = true;
 	}
 
@@ -434,7 +434,7 @@ public class Player extends GameCharacter {
 	@Override
 	public void moveLeft(float speed) {
 		translateX(-speed);
-		setDirection(Player.DIRECTION_LEFT);
+		setDirection(DIRECTION_LEFT);
 		playerIsMoving = true;
 	}
 
@@ -445,7 +445,7 @@ public class Player extends GameCharacter {
 	@Override
 	public void moveUp(float speed) {
 		translateY(-speed);
-		setDirection(Player.DIRECTION_UP);
+		setDirection(DIRECTION_UP);
 		playerIsMoving = true;
 	}
 
@@ -456,7 +456,7 @@ public class Player extends GameCharacter {
 	@Override
 	public void moveDown(float speed) {
 		translateY(speed);
-		setDirection(Player.DIRECTION_DOWN);
+		setDirection(DIRECTION_DOWN);
 		playerIsMoving = true;
 	}
 

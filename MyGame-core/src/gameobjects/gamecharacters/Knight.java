@@ -3,7 +3,6 @@ package gameobjects.gamecharacters;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.weapons.Cannon;
 import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -70,7 +69,7 @@ public class Knight extends Enemy {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		if (direction == Cannon.DIRECTION_LEFT) {
+		if (direction == DIRECTION_LEFT) {
 			batch.draw(
 					imageLoader.knightLeft, 
 					x, 

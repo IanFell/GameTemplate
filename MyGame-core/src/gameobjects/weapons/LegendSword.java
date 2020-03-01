@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
-import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
 import handlers.CollisionHandler;
 import helpers.GamePlayHelper;
@@ -132,16 +131,16 @@ public class LegendSword extends Weapon {
 
 	private void setRotationAngleDependingOnPlayerDirection() {
 		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
-		case Player.DIRECTION_RIGHT:
+		case DIRECTION_RIGHT:
 			setRotationAngle(-90);
 			break;
-		case Player.DIRECTION_LEFT:
+		case DIRECTION_LEFT:
 			setRotationAngle(90);
 			break;
-		case Player.DIRECTION_DOWN:
+		case DIRECTION_DOWN:
 			setRotationAngle(0);
 			break;
-		case Player.DIRECTION_UP:
+		case DIRECTION_UP:
 			setRotationAngle(180);
 			break;
 		}
@@ -157,25 +156,25 @@ public class LegendSword extends Weapon {
 	private void updateHitBox() {
 		float offsetValue = 0.5f;
 		switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
-		case Player.DIRECTION_RIGHT:
+		case DIRECTION_RIGHT:
 			this.rectangle.x      = x - height - offsetValue;
 			this.rectangle.y      = y + offsetValue + 0.2f;
 			this.rectangle.width  = height;
 			this.rectangle.height = width / 2;
 			break;
-		case Player.DIRECTION_LEFT:
+		case DIRECTION_LEFT:
 			this.rectangle.x      = x + height - offsetValue;
 			this.rectangle.y      = y + offsetValue + 0.2f;
 			this.rectangle.width  = height;
 			this.rectangle.height = width / 2;
 			break;
-		case Player.DIRECTION_DOWN:
+		case DIRECTION_DOWN:
 			this.rectangle.x      = x + 0.2f;
 			this.rectangle.y      = y - height;
 			this.rectangle.width  = width / 2;
 			this.rectangle.height = height;
 			break;
-		case Player.DIRECTION_UP:
+		case DIRECTION_UP:
 			this.rectangle.x      = x + 0.2f;
 			this.rectangle.y      = y + height;
 			this.rectangle.width  = width / 2;

@@ -41,7 +41,7 @@ public class CannonBall extends Weapon {
 	private boolean cannonBallHasHitPlayer = false;
 
 	private int direction;
-	
+
 	private boolean playLandSound;
 
 	/**
@@ -66,7 +66,7 @@ public class CannonBall extends Weapon {
 		shadowY             = y - 1;
 		playLandSound       = false;
 	}
-	
+
 	/**
 	 * 
 	 * @return boolen
@@ -109,7 +109,7 @@ public class CannonBall extends Weapon {
 		super.updateObject(myGame, mapHandler);
 
 		// Ensure cannon ball shoots in the correct direction.  It will always shoot left or right.
-		if (direction == Cannon.DIRECTION_LEFT) {
+		if (direction == DIRECTION_LEFT) {
 			x -= dx;
 		} else {
 			x += dx;
@@ -147,7 +147,7 @@ public class CannonBall extends Weapon {
 	 */
 	private void handleExplosionBlast(MyGame myGame, MapHandler mapHandler) {
 		if (explosionBlast == null) {
-			if (direction == Cannon.DIRECTION_RIGHT) {
+			if (direction == DIRECTION_RIGHT) {
 				explosionBlast = new Explosion(x + width / 2, y + height / 2);
 			} else {
 				explosionBlast = new Explosion(x + width / 2 - 2, y + height / 2);

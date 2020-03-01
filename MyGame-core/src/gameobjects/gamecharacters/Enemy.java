@@ -97,7 +97,7 @@ public class Enemy extends GameCharacter {
 	@Override
 	public void moveRight(float speed) {
 		setX(getX() + speed);
-		setEnemyDirection(Enemy.DIRECTION_RIGHT);
+		setEnemyDirection(DIRECTION_RIGHT);
 		setDx(-getDx());
 	}
 
@@ -108,7 +108,7 @@ public class Enemy extends GameCharacter {
 	@Override
 	public void moveLeft(float speed) {
 		setX(getX() - speed);
-		setEnemyDirection(Enemy.DIRECTION_LEFT);
+		setEnemyDirection(DIRECTION_LEFT);
 		setDx(-getDx());
 	}
 
@@ -119,7 +119,7 @@ public class Enemy extends GameCharacter {
 	@Override
 	public void moveDown(float speed) {
 		setY(getY() + speed * 2);
-		setEnemyDirection(Enemy.DIRECTION_DOWN);
+		setEnemyDirection(DIRECTION_DOWN);
 		setDy(-getDy());
 	}
 
@@ -130,7 +130,7 @@ public class Enemy extends GameCharacter {
 	@Override
 	public void moveUp(float speed) {
 		setY(getY() - speed * 2);
-		setEnemyDirection(Enemy.DIRECTION_UP);
+		setEnemyDirection(DIRECTION_UP);
 		setDy(-getDy());
 	}
 
@@ -303,22 +303,22 @@ public class Enemy extends GameCharacter {
 	private void changeDirection(MyGame myGame) {
 		if (direction == DIRECTION_LEFT || direction == DIRECTION_RIGHT) {
 			if (y < PlayerController.getCurrentPlayer(myGame).getY()) {
-				dx = stoppedValue;
-				dy = speed;
+				dx        = stoppedValue;
+				dy        = speed;
 				direction = DIRECTION_DOWN;
 			} else {
-				dx = stoppedValue;
-				dy = -speed;
+				dx        = stoppedValue;
+				dy        = -speed;
 				direction = DIRECTION_UP;
 			}
 		} else {
 			if (x < PlayerController.getCurrentPlayer(myGame).getX()) {
-				dx = speed;
-				dy = stoppedValue;
+				dx        = speed;
+				dy        = stoppedValue;
 				direction = DIRECTION_RIGHT;
 			} else {
-				dx = -speed;
-				dy = stoppedValue;
+				dx        = -speed;
+				dy        = stoppedValue;
 				direction = DIRECTION_LEFT;
 			}
 		}

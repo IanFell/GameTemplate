@@ -76,25 +76,25 @@ public class MagicPearl extends Weapon {
 					myGame.gameScreen.enemyHandler.checkProjectileCollision(myGame, this);
 					myGame.gameScreen.gruntHandler.checkProjectileCollision(myGame, this);
 					switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
-					case Player.DIRECTION_RIGHT:
+					case DIRECTION_RIGHT:
 						dx = 1;
 						dy = 0;
 						x += dx;
 						y += dy;
 						break;
-					case Player.DIRECTION_LEFT:
+					case DIRECTION_LEFT:
 						dx = 1;
 						dy = 0;
 						x -= dx;
 						y += dy;
 						break;
-					case Player.DIRECTION_DOWN:
+					case DIRECTION_DOWN:
 						dx = 0;
 						dy = 1;
 						x += dx;
 						y += dy;
 						break;
-					case Player.DIRECTION_UP:
+					case DIRECTION_UP:
 						dx = 0;
 						dy = 1;
 						x += dx;
@@ -104,25 +104,25 @@ public class MagicPearl extends Weapon {
 				} else if (hasReachedPeakDistance && isMovingBackward) {
 					// Pearl has reached it's peak and is moving back towards player. 
 					switch (PlayerOne.playerDirections.get(PlayerOne.playerDirections.size() - 1)) {
-					case Player.DIRECTION_RIGHT:
+					case DIRECTION_RIGHT:
 						dx = 1;
 						dy = 0;
 						x -= dx;
 						y += dy;
 						break;
-					case Player.DIRECTION_LEFT:
+					case DIRECTION_LEFT:
 						dx = 1;
 						dy = 0;
 						x += dx;
 						y += dy;
 						break;
-					case Player.DIRECTION_DOWN:
+					case DIRECTION_DOWN:
 						dx = 0;
 						dy = 1;
 						x += dx;
 						y -= dy;
 						break;
-					case Player.DIRECTION_UP:
+					case DIRECTION_UP:
 						dx = 0;
 						dy = 1;
 						x += dx;
