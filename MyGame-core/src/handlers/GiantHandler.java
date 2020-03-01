@@ -16,7 +16,7 @@ import maps.MapHandler;
  */
 public class GiantHandler {
 
-	private Giant giantOne;
+	private Giant[] giants = new Giant[3];
 
 	private int size = 5;
 
@@ -25,15 +25,36 @@ public class GiantHandler {
 	 * @param ImageLoader imageLoader
 	 */
 	public void init(ImageLoader imageLoader) {
-		giantOne = new Giant(
-				GameAttributeHelper.CHUNK_TWO_X_POSITION_START + 43, 
-				GameAttributeHelper.CHUNK_ONE_Y_POSITION_START + 10, 
+		// Wewa giant.
+		giants[0] = new Giant(
+				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 60, 
+				3, 
 				size, 
 				size, 
 				GameObject.DIRECTION_LEFT
 				);
 
-		GameObjectLoader.gameObjectList.add(giantOne);
+		// Apalachacola giant.
+		giants[1] = new Giant(
+				GameAttributeHelper.CHUNK_EIGHT_X_POSITION_START + 60, 
+				GameAttributeHelper.CHUNK_SIX_Y_POSITION_START + 43, 
+				size, 
+				size, 
+				GameObject.DIRECTION_LEFT
+				);
+
+		// Port St Joe giant.
+		giants[2] = new Giant(
+				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START + 1, 
+				GameAttributeHelper.CHUNK_THREE_Y_POSITION_START - 6, 
+				size, 
+				size, 
+				GameObject.DIRECTION_RIGHT
+				);
+
+		for (int i = 0; i < giants.length; i++) {
+			GameObjectLoader.gameObjectList.add(giants[i]);
+		}
 	}
 
 	/**
@@ -42,10 +63,8 @@ public class GiantHandler {
 	 * @param MapHandler mapHandler
 	 */
 	public void updateGiants(MyGame myGame, MapHandler mapHandler) {
-		//for (int i = 0; i < gruntSpawner.length; i++) {
-		//gruntSpawner[i].updateGrunts(myGame, mapHandler);
-		giantOne.updateObject(myGame, mapHandler);
-		//fire[i].updateObject(myGame, mapHandler);
-		//}
+		for (int i = 0; i < giants.length; i++) {
+			giants[i].updateObject(myGame, mapHandler);
+		}
 	}
 }
