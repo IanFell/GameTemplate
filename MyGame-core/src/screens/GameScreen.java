@@ -11,6 +11,7 @@ import gameobjects.weapons.BirdWeapon;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.MagicPearl;
 import handlers.EnemyHandler;
+import handlers.GiantHandler;
 import handlers.GruntHandler;
 import handlers.HeartHandler;
 import handlers.MissionHandler;
@@ -25,7 +26,6 @@ import loaders.GameWorld;
 import maps.MapHandler;
 import maps.MapLoader;
 import maps.MapRenderer;
-import missions.MissionStumpHole;
 import physics.Lighting.LightingHandler;
 import physics.Weather.LightningBoltHandler;
 import physics.Weather.WeatherHandler;
@@ -108,6 +108,7 @@ public class GameScreen extends Screens {
 
 	public EnemyHandler enemyHandler = new EnemyHandler();
 	public GruntHandler gruntHandler = new GruntHandler();
+	public GiantHandler giantHandler = new GiantHandler();
 
 	public TownHandler townHandler = new TownHandler();
 
@@ -188,6 +189,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_THREE).init(myGame);
 		enemyHandler.init(myGame.imageLoader);
 		gruntHandler.init(myGame.imageLoader);
+		giantHandler.init(myGame.imageLoader);
 		weatherHandler.init(myGame, this);
 		LightningBoltHandler.init();
 		missionHandler = new MissionHandler(myGame);
@@ -260,6 +262,7 @@ public class GameScreen extends Screens {
 		myGame.getGameObject(GameObject.PLAYER_THREE).updateObject(myGame, mapHandler);
 		enemyHandler.updateEnemies(myGame, mapHandler);
 		gruntHandler.updateGrunts(myGame, mapHandler);
+		giantHandler.updateGiants(myGame, mapHandler);
 		GameWorld.updateGameWorld(myGame, mapHandler);
 		mapUi.updateWorldMapUi();
 		townHandler.updateTowns(myGame);
