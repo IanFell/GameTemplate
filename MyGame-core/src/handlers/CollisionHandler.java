@@ -8,6 +8,7 @@ import gameobjects.GameObject;
 import gameobjects.Heart;
 import gameobjects.Rum;
 import gameobjects.gamecharacters.Enemy;
+import gameobjects.gamecharacters.Giant;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
 import gameobjects.stationarygameobjects.Chest;
@@ -308,18 +309,6 @@ public class CollisionHandler {
 			cannonBall.setCannonBallHasHitPlayer(true);
 			// Make cannonball stop and hit player and explode instead of going through him.
 			cannonBall.setDx(0);
-		}
-	}
-
-	/**
-	 * 
-	 * @param Enemy  giant
-	 * @param Player player
-	 */
-	public static void checkIfGiantHasCollidedWithPlayer(Enemy giant, Player player) {
-		if (giant.rectangle.overlaps(player.rectangle)) {
-			player.setHealth(player.getHealth() - 1);
-			// TODO Make player bounce back.
 		}
 	}
 

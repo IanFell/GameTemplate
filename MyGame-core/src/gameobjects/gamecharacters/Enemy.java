@@ -177,6 +177,10 @@ public class Enemy extends GameCharacter {
 	public void setEnemyDirection(int direction) {
 		this.direction = direction;
 	}
+	
+	protected void renderEnemyShadow(SpriteBatch batch, ImageLoader imageLoader, float width, float height, float shadowY) {
+		batch.draw(imageLoader.shadow, x, shadowY, width, height);
+	}
 
 	/**
 	 * 
@@ -187,6 +191,8 @@ public class Enemy extends GameCharacter {
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		updateElapsedTime();
 		if (!dead) {
+			// TODO IMPLEMENT A RENDER SHADOW METHOD IN ENEMY THAT CAN IMPLEMENT SHADOW Y POSITION.
+			renderEnemyShadow(batch, imageLoader, width, height / 2, y - 0.25f);
 			AnimationHandler.renderAnimation(
 					batch, 
 					elapsedTime, 

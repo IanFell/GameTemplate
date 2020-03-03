@@ -30,6 +30,9 @@ public class Giant extends Enemy {
 	private int jumpTimer;
 
 	private float shadowY;
+	
+	private int hitCount;
+	private final int HIT_COUNT_MAX = 3;
 
 	/**
 	 * Constructor.
@@ -65,6 +68,16 @@ public class Giant extends Enemy {
 		rectangle.height = height;
 
 		shadowY = y - 1.5f;
+		
+		hitCount = 0;
+	}
+
+	public int getHitCount() {
+		return hitCount;
+	}
+
+	public void setHitCount(int hitCount) {
+		this.hitCount = hitCount;
 	}
 
 	private void handleJumping() {
@@ -111,7 +124,7 @@ public class Giant extends Enemy {
 			direction = DIRECTION_LEFT;
 		}
 
-		CollisionHandler.checkIfGiantHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
+		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
 	}
 
 	/**
@@ -121,7 +134,9 @@ public class Giant extends Enemy {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		batch.draw(imageLoader.shadow, x, shadowY, 5, 2);
+		// TODO IMPLEMENT A RENDER SHADOW METHOD IN ENEMY THAT CAN IMPLEMENT SHADOW Y POSITION.
+		//batch.draw(imageLoader.shadow, x, shadowY, 5, 2);
+		renderEnemyShadow(batch, imageLoader, 5, 2, shadowY);
 		super.renderObject(batch, imageLoader);
 	}
 }
