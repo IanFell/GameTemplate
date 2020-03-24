@@ -85,7 +85,7 @@ public class Player extends GameCharacter {
 
 	protected int playerLoot;
 
-	protected int health;
+	protected float health;
 
 	private final int STARTING_HEALTH = 10;
 
@@ -98,6 +98,10 @@ public class Player extends GameCharacter {
 	public static boolean isInvincible         = false;
 	public static int invincibilityTimer       = 0;
 	private final int INVINCIBILITY_TIME_LIMIT = 500;
+
+	public static boolean isInQuickSand          = false;
+	public static int quickSandTimer             = 0;
+	private final int QUICK_SAND_TIMER_MAX_VALUE = 50;
 
 	/**
 	 * Constructor.
@@ -289,10 +293,6 @@ public class Player extends GameCharacter {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		x += dx;
-		y += dy;
-
-		handleInvincibility();
 
 		rectangle.x = x;
 		rectangle.y = y - height * 2;
@@ -316,21 +316,33 @@ public class Player extends GameCharacter {
 		if (isInWater) {
 			jumpingAction = ON_GROUND;
 		}
+
+		handleQuickSand();
+		handleInvincibility();
+	}
+
+	private void handleQuickSand() {
+		if (isInQuickSand) {
+			quickSandTimer++;
+			if (quickSandTimer > QUICK_SAND_TIMER_MAX_VALUE) {
+				isInQuickSand = false;
+			}
+		}
 	}
 
 	/**
 	 * 
-	 * @return int
+	 * @return float
 	 */
-	public int getHealth() {
+	public float getHealth() {
 		return health;
 	}
 
 	/**
 	 * 
-	 * @param int health
+	 * @param float health
 	 */
-	public void setHealth(int health) {
+	public void setHealth(float health) {
 		this.health = health;
 	}
 
@@ -420,7 +432,7 @@ public class Player extends GameCharacter {
 	 */
 	@Override
 	public void translateX(float distance) {
-		if (isInWater) {
+		if (isInWater || isInQuickSand) {
 			distance = distance / 2;
 		}
 		x += distance;
@@ -432,7 +444,7 @@ public class Player extends GameCharacter {
 	 */
 	@Override
 	public void translateY(float distance) {
-		if (isInWater) {
+		if (isInWater || isInQuickSand) {
 			distance = distance / 2;
 		}
 		y += distance;

@@ -49,9 +49,6 @@ public class QuickSand extends NatureObject {
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		rectangle.x = x;
 		rectangle.y = y - height;
-		x += dx;
-		y += dy;
-
 		CollisionHandler.checkIfPlayerCollidedWithQuickSand(PlayerController.getCurrentPlayer(myGame), this);
 	}
 }

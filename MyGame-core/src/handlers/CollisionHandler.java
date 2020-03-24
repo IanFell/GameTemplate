@@ -37,7 +37,15 @@ import ui.LocationMarker;
 public class CollisionHandler {
 
 	// Keep track of enemy collision timing for player health.
-	private static int timer = 0;
+	private static int enemyTimer = 0;
+
+	// Keep track of quick sand collision timing for player health.
+	private static int quickSandTimer = 0;
+
+	private final static int HEALTH_TIMER_MAX = 50;
+
+	// Times the removal of hearts so they don't dissapear really fast and kill the player.
+	private final static int HEALTH_TIMER_TRIGGER = 49;
 
 	/**
 	 * Only player can collide with solid tiles.
@@ -320,12 +328,12 @@ public class CollisionHandler {
 	public static void checkIfEnemyHasCollidedWithPlayer(Enemy enemy, Player player) {
 		if (enemy.rectangle.overlaps(player.rectangle)) {
 			// Use this so enemies don't drain player's health really quick.
-			timer++;
-			if (timer > 50) {
-				timer = 0;
+			enemyTimer++;
+			if (enemyTimer > HEALTH_TIMER_MAX) {
+				enemyTimer = 0;
 			}
 			// Comment this out to prevent death.
-			if (timer > 49) {
+			if (enemyTimer > HEALTH_TIMER_TRIGGER) {
 				// Put this here so player can't get hurt in cutscene.
 				if (!CutScene.anyCutSceneIsInProgress) {
 					if (!Player.isInvincible) {
@@ -364,7 +372,7 @@ public class CollisionHandler {
 			Heart.playSound = true;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param GameObject player
@@ -372,9 +380,19 @@ public class CollisionHandler {
 	 */
 	public static void checkIfPlayerCollidedWithQuickSand(GameObject player, QuickSand quickSand) {
 		if (player.rectangle.overlaps(quickSand.rectangle)) {
-			//((Player) player).setHealth(player.getHealth() + Heart.HEALTH);
+			// Use this so quick sand doesn't drain player's health really quick.
+			quickSandTimer++;
+			if (quickSandTimer > HEALTH_TIMER_MAX) {
+				quickSandTimer = 0;
+			}
+			// Comment this out to prevent death.
+			if (quickSandTimer > HEALTH_TIMER_TRIGGER) {
+				player.setHealth(player.getHealth() - Heart.HEALTH);
+			}
+
 			//Heart.playSound = true;
-			System.exit(0);
+			Player.quickSandTimer = 0;
+			Player.isInQuickSand  = true;
 		}
 	}
 
