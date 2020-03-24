@@ -26,8 +26,9 @@ public class Feather extends NatureObject {
 	 */
 	public Feather(int x, int y) {
 		super(x, y);
-		this.width       = 1;
-		this.height      = 1;
+		int size         = 1;
+		this.width       = size;
+		this.height      = size;
 		rectangle.width  = width;
 		rectangle.height = height;
 

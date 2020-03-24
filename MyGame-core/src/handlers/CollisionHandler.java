@@ -10,6 +10,7 @@ import gameobjects.Rum;
 import gameobjects.gamecharacters.Enemy;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
+import gameobjects.nature.QuickSand;
 import gameobjects.stationarygameobjects.Chest;
 import gameobjects.stationarygameobjects.buildings.TradingPost;
 import gameobjects.weapons.CannonBall;
@@ -361,6 +362,19 @@ public class CollisionHandler {
 			heart.setHasBeenCollected(true);
 			((Player) player).setHealth(player.getHealth() + Heart.HEALTH);
 			Heart.playSound = true;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param GameObject player
+	 * @param QuickSand  quickSand
+	 */
+	public static void checkIfPlayerCollidedWithQuickSand(GameObject player, QuickSand quickSand) {
+		if (player.rectangle.overlaps(quickSand.rectangle)) {
+			//((Player) player).setHealth(player.getHealth() + Heart.HEALTH);
+			//Heart.playSound = true;
+			System.exit(0);
 		}
 	}
 

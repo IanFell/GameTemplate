@@ -1,4 +1,4 @@
-package gameobjects;
+package gameobjects.nature;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
@@ -13,9 +13,7 @@ import maps.MapHandler;
  * @author Fabulous Fellini
  *
  */
-public class Rum extends GameObject {
-
-	public static boolean playSound;
+public class QuickSand extends NatureObject {
 
 	/**
 	 * Constructor.
@@ -23,17 +21,13 @@ public class Rum extends GameObject {
 	 * @param int x
 	 * @param int y
 	 */
-	public Rum(int x, int y) {
-		this.x           = x;
-		this.y           = y;
-		int size         = 1;
+	public QuickSand(int x, int y) {
+		super(x, y);
+		int size         = 3;
 		this.width       = size;
 		this.height      = size;
-		rectangle.x      = x;
-		rectangle.y      = y - height;
-		rectangle.width  = size;
-		rectangle.height = size;
-		playSound        = false;
+		rectangle.width  = width;
+		rectangle.height = height;
 	}
 
 	/**
@@ -43,13 +37,7 @@ public class Rum extends GameObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		batch.draw(
-				imageLoader.rum,
-				x,
-				y,
-				width,
-				-height
-				);
+		renderNatureObject(batch, imageLoader.whiteSquare);
 	}
 
 	/**
@@ -59,10 +47,11 @@ public class Rum extends GameObject {
 	 */
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
-		if (!hasBeenCollected) {
-			CollisionHandler.checkIfPlayerCollidedWithRum(PlayerController.getCurrentPlayer(myGame), this);
-		} else {
-			grow();
-		}
+		rectangle.x = x;
+		rectangle.y = y - height;
+		x += dx;
+		y += dy;
+
+		CollisionHandler.checkIfPlayerCollidedWithQuickSand(PlayerController.getCurrentPlayer(myGame), this);
 	}
 }

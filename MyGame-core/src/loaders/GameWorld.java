@@ -10,6 +10,7 @@ import loaders.flowerloader.FlowerLoader;
 import loaders.lighthouseloader.LightHouseLoader;
 import loaders.pigglywigglyloader.PigglyWigglyLoader;
 import loaders.plantloaders.PlantLoader;
+import loaders.quicksandloader.QuickSandLoader;
 import loaders.rawbarloader.RawBarLoader;
 import loaders.rockloader.RockLoader;
 import loaders.signloader.SignLoader;
@@ -44,6 +45,7 @@ public class GameWorld {
 	private DockLoader dockLoader;
 	private CannonLoader cannonLoader;
 	private StumpLoader stumpLoader;
+	private QuickSandLoader quickSandLoader;
 
 	/**
 	 * Constructor.
@@ -67,6 +69,7 @@ public class GameWorld {
 		tradingPostLoader  = new TradingPostLoader();
 		cannonLoader       = new CannonLoader();
 		stumpLoader        = new StumpLoader();
+		quickSandLoader    = new QuickSandLoader();
 		loadGameWorld(myGame);
 	}
 
@@ -91,6 +94,7 @@ public class GameWorld {
 		tradingPostLoader.loadTradingPost(myGame);
 		cannonLoader.loadCannons(myGame);
 		stumpLoader.loadStumps();
+		quickSandLoader.loadQuickSand();
 	}
 
 	/**
@@ -111,13 +115,16 @@ public class GameWorld {
 		for (int i = 0; i < FireLoader.fires.length; i++) {
 			FireLoader.fires[i].updateObject(myGame, mapHandler);
 		}
+		for (int i = 0; i < QuickSandLoader.quickSand.length; i++) {
+			QuickSandLoader.quickSand[i].updateObject(myGame, mapHandler);
+		}
 
 		if (!MissionStumpHole.missionIsActive) {
 			for(int i = 0; i < CannonLoader.cannons.length; i++) {	
 				CannonLoader.cannons[i].updateObject(myGame, mapHandler);
 			}
 		}
-		
+
 		/**
 		 * Since the stump hole mission is drawn directly over these game world stumps,
 		 * do not update game world stumps during stump hole mission.  
