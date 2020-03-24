@@ -12,6 +12,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import gameobjects.Torch;
 import handlers.AnimationHandler;
+import handlers.RumHandler;
 import inventory.Inventory;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -67,10 +68,22 @@ public class PlayerOne extends Player {
 
 	/**
 	 * Convert the current amount of player loot into a string to display on screen.
+	 * 
+	 * @retrun String
 	 */
 	@Override
 	public String convertPlayerLootToString() {
 		return Integer.toString(playerLoot);
+	}
+
+	/**
+	 * Convert the current amount of player rum into a string to display on screen.
+	 * 
+	 * @retrun String
+	 */
+	@Override
+	public String convertPlayerRumToString() {
+		return Integer.toString(RumHandler.rumCount);
 	}
 
 	/**

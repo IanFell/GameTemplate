@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
-import handlers.RumHandler;
 import loaders.ImageLoader;
 
 /**
@@ -12,40 +11,37 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class RumUi {
+public class RumUi extends TextBasedUiParent {
+
+	private int rumIconSize = 2;
 
 	/**
-	 * This method is overloaded.
-	 * We are using it to draw an image, not a string.
-	 * 
-	 * For now just draw all rum we get on the screen horizontally.
 	 * 
 	 * @param SpriteBatch batch
 	 * @param ImageLoader imageLoader
 	 * @param MyGame      myGame
+	 * @param String      text
 	 * @param GameOjbect  player
 	 * @param float       xOffset
 	 * @param float       yOffset
 	 */
+	@Override
 	public void renderUi(
 			SpriteBatch batch, 
 			ImageLoader imageLoader, 
 			MyGame myGame, 
+			String text, 
 			GameObject player, 
 			float xOffset, 
 			float yOffset
 			) {
-		int size = 2;
-		float startX = player.getX() - xOffset;
-		for (int i = 0; i < RumHandler.rumCount; i++) {
-			batch.draw(
-					imageLoader.rum, 
-					startX, 
-					player.getY() + yOffset, 
-					size, 
-					-size
-					); 
-			startX += 1;
-		}
-	}
+		batch.draw(
+				imageLoader.rum, 
+				player.getX() - xOffset - 2, 
+				player.getY() + yOffset + 1, 
+				rumIconSize, 
+				-rumIconSize
+				); 
+		super.renderUi(batch, imageLoader, myGame, text, player, xOffset, yOffset);
+	}	
 }

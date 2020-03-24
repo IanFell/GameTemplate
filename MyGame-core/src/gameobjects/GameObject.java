@@ -300,6 +300,10 @@ public class GameObject extends Sprite implements GameObjectInterface, Comparabl
 	public String convertPlayerLootToString() {
 		return null;
 	}
+	
+	public String convertPlayerRumToString() {
+		return null;
+	}
 
 	/**
 	 * 

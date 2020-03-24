@@ -44,7 +44,7 @@ public class UserInterface {
 			healthUi.renderHealthUi(batch, imageLoader, myGame);
 			GameObject player = PlayerController.getCurrentPlayer(myGame);
 			lootUi.renderUi(batch, imageLoader, myGame, player.convertPlayerLootToString(), player, 11.0f, -6.0f);
-			rumUi.renderUi(batch, imageLoader, myGame, player, 13.0f, -2.0f);
+			rumUi.renderUi(batch, imageLoader, myGame, player.convertPlayerRumToString(), player, 11.0f, -2.0f);
 			playerNameUi.renderUi(batch, imageLoader, myGame, player, 10.5f, 6.0f);
 			selectedInventoryUi.renderSelectedInventoryUi(batch, imageLoader, myGame, player);
 		}
