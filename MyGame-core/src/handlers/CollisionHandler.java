@@ -8,7 +8,6 @@ import gameobjects.GameObject;
 import gameobjects.Heart;
 import gameobjects.Rum;
 import gameobjects.gamecharacters.Enemy;
-import gameobjects.gamecharacters.Giant;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
 import gameobjects.stationarygameobjects.Chest;

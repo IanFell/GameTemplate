@@ -35,7 +35,7 @@ public class Enemy extends GameCharacter {
 
 	public final static int DAMAGE_INFLICTED = -1;
 
-	private Explosion explosion;
+	protected Explosion explosion;
 	protected boolean dead;
 	private boolean willAttack;
 	private float speed;
@@ -44,7 +44,7 @@ public class Enemy extends GameCharacter {
 	public static boolean playDeathSound = false;
 
 	// Death explosion variable.
-	private boolean explosionShouldBeCreated;
+	protected boolean explosionShouldBeCreated;
 
 	/**
 	 * Constructor.
@@ -177,7 +177,15 @@ public class Enemy extends GameCharacter {
 	public void setEnemyDirection(int direction) {
 		this.direction = direction;
 	}
-	
+
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 * @param float       width
+	 * @param float       height
+	 * @param float       shadowY
+	 */
 	protected void renderEnemyShadow(SpriteBatch batch, ImageLoader imageLoader, float width, float height, float shadowY) {
 		batch.draw(imageLoader.shadow, x, shadowY, width, height);
 	}
@@ -191,7 +199,6 @@ public class Enemy extends GameCharacter {
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		updateElapsedTime();
 		if (!dead) {
-			// TODO IMPLEMENT A RENDER SHADOW METHOD IN ENEMY THAT CAN IMPLEMENT SHADOW Y POSITION.
 			renderEnemyShadow(batch, imageLoader, width, height / 2, y - 0.25f);
 			AnimationHandler.renderAnimation(
 					batch, 
@@ -238,7 +245,13 @@ public class Enemy extends GameCharacter {
 
 		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
 
-		// If enemy is dead, create explosion and start explosion timer.
+		handleDeathExplosion();
+	}
+
+	/**
+	 * If enemy is dead, create explosion and start explosion timer.
+	 */
+	protected void handleDeathExplosion() {
 		if (dead) {
 			timer++;
 			if (explosionShouldBeCreated) {

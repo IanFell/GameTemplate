@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.mygame.MyGame;
 
 import controllers.PlayerController;
+import handlers.AnimationHandler;
 import handlers.CollisionHandler;
 import helpers.GameAttributeHelper;
 import loaders.ImageLoader;
@@ -30,9 +31,6 @@ public class Giant extends Enemy {
 	private int jumpTimer;
 
 	private float shadowY;
-	
-	private int hitCount;
-	private final int HIT_COUNT_MAX = 3;
 
 	/**
 	 * Constructor.
@@ -50,7 +48,7 @@ public class Giant extends Enemy {
 		walkRightTexture = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/grunt/gruntRight.atlas"));
 		walkLeftTexture  = new TextureAtlas(Gdx.files.internal("artwork/gamecharacters/grunt/gruntLeft.atlas"));
 
-		float animationSpeed = 7/15f;
+		float animationSpeed = AnimationHandler.ANIMATION_SPEED_ENEMY;
 		walkDownAnimation    = new Animation <TextureRegion> (animationSpeed, walkDownTexture.getRegions());
 		walkUpAnimation      = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
@@ -68,16 +66,6 @@ public class Giant extends Enemy {
 		rectangle.height = height;
 
 		shadowY = y - 1.5f;
-		
-		hitCount = 0;
-	}
-
-	public int getHitCount() {
-		return hitCount;
-	}
-
-	public void setHitCount(int hitCount) {
-		this.hitCount = hitCount;
 	}
 
 	private void handleJumping() {
@@ -108,7 +96,7 @@ public class Giant extends Enemy {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		rectangle.x = x;
-		rectangle.y = y;
+		rectangle.y = y - height;
 
 		handleJumping();
 
@@ -116,7 +104,7 @@ public class Giant extends Enemy {
 		if (x < LEFT_BOUNDARY) {
 			dx = -dx;
 		} else if (x > RIGHT_BOUNDARY) {
-			dx = - dx;
+			dx = -dx;
 		}
 
 		direction = DIRECTION_RIGHT;
@@ -125,6 +113,8 @@ public class Giant extends Enemy {
 		}
 
 		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
+
+		handleDeathExplosion();
 	}
 
 	/**
@@ -134,9 +124,30 @@ public class Giant extends Enemy {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		// TODO IMPLEMENT A RENDER SHADOW METHOD IN ENEMY THAT CAN IMPLEMENT SHADOW Y POSITION.
-		//batch.draw(imageLoader.shadow, x, shadowY, 5, 2);
-		renderEnemyShadow(batch, imageLoader, 5, 2, shadowY);
-		super.renderObject(batch, imageLoader);
+		updateElapsedTime();
+		if (!dead) {
+			renderEnemyShadow(batch, imageLoader, 5, 2, shadowY);
+			AnimationHandler.renderAnimation(
+					batch, 
+					elapsedTime, 
+					getCurrentAnimation(), 
+					x, 
+					y, 
+					width,
+					height,
+					imageLoader, 
+					AnimationHandler.OBJECT_TYPE_ENEMY
+					);
+			// Uncomment to debug attackBoundary.
+			//batch.draw(imageLoader.whiteSquare, attackBoundary.x, attackBoundary.y, attackBoundary.width, attackBoundary.height);
+			// Uncomment to draw enemy hit box.
+			//batch.draw(imageLoader.whiteSquare, rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+		} else {
+			if (explosion != null) {
+				if (timer < MAX_DEATH_ANIMATION_VALUE) {
+					explosion.renderExplosion(batch, imageLoader);
+				}
+			}
+		}
 	}
 }
