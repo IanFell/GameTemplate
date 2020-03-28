@@ -117,13 +117,13 @@ public class Tile extends Sprite {
 	}
 
 	private  boolean isWithinScreenBounds() {
-		float cameraXPosition = GameScreen.camera.position.x;
-		float cameraYPosition = GameScreen.camera.position.y;
-		float playerXPosition = getX();
-		float playerYPosition = getY();
-		float screenOffset    = 0.5f;
-		float yPositionOffset = 1.5f;
-		int withinBoundsPerimeterOffset = 15;
+		float cameraXPosition             = GameScreen.camera.position.x;
+		float cameraYPosition             = GameScreen.camera.position.y;
+		float playerXPosition             = getX();
+		float playerYPosition             = getY();
+		float screenOffset                = 0.5f;
+		float yPositionOffset             = 1.5f;
+		float withinBoundsPerimeterOffset = 15.5f;
 		if (
 				playerXPosition < cameraXPosition + withinBoundsPerimeterOffset - screenOffset &&
 				playerXPosition > cameraXPosition - withinBoundsPerimeterOffset + screenOffset &&

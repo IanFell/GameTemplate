@@ -30,7 +30,10 @@ public class LightingHandler {
 	 * @param MyGame myGame
 	 */
 	public void renderShadows(MyGame myGame) {
-		// If we want shadows to dissapear from players at night time, use this if statement.
+		/**
+		 * If we want shadows to dissapear from players at night time, use this if statement.
+		 * However, the shadows help the player to know they are jumping. 
+		 */
 		//if (NightAndDayCycle.isDayTime()) {
 		if (GameObjectLoader.gameObjectList.contains(myGame.getGameObject(GameObject.PLAYER_ONE))) {
 			shadowHandler.renderLighting(
