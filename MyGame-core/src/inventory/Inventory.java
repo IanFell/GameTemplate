@@ -11,7 +11,6 @@ import gameobjects.gamecharacters.Player;
 import gameobjects.gamecharacters.PlayerOne;
 import gameobjects.weapons.BirdWeapon;
 import gameobjects.weapons.Gun;
-import gameobjects.weapons.LegendSword;
 import gameobjects.weapons.MagicPearl;
 import gameobjects.weapons.Weapon;
 import loaders.ImageLoader;
@@ -85,9 +84,7 @@ public class Inventory extends Screens {
 		float xPosition = 0;
 		float yPosition = 0;
 		int objectType  = Weapon.WEAPON_TYPE_SWORD;
-		if (inventory.get(currentlySelectedInventoryObject) instanceof LegendSword) {
-			objectType = Weapon.WEAPON_TYPE_SWORD;
-		} else if (inventory.get(currentlySelectedInventoryObject) instanceof Gun) {
+		if (inventory.get(currentlySelectedInventoryObject) instanceof Gun) {
 			objectType = Weapon.WEAPON_TYPE_GUN;
 		} else if (inventory.get(currentlySelectedInventoryObject) instanceof MagicPearl) {
 			objectType = Weapon.WEAPON_TYPE_MAGIC_PEARL;
