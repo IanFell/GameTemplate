@@ -23,11 +23,11 @@ public class Explosion extends GameObject {
 	 * 
 	 * @param float x
 	 * @param float y
+	 * @param int   explosionSize
 	 */
-	public Explosion(float x, float y) {
+	public Explosion(float x, float y, int explosionSize) {
 		this.x            = x;
 		this.y            = y;
-		int explosionSize = 2;
 		this.width        = explosionSize;
 		this.height       = explosionSize;
 		textureAtlas      = new TextureAtlas(Gdx.files.internal("artwork/effects/explosion/explosion.atlas"));

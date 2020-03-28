@@ -342,18 +342,19 @@ public class CollisionHandler {
 					}
 				}
 			} */
-			// Lets try this instead of the above method to see how it works out.
-			if (!CutScene.anyCutSceneIsInProgress) {
-				if (!Player.isInvincible) {
-					player.setHealth(player.getHealth() - 1);
-				}
-			}
-			player.setBouncingBack(true);
 
 			// Kill enemy if he is overlapping with player while player is performing attack.
 			if (Player.playerIsPerformingAttack || Player.jumpingAction == Player.DESCENDING_JUMP) {
 				handleEnemyDeath(enemy);
 				// Player should bounce back upon attacking an enemy with a jump.
+				player.setBouncingBack(true);
+			} else {
+				// Lets try this instead of the above method to see how it works out.
+				if (!CutScene.anyCutSceneIsInProgress) {
+					if (!Player.isInvincible) {
+						player.setHealth(player.getHealth() - 1);
+					}
+				}
 				player.setBouncingBack(true);
 			}
 		}

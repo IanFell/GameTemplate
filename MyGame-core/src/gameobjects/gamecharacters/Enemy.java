@@ -31,7 +31,7 @@ public class Enemy extends GameCharacter {
 	 * How long explosion animation plays after enemy has been killed.
 	 * This is so it wont loop.
 	 */
-	public final static int MAX_DEATH_ANIMATION_VALUE = 15;
+	public final static int MAX_DEATH_ANIMATION_VALUE = 8;
 
 	public final static int DAMAGE_INFLICTED = -1;
 
@@ -45,6 +45,8 @@ public class Enemy extends GameCharacter {
 
 	// Death explosion variable.
 	protected boolean explosionShouldBeCreated;
+	
+	private final int ENEMY_EXPLOSION_SIZE = 2;
 
 	/**
 	 * Constructor.
@@ -245,17 +247,19 @@ public class Enemy extends GameCharacter {
 
 		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
 
-		handleDeathExplosion();
+		handleDeathExplosion(ENEMY_EXPLOSION_SIZE);
 	}
 
 	/**
 	 * If enemy is dead, create explosion and start explosion timer.
+	 * 
+	 * @param int explosionSize
 	 */
-	protected void handleDeathExplosion() {
+	protected void handleDeathExplosion(int explosionSize) {
 		if (dead) {
 			timer++;
 			if (explosionShouldBeCreated) {
-				explosion                = new Explosion(x, y);
+				explosion                = new Explosion(x, y, explosionSize);
 				explosionShouldBeCreated = false;
 			}
 		}

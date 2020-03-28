@@ -31,6 +31,8 @@ public class Giant extends Enemy {
 	private int jumpTimer;
 
 	private float shadowY;
+	
+	private final int GIANT_EXPLOSION_SIZE = 5;
 
 	/**
 	 * Constructor.
@@ -112,9 +114,11 @@ public class Giant extends Enemy {
 			direction = DIRECTION_LEFT;
 		}
 
-		CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
+		if (!dead) {
+			CollisionHandler.checkIfEnemyHasCollidedWithPlayer(this, (Player) PlayerController.getCurrentPlayer(myGame));
+		}
 
-		handleDeathExplosion();
+		handleDeathExplosion(GIANT_EXPLOSION_SIZE);
 	}
 
 	/**

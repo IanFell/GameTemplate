@@ -19,6 +19,8 @@ public class CannonBall extends Weapon {
 
 	public static final int MAX_EXPLOSION_VALUE = 20;
 
+	private final int CANNON_BALL_EXPLOSION_SIZE = 1;
+
 	/**
 	 * Cannon ball shoots upwards, and shootingTimer starts.
 	 * When shootingTimer hits this value, cannon ball begins to fall.
@@ -148,9 +150,9 @@ public class CannonBall extends Weapon {
 	private void handleExplosionBlast(MyGame myGame, MapHandler mapHandler) {
 		if (explosionBlast == null) {
 			if (direction == DIRECTION_RIGHT) {
-				explosionBlast = new Explosion(x + width / 2, y + height / 2);
+				explosionBlast = new Explosion(x + width / 2, y + height / 2, CANNON_BALL_EXPLOSION_SIZE);
 			} else {
-				explosionBlast = new Explosion(x + width / 2 - 2, y + height / 2);
+				explosionBlast = new Explosion(x + width / 2 - 2, y + height / 2, CANNON_BALL_EXPLOSION_SIZE);
 			}
 		} else {
 			explosionBlast.updateObject(myGame, mapHandler);
@@ -167,7 +169,7 @@ public class CannonBall extends Weapon {
 	private void handleExplosionLand(MyGame myGame, MapHandler mapHandler) {
 		if (dx <= 0) {
 			if (explosionLand == null) {
-				explosionLand = new Explosion(x - 0.5f, y + 2);
+				explosionLand = new Explosion(x - 0.5f, y + 2, CANNON_BALL_EXPLOSION_SIZE);
 				playLandSound = true;
 			} else {
 				explosionLand.updateObject(myGame, mapHandler);
@@ -202,20 +204,22 @@ public class CannonBall extends Weapon {
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
 		// Don't execute this is we are in the raw bar mission.
 		if (!MissionRawBar.missionIsActive) {
-			batch.draw(
-					imageLoader.shadow,
-					shadowX, 
-					shadowY,
-					size,
-					size
-					);
-			batch.draw(
-					imageLoader.cannonBall,
-					x, 
-					y,
-					size,
-					size
-					);
+			if (explosionLand == null) {
+				batch.draw(
+						imageLoader.shadow,
+						shadowX, 
+						shadowY,
+						size,
+						size
+						);
+				batch.draw(
+						imageLoader.cannonBall,
+						x, 
+						y,
+						size,
+						size
+						);
+			}
 			if (explosionLand != null) {
 				explosionLand.renderExplosion(batch, imageLoader);
 			}
