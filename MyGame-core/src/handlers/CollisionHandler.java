@@ -37,7 +37,7 @@ import ui.LocationMarker;
 public class CollisionHandler {
 
 	// Keep track of enemy collision timing for player health.
-	private static int enemyTimer = 0;
+	//private static int enemyTimer = 0;
 
 	// Keep track of quick sand collision timing for player health.
 	private static int quickSandTimer = 0;
@@ -327,6 +327,7 @@ public class CollisionHandler {
 	 */
 	public static void checkIfEnemyHasCollidedWithPlayer(Enemy enemy, Player player) {
 		if (enemy.rectangle.overlaps(player.rectangle)) {
+			/*
 			// Use this so enemies don't drain player's health really quick.
 			enemyTimer++;
 			if (enemyTimer > HEALTH_TIMER_MAX) {
@@ -340,7 +341,14 @@ public class CollisionHandler {
 						player.setHealth(player.getHealth() - 1);
 					}
 				}
+			} */
+			// Lets try this instead of the above method to see how it works out.
+			if (!CutScene.anyCutSceneIsInProgress) {
+				if (!Player.isInvincible) {
+					player.setHealth(player.getHealth() - 1);
+				}
 			}
+			player.setBouncingBack(true);
 
 			// Kill enemy if he is overlapping with player while player is performing attack.
 			if (Player.playerIsPerformingAttack || Player.jumpingAction == Player.DESCENDING_JUMP) {
