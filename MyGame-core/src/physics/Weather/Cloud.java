@@ -5,7 +5,6 @@ import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
-import helpers.RandomNumberGenerator;
 import loaders.ImageLoader;
 import particles.CloudParticle;
 import screens.GameScreen;
@@ -56,38 +55,13 @@ public class Cloud extends GameObject {
 	 * 
 	 * @param MyGame     myGame
 	 * @param GameScreen gameScreen
+	 * @param float      yPosRelativeWithPlayer
 	 */
-	public void updateObject(MyGame myGame, GameScreen gameScreen) {
-		x += dx; 
+	public void updateObject(MyGame myGame, GameScreen gameScreen, float yPosRelativeWithPlayer) {
+		x += dx;
+		y = yPosRelativeWithPlayer;
 		if (x < myGame.getGameObject(Player.PLAYER_ONE).getX() - 20) {
 			x = myGame.getGameObject(Player.PLAYER_ONE).getX() + 18;
-
-			// Reset Y positions of clouds if they are behind the camera so it appears more random.
-			for (int i = 0; i < gameScreen.getWeatherHandler().cloud.length; i++) {
-				gameScreen.getWeatherHandler().cloud[i].setY(
-						(float) RandomNumberGenerator.generateRandomDouble(
-								myGame.gameObjectLoader.playerOne.getY() - 10, 
-								myGame.gameObjectLoader.playerOne.getY() + 10)
-						);
-
-				gameScreen.getWeatherHandler().cloud2[i].setY(
-						(float) RandomNumberGenerator.generateRandomDouble(
-								myGame.gameObjectLoader.playerOne.getY() - 10, 
-								myGame.gameObjectLoader.playerOne.getY() + 10)
-						);
-
-				gameScreen.getWeatherHandler().cloud3[i].setY(
-						(float) RandomNumberGenerator.generateRandomDouble(
-								myGame.gameObjectLoader.playerOne.getY() - 10, 
-								myGame.gameObjectLoader.playerOne.getY() + 10)
-						);
-
-				gameScreen.getWeatherHandler().cloud4[i].setY(
-						(float) RandomNumberGenerator.generateRandomDouble(
-								myGame.gameObjectLoader.playerOne.getY() - 10, 
-								myGame.gameObjectLoader.playerOne.getY() + 10)
-						);
-			}
 		}
 	}
 }

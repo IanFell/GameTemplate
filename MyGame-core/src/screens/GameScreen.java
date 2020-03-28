@@ -385,7 +385,7 @@ public class GameScreen extends Screens {
 		magicPearl.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 		birdWeapon.renderObject(myGame.renderer.batch, myGame.imageLoader, myGame);
 
-		//weatherHandler.renderClouds(myGame);
+		weatherHandler.renderClouds(myGame);
 	}
 
 	/*
