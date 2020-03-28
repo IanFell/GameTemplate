@@ -24,12 +24,12 @@ public class MusicLoader {
 	public Music footsteps;
 
 	public void init() {
-		ocean                 = Gdx.audio.newMusic(Gdx.files.internal("audio/Ocean.wav"));
-		dayTimeAmbientNoise   = Gdx.audio.newMusic(Gdx.files.internal("audio/DayTimeAmbience.wav"));
-		footsteps             = Gdx.audio.newMusic(Gdx.files.internal("audio/FootstepsMusic.wav"));
-		rainAndThunder        = Gdx.audio.newMusic(Gdx.files.internal("audio/Rain.wav"));
-		fire                  = Gdx.audio.newMusic(Gdx.files.internal("audio/Fire.wav"));
-		nightTimeAmbientNoise = Gdx.audio.newMusic(Gdx.files.internal("audio/NightTimeAmbience.wav"));
+		ocean                 = Gdx.audio.newMusic(Gdx.files.internal("audio/ocean.ogg"));
+		dayTimeAmbientNoise   = Gdx.audio.newMusic(Gdx.files.internal("audio/daytimeambience.ogg"));
+		footsteps             = Gdx.audio.newMusic(Gdx.files.internal("audio/footstepsmusic.ogg"));
+		rainAndThunder        = Gdx.audio.newMusic(Gdx.files.internal("audio/rain.ogg"));
+		fire                  = Gdx.audio.newMusic(Gdx.files.internal("audio/fire.ogg"));
+		nightTimeAmbientNoise = Gdx.audio.newMusic(Gdx.files.internal("audio/nighttimeambience.ogg"));
 	}
 
 	public void dispose() {
