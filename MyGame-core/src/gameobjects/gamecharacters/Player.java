@@ -244,7 +244,7 @@ public class Player extends GameCharacter {
 			}
 			if (playerNumber == PLAYER_TWO) {
 				walkDownTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeDown.atlas"));
-				walkUpTexture            = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "PlayerThreeUp.atlas"));
+				walkUpTexture            = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeUp.atlas"));
 				walkRightTexture         = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeRight.atlas"));
 				walkLeftTexture          = new TextureAtlas(Gdx.files.internal(playerRenderingPrefix + "playerThreeLeft.atlas"));
 				lifeState                = LIFE_STATE_TWO;
