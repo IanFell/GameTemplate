@@ -20,6 +20,7 @@ public class UserInterface {
 	private PlayerNameUi playerNameUi;
 	private SelectedInventoryUi selectedInventoryUi;
 	private RumUi rumUi;
+	private Objective objective;
 
 	/**
 	 * Constructor.
@@ -30,6 +31,7 @@ public class UserInterface {
 		playerNameUi        = new PlayerNameUi();
 		selectedInventoryUi = new SelectedInventoryUi();
 		rumUi               = new RumUi();
+		objective           = new Objective();
 	}
 
 	/**
@@ -47,6 +49,11 @@ public class UserInterface {
 			rumUi.renderUi(batch, imageLoader, myGame, player.convertPlayerRumToString(), player);
 			playerNameUi.renderUi(batch, imageLoader, myGame, player, 10.5f, 6.0f);
 			selectedInventoryUi.renderSelectedInventoryUi(batch, imageLoader, myGame, player);
+			objective.renderUi(batch, imageLoader, myGame, player);
 		}
+	}
+
+	public void updateUserInterface() {
+		objective.updateObjective();
 	}
 }

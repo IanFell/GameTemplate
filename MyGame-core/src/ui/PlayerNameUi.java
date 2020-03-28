@@ -15,18 +15,9 @@ import loaders.ImageLoader;
  * @author Fabulous Fellini
  *
  */
-public class PlayerNameUi extends TextBasedUiParent {
+public class PlayerNameUi {
 
 	/**
-	 * Constructor.
-	 */
-	public PlayerNameUi() {
-		super();
-	}
-
-	/**
-	 * This method is overloaded.
-	 * We are using it to draw an image, not a string.
 	 * 
 	 * @param SpriteBatch batch
 	 * @param ImageLoader imageLoader
