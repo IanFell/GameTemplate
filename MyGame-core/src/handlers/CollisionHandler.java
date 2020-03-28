@@ -42,10 +42,10 @@ public class CollisionHandler {
 	// Keep track of quick sand collision timing for player health.
 	private static int quickSandTimer = 0;
 
-	private final static int HEALTH_TIMER_MAX = 50;
+	private final static int HEALTH_TIMER_MAX = 25;
 
 	// Times the removal of hearts so they don't dissapear really fast and kill the player.
-	private final static int HEALTH_TIMER_TRIGGER = 49;
+	private final static int HEALTH_TIMER_TRIGGER = 24;
 
 	/**
 	 * Only player can collide with solid tiles.
