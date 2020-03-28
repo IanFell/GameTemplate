@@ -27,7 +27,7 @@ public class WeatherHandler {
 
 	private int randomNumberToDetermineIfStormCycleShouldBegin = 0;
 
-	private int maxLimitToDetermineIfStormCycleShouldBegin = 100000;
+	private int maxLimitToDetermineIfStormCycleShouldBegin = 100000;  
 
 	private static boolean isStorming = false;
 

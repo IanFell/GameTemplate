@@ -74,7 +74,7 @@ public class RainHandler extends GameObject {
 			int rainYBoundary = 5;
 			if (y > myGame.getGameObject(GameObject.PLAYER_ONE).getY() + rainYBoundary) {
 				// Only make it rain around player.
-				int rainXBoundary       = 10;
+				int rainXBoundary      = 15;
 				float middleOfBoundary = myGame.getGameObject(GameObject.PLAYER_ONE).getX();
 				x  = (float) RandomNumberGenerator.generateRandomDouble(
 						middleOfBoundary - rainXBoundary, 
