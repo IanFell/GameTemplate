@@ -69,7 +69,7 @@ public class WeatherHandler {
 	 */
 	public void update(MyGame myGame, GameScreen gameScreen, MapHandler mapHandler) {
 		updateStormCycle(myGame, gameScreen, mapHandler);
-		updateClouds(myGame, gameScreen);
+		//updateClouds(myGame, gameScreen);
 		if (!CutScene.anyCutSceneIsInProgress) {
 			nightAndDayCycle.performDayAndNightCycle();
 		}
