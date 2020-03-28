@@ -53,8 +53,8 @@ public class TextBasedUiParent extends GameObject {
 		font.draw(
 				batch, 
 				text, 
-				player.getX() - xOffset, 
-				player.getY() + yOffset
+				xOffset, 
+				yOffset
 				);
 	}
 }

@@ -37,31 +37,28 @@ public class LootUi extends TextBasedUiParent {
 	 * @param MyGame      myGame
 	 * @param String      text
 	 * @param GameOjbect  player
-	 * @param float       xOffset
-	 * @param float       yOffset
 	 */
-	@Override
 	public void renderUi(
 			SpriteBatch batch, 
 			ImageLoader imageLoader, 
 			MyGame myGame, 
 			String text, 
-			GameObject player, 
-			float xOffset, 
-			float yOffset
+			GameObject player
 			) {
 		updateElapsedTime();
+		float xPos = player.getX() - 12.5f;
+		float yPos = player.getY() - 5.0f;
 		AnimationHandler.renderAnimation(
 				batch, 
 				elapsedTime, 
 				animation, 
-				player.getX() - 12.5f, 
-				player.getY() - 5.0f, 
+				xPos, 
+				yPos, 
 				width,
 				height,
 				imageLoader, 
 				AnimationHandler.OBJECT_TYPE_LOOT
 				);
-		super.renderUi(batch, imageLoader, myGame, text, player, xOffset, yOffset);
+		super.renderUi(batch, imageLoader, myGame, text, player, xPos + 2, yPos - 1);
 	}
 }

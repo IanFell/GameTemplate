@@ -43,8 +43,8 @@ public class UserInterface {
 		if (!CutScene.anyCutSceneIsInProgress) {
 			healthUi.renderHealthUi(batch, imageLoader, myGame);
 			GameObject player = PlayerController.getCurrentPlayer(myGame);
-			lootUi.renderUi(batch, imageLoader, myGame, player.convertPlayerLootToString(), player, 11.0f, -6.0f);
-			rumUi.renderUi(batch, imageLoader, myGame, player.convertPlayerRumToString(), player, 11.0f, -2.0f);
+			lootUi.renderUi(batch, imageLoader, myGame, player.convertPlayerLootToString(), player);
+			rumUi.renderUi(batch, imageLoader, myGame, player.convertPlayerRumToString(), player);
 			playerNameUi.renderUi(batch, imageLoader, myGame, player, 10.5f, 6.0f);
 			selectedInventoryUi.renderSelectedInventoryUi(batch, imageLoader, myGame, player);
 		}

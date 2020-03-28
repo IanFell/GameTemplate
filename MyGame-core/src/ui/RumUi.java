@@ -22,26 +22,23 @@ public class RumUi extends TextBasedUiParent {
 	 * @param MyGame      myGame
 	 * @param String      text
 	 * @param GameOjbect  player
-	 * @param float       xOffset
-	 * @param float       yOffset
 	 */
-	@Override
 	public void renderUi(
 			SpriteBatch batch, 
 			ImageLoader imageLoader, 
 			MyGame myGame, 
 			String text, 
-			GameObject player, 
-			float xOffset, 
-			float yOffset
+			GameObject player
 			) {
+		float xPos = player.getX() - 13.0f;
+		float yPos = player.getY() - 2.0f;
 		batch.draw(
 				imageLoader.rum, 
-				player.getX() - xOffset - 2, 
-				player.getY() + yOffset + 1, 
+				xPos,
+				yPos,
 				rumIconSize, 
 				-rumIconSize
 				); 
-		super.renderUi(batch, imageLoader, myGame, text, player, xOffset, yOffset);
+		super.renderUi(batch, imageLoader, myGame, text, player, xPos + 2, yPos - 1);
 	}	
 }
