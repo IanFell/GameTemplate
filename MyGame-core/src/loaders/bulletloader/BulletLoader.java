@@ -19,7 +19,7 @@ import maps.MapHandler;
  */
 public class BulletLoader {
 
-	private static final int BULLET_LIFE_SPAN = 7;
+	private static final int BULLET_LIFE_SPAN = 12;
 
 	private static ArrayList <Bullet> bullets = new ArrayList<Bullet>();
 
