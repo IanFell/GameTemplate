@@ -37,6 +37,7 @@ public class ImageLoader {
 	public Texture stump;
 	public Texture sky;
 	public Texture feather;
+	public Texture quickSand;
 
 	// Weapon Objects.
 	public Texture gunRight;
@@ -176,6 +177,7 @@ public class ImageLoader {
 		stump         = new Texture(Gdx.files.internal("artwork/nature/Stump.png"));
 		sky           = new Texture(Gdx.files.internal("artwork/nature/Sky.png"));
 		feather       = new Texture(Gdx.files.internal("artwork/nature/Feather.png"));
+		quickSand     = new Texture(Gdx.files.internal("artwork/nature/QuickSand.png"));
 
 		// Weapon Objects.
 		gunRight   			  = new Texture(Gdx.files.internal("artwork/weapons/gun/Right.png"));
@@ -340,6 +342,7 @@ public class ImageLoader {
 		stump.dispose();
 		sky.dispose();
 		feather.dispose();
+		quickSand.dispose();
 
 		// Weapon Objects.
 		gunRight.dispose();

@@ -37,7 +37,7 @@ public class QuickSand extends NatureObject {
 	 */
 	@Override
 	public void renderObject(SpriteBatch batch, ImageLoader imageLoader) {
-		renderNatureObject(batch, imageLoader.whiteSquare);
+		renderNatureObject(batch, imageLoader.quickSand);
 	}
 
 	/**
