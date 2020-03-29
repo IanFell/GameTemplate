@@ -8,8 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
-import controllers.PlayerController;
-import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
 import handlers.CollisionHandler;
 import helpers.GameAttributeHelper;
@@ -363,12 +361,6 @@ public class MissionRawBar extends Mission {
 				-GameScreen.camera.viewportHeight
 				);
 
-		/**
-		 * Alert player how many oysters to collect.  
-		 * This message appears for a few seconds at the start of the phase.
-		 */
-		renderCollectOysterMessage(batch, imageLoader, myGame);
-
 		// Draw oysters.
 		for (int i = 0 ; i < MAX_OYSTERS_SPAWNED; i++) {
 			// Only draw oysters if they are alive.
@@ -458,50 +450,9 @@ public class MissionRawBar extends Mission {
 		if (MissionRawBar.phasesAreInProgress) {
 			renderPhases(batch, imageLoader, myGame);
 		} else {
-			// Draw intro screen until INTRO_TIME_LIMIT runs out.
-			// TODO PUT IN TIMER FOR THIS INSTEAD OF CLICKING ON IT.
-			if (!introHasCompleted) {
-				batch.draw(
-						imageLoader.goSouthToTheSkull, 
-						GameScreen.camera.position.x - GameScreen.camera.viewportWidth / 2, 
-						GameScreen.camera.position.y + GameScreen.camera.viewportHeight / 2,
-						GameScreen.camera.viewportWidth, 
-						-GameScreen.camera.viewportHeight
-						);
-			} else {
-				// Draw locator.
-				if (locationMarker.timerValuesAreCorrectToFlash() && !rawBarMissionComplete) {
-					locationMarker.renderObject(batch, imageLoader);
-				}
+			if (locationMarker.timerValuesAreCorrectToFlash() && !rawBarMissionComplete) {
+				locationMarker.renderObject(batch, imageLoader);
 			}
-		}
-
-		/*
-		if (rawBarMissionComplete) {
-			renderMissionMessage(batch, myGame, imageLoader.missionComplete);
-		} */
-	}
-
-	/**
-	 * Alerts player how many oysters to collect.  
-	 * This message appears for a few seconds at the start of the phase.
-	 * 
-	 * @param SpriteBatch batch
-	 * @param ImageLoader imageLoader
-	 * @param MyGame      myGame
-	 */
-	protected void renderCollectOysterMessage(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
-		int collectOysterMessageSize = 10;
-		int half                     = 2;
-		GameObject player            = PlayerController.getCurrentPlayer(myGame);
-		if (collectOysterMessageTimer < COLLECT_OYSTER_MESSAGE_MAX_TIME) {
-			batch.draw(
-					imageLoader.collectOysters, 
-					player.getX() - GameScreen.cameraWidth / half, 
-					player.getY() + GameScreen.cameraWidth / half, 
-					collectOysterMessageSize, 
-					-collectOysterMessageSize
-					);
 		}
 	}
 }

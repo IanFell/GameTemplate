@@ -58,7 +58,6 @@ public class Objective {
 		Texture objectiveTexture = imageLoader.objectiveCollectLoot;
 		if (MissionChests.missionComplete) {
 			objectiveTexture = imageLoader.objectiveTradinPost;
-
 			if (Gun.hasBeenCollected) {
 				objectiveTexture = imageLoader.objectiveRawBar;
 
@@ -66,13 +65,14 @@ public class Objective {
 					objectiveTexture = imageLoader.objectiveStumpHole;
 				}
 			}
-			// TODO THIS DOES NOT WORK.
-			if (MissionRawBar.phasesAreInProgress) {
-				objectiveTexture = imageLoader.objectiveCollectOysters;
-			}
+		}
+		if (MissionRawBar.phasesAreInProgress) {
+			objectiveTexture = imageLoader.objectiveCollectOysters;
 		}
 		return objectiveTexture;
 	}
+	
+	// TODO COLLECT FEATHERS IMAGE
 
 	public void updateObjective() {
 		flashTimer++;

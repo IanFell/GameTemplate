@@ -29,8 +29,6 @@ public class MissionStumpHole extends Mission {
 	// When this is true, bird weapon will appear on screen.
 	public static boolean stumpHoleMissionComplete;
 
-	private int renderMissionCompleteMessage;
-
 	private Feather featherOne;
 	private Feather featherTwo;
 	private Feather featherThree;
@@ -115,17 +113,13 @@ public class MissionStumpHole extends Mission {
 	private int breakTimer            = 0;
 	private final int MAX_BREAK_VALUE = 30;
 
-	private int collectFeathersUiTimer;
-	private final int COLLECT_FEATHERS_UI_TIMER_MAX = 50;
-
 	private LocationMarker locationMarker;
 
 	/**
 	 * Constructor.
 	 */
 	public MissionStumpHole() {
-		stumpHoleMissionComplete     = false;
-		renderMissionCompleteMessage = 0;
+		stumpHoleMissionComplete = false;
 		loadStumps();
 		gravityHaltBarrier = GameAttributeHelper.CHUNK_SEVEN_Y_POSITION_START + 43;
 		// Place this bird on last stump of row one of stumps.
@@ -150,8 +144,6 @@ public class MissionStumpHole extends Mission {
 		playerDirection = DIRECTION_RIGHT;
 
 		playerFeatherScore = 0;
-
-		collectFeathersUiTimer = 0;
 
 		locationMarker = new LocationMarker(
 				GameAttributeHelper.CHUNK_FOUR_X_POSITION_START - 12, 
@@ -220,21 +212,11 @@ public class MissionStumpHole extends Mission {
 			if (birdIsSpinning) {
 				attackBird.renderObject(batch, imageLoader);
 			}
-
-			if (collectFeathersUiTimer < COLLECT_FEATHERS_UI_TIMER_MAX) {
-				renderMissionMessage(batch, myGame, imageLoader.collectFeathers);
-			}
 		} else {
 			bird.renderObject(batch, imageLoader);
 			// Flash location icon so player knows where to go.
 			if (locationMarker.timerValuesAreCorrectToFlash() && !stumpHoleMissionComplete) {
 				locationMarker.renderObject(batch, imageLoader);
-			}
-		}
-		if (stumpHoleMissionComplete) {
-			renderMissionCompleteMessage++;
-			if (renderMissionCompleteMessage < 50) {
-				renderMissionMessage(batch, myGame, imageLoader.missionComplete);
 			}
 		}
 	}
@@ -396,7 +378,6 @@ public class MissionStumpHole extends Mission {
 		}
 
 		updateFeathers(myGame, mapHandler);
-		collectFeathersUiTimer++;
 
 		// Player wins if he gets enough feathers.
 		if (playerFeatherScore >= FEATHER_VALUE_METER_MAX) {

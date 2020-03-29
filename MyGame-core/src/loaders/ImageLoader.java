@@ -96,21 +96,13 @@ public class ImageLoader {
 
 	// Mission objects.
 	public Texture legendOfTheSevenSwordsBeginMissionText;
-	public Texture missionComplete;
-	public Texture missionRawBarInside;
 	public Texture missionTransparentBlueSquare;
-	public Texture collectOysters;
-	public Texture collectFeathers;
 	public Texture rightHand;
 	public Texture leftHand;
 	public Texture rightHandClosed;
 	public Texture leftHandClosed;
 	public Texture fishLeft;
 	public Texture fishRight;
-	public Texture goToTradingPost;
-	public Texture goToTheRawBar;
-	public Texture collectLoot;
-	public Texture goSouthToTheSkull;
 	public Texture playerRight;
 	public Texture playerLeft;
 
@@ -249,21 +241,13 @@ public class ImageLoader {
 
 		// Mission objects.
 		legendOfTheSevenSwordsBeginMissionText = new Texture(Gdx.files.internal("artwork/missions/LegendOfTheSevenSwords.png"));
-		missionComplete                        = new Texture(Gdx.files.internal("artwork/missions/MissionComplete.png"));
-		missionRawBarInside                    = new Texture(Gdx.files.internal("artwork/missions/RawBarMissionInside.png"));
 		missionTransparentBlueSquare           = new Texture(Gdx.files.internal("artwork/missions/TransparentBlueSquare.png"));
-		collectOysters                         = new Texture(Gdx.files.internal("artwork/missions/CollectOysters.png"));
-		collectFeathers                        = new Texture(Gdx.files.internal("artwork/missions/CollectFeathers.png"));
 		rightHand      						   = new Texture(Gdx.files.internal("artwork/missions/HandOpenRight.png"));
 		leftHand      						   = new Texture(Gdx.files.internal("artwork/missions/HandOpenLeft.png"));
 		rightHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedRight.png"));
 		leftHandClosed      				   = new Texture(Gdx.files.internal("artwork/missions/HandClosedLeft.png"));
 		fishLeft                               = new Texture(Gdx.files.internal("artwork/missions/fishLeft.png"));
 		fishRight                              = new Texture(Gdx.files.internal("artwork/missions/fishRight.png"));
-		goToTradingPost                        = new Texture(Gdx.files.internal("artwork/missions/GoToTradingPost.png"));
-		goToTheRawBar                          = new Texture(Gdx.files.internal("artwork/missions/GoToTheRawBar.png"));
-		collectLoot                            = new Texture(Gdx.files.internal("artwork/missions/CollectLoot.png"));
-		goSouthToTheSkull                      = new Texture(Gdx.files.internal("artwork/missions/GoSouthToTheSkull.png"));
 		playerLeft                             = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerLeft.png"));
 		playerRight                            = new Texture(Gdx.files.internal("artwork/gamecharacters/player/PlayerRight.png"));
 
@@ -413,21 +397,13 @@ public class ImageLoader {
 
 		// Mission objects.
 		legendOfTheSevenSwordsBeginMissionText.dispose();
-		missionComplete.dispose();
-		missionRawBarInside.dispose();
 		missionTransparentBlueSquare.dispose();
-		collectOysters.dispose();
-		collectFeathers.dispose();
 		rightHand.dispose();
 		leftHand.dispose();
 		rightHandClosed.dispose();
 		leftHandClosed.dispose();
 		fishLeft.dispose();
 		fishRight.dispose();
-		goToTradingPost.dispose();
-		collectLoot.dispose();
-		goToTheRawBar.dispose();
-		goSouthToTheSkull.dispose();
 		playerRight.dispose();
 		playerLeft.dispose();
 

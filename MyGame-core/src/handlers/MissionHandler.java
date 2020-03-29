@@ -6,7 +6,6 @@ import com.mygdx.mygame.MyGame;
 import controllers.PlayerController;
 import cutscenes.CutScene;
 import gameobjects.gamecharacters.Player;
-import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import missions.Mission;
@@ -34,10 +33,6 @@ public class MissionHandler extends Mission {
 	 * for the magic pearl" message.
 	 */
 	private boolean setUpRawBarMission                      = true;
-	private boolean displayGoToRawBar                       = false;
-	private boolean rawBarMessageHasBeenDisplayed           = false;
-	private int goToRawBarDisplayTimer                      = 0;
-	private final int GO_TO_RAW_BAR_DISPLAY_TIMER_MAX_VALUE = 50;
 
 	/**
 	 * Constructor.
@@ -70,10 +65,6 @@ public class MissionHandler extends Mission {
 				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
 			}
 
-			if (MissionChests.missionComplete) {
-				handleGoToRawBarMessage();
-			}
-
 			if (MissionRawBar.startMission && setUpRawBarMission ) {
 				MissionRawBar.missionIsActive = true;
 				setUpRawBarMission            = false;
@@ -86,19 +77,6 @@ public class MissionHandler extends Mission {
 			if (MissionRawBar.rawBarMissionComplete) {
 				missionStumpHole.updateMission(myGame, mapHandler);
 			} 
-		}
-	}
-
-	private void handleGoToRawBarMessage() {
-		if (Gun.hasBeenCollected && !rawBarMessageHasBeenDisplayed) {
-			displayGoToRawBar = true;
-		}
-		if (displayGoToRawBar) {
-			goToRawBarDisplayTimer++;
-			if (goToRawBarDisplayTimer > GO_TO_RAW_BAR_DISPLAY_TIMER_MAX_VALUE) {
-				displayGoToRawBar = false;
-				rawBarMessageHasBeenDisplayed = true;
-			}
 		}
 	}
 
@@ -139,10 +117,6 @@ public class MissionHandler extends Mission {
 			if (MissionRawBar.missionIsActive) {
 				renderRawBarMission(batch, imageLoader, myGame);
 			}
-
-			if (displayGoToRawBar) {
-				renderMissionStartMessage(batch, myGame, imageLoader.goToTheRawBar);
-			} 
 
 			if (MissionRawBar.rawBarMissionComplete) {
 				missionStumpHole.renderMission(batch, imageLoader, myGame);

@@ -1,14 +1,9 @@
 package missions;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
-import controllers.PlayerController;
-import gameobjects.GameObject;
 import gameobjects.gamecharacters.Player;
-import loaders.ImageLoader;
 import maps.MapHandler;
-import screens.GameScreen;
 
 /**
  * Mission: Open a given amount of chests in a given amount of time, collecting loot.
@@ -84,43 +79,6 @@ public class MissionChests extends Mission {
 			numberOfChestsOpened = 0;
 			countDownTimer       = 0; */
 			//System.out.println("CHEST MISSION FAILED!");
-		}
-	}
-
-	/**
-	 * 
-	 * @param SpriteBatch batch
-	 * @param ImageLoader imageLoader
-	 * @param MyGame      myGame
-	 */
-	@Override
-	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
-		// If mission is complete, render "Mission Complete" message for a little while.
-		if (missionComplete) {
-			renderMissionMessage(batch, myGame, imageLoader.goToTradingPost);
-		}
-
-		// Place holder "try again" message.
-		if (resetMission) {
-			/*
-			int collectOysterMessageSize = 10;
-			int half                     = 2;
-			GameObject player            = PlayerController.getCurrentPlayer(myGame);
-			batch.draw(
-					imageLoader.collectOysters, 
-					player.getX() - GameScreen.cameraWidth / half, 
-					player.getY() + GameScreen.cameraWidth / half, 
-					collectOysterMessageSize, 
-					-collectOysterMessageSize
-					); */
-		}
-
-		// Render start message this long.
-		if (timer < 100) {
-			renderMissionStartMessage(batch, myGame, imageLoader.collectLoot);
-		}
-		if (timer <= 100) {
-			timer++;
 		}
 	}
 }

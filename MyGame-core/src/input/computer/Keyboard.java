@@ -191,7 +191,7 @@ public class Keyboard extends ComputerInput {
 	private void handleKeyboardDirectionalButtons(MyGame myGame, String directions, GameObject player) {
 
 		// If user presses the T button to use turbo.
-		int turboSpeed    = 3;
+		int turboSpeed    = 10;
 		float playerSpeed = Player.PLAYER_SPEED;
 		if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
 			playerSpeed = Player.PLAYER_SPEED * turboSpeed;
