@@ -1,10 +1,14 @@
 package ui;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.GameObject;
+import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
+import missions.MissionChests;
+import missions.MissionRawBar;
 
 /**
  * 
@@ -33,14 +37,41 @@ public class Objective {
 			GameObject player
 			) {
 		if (flashTimer > VALUE_TO_FLASH) {
+			Texture objectiveTexture = getObjectiveTexture(imageLoader);
+
 			batch.draw(
-					imageLoader.whiteSquare,
+					objectiveTexture,
 					player.getX() + 7, 
 					player.getY() - 5, 
 					5, 
 					-1
 					); 
 		}
+	}
+
+	/**
+	 * 
+	 * @param ImageLoader imageLoader
+	 * @return Texture
+	 */
+	private Texture getObjectiveTexture(ImageLoader imageLoader) {
+		Texture objectiveTexture = imageLoader.objectiveCollectLoot;
+		if (MissionChests.missionComplete) {
+			objectiveTexture = imageLoader.objectiveTradinPost;
+
+			if (Gun.hasBeenCollected) {
+				objectiveTexture = imageLoader.objectiveRawBar;
+
+				if (MissionRawBar.rawBarMissionComplete) {
+					objectiveTexture = imageLoader.objectiveStumpHole;
+				}
+			}
+			// TODO THIS DOES NOT WORK.
+			if (MissionRawBar.phasesAreInProgress) {
+				objectiveTexture = imageLoader.objectiveCollectOysters;
+			}
+		}
+		return objectiveTexture;
 	}
 
 	public void updateObjective() {

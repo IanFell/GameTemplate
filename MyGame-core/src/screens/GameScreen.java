@@ -291,7 +291,7 @@ public class GameScreen extends Screens {
 		gun.updateObject(myGame, mapHandler);
 		magicPearl.updateObject(myGame, mapHandler);
 		birdWeapon.updateObject(myGame, mapHandler);
-		
+
 		userInterface.updateUserInterface();
 	}
 
