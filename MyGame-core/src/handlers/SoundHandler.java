@@ -61,31 +61,15 @@ public class SoundHandler {
 			handleEnemyDeathSound(myGame, soundLoader);
 			handleCannonSound(myGame, soundLoader);
 
-			/**
-			 * This currently does not work.
-			 * I cannot get the cannon balls' audio to only fire when in 
-			 * the same location as the player.  Any option below will result
-			 * in every single cannon ball explosion sound firing every time, regardless
-			 * of where the player is vs the cannon ball.  This results in way too many explosion sounds
-			 * and becomes unbarable.  
-			 * 
-			 * Take it out for now.
-			 */
+			// Handle the landing/explosion of the cannon balls.
 			for (int i = 0; i < CannonBallLoader.cannonballs.size(); i++) {
-
+				if (CannonBallLoader.cannonballs.get(i).getAttackBoundary().overlaps(myGame.getGameObject(Player.PLAYER_ONE).rectangle)) {
+					if (CannonBallLoader.cannonballs.get(i).isPlayLandSound()) {
+						soundLoader.bombSound.play(AudioHandler.QUARTER_VOLUME);
+						CannonBallLoader.cannonballs.get(i).setPlayLandSound(false);
+					}
+				}
 			}
-			//for (int i = 0; i < CannonBallLoader.cannonballs.size(); i++) {
-			//if (CannonBallLoader.cannonballs.get(i).isPlayLandSound()) {
-			//if (
-			//myGame.getGameObject(Player.PLAYER_ONE).getX() < 500) {
-			//if (GamePlayHelper.gameObjectIsWithinScreenBounds(CannonBallLoader.cannonballs.get(i))) {
-			//if (CannonBallLoader.cannonballs.get(i).getAttackBoundary().overlaps(myGame.getGameObject(Player.PLAYER_ONE).rectangle)) {
-			//soundLoader.bombSound.play(AudioHandler.QUARTER_VOLUME);
-			//}
-			//}
-			//CannonBallLoader.cannonballs.get(i).setPlayLandSound(false);
-			//}
-			//}
 
 			attackTimer++;
 			if (attackTimer > 2) {

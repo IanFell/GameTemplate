@@ -1,6 +1,7 @@
 package gameobjects.weapons;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.Player;
@@ -16,6 +17,13 @@ import physics.Lighting.Explosion;
  *
  */
 public class CannonBall extends Weapon {
+
+	/**
+	 * These variables are used to check when to play SFX when cannon ball lands and explodes.
+	 * If the player is within this boundary, they will hear the SFX.
+	 */
+	private Rectangle attackBoundary;
+	private int attackBoundarySize = 20;
 
 	public static final int MAX_EXPLOSION_VALUE = 20;
 
@@ -67,6 +75,7 @@ public class CannonBall extends Weapon {
 		shadowX             = x;
 		shadowY             = y - 1;
 		playLandSound       = false;
+		attackBoundary      = new Rectangle(x, y, attackBoundarySize, attackBoundarySize);
 	}
 
 	/**
@@ -101,6 +110,10 @@ public class CannonBall extends Weapon {
 		return cannonBallHasHitPlayer;
 	}
 
+	public Rectangle getAttackBoundary() {
+		return attackBoundary;
+	}
+
 	/**
 	 * 
 	 * @param MyGame     myGamet
@@ -109,6 +122,9 @@ public class CannonBall extends Weapon {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
+
+		attackBoundary.x = x - attackBoundarySize / 2;
+		attackBoundary.y = y - attackBoundarySize / 2;
 
 		// Ensure cannon ball shoots in the correct direction.  It will always shoot left or right.
 		if (direction == DIRECTION_LEFT) {
@@ -219,6 +235,7 @@ public class CannonBall extends Weapon {
 						size,
 						size
 						);
+				//renderAttackBoundary(batch, imageLoader);
 			}
 			if (explosionLand != null) {
 				explosionLand.renderExplosion(batch, imageLoader);
@@ -227,5 +244,20 @@ public class CannonBall extends Weapon {
 				explosionBlast.renderExplosion(batch, imageLoader);
 			}
 		}
+	}
+
+	/**
+	 * 
+	 * @param SpriteBatch batch
+	 * @param ImageLoader imageLoader
+	 */
+	private void renderAttackBoundary(SpriteBatch batch, ImageLoader imageLoader) {
+		batch.draw(
+				imageLoader.whiteSquare,
+				attackBoundary.x, 
+				attackBoundary.y,
+				attackBoundary.width,
+				attackBoundary.height
+				);
 	}
 }
