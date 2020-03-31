@@ -84,11 +84,8 @@ public class MissionRawBar extends Mission {
 	private float timeSeconds = 0f;
 	private float phaseTimeLimit;
 
-	private static final int INTRO_TIME_LIMIT = 50;
-
 	public static final float MISSION_RAW_BAR_SPEED = 0.3f;
 
-	private static int introTimer           = 0;
 	public static boolean introHasCompleted = false;
 
 	public static boolean rawBarMissionComplete = false;
@@ -115,7 +112,9 @@ public class MissionRawBar extends Mission {
 
 	private final int COLLECT_OYSTER_MESSAGE_MAX_TIME = 20;
 
-	private LocationMarker locationMarker;
+	public static boolean locationMarkerHasBeenHit = false;
+
+	private static LocationMarker locationMarker;
 
 	/**
 	 * Constructor.
@@ -200,21 +199,31 @@ public class MissionRawBar extends Mission {
 
 		if (phasesAreInProgress) {
 			updatePhases(myGame);
-		} else {
-			// Execute this before player begins phases.
-			// First, handle the intro.
-			introTimer++;
-			if (introTimer > INTRO_TIME_LIMIT) {
-				introHasCompleted = true;
-			}
 
-			// Next, handle interaction between player and phases locator.
-			if (introHasCompleted) {
-				locationMarker.updateObject();
-				if (CollisionHandler.playerHasCollidedWithLocationMarker(myGame.getGameObject(Player.PLAYER_ONE), locationMarker)) {
-					phasesAreInProgress = true;
-				}
+			if (rawBarMissionComplete) {
+				missionIsActive = false;
+				phasesAreInProgress = false;
 			}
+		} else {
+			locationMarker.updateObject();
+			if (CollisionHandler.playerHasCollidedWithLocationMarker(myGame.getGameObject(Player.PLAYER_ONE), locationMarker)) {
+				phasesAreInProgress = true;
+				locationMarkerHasBeenHit = true;
+				MissionRawBar.startMission = true;
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	public static void updateLocationMarker(MyGame myGame) {
+		locationMarker.updateObject();
+		if (CollisionHandler.playerHasCollidedWithLocationMarker(myGame.getGameObject(Player.PLAYER_ONE), locationMarker)) {
+			phasesAreInProgress        = true;
+			locationMarkerHasBeenHit   = true;
+			MissionRawBar.startMission = true;
 		}
 	}
 
@@ -447,10 +456,10 @@ public class MissionRawBar extends Mission {
 	 */
 	@Override
 	public void renderMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
-		if (MissionRawBar.phasesAreInProgress) {
+		if (phasesAreInProgress) {
 			renderPhases(batch, imageLoader, myGame);
 		} else {
-			if (locationMarker.timerValuesAreCorrectToFlash() && !rawBarMissionComplete) {
+			if (locationMarker.timerValuesAreCorrectToFlash()) {
 				locationMarker.renderObject(batch, imageLoader);
 			}
 		}

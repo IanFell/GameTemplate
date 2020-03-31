@@ -14,7 +14,6 @@ import inventory.Inventory;
 import loaders.ImageLoader;
 import loaders.bulletloader.BulletLoader;
 import maps.MapHandler;
-import missions.MissionChests;
 import ui.MapUi;
 
 /**
@@ -24,7 +23,7 @@ import ui.MapUi;
  */
 public class Gun extends Weapon {
 
-	public static final int LOOT_NEEDED_TO_BUY_GUN = 25;
+	public static final int LOOT_NEEDED_TO_BUY_GUN = 5;
 
 	public static boolean hasBeenCollected;
 
@@ -47,8 +46,8 @@ public class Gun extends Weapon {
 		super(x, y);
 		this.width            = 1.0f;
 		this.height           = 1.0f;
-		this.rectangle.width  = width;
-		this.rectangle.height = height;
+		rectangle.width       = width;
+		rectangle.height      = height;
 		hasBeenCollected      = false;
 		this.rotationAngle    = 0;
 		textureRegion         = new TextureRegion(imageLoader.gunLeft);
@@ -79,8 +78,8 @@ public class Gun extends Weapon {
 			setRotationAngleDependingOnPlayerDirection(myGame.imageLoader);
 		}
 
-		this.rectangle.x = x;
-		this.rectangle.y = y;
+		rectangle.x = x;
+		rectangle.y = y;
 
 		if (Player.playerIsPerformingAttack && myGame.getGameObject(Player.PLAYER_ONE).getInventory().inventory.get(Inventory.currentlySelectedInventoryObject) instanceof Gun) {
 			BulletLoader.createBullet(myGame);
@@ -127,8 +126,8 @@ public class Gun extends Weapon {
 		int value = 1;
 		if (GamePlayHelper.gameObjectIsWithinScreenBounds(this)) {
 			// Only render gun if we have enough loot and have entered trading post to buy gun.
-			if (TradingPost.hasBeenEntered && MissionChests.missionComplete) {
-				if (!hasBeenCollected) {
+			if (TradingPost.hasBeenEntered) {
+				if (!hasBeenCollected) {	
 					if (!MapUi.mapShouldBeRendered && !Inventory.allInventoryShouldBeRendered) {
 						batch.draw(
 								textureRegion, 
@@ -172,6 +171,13 @@ public class Gun extends Weapon {
 							);
 				}
 			}
+			batch.draw(
+					imageLoader.whiteSquare, 
+					rectangle.x, 
+					rectangle.y, 
+					rectangle.width, 
+					rectangle.height
+					);
 		}
 	}
 }

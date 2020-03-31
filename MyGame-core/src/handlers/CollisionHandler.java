@@ -12,7 +12,6 @@ import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
 import gameobjects.nature.QuickSand;
 import gameobjects.stationarygameobjects.Chest;
-import gameobjects.stationarygameobjects.buildings.TradingPost;
 import gameobjects.weapons.CannonBall;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
@@ -23,7 +22,6 @@ import loaders.GameObjectLoader;
 import maps.MapHandler;
 import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
-import missions.MissionRawBar;
 import missions.MissionStumpHole;
 import tiles.Tile;
 import ui.LocationMarker;
@@ -173,9 +171,9 @@ public class CollisionHandler {
 		if (structure.rectangle.overlaps(player.rectangle)) {
 			if (structureName.equalsIgnoreCase("Raw Bar")) {
 				// Start the mission.
-				MissionRawBar.startMission = true;
+				//MissionRawBar.startMission = true;
 			} else if (structureName.equalsIgnoreCase("Trading Post")) {
-				TradingPost.hasBeenEntered = true;
+				//TradingPost.hasBeenEntered = true;
 			}
 			/*
 			if (structureName.equalsIgnoreCase("Tee Pee")) {
@@ -231,7 +229,7 @@ public class CollisionHandler {
 	 */
 	public static void checkIfPlayerHasCollidedWithGun(GameObject player, GameObject gun) {
 		// Only collect gun if we have enough loot.
-		if (player.getPlayerLoot() >= Gun.LOOT_NEEDED_TO_BUY_GUN && MissionChests.missionComplete) {
+		if (player.getPlayerLoot() >= Gun.LOOT_NEEDED_TO_BUY_GUN) {
 			if (gun.rectangle.overlaps(player.rectangle)) {
 				((Player) player).getInventory().addObjectToInventory(gun);
 				Inventory.inventoryHasStartedCollection = true;

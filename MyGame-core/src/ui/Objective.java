@@ -9,6 +9,8 @@ import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
 import missions.MissionChests;
 import missions.MissionRawBar;
+import missions.MissionStumpHole;
+import missions.MissionTradinPost;
 
 /**
  * 
@@ -20,8 +22,11 @@ public class Objective {
 	// Use this to flash objective.
 	private int flashTimer = 0;
 
-	private final int VALUE_TO_FLASH    = 9;
-	private final int RESET_TIMER_VALUE = 19;
+	private final int VALUE_TO_FLASH    = 7;
+	private final int RESET_TIMER_VALUE = 17;
+
+	private final int WIDTH  = 5;
+	private final int HEIGHT = 1;
 
 	/**
 	 * 
@@ -38,13 +43,12 @@ public class Objective {
 			) {
 		if (flashTimer > VALUE_TO_FLASH) {
 			Texture objectiveTexture = getObjectiveTexture(imageLoader);
-
 			batch.draw(
 					objectiveTexture,
 					player.getX() + 7, 
 					player.getY() - 5, 
-					5, 
-					-1
+					WIDTH, 
+					-HEIGHT
 					); 
 		}
 	}
@@ -56,13 +60,18 @@ public class Objective {
 	 */
 	private Texture getObjectiveTexture(ImageLoader imageLoader) {
 		Texture objectiveTexture = imageLoader.objectiveCollectLoot;
-		if (MissionChests.missionComplete) {
+		if (MissionChests.chestMissionIsComplete) {
 			objectiveTexture = imageLoader.objectiveTradinPost;
+			if (MissionTradinPost.locationMarkerHasBeenHit) {
+				objectiveTexture = imageLoader.objectiveBuyTheGun;
+			}
 			if (Gun.hasBeenCollected) {
 				objectiveTexture = imageLoader.objectiveRawBar;
-
 				if (MissionRawBar.rawBarMissionComplete) {
 					objectiveTexture = imageLoader.objectiveStumpHole;
+					if (MissionStumpHole.missionIsActive) {
+						objectiveTexture = imageLoader.objectiveCollectFeathers;
+					}
 				}
 			}
 		}
@@ -71,8 +80,6 @@ public class Objective {
 		}
 		return objectiveTexture;
 	}
-	
-	// TODO COLLECT FEATHERS IMAGE
 
 	public void updateObjective() {
 		flashTimer++;

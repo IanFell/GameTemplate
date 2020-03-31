@@ -15,6 +15,12 @@ import maps.MapHandler;
 public class MissionChests extends Mission {
 
 	/**
+	 * Need this to know when this mission is indeed complete.  
+	 * Use this for mission complete checks.
+	 */
+	public static boolean chestMissionIsComplete = false;
+
+	/**
 	 * Use these variables if player doesn't complete mission.  
 	 * If player doesn't complete mission, make him retry it.
 	 */
@@ -22,7 +28,7 @@ public class MissionChests extends Mission {
 	private int resetMissionTimer = 0;
 
 	private static int numberOfChestsOpened                              = 0;
-	private static final int AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION = 5;
+	private static final int AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION = 1;
 
 	public static boolean executeMission = true;
 
@@ -62,7 +68,7 @@ public class MissionChests extends Mission {
 			// If mission is complete:
 			if (numberOfChestsOpened >= AMOUNT_OF_CHESTS_NEEDED_TO_COMPLETE_MISSION) {
 				executeMission  = false;
-				missionComplete = true;
+				chestMissionIsComplete = true;
 			} 
 		}
 

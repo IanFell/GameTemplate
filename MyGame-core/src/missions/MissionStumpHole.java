@@ -113,8 +113,6 @@ public class MissionStumpHole extends Mission {
 	private int breakTimer            = 0;
 	private final int MAX_BREAK_VALUE = 30;
 
-	private LocationMarker locationMarker;
-
 	/**
 	 * Constructor.
 	 */

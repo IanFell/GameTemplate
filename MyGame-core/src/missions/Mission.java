@@ -9,6 +9,7 @@ import gameobjects.GameObject;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import screens.GameScreen;
+import ui.LocationMarker;
 
 /**
  * 
@@ -23,6 +24,8 @@ public class Mission {
 	protected int timer;
 
 	protected int missionBeginTextTimer;
+
+	protected LocationMarker locationMarker;
 
 	/**
 	 * Consructor.

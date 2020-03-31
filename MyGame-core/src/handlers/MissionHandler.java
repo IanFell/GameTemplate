@@ -6,6 +6,7 @@ import com.mygdx.mygame.MyGame;
 import controllers.PlayerController;
 import cutscenes.CutScene;
 import gameobjects.gamecharacters.Player;
+import gameobjects.weapons.Gun;
 import loaders.ImageLoader;
 import maps.MapHandler;
 import missions.Mission;
@@ -13,6 +14,7 @@ import missions.MissionChests;
 import missions.MissionLegendOfTheSevenSwords;
 import missions.MissionRawBar;
 import missions.MissionStumpHole;
+import missions.MissionTradinPost;
 
 /**
  * 
@@ -22,17 +24,20 @@ import missions.MissionStumpHole;
 public class MissionHandler extends Mission {
 
 	private MissionChests missionChests;
-	private MissionLegendOfTheSevenSwords missionLegendOfTheSevenSwords;
 	private MissionRawBar missionRawBarPhaseOne;
 	private MissionRawBar missionRawBarPhaseTwo;
 	private MissionRawBar missionRawBarPhaseThree;
 	private MissionStumpHole missionStumpHole;
+	private MissionTradinPost missionTradinPost;
 
 	/**
-	 * These variables control the timing and display of the "go to the raw bar 
-	 * for the magic pearl" message.
+	 * This mission is always active.
+	 * This used to be an actual mission, but now it only exists so the player can collect swords.
+	 * If this mission is not here, swords will not be present in the game.
 	 */
-	private boolean setUpRawBarMission                      = true;
+	private MissionLegendOfTheSevenSwords missionLegendOfTheSevenSwords;
+
+	private boolean setUpRawBarMission = true;
 
 	/**
 	 * Constructor.
@@ -44,6 +49,7 @@ public class MissionHandler extends Mission {
 		missionLegendOfTheSevenSwords = new MissionLegendOfTheSevenSwords(myGame);
 		initializeRawBarMission();
 		missionStumpHole              = new MissionStumpHole();
+		missionTradinPost             = new MissionTradinPost();
 	}
 
 	private void initializeRawBarMission() {
@@ -59,22 +65,37 @@ public class MissionHandler extends Mission {
 	 */
 	public void handleMissions(MyGame myGame, MapHandler mapHandler) {
 		if (!CutScene.anyCutSceneIsInProgress) {
+			// This mission is always active.
 			missionLegendOfTheSevenSwords.updateMission(myGame, mapHandler);
 
+			// Chest mission.
 			if (!MissionChests.missionComplete) {
 				missionChests.updateMission((Player) PlayerController.getCurrentPlayer(myGame), myGame, mapHandler);
 			}
 
+			// Go to Trading Post mission.
+			if (MissionChests.chestMissionIsComplete) {
+				missionTradinPost.updateMission(myGame, mapHandler);
+			}
+
+			// Player has collected the gun and is on his way to the Raw Bar.
+			if (Gun.hasBeenCollected && !MissionRawBar.phasesAreInProgress) {
+				MissionRawBar.updateLocationMarker(myGame);
+			}
+
+			// Player has arrived at the Raw Bar, so set up Raw Bar mission.
 			if (MissionRawBar.startMission && setUpRawBarMission ) {
 				MissionRawBar.missionIsActive = true;
 				setUpRawBarMission            = false;
 			} 
 
-			if (MissionRawBar.missionIsActive) {
+			// Execute Raw Bar mission.
+			if (MissionTradinPost.locationMarkerHasBeenHit && !MissionRawBar.rawBarMissionComplete) {
 				handleRawBarMission(myGame);
 			}
 
-			if (MissionRawBar.rawBarMissionComplete) {
+			// Raw Bar mission is complete.  Player is on his way to Stump Hole.
+			if (MissionRawBar.rawBarMissionComplete && !MissionStumpHole.stumpHoleMissionComplete) {
 				missionStumpHole.updateMission(myGame, mapHandler);
 			} 
 		}
@@ -112,9 +133,15 @@ public class MissionHandler extends Mission {
 		if (!CutScene.anyCutSceneIsInProgress) {
 			missionLegendOfTheSevenSwords.renderMission(batch, imageLoader, myGame);
 
-			missionChests.renderMission(batch, imageLoader, myGame);
+			if (!MissionChests.missionComplete) {
+				missionChests.renderMission(batch, imageLoader, myGame);
+			}
 
-			if (MissionRawBar.missionIsActive) {
+			if (MissionChests.chestMissionIsComplete) {
+				missionTradinPost.renderMission(batch, imageLoader, myGame);
+			}
+
+			if (MissionTradinPost.locationMarkerHasBeenHit && !MissionRawBar.rawBarMissionComplete) {
 				renderRawBarMission(batch, imageLoader, myGame);
 			}
 
