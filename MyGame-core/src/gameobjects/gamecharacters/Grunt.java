@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.mygame.MyGame;
+
+import maps.MapHandler;
 
 /**
  * A grunt is a secondary enemy.
@@ -36,5 +39,15 @@ public class Grunt extends Enemy {
 		walkUpAnimation      = new Animation <TextureRegion> (animationSpeed, walkUpTexture.getRegions());
 		walkRightAnimation   = new Animation <TextureRegion> (animationSpeed, walkRightTexture.getRegions());
 		walkLeftAnimation    = new Animation <TextureRegion> (animationSpeed, walkLeftTexture.getRegions());
+	}
+
+	/**
+	 * 
+	 * @param MyGame     myGame
+	 * @param MapHandler mapHandler
+	 */
+	@Override
+	public void updateObject(MyGame myGame, MapHandler mapHandler) {
+		super.updateObject(myGame, mapHandler);
 	}
 }

@@ -56,15 +56,7 @@ public class SoundHandler {
 				MissionRawBar.playCollectionSound = false;
 			}
 
-			for (int i = 0; i < myGame.gameScreen.enemyHandler.enemySpawner.length; i++) {
-				for (int k = 0; k < myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.size(); k++) {
-					// For now make the same sound for every enemy killing.  The explosion sounds cool.
-					if (myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).getPlaySound()) {
-						//soundLoader.bombSound.play(AudioHandler.MEDIAN_VOLUME);
-						myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).setPlaySound(false);
-					}
-				}
-			}
+			handleEnemyDeathSound(myGame, soundLoader);
 
 			for (int i = 0; i < CannonLoader.cannons.length; i++) {
 				if (CannonLoader.cannons[i].isPlayBlastSound()) {
@@ -154,6 +146,38 @@ public class SoundHandler {
 			}
 			handleJumpingAudio(soundLoader);
 			handleLandingAudio(soundLoader);
+		}
+	}
+
+	/**
+	 * 
+	 * @param MyGame      myGame
+	 * @param SoundLoader soundLoader
+	 */
+	private void handleEnemyDeathSound(MyGame myGame, SoundLoader soundLoader) {
+		for (int i = 0; i < myGame.gameScreen.enemyHandler.enemySpawner.length; i++) {
+			for (int k = 0; k < myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.size(); k++) {
+				// For now make the same sound for every enemy killing.  
+				if (myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).getPlaySound()) {
+					soundLoader.enemyDeathSound.play(AudioHandler.MAX_VOLUME);
+					myGame.gameScreen.enemyHandler.enemySpawner[i].enemies.get(k).setPlaySound(false);
+				}
+			}
+		}
+		for (int i = 0; i < myGame.gameScreen.gruntHandler.gruntSpawner.length; i++) {
+			for (int k = 0; k < myGame.gameScreen.gruntHandler.gruntSpawner[i].grunts.size(); k++) {
+				// For now make the same sound for every grunt killing.  
+				if (myGame.gameScreen.gruntHandler.gruntSpawner[i].grunts.get(k).getPlaySound()) {
+					soundLoader.enemyDeathSound.play(AudioHandler.MAX_VOLUME);
+					myGame.gameScreen.gruntHandler.gruntSpawner[i].grunts.get(k).setPlaySound(false);
+				}
+			}
+		}
+		for (int i = 0; i < GiantHandler.giants.length; i++) {
+			if (GiantHandler.giants[i].getPlaySound()) {
+				soundLoader.enemyDeathSound.play(AudioHandler.MAX_VOLUME);
+				GiantHandler.giants[i].setPlaySound(false);
+			}
 		}
 	}
 

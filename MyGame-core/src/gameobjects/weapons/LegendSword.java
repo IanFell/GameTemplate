@@ -7,6 +7,7 @@ import com.mygdx.mygame.MyGame;
 import controllers.PlayerController;
 import gameobjects.gamecharacters.PlayerOne;
 import handlers.CollisionHandler;
+import handlers.GiantHandler;
 import helpers.GamePlayHelper;
 import inventory.Inventory;
 import loaders.ImageLoader;
@@ -125,8 +126,20 @@ public class LegendSword extends Weapon {
 			height = 2;
 			setRotationAngleDependingOnPlayerDirection();
 			updateHitBox();
-			myGame.gameScreen.enemyHandler.checkWeaponCollision(myGame, this);
+			checkCollisionWithAllEnemies(myGame);
 		}
+	}
+
+	/**
+	 * 
+	 * @param MyGame myGame
+	 */
+	private void checkCollisionWithAllEnemies(MyGame myGame) {
+		myGame.gameScreen.enemyHandler.checkWeaponCollision(myGame, this);
+		myGame.gameScreen.gruntHandler.checkWeaponCollision(myGame, this);
+		CollisionHandler.checkIfWeaponHasCollidedWithEnemy(GiantHandler.giants[0], this);
+		CollisionHandler.checkIfWeaponHasCollidedWithEnemy(GiantHandler.giants[1], this);
+		CollisionHandler.checkIfWeaponHasCollidedWithEnemy(GiantHandler.giants[2], this);
 	}
 
 	private void setRotationAngleDependingOnPlayerDirection() {
@@ -144,10 +157,6 @@ public class LegendSword extends Weapon {
 			setRotationAngle(180);
 			break;
 		}
-		/*
-		if (!Player.playerIsPerformingAttack) {
-			setRotationAngle(180);
-		} */
 	}
 
 	/**

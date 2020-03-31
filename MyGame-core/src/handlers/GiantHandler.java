@@ -16,7 +16,7 @@ import maps.MapHandler;
  */
 public class GiantHandler {
 
-	private Giant[] giants = new Giant[3];
+	public static Giant[] giants = new Giant[3];
 
 	private int size = 5;
 
