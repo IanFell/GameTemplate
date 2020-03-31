@@ -13,6 +13,8 @@ import loaders.ImageLoader;
  *
  */
 public class Town {
+	
+	private final int TOWN_SIZE = 35;
 
 	public static final int MEXICO_BEACH  = 0;
 	public static final int PORT_ST_JOE   = 1;
@@ -31,8 +33,8 @@ public class Town {
 	 * Constructor.
 	 */
 	public Town() {
-		townBorder.width  = 35;
-		townBorder.height = 35;
+		townBorder.width  = TOWN_SIZE;
+		townBorder.height = TOWN_SIZE;
 		isInTown          = false;
 	}
 	
