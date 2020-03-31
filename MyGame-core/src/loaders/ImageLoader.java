@@ -167,7 +167,7 @@ public class ImageLoader {
 		logs          = new Texture(Gdx.files.internal("artwork/nature/Logs.png"));
 		palmTreeThree = new Texture(Gdx.files.internal("artwork/nature/PalmTreeOneAlternate_April2020.png"));
 		palmTree      = new Texture(Gdx.files.internal("artwork/nature/PalmTreeOne_April2020.png"));
-		plant         = new Texture(Gdx.files.internal("artwork/nature/PlantNewOriginal.png"));
+		plant         = new Texture(Gdx.files.internal("artwork/nature/PlantApril2020.png"));
 		drSuessTree   = new Texture(Gdx.files.internal("artwork/nature/DrSuessTree.png"));
 		light         = new Texture(Gdx.files.internal("artwork/nature/Lighting.png"));
 		rain 		  = new Texture(Gdx.files.internal("artwork/nature/Rain.png"));
