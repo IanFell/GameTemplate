@@ -171,13 +171,6 @@ public class Gun extends Weapon {
 							);
 				}
 			}
-			batch.draw(
-					imageLoader.whiteSquare, 
-					rectangle.x, 
-					rectangle.y, 
-					rectangle.width, 
-					rectangle.height
-					);
 		}
 	}
 }
