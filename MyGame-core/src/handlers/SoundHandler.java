@@ -2,6 +2,7 @@ package handlers;
 
 import com.mygdx.mygame.MyGame;
 
+import gameobjects.GameObject;
 import gameobjects.Heart;
 import gameobjects.Rum;
 import gameobjects.gamecharacters.Player;
@@ -12,6 +13,7 @@ import gameobjects.weapons.MagicPearl;
 import helpers.GameAttributeHelper;
 import inventory.Inventory;
 import loaders.SoundLoader;
+import loaders.cannonballloader.CannonBallLoader;
 import loaders.cannonloader.CannonLoader;
 import loaders.chestloader.ChestLoader;
 import missions.MissionRawBar;
@@ -57,21 +59,7 @@ public class SoundHandler {
 			}
 
 			handleEnemyDeathSound(myGame, soundLoader);
-
-			for (int i = 0; i < CannonLoader.cannons.length; i++) {
-				if (CannonLoader.cannons[i].isPlayBlastSound()) {
-					if (CannonLoader.cannons[i].getAttackBoundary().overlaps(myGame.getGameObject(Player.PLAYER_ONE).rectangle)) {
-						soundLoader.pistolSound.play(AudioHandler.QUARTER_VOLUME);
-					}
-					CannonLoader.cannons[i].setPlayBlastSound(false);
-
-					// If the knight dies.
-					if (CannonLoader.cannons[i].knight.getPlaySound()) {
-						soundLoader.enemyDeathSound.play(AudioHandler.MEDIAN_VOLUME);
-						CannonLoader.cannons[i].knight.setPlaySound(false);
-					}
-				}
-			}
+			handleCannonSound(myGame, soundLoader);
 
 			/**
 			 * This currently does not work.
@@ -83,6 +71,9 @@ public class SoundHandler {
 			 * 
 			 * Take it out for now.
 			 */
+			for (int i = 0; i < CannonBallLoader.cannonballs.size(); i++) {
+
+			}
 			//for (int i = 0; i < CannonBallLoader.cannonballs.size(); i++) {
 			//if (CannonBallLoader.cannonballs.get(i).isPlayLandSound()) {
 			//if (
@@ -146,6 +137,31 @@ public class SoundHandler {
 			}
 			handleJumpingAudio(soundLoader);
 			handleLandingAudio(soundLoader);
+		}
+	}
+
+	/**
+	 * Handles sound when cannon fires or knight dies.
+	 * 
+	 * @param MyGame      myGame
+	 * @param SoundLoader soundLoader
+	 */
+	private void handleCannonSound(MyGame myGame, SoundLoader soundLoader) {
+		for (int i = 0; i < CannonLoader.cannons.length; i++) {
+			if (CannonLoader.cannons[i].isPlayBlastSound()) {
+				GameObject player = myGame.getGameObject(Player.PLAYER_ONE);
+				if (CannonLoader.cannons[i].getAttackBoundary().overlaps(player.rectangle)) {
+					soundLoader.cannonFire.play(AudioHandler.MAX_VOLUME);
+
+				}
+				CannonLoader.cannons[i].setPlayBlastSound(false);
+
+				// If the knight dies.
+				if (CannonLoader.cannons[i].knight.getPlaySound()) {
+					soundLoader.enemyDeathSound.play(AudioHandler.MAX_VOLUME);
+					CannonLoader.cannons[i].knight.setPlaySound(false);
+				}
+			}
 		}
 	}
 

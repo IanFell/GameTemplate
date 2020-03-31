@@ -61,9 +61,9 @@ public class Cannon extends Weapon {
 		playBlastSound        = false;
 		int knightSize        = 1;
 		if (direction == DIRECTION_LEFT) {
-			knight    = new Knight(x + 2.5f, y - knightSize * 2, knightSize, knightSize, direction);
+			knight = new Knight(x + 2.5f, y - knightSize * 2, knightSize, knightSize, direction);
 		} else {
-			knight    = new Knight(x + 0.5f, y - knightSize * 2, knightSize, knightSize, direction);
+			knight = new Knight(x + 0.5f, y - knightSize * 2, knightSize, knightSize, direction);
 		}
 	}
 
