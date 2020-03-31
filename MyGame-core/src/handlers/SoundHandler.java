@@ -65,7 +65,7 @@ public class SoundHandler {
 			for (int i = 0; i < CannonBallLoader.cannonballs.size(); i++) {
 				if (CannonBallLoader.cannonballs.get(i).getAttackBoundary().overlaps(myGame.getGameObject(Player.PLAYER_ONE).rectangle)) {
 					if (CannonBallLoader.cannonballs.get(i).isPlayLandSound()) {
-						soundLoader.bombSound.play(AudioHandler.QUARTER_VOLUME);
+						soundLoader.bombSound.play(AudioHandler.EIGHTH_VOLUME);
 						CannonBallLoader.cannonballs.get(i).setPlayLandSound(false);
 					}
 				}

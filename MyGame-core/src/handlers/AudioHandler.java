@@ -13,10 +13,11 @@ import loaders.SoundLoader;
  */
 public class AudioHandler {
 
-	public final static float MINIMUM_VOLUME = 0f;
+	public static final float MINIMUM_VOLUME = 0f;
+	public static final float EIGHTH_VOLUME  = 0.125f;
 	public static final float QUARTER_VOLUME = 0.25F;
-	public final static float MEDIAN_VOLUME  = 0.5f;
-	public final static float MAX_VOLUME     = 1.0f;
+	public static final float MEDIAN_VOLUME  = 0.5f;
+	public static final float MAX_VOLUME     = 1.0f;
 
 	public final static float FOOTSTEPS_VOLUME = 0.15f;
 	public final static float JUMP_VOLUME      = 0.10f;
