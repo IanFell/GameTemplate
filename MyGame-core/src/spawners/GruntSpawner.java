@@ -38,7 +38,7 @@ public class GruntSpawner extends EnemySpawner {
 	 * @param float  x
 	 * @param float  y
 	 */
-	private void spawnGrunts(MyGame myGame, float x, float y) {
+	private void spawnGrunt(MyGame myGame, float x, float y) {
 		timer++;
 		if (timer > 100) {
 			timer           = 0;
@@ -74,7 +74,7 @@ public class GruntSpawner extends EnemySpawner {
 				}
 			}
 			if (grunts.size() < Grunt.MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE) {
-				spawnGrunts(myGame, x, y);
+				spawnGrunt(myGame, x, y);
 			}
 		}
 	}

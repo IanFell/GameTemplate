@@ -18,7 +18,7 @@ import missions.MissionStumpHole;
  */
 public class EnemySpawner {
 
-	private final int MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE = 3;
+	private final int MAX_ENEMIES_ALLOWED_TO_BE_ALIVE_AT_ONCE = 30;
 
 	protected float x;
 	protected float y;
