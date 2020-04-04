@@ -122,7 +122,7 @@ public class SoundHandler {
 			}
 			handleJumpingAudio(soundLoader);
 			handleLandingAudio(soundLoader);
-			
+
 			if (LocationMarker.playSound) {
 				soundLoader.clickSound.play(AudioHandler.MAX_VOLUME);
 				LocationMarker.playSound = false;

@@ -212,7 +212,7 @@ public class ImageLoader {
 		gruntHut     = new Texture(Gdx.files.internal("artwork/structures/GruntHut.png"));
 		dockLeft   	 = new Texture(Gdx.files.internal("artwork/structures/DockLeft.png"));
 		dockRight    = new Texture(Gdx.files.internal("artwork/structures/DockRight.png"));
-		tradingPost  = new Texture(Gdx.files.internal("artwork/structures/TradinPost.png"));
+		tradingPost  = new Texture(Gdx.files.internal("artwork/structures/TradingPost3d.png"));
 
 		// Effects Objects.
 		dustParticleOne   = new Texture(Gdx.files.internal("artwork/effects/dust/DustParticleOne.png"));
