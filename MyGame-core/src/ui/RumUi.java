@@ -13,7 +13,7 @@ import loaders.ImageLoader;
  */
 public class RumUi extends TextBasedUiParent {
 
-	private int rumIconSize = 2;
+	private int rumIconSize = 1;
 
 	/**
 	 * 
@@ -30,7 +30,7 @@ public class RumUi extends TextBasedUiParent {
 			String text, 
 			GameObject player
 			) {
-		float xPos = player.getX() - 13.0f;
+		float xPos = player.getX() - 12.5f;
 		float yPos = player.getY() - 2.0f;
 		batch.draw(
 				imageLoader.rum, 

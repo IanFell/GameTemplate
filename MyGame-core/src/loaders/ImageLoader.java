@@ -160,7 +160,7 @@ public class ImageLoader {
 		heart       = new Texture(Gdx.files.internal("artwork/Heart.png"));
 		heartShadow = new Texture(Gdx.files.internal("artwork/HeartShadow.png"));
 		boat        = new Texture(Gdx.files.internal("artwork/BOAT_NEW.png"));
-		rum         = new Texture(Gdx.files.internal("artwork/Rum.png"));
+		rum         = new Texture(Gdx.files.internal("artwork/Rum_Alternate.png"));
 
 		// Nature Objects.
 		rock 		  = new Texture(Gdx.files.internal("artwork/nature/Rock.png"));
