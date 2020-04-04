@@ -106,6 +106,8 @@ public class MissionHandler extends Mission {
 	 * @param MyGame myGame
 	 */
 	private void handleRawBarMission(MyGame myGame) {
+		// Use this if we want to go through all phases.
+		/*
 		// Mission is the phases.
 		if (missionRawBarPhaseTwo.isPhaseComplete()) {
 			missionRawBarPhaseThree.updateMission(myGame);
@@ -117,10 +119,16 @@ public class MissionHandler extends Mission {
 
 		// Entire mission is complete now.
 		if (missionRawBarPhaseThree.isPhaseComplete()) {
+			//System.exit(0);
 			MissionRawBar.phasesAreInProgress   = false;
 			MissionRawBar.rawBarMissionComplete = true;
 			MissionRawBar.missionIsActive       = false;
-		}
+		} */
+
+		// Use this if we only want to go through one phase.
+		if (!missionRawBarPhaseOne.isPhaseComplete()) {
+			missionRawBarPhaseOne.updateMission(myGame);
+		} 
 	}
 
 	/**
@@ -158,12 +166,16 @@ public class MissionHandler extends Mission {
 	 * @param MyGame      myGame
 	 */
 	private void renderRawBarMission(SpriteBatch batch, ImageLoader imageLoader, MyGame myGame) {
+		// Use this if we want to render all three phases.
+		/*
 		if (missionRawBarPhaseTwo.isPhaseComplete()) {
 			missionRawBarPhaseThree.renderMission(batch, imageLoader, myGame);
 		} else if (missionRawBarPhaseOne.isPhaseComplete()) {
 			missionRawBarPhaseTwo.renderMission(batch, imageLoader, myGame);
 		} else {
 			missionRawBarPhaseOne.renderMission(batch, imageLoader, myGame);
-		}
+		}*/
+		// Use this if we only want to render one phase.
+		missionRawBarPhaseOne.renderMission(batch, imageLoader, myGame);
 	}
 }

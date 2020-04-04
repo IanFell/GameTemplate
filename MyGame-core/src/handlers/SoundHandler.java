@@ -19,6 +19,7 @@ import loaders.chestloader.ChestLoader;
 import missions.MissionRawBar;
 import missions.MissionStumpHole;
 import screens.Screens;
+import ui.LocationMarker;
 
 /**
  * Handles game sounds.
@@ -121,6 +122,11 @@ public class SoundHandler {
 			}
 			handleJumpingAudio(soundLoader);
 			handleLandingAudio(soundLoader);
+			
+			if (LocationMarker.playSound) {
+				soundLoader.clickSound.play(AudioHandler.MAX_VOLUME);
+				LocationMarker.playSound = false;
+			}
 		}
 	}
 

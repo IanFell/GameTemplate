@@ -198,17 +198,16 @@ public class MissionRawBar extends Mission {
 		}
 
 		if (phasesAreInProgress) {
-			updatePhases(myGame);
-
 			if (rawBarMissionComplete) {
-				missionIsActive = false;
+				missionIsActive     = false;
 				phasesAreInProgress = false;
 			}
+			updatePhases(myGame);
 		} else {
 			locationMarker.updateObject();
 			if (CollisionHandler.playerHasCollidedWithLocationMarker(myGame.getGameObject(Player.PLAYER_ONE), locationMarker)) {
-				phasesAreInProgress = true;
-				locationMarkerHasBeenHit = true;
+				phasesAreInProgress        = true;
+				locationMarkerHasBeenHit   = true;
 				MissionRawBar.startMission = true;
 			}
 		}
@@ -298,9 +297,9 @@ public class MissionRawBar extends Mission {
 		//System.out.println("Oysters Collected: " + oystersCollected);
 
 		// Only display how many oysters to collect for a few seconds.
-		if (collectOysterMessageTimer < COLLECT_OYSTER_MESSAGE_MAX_TIME) {
-			collectOysterMessageTimer++;
-		}
+		//if (collectOysterMessageTimer < COLLECT_OYSTER_MESSAGE_MAX_TIME) {
+		//	collectOysterMessageTimer++;
+		//}
 
 		handOpenClosedTimer++;
 		if (handOpenClosedTimer > 20) {
@@ -341,8 +340,10 @@ public class MissionRawBar extends Mission {
 
 	private void checkForMissionComplete() {
 		if (oystersCollected >= numberOfOystersNeededToWin) {
-			missionComplete = true;
-			phaseComplete   = true;
+			missionComplete       = true;
+			phaseComplete         = true;
+			phasesAreInProgress   = false;
+			rawBarMissionComplete = true;
 		}
 	}
 

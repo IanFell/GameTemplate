@@ -216,7 +216,7 @@ public class Keyboard extends ComputerInput {
 
 		if(GameObjectLoader.gameObjectList.contains(player)) {
 			// RawBar Mission uses a different player than normal since it's kind of like a mini game.
-			if (MissionRawBar.phasesAreInProgress) { 
+			if (MissionRawBar.phasesAreInProgress && !MissionRawBar.rawBarMissionComplete) { 
 				if (Gdx.input.isKeyPressed(left)) {
 					MissionRawBar.playerX -= MissionRawBar.MISSION_RAW_BAR_SPEED;
 					player.setDirection(Player.DIRECTION_LEFT);

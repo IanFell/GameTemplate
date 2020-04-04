@@ -468,6 +468,7 @@ public class CollisionHandler {
 	 */
 	public static boolean playerHasCollidedWithLocationMarker(GameObject player, LocationMarker locationMarker) {
 		if (player.rectangle.overlaps(locationMarker.getLocator())) {
+			LocationMarker.playSound = true;
 			return true;
 		}
 		return false;

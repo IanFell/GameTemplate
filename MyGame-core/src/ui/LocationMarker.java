@@ -12,6 +12,8 @@ import loaders.ImageLoader;
  *
  */
 public class LocationMarker {
+	
+	public static boolean playSound = false;
 
 	private int flashTimer;
 
