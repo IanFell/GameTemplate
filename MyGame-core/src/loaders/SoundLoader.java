@@ -28,6 +28,7 @@ public class SoundLoader {
 	public Sound giantLandingSound;
 	public Sound playerHit;
 	public Sound locationMarkerSound;
+	public Sound locatorBeep;
 
 	public void init() {
 		heartSound          = Gdx.audio.newSound(Gdx.files.internal("audio/Heart.wav"));
@@ -47,6 +48,7 @@ public class SoundLoader {
 		giantLandingSound   = Gdx.audio.newSound(Gdx.files.internal("audio/rumble.wav"));
 		playerHit           = Gdx.audio.newSound(Gdx.files.internal("audio/PlayerHit.wav"));
 		locationMarkerSound = Gdx.audio.newSound(Gdx.files.internal("audio/LocationMarkerSound.wav"));
+		locatorBeep         = Gdx.audio.newSound(Gdx.files.internal("audio/LocatorBeep.wav"));
 	}
 
 	public void dispose() {
@@ -67,5 +69,6 @@ public class SoundLoader {
 		giantLandingSound.dispose();
 		playerHit.dispose();
 		locationMarkerSound.dispose();
+		locatorBeep.dispose();
 	}
 }

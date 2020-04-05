@@ -141,7 +141,7 @@ public class SoundHandler {
 			}
 			
 			if (LocationMarker.playBeepSound) {
-				soundLoader.clickSound.play(AudioHandler.MAX_VOLUME);
+				soundLoader.locatorBeep.play(AudioHandler.MAX_VOLUME);
 				LocationMarker.playBeepSound = false;
 			}
 		}

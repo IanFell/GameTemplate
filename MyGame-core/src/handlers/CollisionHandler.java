@@ -12,6 +12,7 @@ import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
 import gameobjects.nature.QuickSand;
 import gameobjects.stationarygameobjects.Chest;
+import gameobjects.stationarygameobjects.buildings.TradingPost;
 import gameobjects.weapons.CannonBall;
 import gameobjects.weapons.Gun;
 import gameobjects.weapons.LegendSword;
@@ -229,7 +230,7 @@ public class CollisionHandler {
 	 */
 	public static void checkIfPlayerHasCollidedWithGun(GameObject player, GameObject gun) {
 		// Only collect gun if we have enough loot.
-		if (player.getPlayerLoot() >= Gun.LOOT_NEEDED_TO_BUY_GUN) {
+		if (player.getPlayerLoot() >= Gun.LOOT_NEEDED_TO_BUY_GUN && TradingPost.hasBeenEntered) {
 			if (gun.rectangle.overlaps(player.rectangle)) {
 				((Player) player).getInventory().addObjectToInventory(gun);
 				Inventory.inventoryHasStartedCollection = true;
@@ -469,12 +470,12 @@ public class CollisionHandler {
 	 */
 	public static boolean playerHasCollidedWithLocationMarker(GameObject player, LocationMarker locationMarker) {
 		// This checks if we should play the beeping sound to alert player he is close to a locator.
-		int soundBoundaryOffset = 10;
+		int soundBoundaryOffset = 17;
 		if (
 				player.getX() > locationMarker.getLocator().getX() - soundBoundaryOffset && 
-				player.getX() < locationMarker.getLocator().getX() - soundBoundaryOffset + locationMarker.getLocator().getWidth() + soundBoundaryOffset &&
+				player.getX() < locationMarker.getLocator().getX() - soundBoundaryOffset + locationMarker.getLocator().getWidth() + soundBoundaryOffset * 2 &&
 				player.getY() > locationMarker.getLocator().getY() - soundBoundaryOffset && 
-				player.getY() < locationMarker.getLocator().getY() - soundBoundaryOffset + locationMarker.getLocator().getHeight() + soundBoundaryOffset
+				player.getY() < locationMarker.getLocator().getY() - soundBoundaryOffset + locationMarker.getLocator().getHeight() + soundBoundaryOffset * 2
 
 				) {
 			LocationMarker.playerIsWithinSoundBounds = true;
