@@ -12,14 +12,14 @@ import loaders.ImageLoader;
  *
  */
 public class LocationMarker {
-	
-	public static boolean playSound = false;
+
+	public static boolean playSound                 = false;
+	public static boolean playBeepSound             = false;
+	public static boolean playerIsWithinSoundBounds = false;
 
 	private int flashTimer;
 
 	private Rectangle locator;
-
-	private int size;
 
 	/**
 	 * Constructor.
@@ -28,9 +28,10 @@ public class LocationMarker {
 	 * @param float y
 	 */
 	public LocationMarker(float x, float y) {
-		size      = 1;
+		int size  = 1;
 		locator   = new Rectangle(
-				x, y,
+				x, 
+				y,
 				size, 
 				size
 				);
@@ -71,6 +72,9 @@ public class LocationMarker {
 	 */
 	public boolean timerValuesAreCorrectToFlash() {
 		if (flashTimer % 10 >= 0 && flashTimer % 10 <= 5) {
+			if (playerIsWithinSoundBounds) {
+				playBeepSound = true;
+			}
 			return true;
 		}
 		return false;

@@ -51,10 +51,12 @@ public class MissionTradinPost extends Mission {
 	 */
 	@Override
 	public void updateMission(MyGame myGame, MapHandler mapHandler) {
-		locationMarker.updateObject();
-		if (CollisionHandler.playerHasCollidedWithLocationMarker(myGame.getGameObject(Player.PLAYER_ONE), locationMarker)) {
-			TradingPost.hasBeenEntered = true;
-			locationMarkerHasBeenHit   = true;
+		if (!locationMarkerHasBeenHit) {
+			locationMarker.updateObject();
+			if (CollisionHandler.playerHasCollidedWithLocationMarker(myGame.getGameObject(Player.PLAYER_ONE), locationMarker)) {
+				TradingPost.hasBeenEntered = true;
+				locationMarkerHasBeenHit   = true;
+			}
 		}
 	}
 }

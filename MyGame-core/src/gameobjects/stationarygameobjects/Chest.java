@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.mygame.MyGame;
 
-import gameobjects.GameObject;
+import gameobjects.gamecharacters.Player;
 import handlers.CollisionHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
@@ -90,11 +90,8 @@ public class Chest extends GamePlayObject {
 	@Override
 	public void updateObject(MyGame myGame, MapHandler mapHandler) {
 		super.updateObject(myGame, mapHandler);
-		rectangle.y = y - height;
-		CollisionHandler.checkIfPlayerHasCollidedWithChest(
-				myGame.getGameObject(GameObject.PLAYER_ONE),
-				this
-				);
+		rectangle.y       = y - height;
+		CollisionHandler.checkIfPlayerHasCollidedWithChest(myGame.getGameObject(Player.PLAYER_ONE), this);
 
 		/**
 		 * If chest is opened, timerIsOn gets set to true.

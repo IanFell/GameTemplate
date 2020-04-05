@@ -136,8 +136,13 @@ public class SoundHandler {
 			handleLandingAudio(soundLoader);
 
 			if (LocationMarker.playSound) {
-				soundLoader.clickSound.play(AudioHandler.MAX_VOLUME);
+				soundLoader.locationMarkerSound.play(AudioHandler.MAX_VOLUME);
 				LocationMarker.playSound = false;
+			}
+			
+			if (LocationMarker.playBeepSound) {
+				soundLoader.clickSound.play(AudioHandler.MAX_VOLUME);
+				LocationMarker.playBeepSound = false;
 			}
 		}
 	}

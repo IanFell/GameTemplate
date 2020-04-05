@@ -468,6 +468,20 @@ public class CollisionHandler {
 	 * @return boolean
 	 */
 	public static boolean playerHasCollidedWithLocationMarker(GameObject player, LocationMarker locationMarker) {
+		// This checks if we should play the beeping sound to alert player he is close to a locator.
+		int soundBoundaryOffset = 10;
+		if (
+				player.getX() > locationMarker.getLocator().getX() - soundBoundaryOffset && 
+				player.getX() < locationMarker.getLocator().getX() - soundBoundaryOffset + locationMarker.getLocator().getWidth() + soundBoundaryOffset &&
+				player.getY() > locationMarker.getLocator().getY() - soundBoundaryOffset && 
+				player.getY() < locationMarker.getLocator().getY() - soundBoundaryOffset + locationMarker.getLocator().getHeight() + soundBoundaryOffset
+
+				) {
+			LocationMarker.playerIsWithinSoundBounds = true;
+		} else {
+			LocationMarker.playerIsWithinSoundBounds = false;
+		}
+		// This checks if player has actually hit the location marker itself.
 		if (player.rectangle.overlaps(locationMarker.getLocator())) {
 			LocationMarker.playSound = true;
 			return true;
