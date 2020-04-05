@@ -25,22 +25,24 @@ public class SoundLoader {
 	public Sound bubbleSound;
 	public Sound bombSound;
 	public Sound cannonFire;
+	public Sound giantLandingSound;
 
 	public void init() {
-		heartSound       = Gdx.audio.newSound(Gdx.files.internal("audio/Heart.wav"));
-		rumSound         = Gdx.audio.newSound(Gdx.files.internal("audio/Bottle.wav"));
-		jumpSound        = Gdx.audio.newSound(Gdx.files.internal("audio/JumpSound.wav"));
-		landSound        = Gdx.audio.newSound(Gdx.files.internal("audio/LandingSound.wav"));
-		swordSound       = Gdx.audio.newSound(Gdx.files.internal("audio/WeaponSword.wav"));
-		pistolSound      = Gdx.audio.newSound(Gdx.files.internal("audio/Pistol.wav"));
-		pickUpSwordSound = Gdx.audio.newSound(Gdx.files.internal("audio/PickUpSword.wav"));
-		pickUpGunSound   = Gdx.audio.newSound(Gdx.files.internal("audio/PickUpGun.wav"));
-		chestSound       = Gdx.audio.newSound(Gdx.files.internal("audio/Chest.wav"));
-		clickSound       = Gdx.audio.newSound(Gdx.files.internal("audio/Click.wav"));
-		enemyDeathSound  = Gdx.audio.newSound(Gdx.files.internal("audio/EnemyDeath.wav"));
-		bubbleSound      = Gdx.audio.newSound(Gdx.files.internal("audio/Bubble.wav"));
-		bombSound        = Gdx.audio.newSound(Gdx.files.internal("audio/Bomb.wav"));
-		cannonFire       = Gdx.audio.newSound(Gdx.files.internal("audio/CannonFire.wav"));
+		heartSound        = Gdx.audio.newSound(Gdx.files.internal("audio/Heart.wav"));
+		rumSound          = Gdx.audio.newSound(Gdx.files.internal("audio/Bottle.wav"));
+		jumpSound         = Gdx.audio.newSound(Gdx.files.internal("audio/JumpSound.wav"));
+		landSound         = Gdx.audio.newSound(Gdx.files.internal("audio/LandingSound.wav"));
+		swordSound        = Gdx.audio.newSound(Gdx.files.internal("audio/WeaponSword.wav"));
+		pistolSound       = Gdx.audio.newSound(Gdx.files.internal("audio/Pistol.wav"));
+		pickUpSwordSound  = Gdx.audio.newSound(Gdx.files.internal("audio/PickUpSword.wav"));
+		pickUpGunSound    = Gdx.audio.newSound(Gdx.files.internal("audio/PickUpGun.wav"));
+		chestSound        = Gdx.audio.newSound(Gdx.files.internal("audio/Chest.wav"));
+		clickSound        = Gdx.audio.newSound(Gdx.files.internal("audio/Click.wav"));
+		enemyDeathSound   = Gdx.audio.newSound(Gdx.files.internal("audio/EnemyDeath.wav"));
+		bubbleSound       = Gdx.audio.newSound(Gdx.files.internal("audio/Bubble.wav"));
+		bombSound         = Gdx.audio.newSound(Gdx.files.internal("audio/Bomb.wav"));
+		cannonFire        = Gdx.audio.newSound(Gdx.files.internal("audio/CannonFire.wav"));
+		giantLandingSound = Gdx.audio.newSound(Gdx.files.internal("audio/rumble.wav"));
 	}
 
 	public void dispose() {
@@ -58,5 +60,6 @@ public class SoundLoader {
 		bubbleSound.dispose();
 		bombSound.dispose();
 		cannonFire.dispose();
+		giantLandingSound.dispose();
 	}
 }

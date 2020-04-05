@@ -5,6 +5,7 @@ import com.mygdx.mygame.MyGame;
 import gameobjects.GameObject;
 import gameobjects.Heart;
 import gameobjects.Rum;
+import gameobjects.gamecharacters.Giant;
 import gameobjects.gamecharacters.Player;
 import gameobjects.nature.Feather;
 import gameobjects.weapons.Gun;
@@ -106,6 +107,11 @@ public class SoundHandler {
 			if (Feather.playSound) {
 				soundLoader.pickUpSwordSound.play(AudioHandler.MAX_VOLUME);
 				Feather.playSound = false;
+			}
+			
+			if (Giant.playLandingSound) {
+				soundLoader.giantLandingSound.play(AudioHandler.MAX_VOLUME);
+				Giant.playLandingSound = false;
 			}
 
 			// Click sound when choosing different inventory objects.

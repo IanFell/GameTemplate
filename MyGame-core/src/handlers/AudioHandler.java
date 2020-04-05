@@ -19,7 +19,7 @@ public class AudioHandler {
 	public static final float MEDIAN_VOLUME  = 0.5f;
 	public static final float MAX_VOLUME     = 1.0f;
 
-	public final static float FOOTSTEPS_VOLUME = 0.15f;
+	public final static float FOOTSTEPS_VOLUME = 0.06f;
 	public final static float JUMP_VOLUME      = 0.10f;
 	public final static float LAND_VOLUME      = 0.10f;
 
