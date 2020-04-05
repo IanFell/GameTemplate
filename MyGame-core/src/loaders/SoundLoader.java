@@ -30,7 +30,7 @@ public class SoundLoader {
 
 	public void init() {
 		heartSound        = Gdx.audio.newSound(Gdx.files.internal("audio/Heart.wav"));
-		rumSound          = Gdx.audio.newSound(Gdx.files.internal("audio/Bottle.wav"));
+		rumSound          = Gdx.audio.newSound(Gdx.files.internal("audio/Glass.wav"));
 		jumpSound         = Gdx.audio.newSound(Gdx.files.internal("audio/JumpSound.wav"));
 		landSound         = Gdx.audio.newSound(Gdx.files.internal("audio/LandingSound.wav"));
 		swordSound        = Gdx.audio.newSound(Gdx.files.internal("audio/WeaponSword.wav"));

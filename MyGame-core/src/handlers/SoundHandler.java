@@ -101,7 +101,7 @@ public class SoundHandler {
 				Heart.playSound = false;
 			}
 			if (Rum.playSound) {
-				soundLoader.rumSound.play(AudioHandler.MAX_VOLUME);
+				soundLoader.rumSound.play(AudioHandler.MEDIAN_VOLUME);
 				Rum.playSound = false;
 			}
 			for (int i = 0; i < ChestLoader.chests.length; i++) {
