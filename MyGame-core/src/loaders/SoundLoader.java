@@ -26,6 +26,7 @@ public class SoundLoader {
 	public Sound bombSound;
 	public Sound cannonFire;
 	public Sound giantLandingSound;
+	public Sound playerHit;
 
 	public void init() {
 		heartSound        = Gdx.audio.newSound(Gdx.files.internal("audio/Heart.wav"));
@@ -43,6 +44,7 @@ public class SoundLoader {
 		bombSound         = Gdx.audio.newSound(Gdx.files.internal("audio/Bomb.wav"));
 		cannonFire        = Gdx.audio.newSound(Gdx.files.internal("audio/CannonFire.wav"));
 		giantLandingSound = Gdx.audio.newSound(Gdx.files.internal("audio/rumble.wav"));
+		playerHit         = Gdx.audio.newSound(Gdx.files.internal("audio/PlayerHit.wav"));
 	}
 
 	public void dispose() {
@@ -61,5 +63,6 @@ public class SoundLoader {
 		bombSound.dispose();
 		cannonFire.dispose();
 		giantLandingSound.dispose();
+		playerHit.dispose();
 	}
 }

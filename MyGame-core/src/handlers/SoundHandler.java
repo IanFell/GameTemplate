@@ -61,6 +61,12 @@ public class SoundHandler {
 			}
 
 			handleEnemyDeathSound(myGame, soundLoader);
+			
+			if (myGame.getGameObject(Player.PLAYER_ONE).getPlaySound()) {
+				soundLoader.playerHit.play(AudioHandler.MAX_VOLUME);
+				myGame.getGameObject(Player.PLAYER_ONE).setPlaySound(false);
+			}
+			
 			handleCannonSound(myGame, soundLoader);
 
 			// Handle the landing/explosion of the cannon balls.

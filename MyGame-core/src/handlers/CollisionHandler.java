@@ -351,6 +351,7 @@ public class CollisionHandler {
 				if (!CutScene.anyCutSceneIsInProgress) {
 					if (!Player.isInvincible) {
 						player.setHealth(player.getHealth() - 1);
+						player.setPlaySound(true);
 					}
 				}
 				player.setBouncingBack(true);
