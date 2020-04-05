@@ -24,7 +24,12 @@ public class PalmTree extends NatureObject {
 	 */
 	public PalmTree(int x, int y) {
 		super(x, y);
-		this.width   = 2;
+		int random = RandomNumberGenerator.generateRandomInteger(100);
+		if (random < 50) {
+			this.x += 0.5f;
+			this.y += 1;
+		}
+		this.width   = 3;
 		this.height  = 4;
 		this.x       = x - 0.5f;
 		randomTree   = RandomNumberGenerator.generateRandomInteger(2);
