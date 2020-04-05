@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.mygame.MyGame;
 
 import gameobjects.gamecharacters.PlayerOne;
+import handlers.CollisionHandler;
+import handlers.GiantHandler;
 import loaders.ImageLoader;
 import maps.MapHandler;
 
@@ -69,6 +71,10 @@ public class Bullet extends Weapon {
 		y += dy;
 
 		myGame.gameScreen.enemyHandler.checkProjectileCollision(myGame, this);
+		myGame.gameScreen.gruntHandler.checkProjectileCollision(myGame, this);
+		for (int i = 0; i < GiantHandler.giants.length; i++) {
+			CollisionHandler.checkIfProjectileHasCollidedWithEnemy(GiantHandler.giants[i], this);
+		}
 	}
 
 	/**
