@@ -152,6 +152,9 @@ public class ImageLoader {
 	public Texture knightLeft;
 	public Texture knightRight;
 
+	// Number objects.
+	public Texture[] number = new Texture[10];
+
 	public void init() {
 
 		// Game objects.
@@ -308,6 +311,18 @@ public class ImageLoader {
 		// Character objects.
 		knightLeft  = new Texture(Gdx.files.internal("artwork/gamecharacters/knight/KnightLeft.png"));
 		knightRight = new Texture(Gdx.files.internal("artwork/gamecharacters/knight/KnightRight.png"));
+
+		// Number objects.
+		number[0] = new Texture(Gdx.files.internal("artwork/numbers/0.png"));
+		number[1] = new Texture(Gdx.files.internal("artwork/numbers/1.png"));
+		number[2] = new Texture(Gdx.files.internal("artwork/numbers/2.png"));
+		number[3] = new Texture(Gdx.files.internal("artwork/numbers/3.png"));
+		number[4] = new Texture(Gdx.files.internal("artwork/numbers/4.png"));
+		number[5] = new Texture(Gdx.files.internal("artwork/numbers/5.png"));
+		number[6] = new Texture(Gdx.files.internal("artwork/numbers/6.png"));
+		number[7] = new Texture(Gdx.files.internal("artwork/numbers/7.png"));
+		number[8] = new Texture(Gdx.files.internal("artwork/numbers/8.png"));
+		number[9] = new Texture(Gdx.files.internal("artwork/numbers/9.png"));
 	}
 
 	public void dispose() {
@@ -456,5 +471,10 @@ public class ImageLoader {
 		// Character objects.
 		knightLeft.dispose();
 		knightRight.dispose();
+
+		// Number objects.
+		for (int i = 0; i < number.length; i++) {
+			number[i].dispose();
+		}
 	}
 }

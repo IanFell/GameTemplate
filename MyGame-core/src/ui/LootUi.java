@@ -35,14 +35,12 @@ public class LootUi extends TextBasedUiParent {
 	 * @param SpriteBatch batch
 	 * @param ImageLoader imageLoader
 	 * @param MyGame      myGame
-	 * @param String      text
 	 * @param GameOjbect  player
 	 */
 	public void renderUi(
 			SpriteBatch batch, 
 			ImageLoader imageLoader, 
-			MyGame myGame, 
-			String text, 
+			MyGame myGame,  
 			GameObject player
 			) {
 		updateElapsedTime();
@@ -59,6 +57,6 @@ public class LootUi extends TextBasedUiParent {
 				imageLoader, 
 				AnimationHandler.OBJECT_TYPE_LOOT
 				);
-		super.renderUi(batch, imageLoader, myGame, text, player, xPos + 2, yPos - 1);
+		super.renderUi(batch, imageLoader, myGame, player, xPos + 2, yPos, player.getPlayerLoot());
 	}
 }

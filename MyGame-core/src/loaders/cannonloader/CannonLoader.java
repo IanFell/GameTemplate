@@ -14,7 +14,7 @@ import loaders.ClassObjectLoader;
  */
 public class CannonLoader extends ClassObjectLoader {
 
-	public static Cannon[] cannons = new Cannon[50];
+	public static Cannon[] cannons = new Cannon[20];
 
 	/**
 	 * 

@@ -22,7 +22,7 @@ public class RumHandler {
 	
 	public static int rumCount;
 	
-	private final int MAX_AMOUNT_RUM_ALLOWED = 1000;
+	private final int MAX_AMOUNT_RUM_ALLOWED = 50;
 
 	private ArrayList <Rum> rum = new ArrayList<Rum>();
 
